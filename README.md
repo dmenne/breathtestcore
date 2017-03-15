@@ -10,7 +10,7 @@ http://www.menne-biomed.de
 
 dieter.menne@menne-biomed.de 
 
-## This package is in development. 
+## This package is under development. 
 
 Use dmenne/d13breath instead until finished.
 
