@@ -23,6 +23,6 @@ LinkingTo:
       BH (>= 1.62.0.1), 
       Rcpp (>= 0.12.8), 
       RcppEigen (>= 0.3.2.9.0)
-License: GPL-2
+License: GPL-3
 RoxygenNote: 6.0.1
 VignetteBuilder: packagedocs
