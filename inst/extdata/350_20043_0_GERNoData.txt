@@ -1,0 +1,41 @@
+Test and Patient parameters					
+
+					
+Date           -    12/11/12					
+End time       -    08:54					
+Start time     -    12:49					
+Patient # - 0					
+Patient ID   -  					
+Test No.   -    20043					
+Type       -    Octanoic-Acid					
+Dose[mg]   -    100					
+Height     -    0.00					
+Weight     -    0.00 					
+Age        -    0.00					
+Gender     -    Male					
+
+					
+Results					
+
+					
+T 1/2  -   71.23					
+T lag   -  28.22					
+GEC    -   2.99					
+
+					
+PDR Coefficient					
+
+					
+45.9163					
+0.4906					
+2.1035					
+
+					
+CPDR Coefficient					
+
+					
+19.8244					
+1.0338					
+0.6681					
+
+					
