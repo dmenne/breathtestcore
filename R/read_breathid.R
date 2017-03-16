@@ -6,6 +6,7 @@
 #' \code{Test and Patient parameters}
 #'
 #' @param filename name of txt-file to be read
+#' @param text alternatively, text can be given as string
 #' @return structure of class \code{\link{breathtest_data}}
 #' @author dieter menne, \email{dieter_menne@@menne-biomed_de}
 #' @import stringr
@@ -14,36 +15,41 @@
 #' bid = read_breathid(filename)
 #' str(bid)
 #' @export
-read_breathid = function(filename) {
+read_breathid = function(filename = NULL, text = NULL) {
 #  filename = 'C:/Users/Dieter/Documents/RPackages/breathtestcore/inst/extdata/350_20043_1_GER.txt'
-  filename = as.character(filename)
-  if (!file.exists(filename))
-    stop(paste0("file ", filename, " does not exist_"))
-  bid = readLines(filename)
-  header = str_trim(bid[1])
+  if (is.null(text)) {
+    filename = as.character(filename)
+    if (!file.exists(filename))
+      stop(paste("File ", filename, "does not exist_"))
+    text = readLines(filename)
+  } else
+  {
+    filename = 'from text'  
+  }
+  header = str_trim(text[1])
   if (header != "Test and Patient parameters")
-    stop(paste0("file ", filename, " is not a valid BreathID file_"))
-  record_date = find_single_pattern(bid, "Date")
+    stop(paste("Header of file", filename, "is not a valid BreathID file"))
+  record_date = find_single_pattern(text, "Date")
   record_date = strptime(record_date, "%m/%d/%y")
   ## note : end time and start time are reversed in the data file, we correct
   ## this here, no typo!!
-  end_time = paste(record_date, find_single_pattern(bid, "Start time"))
-  start_time = paste(record_date, find_single_pattern(bid, "End time"))                  
+  end_time = paste(record_date, find_single_pattern(text, "Start time"))
+  start_time = paste(record_date, find_single_pattern(text, "End time"))                  
   
-  patient_id = find_single_pattern(bid, "Patient #")
-  test_no = as.integer(find_single_pattern(bid, "Test No."))
-  substrate = find_single_pattern(bid, "Type")
-  gender = find_single_pattern(bid, "Gender")
+  patient_id = find_single_pattern(text, "Patient #")
+  test_no = as.integer(find_single_pattern(text, "Test No."))
+  substrate = find_single_pattern(text, "Type")
+  gender = find_single_pattern(text, "Gender")
   if (nchar(gender) > 0)
     gender = str_sub(tolower(gender), 1, 1)
-  dose = as.numeric(find_single_pattern(bid, "Dose"))
-  height = as.numeric(find_single_pattern(bid, "Height"))
-  weight = as.numeric(find_single_pattern(bid, "Weight"))
-  t50 = as.numeric(find_single_pattern(bid, "T 1/2"))
-  t_lag = as.numeric(find_single_pattern(bid, "T lag"))
-  gec = as.numeric(find_single_pattern(bid, "GEC"))
+  dose = as.numeric(find_single_pattern(text, "Dose"))
+  height = as.numeric(find_single_pattern(text, "Height"))
+  weight = as.numeric(find_single_pattern(text, "Weight"))
+  t50 = as.numeric(find_single_pattern(text, "T 1/2"))
+  t_lag = as.numeric(find_single_pattern(text, "T lag"))
+  gec = as.numeric(find_single_pattern(text, "GEC"))
   # Locate the data block
-  db = try(str_trim(bid[which(str_detect(bid, "Time\\s*DOB")):length(bid)]), silent =
+  db = try(str_trim(text[which(str_detect(text, "Time\\s*DOB")):length(text)]), silent =
               TRUE)
   if (class(db) == "try-error")
     stop(paste0("file ", filename, " does not contain PDR data"))

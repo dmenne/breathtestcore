@@ -4,10 +4,12 @@
 \alias{read_breathid}
 \title{read BreathID file}
 \usage{
-read_breathid(filename)
+read_breathid(filename = NULL, text = NULL)
 }
 \arguments{
 \item{filename}{name of txt-file to be read}
+
+\item{text}{alternatively, text can be given as string}
 }
 \value{
 structure of class \code{\link{breathtest_data}}

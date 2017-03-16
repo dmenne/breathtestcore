@@ -4,10 +4,12 @@
 \alias{read_iris_csv}
 \title{Read 13C data from IRIS/Wagner Analysen in CSV Format}
 \usage{
-read_iris_csv(filename)
+read_iris_csv(filename = NULL, text = NULL)
 }
 \arguments{
 \item{filename}{Name of IRIS/Wagner file in CSV format}
+
+\item{text}{alternatively, text can be given as string}
 }
 \value{
 list of class \code{breath_test_data} with file name, 

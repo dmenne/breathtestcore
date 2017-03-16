@@ -4,10 +4,12 @@
 \alias{read_iris}
 \title{Read 13C data from IRIS/Wagner Analysen}
 \usage{
-read_iris(filename)
+read_iris(filename = NULL, text = NULL)
 }
 \arguments{
-\item{filename}{name of iris/wagner file in composite format}
+\item{filename}{name of IRIS/Wagner file in composite format}
+
+\item{text}{alternatively, text can be given as string}
 }
 \value{
 list with \code{file_name, patient_name, patient_first_name,

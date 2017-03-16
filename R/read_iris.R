@@ -8,7 +8,8 @@
 #' "Datum","10.10.2013"
 #' "Testart"}
 #'
-#' @param filename name of iris/wagner file in composite format
+#' @param filename name of IRIS/Wagner file in composite format
+#' @param text alternatively, text can be given as string
 #' @return list with \code{file_name, patient_name, patient_first_name,
 #' test, identifikation}, and data frame \code{data} with \code{time}
 #' and \code{dob}
@@ -19,52 +20,54 @@
 #' str(iris_data)
 #' @import stringr
 #' @export read_iris
-read_iris = function(filename) {
-  if (!file.exists(filename))
-    stop(paste0("file ", filename, " does not exist."))
-  bid = readLines(filename)
+read_iris = function(filename = NULL, text = NULL) {
+  if (is.null(text)) {
+    if (!file.exists(filename))
+      stop(paste0("file ", filename, " does not exist."))
+    text = readLines(filename)
+  } else {
+    filename = 'from text'
+  }
+  
   # check if this is the right format
-  header = str_trim(bid[1])
+  header = str_trim(text[1])
   if (header != "\"Testergebnis\"")
-    stop(
-      paste0(
-        "file ",
-        filename,
-        " is not a valid IRIS/Wagner composite file. First line should be <<Testergebnis>>"
+    stop(paste0(header, 
+        "\nis not from a valid IRIS/Wagner data. First line should be <<Testergebnis>>"
       )
     )
-  data_row = which(str_detect(bid, "Daten"))
+  data_row = which(str_detect(text, "Daten"))
   if (length(data_row) == 0)
     stop("File does not contain data")
   
-  record_date = find_pattern(bid, "Datum")
+  record_date = find_pattern(text, "Datum")
   record_date = strptime(record_date, "%d.%m.%y")
   # try if there is a patient number. If not, try identification
-  patient_id = try(find_pattern(bid, "Patient"), silent = TRUE)
+  patient_id = try(find_pattern(text, "Patient"), silent = TRUE)
   if (class(patient_id) == "try-error")
-    patient_id = find_pattern(bid, "Identifikation")
+    patient_id = find_pattern(text, "Identifikation")
   
-  test_no = as.integer(find_pattern(bid, "Nummer"))
-  substrate = find_pattern(bid, "Substrat")
-  gender = find_pattern(bid, "Geschlecht")
+  test_no = as.integer(find_pattern(text, "Nummer"))
+  substrate = find_pattern(text, "Substrat")
+  gender = find_pattern(text, "Geschlecht")
   if (nchar(gender) > 0) {
     gender = str_sub(tolower(gender), 1, 1)
     if (gender != "m")
       gender = "f" # make sure to avoid German names
   }
-  dose = as.numeric(find_pattern(bid, "Dosis"))
+  dose = as.numeric(find_pattern(text, "Dosis"))
   # workaround for "Groesse" (with umlauts and scharf-s) and utf
-  height = as.numeric(find_pattern(bid, "Gr.*e.*", TRUE)) * 100
-  weight = as.numeric(find_pattern(bid, "Gewicht.*", TRUE))
-  test = find_pattern(bid, "Abk.*rzung")
+  height = as.numeric(find_pattern(text, "Gr.*e.*", TRUE)) * 100
+  weight = as.numeric(find_pattern(text, "Gewicht.*", TRUE))
+  test = find_pattern(text, "Abk.*rzung")
   # there are multiple "name" fields; skip the first
-  name = find_pattern(bid[-(1:14)], "Name")
-  first_name = find_pattern(bid, "Vorname")
+  name = find_pattern(text[-(1:14)], "Name")
+  first_name = find_pattern(text, "Vorname")
   initials = NA
   if (nchar(name) > 0 && nchar(first_name) > 0)
     initials =  paste0(str_sub(name, 1, 1),
                        str_sub(first_name, 1, 1))
-  data = utils::read.csv(textConnection(bid[-(1:data_row)]))
+  data = utils::read.csv(textConnection(text[-(1:data_row)]))
   data = try(data[, c("Testzeit..min.",
                       "DOB..o.oo.",
                       "Atom.ppm.Excess.13C..ppm.")])

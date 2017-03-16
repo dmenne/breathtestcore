@@ -9,6 +9,7 @@
 #' the dose and body weight and height. By default, using acetate as substrate, 
 #' dose = 100,  weight = 75, height = 180.
 #' @param filename Name of IRIS/Wagner file in CSV format
+#' @param text alternatively, text can be given as string
 #' @return list of class \code{breath_test_data} with file name, 
 #' patient name, patient first name, test, identifikation,
 #' and data frame \code{data} with \code{time} and \code{dob}
@@ -18,25 +19,31 @@
 #' iris_data = read_iris_csv(filename)
 #' str(iris_data)
 #' @export 
-read_iris_csv = function(filename) {
-  if (!file.exists(filename))
-    stop(paste0("File ",filename," does not exist."))
-  # Check if this is the right format
-  header = readLines(filename, 1)
+read_iris_csv = function(filename = NULL, text = NULL) {
+  if (is.null(text)) {
+    if (!file.exists(filename))
+      stop(paste0("File ",filename," does not exist."))
+    # Check if this is the right format
+    to_read = filename
+    header = readLines(filename, 1)
+  } else {
+    header = text[1]
+    filename = "from text"
+    # read_csv recognizes text by presence of a least one newline
+    to_read = paste0(text, collapse ="\n") 
+  }
   if (str_detect(header,("^\"Name\",\"Vorname\",\"Test\",\"Identifikation\"")) != 1)
-    stop(
-      paste0(
-        "File ",filename,
-        " is not a valid IRIS CSV file. First line should be Name, Vorname,..."
-      )
-    )
-  d = suppressWarnings(readr::read_csv(filename, col_types = "cccciddddddcc",
-                        locale = readr::locale(encoding = "latin1")))
-  readr::stop_for_problems(d)
+    stop( paste("File",filename,
+    "is not a valid IRIS CSV file. First line should be Name, Vorname,..."
+    ))
+  d = suppressWarnings(readr::read_csv(to_read, col_types = "cccciddddddcc",
+                          locale = readr::locale(encoding = "latin1")))
+  readr::stop_for_problems(text)
+
   if (ncol(d) != 13)  
-    stop(paste0("IRIS CSV file ", filename, " has unexpected columns. Should be 13"))
+    stop(paste("IRIS CSV format", filename, "has unexpected columns. Should be 13"))
   if (nrow(d) < 5) 
-    stop(paste0("IRIS CSV File ", filename, " has only ", nrow(d), " rows"))
+    stop(paste("IRIS CSV format", filename, "has only", nrow(d), "rows"))
 
   record_date = strptime(d$Datum[1],"%d.%m.%Y")
   patient_id = extract_id(d$Identifikation[1])
@@ -47,11 +54,13 @@ read_iris_csv = function(filename) {
     initials =  paste0(str_sub(name,1,1),
                       str_sub(first_name,1,1))
   data = try(d[,c("Testzeit[min]","DOB [o/oo]")], silent = TRUE)
-  if (inherits(data,"try-error"))
+  if (inherits(data, "try-error"))
     stop("Invalid data columns in Iris data file")
   names(data) = c("time","dob")
   # remove too small values
   data = data[data$dob >= -10,]
+  if (any(sapply(data, is.na))) 
+    stop("Invalid PDR/DOB data in ", filename)
   breathtest_data(
     file_name = basename(filename),
     patient_id = patient_id,

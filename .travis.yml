@@ -25,10 +25,10 @@ before_install:
 script: 
   - |
     travis_wait R CMD build .
-    travis_wait 60 R CMD check anRpackage*tar.gz
+    travis_wait 60 R CMD check breathtestcore*tar.gz
 
 after_script:
-  - tar -ztvf anRpackage_*.tar.gz
+  - tar -ztvf breathtestcore_*.tar.gz
   - echo ${NOT_CRAN}
 
 after_success:
