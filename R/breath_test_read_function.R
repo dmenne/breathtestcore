@@ -2,8 +2,8 @@
 #'
 #' @description Reads the first line of a file, and returns
 #' the best matching function to read the breath test data in it.
-#' @param con breath test data file from Iris/Wagner, BreathID or generic CSV, 
-#' or
+#' @param filename breath test data file from Iris/Wagner, BreathID or generic CSV, 
+#' @param text as alternative to filename, the text may be given as string
 #'
 #' @return function to read the file or the text; NULL if no matching function 
 #' was found 

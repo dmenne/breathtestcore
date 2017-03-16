@@ -37,7 +37,7 @@ read_iris_csv = function(filename = NULL, text = NULL) {
     "is not a valid IRIS CSV file. First line should be Name, Vorname,..."
     ))
   d = suppressWarnings(readr::read_csv(to_read, col_types = "cccciddddddcc",
-                          locale = readr::locale(encoding = "latin1")))
+                          locale = readr::locale(encoding = "ISO-8859-2")))
   readr::stop_for_problems(text)
 
   if (ncol(d) != 13)  

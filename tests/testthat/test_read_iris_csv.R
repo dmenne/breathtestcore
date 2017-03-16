@@ -41,17 +41,13 @@ test_that("read_iris_csv returns with funny identification cleans up", {
   filename = d13file("IrisCSV_with_KEK.TXT")
   f = read_iris_csv(filename)
   expect_equal(f$patient_id, "2013_1234")
-  # Works interactively, but fails on Build under Windows
-  if (.Platform$OS.type != 'windows')
-    expect_equal(f$Study, "GE-flüssig")
+  expect_equal(iconv(f$study), "GE-flüssig")
 })
 
 test_that("read_iris_csv raises error on short file", {
   filename = d13file("IrisCSVShort.TXT")
   expect_error(read_iris_csv(filename), "has only")
 })
-#library(testthat)
-#library(stringr)
 
 test_that("read_iris_csv raises error on invalid entries", {
   filename = d13file("IrisCSV_invalidValues.TXT")
