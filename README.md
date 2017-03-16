@@ -12,7 +12,7 @@ dieter.menne@menne-biomed.de
 
 ## This package is under development. 
 
-Use dmenne/d13breath instead until finished.
+This is a reboot of package dmenne/d13cbreath with better separation of functions. Use dmenne/d13cbreath meanwhile.
 
 ## What it does
 The software is being developed in cooperation with the ETH and Department of Gastroenterology of the University Hospital of Zürich, Switzerland. Thanks to Andreas Steingötter, Benjamin Misselwitz, Mark Fox and Werner Schwizer.
