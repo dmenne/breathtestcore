@@ -53,3 +53,7 @@ test_that("read_iris of CSV file throws",{
   expect_error( read_iris(filename),"valid IRIS")
 })
 
+test_that("read_iris throws on non-existing file",{
+  expect_error( read_iris("a.txt"),"not exist")
+})  
+

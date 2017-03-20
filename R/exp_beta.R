@@ -166,6 +166,7 @@ exp_beta = function(time,dose,m,k,beta) {
 #' @seealso \code{\link{exp_beta}}
 #' @export
 cum_exp_beta  = function(time,dose,cf) {
+  cf = unlist(cf)
   if (!is.numeric(cf))
     stop("cum_exp_beta requires a vector, does not work for data frames")
   ekt = 1 - exp(-cf["k"] * time)

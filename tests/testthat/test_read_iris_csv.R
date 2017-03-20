@@ -36,6 +36,16 @@ test_that("read_iris_csv from text and from file give almost the same results", 
 })
 
 
+test_that("read_iris of composite file throws",{
+  filename = d13file("IrisMulti.TXT")
+  expect_error( read_iris_csv(filename),"valid IRIS")
+})
+
+test_that("read_iris throws when column is missing",{
+  filename = d13file("IrisCSV_MissingColumn.TXT")
+  expect_error( read_iris_csv(filename),"unexpected")
+})  
+
 
 test_that("read_iris_csv returns with funny identification cleans up", {
   filename = d13file("IrisCSV_with_KEK.TXT")
