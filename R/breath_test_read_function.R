@@ -19,11 +19,12 @@ breathtest_read_function = function(filename = NULL, text = NULL) {
   } else {
     d = text[1] # Use first line
   }
-  if (inherits(d, "try-error") || nchar(str_trim(d)) == 0)
+  d = stringr::str_trim(d)
+  if (inherits(d, "try-error") || nchar(d) == 0)
     stop(paste("File", filename, "is empty"))
   if (d == "Test and Patient parameters") 
     return(read_breathid)
-  if (d == "Testergebnis") 
+  if (d == '"Testergebnis"') 
     return(read_iris)
   if (str_detect(d, '"Name","Vorname","Test","Identifikation"'))
     return(read_iris_csv)
