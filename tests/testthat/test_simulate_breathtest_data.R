@@ -18,19 +18,30 @@ test_that("Dubious parameter give warning", {
 })  
 
 
-test_that("Valid parameters return valid data", {
+test_that("Valid parameters without std return valid data with cov-matrix", {
   d = simulate_breathtest_data(seed = 4711)
   expect_is(d, "list")
   expect_equal(names(d), c("record", "data"))
   expect_equal(nrow(d$record), 10)
   expect_equal(nrow(d$data), 110)
   expect_match(comment(d$data), "Gaussian")
+  expect_match(comment(d$data), "cov-matrix")
+  cov = attr(d$record, "cov")
+  expect_is(cov, "matrix")
+  expect_equal(rownames(cov), c("m","k", "beta"))
+})
+
+test_that("Valid parameters with one std return valid data without", {
+  d = simulate_breathtest_data(m_std = 0., seed = 4711)
+  expect_match(comment(d$data), ", 0%")
+  expect_null(attr(d$record, "cov"))
 })
 
 test_that("Fewer data with missing values", {
   d = simulate_breathtest_data(missing = 0.1, seed = 4711)
   expect_equal(nrow(d$data), 99)
   expect_match(comment(d$data), "10%")
+  expect_match(comment(d$data), "cov-matrix")
 })
 
 test_that("Valid student_t", {
@@ -38,4 +49,5 @@ test_that("Valid student_t", {
     simulate_breathtest_data(student_t_df = 1.2, seed = 4711))
   expect_match(comment(d$data),"Student-t 2")
 })
+
 

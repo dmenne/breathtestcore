@@ -4,9 +4,9 @@
 \alias{simulate_breathtest_data}
 \title{Simulate 13C breath time series data}
 \usage{
-simulate_breathtest_data(n_records = 10, m_mean = 40, m_std = m_mean/4,
-  k_mean = 0.01, k_std = k_mean/4, beta_mean = 2,
-  beta_std = beta_mean/5, noise = 1, student_t_df = NULL, missing = 0,
+simulate_breathtest_data(n_records = 10, m_mean = 40, m_std = NULL,
+  k_mean = 0.01, k_std = NULL, beta_mean = 2, beta_std = NULL,
+  noise = 1, cov = NULL, student_t_df = NULL, missing = 0,
   seed = NULL, dose = 100, step_minute = 15, max_minute = 150)
 }
 \arguments{
@@ -19,6 +19,9 @@ simulate_breathtest_data(n_records = 10, m_mean = 40, m_std = m_mean/4,
 \item{beta_mean, beta_std}{Mean and between-record standard deviations of lag parameter beta}
 
 \item{noise}{Standard deviation of normal noise when \code{student_t_df = NULL}; scaling of noise when student_t_df >= 2.}
+
+\item{cov}{Covariance matrix, default NULL, i.e. not used. If given, overrides 
+standard deviation settings.}
 
 \item{student_t_df}{When NULL (default), Gaussian noise is added; when >= 2, Student_t distributed noise is added, which generates more realistic outliers. Values from 2 to 5 are useful, when higher values are used the result comes close to that of Gaussian noise. Values below 2 are truncated to 2.}
 
@@ -45,7 +48,10 @@ A list with 3 elements:
  A comment is attached to the return value that can be used as a title
 }
 \description{
-Generates simulated breath test data, optionally with errors
+Generates simulated breath test data, optionally with errors. If none of the three
+standard deviations \code{m_std, k_std, beta_std} is given, an empirical covariance
+matrix from USZ breath test data is used. If any of the standard deviations is given,
+default values for the others will be used.
 }
 \examples{
 set.seed(4711)
