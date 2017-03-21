@@ -1,4 +1,4 @@
-#' @title Exponential beta function to fit 13c breath test PDR time series
+#' @title Exponential beta function for 13C breath 
 #'
 #' @description Functions to fit PDR time series data to exponential-beta function
 #' given in: 

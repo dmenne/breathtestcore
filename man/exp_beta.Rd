@@ -2,7 +2,7 @@
 % Please edit documentation in R/exp_beta.R
 \name{exp_beta}
 \alias{exp_beta}
-\title{Exponential beta function to fit 13c breath test PDR time series}
+\title{Exponential beta function for 13C breath}
 \usage{
 exp_beta(time, dose, m, k, beta)
 }
