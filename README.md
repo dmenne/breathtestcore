@@ -1,7 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 
-Package breathtestcore: Fitting C13 breath test data for gastric emptying studies
+breathtestcore: functions to read and fit 13C time series from breath tests
 ===========================================
 
 Dieter Menne   
@@ -22,7 +22,7 @@ The software is being developed in cooperation with the ETH and Department of Ga
 * Fits Wagner-Nelson, with terminal slope estimated from Bluck-Coward fit
 * Computes population fit with `nlme` using all data in database
 * Computes Bayesian non-linear population fit with Stan for multiple records
-* Computes prior-constraing Bayesian non-linear fit for single records
+* Computes prior-constrained Bayesian non-linear fit for single records
 * For additional examples, see the folder `tests/testthat` of the source package
 * [A comparison of results with nls, nlme](http://menne-biomed.de/blog/de/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
 * See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions; possible a typo in the published table?

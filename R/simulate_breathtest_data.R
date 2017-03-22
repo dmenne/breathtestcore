@@ -55,7 +55,9 @@ simulate_breathtest_data = function(
   step_minute = 15,
   max_minute = 150) {
   
-  use_cov = !is.null(cov) |  (is.null(m_std) & is.null(k_std) & is.null(beta_std)) 
+  # Covariance matrix does not work for n_records <= 3
+  use_cov = (n_records > 3) & (!is.null(cov) |  
+    ((is.null(m_std) & is.null(k_std) & is.null(beta_std))))
   # Use empirical covariance structure from USZ data set when not explicitly given
   cov = NULL
   if (use_cov & is.null(cov)) cov = 

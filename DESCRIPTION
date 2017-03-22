@@ -1,5 +1,5 @@
 Package: breathtestcore
-Title: Core functions to read and fit 13C PDR data from breath tests
+Title: Core functions to read and fit 13C time series from breath tests
 Version: 0.1.0
 Date: 2017-03-20
 Author: Dieter Menne

@@ -31,6 +31,20 @@ test_that("Valid parameters without std return valid data with cov-matrix", {
   expect_equal(rownames(cov), c("m","k", "beta"))
 })
 
+
+test_that("Cov matrix not used when n_records<= 3 ", {
+  d = simulate_breathtest_data(n_records = 1, seed = 4711)
+  expect_equal(nrow(d$record), 1)
+  expect_is(d, "list")
+  expect_equal(names(d), c("record", "data"))
+  cov = attr(d$record, "cov")
+  expect_null(cov)
+  d = simulate_breathtest_data(n_records = 3, seed = 4711)
+  expect_equal(nrow(d$record), 3)
+  cov = attr(d$record, "cov")
+  expect_null(cov)
+})  
+
 test_that("Valid parameters with one std return valid data without", {
   d = simulate_breathtest_data(m_std = 0., seed = 4711)
   expect_match(comment(d$data), ", 0%")
