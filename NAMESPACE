@@ -2,6 +2,7 @@
 
 export(breathtest_data)
 export(breathtest_read_function)
+export(cleanup_data)
 export(cum_exp_beta)
 export(dob_to_pdr)
 export(exp_beta)

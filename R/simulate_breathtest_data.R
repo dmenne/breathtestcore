@@ -35,10 +35,6 @@
 #' ggplot(pdr$data, aes(x = minute, y = pdr)) + geom_point() +
 #'   facet_wrap(~record) + ggtitle(comment(pdr$data))
 #'
-#' @importFrom MASS mvrnorm
-#' @importFrom stats rt rnorm
-#' @import assertthat
-#' @import dplyr
 #' @export
 #'
 simulate_breathtest_data = function(

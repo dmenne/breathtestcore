@@ -18,7 +18,6 @@
 #' filename = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
 #' iris_data = read_iris(filename)
 #' str(iris_data)
-#' @import stringr
 #' @export read_iris
 read_iris = function(filename = NULL, text = NULL) {
   if (is.null(text)) {
