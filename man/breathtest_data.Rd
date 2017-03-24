@@ -62,9 +62,9 @@ used; see \code{\link{dob_to_pdr}}}
 
 \item{t_lag}{optional, only present if device computes this value}
 
-\item{data}{data frame with at least 5 rows and columns \code{time} and one
-or both of \code{dob} or \code{pdr}_ if pdr is missing, and height, weight and substrate
-are given, computes pdr via function dob_to_pdr}
+\item{data}{data frame with at least 5 rows and columns \code{minute} and one
+or both of \code{dob} or \code{pdr}. If pdr is missing, and height, weight 
+and substrate are given, computes pdr via function dob_to_pdr}
 }
 \description{
 Generates structure of class \code{breathtest_data} with required fields

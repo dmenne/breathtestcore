@@ -4,10 +4,10 @@
 \alias{cum_exp_beta}
 \title{cumulative exponential beta function}
 \usage{
-cum_exp_beta(time, dose, cf)
+cum_exp_beta(minute, dose, cf)
 }
 \arguments{
-\item{time}{in minutes}
+\item{minute}{time in minutes}
 
 \item{dose}{in mg}
 

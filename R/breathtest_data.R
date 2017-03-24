@@ -29,9 +29,9 @@
 #' @param t50  optional, only present if device computes this value
 #' @param gec  optional, only present if device computes this value
 #' @param t_lag optional, only present if device computes this value
-#' @param data data frame with at least 5 rows and columns \code{time} and one
-#' or both of \code{dob} or \code{pdr}_ if pdr is missing, and height, weight and substrate
-#' are given, computes pdr via function dob_to_pdr
+#' @param data data frame with at least 5 rows and columns \code{minute} and one
+#' or both of \code{dob} or \code{pdr}. If pdr is missing, and height, weight 
+#' and substrate are given, computes pdr via function dob_to_pdr
 #' @export
 breathtest_data = function(patient_id,
                            name = NA,
@@ -62,7 +62,9 @@ breathtest_data = function(patient_id,
     stop("Function breathtest_data: data should have a least 5 rows")
   nd = names(data)
   if (nd[1] != "time")
-    stop("Function breathtest_data: first data column must be time")
+    stop("Function breathtest_data: first data column must be <<time>>")
+  # rename data column to minute
+  names(data)[1] = "minute"
   if (!sum(nd[-1] %in% c("pdr", "dob")) > 0)
     stop("function breathtest_data: data should have either dob or pdr or both")
   ##### add more substrates here

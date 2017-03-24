@@ -28,7 +28,7 @@ breathtest_read_function = function(filename = NULL, text = NULL) {
     return(read_iris)
   if (str_detect(d, '"Name","Vorname","Test","Identifikation"'))
     return(read_iris_csv)
-#  if (all(str_detect(d, c("record", "time", "pdr|dob"))))
+#  if (all(str_detect(d, c("record", "minute", "pdr|dob"))))
 #    return(read_generic_csv)
   return(NULL)
 }

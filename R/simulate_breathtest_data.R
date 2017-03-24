@@ -82,7 +82,7 @@ simulate_breathtest_data = function(
   
   assert_that(max_minute %/% step_minute > 5)
 
-  time  = seq(0, max_minute, by = step_minute)
+  minute  = seq(0, max_minute, by = step_minute)
   # Record
   rec = data_frame(patient_id = sprintf("rec_%02d", 1:n_records))
   if (!use_cov) {
@@ -102,13 +102,13 @@ simulate_breathtest_data = function(
   if (is.null(student_t_df) || student_t_df == 0 ) {
     if (noise == 0)
       warning("With noise == 0, non-linear fits might fail.")
-    noise_d = rnorm(nrow(rec)*length(time), 0, noise)
+    noise_d = rnorm(nrow(rec)*length(minute), 0, noise)
   } else {
     if (student_t_df < 2) {
       student_t_df = 2
       warning("Degrees of freedom of Student-t noise was set to 2")
     }
-    noise_d = noise*rt(nrow(rec)*length(time), student_t_df)
+    noise_d = noise*rt(nrow(rec)*length(minute), student_t_df)
   }
   # Data
   data = rec %>%
@@ -116,8 +116,8 @@ simulate_breathtest_data = function(
     do(
       data_frame(
         patient_id = .$patient_id,
-        minute = time,
-        pdr = exp_beta(time = time,  dose = dose , m = .$m, k = .$k, beta = .$beta)
+        minute = minute,
+        pdr = exp_beta(minute = minute,  dose = dose , m = .$m, k = .$k, beta = .$beta)
       ))  %>%
     ungroup() %>%
     mutate(

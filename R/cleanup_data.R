@@ -2,9 +2,12 @@
 #' @description Accepts various data formats of ungrouped or grouped 13C breath 
 #' test time series, and transforms these into a data frame that can be used by
 #' all fitting functions. 
-#' @param data A data frame or tibble with at least two numeric columns with 
-#' names \code{minute} and \code{pdr} which can be used to fit a single 13C record; 
-#' or a list of data frames/tibbles that are concatenated.
+#' @param data 
+#' \itemize{
+#'   \item{A data frame or tibble with at least two numeric columns with 
+#' names \code{minute} and \code{pdr} which can be used to fit a single 13C record }
+#'    \item{A list of data frames/tibbles that are concatenated}
+#' }
 #'
 #' @return A tibble with 2, 3 or 4 columns. patient_id and group are coerced to 
 #' character.
@@ -54,9 +57,18 @@ cleanup_data.list = function(data){
   purrr::map_df(data, function(x){rbind(cleanup_data(x))})
 }
   
+#' @export 
+cleanup_data.breathtest_data = function(data){
+  id = data$patient_id
+  if (is.null(id) || id == "0" | id == "" )
+    id = str_sub(data["file_name"], 1, -5) 
+  d = cbind(patient_id = id, data$data[,c("minute", "pdr")])
+  cleanup_data(d)    
+}
 
 #library(assertthat)
 #library(breathtestcore)
 #library(testthat)
 #library(purrr)
+
 

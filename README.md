@@ -17,7 +17,7 @@ This is a reboot of package dmenne/d13cbreath with better separation of function
 ## What it does
 The software is being developed in cooperation with the ETH and Department of Gastroenterology of the University Hospital of Zürich, Switzerland. Thanks to Andreas Steingötter, Benjamin Misselwitz, Mark Fox and Werner Schwizer.
 
-* Reads several formats of 13C data: IRIS/Wagner, BreathID and generic CSV
+* Reads several formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
 * Fits Beta-Exponential nonlinear function using `nls`, which gives successful estimates for 90% of PDR curves
 * Fits Wagner-Nelson, with terminal slope estimated from Bluck-Coward fit
 * Computes population fit with `nlme` using all data in database
@@ -34,8 +34,7 @@ devtools::install_github("breathtestcore","dmenne")
 ```
 
 ## Previous and future work
-This is a refactored version of github package `dmenne/d13cbreath` without database and display functionality. Use this package if you want to write your own processing with R. 
-A Shiny-based interface with a patient database for installation on your computer system will be added later.
+This is a refactored version of github package `dmenne/d13cbreath` without database and display functionality. Use this package if you want to write your own breath test processing with R.  A Shiny-based interface with a patient database for installation on your computer system will be added later (pending sponsoring)
 
 __Reference__: 
 

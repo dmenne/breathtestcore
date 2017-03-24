@@ -43,9 +43,9 @@ filename = system.file("extdata", "350_20049_0_GERWithWeight.txt",
 bid = read_breathid(filename)
 bid$data$pdr1 = dob_to_pdr(bid$data$dob, weight=bid$weight, height=bid$height)
 
-plot(bid$data$time, bid$data$pdr1, main="points: from breath_id; line: computed",
+plot(bid$data$minute, bid$data$pdr1, main="points: from breath_id; line: computed",
 type="l")
-points(bid$data$time, bid$data$pdr,col="red",type="p",pch=16)
+points(bid$data$minute, bid$data$pdr,col="red",type="p",pch=16)
 var(bid$data$pdr1-bid$data$pdr)
 }
 \author{

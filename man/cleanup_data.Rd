@@ -7,9 +7,11 @@
 cleanup_data(data)
 }
 \arguments{
-\item{data}{A data frame or tibble with at least two numeric columns with 
-names \code{minute} and \code{pdr} which can be used to fit a single 13C record; 
-or a list of data frames/tibbles that are concatenated.}
+\item{data}{\itemize{
+  \item{A data frame or tibble with at least two numeric columns with 
+names \code{minute} and \code{pdr} which can be used to fit a single 13C record }
+   \item{A list of data frames/tibbles that are concatenated}
+}}
 }
 \value{
 A tibble with 2, 3 or 4 columns. patient_id and group are coerced to 
