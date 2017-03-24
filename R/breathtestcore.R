@@ -2,12 +2,14 @@
 #' 
 #' @description Functions to read and analyze 13C breath test data for gastric emptying
 #' @docType package
-#' @import stringr
 #' @importFrom MASS mvrnorm
+#' @importFrom purrr map_df
 #' @importFrom stats rt rnorm
 #' @import assertthat
+#' @import stringr
 #' @import dplyr
-NULL
+#' @import readr
+
 
 #' @title Zurich sample set of 13C breath test data
 #' @description 13C time series PDR data from normals and random patients 

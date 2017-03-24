@@ -58,6 +58,6 @@ set.seed(4711)
 library(ggplot2)
 pdr = simulate_breathtest_data(n_records = 4)
 ggplot(pdr$data, aes(x = minute, y = pdr)) + geom_point() +
-  facet_wrap(~record) + ggtitle(comment(pdr$data))
+  facet_wrap(~patient_id) + ggtitle(comment(pdr$data))
 
 }

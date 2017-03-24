@@ -9,7 +9,6 @@
 #' @param text alternatively, text can be given as string
 #' @return structure of class \code{\link{breathtest_data}}
 #' @author dieter menne, \email{dieter_menne@@menne-biomed_de}
-#' @import stringr
 #' @examples
 #' filename = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
 #' bid = read_breathid(filename)

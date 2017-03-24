@@ -14,7 +14,7 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         This package is a refactored part of dmenne/d13cbreath without 
         database and display functions.
 Depends: R (>= 3.2.0)
-Imports: stringr, nlme, dplyr, readr, MASS, Rcpp (>= 0.12.8),
+Imports: nlme, MASS, Rcpp (>= 0.12.8), stringr, dplyr, purrr, readr,
          rstan (>= 2.14.1), rstantools (>= 1.1.0), assertthat
 Suggests: testthat, packagedocs, ggplot2 
 LinkingTo: 

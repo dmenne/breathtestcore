@@ -33,7 +33,7 @@
 #' library(ggplot2)
 #' pdr = simulate_breathtest_data(n_records = 4)
 #' ggplot(pdr$data, aes(x = minute, y = pdr)) + geom_point() +
-#'   facet_wrap(~record) + ggtitle(comment(pdr$data))
+#'   facet_wrap(~patient_id) + ggtitle(comment(pdr$data))
 #'
 #' @export
 #'
@@ -84,7 +84,7 @@ simulate_breathtest_data = function(
 
   time  = seq(0, max_minute, by = step_minute)
   # Record
-  rec = data_frame(record = sprintf("rec_%02d", 1:n_records))
+  rec = data_frame(patient_id = sprintf("rec_%02d", 1:n_records))
   if (!use_cov) {
     rec = cbind(rec, 
       m = round(rnorm(n_records, m_mean, m_std)),
@@ -115,7 +115,7 @@ simulate_breathtest_data = function(
     rowwise() %>%
     do(
       data_frame(
-        record = .$record,
+        patient_id = .$patient_id,
         minute = time,
         pdr = exp_beta(time = time,  dose = dose , m = .$m, k = .$k, beta = .$beta)
       ))  %>%
