@@ -45,7 +45,7 @@ read_breathid = function(filename = NULL, text = NULL) {
   height = as.numeric(find_single_pattern(text, "Height"))
   weight = as.numeric(find_single_pattern(text, "Weight"))
   t50 = as.numeric(find_single_pattern(text, "T 1/2"))
-  t_lag = as.numeric(find_single_pattern(text, "T lag"))
+  tlag = as.numeric(find_single_pattern(text, "T lag"))
   gec = as.numeric(find_single_pattern(text, "GEC"))
   # Locate the data block
   db = try(str_trim(text[which(str_detect(text, "Time\\s*DOB")):length(text)]), silent =
@@ -72,7 +72,7 @@ read_breathid = function(filename = NULL, text = NULL) {
     height = height,
     weight = weight,
     t50 = t50,
-    t_lag = t_lag,
+    tlag = tlag,
     gec = gec,
     data = data
   )

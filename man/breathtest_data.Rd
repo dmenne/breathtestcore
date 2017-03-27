@@ -8,7 +8,7 @@ breathtest_data(patient_id, name = NA, first_name = NA, initials = NA,
   dob = NA, birth_year = NA, gender = NA, study = NA,
   pat_study_id = NA, file_name, device = "generic", substrate, record_date,
   start_time = record_date, end_time = record_date, test_no, dose = 100,
-  height = NA, weight = NA, t50 = NA, gec = NA, t_lag = NA,
+  height = NA, weight = NA, t50 = NA, gec = NA, tlag = NA,
   data = data)
 }
 \arguments{
@@ -60,7 +60,7 @@ used; see \code{\link{dob_to_pdr}}}
 
 \item{gec}{optional, only present if device computes this value}
 
-\item{t_lag}{optional, only present if device computes this value}
+\item{tlag}{optional, only present if device computes this value}
 
 \item{data}{data frame with at least 5 rows and columns \code{minute} and one
 or both of \code{dob} or \code{pdr}. If pdr is missing, and height, weight 

@@ -28,7 +28,7 @@
 #' @param weight optional, in kg
 #' @param t50  optional, only present if device computes this value
 #' @param gec  optional, only present if device computes this value
-#' @param t_lag optional, only present if device computes this value
+#' @param tlag optional, only present if device computes this value
 #' @param data data frame with at least 5 rows and columns \code{minute} and one
 #' or both of \code{dob} or \code{pdr}. If pdr is missing, and height, weight 
 #' and substrate are given, computes pdr via function dob_to_pdr
@@ -54,7 +54,7 @@ breathtest_data = function(patient_id,
                            weight = NA,
                            t50 = NA,
                            gec = NA,
-                           t_lag = NA,
+                           tlag = NA,
                            data = data) {
   if (!inherits(data, "data.frame"))
     stop("Function breathtest_data: data must be a data frame")
@@ -112,7 +112,7 @@ breathtest_data = function(patient_id,
       weight = weight,
       t50 = t50,
       gec = gec,
-      t_lag = t_lag,
+      tlag = tlag,
       data = data
     ),
     class = "breathtest_data"

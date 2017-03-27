@@ -14,8 +14,12 @@ names \code{minute} and \code{pdr} which can be used to fit a single 13C record 
 }}
 }
 \value{
-A tibble with 2, 3 or 4 columns. patient_id and group are coerced to 
-character.
+A tibble with 2, 3 or 4 columns. Columns \code{minute} and \code{pdr}
+are always present, colum \code{patient_id} is present if there is more than 
+one record, and column \code{group} is added if the patients are from different 
+treatment groups or within-subject repeats, e.g. in crossover design. If \code{group} 
+is present, this is a hint to the analysis functions to do post-hoc breakdown or
+use it as a grouping in population-based methods.
 }
 \description{
 Accepts various data formats of ungrouped or grouped 13C breath 

@@ -55,17 +55,17 @@ data$pdr_fit_bluck=predict(sample_nls)
 plot(data$minute, data$pdr, pch=16, cex=0.7, xlab="time (min)", ylab="PDR",
   main="t50 with different methods")
 lines(data$minute,data$pdr_fit_bluck, col="blue")
-t50 = t50bluck_coward(coef(sample_nls))
-t50maes = t50maes(coef(sample_nls))
-t50scint = t50maes_scintigraphy(coef(sample_nls))
+t50 = t50_bluck_coward(coef(sample_nls))
+t50_maes_ghoos = t50_maes_ghoos(coef(sample_nls))
+t50scint = t50_maes_ghoos_scintigraphy(coef(sample_nls))
 abline(v = t50, col = "red")
-abline(v = t50maes, col = "darkgreen", lty = 2)
+abline(v = t50_maes_ghoos, col = "darkgreen", lty = 2)
 abline(v = breath_id$t50, col = "black", lty = 4)
 abline(v = t50scint, col = "gray", lty = 3)
 text(t50, 0, "Self-corrected Bluck/Coward", col = "red", adj = -0.01)
 text(breath_id$t50, 0.5,"From BreathID device",col = "black", adj=-0.01)
 text(t50scint, 1," Maes/Ghoos scintigraphic", col = "gray", adj = -0.01)
-text(t50maes,1.5, "Classic Maes/Ghoos", col = "darkgreen", adj = -0.01)
+text(t50_maes_ghoos,1.5, "Classic Maes/Ghoos", col = "darkgreen", adj = -0.01)
 
 # simulated data set
 dose = 100
@@ -89,8 +89,8 @@ lines(pdr$minute, pdr$pd_rfit, col="red", lwd=2)
 plot(pdr$minute, cum_exp_beta(pdr$minute,100,coef(pdr_nls)), type="l",
      xlab = "time (min)", ylab = "cumulative PDR")
 # show t50
-t50 = t50bluck_coward(coef(pdr_nls))
-tlag = t_lag_bluck_coward(coef(pdr_nls))
+t50 = t50_bluck_coward(coef(pdr_nls))
+tlag = tlag_bluck_coward(coef(pdr_nls))
 abline(v = t50, col = "gray")
 abline(v = tlag,col = "green")
 abline(h = 50, col = "gray")

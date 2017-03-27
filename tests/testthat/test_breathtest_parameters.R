@@ -12,17 +12,17 @@ test_that("Bluck-Coward data for testing of parameter functions" , {
     tlag = c(2.88, 2.88, 3.34, 3.26),
     tlagin = c(1.632, 1.724, 1.92, 2.101)
   )
-  t50maes = t50maes(cf)
-  expect_lt(max(abs(t50maes - cf$t12)/cf$t12), 0.014) 
+  t50_maes_ghoos = t50_maes_ghoos(cf)
+  expect_lt(max(abs(t50_maes_ghoos - cf$t12)/cf$t12), 0.014) 
   
-  t50bluck_coward = t50bluck_coward(cf)
-  expect_lt(max(abs(t50bluck_coward - cf$t12in)/cf$t12in), 0.035)
+  t50_bluck_coward = t50_bluck_coward(cf)
+  expect_lt(max(abs(t50_bluck_coward - cf$t12in)/cf$t12in), 0.035)
   
-  t_lag_maes = t_lag_maes(cf)
-  expect_lt(max(abs(t_lag_maes - cf$tlag)/cf$tlag), 0.02)
+  tlag_maes_ghoos = tlag_maes_ghoos(cf)
+  expect_lt(max(abs(tlag_maes_ghoos - cf$tlag)/cf$tlag), 0.02)
   
-  t_lag_bluck_coward = t_lag_bluck_coward(cf)
+  tlag_bluck_coward = tlag_bluck_coward(cf)
   # Bluck-Cowards estimate not very exact
-  expect_lt(max(abs(t_lag_bluck_coward - cf$tlagin)/cf$tlagin), 0.09)
+  expect_lt(max(abs(tlag_bluck_coward - cf$tlagin)/cf$tlagin), 0.09)
 })
 
