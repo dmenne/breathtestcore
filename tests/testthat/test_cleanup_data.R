@@ -56,11 +56,24 @@ test_that("A list of data frames is concatenated", {
 })  
 
 
-test_that("breathtest_data structure is accepted as input", {
+test_that("data from BreathId device is accepted as input", {
   filename = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
   data = read_breathid(filename)
   expect_silent(cleanup_data(data))
 })
+
+test_that("Composit data from Iris device is accepted as input", {
+  filename = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+  data = read_iris(filename)
+  expect_silent(cleanup_data(data))
+})
+
+test_that("CSV data from Iris device is accepted as input", {
+  filename = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+  data = read_iris_csv(filename)
+  expect_silent(cleanup_data(data))
+})
+
 
 test_that("list of breathtest_data from a common format is accepted as input", {
   f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
@@ -70,6 +83,7 @@ test_that("list of breathtest_data from a common format is accepted as input", {
   expect_equal(nrow(d), 136)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "350_20023_0_GERWithNan"))
 })
+
 
 
 test_that("list of breathtest_data of different formats is accepted as input", {

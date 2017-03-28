@@ -89,6 +89,7 @@ breathtest_data = function(patient_id,
   }
   if (!"pdr" %in% nd)
     data$pdr = dob_to_pdr(data$dob, weight, height, mw = substrate)
+  data$minute = as.double(data$minute)
   structure(
     list(
       patient_id = patient_id,
