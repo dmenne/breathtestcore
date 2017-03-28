@@ -21,7 +21,7 @@
 #' @return A list with 3 elements:
 #' \describe{
 #'   \item{record}{Data frame with columns
-#'     \code{record(chr), m, k, beta} giving the effective parameters 
+#'     \code{record(chr), m, k, beta, t50} giving the effective parameters 
 #'     for the individual record.}
 #'   \item{data}{Data frame with columns
 #'     \code{record(chr), minute(dbl), pdr(dbl)} giving the
@@ -97,7 +97,8 @@ simulate_breathtest_data = function(
     rec = cbind(rec, cc)
   }
   attr(rec, "cov") = cov
-  
+  rec$t50_maes_ghoos = t50_maes_ghoos(rec)  
+
   # Noise term
   if (is.null(student_t_df) || student_t_df == 0 ) {
     if (noise == 0)

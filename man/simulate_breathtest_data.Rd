@@ -39,7 +39,7 @@ standard deviation settings.}
 A list with 3 elements:
 \describe{
   \item{record}{Data frame with columns
-    \code{record(chr), m, k, beta} giving the effective parameters 
+    \code{record(chr), m, k, beta, t50} giving the effective parameters 
     for the individual record.}
   \item{data}{Data frame with columns
     \code{record(chr), minute(dbl), pdr(dbl)} giving the
