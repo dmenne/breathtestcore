@@ -66,14 +66,20 @@ nls_fit = function(data, dose = 100,
   }
   if (dose != 100)
     cf$m = cf$m * dose/100
-
+   
+  dev0 = function(x){
+    d = deviance(x)
+    if (is.null(d)) return(NA)
+    d
+  } 
   cf = cf %>% 
-    rownames_to_column(var = "patient_id") %>% 
+    tibble::rownames_to_column(var = "patient_id") %>% 
     mutate(
-      deviance = as.vector(purrr::map_dbl(bid.nls, deviance)),
+      deviance = as.vector(purrr::map_dbl(bid.nls, dev0)),
       group = str_match(patient_id,"/(.*)$")[,2],
       patient_id = str_match(patient_id,"^(.*)/")[,2]
-    )
+    ) %>% 
+    na.omit()
 
   methods = c(
     "exp_beta","exp_beta","exp_beta","exp_beta","bluck_coward","maes_ghoos",

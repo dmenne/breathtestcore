@@ -18,6 +18,14 @@ test_that("Nice data return nice result", {
   expect_equal(nrow(cf), 90)
 })
 
+test_that("Nasty data return results with na", {
+  # with this seed, cf[10] does not fit
+  data = cleanup_data(simulate_breathtest_data(seed = 100)$data)
+  fit = nls_fit(data)
+  cf = coef(fit)
+  expect_equal(nrow(cf), 81) # Last dropped
+})  
+
 rel_diff = function(d, cf, parameter){
   d1 = d$record[[parameter]]
   d2 = as.numeric(cf[cf["parameter"] == parameter,"value"])  

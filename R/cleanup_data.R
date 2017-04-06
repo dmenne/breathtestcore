@@ -89,7 +89,16 @@ cleanup_data.data.frame = function(data){
 
 #' @export 
 cleanup_data.list = function(data){
-  purrr::map_df(data, function(x){rbind(cleanup_data(x))})
+  if (is.null(data)) return(NULL)
+  if (is.null(names(data)))
+    names(data) = LETTERS[1:length(data)]
+  ret = data.frame()
+  for (group in names(data))  {
+    dd = cleanup_data(data[[group]])
+    dd$group = group
+    ret = rbind(ret, dd )
+  }
+  tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
 }
   
 #' @export 

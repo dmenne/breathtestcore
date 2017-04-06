@@ -5,13 +5,13 @@
 #' @importFrom MASS mvrnorm
 #' @importFrom graphics plot
 #' @importFrom purrr map_df
-#' @importFrom stats rt rnorm
+#' @importFrom stats rt rnorm na.omit
 #' @import assertthat
+#' @import ggplot2
 #' @import stringr
 #' @import dplyr
 #' @import readr
 #' @import broom
-
 
 #' @title Zurich sample set of 13C breath test data
 #' @description 13C time series PDR data from normals and random patients 

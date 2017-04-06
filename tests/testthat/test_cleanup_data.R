@@ -78,13 +78,12 @@ test_that("CSV data from Iris device is accepted as input", {
 test_that("list of breathtest_data from a common format is accepted as input", {
   f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
   f2 = system.file("extdata", "350_20023_0_GERWithNan.txt", package = "breathtestcore")
-  data = list(read_breathid(f1), read_breathid(f2)) 
+  data = list(Y = read_breathid(f1), Z = read_breathid(f2)) 
   d = cleanup_data(data)
+  expect_equal(unique(d$group), c("Y", "Z"))
   expect_equal(nrow(d), 136)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "350_20023_0_GERWithNan"))
 })
-
-
 
 test_that("list of breathtest_data of different formats is accepted as input", {
   f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
@@ -92,6 +91,8 @@ test_that("list of breathtest_data of different formats is accepted as input", {
   f3 = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
   data = list(read_breathid(f1), read_iris(f2), read_iris_csv(f3)) 
   d = cleanup_data(data)
+  # When no name is given, letters are given to group
+  expect_equal(unique(d$group), LETTERS[1:3])
   expect_equal(nrow(d), 115)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "1871960", "123456"))
 })
