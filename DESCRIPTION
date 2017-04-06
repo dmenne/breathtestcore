@@ -15,8 +15,8 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         database and display functions.
 Depends: R (>= 3.2.0)
 Imports: nlme, MASS, Rcpp (>= 0.12.8), stringr, dplyr, purrr, readr, tibble,
-         rstan (>= 2.14.1), rstantools (>= 1.1.0), assertthat
-Suggests: testthat, packagedocs, ggplot2, tidyr
+         rstan (>= 2.14.1), rstantools (>= 1.1.0), assertthat, broom, tidyr
+Suggests: testthat, packagedocs, ggplot2 
 LinkingTo: 
       StanHeaders (>= 2.12.0.1), 
       rstan (>= 2.12.1), 

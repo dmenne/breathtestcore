@@ -9,6 +9,7 @@
 #' @import stringr
 #' @import dplyr
 #' @import readr
+#' @import broom
 
 
 #' @title Zurich sample set of 13C breath test data

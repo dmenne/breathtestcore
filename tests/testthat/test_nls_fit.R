@@ -9,7 +9,10 @@ test_that("Nice data return nice result", {
       minute = pmax(minute, 0.001)
     ) %>% 
     select(patient_id, group, minute, pdr)
-  cf = nls_fit(data)
+  fit = nls_fit(data)
+  expect_is(fit, "breathtestfit")
+  cf = coef(fit)
+  expect_equal(cf, fit$coef)
   expect_is(cf, "data.frame")
   expect_equal(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_equal(nrow(cf), 90)
@@ -24,7 +27,7 @@ rel_diff = function(d, cf, parameter){
 test_that("Single record give valid result after passing through cleanup_data", {
   d = simulate_breathtest_data(n_records = 1, noise = 0.2, seed = 4711)
   data = cleanup_data(d$data)
-  cf = nls_fit(data)
+  cf = nls_fit(data)$coef
   expect_is(cf, "data.frame")
   expect_equal(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_equal(nrow(cf), 9)

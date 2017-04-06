@@ -10,8 +10,15 @@
 #' @param start Optional start values
 #' \code{patient_id} and \code{group}.
 #'
-#' @return Estimated parameters are returned in a key-value format with 
-#' columns \code{patient_id, group, parameter, method} and \code{value}
+#' @return A list of class "breathtestfit" with elements
+#' \itemize{
+#'   \item {\code{coef} Estimated parameters in a key-value format with 
+#'    columns \code{patient_id, group, parameter, method} and \code{value}}
+#'    \item {\code{data}  The input data; nls_fit does not decimate the 
+#'    data.}
+#' }
+#' @seealso Base methods \code{coef, plot, print}; methods from package
+#'  \code{broom: tidy, augment}.
 #' @importFrom stats deviance
 #' @importFrom stats coef
 #' @importFrom tibble rownames_to_column as_tibble
@@ -19,7 +26,7 @@
 #' @examples 
 #' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 #' data = cleanup_data(d$data)
-#' cf = nls_fit(data)
+#' cf = nls_fit(data)$coef
 #' # Input parameters from simulation \code{m_in, beta_in, k_in} and estimates from 
 #' # beta exponential fit \code{m_out, beta_out, k_out}
 #' options(digits = 2)
@@ -44,7 +51,7 @@ nls_fit = function(data, dose = 100,
          or better use function <<cleanup_data>>")
   # Avoid notes on CRAN
   value = patient_id = NULL 
-  # since it is such a nasty job to pass constant parameter  dose to nlsList,
+  # since it is such a nasty job to pass constant parameter dose to nlsList,
   # fit is done with a real constant, and m, the only affected parameter
   # is renormalized if required.
   # This has kept me busy for more than 11 years now, stumbling over
@@ -100,6 +107,17 @@ nls_fit = function(data, dose = 100,
   cf = purrr::map_df(pars, rbind )  %>% 
     filter(value != 0) %>% 
     tibble::as_tibble(cf)
-    
+  
+  ret = list(coef = cf, data = data)
+  class(ret) = "breathtestfit"
+  ret
 }
 
+#' @title S3 coef for breathtestfit
+#' @description Extracts the coefficients part from fitted 13C beta exponential
+#' model; same as \code{fit$coef}
+#' @param object of class breathtestfit, as returned by nls_fit or nlme_fit
+#' @export
+coef.breathtestfit = function(object){
+ object$coef 
+}

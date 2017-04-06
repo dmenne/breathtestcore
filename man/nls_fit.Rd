@@ -20,8 +20,13 @@ for all records is supported.}
 \code{patient_id} and \code{group}.}
 }
 \value{
-Estimated parameters are returned in a key-value format with 
-columns \code{patient_id, group, parameter, method} and \code{value}
+A list of class "breathtestfit" with elements
+\itemize{
+  \item {\code{coef} Estimated parameters in a key-value format with 
+   columns \code{patient_id, group, parameter, method} and \code{value}}
+   \item {\code{data}  The input data; nls_fit does not decimate the 
+   data.}
+}
 }
 \description{
 Single curve fit with nls to 13C breath test data
@@ -29,7 +34,7 @@ Single curve fit with nls to 13C breath test data
 \examples{
 d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 data = cleanup_data(d$data)
-cf = nls_fit(data)
+cf = nls_fit(data)$coef
 # Input parameters from simulation \\code{m_in, beta_in, k_in} and estimates from 
 # beta exponential fit \\code{m_out, beta_out, k_out}
 options(digits = 2)
@@ -42,4 +47,8 @@ cf \%>\%
   select(patient_id, m_in = m.y, m_out = m.x, 
          beta_in = beta.y, beta_out = beta.x,
          k_in = k.y, k_out = k.x)
+}
+\seealso{
+Base methods \code{coef, plot, print}; methods from package
+ \code{broom: tidy, augment}.
 }
