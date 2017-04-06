@@ -3,6 +3,7 @@
 #' @description Functions to read and analyze 13C breath test data for gastric emptying
 #' @docType package
 #' @importFrom MASS mvrnorm
+#' @importFrom graphics plot
 #' @importFrom purrr map_df
 #' @importFrom stats rt rnorm
 #' @import assertthat

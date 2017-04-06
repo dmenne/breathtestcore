@@ -4,10 +4,12 @@
 \alias{coef.breathtestfit}
 \title{S3 coef for breathtestfit}
 \usage{
-\method{coef}{breathtestfit}(object)
+\method{coef}{breathtestfit}(object, ...)
 }
 \arguments{
 \item{object}{of class breathtestfit, as returned by nls_fit or nlme_fit}
+
+\item{...}{other parameters passed to methods}
 }
 \description{
 Extracts the coefficients part from fitted 13C beta exponential

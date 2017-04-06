@@ -9,6 +9,8 @@
 }
 \arguments{
 \item{x}{Object of class \code{breathttestfit}}
+
+\item{...}{other parameters passed to methods}
 }
 \value{
 A tibble/data frame with columns

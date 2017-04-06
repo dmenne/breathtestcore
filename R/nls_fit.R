@@ -117,7 +117,8 @@ nls_fit = function(data, dose = 100,
 #' @description Extracts the coefficients part from fitted 13C beta exponential
 #' model; same as \code{fit$coef}
 #' @param object of class breathtestfit, as returned by nls_fit or nlme_fit
+#' @param ... other parameters passed to methods
 #' @export
-coef.breathtestfit = function(object){
+coef.breathtestfit = function(object, ...){
  object$coef 
 }
