@@ -4,7 +4,7 @@
 \alias{plot.breathtestfit}
 \title{S3 plot method for breathtestfit}
 \usage{
-plot.breathtestfit(x, ...)
+\method{plot}{breathtestfit}(x, ...)
 }
 \arguments{
 \item{x}{object of class breathtestfit, as returned by nls_fit or nlme_fit}

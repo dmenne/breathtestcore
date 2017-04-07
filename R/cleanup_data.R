@@ -97,11 +97,10 @@ cleanup_data.data.frame = function(data){
       stop("Multiple data for one patient and minute. Forgot column group?")
   }
   if (nc == 4) {
-    if (!all(names(data) == c("patient_id", "group", "minute", "pdr"))) {
+    if (!all(names(data) == c("patient_id", "group", "minute", "pdr"))) 
       stop("Four columns must be named patient_id, group, minute, pdr")
-    if (max(table(data$minute, data$patient_id, group)) > 1)
+    if (max(table(data$minute, data$patient_id, data$group)) > 1)
         stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
-    }
     data$group = as.character(data$group)  
   }
   # Remove negative values, shift values at 0 slightly.
@@ -155,6 +154,8 @@ cleanup_data.list = function(data){
       dd$group = "A" # default dummy name
     ret = rbind(ret, dd )
   }
+ if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)
+    stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
   tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
 }
   

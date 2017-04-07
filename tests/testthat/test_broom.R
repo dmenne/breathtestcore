@@ -2,7 +2,7 @@ library(testthat)
 context("broom functions")
 
 test_that("broom/tidy returns a simplified data set with only maes_ghoos t50", {
-  data = cleanup_data(simulate_breathtest_data()$data)
+  data = cleanup_data(simulate_breathtest_data(seed=10)$data)
   fit = nls_fit(data)
   td = tidy(fit)
   expect_is(td, "tbl")

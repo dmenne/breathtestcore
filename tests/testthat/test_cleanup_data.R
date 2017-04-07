@@ -1,16 +1,15 @@
 context("Cleanup data")
 
 test_that("pdr is made numeric, remove gradient", {
-minute = seq(0,100, by = 10)
-# pdr has a gradient
-data = data.frame(minute, 
-       pdr = exp_beta(minute, dose = 100, m = 30,  k = 0.01, beta = 2))
-expect_false(is.vector(data$pdr))
-data1 = cleanup_data(data)
-expect_true(is.vector(data1$pdr))
-expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
+  minute = seq(0,100, by = 10)
+  # pdr has a gradient
+  data = data.frame(minute, 
+         pdr = exp_beta(minute, dose = 100, m = 30,  k = 0.01, beta = 2))
+  expect_false(is.vector(data$pdr))
+  data1 = cleanup_data(data)
+  expect_true(is.vector(data1$pdr))
+  expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
 })
-
 
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
   data = simulate_breathtest_data(1,)$data[,c("minute", "pdr")]  
@@ -53,7 +52,6 @@ test_that("Suspect missing patient column if multiple pdr with same minute", {
   expect_error(cleanup_data(data), "multiple")
 })
 
-
 test_that("When there are three columns, must be named correctly", {
   data = simulate_breathtest_data(n_records = 2)$data[,c("patient_id", "minute", "pdr")]
   names(data)[1] = "pat_id"
@@ -64,7 +62,8 @@ test_that("When there are four columns, must be named correctly", {
   data = simulate_breathtest_data(n_records = 2)$data[,c("patient_id", "minute", "pdr")]
   data$group = "A"
   data = data[,c("patient_id", "group", "minute", "pdr")]
-  expect_silent(cleanup_data(data))
+  d = cleanup_data(data)
+  expect_equal(nrow(d), 22)
   names(data)[2]  = "grp"
   expect_error(cleanup_data(data), "must be named patient_id, group")
 })
@@ -87,6 +86,21 @@ test_that("A list of data frames is concatenated", {
   expect_is(d, "tbl")
   expect_equal(nrow(d), 44)
   expect_equal(ncol(d), 4)
+})  
+
+test_that("Same data used twice in list raises error", {
+  data = simulate_breathtest_data(n_records = 2)$data
+  data$group = "A"
+  data = data[,c("patient_id", "group", "minute", "pdr")]
+  expect_error(cleanup_data(list(data, data)), "twice")
+})  
+
+test_that("Same data used twice in data frame raises error", {
+  data = simulate_breathtest_data(n_records = 2)$data
+  data$group = "A"
+  data = data[,c("patient_id", "group", "minute", "pdr")]
+  data = rbind(data, data)
+  expect_error(cleanup_data(data), "twice")
 })  
 
 
