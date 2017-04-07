@@ -16,21 +16,26 @@ cleanup_data(data)
    \item{A list of data frames/tibbles that are concatenated. When the list has 
    named elements, the names are converted to group labels. When the list elements
    are not named, group name \code{A} is used for all items.}
+   \item{A structure of class \code{\link{breathtest_data}}, for example when
+   importing from a file or a database.}
 }}
 }
 \value{
 A tibble with 4 columns. Column \code{patient_id} is created with a dummy
 entry of \code{pat_a} if no patient_id was present in the input data set. 
 Column \code{group} is required if the patients are from different 
-treatment groups or within-subject repeats, e.g. in crossover design. A dummy
-group name "A" is added if no group column was available on input.
+treatment groups or within-subject repeats, e.g. in crossover design. 
+
+A dummy group name "A" is added if no group column was available on input.
 If \code{group} is present, this is a hint to the analysis functions to do 
 post-hoc breakdown or use it as a grouping in population-based methods.
 A patient can have records in multiple groups, for example in a cross-over 
 designs. 
+
 Columns \code{minute} and \code{pdr} are the same as given on input, but negative
 minute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes 
 because most fit methods cannot handle the singularity at t=0.
+
 An error is raised if dummy columns \code{patient_id} and \code{group} cannot be 
 added in a unique way, i.e. when multiple values for a given minute cannot be 
 disambiguated.
@@ -38,7 +43,7 @@ disambiguated.
 \description{
 Accepts various data formats of ungrouped or grouped 13C breath 
 test time series, and transforms these into a data frame that can be used by
-all fitting functions.
+all fitting functions, e.g. \code{\link{nls_fit}}.
 }
 \examples{
 options(digits = 4)

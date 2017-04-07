@@ -1,7 +1,7 @@
 #' @title Transforms 13C breath data into a clean format for fitting
 #' @description Accepts various data formats of ungrouped or grouped 13C breath 
 #' test time series, and transforms these into a data frame that can be used by
-#' all fitting functions. 
+#' all fitting functions, e.g. \code{\link{nls_fit}}.
 #' @param data 
 #' \itemize{
 #'   \item{A data frame, array or tibble with at least two numeric columns
@@ -12,6 +12,8 @@
 #'    \item{A list of data frames/tibbles that are concatenated. When the list has 
 #'    named elements, the names are converted to group labels. When the list elements
 #'    are not named, group name \code{A} is used for all items.}
+#'    \item{A structure of class \code{\link{breathtest_data}}, for example when
+#'    importing from a file or a database.}
 #' }
 #'
 #' @return A tibble with 4 columns. Column \code{patient_id} is created with a dummy
@@ -72,6 +74,7 @@ cleanup_data = function(data) {
   UseMethod("cleanup_data")
 } 
 
+#' @export 
 cleanup_data.data.frame = function(data){
   nc = ncol(data)
   # Keep CRAN quiet
@@ -135,12 +138,14 @@ cleanup_data.data.frame = function(data){
     select(patient_id, group, minute, pdr)
 }
 
+#' @export 
 cleanup_data.matrix = function(data){
   if (ncol(data) > 2)
     stop("A matrix can only be used as data input when two columns <minute> and <pdr> are passed. Use a data frame otherwise")
   cleanup_data(as_data_frame(data))
 }
 
+#' @export 
 cleanup_data.list = function(data){
   if (is.null(data)) return(NULL)
   has_names = !is.null(names(data))
@@ -158,6 +163,7 @@ cleanup_data.list = function(data){
   tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
 }
   
+#' @export 
 cleanup_data.breathtest_data = function(data){
   id = data$patient_id
   if (is.null(id) || id == "0" | id == "" )
