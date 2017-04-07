@@ -1,4 +1,3 @@
-library(testthat)
 context("broom functions")
 
 test_that("broom/tidy returns a simplified data set with only maes_ghoos t50", {

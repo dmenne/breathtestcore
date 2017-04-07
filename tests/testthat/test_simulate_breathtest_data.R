@@ -1,5 +1,5 @@
 context("Simulated breath test data")
-library(testthat)
+
 test_that("Invalid parameters throw", {
   expect_error(simulate_breathtest_data(m_std = -1))
   expect_error(simulate_breathtest_data(k_std = -1))

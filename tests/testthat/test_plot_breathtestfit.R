@@ -1,5 +1,3 @@
-library(testthat)
-library(ggplot2)
 context("Plot functions for breathtestfit class")
 
 nlayers <- function(x) length(ggplot_build(x)$data)
