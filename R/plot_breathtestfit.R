@@ -1,14 +1,18 @@
-#' @title S3 plot method for breathtestfit
+#' A description of plotting
+#' 
 #' @description Plots 13C data and fits.
+#' 
+#' @title S3 plot method for breathtestfit
 #' @param x object of class breathtestfit, as returned by nls_fit or nlme_fit
+#' @param inc increment for fitted curve plot in minutes
 #' @param ... other parameters passed to methods
 #' @importFrom graphics plot
-#' @export
 
-plot.breathtestfit = function(x, ...){
-  pdr = parameter = value = method = minute = fitted = group = NULL # Make CRAN happy
+plot.breathtestfit = function(x, inc = 5, ...){
+  # Make CRAN happy
+  pdr = parameter = value = method = minute = fitted = group = NULL
   # use library(broom) for debugging of augment
-  dd = augment(x, by = 5) 
+  dd = augment(x, by = inc) 
   # Avoid ugly ggplot shading
   theme_set(theme_bw() + theme(panel.spacing = grid::unit(0,"lines")))
   if (length(unique(dd$group)) > 1) {

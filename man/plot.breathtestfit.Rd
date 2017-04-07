@@ -4,13 +4,18 @@
 \alias{plot.breathtestfit}
 \title{S3 plot method for breathtestfit}
 \usage{
-\method{plot}{breathtestfit}(x, ...)
+\method{plot}{breathtestfit}(x, inc = 5, ...)
 }
 \arguments{
 \item{x}{object of class breathtestfit, as returned by nls_fit or nlme_fit}
+
+\item{inc}{increment for fitted curve plot in minutes}
 
 \item{...}{other parameters passed to methods}
 }
 \description{
 Plots 13C data and fits.
+}
+\details{
+A description of plotting
 }

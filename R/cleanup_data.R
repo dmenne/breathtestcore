@@ -17,15 +17,18 @@
 #' @return A tibble with 4 columns. Column \code{patient_id} is created with a dummy
 #' entry of \code{pat_a} if no patient_id was present in the input data set. 
 #' Column \code{group} is required if the patients are from different 
-#' treatment groups or within-subject repeats, e.g. in crossover design. A dummy
-#' group name "A" is added if no group column was available on input.
+#' treatment groups or within-subject repeats, e.g. in crossover design. 
+#' 
+#' A dummy group name "A" is added if no group column was available on input.
 #' If \code{group} is present, this is a hint to the analysis functions to do 
 #' post-hoc breakdown or use it as a grouping in population-based methods.
 #' A patient can have records in multiple groups, for example in a cross-over 
 #' designs. 
+#' 
 #' Columns \code{minute} and \code{pdr} are the same as given on input, but negative
 #' minute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes 
 #' because most fit methods cannot handle the singularity at t=0.
+#' 
 #' An error is raised if dummy columns \code{patient_id} and \code{group} cannot be 
 #' added in a unique way, i.e. when multiple values for a given minute cannot be 
 #' disambiguated.
@@ -69,7 +72,6 @@ cleanup_data = function(data) {
   UseMethod("cleanup_data")
 } 
 
-#' @export
 cleanup_data.data.frame = function(data){
   nc = ncol(data)
   # Keep CRAN quiet
@@ -133,15 +135,12 @@ cleanup_data.data.frame = function(data){
     select(patient_id, group, minute, pdr)
 }
 
-
-#' @export
 cleanup_data.matrix = function(data){
   if (ncol(data) > 2)
     stop("A matrix can only be used as data input when two columns <minute> and <pdr> are passed. Use a data frame otherwise")
   cleanup_data(as_data_frame(data))
 }
 
-#' @export 
 cleanup_data.list = function(data){
   if (is.null(data)) return(NULL)
   has_names = !is.null(names(data))
@@ -159,7 +158,6 @@ cleanup_data.list = function(data){
   tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
 }
   
-#' @export 
 cleanup_data.breathtest_data = function(data){
   id = data$patient_id
   if (is.null(id) || id == "0" | id == "" )
@@ -167,10 +165,4 @@ cleanup_data.breathtest_data = function(data){
   d = cbind(patient_id = id, data$data[,c("minute", "pdr")])
   cleanup_data(d)    
 }
-
-#library(assertthat)
-#library(breathtestcore)
-#library(testthat)
-#library(purrr)
-
 
