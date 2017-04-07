@@ -152,24 +152,3 @@ simulate_breathtest_data = function(
   list(record = rec, data = data)
 }
 
-
-if (FALSE) {
-  n_records = 10
-  m_mean = 40
-  m_std = 10
-  k_mean = 0.01
-  k_std = 0.003
-  beta_mean = 2
-  beta_std = 0.2
-  noise = 10
-  missing = 0.1
-  student_t_df = 2
-  dose = 100
-  max_minute = 200
-#  library(dplyr)
-#  library(breathtestcore)
-#  library(assertthat)
-}
-
-
-

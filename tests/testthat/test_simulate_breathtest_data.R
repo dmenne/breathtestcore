@@ -58,6 +58,10 @@ test_that("Fewer data with missing values", {
   expect_match(comment(d$data), "cov-matrix")
 })
 
+test_that("Warning when requesting too many missing", {
+  expect_warning(simulate_breathtest_data(missing = 0.8, seed = 4711), "Fraction of")
+})
+
 test_that("Valid student_t", {
   d = suppressWarnings(
     simulate_breathtest_data(student_t_df = 1.2, seed = 4711))
