@@ -24,7 +24,7 @@
 #' \href{http://www.exalenz.com/mainmenu/breathid-hp/urea-breath-test}{BreathID}.
 #' 
 #' \itemize{
-#'   \item pat_id Patient identifier, starting with \code{norm} for normals 
+#'   \item patient_id Patient identifier, starting with \code{norm} for normals 
 #'   (healthy volunteers) and  \code{pat} for patients. Note that for normals
 #'   there are two records for each subject, so only the combination of group and 
 #'   is a unique of the record.

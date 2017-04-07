@@ -39,10 +39,10 @@ standard deviation settings.}
 A list with 3 elements:
 \describe{
   \item{record}{Data frame with columns
-    \code{record(chr), m, k, beta, t50} giving the effective parameters 
-    for the individual record.}
+    \code{patient_id(chr), m, k, beta, t50} giving the effective parameters 
+    for the individual patient record.}
   \item{data}{Data frame with columns
-    \code{record(chr), minute(dbl), pdr(dbl)} giving the
+    \code{patient_id(chr), minute(dbl), pdr(dbl)} giving the
      time series and grouping parameters.}
  }
  A comment is attached to the return value that can be used as a title
