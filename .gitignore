@@ -3,7 +3,6 @@
 .RData
 README.html
 *.sqlite
-.Rbuildignore
 .gitattributes
 *.dll
 src/
