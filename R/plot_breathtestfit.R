@@ -4,6 +4,7 @@
 #' @param ... other parameters passed to methods
 #' @importFrom graphics plot
 #' @export
+
 plot.breathtestfit = function(x, ...){
   pdr = parameter = value = method = minute = fitted = group = NULL # Make CRAN happy
   # use library(broom) for debugging of augment

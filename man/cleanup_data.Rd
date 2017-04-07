@@ -8,9 +8,14 @@ cleanup_data(data)
 }
 \arguments{
 \item{data}{\itemize{
-  \item{A data frame or tibble with at least two numeric columns with 
-names \code{minute} and \code{pdr} which can be used to fit a single 13C record }
-   \item{A list of data frames/tibbles that are concatenated}
+  \item{A data frame, array or tibble with at least two numeric columns
+   with  optional names \code{minute} and \code{pdr} to fit 
+   a single 13C record.  }
+   \item{ An data frame or tibble with three columns named \code{patient_id},
+   \code{minute} and \code{pdr}. }
+   \item{A list of data frames/tibbles that are concatenated. When the list has 
+   named elements, the names are converted to group labels. When the list elements
+   are not named, group name \code{A} is used for all items.}
 }}
 }
 \value{
@@ -19,10 +24,14 @@ entry of \code{pat_a} if no patient_id was present in the input data set.
 Column \code{group} is required if the patients are from different 
 treatment groups or within-subject repeats, e.g. in crossover design. A dummy
 group name "A" is added if no group column was available on input.
-If \code{group}  is present, this is a hint to the analysis functions to do 
+If \code{group} is present, this is a hint to the analysis functions to do 
 post-hoc breakdown or use it as a grouping in population-based methods.
-Columns \code{minute} and \code{pdr} are the same as given on input.
-An error is raise if dummy columns \code{patient_id} and \code{group} cannot be 
+A patient can have records in multiple groups, for example in a cross-over 
+designs. 
+Columns \code{minute} and \code{pdr} are the same as given on input, but negative
+minute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes 
+because most fit methods cannot handle the singularity at t=0.
+An error is raised if dummy columns \code{patient_id} and \code{group} cannot be 
 added in a unique way, i.e. when multiple values for a given minute cannot be 
 disambiguated.
 }
@@ -30,4 +39,39 @@ disambiguated.
 Accepts various data formats of ungrouped or grouped 13C breath 
 test time series, and transforms these into a data frame that can be used by
 all fitting functions.
+}
+\examples{
+options(digits = 4)
+# Full manual
+minute = seq(0,30, by = 10)
+data1 = data.frame(minute, 
+   pdr = exp_beta(minute, dose = 100, m = 30,  k = 0.01, beta = 2))
+# Two columns with data at t = 0
+data1
+# Four columns with data at t = 0.01
+cleanup_data(data1)
+
+# Use simulated data
+data2 = list(
+  Z = simulate_breathtest_data(seed = 10)$data,
+  Y = simulate_breathtest_data(seed = 11)$data)
+d = cleanup_data(data2)
+str(d)
+unique(d$patient_id)
+unique(d$group)
+# "Z" "Y"
+
+# Mix multiple input formats
+f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
+f2 = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+f3 = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+# With a named list, the name is used as a group parameter
+data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
+d = cleanup_data(data)
+str(d)
+unique(d$patient_id)
+# "350_20043_0_GER" "1871960"         "123456"
+# File name is used a patient name if none is available
+unique(d$group)
+# "A" "B" "C"
 }
