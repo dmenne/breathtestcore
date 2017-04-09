@@ -34,6 +34,9 @@
 #' An error is raised if dummy columns \code{patient_id} and \code{group} cannot be 
 #' added in a unique way, i.e. when multiple values for a given minute cannot be 
 #' disambiguated.
+#' 
+#' Comments are persistent; multiple comments are concatenated with newline separator.
+#' 
 #' @examples 
 #' options(digits = 4)
 #' # Full manual
@@ -110,6 +113,7 @@ cleanup_data.data.frame = function(data){
   }
   # Remove negative values, shift values at 0 slightly.
   # Make pdr simple numeric, i.e. remove gradient
+  comment = comment(data) # keep comment for later
   data = data %>% 
     filter(minute >= 0 ) %>% 
     mutate(
@@ -134,8 +138,11 @@ cleanup_data.data.frame = function(data){
     data$group = "A"
   }
   # Put things in a nice order
-  data %>% 
+  data = data %>% 
     select(patient_id, group, minute, pdr)
+  if (!is.null(comment))
+    comment(data)  = comment # re-attach comment
+  data
 }
 
 #' @export 
@@ -150,8 +157,12 @@ cleanup_data.list = function(data){
   if (is.null(data)) return(NULL)
   has_names = !is.null(names(data))
   ret = data.frame()
+  comment = NULL
   for (igroup in 1:length(data))  {
     dd = cleanup_data(data[[igroup]])
+    cc = comment(dd)
+    if (!is.null(cc)) 
+      comment = paste0(comment, cc, "\n")
     if (has_names) {
       dd$group = names(data)[igroup]
     } else
@@ -160,7 +171,10 @@ cleanup_data.list = function(data){
   }
  if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)
     stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
-  tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
+  ret = tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
+  if (!is.null(comment))
+    comment(ret) = comment
+  ret
 }
   
 #' @export 

@@ -11,6 +11,7 @@ test_that("pdr is made numeric, remove gradient", {
   expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
 })
 
+
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
   data = simulate_breathtest_data(1,)$data[,c("minute", "pdr")]  
   data1 = cleanup_data(data)
@@ -74,19 +75,24 @@ test_that("Columns must be numeric", {
   expect_error(cleanup_data(data), "numeric")
 })  
 
-test_that("A list of data frames is concatenated", {
+test_that("A list of data frames is concatenated, comments are concatenated", {
   data = simulate_breathtest_data(n_records = 2)$data
   data$group = "A"
   data = data[,c("patient_id", "group", "minute", "pdr")]
   data1 = data
   data1$group = "B"
-  
+  # Add comment  
+  comment(data) = "A"
+  comment(data1) = "B"
   data = list(data1 = data, data2 = data1)
   d = cleanup_data(data)
+  expect_identical(comment(d), "A\nB\n")
   expect_is(d, "tbl")
   expect_equal(nrow(d), 44)
   expect_equal(ncol(d), 4)
 })  
+
+
 
 test_that("Same data used twice in list raises error", {
   data = simulate_breathtest_data(n_records = 2)$data

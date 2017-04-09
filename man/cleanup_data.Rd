@@ -39,6 +39,8 @@ because most fit methods cannot handle the singularity at t=0.
 An error is raised if dummy columns \code{patient_id} and \code{group} cannot be 
 added in a unique way, i.e. when multiple values for a given minute cannot be 
 disambiguated.
+
+Comments are persistent; multiple comments are concatenated with newline separator.
 }
 \description{
 Accepts various data formats of ungrouped or grouped 13C breath 
