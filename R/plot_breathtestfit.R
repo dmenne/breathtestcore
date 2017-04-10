@@ -8,12 +8,19 @@
 #' @param method_t50 method for t50: \code{maes_ghoos}, \code{bluck_coward} or 
 #' \code{maes_ghoos_scint}
 #' @param ... other parameters passed to methods
-#' @importFrom graphics plot
-
+#' @examples
+#' data = list(
+#'   A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
+#'   B = simulate_breathtest_data(n_records = 4, seed = 187)$data 
+#' )
+#' # cleanup_data combines the list into a data frame
+#' x = nls_fit(cleanup_data(data))
+#' plot(x)
+#' @importFrom graphics plot.default
+#' @export
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   # Make CRAN happy
   pdr = parameter = value = method = minute = fitted = group = NULL
-  # use library(broom) for debugging of augment
   dd = broom::augment(x, by = inc) 
   # Mark t50
   t50 = coef(x) %>%

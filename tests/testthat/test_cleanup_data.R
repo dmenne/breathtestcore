@@ -76,20 +76,43 @@ test_that("Columns must be numeric", {
 })  
 
 test_that("A list of data frames is concatenated, comments are concatenated", {
-  data = simulate_breathtest_data(n_records = 2)$data
-  data$group = "A"
-  data = data[,c("patient_id", "group", "minute", "pdr")]
-  data1 = data
+  data0 = simulate_breathtest_data(n_records = 2)$data
+  data0$group = "A"
+  data0 = data0[,c("patient_id", "group", "minute", "pdr")]
+  data1 = data0
   data1$group = "B"
-  # Add comment  
-  comment(data) = "A"
-  comment(data1) = "B"
-  data = list(data1 = data, data2 = data1)
+  
+
+  # Without comments
+  data = list(data0 = data0, data1 = data1)
   d = cleanup_data(data)
-  expect_identical(comment(d), "A\nB\n")
+  expect_null(comment(d))
   expect_is(d, "tbl")
   expect_equal(nrow(d), 44)
   expect_equal(ncol(d), 4)
+  
+  # Add one comment  
+  comment(data0) = "A"
+  data = list(data0 = data0, data1 = data1)
+  d = cleanup_data(data)
+  expect_identical(comment(d), "A")
+
+  # Add two different comments
+  comment(data0) = "A"
+  comment(data1) = "B"
+  data = list(data0 = data0, data1 = data1)
+  d = cleanup_data(data)
+  expect_identical(comment(d), "A\nB")
+
+  # Add three comments with repeats
+  data2 = data0
+  data2$group = "C"
+  comment(data0) = "A"
+  comment(data1) = "B"
+  comment(data2) = "A"
+  data = list(data0 = data0, data1 = data1, data2 = data2)
+  d = cleanup_data(data)
+  expect_identical(comment(d), "A\nB")
 })  
 
 

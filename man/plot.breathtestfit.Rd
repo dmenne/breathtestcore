@@ -4,7 +4,7 @@
 \alias{plot.breathtestfit}
 \title{S3 plot method for breathtestfit}
 \usage{
-plot.breathtestfit(x, inc = 5, method_t50 = "maes_ghoos", ...)
+\method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos", ...)
 }
 \arguments{
 \item{x}{object of class breathtestfit, as returned by nls_fit or nlme_fit}
@@ -21,4 +21,13 @@ Plots 13C data and fits.
 }
 \details{
 A description of plotting
+}
+\examples{
+data = list(
+  A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
+  B = simulate_breathtest_data(n_records = 4, seed = 187)$data 
+)
+# cleanup_data combines the list into a data frame
+x = nls_fit(cleanup_data(data))
+plot(x)
 }

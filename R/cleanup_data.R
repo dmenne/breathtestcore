@@ -157,12 +157,10 @@ cleanup_data.list = function(data){
   if (is.null(data)) return(NULL)
   has_names = !is.null(names(data))
   ret = data.frame()
-  comment = NULL
+  comment = list()
   for (igroup in 1:length(data))  {
     dd = cleanup_data(data[[igroup]])
-    cc = comment(dd)
-    if (!is.null(cc)) 
-      comment = paste0(comment, cc, "\n")
+    comment[[igroup]] = comment(dd)
     if (has_names) {
       dd$group = names(data)[igroup]
     } else
@@ -172,8 +170,10 @@ cleanup_data.list = function(data){
  if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)
     stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
   ret = tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
-  if (!is.null(comment))
-    comment(ret) = comment
+  comment = unique(comment)
+  comment[sapply(comment, is.null)] = NULL
+  if (length(comment) > 0)
+    comment(ret) = paste(comment, collapse= "\n")
   ret
 }
   
