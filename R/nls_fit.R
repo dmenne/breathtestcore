@@ -1,4 +1,5 @@
-#' Single curve fit with nls to 13C breath test data
+#' @title Single curve fit with nls to 13C breath test data
+#' @description Fits individual exponential beta curves to 13C breath test time series
 #'
 #' @param data Data frame or tibble as created by \code{\link{cleanup_data}}, 
 #' with mandatory columns \code{patient_id, group, minute} and \code{pdr}. 
@@ -44,11 +45,11 @@
 nls_fit = function(data, dose = 100, 
                    start = list(m = 50, k = 1 / 100, beta = 2)){
   
-  # Check if data have be validated by cleanup_data
+  # Check if data have been validated by cleanup_data
   assert_that(are_equal(names(data), c("patient_id", "group", "minute", "pdr")))
   if (min(data$minute) <= 0)
-    stop("Values at t=0 are not permitted. Please shift to minute = 0.001, 
-         or better use function <<cleanup_data>>")
+    stop("Values at minute = 0 are not permitted. Please shift to minute = 0.001, 
+         or better use function <<cleanup_data>>.")
   # Avoid notes on CRAN
   value = patient_id = NULL 
   # since it is such a nasty job to pass constant parameter dose to nlsList,
