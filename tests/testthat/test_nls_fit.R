@@ -40,8 +40,8 @@ test_that("Single record give valid result after passing through cleanup_data", 
   expect_equal(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_equal(nrow(cf), 9)
   expect_lt(rel_diff(d, cf, "m"), 0.02)
-  expect_lt(rel_diff(d, cf, "beta"), 0.005)
-  expect_lt(rel_diff(d, cf, "k"), 0.005)
+  expect_lt(rel_diff(d, cf, "beta"), 0.014)
+  expect_lt(rel_diff(d, cf, "k"), 0.01)
 })
 
 test_that("Nonsense record", {

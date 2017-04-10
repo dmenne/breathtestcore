@@ -15,6 +15,8 @@
 #' @param missing When 0 (default), all curves have the same number of data points. When > 0, this is the fraction of points that were removed randomly to simulate missing 
 #' @param seed optional seed; not set if seed = NULL (default)
 #' @param dose Octanoate/acetate dose, almost always 100 mg, which is also the default
+#' @param first_minute First sampling time. Do not use 0 here, some algorithms do not 
+#' converge when data near 0 are passed.
 #' @param step_minute Inter-sample interval for breath test
 #' @param max_minute Maximal time in minutes.
 #'
@@ -48,8 +50,9 @@ simulate_breathtest_data = function(
   missing = 0,
   seed = NULL,
   dose = 100,
+  first_minute = 5,
   step_minute = 15,
-  max_minute = 150) {
+  max_minute = 155) {
   
   # Covariance matrix does not work for n_records <= 3
   use_cov = (n_records > 3) & (!is.null(cov) |  
@@ -82,7 +85,7 @@ simulate_breathtest_data = function(
   
   assert_that(max_minute %/% step_minute > 5)
 
-  minute  = seq(0, max_minute, by = step_minute)
+  minute  = seq(first_minute, max_minute, by = step_minute)
   # Record
   rec = data_frame(patient_id = sprintf("rec_%02d", 1:n_records))
   if (!use_cov) {

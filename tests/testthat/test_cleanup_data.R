@@ -13,7 +13,7 @@ test_that("pdr is made numeric, remove gradient", {
 
 
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
-  data = simulate_breathtest_data(1,)$data[,c("minute", "pdr")]  
+  data = simulate_breathtest_data(1, first_minute = 0)$data[,c("minute", "pdr")]  
   data1 = cleanup_data(data)
   # First row is changes
   expect_equal(data[-1,], data1[-1,3:4])  

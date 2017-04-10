@@ -21,7 +21,7 @@ test_that("broom/augment returns predictions", {
   # Use spacing
   td = augment(fit, by = 5)
   expect_equal(names(td), c("patient_id", "group", "minute", "fitted"))
-  expect_equal(nrow(td), 310)
+  expect_equal(nrow(td), 320)
 
   # Use vector of time values
   td = augment(fit, minute = c(0:9, seq(10, 150, by = 5)))
