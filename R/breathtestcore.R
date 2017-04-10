@@ -3,7 +3,7 @@
 #' @description Functions to read and analyze 13C breath test data for gastric emptying
 #' @docType package
 #' @importFrom MASS mvrnorm
-#' @importFrom graphics plot
+#' @importFrom graphics plot plot.default
 #' @importFrom purrr map_df
 #' @importFrom stats rt rnorm na.omit
 #' @import assertthat
@@ -17,9 +17,9 @@
 #' @description 13C time series PDR data from normals and random patients 
 #' from the division of \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology, 
 #' University Hospital Zurich}.
-#' Most data from normals were obtained with bags and analyzed by 
+#' Most breath samples from normals were collected with bags and analyzed by 
 #' \href{http://kibion.com/content/uploads/2013/07/113-01_IRIS_Consumables_DE.pdf}{IRIS/Wagner}
-#' infrared spectroscopy. Patient records were recorded with the continuous 
+#' infrared spectroscopy. Patient samples were recorded with the continuous 
 #' monitoring system 
 #' \href{http://www.exalenz.com/mainmenu/breathid-hp/urea-breath-test}{BreathID}.
 #' 
