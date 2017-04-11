@@ -5,6 +5,5 @@ README.html
 *.sqlite
 .gitattributes
 *.dll
-src/
 *.pdf
 inst/doc
