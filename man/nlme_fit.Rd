@@ -5,7 +5,7 @@
 \title{Mixed-model nlme fit to 13C Breath Data}
 \usage{
 nlme_fit(data, dose = 100, start = list(m = 30, k = 1/100, beta = 2),
-  random_diag = TRUE, random_usegroup = FALSE, pnlsTol = 0.01)
+  pnlsTol = 0.01)
 }
 \arguments{
 \item{data}{Data frame or tibble as created by \code{\link{cleanup_data}}, 
@@ -19,20 +19,6 @@ for a population fit, but 10 or more are recommended to obtain a stable result.}
 for all records is supported.}
 
 \item{start}{Optional start values.}
-
-\item{random_diag}{Use diagonal correlation structure \code{pdDiag} in \code{nlme}.
-Default TRUE; it is recommended to do a first analysis with this more 
-restrictive setting, and only try \code{random_diag = FALSE} when convergence can 
-be achieved.}
-
-\item{random_usegroup}{Explicitly use the grouping variable in \code{nlme} 
-for nesting,  e.g. 
-with \code{random = pdDiag(m + k + beta)~1|patient_id/group}. Using explicit grouping
-is only useful when there are multiple records of one patient, e.g. in a crossover
-study, and can result in stronger shrinking, i.e. smaller variances. 
-With explicit grouping, the method often does not converge, therefore 
-the default is  \code{random_usegroup = FALSE}; always use this for a first 
-run with your data, and only try TRUE when this gives reasonable results.}
 
 \item{pnlsTol}{See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the 
 error message "step halving factor reduced below minimum in PNLS step", try larger

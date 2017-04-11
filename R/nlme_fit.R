@@ -13,18 +13,6 @@
 #' @param dose Dose of acetate or octanoate. Currently, only one common dose
 #' for all records is supported. 
 #' @param start Optional start values.
-#' @param random_diag Use diagonal correlation structure \code{pdDiag} in \code{nlme}.
-#' Default TRUE; it is recommended to do a first analysis with this more 
-#' restrictive setting, and only try \code{random_diag = FALSE} when convergence can 
-#' be achieved. 
-#' @param random_usegroup Explicitly use the grouping variable in \code{nlme} 
-#' for nesting,  e.g. 
-#' with \code{random = pdDiag(m + k + beta)~1|patient_id/group}. Using explicit grouping
-#' is only useful when there are multiple records of one patient, e.g. in a crossover
-#' study, and can result in stronger shrinking, i.e. smaller variances. 
-#' With explicit grouping, the method often does not converge, therefore 
-#' the default is  \code{random_usegroup = FALSE}; always use this for a first 
-#' run with your data, and only try TRUE when this gives reasonable results. 
 #' @param pnlsTol See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the 
 #' error message "step halving factor reduced below minimum in PNLS step", try larger
 #' values up to 1; carefully check you results if they make sens for pnlsTol > 0.5.
@@ -41,7 +29,8 @@
 #'  \code{broom: tidy, augment}.
 #' @importFrom stats coef
 #' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom nlme nlme nlmeControl fixef
+#' @importFrom nlme nlme nlmeControl fixef 
+#' @importFrom stats AIC
 #' @examples 
 #' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 #' data = cleanup_data(d$data)
@@ -62,7 +51,6 @@
 #'
 nlme_fit = function(data, dose = 100, 
                    start = list(m = 30, k = 1 / 100, beta = 2),
-                   random_diag = TRUE, random_usegroup = FALSE,
                    pnlsTol = 0.01) {
   
   # Check if data have been validated by cleanup_data
@@ -71,13 +59,15 @@ nlme_fit = function(data, dose = 100,
     stop("Values at minute = 0 are not permitted. Please shift to minute = 0.001, 
          or better use function <<cleanup_data>>")
   # Avoid notes on CRAN
-  value = patient_id = NULL 
+  group =  value = patient_id = NULL 
 
   start = c(m = 30, k = 0.01, beta = 1.5)
   # Combine patient and group
-  data = data %>% mutate(
-    pat_group = paste(patient_id, group, sep = "/")
-  )
+  data = data %>% 
+    ungroup() %>% 
+    mutate(
+      pat_group = paste(patient_id, group, sep = "/")
+    )
     
   # since it is such a nasty job to pass constant parameter dose to nlsList,
   # fit is done with a real constant, and m, the only affected parameter
@@ -88,25 +78,15 @@ nlme_fit = function(data, dose = 100,
     pdr ~ exp_beta( minute, 100, m, k, beta) | pat_group,
     data = data, start = start
   ))
-  # Formula for random part
-  random_form = matrix(c(
-    (m + k + beta)~1|pat_group,
-    (m + k + beta)~1|patient_id/group,
-    pdDiag(m + k + beta)~1|pat_group, 
-    pdDiag(m + k + beta)~1|patient_id/group),
-    nrow = 2, byrow = TRUE)
-
   bc.nlme = suppressWarnings(try(
-   nlme::nlme(
-    pdr ~ exp_beta(minute, 100, m, k, beta),
-    data = data,
-    control = nlme::nlmeControl(pnlsTol = pnlsTol),
-    fixed = m + k + beta ~ 1,
-    random = random_form[[random_diag + 1, random_usegroup + 1]],
-    start = nlme::fixef(bc.nls),
-    verbose = FALSE
+    nlme::nlme(
+      pdr ~ exp_beta(minute, 100, m, k, beta),
+      data = data,
+      control = nlme::nlmeControl(pnlsTol = pnlsTol),
+      fixed = m + k + beta ~ 1,
+      random = (m + k +beta)~1|pat_group,
+      start = nlme::fixef(bc.nls)
   ),silent = TRUE))
-  
   if (inherits(bc.nlme, "try-error")) {
     stop("No valid fit mixed-model population fit with this data set.\n",
          as.character(bc.nlme))
@@ -160,4 +140,10 @@ nlme_fit = function(data, dose = 100,
   class(ret) = "breathtestfit"
   ret
 }
+
+#' @export
+AIC.breathtestfit = function(x){
+  return(attr(x$coef, "AIC"))
+}
+
 
