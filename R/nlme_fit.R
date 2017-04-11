@@ -1,26 +1,28 @@
 #' @title Mixed-model nlme fit to 13C Breath Data
 #' @description Fits exponential beta curves to 13C breath test series data using
-#' a mixed-model population approach. See 
+#' a mixed-model population approach. See
 #' \url{https://menne-biomed.de/blog/breath-test-stan} for a comparision between
 #' single curve, mixed-model population and Bayesian methods.
-#' 
-#' @param data Data frame or tibble as created by \code{\link{cleanup_data}}, 
-#' with mandatory columns \code{patient_id, group, minute} and \code{pdr}. 
+#'
+#' @param data Data frame or tibble as created by \code{\link{cleanup_data}},
+#' with mandatory columns \code{patient_id, group, minute} and \code{pdr}.
 #' It is recommended to run all data through \code{\link{cleanup_data}} which
 #' will insert dummy columns for \code{patient_id} and \code{minute} if the
 #' data are distinct, and report an error if not. At least 3 records are required
 #' for a population fit, but 10 or more are recommended to obtain a stable result.
 #' @param dose Dose of acetate or octanoate. Currently, only one common dose
-#' for all records is supported. 
+#' for all records is supported.
 #' @param start Optional start values.
-#' @param pnlsTol See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the 
+#' @param pnlsTol See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the
 #' error message "step halving factor reduced below minimum in PNLS step", try larger
 #' values up to 1; carefully check you results if they make sens for pnlsTol > 0.5.
+#' @param sample_minutes If mean sampling interval is < sampleMinutes, data are subsampled
+#' using a spline algorithm
 #'
 #' @return A list of class "breathtestfit" with elements
 #' \itemize{
-#'   \item {\code{coef} Estimated parameters as data frame in a key-value format with 
-#'    columns \code{patient_id, group, parameter, method} and \code{value}. 
+#'   \item {\code{coef} Estimated parameters as data frame in a key-value format with
+#'    columns \code{patient_id, group, parameter, method} and \code{value}.
 #'    Has an attribute AIC.}
 #'    \item {\code{data}  The effectively analyzed data. If density of points
 #'    is too high, e.g. with BreathId devices, data are subsampled before fitting.}
@@ -28,47 +30,68 @@
 #' @seealso Base methods \code{coef, plot, print}; methods from package
 #'  \code{broom: tidy, augment}.
 #' @importFrom stats coef
+#' @importFrom signal interp1
 #' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom nlme nlme nlmeControl fixef 
+#' @importFrom nlme nlme nlmeControl fixef
 #' @importFrom stats AIC
-#' @examples 
+#' @examples
 #' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 #' data = cleanup_data(d$data)
 #' cf = nlme_fit(data)$coef
-#' # Input parameters from simulation \code{m_in, beta_in, k_in} and estimates from 
+#' # Input parameters from simulation \code{m_in, beta_in, k_in} and estimates from
 #' # beta exponential fit \code{m_out, beta_out, k_out}
 #' options(digits = 2)
 #' library(dplyr)
-#' cf %>% 
-#'   filter(grepl("m|k|beta", parameter )) %>% 
-#'   select(-method, -group) %>% 
-#'   tidyr::spread(parameter, value) %>% 
-#'   inner_join(d$record, by = "patient_id") %>% 
-#'   select(patient_id, m_in = m.y, m_out = m.x, 
+#' cf %>%
+#'   filter(grepl("m|k|beta", parameter )) %>%
+#'   select(-method, -group) %>%
+#'   tidyr::spread(parameter, value) %>%
+#'   inner_join(d$record, by = "patient_id") %>%
+#'   select(patient_id, m_in = m.y, m_out = m.x,
 #'          beta_in = beta.y, beta_out = beta.x,
 #'          k_in = k.y, k_out = k.x)
 #' @export
 #'
-nlme_fit = function(data, dose = 100, 
+nlme_fit = function(data, dose = 100,
                    start = list(m = 30, k = 1 / 100, beta = 2),
-                   pnlsTol = 0.01) {
-  
+                   pnlsTol = 0.01, sample_minutes = 15) {
+
   # Check if data have been validated by cleanup_data
   assert_that(are_equal(names(data), c("patient_id", "group", "minute", "pdr")))
   if (min(data$minute) <= 0)
-    stop("Values at minute = 0 are not permitted. Please shift to minute = 0.001, 
+    stop("Values at minute = 0 are not permitted. Please shift to minute = 0.001,
          or better use function <<cleanup_data>>")
   # Avoid notes on CRAN
-  group =  value = patient_id = NULL 
+  group =  value = patient_id = NULL
 
   start = c(m = 30, k = 0.01, beta = 1.5)
   # Combine patient and group
-  data = data %>% 
-    ungroup() %>% 
+  data = data %>%
+    ungroup() %>%
     mutate(
       pat_group = paste(patient_id, group, sep = "/")
     )
-    
+
+  # Do subsampling if data are too dense
+  spacing = data %>%
+    group_by(pat_group) %>%
+    summarize(
+      spacing = round(mean(diff(minute)))
+    )
+
+  data = data %>%
+    left_join(spacing, by = "pat_group") %>%
+    group_by(patient_id, group, pat_group) %>%
+    do({
+      if (.$spacing[1] > sample_minutes){
+        data.frame(minute = .$minute, pdr = .$pdr)
+      } else {
+        minute = seq(min(.$minute), max(.$minute), by = sample_minutes)
+        data.frame(minute = minute,
+                   pdr = signal::interp1(.$minute, .$pdr, minute, "spline"))
+      }
+    }) %>%
+    ungroup()
   # since it is such a nasty job to pass constant parameter dose to nlsList,
   # fit is done with a real constant, and m, the only affected parameter
   # is renormalized if required.
@@ -95,13 +118,13 @@ nlme_fit = function(data, dose = 100,
   cf = coef(bc.nlme)
   if (dose != 100)
     cf$m = cf$m * dose/100
-   
-  cf = cf %>% 
-    tibble::rownames_to_column(var = "patient_id") %>% 
+
+  cf = cf %>%
+    tibble::rownames_to_column(var = "patient_id") %>%
     mutate(
       group = str_match(patient_id,"/(.*)$")[,2],
       patient_id = str_match(patient_id,"^(.*)/")[,2]
-    ) %>% 
+    ) %>%
     na.omit()
 
   methods = c(
@@ -132,10 +155,11 @@ nlme_fit = function(data, dose = 100,
       )
     )
   }
-  cf = purrr::map_df(pars, rbind )  %>% 
-    filter(value != 0) %>% 
+  cf = purrr::map_df(pars, rbind )  %>%
+    filter(value != 0) %>%
     tibble::as_tibble(cf)
   attr(cf, "AIC") = AIC(bc.nlme)
+  data = data %>% select(-pat_group) # only used locally
   ret = list(coef = cf, data = data)
   class(ret) = "breathtestfit"
   ret

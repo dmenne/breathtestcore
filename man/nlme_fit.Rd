@@ -5,11 +5,11 @@
 \title{Mixed-model nlme fit to 13C Breath Data}
 \usage{
 nlme_fit(data, dose = 100, start = list(m = 30, k = 1/100, beta = 2),
-  pnlsTol = 0.01)
+  pnlsTol = 0.01, sample_minutes = 15)
 }
 \arguments{
-\item{data}{Data frame or tibble as created by \code{\link{cleanup_data}}, 
-with mandatory columns \code{patient_id, group, minute} and \code{pdr}. 
+\item{data}{Data frame or tibble as created by \code{\link{cleanup_data}},
+with mandatory columns \code{patient_id, group, minute} and \code{pdr}.
 It is recommended to run all data through \code{\link{cleanup_data}} which
 will insert dummy columns for \code{patient_id} and \code{minute} if the
 data are distinct, and report an error if not. At least 3 records are required
@@ -20,15 +20,18 @@ for all records is supported.}
 
 \item{start}{Optional start values.}
 
-\item{pnlsTol}{See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the 
+\item{pnlsTol}{See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the
 error message "step halving factor reduced below minimum in PNLS step", try larger
 values up to 1; carefully check you results if they make sens for pnlsTol > 0.5.}
+
+\item{sample_minutes}{If mean sampling interval is < sampleMinutes, data are subsampled
+using a spline algorithm}
 }
 \value{
 A list of class "breathtestfit" with elements
 \itemize{
-  \item {\code{coef} Estimated parameters as data frame in a key-value format with 
-   columns \code{patient_id, group, parameter, method} and \code{value}. 
+  \item {\code{coef} Estimated parameters as data frame in a key-value format with
+   columns \code{patient_id, group, parameter, method} and \code{value}.
    Has an attribute AIC.}
    \item {\code{data}  The effectively analyzed data. If density of points
    is too high, e.g. with BreathId devices, data are subsampled before fitting.}
@@ -36,7 +39,7 @@ A list of class "breathtestfit" with elements
 }
 \description{
 Fits exponential beta curves to 13C breath test series data using
-a mixed-model population approach. See 
+a mixed-model population approach. See
 \url{https://menne-biomed.de/blog/breath-test-stan} for a comparision between
 single curve, mixed-model population and Bayesian methods.
 }
@@ -44,16 +47,16 @@ single curve, mixed-model population and Bayesian methods.
 d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 data = cleanup_data(d$data)
 cf = nlme_fit(data)$coef
-# Input parameters from simulation \\code{m_in, beta_in, k_in} and estimates from 
+# Input parameters from simulation \\code{m_in, beta_in, k_in} and estimates from
 # beta exponential fit \\code{m_out, beta_out, k_out}
 options(digits = 2)
 library(dplyr)
-cf \%>\% 
-  filter(grepl("m|k|beta", parameter )) \%>\% 
-  select(-method, -group) \%>\% 
-  tidyr::spread(parameter, value) \%>\% 
-  inner_join(d$record, by = "patient_id") \%>\% 
-  select(patient_id, m_in = m.y, m_out = m.x, 
+cf \%>\%
+  filter(grepl("m|k|beta", parameter )) \%>\%
+  select(-method, -group) \%>\%
+  tidyr::spread(parameter, value) \%>\%
+  inner_join(d$record, by = "patient_id") \%>\%
+  select(patient_id, m_in = m.y, m_out = m.x,
          beta_in = beta.y, beta_out = beta.x,
          k_in = k.y, k_out = k.x)
 }
