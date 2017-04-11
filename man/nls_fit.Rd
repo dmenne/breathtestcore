@@ -29,7 +29,7 @@ A list of class "breathtestfit" with elements
 }
 }
 \description{
-Single curve fit with nls to 13C breath test data
+Fits individual exponential beta curves to 13C breath test time series
 }
 \examples{
 d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)

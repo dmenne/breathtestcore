@@ -7,7 +7,8 @@
 simulate_breathtest_data(n_records = 10, m_mean = 40, m_std = NULL,
   k_mean = 0.01, k_std = NULL, beta_mean = 2, beta_std = NULL,
   noise = 1, cov = NULL, student_t_df = NULL, missing = 0,
-  seed = NULL, dose = 100, step_minute = 15, max_minute = 150)
+  seed = NULL, dose = 100, first_minute = 5, step_minute = 15,
+  max_minute = 155)
 }
 \arguments{
 \item{n_records}{Number of records}
@@ -30,6 +31,9 @@ standard deviation settings.}
 \item{seed}{optional seed; not set if seed = NULL (default)}
 
 \item{dose}{Octanoate/acetate dose, almost always 100 mg, which is also the default}
+
+\item{first_minute}{First sampling time. Do not use 0 here, some algorithms do not 
+converge when data near 0 are passed.}
 
 \item{step_minute}{Inter-sample interval for breath test}
 
