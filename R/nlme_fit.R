@@ -142,8 +142,8 @@ nlme_fit = function(data, dose = 100,
 }
 
 #' @export
-AIC.breathtestfit = function(x){
-  return(attr(x$coef, "AIC"))
+AIC.breathtestfit = function(object, ..., k){
+  return(attr(object$coef, "AIC"))
 }
 
 
