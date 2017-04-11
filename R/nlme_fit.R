@@ -107,7 +107,8 @@ nlme_fit = function(data, dose = 100,
       data = data,
       control = nlme::nlmeControl(pnlsTol = pnlsTol),
       fixed = m + k + beta ~ 1,
-      random = (m + k +beta)~1|pat_group,
+      random = pdDiag(m + k +beta)~1,
+      groups = ~pat_group,
       start = nlme::fixef(bc.nls)
   ),silent = TRUE))
   if (inherits(bc.nlme, "try-error")) {
