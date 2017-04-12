@@ -9,9 +9,26 @@ test_that("Plot layers match expectations",{
   p = plot(x)
   expect_is(p, "ggplot")
   expect_gt(max(layer_data(p)$y), 25)
-  expect_equal(nlayers(p), 2)   
+  expect_equal(nlayers(p), 3)   
   expect_equal(length(p), 9)   
   expect_equal(nlevels(layer_data(p)$PANEL), 10)
+})
+
+test_that("Failed nlme fit plots data only", {
+  data = cleanup_data(simulate_breathtest_data(seed = 100)$data)
+  fit = nlme_fit(data)
+  expect_null(fit$coef)
+  p = plot(fit)
+  expect_is(p, "ggplot")
+  expect_equal(nlayers(p), 1)   
+})
+
+test_that("Successful nlme fit plots data and fit", {
+  data = cleanup_data(simulate_breathtest_data()$data)
+  fit = nlme_fit(data)
+  p = plot(fit)
+  expect_is(p, "ggplot")
+  expect_equal(nlayers(p), 3)   
 })
 
 test_that("Plot multiple groups",{

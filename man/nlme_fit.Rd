@@ -5,7 +5,7 @@
 \title{Mixed-model nlme fit to 13C Breath Data}
 \usage{
 nlme_fit(data, dose = 100, start = list(m = 30, k = 1/100, beta = 2),
-  pnlsTol = 0.01, sample_minutes = 15)
+  sample_minutes = 15)
 }
 \arguments{
 \item{data}{Data frame or tibble as created by \code{\link{cleanup_data}},
@@ -19,10 +19,6 @@ for a population fit, but 10 or more are recommended to obtain a stable result.}
 for all records is supported.}
 
 \item{start}{Optional start values.}
-
-\item{pnlsTol}{See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the
-error message "step halving factor reduced below minimum in PNLS step", try larger
-values up to 1; carefully check you results if they make sens for pnlsTol > 0.5.}
 
 \item{sample_minutes}{If mean sampling interval is < sampleMinutes, data are subsampled
 using a spline algorithm}

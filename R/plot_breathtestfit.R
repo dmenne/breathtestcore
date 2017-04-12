@@ -20,28 +20,45 @@
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   # Make CRAN happy
   pdr = parameter = value = method = minute = fitted = group = NULL
-  dd = broom::augment(x, by = inc) 
-  # Mark t50
-  t50 = coef(x) %>%
-    filter(parameter == "t50",  method == method_t50) %>% 
-    select(-parameter)
+  # Only plot data if there are no coefficients
+  has_fit = !is.null(coef(x))
+  if (has_fit) {
+    dd = broom::augment(x, by = inc) 
+    # Mark t50
+    t50 = coef(x) %>%
+      filter(parameter == "t50",  method == method_t50) %>% 
+      select(-parameter)
+  }
   # Avoid ugly ggplot shading
   theme_set(theme_bw() + theme(panel.spacing = grid::unit(0,"lines")))
-  if (length(unique(dd$group)) > 1) {
-    p = ggplot(dd, aes(x = minute, y = fitted, color = group)) + geom_line(size = 1) +
-      geom_point(data = x$data, aes(x = minute, y = pdr, color = group), size = 1) 
-    if (nrow(t50) > 0 )    
-      p = p + geom_vline(aes(xintercept = value, color = group),  t50) 
+  if (length(unique(x$data$group)) > 1) {
+    # With grouping
+    p = ggplot(x$data, aes(x = minute, y = pdr, color = group), size = 1) + 
+      geom_point(size = 1)
+    if (has_fit)  {
+      p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
+        geom_line(size = 1) + 
+        geom_vline(aes(xintercept = value, color = group),  t50) 
+    }  
   } else {
-    p = ggplot(dd, aes(x = minute, y = fitted)) + geom_line(size = 1) +
-      geom_point(data = x$data, aes(x = minute, y = pdr), size = 1) 
-    if (nrow(t50) > 0 )    
-      geom_vline(aes(xintercept = value, color = "red" ),  t50) 
+    # without grouping
+    p = ggplot(data = x$data, aes(x = minute, y = pdr)) +
+                 geom_point(size = 1)
+    if (has_fit)    {
+      p = p + 
+        geom_line(aes(x = minute, y = fitted), data = dd)  +
+        geom_vline(aes(xintercept = value, color = "red" ),  t50) +
+        theme(legend.position = "none")
+        
+    }
   } 
+  subtitle = ifelse(has_fit, 
+        paste("Half-emptying t50 by method", method_t50),
+        paste0("No successful fit"))
   p + facet_wrap(~patient_id) +
     scale_colour_brewer(type = "seq", palette = "Set1") + 
     ylab("pdr") +
-    ggtitle(label = NULL, subtitle = paste("Half-emptying t50 by method", method_t50))
+    ggtitle(label = NULL, subtitle = subtitle)
 }
 
 

@@ -13,9 +13,6 @@
 #' @param dose Dose of acetate or octanoate. Currently, only one common dose
 #' for all records is supported.
 #' @param start Optional start values.
-#' @param pnlsTol See \code{\link[nlme]{nlmeControl}} Default = 0.01. When you get the
-#' error message "step halving factor reduced below minimum in PNLS step", try larger
-#' values up to 1; carefully check you results if they make sens for pnlsTol > 0.5.
 #' @param sample_minutes If mean sampling interval is < sampleMinutes, data are subsampled
 #' using a spline algorithm
 #'
@@ -54,7 +51,7 @@
 #'
 nlme_fit = function(data, dose = 100,
                    start = list(m = 30, k = 1 / 100, beta = 2),
-                   pnlsTol = 0.01, sample_minutes = 15) {
+                   sample_minutes = 15) {
 
   # Check if data have been validated by cleanup_data
   assert_that(are_equal(names(data), c("patient_id", "group", "minute", "pdr")))
@@ -101,22 +98,33 @@ nlme_fit = function(data, dose = 100,
     pdr ~ exp_beta( minute, 100, m, k, beta) | pat_group,
     data = data, start = start
   ))
-  bc.nlme = suppressWarnings(try(
-    nlme::nlme(
-      pdr ~ exp_beta(minute, 100, m, k, beta),
-      data = data,
-      control = nlme::nlmeControl(pnlsTol = pnlsTol),
-      fixed = m + k + beta ~ 1,
-      random = pdDiag(m + k +beta)~1,
-      groups = ~pat_group,
-      start = nlme::fixef(bc.nls)
-  ),silent = TRUE))
-  if (inherits(bc.nlme, "try-error")) {
-    stop("No valid fit mixed-model population fit with this data set.\n",
-         as.character(bc.nlme))
+  
+  success = FALSE
+  pnlsTol = 0.01
+  while (!success && pnlsTol < 0.5) {
+    bc_nlme = suppressWarnings(try(
+      nlme::nlme(
+        pdr ~ exp_beta(minute, 100, m, k, beta),
+        data = data,
+        control = nlme::nlmeControl(msMaxIter = 20,
+                                    pnlsTol = pnlsTol, maxIter = 15),
+        fixed = m + k + beta ~ 1,
+        random = pdDiag(m + k +beta)~1,
+        groups = ~pat_group,
+        start = nlme::fixef(bc.nls)
+      ),silent = TRUE))
+    success = !inherits(bc_nlme, "try-error")
+    if (!success) pnlsTol = pnlsTol * 5
+  }
+  # Return data only if not successful
+  if (!success) {
+    data = data %>% select(-pat_group) # only used locally
+    ret = list(data = data)
+    class(ret) = "breathtestfit"
+    return(ret)
   }
 
-  cf = coef(bc.nlme)
+  cf = coef(bc_nlme)
   if (dose != 100)
     cf$m = cf$m * dose/100
 
@@ -159,7 +167,8 @@ nlme_fit = function(data, dose = 100,
   cf = purrr::map_df(pars, rbind )  %>%
     filter(value != 0) %>%
     tibble::as_tibble(cf)
-  attr(cf, "AIC") = AIC(bc.nlme)
+  attr(cf, "AIC") = AIC(bc_nlme)
+  
   data = data %>% select(-pat_group) # only used locally
   ret = list(coef = cf, data = data)
   class(ret) = "breathtestfit"

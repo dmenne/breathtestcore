@@ -23,7 +23,9 @@
 #' 
 tidy.breathtestfit = function(x, ...) {
   . = group = k = m = method = parameter = patient_id = t50 = value = NULL
-  coef(x) %>% 
+  cf = coef(x)
+  if (is.null(cf)) return(NULL)
+  cf %>% 
     dplyr::filter(parameter %in% c("m", "k", "beta", "t50"), 
                   method %in% c("exp_beta", "maes_ghoos")) %>% 
     select(-method) %>% 
@@ -63,6 +65,8 @@ tidy.breathtestfit = function(x, ...) {
 augment.breathtestfit = function(x, by = NULL, minute = NULL, dose = 100, ...) {
   # The ugly way to keep NOTES away
   . = group = k = m = method = parameter = patient_id = t50 = value = NULL
+  if (is.null(coef(x))) return(NULL)
+  
   assertthat::assert_that(is.null(by) || length(minute) > 1 || 
                           (length(by) == 1 && by > 1))
   if (is.null(by) && is.null(minute)) {
