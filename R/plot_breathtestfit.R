@@ -33,11 +33,10 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   theme_set(theme_bw() + theme(panel.spacing = grid::unit(0,"lines")))
   if (length(unique(x$data$group)) > 1) {
     # With grouping
-    p = ggplot(x$data, aes(x = minute, y = pdr, color = group), size = 1) + 
+    p = ggplot(x$data, aes(x = minute, y = pdr, color = group)) + 
       geom_point(size = 1)
     if (has_fit)  {
       p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
-        geom_line(size = 1) + 
         geom_vline(aes(xintercept = value, color = group),  t50) 
     }  
   } else {
