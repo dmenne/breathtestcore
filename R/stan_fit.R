@@ -35,13 +35,13 @@
 #' @importFrom tibble rownames_to_column as_tibble
 #' @importFrom rstan get_posterior_mean sampling
 #' @examples
-#' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
+#' d = simulate_breathtest_data() # default 10 records
 #' data = cleanup_data(d$data)
-#' cf = stan_fit(data)$coef
-#' # Input parameters from simulation \code{m_in, beta_in, k_in} and estimates from
-#' # beta exponential fit \code{m_out, beta_out, k_out}
+#' fit = stan_fit(data)
+#' plot(fit) # calls plot.breathtestfit
 #' options(digits = 2)
 #' library(dplyr)
+#' cf = coef(fit)
 #' cf %>%
 #'   filter(grepl("m|k|beta", parameter )) %>%
 #'   select(-method, -group) %>%
