@@ -1,6 +1,6 @@
-#' @title Mixed-model nlme fit to 13C Breath Data
+#' @title Bayesian Stan fit to 13C Breath Data
 #' @description Fits exponential beta curves to 13C breath test series data using
-#' a mixed-model population approach. See
+#' Bayesian Stan methods. See
 #' \url{https://menne-biomed.de/blog/breath-test-stan} for a comparision between
 #' single curve, mixed-model population and Bayesian methods.
 #'
@@ -8,13 +8,17 @@
 #' with mandatory columns \code{patient_id, group, minute} and \code{pdr}.
 #' It is recommended to run all data through \code{\link{cleanup_data}} which
 #' will insert dummy columns for \code{patient_id} and \code{minute} if the
-#' data are distinct, and report an error if not. At least 3 records are required
-#' for a population fit, but 10 or more are recommended to obtain a stable result.
+#' data are distinct, and report an error if not. Since the Bayesian method
+#' is stabilized by priors, it is possible to fit single curves.
 #' @param dose Dose of acetate or octanoate. Currently, only one common dose
 #' for all records is supported.
-#' @param start Optional start values.
 #' @param sample_minutes If mean sampling interval is < sampleMinutes, data are subsampled
 #' using a spline algorithm
+#' @param student_df When student_df < 10, the student distribution is used to 
+#' model the residuals. Recommended values to model typical outliers are from 3 to 6.
+#' When student_df >= 10, the normal distribution is used
+#' @param chains Number of chains for Stan
+#' @param iter Number of iterations for each Stan chain
 #'
 #' @return A list of class "breathtestfit" with elements
 #' \itemize{
@@ -29,12 +33,11 @@
 #' @importFrom stats coef
 #' @importFrom signal interp1
 #' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom nlme nlme nlmeControl fixef
-#' @importFrom stats AIC
+#' @importFrom rstan get_posterior_mean sampling
 #' @examples
 #' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 #' data = cleanup_data(d$data)
-#' cf = nlme_fit(data)$coef
+#' cf = stan_fit(data)$coef
 #' # Input parameters from simulation \code{m_in, beta_in, k_in} and estimates from
 #' # beta exponential fit \code{m_out, beta_out, k_out}
 #' options(digits = 2)
@@ -49,67 +52,62 @@
 #'          k_in = k.y, k_out = k.x)
 #' @export
 #'
-nlme_fit = function(data, dose = 100,
-                   start = list(m = 30, k = 1 / 100, beta = 2),
-                   sample_minutes = 15) {
+stan_fit = function(data, dose = 100, sample_minutes = 15, student_df = 10, 
+                    chains = 4, iter = 1000) {
 
   # Avoid notes on CRAN
-  group =  value = patient_id = pat_group = . = NULL
+  group =  value = patient_id = pat_group = pat_group_i = NULL
+  data = subsample_data(data, sample_minutes)
+
+  # Integer index of records
+  data$pat_group_i =  as.integer(as.factor(data$pat_group))
+  n_record = max(data$pat_group_i)
+  data_list = list(
+    n = nrow(data),
+    n_record = n_record,
+    dose = 100,
+    student_df = student_df,
+    pat_group_i = data$pat_group_i,
+    minute = data$minute,
+    pdr = data$pdr)
   
-  # Check and decimate; create pat_group
-  data  = subsample_data(data, sample_minutes)
-  # since it is such a nasty job to pass constant parameter dose to nlsList,
-  # fit is done with a real constant, and m, the only affected parameter
-  # is renormalized if required.
-  # This has kept me busy for more than 11 years now, stumbling over
-  # https://stat.ethz.ch/pipermail/r-help/2006-February/087295.html
-  bc.nls <- suppressWarnings(nlme::nlsList(
-    pdr ~ exp_beta( minute, 100, m, k, beta) | pat_group,
-    data = data, start = start
-  ))
+  init = rep(list(list(
+    m_raw = rnorm(n_record,0,.1),
+    mu_m = rnorm(1,40,2),
+    sigma_m = abs(rnorm(1,2,.1)),
+    
+    k_raw = rnorm(n_record, 0,.1),
+    mu_k = rlnorm(1, -6,.1),
+    sigma_k = abs(rnorm(1,0,.001)),
+    
+    beta_raw = rnorm(n_record, 0, .1),
+    mu_beta = rnorm(1, 2, 0.1),
+    sigma_beta = abs(rnorm(1,.1,.1)),
+    sigma = abs(rnorm(1,1,.1))
+  )),chains)
+
+  mod = stanmodels[["breath_test_1.stan"]]
+  options(mc.cores = parallel::detectCores()/2)
+  capture.output({
+    fit = suppressWarnings(sampling(mod, data = data_list, init_r = init, 
+                                    iter =  iter, chains = chains))
+  })
   
-  success = FALSE
-  pnlsTol = 0.01
-  while (!success && pnlsTol < 0.5) {
-    bc_nlme = suppressWarnings(try(
-      nlme::nlme(
-        pdr ~ exp_beta(minute, 100, m, k, beta),
-        data = data,
-        control = nlme::nlmeControl(msMaxIter = 20,
-                                    pnlsTol = pnlsTol, maxIter = 15),
-        fixed = m + k + beta ~ 1,
-        random = pdDiag(m + k +beta)~1,
-        groups = ~pat_group,
-        start = nlme::fixef(bc.nls)
-      ),silent = TRUE))
-    success = !inherits(bc_nlme, "try-error")
-    if (!success) pnlsTol = pnlsTol * 5
-  }
-  # Return data only if not successful
-  if (!success) {
-    data = data %>% select(-pat_group) # only used locally
-    ret = list(data = data)
-    class(ret) = "breathtestfit"
-    return(ret)
-  }
-
-  cf = coef(bc_nlme)
-  if (dose != 100)
-    cf$m = cf$m * dose/100
-
-  cf = cf %>%
-    tibble::rownames_to_column(var = "patient_id") %>%
-    mutate(
-      group = str_match(patient_id,"/(.*)$")[,2],
-      patient_id = str_match(patient_id,"^(.*)/")[,2]
-    ) %>%
-    na.omit()
-
+  
+  # get posterior means 
+  cf = get_posterior_mean(fit, pars = c( "beta", "k", "m"))[,chains + 1]
+  cf = do.call(cbind, split(cf,  str_extract(names(cf),"[a-z]*")))
+  cf = as.data.frame(sapply(as.data.frame(cf), signif, 3))
+  cf$pat_group_i = 1:n_record
+  cf = cf  %>%  
+    left_join(unique(data[,c("pat_group_i", "pat_group", "patient_id", "group")]), 
+              by = "pat_group_i") 
+  
   methods = c(
     "exp_beta","exp_beta","exp_beta","bluck_coward","maes_ghoos",
     "maes_ghoos_scint", "bluck_coward","maes_ghoos"
   )
-  parameters = c("m", "k", "beta", "t50", "t50", "t50", "tlag", "tlag")
+  parameters = c("m", "k", "beta", "t50", "t50","t50","tlag","tlag")
   # TODO: replace the for-loop by purring (for elegance, speed is secondars)
   pars = list()
   for (i in 1:nrow(cf))  {
@@ -124,6 +122,7 @@ nlme_fit = function(data, dose = 100,
           cf1$m,
           cf1$k,
           cf1$beta,
+          cf1$deviance,
           t50_bluck_coward(cf1),
           t50_maes_ghoos(cf1),
           t50_maes_ghoos_scintigraphy(cf1),
@@ -133,20 +132,14 @@ nlme_fit = function(data, dose = 100,
       )
     )
   }
-  cf = purrr::map_df(pars, rbind )  %>%
-    filter(value != 0) %>%
+  cf = purrr::map_df(pars, rbind )  %>% 
+    filter(value != 0) %>% 
     tibble::as_tibble(cf)
-  attr(cf, "AIC") = AIC(bc_nlme)
   
-  data = data %>% select(-pat_group) # only used locally
+  
+  data = data %>% select(-pat_group, -pat_group_i) # only used locally
   ret = list(coef = cf, data = data)
   class(ret) = "breathtestfit"
   ret
 }
-
-#' @export
-AIC.breathtestfit = function(object, ..., k){
-  return(attr(object$coef, "AIC"))
-}
-
 

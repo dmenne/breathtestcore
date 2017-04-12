@@ -7,3 +7,6 @@ README.html
 *.dll
 *.pdf
 inst/doc
+_gh-pages
+*.rds
+

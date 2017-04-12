@@ -1,8 +1,3 @@
-library(dplyr)
-library(assertthat)
-library(breathtestcore)
-library(testthat)
-library(stringr)
 context("Population fit with nlme")
 
 test_that("Data that cannot be fitted with nls_list also fail with nlme", {

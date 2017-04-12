@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core functions to read and fit 13C time series from breath tests
-Version: 0.1.91
-Date: 2017-04-11
+Version: 0.1.92
+Date: 2017-04-12
 Author: Dieter Menne
 Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>
 Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
@@ -11,11 +11,12 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         See Bluck L J C and Coward W A 2006 Measurement of gastric emptying
         by the C-13-octanoate breath test --- rationalization with
         scintigraphy Physiol. Meas. 27 279-89. 
-        This package is a refactored part of dmenne/d13cbreath without 
+        This package contains a refactored subset of dmenne/d13cbreath without 
         database and display functions.
 Depends: R (>= 3.2.0)
-Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble,
-         assertthat, broom, tidyr,   ggplot2, signal
+Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble,  
+         Rcpp (>= 0.12.10), rstan (>= 2.14.2),
+         assertthat, broom, tidyr,   ggplot2, signal, methods, utils
 Suggests: testthat, packagedocs  
 LinkingTo: 
       StanHeaders (>= 2.12.0.1), 
@@ -25,4 +26,5 @@ LinkingTo:
       Rcpp(>= 0.12.8)
 License: GPL-3
 RoxygenNote: 6.0.1
+NeedsCompilation: yes
 VignetteBuilder: packagedocs

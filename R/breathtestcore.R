@@ -1,35 +1,37 @@
 #' @title breathtestcore.
-#' 
+#'
 #' @description Functions to read and analyze 13C breath test data for gastric emptying
 #' @docType package
 #' @importFrom MASS mvrnorm
 #' @importFrom graphics plot plot.default
 #' @importFrom purrr map_df
-#' @importFrom stats rt rnorm na.omit
+#' @importFrom stats rt rnorm na.omit rlnorm
+#' @importFrom utils capture.output
 #' @import assertthat
 #' @import ggplot2
 #' @import stringr
 #' @import dplyr
 #' @import readr
 #' @import broom
+#' @useDynLib breathtestcore, .registration = TRUE
 
 #' @title Zurich sample set of 13C breath test data
-#' @description 13C time series PDR data from normals and random patients 
-#' from the division of \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology, 
+#' @description 13C time series PDR data from normals and random patients
+#' from the division of \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
 #' University Hospital Zurich}.
-#' Most breath samples from normals were collected with bags and analyzed by 
+#' Most breath samples from normals were collected with bags and analyzed by
 #' \href{http://kibion.com/content/uploads/2013/07/113-01_IRIS_Consumables_DE.pdf}{IRIS/Wagner}
-#' infrared spectroscopy. Patient samples were recorded with the continuous 
-#' monitoring system 
+#' infrared spectroscopy. Patient samples were recorded with the continuous
+#' monitoring system
 #' \href{http://www.exalenz.com/mainmenu/breathid-hp/urea-breath-test}{BreathID}.
-#' 
+#'
 #' \itemize{
-#'   \item patient_id Patient identifier, starting with \code{norm} for normals 
+#'   \item patient_id Patient identifier, starting with \code{norm} for normals
 #'   (healthy volunteers) and  \code{pat} for patients. Note that for normals
-#'   there are two records for each subject, so only the combination of group and 
+#'   there are two records for each subject, so only the combination of group and
 #'   is a unique of the record.
-#'   \item{group} \code{liquid_normal} for normals and liquid meal,  
-#'   \code{solid_normal} normals and solid meal, and \code{patient} for patients; 
+#'   \item{group} \code{liquid_normal} for normals and liquid meal,
+#'   \code{solid_normal} normals and solid meal, and \code{patient} for patients;
 #'   patients are an unselected cross-section from the University Hospital of Zurich.
 #'   \item{minute} Time in minutes
 #'   \item{pdr} PDR as computed by breathtest device or from dob via function dob_to_pdr
