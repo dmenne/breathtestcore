@@ -1,0 +1,20 @@
+---
+title: "breathtestcore Documentation"
+subtitle: "Core functions to read and fit 13C time series from breath tests"
+author: "Dieter Menne"
+copyright: "Dieter Menne"
+output:
+  packagedocs::package_docs_rd:
+    toc: true
+    toc_collapse: false
+redirect: dmenne/breathtestcore/rd.html
+vignette: |
+  %\VignetteIndexEntry{breathtestcore Package Reference}
+  %\VignetteEngine{packagedocs::redirect}
+navpills: |
+  <li><a href='docs.html'>Docs</a></li>
+  <li class="active"><a href='rd.html'>Package Ref</a></li>
+---
+
+```{r auto-gen-child, child="auto-generated-rd.Rmd"}
+```
