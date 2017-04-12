@@ -20,10 +20,6 @@
 #' }
 #' @seealso Base methods \code{coef, plot, print}; methods from package
 #'  \code{broom: tidy, augment}.
-#' @importFrom stats deviance
-#' @importFrom stats coef
-#' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom nlme nlsList 
 #' @examples 
 #' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 #' data = cleanup_data(d$data)

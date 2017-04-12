@@ -18,7 +18,6 @@
 #'   \item{t50}{Emptying half time in minutes as calculated following Maes/Ghoos}
 #' }
 #'
-#' @importFrom broom augment
 #' @export 
 #' 
 tidy.breathtestfit = function(x, ...) {
@@ -59,7 +58,6 @@ tidy.breathtestfit = function(x, ...) {
 #  Predict values at t=60 and t=120
 #' augment(fit, minute = c(60, 120))
 #' 
-#' @importFrom broom augment
 #' @export
 #' 
 augment.breathtestfit = function(x, by = NULL, minute = NULL, dose = 100, ...) {

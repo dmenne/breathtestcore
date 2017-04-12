@@ -5,7 +5,7 @@
 \title{Bayesian Stan fit to 13C Breath Data}
 \usage{
 stan_fit(data, dose = 100, sample_minutes = 15, student_df = 10,
-  chains = 4, iter = 1000)
+  chains = 2, iter = 1000)
 }
 \arguments{
 \item{data}{Data frame or tibble as created by \code{\link{cleanup_data}},
@@ -46,13 +46,13 @@ Bayesian Stan methods. See
 single curve, mixed-model population and Bayesian methods.
 }
 \examples{
-d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
+d = simulate_breathtest_data() # default 10 records
 data = cleanup_data(d$data)
-cf = stan_fit(data)$coef
-# Input parameters from simulation \\code{m_in, beta_in, k_in} and estimates from
-# beta exponential fit \\code{m_out, beta_out, k_out}
+fit = stan_fit(data)
+plot(fit) # calls plot.breathtestfit
 options(digits = 2)
 library(dplyr)
+cf = coef(fit)
 cf \%>\%
   filter(grepl("m|k|beta", parameter )) \%>\%
   select(-method, -group) \%>\%

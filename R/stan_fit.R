@@ -30,10 +30,6 @@
 #' }
 #' @seealso Base methods \code{coef, plot, print}; methods from package
 #'  \code{broom: tidy, augment}.
-#' @importFrom stats coef
-#' @importFrom signal interp1
-#' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom rstan get_posterior_mean sampling
 #' @examples
 #' d = simulate_breathtest_data() # default 10 records
 #' data = cleanup_data(d$data)
@@ -53,7 +49,7 @@
 #' @export
 #'
 stan_fit = function(data, dose = 100, sample_minutes = 15, student_df = 10, 
-                    chains = 4, iter = 1000) {
+                    chains = 2, iter = 1000) {
 
   # Avoid notes on CRAN
   group =  value = patient_id = pat_group = pat_group_i = NULL
@@ -86,8 +82,8 @@ stan_fit = function(data, dose = 100, sample_minutes = 15, student_df = 10,
     sigma = abs(rnorm(1,1,.1))
   )),chains)
 
-  mod = stanmodels[["breath_test_1.stan"]]
-  options(mc.cores = parallel::detectCores()/2)
+  mod = stanmodels[["breath_test_1"]]
+  #options(mc.cores = parallel::detectCores()/2)
   capture.output({
     fit = suppressWarnings(sampling(mod, data = data_list, init_r = init, 
                                     iter =  iter, chains = chains))

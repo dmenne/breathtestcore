@@ -2,18 +2,24 @@
 #'
 #' @description Functions to read and analyze 13C breath test data for gastric emptying
 #' @docType package
-#' @importFrom MASS mvrnorm
-#' @importFrom graphics plot plot.default
-#' @importFrom purrr map_df
-#' @importFrom stats rt rnorm na.omit rlnorm
-#' @importFrom utils capture.output
+#' @import rstan
 #' @import assertthat
 #' @import ggplot2
 #' @import stringr
 #' @import dplyr
 #' @import readr
-#' @import broom
+
+#' @importFrom broom augment tidy
+#' @importFrom MASS mvrnorm
+#' @importFrom graphics plot plot.default
+#' @importFrom purrr map_df
+#' @importFrom stats rt rnorm na.omit rlnorm coef AIC deviance
+#' @importFrom utils capture.output
+#' @importFrom signal interp1
+#' @importFrom tibble rownames_to_column as_tibble
+#' @importFrom nlme nlme nlmeControl fixef nlsList
 #' @useDynLib breathtestcore, .registration = TRUE
+#' @export stanmodels 
 
 #' @title Zurich sample set of 13C breath test data
 #' @description 13C time series PDR data from normals and random patients

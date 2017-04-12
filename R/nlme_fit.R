@@ -26,11 +26,6 @@
 #' }
 #' @seealso Base methods \code{coef, plot, print}; methods from package
 #'  \code{broom: tidy, augment}.
-#' @importFrom stats coef
-#' @importFrom signal interp1
-#' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom nlme nlme nlmeControl fixef
-#' @importFrom stats AIC
 #' @examples
 #' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
 #' data = cleanup_data(d$data)
@@ -38,7 +33,7 @@
 #' plot(fit) # calls plot.breathtestfit
 #' options(digits = 2)
 #' library(dplyr)
-#' cf = coef()
+#' cf = coef(fit)
 #' cf %>%
 #'   filter(grepl("m|k|beta", parameter )) %>%
 #'   select(-method, -group) %>%
