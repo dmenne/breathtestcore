@@ -2,7 +2,6 @@
 #'
 #' @description Functions to read and analyze 13C breath test data for gastric emptying
 #' @docType package
-#' @import rstan
 #' @import assertthat
 #' @import ggplot2
 #' @import stringr
@@ -19,7 +18,6 @@
 #' @importFrom tibble rownames_to_column as_tibble
 #' @importFrom nlme nlme nlmeControl fixef nlsList
 #' @useDynLib breathtestcore, .registration = TRUE
-#' @export stanmodels 
 
 #' @title Zurich sample set of 13C breath test data
 #' @description 13C time series PDR data from normals and random patients

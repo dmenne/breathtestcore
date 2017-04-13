@@ -1,6 +1,6 @@
-#' @title Subsample 13C time serios data if too dense
-#' @description When data of one record are more closely spaced on average
-#' than \code{sample_minutes}, data are spline-subsampled to \code{sample_minutes}.
+#' @title Decimate densely sampled 13C time series
+#' @description When data of a record are more closely spaced \code{sample_minutes}, 
+#' these are spline-subsampled to \code{sample_minutes}.
 #' Too dense sampling leads to non-convergent \code{nlme} fits and to long runs
 #' with Stan-based fits. 
 #' The function is used internally by package \code{breathtestcore} and is exported 
