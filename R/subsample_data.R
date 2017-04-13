@@ -1,7 +1,19 @@
-# Local functions used by stan_fit and nlme_fit
+#' @title Subsample 13C time serios data if too dense
+#' @description When data of one record are more closely spaced on average
+#' than \code{sample_minutes}, data are spline-subsampled to \code{sample_minutes}.
+#' Too dense sampling leads to non-convergent \code{nlme} fits and to long runs
+#' with Stan-based fits. 
+#' The function is used internally by package \code{breathtestcore} and is exported 
+#' for use  by package \code{breathteststan}.
+#' 
+#' @param data Data frame with columns \code{patient_id, group, minute, pdr}.
+#' @param sample_minutes Required average density. When points are more closely
+#' space, data are subsamples. No upsampling occurs when data are more sparse.
+#' @export
+#' 
 subsample_data = function(data, sample_minutes){
   # Ugly CRAN hack
-  patient_id = group = pat_group = . = NULL
+  patient_id = group = pat_group = . = minute = NULL
   # Check if data have been validated by cleanup_data
   assert_that(are_equal(names(data), c("patient_id", "group", "minute", "pdr")))
   
@@ -23,7 +35,7 @@ subsample_data = function(data, sample_minutes){
     left_join(spacing, by = "pat_group") %>%
     group_by(patient_id, group, pat_group) %>%
     do({
-      if (.$spacing[1] > sample_minutes){
+      if (.$spacing[1] > sample_minutes) {
         data.frame(minute = .$minute, pdr = .$pdr)
       } else {
         minute = seq(min(.$minute), max(.$minute), by = sample_minutes)
