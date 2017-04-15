@@ -17,7 +17,6 @@
 #' @importFrom signal interp1
 #' @importFrom tibble rownames_to_column as_tibble
 #' @importFrom nlme nlme nlmeControl fixef nlsList
-#' @useDynLib breathtestcore, .registration = TRUE
 
 #' @title Zurich sample set of 13C breath test data
 #' @description 13C time series PDR data from normals and random patients

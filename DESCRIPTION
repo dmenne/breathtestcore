@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core functions to read and fit 13C time series from breath tests
-Version: 0.1.92
-Date: 2017-04-12
+Version: 0.1.93
+Date: 2017-04-16
 Author: Dieter Menne
 Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>
 Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
@@ -12,7 +12,8 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         by the C-13-octanoate breath test --- rationalization with
         scintigraphy Physiol. Meas. 27 279-89. 
         This package contains a refactored subset of dmenne/d13cbreath without 
-        database and display functions.
+        database and display functions. Methods to fit breath test curves
+        with Bayesian Stan methods are exported to package dmenne/breatteststan.
 Depends: R (>= 3.2.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble,  
          assertthat, broom, tidyr,   ggplot2, signal, utils
