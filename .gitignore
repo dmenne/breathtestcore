@@ -9,4 +9,4 @@ README.html
 inst/doc
 _gh-pages
 *.rds
-
+*.o
