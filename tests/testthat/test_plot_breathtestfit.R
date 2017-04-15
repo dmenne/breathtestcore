@@ -46,4 +46,20 @@ test_that("Plot multiple groups",{
   expect_equal(nlevels(layer_data(p)$PANEL), 6)
 })
 
+test_that("Plot multiple groups data only (no fit)",{
+  data = list(
+    A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
+    B = simulate_breathtest_data(n_records = 4, seed = 187)$data 
+  )
+  d = cleanup_data(data)
+  x = null_fit(d) # mainly converts to class breathtestfit
+  p = plot(x) # Plots raw data only
+  expect_is(p, "ggplot")
+  expect_equal(nlayers(p), 1)   
+  expect_equal(length(p), 9)   
+  expect_equal(nlevels(layer_data(p)$PANEL), 6)
+})
+
+
+
 

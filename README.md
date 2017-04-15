@@ -21,16 +21,21 @@ The software is being developed in cooperation with the ETH and Department of Ga
 * Fits Beta-Exponential nonlinear function using `nls`, which gives successful estimates for 90% of PDR curves
 * Fits Wagner-Nelson, with terminal slope estimated from Bluck-Coward fit
 * Computes population fit with `nlme` using all data in database
-* Computes Bayesian non-linear population fit with Stan for multiple records
-* Computes prior-constrained Bayesian non-linear fit for single records
+* Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
+* Computes prior-constrained Bayesian non-linear fit for single records (refactored to package dmenne/breathteststan)
 * For additional examples, see the folder `tests/testthat` of the source package
 * [A comparison of results with nls, nlme](http://menne-biomed.de/blog/de/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
-* See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions; possible a typo in the published table?
+* See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions?
 
 ## How to install
 To install the functions, use
 ```
 devtools::install_github("breathtestcore","dmenne")
+# In case you want to use the fancey Stan-based methodes
+devtools::install_github("breathteststan","dmenne")
+# And here the currently quite rudimentary Shiny Gui
+# No docs yet, waiting for a sponsor...
+devtools::install_github("breathtestshiny","dmenne")
 ```
 
 ## Previous and future work

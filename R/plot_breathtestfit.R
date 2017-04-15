@@ -53,7 +53,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   } 
   subtitle = ifelse(has_fit, 
         paste("Half-emptying t50 by method", method_t50),
-        paste0("No successful fit"))
+        paste0("No fit available"))
   p + facet_wrap(~patient_id) +
     scale_colour_brewer(type = "seq", palette = "Set1") + 
     ylab("pdr") +

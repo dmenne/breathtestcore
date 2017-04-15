@@ -1,6 +1,6 @@
 Package: breathtestcore
 Title: Core functions to read and fit 13C time series from breath tests
-Version: 0.1.93
+Version: 0.1.94
 Date: 2017-04-16
 Author: Dieter Menne
 Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>
