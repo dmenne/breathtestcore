@@ -3,7 +3,8 @@
 #' @description Plots 13C data and fits.
 #' 
 #' @title S3 plot method for breathtestfit
-#' @param x object of class breathtestfit, as returned by nls_fit or nlme_fit
+#' @param x object of class \code{breathtestfit}, as returned by \code{nls_fit}, 
+#' \code{nlme_fit}  or \code{stan_fit} from package \code{breathteststan}
 #' @param inc increment for fitted curve plot in minutes
 #' @param method_t50 method for t50: \code{maes_ghoos}, \code{bluck_coward} or 
 #' \code{maes_ghoos_scint}
@@ -51,8 +52,15 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
         
     }
   } 
+  if (is(x, "breathtestnlsfit"))
+    fit = "Single curve fit (nls)" else
+  if (is(x, "breathtestnlmefit"))
+    fit = "Population fit (nlme)" else
+  if (is(x, "breathtestnlmefit"))
+    fit = "Bayesian fit (Stan)" else
+  fit = ""
   subtitle = ifelse(has_fit, 
-        paste("Half-emptying t50 by method", method_t50),
+        paste(fit, ". Half-emptying t50 by method", method_t50),
         paste0("No fit available"))
   p + facet_wrap(~patient_id) +
     scale_colour_brewer(type = "seq", palette = "Set1") + 

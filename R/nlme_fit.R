@@ -135,7 +135,7 @@ nlme_fit = function(data, dose = 100,
   
   data = data %>% select(-pat_group) # only used locally
   ret = list(coef = cf, data = data)
-  class(ret) = "breathtestfit"
+  class(ret) = c("breathtestfit", "breathtestnlmefit")
   ret
 }
 

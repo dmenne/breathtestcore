@@ -15,6 +15,7 @@
 #' @importFrom stats rt rnorm na.omit rlnorm coef AIC deviance
 #' @importFrom utils capture.output
 #' @importFrom signal interp1
+#' @importFrom methods is
 #' @importFrom tibble rownames_to_column as_tibble
 #' @importFrom nlme nlme nlmeControl fixef nlsList
 

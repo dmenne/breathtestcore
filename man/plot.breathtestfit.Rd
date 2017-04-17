@@ -7,7 +7,8 @@
 \method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos", ...)
 }
 \arguments{
-\item{x}{object of class breathtestfit, as returned by nls_fit or nlme_fit}
+\item{x}{object of class \code{breathtestfit}, as returned by \code{nls_fit}, 
+\code{nlme_fit}  or \code{stan_fit} from package \code{breathteststan}}
 
 \item{inc}{increment for fitted curve plot in minutes}
 

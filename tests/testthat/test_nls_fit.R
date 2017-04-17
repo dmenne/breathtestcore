@@ -11,6 +11,7 @@ test_that("Nice data return nice result", {
     select(patient_id, group, minute, pdr)
   fit = nls_fit(data)
   expect_is(fit, "breathtestfit")
+  expect_is(fit, "breathtestnlsfit")
   cf = coef(fit)
   expect_equal(cf, fit$coef)
   expect_is(cf, "data.frame")
