@@ -53,15 +53,15 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
     }
   } 
   if (is(x, "breathtestnlsfit"))
-    fit = "Single curve fit (nls)" else
+    fit = "Single curve fit (nls)." else
   if (is(x, "breathtestnlmefit"))
-    fit = "Population fit (nlme)" else
-  if (is(x, "breathtestnlmefit"))
-    fit = "Bayesian fit (Stan)" else
+    fit = "Population fit (nlme)." else
+  if (is(x, "breathteststanfit"))
+    fit = "Bayesian fit (Stan)." else
   fit = ""
   subtitle = ifelse(has_fit, 
-        paste(fit, ". Half-emptying t50 by method", method_t50),
-        paste0("No fit available"))
+        paste(fit, "Half-emptying t50 by method", method_t50),
+        "No fit available")
   p + facet_wrap(~patient_id) +
     scale_colour_brewer(type = "seq", palette = "Set1") + 
     ylab("pdr") +
