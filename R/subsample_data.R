@@ -1,6 +1,7 @@
 #' @title Decimate densely sampled 13C time series
 #' @description When data of a record are more closely spaced \code{sample_minutes}, 
-#' these are spline-subsampled to \code{sample_minutes}.
+#' these are spline-subsampled to \code{sample_minutes}. Values up to 1/5 of 
+#' maximal time are sampled more densely.
 #' Too dense sampling leads to non-convergent \code{nlme} fits and to long runs
 #' with Stan-based fits. 
 #' The function is used internally by package \code{breathtestcore} and is exported 
@@ -38,11 +39,15 @@ subsample_data = function(data, sample_minutes){
       if (.$spacing[1] > sample_minutes) {
         data.frame(minute = .$minute, pdr = .$pdr)
       } else {
-        minute = seq(min(.$minute), max(.$minute), by = sample_minutes)
+        dense_sample_minutes = round(sample_minutes/3)
+        dense_to_minute = max(round(max(.$minute)/(5 * sample_minutes),1))*sample_minutes
+        minute = round(c(seq(min(.$minute), dense_to_minute, dense_sample_minutes), 
+                 seq(dense_to_minute+sample_minutes, max(.$minute), by = sample_minutes)))
         data.frame(minute = minute,
                    pdr = signal::interp1(.$minute, .$pdr, minute, "spline"))
       }
     }) %>%
-    ungroup()
+    ungroup() %>% 
+    na.omit()
   
 }

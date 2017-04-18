@@ -14,7 +14,8 @@ space, data are subsamples. No upsampling occurs when data are more sparse.}
 }
 \description{
 When data of a record are more closely spaced \code{sample_minutes}, 
-these are spline-subsampled to \code{sample_minutes}.
+these are spline-subsampled to \code{sample_minutes}. Values up to 1/5 of 
+maximal time are sampled more densely.
 Too dense sampling leads to non-convergent \code{nlme} fits and to long runs
 with Stan-based fits. 
 The function is used internally by package \code{breathtestcore} and is exported 
