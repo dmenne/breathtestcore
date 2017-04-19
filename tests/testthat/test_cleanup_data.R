@@ -53,6 +53,16 @@ test_that("Suspect missing patient column if multiple pdr with same minute", {
   expect_error(cleanup_data(data), "multiple")
 })
 
+test_that("Group can be missing when there are no colliding events", {
+  data = simulate_breathtest_data(n_records = 2)$data[,c("patient_id", "minute", "pdr")]  
+  data1 = cleanup_data(data)
+  expect_is(data1, "tbl_df")
+  # Jitter minutes a bit, so that table can report zeroes
+  data$minute = data$minute + sample(seq(-0.2,0.2, by = 0.1))
+  data1 = cleanup_data(data)
+  expect_is(data1, "tbl_df")
+})
+
 test_that("When there are three columns, must be named correctly", {
   data = simulate_breathtest_data(n_records = 2)$data[,c("patient_id", "minute", "pdr")]
   names(data)[1] = "pat_id"

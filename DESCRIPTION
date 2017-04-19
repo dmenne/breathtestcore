@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core functions to read and fit 13C time series from breath tests
-Version: 0.1.95
-Date: 2017-04-17
+Version: 0.1.96
+Date: 2017-04-19
 Author: Dieter Menne
 Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>
 Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.

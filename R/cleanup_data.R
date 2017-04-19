@@ -133,7 +133,7 @@ cleanup_data.data.frame = function(data){
   has_group = "group" %in% names(data)
   if (!has_group) {
     # Check if combinations are unique
-    if (!all(with(data, table(patient_id, minute)) == 1))
+    if (!all(with(data, table(patient_id, minute)) %in% 0:1))
       stop("Multiple values for the same patient at the same minute require a <<group>> column")
     data$group = "A"
   }
