@@ -24,5 +24,13 @@ test_that("Bluck-Coward data for testing of parameter functions" , {
   tlag_bluck_coward = tlag_bluck_coward(cf)
   # Bluck-Cowards estimate not very exact
   expect_lt(max(abs(tlag_bluck_coward - cf$tlagin)/cf$tlagin), 0.09)
+  
+  # Names must be removed  
+  expect_null(names(t50_maes_ghoos))
+  expect_null(names(t50_bluck_coward))
+  expect_null(names(tlag_maes_ghoos))
+  expect_null(names(tlag_bluck_coward))
+  expect_null(names(t50_maes_ghoos))
+  
 })
 

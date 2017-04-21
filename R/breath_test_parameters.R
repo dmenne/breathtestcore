@@ -79,9 +79,9 @@ t50_bluck_coward = function(cf) {
     ret
   }
   if (inherits(cf, "numeric"))
-    round(g(cf),3)
+    as.numeric(round(g(cf),3))
   else
-    round(apply(cf[,c("k","beta")],1,g),3)
+    as.numeric(round(apply(cf[,c("k","beta")],1,g),3))
 }
 
 #' @name tlag_bluck_coward
@@ -96,7 +96,7 @@ t50_bluck_coward = function(cf) {
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 tlag_bluck_coward = function(cf) {
-  unlist(log(cf["beta"] / 2) / cf["k"])
+  as.numeric(unlist(log(cf["beta"] / 2) / cf["k"]))
 }
 
 #' @name t50_maes_ghoos
@@ -111,7 +111,7 @@ tlag_bluck_coward = function(cf) {
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 t50_maes_ghoos = function(cf) {
-  unlist(-log(1 - 2 ^ (-1 / cf["beta"])) / cf["k"])
+  as.numeric(unlist(-log(1 - 2 ^ (-1 / cf["beta"])) / cf["k"]))
 }
 
 #' @name tlag_maes_ghoos
@@ -128,7 +128,7 @@ t50_maes_ghoos = function(cf) {
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 tlag_maes_ghoos = function(cf) {
-  unlist(log(cf["beta"]) / cf["k"])
+  as.numeric(unlist(log(cf["beta"]) / cf["k"]))
 }
 
 #' @name t50_maes_ghoos_scintigraphy
@@ -142,5 +142,5 @@ tlag_maes_ghoos = function(cf) {
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 t50_maes_ghoos_scintigraphy = function(cf) {
-  (t50_maes_ghoos(cf) - 66.09) / 1.12
+  as.numeric((t50_maes_ghoos(cf) - 66.09) / 1.12)
 }
