@@ -114,6 +114,7 @@ nlme_fit = function(data, dose = 100,
       group = cf1$group,
       parameter = parameters,
       method = methods,
+      stat = "estimate",
       value = unlist(
         c(
           cf1$m,

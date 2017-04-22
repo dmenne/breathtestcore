@@ -12,6 +12,7 @@
 \item{...}{other parameters passed to methods}
 }
 \description{
-Extracts the coefficients part from fitted 13C beta exponential
-model; same as \code{fit$coef}
+Extracts the estimate of the coefficients part from 
+fitted 13C beta exponential model; same as \code{fit$coef}, but without
+column "stat"
 }
