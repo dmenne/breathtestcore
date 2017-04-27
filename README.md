@@ -1,7 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 
-breathtestcore: functions to read and fit 13C time series from breath tests
+breathtestcore: Read and fit 13C time series from breath tests
 ===========================================
 
 Dieter Menne   
@@ -12,14 +12,13 @@ dieter.menne@menne-biomed.de
 
 ## This package is under development. 
 
-This is a reboot of package dmenne/d13cbreath with better separation of functions. Use dmenne/d13cbreath meanwhile.
+This is a reboot of package dmenne/d13cbreath with better separation of functions. To test some of the functions with sample data or your own data, try the [online demo](https://apps.menne-biomed.de/breathtestshiny).
 
 ## What it does
 The software is being developed in cooperation with the ETH and Department of Gastroenterology of the University Hospital of Zürich, Switzerland. Thanks to Andreas Steingötter, Benjamin Misselwitz, Mark Fox and Werner Schwizer.
 
 * Reads several formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
 * Fits Beta-Exponential nonlinear function using `nls`, which gives successful estimates for 90% of PDR curves
-* Fits Wagner-Nelson, with terminal slope estimated from Bluck-Coward fit
 * Computes population fit with `nlme` using all data in database
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package dmenne/breathteststan)
@@ -29,17 +28,26 @@ The software is being developed in cooperation with the ETH and Department of Ga
 
 ## How to install
 To install the functions, use
-```
-devtools::install_github("breathtestcore","dmenne")
-# In case you want to use the fancey Stan-based methodes
-devtools::install_github("breathteststan","dmenne")
-# And here the currently quite rudimentary Shiny Gui
-# No docs yet, waiting for a sponsor...
-devtools::install_github("breathtestshiny","dmenne")
-```
 
-## Previous and future work
-This is a refactored version of github package `dmenne/d13cbreath` without database and display functionality. Use this package if you want to write your own breath test processing with R.  A Shiny-based interface with a patient database for installation on your computer system will be added later (pending sponsoring)
+    devtools::install_github("breathtestcore","dmenne")
+    # In case you want to use the fancy Stan-based methodes
+    devtools::install_github("breathteststan","dmenne")
+    # And here the currently quite rudimentary Shiny Gui
+    # No docs yet, waiting for a sponsor...
+    devtools::install_github("breathtestshiny","dmenne")
+
+## Usage example from function nlme_fit
+    
+    library(breathtestcore)    
+    d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
+    data = cleanup_data(d$data)
+    fit = nlme_fit(data)
+    plot(fit) # calls plot.breathtestfit
+    
+## Previous and (maybe) future work
+The core fitting functions and the Stan variant are quite stable and can be used to analyze your breath test data with R. The Shiny-based gui (github `dmenne/breathtestshiny` and [online demo here](https://apps.menne-biomed.de/breathtestshiny)) currently is quite rudimentary. Waiting for a sponsor to do further work..,
+
+
 
 __Reference__: 
 
