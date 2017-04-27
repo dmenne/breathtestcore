@@ -63,6 +63,8 @@ nlme_fit = function(data, dose = 100,
     data = data, start = start
   ))
   
+#  capture.output(bc.nls, file = stderr())
+  
   success = FALSE
   pnlsTol = 0.01
   while (!success && pnlsTol < 0.5) {
@@ -78,11 +80,17 @@ nlme_fit = function(data, dose = 100,
         start = nlme::fixef(bc.nls)
       ),silent = TRUE))
     success = !inherits(bc_nlme, "try-error")
-    if (!success) pnlsTol = pnlsTol * 5
+    if (!success) {
+#      capture.output(print(summary(bc_nlme)), file = stderr())             
+      cat("\nnlme fit failed with pnlsTol=", pnlsTol, "\n", file = stderr())
+      pnlsTol = pnlsTol * 5
+    }
   }
   # Return data only if not successful
   if (!success) {
     data = data %>% select(-pat_group) # only used locally
+    comment(data) = paste(comment(data),  "--", "no successful fit with nlme")
+    cat(comment(data),"\n", file = stderr())
     ret = list(data = data)
     class(ret) = "breathtestfit"
     return(ret)
