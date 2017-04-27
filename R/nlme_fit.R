@@ -82,7 +82,7 @@ nlme_fit = function(data, dose = 100,
     success = !inherits(bc_nlme, "try-error")
     if (!success) {
 #      capture.output(print(summary(bc_nlme)), file = stderr())             
-      cat("\nnlme fit failed with pnlsTol=", pnlsTol, "\n", file = stderr())
+#      cat("\nnlme fit failed with pnlsTol=", pnlsTol, "\n", file = stderr())
       pnlsTol = pnlsTol * 5
     }
   }
