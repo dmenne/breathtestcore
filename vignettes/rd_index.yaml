@@ -2,7 +2,7 @@
 # 1. get a list of topics with the following:
 #    db <- tools::Rd_db("breathtestcore")
 #    topics <- gsub("\\.Rd", "", names(db))
-#    cat(paste(topics, collapse = "\n"))
+#    cat(paste("    - ",topics, collapse = "\n"))
 # 2. arrange the topic names into sections as desired in the format below:
 ## If you need to see which topics are missing, do the following in addition:
 # cur <- yaml::yaml.load_file("rd_index.yaml")
@@ -23,25 +23,29 @@ sections:
 -
   section_name: Package Functions
   topics:
-    - augment.breathtestfit
-    - breathtest_data
-    - breathtest_read_function
-    - cleanup_data
-    - coef.breathtestfit
-    - cum_exp_beta
-    - dob_to_pdr
-    - exp_beta
-    - extract_id
-    - nlme_fit
-    - nls_fit
-    - plot.breathtestfit
-    - read_breathid
-    - read_iris
-    - read_iris_csv
-    - simulate_breathtest_data
-    - t50_bluck_coward
-    - t50_maes_ghoos
-    - t50_maes_ghoos_scintigraphy
-    - tidy.breathtestfit
-    - tlag_bluck_coward
-    - tlag_maes_ghoos
+    -  augment.breathtestfit
+    -  breathtest_data
+    -  breathtest_read_function
+    -  cleanup_data
+    -  coef.breathtestfit
+    -  cum_exp_beta
+    -  dob_to_pdr
+    -  exp_beta
+    -  extract_id
+    -  nlme_fit
+    -  nls_fit
+    -  null_fit
+    -  plot.breathtestdata
+    -  plot.breathtestfit
+    -  read_breathid
+    -  read_iris
+    -  read_iris_csv
+    -  simulate_breathtest_data
+    -  subsample_data
+    -  t50_bluck_coward
+    -  t50_maes_ghoos
+    -  t50_maes_ghoos_scintigraphy
+    -  tidy.breathtestfit
+    -  tlag_bluck_coward
+    -  tlag_maes_ghoos
+    -  usz_13c
