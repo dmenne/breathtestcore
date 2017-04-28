@@ -1,4 +1,4 @@
-context("Plot functions for breathtestfit class")
+context("Plot functions for breathtestfit and breathtestdata class")
 
 nlayers <- function(x) length(ggplot_build(x)$data)
 
@@ -61,5 +61,12 @@ test_that("Plot multiple groups data only (no fit)",{
 })
 
 
-
-
+test_that("Can plot a breathtestdata class",{
+  data = list(
+    A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
+    B = simulate_breathtest_data(n_records = 4, seed = 187)$data 
+  )
+  d = null_fit(cleanup_data(data))
+  p = plot(d)
+  expect_is(p, "ggplot")
+})

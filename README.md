@@ -10,19 +10,17 @@ http://www.menne-biomed.de
 
 dieter.menne@menne-biomed.de 
 
-## This package is under development. 
-
 This is a reboot of package dmenne/d13cbreath with better separation of functions. To test some of the functions with sample data or your own data, try the [online demo](https://apps.menne-biomed.de/breathtestshiny).
 
 ## What it does
-The software is being developed in cooperation with the ETH and Department of Gastroenterology of the University Hospital of Zürich, Switzerland. Thanks to Andreas Steingötter, Benjamin Misselwitz, Mark Fox and Werner Schwizer.
+The software is being developed in cooperation with the ETH, the Department of Gastroenterology of the University Hospital of Zürich, and Claraspital Basel. Thanks to Andreas Steingötter, Benjamin Misselwitz, Mark Fox and Werner Schwizer.
 
-* Reads several formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
+* Reads several file formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
 * Fits Beta-Exponential nonlinear function using `nls`, which gives successful estimates for 90% of PDR curves
 * Computes population fit with `nlme` using all data in database
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package dmenne/breathteststan)
-* For additional examples, see the folder `tests/testthat` of the source package
+* Includes a data set of 
 * [A comparison of results with nls, nlme](http://menne-biomed.de/blog/de/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
 * See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions?
 
@@ -43,9 +41,11 @@ To install the functions, use
     data = cleanup_data(d$data)
     fit = nlme_fit(data)
     plot(fit) # calls plot.breathtestfit
+
+For additional examples, see the folder `tests/testthat` of the source package
     
 ## Previous and (maybe) future work
-The core fitting functions and the Stan variant are quite stable and can be used to analyze your breath test data with R. The Shiny-based gui (github `dmenne/breathtestshiny` and [online demo here](https://apps.menne-biomed.de/breathtestshiny)) currently is quite rudimentary. Waiting for a sponsor to do further work..,
+The core fitting functions and the Stan variant are quite stable and can be used to analyze your breath test data with R. The Shiny-based gui (github `dmenne/breathtestshiny` and [online demo here](https://apps.menne-biomed.de/breathtestshiny)) currently is quite rudimentary. 
 
 
 
