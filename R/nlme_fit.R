@@ -90,7 +90,7 @@ nlme_fit = function(data, dose = 100,
   if (!success) {
     data = data %>% select(-pat_group) # only used locally
     comment(data) = paste(comment(data),  "--", "no successful fit with nlme")
-    cat(comment(data),"\n", file = stderr())
+#    cat(comment(data),"\n", file = stderr())
     ret = list(data = data)
     class(ret) = "breathtestfit"
     return(ret)
