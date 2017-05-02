@@ -20,7 +20,7 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package [dmenne/breathteststan](https://github.com/dmenne/breathteststan))
 * Includes an extensive data set of 13C records from the University Hospital of Zürich  
-* [A comparison of results with nls, nlme](http://menne-biomed.de/blog/de/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
+* [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
 * See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions?
 
 ## Sponsors and supporters
@@ -57,7 +57,9 @@ The core fitting functions and the Stan variants are quite stable and can be use
 
 __Reference__: 
 
-* Bluck LJC and Coward WA (2006) Measurement of gastric emptying by the C-13-octanoate breath test --- rationalization with scintigraphy. Physiol. Meas. 27 279-89
+* Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” *Gastroenterology* 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.
+
+* Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” *Gastroenterology* 114 (4): 856–59.
 
 * Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate breath test for gastric emptying. J. Breath Res. 3, http://iopscience.iop.org/1752-7163/3/3/034002/
 
