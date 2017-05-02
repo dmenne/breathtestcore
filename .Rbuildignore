@@ -3,3 +3,4 @@
 .travis.yml
 ^\.travis\.yml$
 ^_gh-pages$
+^docs$

@@ -1,8 +1,11 @@
 Package: breathtestcore
 Title: Core functions to read and fit 13C time series from breath tests
-Version: 0.2.0
+Version: 0.2.1
 Date: 2017-04-27
 Author: Dieter Menne
+Authors@R: c(
+    person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
+    person("University Hospital of Zurich, Dep. Gastroenterology", role = c("cph", "fnd")))
 Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>
 Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         Creates artificial sample data for testing. 
@@ -17,8 +20,10 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
 Depends: R (>= 3.2.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, methods,  
          assertthat, broom, tidyr,   ggplot2, signal, utils
-Suggests: testthat, packagedocs, covr 
+Suggests: testthat, covr 
 URL: https://github.com/dmenne/breathtestcore
 License: GPL-3
 RoxygenNote: 6.0.1
-VignetteBuilder: packagedocs
+VignetteBuilder: knitr
+
+
