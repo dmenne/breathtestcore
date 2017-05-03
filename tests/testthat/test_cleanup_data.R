@@ -58,7 +58,7 @@ test_that("Group can be missing when there are no colliding events", {
   data1 = cleanup_data(data)
   expect_is(data1, "tbl_df")
   # Jitter minutes a bit, so that table can report zeroes
-  data$minute = data$minute + sample(seq(-0.2,0.2, by = 0.1))
+  data$minute = data$minute + base::sample(seq(-0.2,0.2, by = 0.1), nrow(data), replace = TRUE)
   data1 = cleanup_data(data)
   expect_is(data1, "tbl_df")
 })

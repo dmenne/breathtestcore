@@ -14,7 +14,8 @@
 #' @return A list of class "breathtestfit" with elements
 #' \itemize{
 #'   \item {\code{coef} Estimated parameters in a key-value format with 
-#'    columns \code{patient_id, group, parameter, method} and \code{value}}
+#'    columns \code{patient_id, group, parameter, stat, method} and \code{value}}.
+#'    Parameter \code{stat} always has value \code{"estimate"}.
 #'    \item {\code{data}  The input data; nls_fit does not decimate the 
 #'    data.}
 #' }
@@ -117,17 +118,3 @@ nls_fit = function(data, dose = 100,
   ret
 }
 
-#' @title S3 coef for breathtestfit
-#' @description Extracts the estimate of the coefficients part from 
-#' fitted 13C beta exponential model; same as \code{fit$coef}, but without
-#' column "stat" 
-#' @param object of class breathtestfit, as returned by nls_fit or nlme_fit
-#' @param ... other parameters passed to methods
-#' @export
-coef.breathtestfit = function(object, ...){
-  stat = NULL # CRAN
-  if (is.null(object$coef)) return(NULL)    
-  object$coef %>% 
-    filter(stat == "estimate") %>% 
-    select(-stat)   
-}

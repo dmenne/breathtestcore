@@ -26,9 +26,9 @@ using a spline algorithm}
 \value{
 A list of class "breathtestfit" with elements
 \itemize{
-  \item {\code{coef} Estimated parameters as data frame in a key-value format with
-   columns \code{patient_id, group, parameter, method} and \code{value}.
-   Has an attribute AIC.}
+  \item {\code{coef} Estimated parameters in a key-value format with 
+   columns \code{patient_id, group, parameter, stat, method} and \code{value}.
+   Parameter \code{stat} always has value \code{"estimate"}. Has an attribute AIC.}
    \item {\code{data}  The effectively analyzed data. If density of points
    is too high, e.g. with BreathId devices, data are subsampled before fitting.}
 }

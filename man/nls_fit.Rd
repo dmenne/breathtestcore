@@ -23,7 +23,8 @@ for all records is supported.}
 A list of class "breathtestfit" with elements
 \itemize{
   \item {\code{coef} Estimated parameters in a key-value format with 
-   columns \code{patient_id, group, parameter, method} and \code{value}}
+   columns \code{patient_id, group, parameter, stat, method} and \code{value}}.
+   Parameter \code{stat} always has value \code{"estimate"}.
    \item {\code{data}  The input data; nls_fit does not decimate the 
    data.}
 }
