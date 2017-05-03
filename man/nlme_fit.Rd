@@ -58,7 +58,7 @@ cf = coef(fit)
 # The coefficients are in long key-value format
 cf
 # AIC can be extracted
-AIC(cf)
+AIC(fit)
 # Reformat the coefficients to wide format and compare 
 # with the expected coefficients from the simulation 
 # in d$record.
