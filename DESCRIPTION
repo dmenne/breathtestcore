@@ -22,7 +22,7 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
 Depends: R (>= 3.2.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, methods,  
          assertthat, broom, tidyr,   ggplot2, signal, utils
-Suggests: testthat, covr, knitr 
+Suggests: testthat, covr, knitr, breathteststan
 URL: https://github.com/dmenne/breathtestcore
 License: GPL-3
 RoxygenNote: 6.0.1
