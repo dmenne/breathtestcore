@@ -82,7 +82,10 @@
     
     <p>Accepts various data formats of ungrouped or grouped 13C breath 
 test time series, and transforms these into a data frame that can be used by
-all fitting functions, e.g. <code><a href='nls_fit.html'>nls_fit</a></code>.</p>
+all fitting functions, e.g. <code><a href='nls_fit.html'>nls_fit</a></code>.
+If in doubt, pass data frame through <code>cleanup_data</code> before forwarding it 
+to a fitting function. If the function cannot repair the format, it gives better
+error messages than the <code>xxx_fit</code> functions.</p>
     
 
     <pre class="usage"><span class='fu'>cleanup_data</span>(<span class='no'>data</span>)</pre>
@@ -96,13 +99,14 @@ all fitting functions, e.g. <code><a href='nls_fit.html'>nls_fit</a></code>.</p>
 <li><p>A data frame, array or tibble with at least two numeric columns
    with  optional names <code>minute</code> and <code>pdr</code> to fit 
    a single 13C record.</p></li>
-<li><p>An data frame or tibble with three columns named <code>patient_id</code>,
+<li><p>A data frame or tibble with three columns named <code>patient_id</code>,
    <code>minute</code> and <code>pdr</code>.</p></li>
+<li><p>A matrix that can be converted to one of the above.</p></li>
 <li><p>A list of data frames/tibbles that are concatenated. When the list has 
    named elements, the names are converted to group labels. When the list elements
    are not named, group name <code>A</code> is used for all items.</p></li>
-<li><p>A structure of class <code><a href='breathtest_data.html'>breathtest_data</a></code>, for example when
-   importing from a file or a database.</p></li>
+<li><p>A structure of class <code><a href='breathtest_data.html'>breathtest_data</a></code>, as imported from
+   a file with <code><a href='read_any_breathtest.html'>read_any_breathtest</a></code></p></li>
 </ul></td>
     </tr>
     </table>
@@ -111,11 +115,11 @@ all fitting functions, e.g. <code><a href='nls_fit.html'>nls_fit</a></code>.</p>
 
     <p>A tibble with 4 columns. Column <code>patient_id</code> is created with a dummy
 entry of <code>pat_a</code> if no patient_id was present in the input data set. 
-Column <code>group</code> is required if the patients are from different 
-treatment groups or within-subject repeats, e.g. in crossover design.</p>
-<p>A dummy group name "A" is added if no group column was available on input.
+A column <code>group</code> is required in the input data if the patients are from different 
+treatment groups or within-subject repeats, e.g. in crossover design. 
+A dummy group name "A" is added if no group column was available in the input data set.
 If <code>group</code> is present, this is a hint to the analysis functions to do 
-post-hoc breakdown or use it as a grouping in population-based methods.
+post-hoc breakdown or use it as a grouping variable in population-based methods.
 A patient can have records in multiple groups, for example in a cross-over 
 designs.</p>
 <p>Columns <code>minute</code> and <code>pdr</code> are the same as given on input, but negative
@@ -124,7 +128,7 @@ because most fit methods cannot handle the singularity at t=0.</p>
 <p>An error is raised if dummy columns <code>patient_id</code> and <code>group</code> cannot be 
 added in a unique way, i.e. when multiple values for a given minute cannot be 
 disambiguated.</p>
-<p>Comments are persistent; multiple comments are concatenated with newline separator.</p>
+<p>Comments are persistent; multiple comments are concatenated with newline separators.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -187,7 +191,7 @@ disambiguated.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

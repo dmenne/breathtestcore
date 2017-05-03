@@ -2,5 +2,5 @@
 ^\.Rproj\.user$
 .travis.yml
 ^\.travis\.yml$
-^_gh-pages$
 ^docs$
+_pkgdown.yml

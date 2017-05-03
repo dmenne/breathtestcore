@@ -1,7 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 
-breathtestcore: Analyze 13C time series from breath tests
+breathtestcore: 13C breath test to assess gastric emptying
 ===========================================
 
 Dieter Menne   
@@ -10,17 +10,19 @@ http://www.menne-biomed.de
 
 dieter.menne@menne-biomed.de 
 
-[Reference and vignettes](https://dmenne.github.io/breathtestcore/)
+* [Online reference, examples with images and vignettes](https://dmenne.github.io/breathtestcore/). 
+* To test some of the functions with sample data or your own data, try the [online demo](https://apps.menne-biomed.de/breathtestshiny).
+* Issues can be reported [here](https://github.com/dmenne/breathtestcore/issues).
 
-This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13cbreath) with better separation of functions. To test some of the functions with sample data or your own data, try the [online demo](https://apps.menne-biomed.de/breathtestshiny). Issues can be reported [here](https://github.com/dmenne/breathtestcore/issues).
+This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13cbreath) which is partially obsolete. 
 
 ## What it does
 
 * Reads several file formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
-* Fits Beta-Exponential nonlinear function using `nls`, which gives successful estimates for 90% of PDR curves
-* Computes population fit with `nlme` using all data in database
-* Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
+* Fits Beta-Exponential nonlinear curve fits using `nls`, which gives successful estimates for 90% of PDR curves
+* Computes population fits with `nlme` when data from multiple recordings are available, resulting in much more reliable estimates for studies.
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package [dmenne/breathteststan](https://github.com/dmenne/breathteststan))
+* Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
 * Includes an extensive data set of 13C records from the University Hospital of Zürich  
 * [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
 * See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions?

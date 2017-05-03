@@ -1,39 +1,55 @@
 #' @title Mixed-model nlme fit to 13C Breath Data
 #' @description Fits exponential beta curves to 13C breath test series data using
 #' a mixed-model population approach. See
-#' \url{https://menne-biomed.de/blog/breath-test-stan} for a comparision between
+#' \url{https://menne-biomed.de/blog/breath-test-stan} for a comparison between
 #' single curve, mixed-model population and Bayesian methods.
 #'
 #' @param data Data frame or tibble as created by \code{\link{cleanup_data}},
 #' with mandatory columns \code{patient_id, group, minute} and \code{pdr}.
-#' It is recommended to run all data through \code{\link{cleanup_data}} which
-#' will insert dummy columns for \code{patient_id} and \code{minute} if the
-#' data are distinct, and report an error if not. At least 3 records are required
+#' It is recommended to run all data through \code{\link{cleanup_data}} to
+#' insert dummy columns for \code{patient_id} and \code{group} if the
+#' data are distinct, and report an error if not. At least 2 records are required
 #' for a population fit, but 10 or more are recommended to obtain a stable result.
 #' @param dose Dose of acetate or octanoate. Currently, only one common dose
-#' for all records is supported.
-#' @param start Optional start values.
-#' @param sample_minutes If mean sampling interval is < sampleMinutes, data are subsampled
-#' using a spline algorithm
+#' for all records is supported. The dose only affects parameter \code{m} of the 
+#' fit; all important t50-parameters are unaffected by the dose.
+#' @param start Optional start values. In most case, the default values are good
+#' enough to achieve convergence, but slightly different values for \code{beta}
+#' (between 1 and 2.5) can save a non-convergent run.
+#' 
+#' @param sample_minutes When the mean sampling interval is < \code{sampleMinutes}, 
+#' data are subsampled using a spline algorithm by function \code{\link{subsample_data}}.
+#' See the graphical output of \code{\link{plot.breathtestfit}} for an example where
+#' too densely sampled data of one patients were subsampled for the fit.
 #'
 #' @return A list of class "breathtestfit" with elements
-#' \itemize{
-#'   \item {\code{coef} Estimated parameters in a key-value format with 
+#' \describe{
+#'   \item{coef}{Estimated parameters in a key-value format with 
 #'    columns \code{patient_id, group, parameter, stat, method} and \code{value}.
-#'    Parameter \code{stat} always has value \code{"estimate"}. Has an attribute AIC.}
-#'    \item {\code{data}  The effectively analyzed data. If density of points
-#'    is too high, e.g. with BreathId devices, data are subsampled before fitting.}
+#'    Parameter \code{stat} currently always has value \code{"estimate"}. 
+#'    Confidence intervals will be added later, so do not take for granted that 
+#'    all parameters are estimates.  Has an attribute AIC which can be retrieved by
+#'    the S3-function \code{AIC}.}
+#'    \item{data}{The data effectively fitted. If points are to closely sampled
+#'    in the input, e.g. with BreathId devices, data are subsampled before fitting.}
 #' }
 #' @seealso Base methods \code{coef, plot, print}; methods from package
 #'  \code{broom: tidy, augment}.
 #' @examples
-#' d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)
+#' d = simulate_breathtest_data(n_records = 3, noise = 0.7, seed = 4711)
 #' data = cleanup_data(d$data)
 #' fit = nlme_fit(data)
 #' plot(fit) # calls plot.breathtestfit
-#' options(digits = 2)
+#' options(digits = 3)
 #' library(dplyr)
 #' cf = coef(fit)
+#' # The coefficients are in long key-value format
+#' cf
+#' # AIC can be extracted
+#' AIC(cf)
+#' # Reformat the coefficients to wide format and compare 
+#' # with the expected coefficients from the simulation 
+#' # in d$record.
 #' cf %>%
 #'   filter(grepl("m|k|beta", parameter )) %>%
 #'   select(-method, -group) %>%
@@ -148,8 +164,12 @@ nlme_fit = function(data, dose = 100,
   ret
 }
 
+#' @title S3 AIC method for breathtestnlmefit
+#' @description Extract AIC from a model fitted with \code{\link{nlme_fit}}
+#' @param object of class breathtestnlmefit
+#' @param ... not used
 #' @export
-AIC.breathtestfit = function(object, ..., k){
+AIC.breathtestnlmefit = function(object, ...){
   return(attr(object$coef, "AIC"))
 }
 

@@ -41,3 +41,6 @@ fit = nls_fit(data)
 augment(fit, minute = c(60, 120))
 
 }
+\seealso{
+\code{\link[broom]{augment}}
+}

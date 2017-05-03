@@ -12,8 +12,8 @@ read_iris_csv(filename = NULL, text = NULL)
 \item{text}{alternatively, text can be given as string}
 }
 \value{
-list of class \code{breath_test_data} with file name, 
-patient name, patient first name, test, identifikation,
+List of class \code{breath_test_data} with \code{file name, 
+patient name, patient first name, test, identifikation},
 and data frame \code{data} with \code{time} and \code{dob}
 }
 \description{
@@ -23,14 +23,13 @@ The CSV files start as follows:
 "Name","Vorname","Test","Identifikation"
 } 
 This format does not have information about the substrate (acetate, octanoate),
-the dose and body weight and height. By default, using acetate as substrate, 
-dose = 100,  weight = 75, height = 180.
+the dose and body weight and height. The following defaults are used: \code{substrate = acetate, 
+dose = 100,  weight = 75, height = 180}.
 }
 \examples{
 filename = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+cat(readLines(filename, n = 3), sep="\\n")
+#
 iris_data = read_iris_csv(filename)
 str(iris_data)
-}
-\author{
-Dieter Menne, \email{dieter.menne@menne-biomed.de}
 }

@@ -81,7 +81,9 @@
 
     
     <p>Reads the first line of a file, and returns
-the best matching function to read the breath test data in it.</p>
+the best matching function to read the breath test data in it.
+To automatically read the file with the inferred file type,
+use <code><a href='read_any_breathtest.html'>read_any_breathtest</a></code>.</p>
     
 
     <pre class="usage"><span class='fu'>breathtest_read_function</span>(<span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
@@ -91,20 +93,55 @@ the best matching function to read the breath test data in it.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>filename</th>
-      <td><p>breath test data file from Iris/Wagner, BreathID or generic CSV,</p></td>
+      <td><p>breath test data file from Iris/Wagner (extended or CSV), BreathID</p></td>
     </tr>
     <tr>
       <th>text</th>
-      <td><p>as alternative to filename, the text may be given as string</p></td>
+      <td><p>as alternative to filename, pass the text of the file directly</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>function to read the file or the text; NULL if no matching function 
+    <p>Function to read the file or the text; NULL if no matching function 
 was found</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'> <span class='no'>file</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"IrisCSV.TXT"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"breathtestcore"</span>)
+ <span class='co'># Get function to read this file. Returns \code{\link{read_iris_csv}}.</span>
+ <span class='no'>read_fun</span> <span class='kw'>=</span> <span class='fu'>breathtest_read_function</span>(<span class='no'>file</span>)
+ <span class='fu'>str</span>(<span class='fu'>read_fun</span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; List of 23
+#&gt;  $ patient_id  : chr "123456"
+#&gt;  $ name        : chr "Einstein"
+#&gt;  $ first_name  : chr "Albert"
+#&gt;  $ initials    : chr "EA"
+#&gt;  $ dob         : logi NA
+#&gt;  $ birth_year  : logi NA
+#&gt;  $ gender      : logi NA
+#&gt;  $ study       : chr "GE FEST"
+#&gt;  $ pat_study_id: logi NA
+#&gt;  $ file_name   : chr "IrisCSV.TXT"
+#&gt;  $ device      : chr "Iris"
+#&gt;  $ substrate   : chr "acetate"
+#&gt;  $ record_date : chr "2013-09-13"
+#&gt;  $ start_time  : chr "2013-09-13"
+#&gt;  $ end_time    : chr "2013-09-13"
+#&gt;  $ test_no     : int 9999
+#&gt;  $ dose        : num 100
+#&gt;  $ height      : num 180
+#&gt;  $ weight      : num 75
+#&gt;  $ t50         : logi NA
+#&gt;  $ gec         : logi NA
+#&gt;  $ tlag        : logi NA
+#&gt;  $ data        :'data.frame':	14 obs. of  3 variables:
+#&gt;   ..$ minute: num [1:14] 0 10 20 45 60 75 90 105 120 140 ...
+#&gt;   ..$ dob   : num [1:14] 0 2.02 5.22 8.9 9.48 ...
+#&gt;   ..$ pdr   : num [1:14] 0 1.11 2.86 4.87 5.19 ...
+#&gt;  - attr(*, "class")= chr "breathtest_data"</div><div class='input'> <span class='co'># or, simple (returns a list!)</span>
+ <span class='fu'>str</span>(<span class='fu'><a href='read_any_breathtest.html'>read_any_breathtest</a></span>(<span class='no'>file</span>), <span class='fl'>1</span> )</div><div class='output co'>#&gt; List of 1
+#&gt;  $ :List of 23
+#&gt;   ..- attr(*, "class")= chr "breathtest_data"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -112,14 +149,16 @@ was found</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

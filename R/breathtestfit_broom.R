@@ -9,7 +9,7 @@
 #' @param ... other parameters passed to methods
 #' 
 #' @return A tibble/data frame with columns
-#' \itemize{
+#' \describe{
 #'   \item{patient_id}{Patient Id (character)}
 #'   \item{group}{Treatment or patient group (character)}
 #'   \item{m}{Fraction metabolized}
@@ -18,6 +18,7 @@
 #'   \item{t50}{Emptying half time in minutes as calculated following Maes/Ghoos}
 #' }
 #'
+#' @seealso \code{\link[broom]{tidy}}
 #' @examples 
 #' library(broom)
 #' # Generate simulated data
@@ -61,6 +62,7 @@ tidy.breathtestfit = function(x, ...) {
 #' original observation pdr, and column \code{fitted}. If new data are given, 
 #' i.e. when one of parameter \code{by} or \code{minute} is not null, 
 #' only column \code{fitted} is added.
+#' @seealso \code{\link[broom]{augment}}
 #' @examples 
 #' library(broom)
 #' # Generate simulated data

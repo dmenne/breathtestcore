@@ -84,8 +84,8 @@
 The CSV files start as follows:</p><pre>
 "Name","Vorname","Test","Identifikation"
 </pre><p>This format does not have information about the substrate (acetate, octanoate),
-the dose and body weight and height. By default, using acetate as substrate, 
-dose = 100,  weight = 75, height = 180.</p>
+the dose and body weight and height. The following defaults are used: <code>substrate = acetate, 
+dose = 100,  weight = 75, height = 180</code>.</p>
     
 
     <pre class="usage"><span class='fu'>read_iris_csv</span>(<span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
@@ -105,13 +105,16 @@ dose = 100,  weight = 75, height = 180.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list of class <code>breath_test_data</code> with file name, 
-patient name, patient first name, test, identifikation,
+    <p>List of class <code>breath_test_data</code> with <code>file name, 
+patient name, patient first name, test, identifikation</code>,
 and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"IrisCSV.TXT"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"breathtestcore"</span>)
+<span class='fu'>cat</span>(<span class='fu'>readLines</span>(<span class='no'>filename</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"\n"</span>)</div><div class='output co'>#&gt; "Name","Vorname","Test","Identifikation","Testzeit[min]","DOB [o/oo]","Delta [o/oo]","Std. Abw.[o/oo]","CO2 [%]","Std. Abw.[%]","Atom ppm Excess 13C [ppm]","Datum","Zeit"
+#&gt; "Einstein","Albert","GE FEST","123456","0","0","-26.32","4.501891E-02","3.236342","4.746388E-03","0","13.09.2013","13:21"
+#&gt; "Einstein","Albert","GE FEST","123456","10","2.02","-24.3","5.617962E-02","2.391013","2.576674E-03","22.27","13.09.2013","13:23"</div><div class='input'><span class='co'>#</span>
 <span class='no'>iris_data</span> <span class='kw'>=</span> <span class='fu'>read_iris_csv</span>(<span class='no'>filename</span>)
 <span class='fu'>str</span>(<span class='no'>iris_data</span>)</div><div class='output co'>#&gt; List of 23
 #&gt;  $ patient_id  : chr "123456"
@@ -152,16 +155,12 @@ and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    
-Dieter Menne, <a href='mailto:dieter.menne@menne-biomed.de'>dieter.menne@menne-biomed.de</a>
-
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

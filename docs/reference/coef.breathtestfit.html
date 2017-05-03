@@ -82,7 +82,9 @@
     
     <p>Extracts the estimate of the coefficients part from 
 fitted 13C beta exponential model; same as <code>fit$coef</code>, but without
-column "stat"</p>
+column <code>stat</code>. This column always has value <code>"estimate"</code> for <code><a href='nls_fit.html'>nls_fit</a></code>
+and <code><a href='nlme_fit.html'>nlme_fit</a></code>, but additional statistics such as credible intervals
+are available for results from <code><a href='http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit'>stan_fit</a></code>.</p>
     
 
     <pre class="usage"><span class='co'># S3 method for breathtestfit</span>
@@ -102,19 +104,63 @@ column "stat"</p>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Generate simulated data</span>
+<span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>()$<span class='no'>data</span>)
+<span class='co'># Fit with the population method</span>
+<span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
+<span class='co'># All coefficients in the long form</span>
+<span class='fu'>coef</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 80 × 5
+#&gt;    patient_id group parameter           method    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;dbl&gt;
+#&gt; 1      rec_01     A         m         exp_beta 18.03583
+#&gt; 2      rec_01     A         k         exp_beta  0.01491
+#&gt; 3      rec_01     A      beta         exp_beta  2.05618
+#&gt; 4      rec_01     A       t50     bluck_coward 24.75500
+#&gt; 5      rec_01     A       t50       maes_ghoos 83.88977
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint 15.89265
+#&gt; 7      rec_01     A      tlag     bluck_coward  1.85752
+#&gt; 8      rec_01     A      tlag       maes_ghoos 48.33180
+#&gt; 9      rec_02     A         m         exp_beta 29.78346
+#&gt; 10     rec_02     A         k         exp_beta  0.01120
+#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Access coefficients directory</span>
+<span class='no'>fit</span>$<span class='no'>coef</span></div><div class='output co'>#&gt; # A tibble: 80 × 6
+#&gt;    patient_id group parameter           method     stat    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt;
+#&gt; 1      rec_01     A         m         exp_beta estimate 18.03583
+#&gt; 2      rec_01     A         k         exp_beta estimate  0.01491
+#&gt; 3      rec_01     A      beta         exp_beta estimate  2.05618
+#&gt; 4      rec_01     A       t50     bluck_coward estimate 24.75500
+#&gt; 5      rec_01     A       t50       maes_ghoos estimate 83.88977
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint estimate 15.89265
+#&gt; 7      rec_01     A      tlag     bluck_coward estimate  1.85752
+#&gt; 8      rec_01     A      tlag       maes_ghoos estimate 48.33180
+#&gt; 9      rec_02     A         m         exp_beta estimate 29.78346
+#&gt; 10     rec_02     A         k         exp_beta estimate  0.01120
+#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Can also be use with stan fit (slow!)</span>
+<span class='fu'>not_run</span>({
+  <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"breathteststan"</span>)) {
+    <span class='no'>fit</span> <span class='kw'>=</span> <span class='kw'>breathteststan</span><span class='kw'>::</span><span class='fu'>stan_fit</span>(<span class='no'>data</span>)
+    <span class='fu'>coef</span>(<span class='no'>fit</span>)
+    <span class='co'># We get quantiles here, not only estimates</span>
+    <span class='fu'>unique</span>(<span class='no'>fit</span>$<span class='no'>coef</span>$<span class='no'>stat</span>)
+  }
+})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

@@ -2,28 +2,31 @@
 #' @description Accepts various data formats of ungrouped or grouped 13C breath 
 #' test time series, and transforms these into a data frame that can be used by
 #' all fitting functions, e.g. \code{\link{nls_fit}}.
+#' If in doubt, pass data frame through \code{cleanup_data} before forwarding it 
+#' to a fitting function. If the function cannot repair the format, it gives better
+#' error messages than the \code{xxx_fit} functions.
 #' @param data 
 #' \itemize{
 #'   \item{A data frame, array or tibble with at least two numeric columns
 #'    with  optional names \code{minute} and \code{pdr} to fit 
 #'    a single 13C record.  }
-#'    \item{ An data frame or tibble with three columns named \code{patient_id},
+#'  \item{A data frame or tibble with three columns named \code{patient_id},
 #'    \code{minute} and \code{pdr}. }
-#'    \item{A list of data frames/tibbles that are concatenated. When the list has 
+#'  \item{A matrix that can be converted to one of the above.}
+#'  \item{A list of data frames/tibbles that are concatenated. When the list has 
 #'    named elements, the names are converted to group labels. When the list elements
 #'    are not named, group name \code{A} is used for all items.}
-#'    \item{A structure of class \code{\link{breathtest_data}}, for example when
-#'    importing from a file or a database.}
+#'  \item{A structure of class \code{\link{breathtest_data}}, as imported from
+#'    a file with \code{\link{read_any_breathtest}}}
 #' }
 #'
 #' @return A tibble with 4 columns. Column \code{patient_id} is created with a dummy
 #' entry of \code{pat_a} if no patient_id was present in the input data set. 
-#' Column \code{group} is required if the patients are from different 
+#' A column \code{group} is required in the input data if the patients are from different 
 #' treatment groups or within-subject repeats, e.g. in crossover design. 
-#' 
-#' A dummy group name "A" is added if no group column was available on input.
+#' A dummy group name "A" is added if no group column was available in the input data set.
 #' If \code{group} is present, this is a hint to the analysis functions to do 
-#' post-hoc breakdown or use it as a grouping in population-based methods.
+#' post-hoc breakdown or use it as a grouping variable in population-based methods.
 #' A patient can have records in multiple groups, for example in a cross-over 
 #' designs. 
 #' 
@@ -35,7 +38,7 @@
 #' added in a unique way, i.e. when multiple values for a given minute cannot be 
 #' disambiguated.
 #' 
-#' Comments are persistent; multiple comments are concatenated with newline separator.
+#' Comments are persistent; multiple comments are concatenated with newline separators.
 #' 
 #' @examples 
 #' options(digits = 4)

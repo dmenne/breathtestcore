@@ -110,12 +110,17 @@ for all records is supported.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of class "breathtestfit" with elements</p><ul>
-<li><p><code>coef</code> Estimated parameters in a key-value format with 
-   columns <code>patient_id, group, parameter, method</code> and <code>value</code></p></li>
-<li><p><code>data</code>  The input data; nls_fit does not decimate the 
-   data.</p></li>
-</ul>
+    <p>A list of class "breathtestfit" with elements</p><dl class='dl-horizontal'>
+  <dt>coef</dt><dd><p>Estimated parameters in a key-value format with 
+   columns <code>patient_id, group, parameter, stat, method</code> and <code>value</code>.
+   Parameter <code>stat</code> always has value <code>"estimate"</code>.
+   Confidence intervals might be added later, so do not take for granted 
+   all parameters are estimates.</p></dd>
+   <dt>data</dt><dd><p>Input data; <code>nls_fit</code> does not decimate the data. If you have 
+   large data sets where subsampling might be required to achieve faster convergence,
+   using <code>nls_fit</code> anyway is only relevant to show how NOT to do it. 
+   Use <code>nlme_fit</code> or <code>stan_fit</code> instead.</p></dd>
+</dl>
 
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -162,7 +167,7 @@ for all records is supported.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

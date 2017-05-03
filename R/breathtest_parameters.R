@@ -8,7 +8,7 @@
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
 #' note that in this package, \code{k} is measured in 1/min (e.g. 0.01/min),
 #' in publications it is often quoated as 1/h (e.g. 0.6/h).
-#' @return time where value is 1/2 of maximum, i.e. t_{50} or t_{1/2} in minutes; 
+#' @return Time where value is 1/2 of maximum, i.e. t_{50} or t_{1/2} in minutes; 
 #' in the above  paper, the parameter is called t_{1/2(in)}.
 #' @examples
 #' # From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta} 
@@ -91,7 +91,7 @@ t50_bluck_coward = function(cf) {
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required.
 #' Note that in this package,  \code{k} is measured in 1/min (e.g. 0.01/min),
 #' while in the literature is is often quoted as 1/h (e.g. 0.6/h).
-#' @return lag phase in minutes (time t at which the maximum in the rate of change
+#' @return Lag phase in minutes (time t at which the maximum in the rate of change
 #' of g(t) occurs)
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
@@ -107,7 +107,7 @@ tlag_bluck_coward = function(cf) {
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
 #' note that \code{k} is measured in 1/min (e.g. 0.01/min),
 #' usually it is quoted as 1/h (e.g. 0.6/h).
-#' @return time where value is 1/2 of maximum, i.e. \code{t50} in minutes
+#' @return Time where value is 1/2 of maximum, i.e. \code{t50} in minutes
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 t50_maes_ghoos = function(cf) {
@@ -124,7 +124,7 @@ t50_maes_ghoos = function(cf) {
 #' Dig. Dis. Sci. 39 S104-6.
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
 #' \code{k} is measured in 1/min (e.g. 0.01/min).
-#' @return lag time as defined from Maes/Ghoos fit
+#' @return Lag time as defined from Maes/Ghoos fit
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 tlag_maes_ghoos = function(cf) {
@@ -138,7 +138,7 @@ tlag_maes_ghoos = function(cf) {
 #' there is little justification for using it, even if it is closer to real gastric
 #' emptying times as determined by MRI or scintigraphy.
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
-#' @return time where value is 1/2 of maximum, i.e. t50 in minutes.
+#' @return Time where value is 1/2 of maximum, i.e. t50 in minutes.
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 t50_maes_ghoos_scintigraphy = function(cf) {

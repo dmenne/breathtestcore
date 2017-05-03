@@ -13,7 +13,7 @@
 }
 \value{
 A tibble/data frame with columns
-\itemize{
+\describe{
   \item{patient_id}{Patient Id (character)}
   \item{group}{Treatment or patient group (character)}
   \item{m}{Fraction metabolized}
@@ -38,4 +38,7 @@ fit = nlme_fit(data)
 tidy(fit)
 # All coefficients in the long form
 coef(fit)
+}
+\seealso{
+\code{\link[broom]{tidy}}
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>breathtestcore. — usz_13c â€¢ breathtestcore</title>
+<title>Zurich sample set of 13C breath test data — usz_13c â€¢ breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,29 +76,28 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>breathtestcore.</h1>
+    <h1>Zurich sample set of 13C breath test data</h1>
     </div>
 
     
-    <p>Functions to read and analyze 13C breath test data for gastric emptying</p>
-<p>13C time series PDR data from normals and random patients
+    <p>13C time series PDR data from normals and random patients
 from the division of <a href = 'http://www.gastroenterologie.usz.ch/Seiten/default.aspx'>Gastroenterology and Hepatology,
 University Hospital Zurich</a>.
 Most breath samples from normals were collected with bags and analyzed by
 <a href = 'http://kibion.com/content/uploads/2013/07/113-01_IRIS_Consumables_DE.pdf'>IRIS/Wagner</a>
 infrared spectroscopy. Patient samples were recorded with the continuous
 monitoring system
-<a href = 'http://www.exalenz.com/mainmenu/breathid-hp/urea-breath-test'>BreathID</a>.</p><ul>
-<li><p>patient_id Patient identifier, starting with <code>norm</code> for normals
+<a href = 'http://www.exalenz.com/mainmenu/breathid-hp/urea-breath-test'>BreathID</a>.</p><dl class='dl-horizontal'>
+  <dt>patient_id</dt><dd><p>Patient identifier, starting with <code>norm</code> for normals
   (healthy volunteers) and  <code>pat</code> for patients. Note that for normals
   there are two records for each subject, so only the combination of group and
-  is a unique of the record.</p></li>
-<li><p>group <code>liquid_normal</code> for normals and liquid meal,
+  is a unique of the record.</p></dd>
+  <dt>group</dt><dd><p><code>liquid_normal</code> for normals and liquid meal,
   <code>solid_normal</code> normals and solid meal, and <code>patient</code> for patients;
-  patients are an unselected cross-section from the University Hospital of Zurich.</p></li>
-<li><p>minute Time in minutes</p></li>
-<li><p>pdr PDR as computed by breathtest device or from dob via function dob_to_pdr</p></li>
-</ul>
+  patients are an unselected cross-section from the University Hospital of Zurich.</p></dd>
+  <dt>minute</dt><dd><p>Time in minutes</p></dd>
+  <dt>pdr</dt><dd><p>PDR as computed by breathtest device or from dob via function dob_to_pdr</p></dd>
+</dl>
     
 
     <pre class="usage"><span class='fu'>data</span>(<span class='no'>usz_13c</span>)</pre>
@@ -109,14 +108,20 @@ monitoring system
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>usz_13c</span>)
+<span class='fu'>not_run</span>({
   <span class='fu'>str</span>(<span class='no'>usz_13c</span>)
   <span class='co'># Plot all records; this needs some time</span>
   <span class='fu'>pdf</span>(<span class='st'>"usz_13c.pdf"</span>, <span class='kw'>height</span><span class='kw'>=</span> <span class='fl'>30</span>)
   <span class='co'># null_fit makes data plotable without fitting a model</span>
   <span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='no'>usz_13c</span>))
   <span class='fu'>dev.off</span>()
-})</div></pre>
+})
+<span class='co'># Plot a subset</span>
+<span class='fu'>suppressPackageStartupMessages</span>(<span class='fu'>library</span>(<span class='no'>dplyr</span>))
+<span class='no'>usz_part</span> <span class='kw'>=</span>  <span class='no'>usz_13c</span>  <span class='kw'>%&gt;%</span>
+  <span class='fu'>filter</span>(<span class='no'>patient_id</span> <span class='kw'>%in%</span> <span class='fu'>c</span>(<span class='st'>"norm_001"</span>,<span class='st'>"norm_002"</span>, <span class='st'>"pat_001"</span>, <span class='st'>"pat_002"</span>))
+<span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='no'>usz_part</span>))</div><img src='usz_13c-2.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -132,7 +137,7 @@ monitoring system
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

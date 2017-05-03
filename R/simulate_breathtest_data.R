@@ -13,7 +13,7 @@
 #' standard deviation settings.
 #' @param student_t_df When NULL (default), Gaussian noise is added; when >= 2, Student_t distributed noise is added, which generates more realistic outliers. Values from 2 to 5 are useful, when higher values are used the result comes close to that of Gaussian noise. Values below 2 are truncated to 2.
 #' @param missing When 0 (default), all curves have the same number of data points. When > 0, this is the fraction of points that were removed randomly to simulate missing 
-#' @param seed optional seed; not set if seed = NULL (default)
+#' @param seed Optional seed; not set if seed = NULL (default)
 #' @param dose Octanoate/acetate dose, almost always 100 mg, which is also the default
 #' @param first_minute First sampling time. Do not use 0 here, some algorithms do not 
 #' converge when data near 0 are passed.
@@ -29,14 +29,22 @@
 #'     \code{patient_id(chr), minute(dbl), pdr(dbl)} giving the
 #'      time series and grouping parameters.}
 #'  }
-#'  A comment is attached to the return value that can be used as a title
+#'  A comment is attached to the return value that can be used as a title for plotting.
 #' @examples
-#' set.seed(4711)
 #' library(ggplot2)
-#' pdr = simulate_breathtest_data(n_records = 4)
+#' pdr = simulate_breathtest_data(n_records = 4, seed = 4711, missing = 0.3,
+#'        student_t_df = 2, noise = 1.5) # Strong outliers
+#' #
+#' str(pdr, 1)  
+#' #
+#' pdr$record # The "correct" parameters
+#' #
+#' # Explicit plotting
 #' ggplot(pdr$data, aes(x = minute, y = pdr)) + geom_point() +
 #'   facet_wrap(~patient_id) + ggtitle(comment(pdr$data))
-#'
+#' #
+#' # Or use cleanup_data and null_fit for S3 plotting
+#' plot(null_fit(cleanup_data(pdr$data)))
 #' @export
 #'
 simulate_breathtest_data = function(

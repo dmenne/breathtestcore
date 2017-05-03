@@ -1,16 +1,16 @@
-#' @title read BreathID file
+#' @title Read BreathID file
 #'
 #' @description Reads 13c data from a BreathID file, and returns a stucture for
-#' of class \code{breathtest_data}. BreathID files start with the following lines
-#'
-#' \code{Test and Patient parameters}
+#' of class \code{breathtest_data}. 
 #'
 #' @param filename name of txt-file to be read
 #' @param text alternatively, text can be given as string
-#' @return structure of class \code{\link{breathtest_data}}
-#' @author dieter menne, \email{dieter_menne@@menne-biomed_de}
+#' @return Structure of class \code{\link{breathtest_data}}
 #' @examples
 #' filename = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
+#' # Show first lines
+#' cat(readLines(filename, n = 10), sep="\n")
+#' #
 #' bid = read_breathid(filename)
 #' str(bid)
 #' @export

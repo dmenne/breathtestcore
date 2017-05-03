@@ -32,7 +32,7 @@ fit$coef
 if (require("breathteststan")) {
   fit = breathteststan::stan_fit(data)
   coef(fit)
-  # We get quantiles here
+  # We get quantiles here, not only estimates
   unique(fit$coef$stat)
 }
 }

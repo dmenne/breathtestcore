@@ -12,16 +12,18 @@ breathtest_read_function(filename = NULL, text = NULL)
 \item{text}{as alternative to filename, pass the text of the file directly}
 }
 \value{
-function to read the file or the text; NULL if no matching function 
+Function to read the file or the text; NULL if no matching function 
 was found
 }
 \description{
 Reads the first line of a file, and returns
 the best matching function to read the breath test data in it.
-For simplified handling, use \code{\link{read_any_breathtest}}.
+To automatically read the file with the inferred file type,
+use \code{\link{read_any_breathtest}}.
 }
 \examples{
  file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+ # Get function to read this file. Returns \\code{\\link{read_iris_csv}}.
  read_fun = breathtest_read_function(file)
  str(read_fun(file))
  # or, simple (returns a list!)

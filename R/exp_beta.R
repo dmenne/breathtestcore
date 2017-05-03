@@ -25,7 +25,6 @@
 #' @name exp_beta
 # exp_beta= expression(m*d*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute))
 # deriv(exp_beta,c("m","k","beta"))
-#' @author dieter menne, \email{dieter_menne@@menne-biomed_de}
 #'
 #' @param minute vector of time values in minutes
 #' @param dose in mg
@@ -105,10 +104,11 @@
 #'
 #' # compute nls fit for patient a only: fails
 #' # the following line will produce an error message
+#' \dontrun{
 #' pdr_nls = try(nls(pdr~exp_beta(minute, 100, m, k, beta), data=pdr1, start=start,
 #'                   subset = patient=="a"))
 #' stopifnot(class(pdr_nls) == "try-error")
-#'
+#' }
 #' # use nlme to fit the whole set with one truncated record
 #' library(nlme)
 #' pdr_nlme = nlme(pdr~exp_beta(minute,100,m,k,beta), data = pdr1,
@@ -162,7 +162,7 @@ exp_beta = function(minute,dose,m,k,beta) {
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required_
 #' note that \code{k} is measured in 1/min (e_g_ 0_01/min),
 #' usually it is quoted as 1/h (e_g_ 0_6/h)_
-#' @return vector of predicted cumulative pdr
+#' @return Vector of predicted cumulative pdr
 #' @seealso \code{\link{exp_beta}}
 #' @export
 cum_exp_beta  = function(minute, dose, cf) {

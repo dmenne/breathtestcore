@@ -82,7 +82,7 @@
     
     <p>Fits exponential beta curves to 13C breath test series data using
 a mixed-model population approach. See
-<a href = 'https://menne-biomed.de/blog/breath-test-stan'>https://menne-biomed.de/blog/breath-test-stan</a> for a comparision between
+<a href = 'https://menne-biomed.de/blog/breath-test-stan'>https://menne-biomed.de/blog/breath-test-stan</a> for a comparison between
 single curve, mixed-model population and Bayesian methods.</p>
     
 
@@ -96,36 +96,44 @@ single curve, mixed-model population and Bayesian methods.</p>
       <th>data</th>
       <td><p>Data frame or tibble as created by <code><a href='cleanup_data.html'>cleanup_data</a></code>,
 with mandatory columns <code>patient_id, group, minute</code> and <code>pdr</code>.
-It is recommended to run all data through <code><a href='cleanup_data.html'>cleanup_data</a></code> which
-will insert dummy columns for <code>patient_id</code> and <code>minute</code> if the
-data are distinct, and report an error if not. At least 3 records are required
+It is recommended to run all data through <code><a href='cleanup_data.html'>cleanup_data</a></code> to
+insert dummy columns for <code>patient_id</code> and <code>group</code> if the
+data are distinct, and report an error if not. At least 2 records are required
 for a population fit, but 10 or more are recommended to obtain a stable result.</p></td>
     </tr>
     <tr>
       <th>dose</th>
       <td><p>Dose of acetate or octanoate. Currently, only one common dose
-for all records is supported.</p></td>
+for all records is supported. The dose only affects parameter <code>m</code> of the 
+fit; all important t50-parameters are unaffected by the dose.</p></td>
     </tr>
     <tr>
       <th>start</th>
-      <td><p>Optional start values.</p></td>
+      <td><p>Optional start values. In most case, the default values are good
+enough to achieve convergence, but slightly different values for <code>beta</code>
+(between 1 and 2.5) can save a non-convergent run.</p></td>
     </tr>
     <tr>
       <th>sample_minutes</th>
-      <td><p>If mean sampling interval is &lt; sampleMinutes, data are subsampled
-using a spline algorithm</p></td>
+      <td><p>When the mean sampling interval is &lt; <code>sampleMinutes</code>, 
+data are subsampled using a spline algorithm by function <code><a href='subsample_data.html'>subsample_data</a></code>.
+See the graphical output of <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> for an example where
+too densely sampled data of one patients were subsampled for the fit.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of class "breathtestfit" with elements</p><ul>
-<li><p><code>coef</code> Estimated parameters as data frame in a key-value format with
-   columns <code>patient_id, group, parameter, method</code> and <code>value</code>.
-   Has an attribute AIC.</p></li>
-<li><p><code>data</code>  The effectively analyzed data. If density of points
-   is too high, e.g. with BreathId devices, data are subsampled before fitting.</p></li>
-</ul>
+    <p>A list of class "breathtestfit" with elements</p><dl class='dl-horizontal'>
+  <dt>coef</dt><dd><p>Estimated parameters in a key-value format with 
+   columns <code>patient_id, group, parameter, stat, method</code> and <code>value</code>.
+   Parameter <code>stat</code> currently always has value <code>"estimate"</code>. 
+   Confidence intervals will be added later, so do not take for granted that 
+   all parameters are estimates.  Has an attribute AIC which can be retrieved by
+   the S3-function <code>AIC</code>.</p></dd>
+   <dt>data</dt><dd><p>The data effectively fitted. If points are to closely sampled
+   in the input, e.g. with BreathId devices, data are subsampled before fitting.</p></dd>
+</dl>
 
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -135,18 +143,30 @@ using a spline algorithm</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>)
+    <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>)
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>d</span>$<span class='no'>data</span>)
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>nlme_fit</span>(<span class='no'>data</span>)
-<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><img src='nlme_fit-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:nlme’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    collapse</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
+<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><img src='nlme_fit-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
+<span class='co'># The coefficients are in long key-value format</span>
+<span class='no'>cf</span></div><div class='output co'>#&gt; # A tibble: 24 × 5
+#&gt;    patient_id group parameter           method    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;dbl&gt;
+#&gt; 1      rec_01     A         m         exp_beta 5.81e+01
+#&gt; 2      rec_01     A         k         exp_beta 9.06e-03
+#&gt; 3      rec_01     A      beta         exp_beta 2.37e+00
+#&gt; 4      rec_01     A       t50     bluck_coward 5.40e+01
+#&gt; 5      rec_01     A       t50       maes_ghoos 1.52e+02
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint 7.63e+01
+#&gt; 7      rec_01     A      tlag     bluck_coward 1.89e+01
+#&gt; 8      rec_01     A      tlag       maes_ghoos 9.54e+01
+#&gt; 9      rec_02     A         m         exp_beta 5.81e+01
+#&gt; 10     rec_02     A         k         exp_beta 7.39e-03
+#&gt; # ... with 14 more rows</div><div class='input'><span class='co'># AIC can be extracted</span>
+<span class='fu'>AIC</span>(<span class='no'>cf</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("logLik"): no applicable method for 'logLik' applied to an object of class "c('tbl_df', 'tbl', 'data.frame')"</span></div><div class='input'><span class='co'># Reformat the coefficients to wide format and compare </span>
+<span class='co'># with the expected coefficients from the simulation </span>
+<span class='co'># in d$record.</span>
 <span class='no'>cf</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>filter</span>(<span class='fu'>grepl</span>(<span class='st'>"m|k|beta"</span>, <span class='no'>parameter</span> )) <span class='kw'>%&gt;%</span>
   <span class='fu'>select</span>(-<span class='no'>method</span>, -<span class='no'>group</span>) <span class='kw'>%&gt;%</span>
@@ -155,11 +175,11 @@ using a spline algorithm</p></td>
   <span class='fu'>select</span>(<span class='no'>patient_id</span>, <span class='kw'>m_in</span> <span class='kw'>=</span> <span class='no'>m.y</span>, <span class='kw'>m_out</span> <span class='kw'>=</span> <span class='no'>m.x</span>,
          <span class='kw'>beta_in</span> <span class='kw'>=</span> <span class='no'>beta.y</span>, <span class='kw'>beta_out</span> <span class='kw'>=</span> <span class='no'>beta.x</span>,
          <span class='kw'>k_in</span> <span class='kw'>=</span> <span class='no'>k.y</span>, <span class='kw'>k_out</span> <span class='kw'>=</span> <span class='no'>k.x</span>)</div><div class='output co'>#&gt; # A tibble: 3 × 7
-#&gt;   patient_id  m_in m_out beta_in beta_out   k_in  k_out
-#&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1     rec_01    58    58     2.3      2.3 0.0090 0.0089
-#&gt; 2     rec_02    54    53     1.6      1.6 0.0085 0.0086
-#&gt; 3     rec_03    52    54     2.0      2.0 0.0062 0.0059</div></pre>
+#&gt;   patient_id  m_in m_out beta_in beta_out    k_in   k_out
+#&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1     rec_01    58  58.1    2.33     2.37 0.00898 0.00906
+#&gt; 2     rec_02    54  58.1    1.61     1.52 0.00847 0.00739
+#&gt; 3     rec_03    52  58.1    1.98     1.76 0.00623 0.00499</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -178,7 +198,7 @@ using a spline algorithm</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

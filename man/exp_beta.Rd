@@ -113,10 +113,11 @@ pdr1$pdr =
 
 # compute nls fit for patient a only: fails
 # the following line will produce an error message
+\dontrun{
 pdr_nls = try(nls(pdr~exp_beta(minute, 100, m, k, beta), data=pdr1, start=start,
                   subset = patient=="a"))
 stopifnot(class(pdr_nls) == "try-error")
-
+}
 # use nlme to fit the whole set with one truncated record
 library(nlme)
 pdr_nlme = nlme(pdr~exp_beta(minute,100,m,k,beta), data = pdr1,
@@ -135,7 +136,4 @@ ggplot() +
           Borrowing strength from nlme in action!")+
   facet_wrap(~patient) +
   theme(legend.position="none")
-}
-\author{
-dieter menne, \email{dieter_menne@menne-biomed_de}
 }

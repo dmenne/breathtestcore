@@ -17,6 +17,7 @@ A list of class "breathtestfit" with element \code{data} which
 contains the unmodfied data.
 }
 \description{
-Does not fit the data set, but returns a class suitable
-for plotting raw data only with \code{plot.breathtestfit}.
+Does not change the data set, but returns a class suitable
+for plotting raw data with \code{\link{plot.breathtestfit}}. 
+See \code{\link{read_any_breathtest}} for an example.
 }

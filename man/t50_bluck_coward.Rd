@@ -12,7 +12,7 @@ note that in this package, \code{k} is measured in 1/min (e.g. 0.01/min),
 in publications it is often quoated as 1/h (e.g. 0.6/h).}
 }
 \value{
-time where value is 1/2 of maximum, i.e. t_{50} or t_{1/2} in minutes; 
+Time where value is 1/2 of maximum, i.e. t_{50} or t_{1/2} in minutes; 
 in the above  paper, the parameter is called t_{1/2(in)}.
 }
 \description{

@@ -6,9 +6,11 @@ Author: Dieter Menne
 Authors@R: c(
     person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
     person("Menne Biomed Consulting Tuebingen", role = c("cph")),
-    person("University Hospital of Zurich, Dep. Gastroenterology", role = c("fnd"))
+    person("Benjamin","Misselwitz", , role = c("fnd")),
+    person("Mark", "Fox", , role = c("fnd")),
+    person("University Hospital of Zurich, Dep. Gastroenterology", role = c("fnd", "dtc"))
     )
-Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>
+Maintainer: Dieter Menne<dieter.menne@menne-biomed.de>
 Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         Creates artificial sample data for testing. 
         Fits Maes/Ghoos, Bluck-Coward self-correcting formula using nls, nlme and

@@ -10,7 +10,7 @@ t50_maes_ghoos_scintigraphy(cf)
 \item{cf}{named vector of coefficients; only \code{k} and \code{beta} are required}
 }
 \value{
-time where value is 1/2 of maximum, i.e. t50 in minutes.
+Time where value is 1/2 of maximum, i.e. t50 in minutes.
 }
 \description{
 t50 from beta exponential function, with linear correction for

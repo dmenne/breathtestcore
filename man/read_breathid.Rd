@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_breathid.R
 \name{read_breathid}
 \alias{read_breathid}
-\title{read BreathID file}
+\title{Read BreathID file}
 \usage{
 read_breathid(filename = NULL, text = NULL)
 }
@@ -12,19 +12,17 @@ read_breathid(filename = NULL, text = NULL)
 \item{text}{alternatively, text can be given as string}
 }
 \value{
-structure of class \code{\link{breathtest_data}}
+Structure of class \code{\link{breathtest_data}}
 }
 \description{
 Reads 13c data from a BreathID file, and returns a stucture for
-of class \code{breathtest_data}. BreathID files start with the following lines
-
-\code{Test and Patient parameters}
+of class \code{breathtest_data}.
 }
 \examples{
 filename = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
+# Show first lines
+cat(readLines(filename, n = 10), sep="\\n")
+#
 bid = read_breathid(filename)
 str(bid)
-}
-\author{
-dieter menne, \email{dieter_menne@menne-biomed_de}
 }

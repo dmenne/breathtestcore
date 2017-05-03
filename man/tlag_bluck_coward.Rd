@@ -12,7 +12,7 @@ Note that in this package,  \code{k} is measured in 1/min (e.g. 0.01/min),
 while in the literature is is often quoted as 1/h (e.g. 0.6/h).}
 }
 \value{
-lag phase in minutes (time t at which the maximum in the rate of change
+Lag phase in minutes (time t at which the maximum in the rate of change
 of g(t) occurs)
 }
 \description{

@@ -55,22 +55,28 @@
   <div class="contents col-md-9">
     
 
-<div id="breathtestcore-analyze-13c-time-series-from-breath-tests" class="section level1">
+<div id="breathtestcore-13c-breath-test-to-assess-gastric-emptying" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#breathtestcore-analyze-13c-time-series-from-breath-tests" class="anchor"></a>breathtestcore: Analyze 13C time series from breath tests</h1></div>
+<a href="#breathtestcore-13c-breath-test-to-assess-gastric-emptying" class="anchor"></a>breathtestcore: 13C breath test to assess gastric emptying</h1></div>
 <p>Dieter Menne<br>
 Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.de" class="uri">http://www.menne-biomed.de</a></p>
 <p><a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
-<p>This is a reboot of R package <a href="https://github.com/dmenne/d13cbreath">dmenne/d13cbreath</a> with better separation of functions. To test some of the functions with sample data or your own data, try the <a href="https://apps.menne-biomed.de/breathtestshiny">online demo</a>. Issues can be reported <a href="https://github.com/dmenne/breathtestcore/issues">here</a>.</p>
+<ul>
+<li>
+<a href="https://dmenne.github.io/breathtestcore/">Online reference, examples with images and vignettes</a>.</li>
+<li>To test some of the functions with sample data or your own data, try the <a href="https://apps.menne-biomed.de/breathtestshiny">online demo</a>.</li>
+<li>Issues can be reported <a href="https://github.com/dmenne/breathtestcore/issues">here</a>.</li>
+</ul>
+<p>This is a reboot of R package <a href="https://github.com/dmenne/d13cbreath">dmenne/d13cbreath</a> which is partially obsolete.</p>
 <div id="what-it-does" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-it-does" class="anchor"></a>What it does</h2>
 <ul>
 <li>Reads several file formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV</li>
-<li>Fits Beta-Exponential nonlinear function using <code>nls</code>, which gives successful estimates for 90% of PDR curves</li>
-<li>Computes population fit with <code>nlme</code> using all data in database</li>
-<li>Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)</li>
+<li>Fits Beta-Exponential nonlinear curve fits using <code>nls</code>, which gives successful estimates for 90% of PDR curves</li>
+<li>Computes population fits with <code>nlme</code> when data from multiple recordings are available, resulting in much more reliable estimates for studies.</li>
 <li>Computes prior-constrained Bayesian non-linear fit for single records (refactored to package <a href="https://github.com/dmenne/breathteststan">dmenne/breathteststan</a>)</li>
+<li>Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)</li>
 <li>Includes an extensive data set of 13C records from the University Hospital of Zürich<br>
 </li>
 <li>
@@ -131,7 +137,10 @@ fit =<span class="st"> </span><span class="kw"><a href="reference/nlme_fit.html"
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Dieter Menne <br><small class="roles"> Author, maintainer </small> </li>
-<li>University Hospital of Zurich, Dep. Gastroenterology <br><small class="roles"> Copyright holder, funder </small> </li>
+<li>Benjamin Misselwitz <br><small class="roles"> Funder </small> </li>
+<li>Mark Fox <br><small class="roles"> Funder </small> </li>
+<li>University Hospital of Zurich, Dep. Gastroenterology <br><small class="roles"> Funder, data contributor </small> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
@@ -143,7 +152,7 @@ fit =<span class="st"> </span><span class="kw"><a href="reference/nlme_fit.html"
 
 
       <footer><div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

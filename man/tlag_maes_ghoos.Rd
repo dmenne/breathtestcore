@@ -11,7 +11,7 @@ tlag_maes_ghoos(cf)
 \code{k} is measured in 1/min (e.g. 0.01/min).}
 }
 \value{
-lag time as defined from Maes/Ghoos fit
+Lag time as defined from Maes/Ghoos fit
 }
 \description{
 compute \code{tlag} from uncorrected fit to the beta 

@@ -10,12 +10,14 @@
 #'
 #' @param filename name of IRIS/Wagner file in composite format
 #' @param text alternatively, text can be given as string
-#' @return list with \code{file_name, patient_name, patient_first_name,
+#' @return List of class \code{\link{breathtest_data}} with 
+#' \code{file_name, patient_name, patient_first_name,
 #' test, identifikation}, and data frame \code{data} with \code{time}
 #' and \code{dob}
-#' @author dieter menne, \email{dieter_menne@@menne-biomed_de}
 #' @examples
 #' filename = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+#' cat(readLines(filename, n = 10), sep="\n")
+#' #
 #' iris_data = read_iris(filename)
 #' str(iris_data)
 #' @export read_iris

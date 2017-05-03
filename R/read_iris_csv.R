@@ -6,16 +6,17 @@
 #' "Name","Vorname","Test","Identifikation"
 #'} 
 #' This format does not have information about the substrate (acetate, octanoate),
-#' the dose and body weight and height. By default, using acetate as substrate, 
-#' dose = 100,  weight = 75, height = 180.
+#' the dose and body weight and height. The following defaults are used: \code{substrate = acetate, 
+#' dose = 100,  weight = 75, height = 180}.
 #' @param filename Name of IRIS/Wagner file in CSV format
 #' @param text alternatively, text can be given as string
-#' @return list of class \code{breath_test_data} with file name, 
-#' patient name, patient first name, test, identifikation,
+#' @return List of class \code{breath_test_data} with \code{file name, 
+#' patient name, patient first name, test, identifikation},
 #' and data frame \code{data} with \code{time} and \code{dob}
-#' @author Dieter Menne, \email{dieter.menne@@menne-biomed.de}
 #' @examples
 #' filename = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+#' cat(readLines(filename, n = 3), sep="\n")
+#' #
 #' iris_data = read_iris_csv(filename)
 #' str(iris_data)
 #' @export 
@@ -85,8 +86,10 @@ read_iris_csv = function(filename = NULL, text = NULL) {
 #' @description First tries to extract only digits, separating these by underscore 
 #' when there are multiple blocks. If this give a non-valid  id, returns the 
 #' whole string without spaces and perios, hoping it makes sense.
-#' For internal use, but may be overridden for exotic IDs
+#' For internal use, but should be overridden for exotic IDs
 #' @param id One item from column Identifikation, e.g. "KEK-ZH-Nr.2013-1234"
+#' @examples 
+#' extract_id
 #' @export
 extract_id = function(id){
   id1 = paste(str_match_all(id, "([\\d]+)")[[1]][,2], collapse = "_")

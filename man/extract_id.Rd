@@ -13,5 +13,8 @@ extract_id(id)
 First tries to extract only digits, separating these by underscore 
 when there are multiple blocks. If this give a non-valid  id, returns the 
 whole string without spaces and perios, hoping it makes sense.
-For internal use, but may be overridden for exotic IDs
+For internal use, but should be overridden for exotic IDs
+}
+\examples{
+extract_id
 }

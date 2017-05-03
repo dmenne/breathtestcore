@@ -12,7 +12,7 @@ note that \code{k} is measured in 1/min (e.g. 0.01/min),
 usually it is quoted as 1/h (e.g. 0.6/h).}
 }
 \value{
-time where value is 1/2 of maximum, i.e. \code{t50} in minutes
+Time where value is 1/2 of maximum, i.e. \code{t50} in minutes
 }
 \description{
 Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 

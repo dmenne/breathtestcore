@@ -130,7 +130,7 @@ standard deviation settings.</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>optional seed; not set if seed = NULL (default)</p></td>
+      <td><p>Optional seed; not set if seed = NULL (default)</p></td>
     </tr>
     <tr>
       <th>dose</th>
@@ -160,16 +160,30 @@ converge when data near 0 are passed.</p></td>
   <dt>data</dt><dd><p>Data frame with columns
     <code>patient_id(chr), minute(dbl), pdr(dbl)</code> giving the
      time series and grouping parameters.</p></dd>
- </dl><p>A comment is attached to the return value that can be used as a title</p>
+ </dl><p>A comment is attached to the return value that can be used as a title for plotting.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>set.seed</span>(<span class='fl'>4711</span>)
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='no'>pdr</span> <span class='kw'>=</span> <span class='fu'>simulate_breathtest_data</span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='no'>pdr</span> <span class='kw'>=</span> <span class='fu'>simulate_breathtest_data</span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>, <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
+       <span class='kw'>student_t_df</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>1.5</span>) <span class='co'># Strong outliers</span>
+<span class='co'>#</span>
+<span class='fu'>str</span>(<span class='no'>pdr</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 2
+#&gt;  $ record:'data.frame':	4 obs. of  5 variables:
+#&gt;   ..- attr(*, "cov")= num [1:3, 1:3] 1.88e+02 -2.60e-02 -2.04 -2.60e-02 7.74e-06 4.77e-04 -2.04 4.77e-04 1.82e-01
+#&gt;   .. ..- attr(*, "dimnames")=List of 2
+#&gt;  $ data  :Classes <U+0091>tbl_df<U+0092>, <U+0091>tbl<U+0092> and 'data.frame':	31 obs. of  3 variables:
+#&gt;   ..- attr(*, "comment")= chr "4 records,  m = 40, k =  0.010, beta =  2.0, cov-matrix, \n Student-t 2 df noise amplitude = 2, 30% missing"</div><div class='input'><span class='co'>#</span>
+<span class='no'>pdr</span>$<span class='no'>record</span> <span class='co'># The "correct" parameters</span></div><div class='output co'>#&gt;   patient_id  m      k beta t50_maes_ghoos
+#&gt; 1     rec_01 30 0.0086  2.0            142
+#&gt; 2     rec_02 27 0.0140  2.4            100
+#&gt; 3     rec_03 46 0.0098  1.4             97
+#&gt; 4     rec_04 56 0.0076  2.2            169</div><div class='input'><span class='co'>#</span>
+<span class='co'># Explicit plotting</span>
 <span class='fu'>ggplot</span>(<span class='no'>pdr</span>$<span class='no'>data</span>, <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>)) + <span class='fu'>geom_point</span>() +
-  <span class='fu'>facet_wrap</span>(~<span class='no'>patient_id</span>) + <span class='fu'>ggtitle</span>(<span class='fu'>comment</span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><img src='simulate_breathtest_data-2.png' alt='' width='540' height='400' /><div class='input'>
-</div></pre>
+  <span class='fu'>facet_wrap</span>(~<span class='no'>patient_id</span>) + <span class='fu'>ggtitle</span>(<span class='fu'>comment</span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><img src='simulate_breathtest_data-6.png' alt='' width='540' height='400' /><div class='input'><span class='co'>#</span>
+<span class='co'># Or use cleanup_data and null_fit for S3 plotting</span>
+<span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>)))</div><img src='simulate_breathtest_data-8.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -186,7 +200,7 @@ converge when data near 0 are passed.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

@@ -28,7 +28,7 @@ standard deviation settings.}
 
 \item{missing}{When 0 (default), all curves have the same number of data points. When > 0, this is the fraction of points that were removed randomly to simulate missing}
 
-\item{seed}{optional seed; not set if seed = NULL (default)}
+\item{seed}{Optional seed; not set if seed = NULL (default)}
 
 \item{dose}{Octanoate/acetate dose, almost always 100 mg, which is also the default}
 
@@ -49,7 +49,7 @@ A list with 3 elements:
     \code{patient_id(chr), minute(dbl), pdr(dbl)} giving the
      time series and grouping parameters.}
  }
- A comment is attached to the return value that can be used as a title
+ A comment is attached to the return value that can be used as a title for plotting.
 }
 \description{
 Generates simulated breath test data, optionally with errors. If none of the three
@@ -58,10 +58,18 @@ matrix from USZ breath test data is used. If any of the standard deviations is g
 default values for the others will be used.
 }
 \examples{
-set.seed(4711)
 library(ggplot2)
-pdr = simulate_breathtest_data(n_records = 4)
+pdr = simulate_breathtest_data(n_records = 4, seed = 4711, missing = 0.3,
+       student_t_df = 2, noise = 1.5) # Strong outliers
+#
+str(pdr, 1)  
+#
+pdr$record # The "correct" parameters
+#
+# Explicit plotting
 ggplot(pdr$data, aes(x = minute, y = pdr)) + geom_point() +
   facet_wrap(~patient_id) + ggtitle(comment(pdr$data))
-
+#
+# Or use cleanup_data and null_fit for S3 plotting
+plot(null_fit(cleanup_data(pdr$data)))
 }

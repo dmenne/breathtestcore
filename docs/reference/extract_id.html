@@ -83,7 +83,7 @@
     <p>First tries to extract only digits, separating these by underscore 
 when there are multiple blocks. If this give a non-valid  id, returns the 
 whole string without spaces and perios, hoping it makes sense.
-For internal use, but may be overridden for exotic IDs</p>
+For internal use, but should be overridden for exotic IDs</p>
     
 
     <pre class="usage"><span class='fu'>extract_id</span>(<span class='no'>id</span>)</pre>
@@ -98,19 +98,28 @@ For internal use, but may be overridden for exotic IDs</p>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>extract_id</span></div><div class='output co'>#&gt; function(id){
+#&gt;   id1 = paste(str_match_all(id, "([\\d]+)")[[1]][,2], collapse = "_")
+#&gt;   if (nchar(id1) &gt;= 5) return(id1)
+#&gt;   tolower(str_replace_all(id, "[\\.\\-\\W]+", "_"))
+#&gt; }
+#&gt; &lt;environment: namespace:breathtestcore&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">

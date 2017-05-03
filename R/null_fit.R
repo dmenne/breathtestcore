@@ -1,6 +1,7 @@
 #' @title Convert data to class breathtestfit
-#' @description Does not fit the data set, but returns a class suitable
-#' for plotting raw data only with \code{plot.breathtestfit}.
+#' @description Does not change the data set, but returns a class suitable
+#' for plotting raw data with \code{\link{plot.breathtestfit}}. 
+#' See \code{\link{read_any_breathtest}} for an example.
 #'
 #' @param data Data frame or tibble as created by \code{\link{cleanup_data}}, 
 #' with mandatory columns \code{patient_id, group, minute} and \code{pdr}. 

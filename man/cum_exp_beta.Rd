@@ -16,7 +16,7 @@ note that \code{k} is measured in 1/min (e_g_ 0_01/min),
 usually it is quoted as 1/h (e_g_ 0_6/h)_}
 }
 \value{
-vector of predicted cumulative pdr
+Vector of predicted cumulative pdr
 }
 \description{
 equation (2), page 4 from bluck, "recent advances in the interpretation of

@@ -21,12 +21,16 @@ for all records is supported.}
 }
 \value{
 A list of class "breathtestfit" with elements
-\itemize{
-  \item {\code{coef} Estimated parameters in a key-value format with 
-   columns \code{patient_id, group, parameter, stat, method} and \code{value}}.
+\describe{
+  \item{coef}{Estimated parameters in a key-value format with 
+   columns \code{patient_id, group, parameter, stat, method} and \code{value}.
    Parameter \code{stat} always has value \code{"estimate"}.
-   \item {\code{data}  The input data; nls_fit does not decimate the 
-   data.}
+   Confidence intervals might be added later, so do not take for granted 
+   all parameters are estimates.}
+   \item{data}{Input data; \code{nls_fit} does not decimate the data. If you have 
+   large data sets where subsampling might be required to achieve faster convergence,
+   using \code{nls_fit} anyway is only relevant to show how NOT to do it. 
+   Use \code{nlme_fit} or \code{stan_fit} instead.}
 }
 }
 \description{

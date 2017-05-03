@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>read BreathID file — read_breathid â€¢ breathtestcore</title>
+<title>Read BreathID file — read_breathid â€¢ breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,14 +76,12 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>read BreathID file</h1>
+    <h1>Read BreathID file</h1>
     </div>
 
     
     <p>Reads 13c data from a BreathID file, and returns a stucture for
-of class <code>breathtest_data</code>. BreathID files start with the following lines
-
-    <code>Test and Patient parameters</code></p>
+of class <code>breathtest_data</code>.</p>
     
 
     <pre class="usage"><span class='fu'>read_breathid</span>(<span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
@@ -103,11 +101,22 @@ of class <code>breathtest_data</code>. BreathID files start with the following l
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>structure of class <code><a href='breathtest_data.html'>breathtest_data</a></code></p>
+    <p>Structure of class <code><a href='breathtest_data.html'>breathtest_data</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"350_20043_0_GER.txt"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"breathtestcore"</span>)
+<span class='co'># Show first lines</span>
+<span class='fu'>cat</span>(<span class='fu'>readLines</span>(<span class='no'>filename</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"\n"</span>)</div><div class='output co'>#&gt; Test and Patient parameters					
+#&gt; 
+#&gt; 					
+#&gt; Date           -    12/11/12					
+#&gt; End time       -    08:54					
+#&gt; Start time     -    12:49					
+#&gt; Patient # - 0					
+#&gt; Patient ID   - Franz 					
+#&gt; Test No.   -    20043					
+#&gt; Type       -    Octanoic-Acid					</div><div class='input'><span class='co'>#</span>
 <span class='no'>bid</span> <span class='kw'>=</span> <span class='fu'>read_breathid</span>(<span class='no'>filename</span>)
 <span class='fu'>str</span>(<span class='no'>bid</span>)</div><div class='output co'>#&gt; List of 23
 #&gt;  $ patient_id  : chr "0"
@@ -151,16 +160,12 @@ of class <code>breathtest_data</code>. BreathID files start with the following l
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    
-dieter menne, <a href='mailto:dieter_menne@menne-biomed_de'>dieter_menne@menne-biomed_de</a>
-
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
 </div>
 
 <div class="pkgdown">
