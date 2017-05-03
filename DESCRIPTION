@@ -5,7 +5,7 @@ Date: 2017-04-27
 Author: Dieter Menne
 Authors@R: c(
     person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
-    person("Menne Biomed Consulting Tuebingen", role = c("cph", "cre")),
+    person("Menne Biomed Consulting Tuebingen", role = c("cph")),
     person("University Hospital of Zurich, Dep. Gastroenterology", role = c("fnd"))
     )
 Maintainer: Dieter Menne <dieter.menne@menne-biomed.de>

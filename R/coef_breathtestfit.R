@@ -3,7 +3,7 @@
 #' fitted 13C beta exponential model; same as \code{fit$coef}, but without
 #' column \code{stat}. This column always has value \code{"estimate"} for \code{\link{nls_fit}}
 #' and \code{\link{nlme_fit}}, but additional statistics such as credible intervals
-#' are available for results from \code{\link{stan_fit}}.
+#' are available for results from \code{\link[breathteststan]{stan_fit}}.
 #' @param object of class breathtestfit, as returned by nls_fit or nlme_fit
 #' @param ... other parameters passed to methods
 #' @examples
