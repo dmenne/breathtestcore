@@ -1,12 +1,17 @@
-#' Snoop method to read breath test file
-#'
+#' @title Snoop method to read breath test file
 #' @description Reads the first line of a file, and returns
 #' the best matching function to read the breath test data in it.
-#' @param filename breath test data file from Iris/Wagner, BreathID or generic CSV, 
-#' @param text as alternative to filename, the text may be given as string
-#'
+#' For simplified handling, use \code{\link{read_any_breathtest}}.
+#' @param filename breath test data file from Iris/Wagner (extended or CSV), BreathID
+#' @param text as alternative to filename, pass the text of the file directly
 #' @return function to read the file or the text; NULL if no matching function 
 #' was found 
+#' @examples
+#'  file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+#'  read_fun = breathtest_read_function(file)
+#'  str(read_fun(file))
+#'  # or, simple (returns a list!)
+#'  str(read_any_breathtest(file), 1 )
 #' @export
 #'
 breathtest_read_function = function(filename = NULL, text = NULL) {

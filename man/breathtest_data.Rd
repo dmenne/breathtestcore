@@ -68,5 +68,21 @@ and substrate are given, computes pdr via function dob_to_pdr}
 }
 \description{
 Generates structure of class \code{breathtest_data} with required fields
-and optional fields. Optional fields by default are NA
+and optional fields. Optional fields by default are NA. This structure is used
+internally as an intermediate when reading in external file formats. All
+\code{read_xxx} functions return this structure, and any converter to 
+a new format should do the same to be used with \code{\link{cleanup_data}}. 
+To support a new format with, also update \code{\link{breathtest_read_function}} which
+returns the most likely function to read the file by reading a few lines in it.
+}
+\examples{
+# Read a file with known format
+iris_csv_file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+iris_csv_data = read_iris_csv(iris_csv_file)
+# Note that many filds are NA
+str(iris_csv_data)
+# Convert to a format that can be fed to one of the fit functions
+iris_df = cleanup_data(iris_csv_data)
+# Single curve fit
+coef(nls_fit(iris_df)) 
 }
