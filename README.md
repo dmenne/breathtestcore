@@ -10,6 +10,8 @@ http://www.menne-biomed.de
 
 dieter.menne@menne-biomed.de 
 
+[Reference and vignettes](https://dmenne.github.io/breathtestcore/)
+
 This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13cbreath) with better separation of functions. To test some of the functions with sample data or your own data, try the [online demo](https://apps.menne-biomed.de/breathtestshiny). Issues can be reported [here](https://github.com/dmenne/breathtestcore/issues).
 
 ## What it does
