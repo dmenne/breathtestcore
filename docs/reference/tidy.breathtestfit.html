@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -127,32 +127,32 @@ additional parameters should be extracted with <code><a href='coef.breathtestfit
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
 <span class='co'># Output coefficients</span>
 <span class='fu'>tidy</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 10 × 6
-#&gt;    patient_id group     m       k  beta   t50
-#&gt; *       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1      rec_01     A  37.9 0.00971  1.91 122.5
-#&gt; 2      rec_02     A  48.4 0.01170  1.97 103.8
-#&gt; 3      rec_03     A  45.7 0.01034  2.24 127.9
-#&gt; 4      rec_04     A  25.9 0.00690  2.01 178.7
-#&gt; 5      rec_05     A  20.9 0.00753  2.11 168.8
-#&gt; 6      rec_06     A  46.1 0.01006  1.70 108.5
-#&gt; 7      rec_07     A  40.2 0.00976  2.56 147.3
-#&gt; 8      rec_08     A  32.2 0.00962  1.92 124.1
-#&gt; 9      rec_09     A  48.5 0.01128  1.78 100.5
-#&gt; 10     rec_10     A  29.8 0.00843  1.17  95.4</div><div class='input'><span class='co'># All coefficients in the long form</span>
-<span class='fu'>coef</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 79 × 5
-#&gt;    patient_id group parameter           method     value
-#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt;
-#&gt; 1      rec_01     A         m         exp_beta  37.94152
-#&gt; 2      rec_01     A         k         exp_beta   0.00971
-#&gt; 3      rec_01     A      beta         exp_beta   1.90970
-#&gt; 4      rec_01     A       t50     bluck_coward  31.84200
-#&gt; 5      rec_01     A       t50       maes_ghoos 122.45957
-#&gt; 6      rec_01     A       t50 maes_ghoos_scint  50.32997
-#&gt; 7      rec_01     A      tlag     bluck_coward  -4.75640
-#&gt; 8      rec_01     A      tlag       maes_ghoos  66.60594
-#&gt; 9      rec_02     A         m         exp_beta  48.36073
-#&gt; 10     rec_02     A         k         exp_beta   0.01170
-#&gt; # ... with 69 more rows</div></pre>
+#&gt;    patient_id group     m      k  beta   t50
+#&gt; *       &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1      rec_01     A    31 0.0083   1.6   128
+#&gt; 2      rec_02     A    41 0.0068   1.8   164
+#&gt; 3      rec_03     A    40 0.0121   1.6    85
+#&gt; 4      rec_04     A    54 0.0105   1.9   111
+#&gt; 5      rec_05     A    16 0.0147   2.6    98
+#&gt; 6      rec_06     A    26 0.0121   2.3   110
+#&gt; 7      rec_07     A    50 0.0104   1.8   110
+#&gt; 8      rec_08     A    51 0.0081   2.7   183
+#&gt; 9      rec_09     A    49 0.0096   2.3   138
+#&gt; 10     rec_10     A    27 0.0105   2.0   115</div><div class='input'><span class='co'># All coefficients in the long form</span>
+<span class='fu'>coef</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 80 × 5
+#&gt;    patient_id group parameter           method    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;dbl&gt;
+#&gt; 1      rec_01     A         m         exp_beta  30.6445
+#&gt; 2      rec_01     A         k         exp_beta   0.0083
+#&gt; 3      rec_01     A      beta         exp_beta   1.6389
+#&gt; 4      rec_01     A       t50     bluck_coward  22.9120
+#&gt; 5      rec_01     A       t50       maes_ghoos 127.5256
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint  54.8532
+#&gt; 7      rec_01     A      tlag     bluck_coward -23.8556
+#&gt; 8      rec_01     A      tlag       maes_ghoos  59.1786
+#&gt; 9      rec_02     A         m         exp_beta  41.1134
+#&gt; 10     rec_02     A         k         exp_beta   0.0068
+#&gt; # ... with 70 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -171,7 +171,7 @@ additional parameters should be extracted with <code><a href='coef.breathtestfit
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting TÃ¼bingen</p>
 </div>
 
 <div class="pkgdown">

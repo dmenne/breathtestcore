@@ -5,7 +5,7 @@
 #'
 #' Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
 #' 13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
-#' Gastroenterology 114 (4): 856–59.
+#' Gastroenterology 114(4): 856-50
 #' 
 #' Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
 #' A comprehensive review.  J. Smooth Muscle Research 46(6): 267-280

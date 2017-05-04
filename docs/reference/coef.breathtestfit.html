@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -113,30 +113,30 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
 <span class='fu'>coef</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 80 × 5
 #&gt;    patient_id group parameter           method    value
 #&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1      rec_01     A         m         exp_beta 38.16270
-#&gt; 2      rec_01     A         k         exp_beta  0.01380
-#&gt; 3      rec_01     A      beta         exp_beta  1.99613
-#&gt; 4      rec_01     A       t50     bluck_coward 25.00700
-#&gt; 5      rec_01     A       t50       maes_ghoos 88.88890
-#&gt; 6      rec_01     A       t50 maes_ghoos_scint 20.35616
-#&gt; 7      rec_01     A      tlag     bluck_coward -0.14030
-#&gt; 8      rec_01     A      tlag       maes_ghoos 50.10164
-#&gt; 9      rec_02     A         m         exp_beta 40.76826
-#&gt; 10     rec_02     A         k         exp_beta  0.00931
+#&gt; 1      rec_01     A         m         exp_beta 18.03583
+#&gt; 2      rec_01     A         k         exp_beta  0.01491
+#&gt; 3      rec_01     A      beta         exp_beta  2.05618
+#&gt; 4      rec_01     A       t50     bluck_coward 24.75500
+#&gt; 5      rec_01     A       t50       maes_ghoos 83.88977
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint 15.89265
+#&gt; 7      rec_01     A      tlag     bluck_coward  1.85752
+#&gt; 8      rec_01     A      tlag       maes_ghoos 48.33180
+#&gt; 9      rec_02     A         m         exp_beta 29.78346
+#&gt; 10     rec_02     A         k         exp_beta  0.01120
 #&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Access coefficients directly</span>
 <span class='no'>fit</span>$<span class='no'>coef</span></div><div class='output co'>#&gt; # A tibble: 80 × 6
 #&gt;    patient_id group parameter           method     stat    value
 #&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1      rec_01     A         m         exp_beta estimate 38.16270
-#&gt; 2      rec_01     A         k         exp_beta estimate  0.01380
-#&gt; 3      rec_01     A      beta         exp_beta estimate  1.99613
-#&gt; 4      rec_01     A       t50     bluck_coward estimate 25.00700
-#&gt; 5      rec_01     A       t50       maes_ghoos estimate 88.88890
-#&gt; 6      rec_01     A       t50 maes_ghoos_scint estimate 20.35616
-#&gt; 7      rec_01     A      tlag     bluck_coward estimate -0.14030
-#&gt; 8      rec_01     A      tlag       maes_ghoos estimate 50.10164
-#&gt; 9      rec_02     A         m         exp_beta estimate 40.76826
-#&gt; 10     rec_02     A         k         exp_beta estimate  0.00931
+#&gt; 1      rec_01     A         m         exp_beta estimate 18.03583
+#&gt; 2      rec_01     A         k         exp_beta estimate  0.01491
+#&gt; 3      rec_01     A      beta         exp_beta estimate  2.05618
+#&gt; 4      rec_01     A       t50     bluck_coward estimate 24.75500
+#&gt; 5      rec_01     A       t50       maes_ghoos estimate 83.88977
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint estimate 15.89265
+#&gt; 7      rec_01     A      tlag     bluck_coward estimate  1.85752
+#&gt; 8      rec_01     A      tlag       maes_ghoos estimate 48.33180
+#&gt; 9      rec_02     A         m         exp_beta estimate 29.78346
+#&gt; 10     rec_02     A         k         exp_beta estimate  0.01120
 #&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Can also be used with stan fit (slow!)</span>
 <span class='fu'>not_run</span>({
   <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"breathteststan"</span>)) {
@@ -160,7 +160,7 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting TÃ¼bingen</p>
 </div>
 
 <div class="pkgdown">

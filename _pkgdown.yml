@@ -1,3 +1,9 @@
+template:
+  path: ./templates
+  default_assets: true
+  params:
+    bootswatch: cosmo
+
 reference:
   - title: "Reading and Writing Data"
     desc: "Functions for reading and writing breath test data"

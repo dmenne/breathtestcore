@@ -31,9 +31,6 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. And special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.
 
-
-
-
 ## How to install
 To install the functions, use
 
@@ -56,7 +53,7 @@ This example is from the documentation of function `nlme_fit`.
 For additional examples, see the folder `tests/testthat` of the source package.
     
 ## Previous and planned work
-The core fitting functions and the Stan variants are quite stable and can be used to analyze your breath test data with R. For the Stan variants, additional models that give credible intervals for differences between groups are planned. The [Shiny-based web app](https://shiny.rstudio.com) with reporting, [online demo here](https://apps.menne-biomed.de/breathtestshiny), is work in progress. 
+The core fitting functions and the Stan variants are quite stable and can be used to analyze your breath test data with R. For the Stan variants, additional models that give credible intervals for differences between groups are planned. The [Shiny](https://shiny.rstudio.com) web app with reporting is work in progress; [online demo](https://apps.menne-biomed.de/breathtestshiny), [source code](https://github.com/dmenne/breathtestshiny). 
 
 
 

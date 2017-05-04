@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -84,7 +84,7 @@
 as given in:</p>
 <p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
 13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
-Gastroenterology 114 (4): 856–59.</p>
+Gastroenterology 114(4): 856-50</p>
 <p>Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
 A comprehensive review.  J. Smooth Muscle Research 46(6): 267-280</p>
 <p>Bluck L J C and Coward W A 2006 Measurement of gastric
@@ -202,17 +202,17 @@ See also <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> f
                 <span class='kw'>random</span> <span class='kw'>=</span> <span class='no'>m</span>+<span class='no'>k</span>+<span class='no'>beta</span>~<span class='fl'>1</span>,
                 <span class='kw'>groups</span> <span class='kw'>=</span> ~<span class='no'>patient</span>,
                 <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>100</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='fu'>coef</span>(<span class='no'>pdr_nlme</span>)</div><div class='output co'>#&gt;           m           k     beta
-#&gt; a 21.999333 0.008962382 1.485957
-#&gt; b 20.388916 0.014743186 1.982780
-#&gt; c 20.003113 0.015421590 2.123438
-#&gt; d 22.036978 0.006303855 1.397782
-#&gt; e 17.452689 0.009322216 2.431869
-#&gt; f 17.851875 0.009003179 2.350905
-#&gt; g 20.305933 0.007039496 1.769228
-#&gt; h  1.964503 0.013929146 5.710435
-#&gt; i 16.586500 0.005432506 2.496051
-#&gt; j 22.178305 0.014617271 1.563597</div><div class='input'><span class='no'>pred_data</span> <span class='kw'>=</span> <span class='fu'>expand.grid</span>(<span class='kw'>minute</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>400</span>, <span class='fl'>10</span>), <span class='kw'>patient</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
+<span class='fu'>coef</span>(<span class='no'>pdr_nlme</span>)</div><div class='output co'>#&gt;        m        k  beta
+#&gt; a 21.999 0.008962 1.486
+#&gt; b 20.389 0.014743 1.983
+#&gt; c 20.003 0.015422 2.123
+#&gt; d 22.037 0.006304 1.398
+#&gt; e 17.453 0.009322 2.432
+#&gt; f 17.852 0.009003 2.351
+#&gt; g 20.306 0.007039 1.769
+#&gt; h  1.965 0.013929 5.710
+#&gt; i 16.587 0.005433 2.496
+#&gt; j 22.178 0.014617 1.564</div><div class='input'><span class='no'>pred_data</span> <span class='kw'>=</span> <span class='fu'>expand.grid</span>(<span class='kw'>minute</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>400</span>, <span class='fl'>10</span>), <span class='kw'>patient</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
 <span class='no'>pred_data</span>$<span class='no'>pdr</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>pdr_nlme</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>pred_data</span>)
 <span class='fu'>suppressPackageStartupMessages</span>(<span class='fu'>library</span>(<span class='no'>ggplot2</span>))
 <span class='fu'>ggplot</span>() +
@@ -240,7 +240,7 @@ See also <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> f
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting TÃ¼bingen</p>
 </div>
 
 <div class="pkgdown">

@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -140,21 +140,21 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
           <span class='kw'>err_lag_bluck_coward</span> <span class='kw'>=</span>
             <span class='fu'>round</span>(<span class='fl'>100</span>*(<span class='no'>tlag_bluck_coward</span>-<span class='no'>tlagin</span>)/<span class='no'>tlagin</span>,<span class='fl'>2</span>)
 )
-<span class='no'>cf3</span></div><div class='output co'>#&gt;     method group     k beta  t12 t12in tlag tlagin t50_maes_ghoos
-#&gt; 1      nls  lean 0.576 5.24 3.67 2.076 2.88  1.632       3.625426
-#&gt; 2 bayesian  lean 0.606 5.79 3.63 2.110 2.88  1.724       3.600504
-#&gt; 3      nls obese 0.529 5.95 4.23 2.422 3.34  1.920       4.173131
-#&gt; 4 bayesian obese 0.608 7.54 3.99 2.466 3.26  2.101       4.000572
+<span class='no'>cf3</span></div><div class='output co'>#&gt;     method group    k beta t12 t12in tlag tlagin t50_maes_ghoos
+#&gt; 1      nls  lean 0.58  5.2 3.7   2.1  2.9    1.6            3.6
+#&gt; 2 bayesian  lean 0.61  5.8 3.6   2.1  2.9    1.7            3.6
+#&gt; 3      nls obese 0.53  6.0 4.2   2.4  3.3    1.9            4.2
+#&gt; 4 bayesian obese 0.61  7.5 4.0   2.5  3.3    2.1            4.0
 #&gt;   t50_bluck_coward tlag_maes_ghoos tlag_bluck_coward err_t50_maes_ghoos
-#&gt; 1            2.088        2.875558          1.672178              -1.21
-#&gt; 2            2.139        2.897908          1.754101              -0.81
-#&gt; 3            2.499        3.371250          2.060953              -1.34
-#&gt; 4            2.545        3.322734          2.182689               0.26
+#&gt; 1              2.1             2.9               1.7              -1.21
+#&gt; 2              2.1             2.9               1.8              -0.81
+#&gt; 3              2.5             3.4               2.1              -1.34
+#&gt; 4              2.5             3.3               2.2               0.26
 #&gt;   err_t50_bluck_coward err_lag_maes err_lag_bluck_coward
-#&gt; 1                 0.58        -0.15                 2.46
-#&gt; 2                 1.37         0.62                 1.75
-#&gt; 3                 3.18         0.94                 7.34
-#&gt; 4                 3.20         1.92                 3.89</div><div class='input'><span class='co'># table 4</span>
+#&gt; 1                 0.58        -0.15                  2.5
+#&gt; 2                 1.37         0.62                  1.8
+#&gt; 3                 3.18         0.94                  7.3
+#&gt; 4                 3.20         1.92                  3.9</div><div class='input'><span class='co'># table 4</span>
 <span class='co'># there are large differences for mj3, both using the bayesian (26%)</span>
 <span class='co'># and the nls method (16%).  The other data are within the expected limits</span>
 <span class='no'>cf4</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(
@@ -179,27 +179,27 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
           <span class='kw'>err_lag_bluck_coward</span> <span class='kw'>=</span>
             <span class='fu'>round</span>(<span class='fl'>100</span>*(<span class='no'>tlag_bluck_coward</span>-<span class='no'>tlagin</span>)/<span class='no'>tlagin</span>,<span class='fl'>2</span>)
 )
-<span class='no'>cf4</span></div><div class='output co'>#&gt;     method group     k beta  t12 t12in tlag tlagin t50_maes_ghoos
-#&gt; 1      nls   mj1 0.585 4.35 3.39  1.77 2.56   1.30       3.274022
-#&gt; 2      nls   mj2 0.437 4.08 4.25  2.16 3.17   1.53       4.247945
-#&gt; 3      nls   mj3 0.380 4.44 4.82  2.19 3.39   1.33       5.090024
-#&gt; 4 bayesian   mj1 0.588 4.49 3.40  1.81 2.58   1.35       3.307076
-#&gt; 5 bayesian   mj2 0.418 4.30 4.61  2.34 3.40   1.65       4.556565
-#&gt; 6 bayesian   mj3 0.361 4.29 5.09  2.43 3.62   1.57       5.270079
+<span class='no'>cf4</span></div><div class='output co'>#&gt;     method group    k beta t12 t12in tlag tlagin t50_maes_ghoos
+#&gt; 1      nls   mj1 0.58  4.3 3.4   1.8  2.6    1.3            3.3
+#&gt; 2      nls   mj2 0.44  4.1 4.2   2.2  3.2    1.5            4.2
+#&gt; 3      nls   mj3 0.38  4.4 4.8   2.2  3.4    1.3            5.1
+#&gt; 4 bayesian   mj1 0.59  4.5 3.4   1.8  2.6    1.4            3.3
+#&gt; 5 bayesian   mj2 0.42  4.3 4.6   2.3  3.4    1.6            4.6
+#&gt; 6 bayesian   mj3 0.36  4.3 5.1   2.4  3.6    1.6            5.3
 #&gt;   t50_bluck_coward tlag_maes_ghoos tlag_bluck_coward err_t50_maes_ghoos
-#&gt; 1            1.760        2.513121          1.328254                 -3
-#&gt; 2            2.221        3.217613          1.631464                  0
-#&gt; 3            2.760        3.922775          2.098703                  6
-#&gt; 4            1.801        2.554171          1.375350                 -3
-#&gt; 5            2.438        3.489510          1.831263                 -1
-#&gt; 6            2.817        4.034035          2.113960                  4
+#&gt; 1              1.8             2.5               1.3                 -3
+#&gt; 2              2.2             3.2               1.6                  0
+#&gt; 3              2.8             3.9               2.1                  6
+#&gt; 4              1.8             2.6               1.4                 -3
+#&gt; 5              2.4             3.5               1.8                 -1
+#&gt; 6              2.8             4.0               2.1                  4
 #&gt;   err_t50_bluck_coward err_lag_maes err_lag_bluck_coward
-#&gt; 1                -0.56        -1.83                 2.17
-#&gt; 2                 2.82         1.50                 6.63
-#&gt; 3                26.03        15.72                57.80
-#&gt; 4                -0.50        -1.00                 1.88
-#&gt; 5                 4.19         2.63                10.99
-#&gt; 6                15.93        11.44                34.65</div><div class='input'>
+#&gt; 1                -0.56         -1.8                  2.2
+#&gt; 2                 2.82          1.5                  6.6
+#&gt; 3                26.03         15.7                 57.8
+#&gt; 4                -0.50         -1.0                  1.9
+#&gt; 5                 4.19          2.6                 11.0
+#&gt; 6                15.93         11.4                 34.6</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -219,7 +219,7 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
