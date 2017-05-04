@@ -29,8 +29,9 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 ## Sponsors and supporters
 
-The software is being developed in cooperation with the ETH, the Department of 
-Gastroenterology of the University Hospital of Zürich, and Claraspital Basel. Thanks to Andreas Steingötter, Benjamin Misselwitz, Mark Fox and Werner Schwizer.
+The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. And special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.
+
+
 
 
 ## How to install

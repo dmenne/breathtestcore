@@ -2,7 +2,7 @@
 % Please edit documentation in R/breathtest_parameters.R
 \name{tlag_maes_ghoos}
 \alias{tlag_maes_ghoos}
-\title{so-called lag time from maes/ghoos fit}
+\title{So-called lag time from Maes/Ghoos fit}
 \usage{
 tlag_maes_ghoos(cf)
 }
@@ -14,10 +14,10 @@ tlag_maes_ghoos(cf)
 Lag time as defined from Maes/Ghoos fit
 }
 \description{
-compute \code{tlag} from uncorrected fit to the beta 
+Computes \code{tlag} from uncorrected fit to the beta 
 exponential function. The name \code{tlag} is a misnomer; it simply 
-is the maximum of the PDR curve, 
- so in papers by Bluck et al. it is renamed to t_max.
+is the maximum of the PDR curve, so in papers by Bluck et al. it is renamed to t_max.
+
 Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
 Dig. Dis. Sci. 39 S104-6.
 }

@@ -7,15 +7,16 @@
 \method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos", ...)
 }
 \arguments{
-\item{x}{object of class \code{breathtestfit}, as returned by \code{nls_fit}, 
-\code{nlme_fit}  or \code{stan_fit} from package \code{breathteststan}}
+\item{x}{object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}}, 
+\code{\link{nlme_fit}}, \code{\link{null_fit}} or \code{\link[breathteststan]{stan_fit}} 
+from package \code{breathteststan}}
 
-\item{inc}{increment for fitted curve plot in minutes}
+\item{inc}{Increment for fitted curve plot in minutes}
 
-\item{method_t50}{method for t50: \code{maes_ghoos}, \code{bluck_coward} or 
-\code{maes_ghoos_scint}}
+\item{method_t50}{Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
+"\code{maes_ghoos_scint}"}
 
-\item{...}{other parameters passed to methods}
+\item{...}{other parameters passed to methods. Not used}
 }
 \description{
 Plots 13C data and fits.

@@ -147,8 +147,12 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>d</span>$<span class='no'>data</span>)
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>nlme_fit</span>(<span class='no'>data</span>)
 <span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><img src='nlme_fit-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
 <span class='co'># The coefficients are in long key-value format</span>
 <span class='no'>cf</span></div><div class='output co'>#&gt; # A tibble: 24 × 5
 #&gt;    patient_id group parameter           method    value
@@ -164,7 +168,7 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
 #&gt; 9      rec_02     A         m         exp_beta 5.81e+01
 #&gt; 10     rec_02     A         k         exp_beta 7.39e-03
 #&gt; # ... with 14 more rows</div><div class='input'><span class='co'># AIC can be extracted</span>
-<span class='fu'>AIC</span>(<span class='no'>cf</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("logLik"): no applicable method for 'logLik' applied to an object of class "c('tbl_df', 'tbl', 'data.frame')"</span></div><div class='input'><span class='co'># Reformat the coefficients to wide format and compare </span>
+<span class='fu'>AIC</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; [1] 130</div><div class='input'><span class='co'># Reformat the coefficients to wide format and compare </span>
 <span class='co'># with the expected coefficients from the simulation </span>
 <span class='co'># in d$record.</span>
 <span class='no'>cf</span> <span class='kw'>%&gt;%</span>

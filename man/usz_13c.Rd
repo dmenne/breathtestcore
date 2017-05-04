@@ -21,8 +21,8 @@ monitoring system
 \describe{
   \item{patient_id}{Patient identifier, starting with \code{norm} for normals
   (healthy volunteers) and  \code{pat} for patients. Note that for normals
-  there are two records for each subject, so only the combination of group and
-  is a unique of the record.}
+  there are two records for each subject, so only the combination of patient_id 
+  and group is a unique identifier of the time series record.}
   \item{group}{\code{liquid_normal} for normals and liquid meal,
   \code{solid_normal} normals and solid meal, and \code{patient} for patients;
   patients are an unselected cross-section from the University Hospital of Zurich.}

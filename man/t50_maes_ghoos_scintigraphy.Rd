@@ -2,7 +2,7 @@
 % Please edit documentation in R/breathtest_parameters.R
 \name{t50_maes_ghoos_scintigraphy}
 \alias{t50_maes_ghoos_scintigraphy}
-\title{t50 from maes with scintigrapic correction}
+\title{Half-emptying time t50 from Maes/Ghoos fit with scintigrapic correction}
 \usage{
 t50_maes_ghoos_scintigraphy(cf)
 }
@@ -13,9 +13,10 @@ t50_maes_ghoos_scintigraphy(cf)
 Time where value is 1/2 of maximum, i.e. t50 in minutes.
 }
 \description{
-t50 from beta exponential function, with linear correction for
-scintigraphic values. This is for comparison with published data only;
-there is little justification for using it, even if it is closer to real gastric
+Half-emptying time t50 in minutes from beta exponential function fit,
+with linear and rather arbitrary correction for 
+scintigraphic values. This is given for comparison with published data only;
+there is little justification to use it, even if it is closer to real gastric
 emptying times as determined by MRI or scintigraphy.
 }
 \seealso{

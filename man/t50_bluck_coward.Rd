@@ -2,23 +2,26 @@
 % Please edit documentation in R/breathtest_parameters.R
 \name{t50_bluck_coward}
 \alias{t50_bluck_coward}
-\title{self-corrected t_{50}}
+\title{Bluck-Coward self-corrected half-emptying time}
 \usage{
 t50_bluck_coward(cf)
 }
 \arguments{
-\item{cf}{named vector of coefficients; only \code{k} and \code{beta} are required
-note that in this package, \code{k} is measured in 1/min (e.g. 0.01/min),
+\item{cf}{Named vector of coefficients; only \code{k} and \code{beta} are required.
+In this package, \code{k} is measured in units of 1/min (e.g. 0.01/min),
 in publications it is often quoated as 1/h (e.g. 0.6/h).}
 }
 \value{
-Time where value is 1/2 of maximum, i.e. t_{50} or t_{1/2} in minutes; 
-in the above  paper, the parameter is called t_{1/2(in)}.
+Time where value is 1/2 of the maximum, i.e. t_{50} or t_{1/2} in minutes; 
+in the publication by Bluck et al, the parameter is called t_{1/2(in)}.
 }
 \description{
 Uses Newton's method to solve the self-corrected Bluck-Coward equation
-for 1/2 to compute t_50. 
-See also equation G(n,t) in "Bluck LJC, Jackson S, Vlasakakis G, Mander A (2011)
+for 1/2 to compute the half-emptying time t_50. 
+
+See also equation G(n,t) in 
+
+Bluck LJC, Jackson S, Vlasakakis G, Mander A (2011)
 Bayesian hierarchical methods to interpret  the 13C-octanoic acid breath
 test for gastric emptying. Digestion 83_96-107, page 98.
 }

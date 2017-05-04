@@ -1,10 +1,10 @@
 #' @title S3 coef for breathtestfit
-#' @description Extracts the estimate of the coefficients part from 
-#' fitted 13C beta exponential model; same as \code{fit$coef}, but without
-#' column \code{stat}. This column always has value \code{"estimate"} for \code{\link{nls_fit}}
-#' and \code{\link{nlme_fit}}, but additional statistics such as credible intervals
-#' are available for results from \code{\link[breathteststan]{stan_fit}}.
-#' @param object of class breathtestfit, as returned by nls_fit or nlme_fit
+#' @description Extracts the estimates such as t50, tlag, from fitted 13C beta 
+#' exponential models. The result is the same as \code{fit$coef}, but without
+#' column \code{stat}, which always is \code{"estimate"} for \code{\link{nls_fit}}
+#' and \code{\link{nlme_fit}}. 
+#' @param object of class breathtestfit, as returned by \code{\link{nls_fit}} or 
+#' \code{\link{nlme_fit}}
 #' @param ... other parameters passed to methods
 #' @examples
 #' # Generate simulated data
@@ -13,9 +13,9 @@
 #' fit = nlme_fit(data)
 #' # All coefficients in the long form
 #' coef(fit)
-#' # Access coefficients directory
+#' # Access coefficients directly
 #' fit$coef
-#' # Can also be use with stan fit (slow!)
+#' # Can also be used with stan fit (slow!)
 #' \dontrun{
 #' if (require("breathteststan")) {
 #'   fit = breathteststan::stan_fit(data)

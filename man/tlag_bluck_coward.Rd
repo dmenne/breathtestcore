@@ -2,7 +2,7 @@
 % Please edit documentation in R/breathtest_parameters.R
 \name{tlag_bluck_coward}
 \alias{tlag_bluck_coward}
-\title{lag phase for bluck_coward self-correcting fit}
+\title{Lag phase for Bluck-Coward self-correcting fit}
 \usage{
 tlag_bluck_coward(cf)
 }
@@ -16,8 +16,7 @@ Lag phase in minutes (time t at which the maximum in the rate of change
 of g(t) occurs)
 }
 \description{
-this parameter is misnamed: it is not the lag, but the maximum 
-of the PDR time series.
+This parameter is probably not very useful, as it can be negative
 }
 \seealso{
 \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.

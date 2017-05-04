@@ -2,7 +2,7 @@
 % Please edit documentation in R/exp_beta.R
 \name{exp_beta}
 \alias{exp_beta}
-\title{Exponential beta function for 13C breath}
+\title{Exponential beta function for 13C breath data}
 \usage{
 exp_beta(minute, dose, m, k, beta)
 }
@@ -21,8 +21,13 @@ exp_beta(minute, dose, m, k, beta)
 Values and gradients of estimated PDR for use with \code{nls} and \code{nlme}
 }
 \description{
-Functions to fit PDR time series data to exponential-beta function
-given in: 
+Function to fit PDR time series data to exponential-beta function
+as given in: 
+
+Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
+13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
+Gastroenterology 114 (4): 856–59.
+
 Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
 A comprehensive review.  J. Smooth Muscle Research 46(6): 267-280
 
@@ -34,12 +39,6 @@ For a review, see
 
 Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
 breath test for gastric emptying. Journal of Breath Research, 3 1-8
-
-This is the same equation as (4)  in:
-
-The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from
-13CO2 Data Obtained by a 13C-Labeled Substrate Breath Test
-Masaki Sanaka, Takatsugu Yamamoto, Tarou Ishii, Yasushi Kuyama
 }
 \examples{
 start = list(m=20,k=1/100,beta=2)
@@ -76,7 +75,7 @@ set.seed(4711)
 pdr  = data.frame(minute=seq(2, 200, by = 10))
 pdr$pdr =
   exp_beta(pdr$minute, 100, start$m, start$k, start$beta) + rnorm(nrow(pdr), 0, 1)
-par(mfrow = c(2, 1))
+par(mfrow = c(1, 2))
 # plot raw data
 plot(pdr$minute, pdr$pdr, pch=16, cex=0.5, xlab = "time (min)",ylab = "PDR")
 # compute fit
@@ -119,7 +118,7 @@ pdr_nls = try(nls(pdr~exp_beta(minute, 100, m, k, beta), data=pdr1, start=start,
 stopifnot(class(pdr_nls) == "try-error")
 }
 # use nlme to fit the whole set with one truncated record
-library(nlme)
+suppressPackageStartupMessages(library(nlme))
 pdr_nlme = nlme(pdr~exp_beta(minute,100,m,k,beta), data = pdr1,
                 fixed = m+k+beta~1,
                 random = m+k+beta~1,
@@ -128,12 +127,16 @@ pdr_nlme = nlme(pdr~exp_beta(minute,100,m,k,beta), data = pdr1,
 coef(pdr_nlme)
 pred_data = expand.grid(minute = seq(0, 400, 10), patient = letters[1:10])
 pred_data$pdr = predict(pdr_nlme, newdata = pred_data)
-library(ggplot2)
+suppressPackageStartupMessages(library(ggplot2))
 ggplot() +
   geom_point(data = pdr1, aes(x = minute, y = pdr, color = "red")) + 
   geom_line(data = pred_data, aes(x = minute, y = pdr), color = "black", size=1) +
-  ggtitle("Short patient record 'a' gives a good fit with few data using nlme.\\n
+  ggtitle("Short patient record 'a' gives a good fit with many missing data using nlme.\\n
           Borrowing strength from nlme in action!")+
   facet_wrap(~patient) +
   theme(legend.position="none")
+}
+\seealso{
+In the example below, data and fit are plotted with standard R graphics.
+See also \code{\link{plot.breathtestfit}} for a high level function and ggplot2 graphics.
 }

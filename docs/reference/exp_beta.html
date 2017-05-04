@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Exponential beta function for 13C breath — exp_beta â€¢ breathtestcore</title>
+<title>Exponential beta function for 13C breath data — exp_beta â€¢ breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,13 +76,16 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Exponential beta function for 13C breath</h1>
+    <h1>Exponential beta function for 13C breath data</h1>
     </div>
 
     
-    <p>Functions to fit PDR time series data to exponential-beta function
-given in: 
-Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
+    <p>Function to fit PDR time series data to exponential-beta function
+as given in:</p>
+<p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
+13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
+Gastroenterology 114 (4): 856–59.</p>
+<p>Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
 A comprehensive review.  J. Smooth Muscle Research 46(6): 267-280</p>
 <p>Bluck L J C and Coward W A 2006 Measurement of gastric
 emptying by the C-13-octanoate breath test --- rationalization
@@ -90,10 +93,6 @@ with scintigraphy Physiol. Meas. 27 279?89</p>
 <p>For a review, see</p>
 <p>Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
 breath test for gastric emptying. Journal of Breath Research, 3 1-8</p>
-<p>This is the same equation as (4)  in:</p>
-<p>The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from
-13CO2 Data Obtained by a 13C-Labeled Substrate Breath Test
-Masaki Sanaka, Takatsugu Yamamoto, Tarou Ishii, Yasushi Kuyama</p>
     
 
     <pre class="usage"><span class='fu'>exp_beta</span>(<span class='no'>minute</span>, <span class='no'>dose</span>, <span class='no'>m</span>, <span class='no'>k</span>, <span class='no'>beta</span>)</pre>
@@ -127,6 +126,11 @@ Masaki Sanaka, Takatsugu Yamamoto, Tarou Ishii, Yasushi Kuyama</p>
 
     <p>Values and gradients of estimated PDR for use with <code>nls</code> and <code>nlme</code></p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>In the example below, data and fit are plotted with standard R graphics.
+See also <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> for a high level function and ggplot2 graphics.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>start</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>m</span><span class='kw'>=</span><span class='fl'>20</span>,<span class='kw'>k</span><span class='kw'>=</span><span class='fl'>1</span>/<span class='fl'>100</span>,<span class='kw'>beta</span><span class='kw'>=</span><span class='fl'>2</span>)
@@ -153,7 +157,7 @@ Masaki Sanaka, Takatsugu Yamamoto, Tarou Ishii, Yasushi Kuyama</p>
 <span class='no'>pdr</span>  <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>minute</span><span class='kw'>=</span><span class='fu'>seq</span>(<span class='fl'>2</span>, <span class='fl'>200</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>10</span>))
 <span class='no'>pdr</span>$<span class='no'>pdr</span> <span class='kw'>=</span>
   <span class='fu'>exp_beta</span>(<span class='no'>pdr</span>$<span class='no'>minute</span>, <span class='fl'>100</span>, <span class='no'>start</span>$<span class='no'>m</span>, <span class='no'>start</span>$<span class='no'>k</span>, <span class='no'>start</span>$<span class='no'>beta</span>) + <span class='fu'>rnorm</span>(<span class='fu'>nrow</span>(<span class='no'>pdr</span>), <span class='fl'>0</span>, <span class='fl'>1</span>)
-<span class='fu'>par</span>(<span class='kw'>mfrow</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2</span>, <span class='fl'>1</span>))
+<span class='fu'>par</span>(<span class='kw'>mfrow</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
 <span class='co'># plot raw data</span>
 <span class='fu'>plot</span>(<span class='no'>pdr</span>$<span class='no'>minute</span>, <span class='no'>pdr</span>$<span class='no'>pdr</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>, <span class='kw'>cex</span><span class='kw'>=</span><span class='fl'>0.5</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"time (min)"</span>,<span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"PDR"</span>)
 <span class='co'># compute fit</span>
@@ -192,29 +196,29 @@ Masaki Sanaka, Takatsugu Yamamoto, Tarou Ishii, Yasushi Kuyama</p>
   <span class='fu'>stopifnot</span>(<span class='fu'>class</span>(<span class='no'>pdr_nls</span>) <span class='kw'>==</span> <span class='st'>"try-error"</span>)
 })
 <span class='co'># use nlme to fit the whole set with one truncated record</span>
-<span class='fu'>library</span>(<span class='no'>nlme</span>)
+<span class='fu'>suppressPackageStartupMessages</span>(<span class='fu'>library</span>(<span class='no'>nlme</span>))
 <span class='no'>pdr_nlme</span> <span class='kw'>=</span> <span class='fu'>nlme</span>(<span class='no'>pdr</span>~<span class='fu'>exp_beta</span>(<span class='no'>minute</span>,<span class='fl'>100</span>,<span class='no'>m</span>,<span class='no'>k</span>,<span class='no'>beta</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>pdr1</span>,
                 <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='no'>m</span>+<span class='no'>k</span>+<span class='no'>beta</span>~<span class='fl'>1</span>,
                 <span class='kw'>random</span> <span class='kw'>=</span> <span class='no'>m</span>+<span class='no'>k</span>+<span class='no'>beta</span>~<span class='fl'>1</span>,
                 <span class='kw'>groups</span> <span class='kw'>=</span> ~<span class='no'>patient</span>,
                 <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>100</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>2</span>))
-<span class='fu'>coef</span>(<span class='no'>pdr_nlme</span>)</div><div class='output co'>#&gt;    m      k beta
-#&gt; a 22 0.0090  1.5
-#&gt; b 20 0.0147  2.0
-#&gt; c 20 0.0154  2.1
-#&gt; d 22 0.0063  1.4
-#&gt; e 17 0.0093  2.4
-#&gt; f 18 0.0090  2.4
-#&gt; g 20 0.0070  1.8
-#&gt; h  2 0.0139  5.7
-#&gt; i 17 0.0054  2.5
-#&gt; j 22 0.0146  1.6</div><div class='input'><span class='no'>pred_data</span> <span class='kw'>=</span> <span class='fu'>expand.grid</span>(<span class='kw'>minute</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>400</span>, <span class='fl'>10</span>), <span class='kw'>patient</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
+<span class='fu'>coef</span>(<span class='no'>pdr_nlme</span>)</div><div class='output co'>#&gt;           m           k     beta
+#&gt; a 21.999333 0.008962382 1.485957
+#&gt; b 20.388916 0.014743186 1.982780
+#&gt; c 20.003113 0.015421590 2.123438
+#&gt; d 22.036978 0.006303855 1.397782
+#&gt; e 17.452689 0.009322216 2.431869
+#&gt; f 17.851875 0.009003179 2.350905
+#&gt; g 20.305933 0.007039496 1.769228
+#&gt; h  1.964503 0.013929146 5.710435
+#&gt; i 16.586500 0.005432506 2.496051
+#&gt; j 22.178305 0.014617271 1.563597</div><div class='input'><span class='no'>pred_data</span> <span class='kw'>=</span> <span class='fu'>expand.grid</span>(<span class='kw'>minute</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>400</span>, <span class='fl'>10</span>), <span class='kw'>patient</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
 <span class='no'>pred_data</span>$<span class='no'>pdr</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>pdr_nlme</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>pred_data</span>)
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+<span class='fu'>suppressPackageStartupMessages</span>(<span class='fu'>library</span>(<span class='no'>ggplot2</span>))
 <span class='fu'>ggplot</span>() +
   <span class='fu'>geom_point</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>pdr1</span>, <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"red"</span>)) +
   <span class='fu'>geom_line</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>pred_data</span>, <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>size</span><span class='kw'>=</span><span class='fl'>1</span>) +
-  <span class='fu'>ggtitle</span>(<span class='st'>"Short patient record 'a' gives a good fit with few data using nlme.\n
+  <span class='fu'>ggtitle</span>(<span class='st'>"Short patient record 'a' gives a good fit with many missing data using nlme.\n
           Borrowing strength from nlme in action!"</span>)+
   <span class='fu'>facet_wrap</span>(~<span class='no'>patient</span>) +
   <span class='fu'>theme</span>(<span class='kw'>legend.position</span><span class='kw'>=</span><span class='st'>"none"</span>)</div><img src='exp_beta-20.png' alt='' width='540' height='400' /></pre>
@@ -225,6 +229,8 @@ Masaki Sanaka, Takatsugu Yamamoto, Tarou Ishii, Yasushi Kuyama</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

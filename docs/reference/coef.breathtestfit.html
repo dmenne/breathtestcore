@@ -80,11 +80,10 @@
     </div>
 
     
-    <p>Extracts the estimate of the coefficients part from 
-fitted 13C beta exponential model; same as <code>fit$coef</code>, but without
-column <code>stat</code>. This column always has value <code>"estimate"</code> for <code><a href='nls_fit.html'>nls_fit</a></code>
-and <code><a href='nlme_fit.html'>nlme_fit</a></code>, but additional statistics such as credible intervals
-are available for results from <code><a href='http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit'>stan_fit</a></code>.</p>
+    <p>Extracts the estimates such as t50, tlag, from fitted 13C beta 
+exponential models. The result is the same as <code>fit$coef</code>, but without
+column <code>stat</code>, which always is <code>"estimate"</code> for <code><a href='nls_fit.html'>nls_fit</a></code>
+and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
     
 
     <pre class="usage"><span class='co'># S3 method for breathtestfit</span>
@@ -95,7 +94,8 @@ are available for results from <code><a href='http://www.rdocumentation.org/pack
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>of class breathtestfit, as returned by nls_fit or nlme_fit</p></td>
+      <td><p>of class breathtestfit, as returned by <code><a href='nls_fit.html'>nls_fit</a></code> or 
+<code><a href='nlme_fit.html'>nlme_fit</a></code></p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -113,31 +113,31 @@ are available for results from <code><a href='http://www.rdocumentation.org/pack
 <span class='fu'>coef</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 80 × 5
 #&gt;    patient_id group parameter           method    value
 #&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1      rec_01     A         m         exp_beta 18.03583
-#&gt; 2      rec_01     A         k         exp_beta  0.01491
-#&gt; 3      rec_01     A      beta         exp_beta  2.05618
-#&gt; 4      rec_01     A       t50     bluck_coward 24.75500
-#&gt; 5      rec_01     A       t50       maes_ghoos 83.88977
-#&gt; 6      rec_01     A       t50 maes_ghoos_scint 15.89265
-#&gt; 7      rec_01     A      tlag     bluck_coward  1.85752
-#&gt; 8      rec_01     A      tlag       maes_ghoos 48.33180
-#&gt; 9      rec_02     A         m         exp_beta 29.78346
-#&gt; 10     rec_02     A         k         exp_beta  0.01120
-#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Access coefficients directory</span>
+#&gt; 1      rec_01     A         m         exp_beta 38.16270
+#&gt; 2      rec_01     A         k         exp_beta  0.01380
+#&gt; 3      rec_01     A      beta         exp_beta  1.99613
+#&gt; 4      rec_01     A       t50     bluck_coward 25.00700
+#&gt; 5      rec_01     A       t50       maes_ghoos 88.88890
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint 20.35616
+#&gt; 7      rec_01     A      tlag     bluck_coward -0.14030
+#&gt; 8      rec_01     A      tlag       maes_ghoos 50.10164
+#&gt; 9      rec_02     A         m         exp_beta 40.76826
+#&gt; 10     rec_02     A         k         exp_beta  0.00931
+#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Access coefficients directly</span>
 <span class='no'>fit</span>$<span class='no'>coef</span></div><div class='output co'>#&gt; # A tibble: 80 × 6
 #&gt;    patient_id group parameter           method     stat    value
 #&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1      rec_01     A         m         exp_beta estimate 18.03583
-#&gt; 2      rec_01     A         k         exp_beta estimate  0.01491
-#&gt; 3      rec_01     A      beta         exp_beta estimate  2.05618
-#&gt; 4      rec_01     A       t50     bluck_coward estimate 24.75500
-#&gt; 5      rec_01     A       t50       maes_ghoos estimate 83.88977
-#&gt; 6      rec_01     A       t50 maes_ghoos_scint estimate 15.89265
-#&gt; 7      rec_01     A      tlag     bluck_coward estimate  1.85752
-#&gt; 8      rec_01     A      tlag       maes_ghoos estimate 48.33180
-#&gt; 9      rec_02     A         m         exp_beta estimate 29.78346
-#&gt; 10     rec_02     A         k         exp_beta estimate  0.01120
-#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Can also be use with stan fit (slow!)</span>
+#&gt; 1      rec_01     A         m         exp_beta estimate 38.16270
+#&gt; 2      rec_01     A         k         exp_beta estimate  0.01380
+#&gt; 3      rec_01     A      beta         exp_beta estimate  1.99613
+#&gt; 4      rec_01     A       t50     bluck_coward estimate 25.00700
+#&gt; 5      rec_01     A       t50       maes_ghoos estimate 88.88890
+#&gt; 6      rec_01     A       t50 maes_ghoos_scint estimate 20.35616
+#&gt; 7      rec_01     A      tlag     bluck_coward estimate -0.14030
+#&gt; 8      rec_01     A      tlag       maes_ghoos estimate 50.10164
+#&gt; 9      rec_02     A         m         exp_beta estimate 40.76826
+#&gt; 10     rec_02     A         k         exp_beta estimate  0.00931
+#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Can also be used with stan fit (slow!)</span>
 <span class='fu'>not_run</span>({
   <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"breathteststan"</span>)) {
     <span class='no'>fit</span> <span class='kw'>=</span> <span class='kw'>breathteststan</span><span class='kw'>::</span><span class='fu'>stan_fit</span>(<span class='no'>data</span>)

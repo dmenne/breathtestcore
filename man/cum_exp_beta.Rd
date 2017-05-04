@@ -2,7 +2,7 @@
 % Please edit documentation in R/exp_beta.R
 \name{cum_exp_beta}
 \alias{cum_exp_beta}
-\title{cumulative exponential beta function}
+\title{Cumulative exponential beta function}
 \usage{
 cum_exp_beta(minute, dose, cf)
 }
@@ -11,17 +11,16 @@ cum_exp_beta(minute, dose, cf)
 
 \item{dose}{in mg}
 
-\item{cf}{named vector of coefficients; only \code{k} and \code{beta} are required_
-note that \code{k} is measured in 1/min (e_g_ 0_01/min),
-usually it is quoted as 1/h (e_g_ 0_6/h)_}
+\item{cf}{named vector of coefficients; only \code{k} and \code{beta} are required.
+Note that \code{k} is measured in 1/min (e_g_ 0_01/min),
+while often it is quoted as 1/h (e_g_ 0_6/h).}
 }
 \value{
 Vector of predicted cumulative pdr
 }
 \description{
-equation (2), page 4 from bluck, "recent advances in the interpretation of
-the 13c octanoate breath test for gastric emptying"_ this is the cumulative beta exponential,
-and can be used to compute the 50% points_
+Equation (2), page 4 from Bluck, "Recent advances in the interpretation of
+the 13C octanoate breath test for gastric emptying"
 }
 \seealso{
 \code{\link{exp_beta}}

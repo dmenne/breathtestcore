@@ -2,7 +2,7 @@
 % Please edit documentation in R/breathtest_parameters.R
 \name{t50_maes_ghoos}
 \alias{t50_maes_ghoos}
-\title{t50 as determined from an uncorrected fit to the beta exponential function.}
+\title{Half-emptying time by Maes/Ghoos method}
 \usage{
 t50_maes_ghoos(cf)
 }
@@ -15,6 +15,9 @@ usually it is quoted as 1/h (e.g. 0.6/h).}
 Time where value is 1/2 of maximum, i.e. \code{t50} in minutes
 }
 \description{
+Half-emptying time t50 as determined from an uncorrected fit to 
+the beta exponential function.
+
 Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
 Dig. Dis. Sci. 39 S104-6.
 }
