@@ -11,20 +11,17 @@ Authors@R: c(
     )
 Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         Creates artificial sample data for testing. 
-        Fits Maes/Ghoos, Bluck-Coward self-correcting formula using nls, nlme and
-        Stan, and Wagner-Nelson with k(el) estimated from parametric fit.
-        See Bluck L J C and Coward W A 2006 Measurement of gastric emptying
-        by the C-13-octanoate breath test --- rationalization with
-        scintigraphy Physiol. Meas. 27 279-89. 
+        Fits Maes/Ghoos, Bluck-Coward self-correcting formula using nls, nlme.
+        See Bluck L J C and Coward W A 2006 <doi: 10.1088/0967-3334/27/3/006>.
         This package contains a refactored subset of dmenne/d13cbreath without 
         database and display functions. Methods to fit breath test curves
         with Bayesian Stan methods are exported to package dmenne/breatteststan.
-Depends: R (>= 3.2.0)
+        For a Shiny GUI, see dmenne/breathtestshiny.
+Depends: R (>= 3.4.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, methods,  
          assertthat, broom, tidyr,   ggplot2, signal, utils
-Suggests: testthat, covr, knitr, breathteststan
+Suggests: testthat, covr, knitr
 URL: https://github.com/dmenne/breathtestcore
 License: GPL-3
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-Remotes: dmenne/breathteststan
