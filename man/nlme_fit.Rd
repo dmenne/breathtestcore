@@ -29,7 +29,7 @@ See the graphical output of \code{\link{plot.breathtestfit}} for an example wher
 too densely sampled data of one patients were subsampled for the fit.}
 }
 \value{
-A list of class "breathtestfit" with elements
+A list of class ("breathtestnlmefit" "breathtestfit") with elements
 \describe{
   \item{coef}{Estimated parameters in a key-value format with 
    columns \code{patient_id, group, parameter, stat, method} and \code{value}.

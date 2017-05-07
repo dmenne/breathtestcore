@@ -22,7 +22,7 @@
 #' See the graphical output of \code{\link{plot.breathtestfit}} for an example where
 #' too densely sampled data of one patients were subsampled for the fit.
 #'
-#' @return A list of class "breathtestfit" with elements
+#' @return A list of class ("breathtestnlmefit" "breathtestfit") with elements
 #' \describe{
 #'   \item{coef}{Estimated parameters in a key-value format with 
 #'    columns \code{patient_id, group, parameter, stat, method} and \code{value}.
@@ -160,7 +160,7 @@ nlme_fit = function(data, dose = 100,
   
   data = data %>% select(-pat_group) # only used locally
   ret = list(coef = cf, data = data)
-  class(ret) = c("breathtestfit", "breathtestnlmefit")
+  class(ret) = c("breathtestnlmefit", "breathtestfit")
   ret
 }
 

@@ -42,7 +42,7 @@ To install the functions, use
 
 ## Usage example 
     
-This example is from the documentation of function `nlme_fit`.
+This example is from the documentation of function [nlme_fit](https://dmenne.github.io/breathtestcore/reference/nlme_fit.html).
 
     library(breathtestcore)    
     d = simulate_breathtest_data(n_records = 3, noise = 0.2, seed = 4711)

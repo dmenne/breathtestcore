@@ -11,7 +11,7 @@
 #' @param start Optional start values
 #' \code{patient_id} and \code{group}.
 #'
-#' @return A list of class "breathtestfit" with elements
+#' @return A list of class ("breathtestnlsfit" "breathtestfit") with elements
 #' \describe{
 #'   \item{coef}{Estimated parameters in a key-value format with 
 #'    columns \code{patient_id, group, parameter, stat, method} and \code{value}.
@@ -118,7 +118,7 @@ nls_fit = function(data, dose = 100,
     tibble::as_tibble(cf)
   
   ret = list(coef = cf, data = data)
-  class(ret) = c("breathtestfit", "breathtestnlsfit")
+  class(ret) = c("breathtestnlsfit", "breathtestfit" )
   ret
 }
 

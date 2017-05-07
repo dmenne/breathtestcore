@@ -20,7 +20,7 @@ for all records is supported.}
 \code{patient_id} and \code{group}.}
 }
 \value{
-A list of class "breathtestfit" with elements
+A list of class ("breathtestnlsfit" "breathtestfit") with elements
 \describe{
   \item{coef}{Estimated parameters in a key-value format with 
    columns \code{patient_id, group, parameter, stat, method} and \code{value}.
