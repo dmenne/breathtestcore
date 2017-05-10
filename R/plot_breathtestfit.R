@@ -4,8 +4,8 @@
 #' 
 #' @title S3 plot method for breathtestfit
 #' @param x object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}}, 
-#' \code{\link{nlme_fit}}, \code{\link{null_fit}} or \code{\link[breathteststan]{stan_fit}} 
-#' from package \code{breathteststan}
+#' \code{\link{nlme_fit}}, \code{\link{null_fit}} or \code{stan_fit}; stan_fit is
+#' in package \code{breathteststan},
 #' @param inc Increment for fitted curve plot in minutes
 #' @param method_t50 Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
 #' "\code{maes_ghoos_scint}"

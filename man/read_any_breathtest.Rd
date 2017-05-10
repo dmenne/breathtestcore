@@ -14,7 +14,7 @@ A list of \code{\link{breathtest_data}}, even if
 only one file was passed. The list can be passed to \code{\link{cleanup_data}}
 to extract one concatenated data frame for processing with \code{\link{nls_fit}},  
 \code{\link{nlme_fit}}, \code{\link{null_fit}} (no processing) or
-\code{\link[breathteststan]{stan_fit}}.
+\code{stan_fit} in separate package \code{breathteststan}.
 }
 \description{
 Uses \code{\link{breathtest_read_function}} to determine the file type

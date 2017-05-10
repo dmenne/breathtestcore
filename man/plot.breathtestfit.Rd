@@ -8,8 +8,8 @@
 }
 \arguments{
 \item{x}{object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}}, 
-\code{\link{nlme_fit}}, \code{\link{null_fit}} or \code{\link[breathteststan]{stan_fit}} 
-from package \code{breathteststan}}
+\code{\link{nlme_fit}}, \code{\link{null_fit}} or \code{stan_fit}; stan_fit is
+in package \code{breathteststan},}
 
 \item{inc}{Increment for fitted curve plot in minutes}
 

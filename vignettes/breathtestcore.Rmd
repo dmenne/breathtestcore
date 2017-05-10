@@ -9,6 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# 13C Breathtest for Gastric Emptying Studies
+# <sup>13</sup>C Breathtest for Gastric Emptying Studies
 
 [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).

@@ -1,7 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 
-breathtestcore: 13C breath test to assess gastric emptying
+breathtestcore: <sup>13</sup>C breath test to analyze gastric emptying
 ===========================================
 
 Dieter Menne   
@@ -18,12 +18,12 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 ## What it does
 
-* Reads several file formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
+* Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
 * Fits Beta-Exponential nonlinear curve fits using `nls`, which gives successful estimates for 90% of PDR curves
 * Computes population fits with `nlme` when data from multiple recordings are available, resulting in much more reliable estimates for studies.
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package [dmenne/breathteststan](https://github.com/dmenne/breathteststan))
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
-* Includes an extensive data set of 13C records from the University Hospital of Zürich  
+* Includes an extensive data set of <sup>13</sup>C records from the University Hospital of Zürich  
 * [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
 * See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions?
 
@@ -61,8 +61,8 @@ __Reference__:
 
 * Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” *Gastroenterology* 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.
 
-* Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” *Gastroenterology* 114 (4): 856–59.
+* Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “<sup>13</sup>C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” *Gastroenterology* 114 (4): 856–59.
 
-* Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate breath test for gastric emptying. J. Breath Res. 3, http://iopscience.iop.org/1752-7163/3/3/034002/
+* Bluck LJC (2009) Recent advances in the interpretation of the <sup>13</sup>C octanoate breath test for gastric emptying. J. Breath Res. 3, http://iopscience.iop.org/1752-7163/3/3/034002/
 
-* Bluck, LJC, Jackson S, Vlasakakis G, Mander A (2011) Bayesian hierarchical methods to interpret  the 13C-octanoic acid breath  test for gastric emptying. Digestion 83_96-107.
+* Bluck, LJC, Jackson S, Vlasakakis G, Mander A (2011) Bayesian hierarchical methods to interpret  the <sup>13</sup>C-octanoic acid breath  test for gastric emptying. Digestion 83_96-107.
