@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Core functions to read and fit 13C time series from breath tests • breathtestcore</title>
+<title>Core Functions to Read and Fit 13c Time Series from Breath Tests • breathtestcore</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -55,9 +55,9 @@
   <div class="contents col-md-9">
     
 
-<div id="breathtestcore-13c-breath-test-to-assess-gastric-emptying" class="section level1">
+<div id="breathtestcore-13c-breath-test-to-analyze-gastric-emptying" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#breathtestcore-13c-breath-test-to-assess-gastric-emptying" class="anchor"></a>breathtestcore: 13C breath test to assess gastric emptying</h1></div>
+<a href="#breathtestcore-13c-breath-test-to-analyze-gastric-emptying" class="anchor"></a>breathtestcore: <sup>13</sup>C breath test to analyze gastric emptying</h1></div>
 <p>Dieter Menne<br>
 Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.de" class="uri">http://www.menne-biomed.de</a></p>
 <p><a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
@@ -72,12 +72,12 @@ Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.d
 <h2 class="hasAnchor">
 <a href="#what-it-does" class="anchor"></a>What it does</h2>
 <ul>
-<li>Reads several file formats of 13C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV</li>
+<li>Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV</li>
 <li>Fits Beta-Exponential nonlinear curve fits using <code>nls</code>, which gives successful estimates for 90% of PDR curves</li>
 <li>Computes population fits with <code>nlme</code> when data from multiple recordings are available, resulting in much more reliable estimates for studies.</li>
 <li>Computes prior-constrained Bayesian non-linear fit for single records (refactored to package <a href="https://github.com/dmenne/breathteststan">dmenne/breathteststan</a>)</li>
 <li>Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)</li>
-<li>Includes an extensive data set of 13C records from the University Hospital of Zürich<br>
+<li>Includes an extensive data set of <sup>13</sup>C records from the University Hospital of Zürich<br>
 </li>
 <li>
 <a href="http://menne-biomed.de/blog/breath-test-stan">A comparison of results with nls, nlme</a> and Bayesian <a href="http://www.mc-stan.org">Stan</a>.</li>
@@ -102,7 +102,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"breathtestshi
 <div id="usage-example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage-example" class="anchor"></a>Usage example</h2>
-<p>This example is from the documentation of function <code>nlme_fit</code>.</p>
+<p>This example is from the documentation of function <a href="https://dmenne.github.io/breathtestcore/reference/nlme_fit.html">nlme_fit</a>.</p>
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw">library</span>(breathtestcore)    
 d =<span class="st"> </span><span class="kw"><a href="reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span>(<span class="dt">n_records =</span> <span class="dv">3</span>, <span class="dt">noise =</span> <span class="fl">0.2</span>, <span class="dt">seed =</span> <span class="dv">4711</span>)
 data =<span class="st"> </span><span class="kw"><a href="reference/cleanup_data.html">cleanup_data</a></span>(d$data)
@@ -117,9 +117,9 @@ fit =<span class="st"> </span><span class="kw"><a href="reference/nlme_fit.html"
 <p><strong>Reference</strong>:</p>
 <ul>
 <li><p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.</p></li>
-<li><p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4): 856–59.</p></li>
-<li><p>Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate breath test for gastric emptying. J. Breath Res. 3, <a href="http://iopscience.iop.org/1752-7163/3/3/034002/" class="uri">http://iopscience.iop.org/1752-7163/3/3/034002/</a></p></li>
-<li><p>Bluck, LJC, Jackson S, Vlasakakis G, Mander A (2011) Bayesian hierarchical methods to interpret the 13C-octanoic acid breath test for gastric emptying. Digestion 83_96-107.</p></li>
+<li><p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “<sup>13</sup>C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4): 856–59.</p></li>
+<li><p>Bluck LJC (2009) Recent advances in the interpretation of the <sup>13</sup>C octanoate breath test for gastric emptying. J. Breath Res. 3, <a href="http://iopscience.iop.org/1752-7163/3/3/034002/" class="uri">http://iopscience.iop.org/1752-7163/3/3/034002/</a></p></li>
+<li><p>Bluck, LJC, Jackson S, Vlasakakis G, Mander A (2011) Bayesian hierarchical methods to interpret the <sup>13</sup>C-octanoic acid breath test for gastric emptying. Digestion 83_96-107.</p></li>
 </ul>
 </div>
 </div>

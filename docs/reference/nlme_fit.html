@@ -124,7 +124,7 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of class "breathtestfit" with elements</p><dl class='dl-horizontal'>
+    <p>A list of class ("breathtestnlmefit" "breathtestfit") with elements</p><dl class='dl-horizontal'>
   <dt>coef</dt><dd><p>Estimated parameters in a key-value format with 
    columns <code>patient_id, group, parameter, stat, method</code> and <code>value</code>.
    Parameter <code>stat</code> currently always has value <code>"estimate"</code>. 
@@ -147,8 +147,14 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>d</span>$<span class='no'>data</span>)
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>nlme_fit</span>(<span class='no'>data</span>)
 <span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><img src='nlme_fit-2.png' alt='' width='540' height='400' /><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:nlme’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    collapse</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
 <span class='co'># The coefficients are in long key-value format</span>
 <span class='no'>cf</span></div><div class='output co'>#&gt; # A tibble: 24 × 5
 #&gt;    patient_id group parameter           method    value
