@@ -16,6 +16,7 @@
 subsample_data = function(data, sample_minutes){
   # Ugly CRAN hack
   patient_id = group = pat_group = . = minute = NULL
+  comment = comment(data)
   # Check if data have been validated by cleanup_data
   assert_that(are_equal(names(data), c("patient_id", "group", "minute", "pdr")))
   
@@ -50,5 +51,6 @@ subsample_data = function(data, sample_minutes){
     }) %>%
     ungroup() %>% 
     na.omit()
-  
+  comment(data) = comment # recover comment
+  data
 }

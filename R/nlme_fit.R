@@ -157,7 +157,6 @@ nlme_fit = function(data, dose = 100,
     filter(value != 0) %>%
     tibble::as_tibble(cf)
   attr(cf, "AIC") = AIC(bc_nlme)
-  
   data = data %>% select(-pat_group) # only used locally
   ret = list(coef = cf, data = data)
   class(ret) = c("breathtestnlmefit", "breathtestfit")

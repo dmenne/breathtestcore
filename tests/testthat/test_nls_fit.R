@@ -9,9 +9,11 @@ test_that("Nice data return nice result", {
       minute = pmax(minute, 0.001)
     ) %>% 
     select(patient_id, group, minute, pdr)
+  comment(data) = "comment"
   fit = nls_fit(data)
   expect_is(fit, "breathtestfit")
   expect_is(fit, "breathtestnlsfit")
+  expect_equal(comment(fit$data), "comment")
   cf = coef(fit)
   expect_is(cf, "data.frame")
   expect_equal(names(cf), c("patient_id", "group", "parameter", "method", "value"))

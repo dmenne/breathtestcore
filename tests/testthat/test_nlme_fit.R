@@ -15,9 +15,11 @@ test_that("One-group nlme fit returns valid result", {
        "norm_001", "norm_002", "norm_003", "norm_004", "norm_005", "norm_006"),
             group != "liquid_normal") %>%
     cleanup_data()
+  comment(data) = "comment"
   fit = nlme_fit(data)
   expect_is(fit, "breathtestfit")
   expect_is(fit, "breathtestnlmefit")
+  expect_equal(comment(fit$data), "comment")
   expect_identical(names(fit), c("coef", "data"))
   cf = coef(fit)
   expect_equal(nrow(cf), 96)
