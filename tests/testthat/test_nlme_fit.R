@@ -42,7 +42,8 @@ test_that("Two-group nlme fit returns valid result", {
   expect_equal(nrow(cf), 96)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_is(AIC(fit), "numeric" )
-
+  expect_equal(unique(cf$group), c("liquid_normal", "solid_normal"))
+  
   # Check if subsampling done
   expect_equal(nrow(fit$data), 168) # denser sampling early  
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
