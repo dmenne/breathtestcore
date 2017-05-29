@@ -4,11 +4,13 @@
 \alias{coef_by_group}
 \title{Tabulates per-group breath test parameters}
 \usage{
-coef_by_group(fit)
+coef_by_group(fit, ...)
 }
 \arguments{
 \item{fit}{Object of class \code{breathtestfit}, for example from 
 \code{\link{nlme_fit}}, \code{\link{nls_fit}} or \code{\link[breathteststan]{stan_fit}}}
+
+\item{...}{Not used}
 }
 \value{
 A \code{tibble} with columns
@@ -33,6 +35,7 @@ A \code{tibble} with columns
 \description{
 Given a fit to 13C breath test curves, computes absolute values and
 their conficence intervals of parameters, e.g. of the half emptying time \code{t50}.
+Generic S3 method for class breathtestfit.
 }
 \examples{
 library(dplyr)

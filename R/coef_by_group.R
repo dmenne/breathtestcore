@@ -1,9 +1,11 @@
 #' @title Tabulates per-group breath test parameters
 #' @description Given a fit to 13C breath test curves, computes absolute values and
 #' their conficence intervals of parameters, e.g. of the half emptying time \code{t50}.
+#' Generic S3 method for class breathtestfit.
 #'
 #' @param fit Object of class \code{breathtestfit}, for example from 
 #' \code{\link{nlme_fit}}, \code{\link{nls_fit}} or \code{\link[breathteststan]{stan_fit}} 
+#' @param ... Not used
 #'
 #' @return A \code{tibble} with columns
 #' \describe{
@@ -34,8 +36,12 @@
 #' fit = nls_fit(data)
 #' coef_by_group(fit)
 #' @export
+coef_by_group = function(fit, ...) {
+  UseMethod("coef_by_group", fit)
+}
 
-coef_by_group = function(fit) {
+#' @export
+coef_by_group.breathtestfit = function(fit, ...) {
   if (!inherits(fit, "breathtestfit")) {
     stop("Function coef_by_group: parameter 'fit' must inherit from class breathtestfit")
   }

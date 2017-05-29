@@ -9,6 +9,7 @@
 #' comparisons relative to the reference group.
 #' @param reference_group Used as the first group and as reference group for 
 #' \code{mcp_group == "Dunnett"}
+#' @param ... Not used
 #'
 #' @return A \code{tibble} with columns
 #' \describe{
@@ -38,8 +39,13 @@
 #' @importFrom stats confint relevel
 #' @import multcomp
 #' @export
+coef_diff_by_group = function(fit, mcp_group = "Tukey", reference_group = NULL, ...) {
+  UseMethod("coef_diff_by_group", fit)
+}
 
-coef_diff_by_group = function(fit, mcp_group = "Tukey", reference_group = NULL) {
+#' @export
+coef_diff_by_group.breathtestfit = 
+  function(fit, mcp_group = "Tukey", reference_group = NULL, ...) {
   if (!inherits(fit, "breathtestfit")) {
     stop("Function coef_diff_by_group: parameter 'fit' must inherit from class breathtestfit")
   }
@@ -48,7 +54,7 @@ coef_diff_by_group = function(fit, mcp_group = "Tukey", reference_group = NULL) 
   }
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic = 
-    .std.error = NULL
+    std.error = NULL
   cf = coef(fit) %>%
     mutate( # lme requires factors
       group = as.factor(.$group)

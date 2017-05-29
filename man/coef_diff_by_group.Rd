@@ -4,7 +4,7 @@
 \alias{coef_diff_by_group}
 \title{Tabulates per-group breath test parameter differences}
 \usage{
-coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL)
+coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL, ...)
 }
 \arguments{
 \item{fit}{Object of class \code{breathtestfit}, for example from 
@@ -15,6 +15,8 @@ comparisons relative to the reference group.}
 
 \item{reference_group}{Used as the first group and as reference group for 
 \code{mcp_group == "Dunnett"}}
+
+\item{...}{Not used}
 }
 \value{
 A \code{tibble} with columns
