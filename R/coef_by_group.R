@@ -76,6 +76,7 @@ coef_by_group.breathtestfit = function(fit, ...) {
 
 # local function for the case of 1 group
 coef_by_group.breathtestfit_1 = function(fit, ...) {
+  . = NULL # CRAN
   coef(fit) %>% 
     group_by_("parameter", "method") %>%
     do({

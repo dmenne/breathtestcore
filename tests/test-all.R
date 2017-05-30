@@ -5,4 +5,4 @@ d13File = function(filename){
 }
 
 #test_check("breathtestcore", filter= "coef")
-test_check("breathtestcore", filter= "coef")
+test_check("breathtestcore")
