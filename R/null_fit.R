@@ -7,12 +7,12 @@
 #' with mandatory columns \code{patient_id, group, minute} and \code{pdr}. 
 #' @param ... Not used
 #'
-#' @return A list of class "breathtestfit" with element \code{data} which 
-#' contains the unmodfied data.
+#' @return A list of classes \code{breathtestnullfit, breathtestfit} 
+#' with element \code{data} which contains the unmodified data.
 #' @export
 null_fit = function(data, ...){
   x = list(data = data) 
-  class(x) = "breathtestfit"
+  class(x) = c("breathtestnullfit", "breathtestfit")
   x
 }
 

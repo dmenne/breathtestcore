@@ -2,7 +2,7 @@
 % Please edit documentation in R/coef_diff_by_group.R
 \name{coef_diff_by_group}
 \alias{coef_diff_by_group}
-\title{Tabulates per-group breath test parameter differences}
+\title{Tabulates breath test parameter differences of groups}
 \usage{
 coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL, ...)
 }

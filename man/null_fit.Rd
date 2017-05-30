@@ -13,8 +13,8 @@ with mandatory columns \code{patient_id, group, minute} and \code{pdr}.}
 \item{...}{Not used}
 }
 \value{
-A list of class "breathtestfit" with element \code{data} which 
-contains the unmodfied data.
+A list of classes \code{breathtestnullfit, breathtestfit} 
+with element \code{data} which contains the unmodified data.
 }
 \description{
 Does not change the data set, but returns a class suitable

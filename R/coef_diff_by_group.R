@@ -1,4 +1,4 @@
-#' @title Tabulates per-group breath test parameter differences
+#' @title Tabulates breath test parameter differences of groups
 #' @description Given a fit to 13C breath test curves, computes absolute values and
 #' their conficence intervals of parameters from the fit,
 #' for examples of the half emptying time \code{t50}.

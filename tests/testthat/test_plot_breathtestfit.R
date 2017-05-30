@@ -53,6 +53,7 @@ test_that("Plot multiple groups data only (no fit)",{
   )
   d = cleanup_data(data)
   x = null_fit(d) # mainly converts to class breathtestfit
+  expect_equal(class(x), c("breathtestnullfit", "breathtestfit"))
   p = plot(x) # Plots raw data only
   expect_is(p, "ggplot")
   expect_equal(nlayers(p), 1)   
