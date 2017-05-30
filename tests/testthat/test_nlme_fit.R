@@ -28,6 +28,10 @@ test_that("One-group nlme fit returns valid result", {
   # Check if subsampling done
   expect_equal(nrow(fit$data), 197)  
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
+  # Check summary
+  s = summary(fit)
+  expect_identical(nrow(s), 12L)
+  expect_identical(names(s),  c("patient_id", "group", "value"))
 })
 
 test_that("Two-group nlme fit returns valid result", {

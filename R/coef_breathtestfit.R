@@ -42,6 +42,6 @@ summary.breathtestfit = function(object, ...){
   stat = parameter = method = NULL # CRAN
   if (is.null(object$coef)) return(NULL)    
   object$coef %>% 
-    filter(stat == "estimate" && parameter == "t50" && method == "maes_ghoos" ) %>% 
+    filter(stat == "estimate" , parameter == "t50" , method == "maes_ghoos" ) %>% 
     select(-stat, -parameter, -method)   
 }
