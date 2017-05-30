@@ -49,12 +49,14 @@ coef_by_group.breathtestfit = function(fit, ...) {
   if (!inherits(fit, "breathtestfit")) {
     stop("Function coef_by_group: parameter 'fit' must inherit from class breathtestfit")
   }
+  cf = coef(fit)
+  if (is.null(cf)) return(NULL)
   # Special case when there is only one group
-  if (length(unique(coef(fit)$group)) == 1)
+  if (length(unique(cf$group)) == 1)
     return (coef_by_group.breathtestfit_1(fit, ...))
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = NULL
-  coef(fit) %>%
+  cf %>%
     mutate( # lme requires factors
       group = as.factor(.$group)
     ) %>%

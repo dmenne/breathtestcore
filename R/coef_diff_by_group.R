@@ -53,6 +53,9 @@ coef_diff_by_group.breathtestfit =
   if (!inherits(fit, "breathtestfit")) {
     stop("Function coef_diff_by_group: parameter 'fit' must inherit from class breathtestfit")
   }
+  cf = coef(fit)
+  if (is.null(cf)) 
+    return(NULL)
   if (! mcp_group %in% c("Dunnett", "Tukey")){
     stop("Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey', but is ",
          mcp_group)
@@ -60,7 +63,7 @@ coef_diff_by_group.breathtestfit =
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic = 
     std.error = NULL
-  cf = coef(fit) %>%
+  cf = cf %>%
     mutate( # lme requires factors
       group = as.factor(.$group)
     )
