@@ -49,3 +49,14 @@ test_that("nlme_fit can be used to compute coefficients",{
   expect_is(cf, "tbl_df")
 })
 
+
+test_that("NULL returned if there is only one group", {
+  data = usz_13c %>%
+    dplyr::filter( patient_id %in%
+                   c("pat_001", "pat_002","pat_003")) %>%
+  cleanup_data()
+  fit = nls_fit(data)
+  cf = coef_diff_by_group(fit)
+  expect_null(cf)
+
+})

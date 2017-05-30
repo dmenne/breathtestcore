@@ -36,6 +36,10 @@
 #'   cleanup_data()
 #' fit = nls_fit(data)
 #' coef_diff_by_group(fit)
+#' \dontrun{
+#' fit = nlme_fit(data) 
+#' coef_by_group(fit)
+#' }
 #' @importFrom stats confint relevel
 #' @import multcomp
 #' @export
@@ -50,7 +54,8 @@ coef_diff_by_group.breathtestfit =
     stop("Function coef_diff_by_group: parameter 'fit' must inherit from class breathtestfit")
   }
   if (! mcp_group %in% c("Dunnett", "Tukey")){
-    stop("Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey'")
+    stop("Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey', but is ",
+         mcp_group)
   }
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic = 
@@ -59,6 +64,10 @@ coef_diff_by_group.breathtestfit =
     mutate( # lme requires factors
       group = as.factor(.$group)
     )
+  # No differences if there is only one group
+  if (nlevels(cf$group) <=1){
+    return(NULL)
+  }
   if (!is.null(reference_group) && !(reference_group %in% levels(cf$group))) {
     stop("Function coeff_diff_by_group: reference_group must be a level in coef(fit)$group")
   }

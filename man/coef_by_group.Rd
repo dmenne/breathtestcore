@@ -24,7 +24,7 @@ A \code{tibble} with columns
   Coward W A 2006 <doi:10.1088/0967-3334/27/3/006>}
   \item{group}{Grouping parameter of the fit, e.g. \code{patient, normal, liquid, solid}}
   \item{estimate}{Parameter estimate}
-  \item{conf.low, conf.hight}{Lower and upper 95% confidence interval of parameter 
+  \item{conf.low, conf.high}{Lower and upper 95% confidence interval of parameter 
   estimate.}
   \item{diff_group}{Letters a, b, c indicate that parameter would be in mutually 
    significantly different groups. Letter combinations like \code{ab} or \code{abc} 
@@ -46,4 +46,8 @@ data = usz_13c \%>\%
   cleanup_data()
 fit = nls_fit(data)
 coef_by_group(fit)
+\dontrun{
+fit = nlme_fit(data)
+coef_by_group(fit)
+}
 }

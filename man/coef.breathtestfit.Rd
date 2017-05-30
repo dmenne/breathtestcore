@@ -2,21 +2,24 @@
 % Please edit documentation in R/coef_breathtestfit.R
 \name{coef.breathtestfit}
 \alias{coef.breathtestfit}
-\title{S3 coef for breathtestfit}
+\title{S3 coef and summary for breathtestfit}
 \usage{
 \method{coef}{breathtestfit}(object, ...)
 }
 \arguments{
-\item{object}{of class breathtestfit, as returned by \code{\link{nls_fit}} or 
+\item{object}{of class \code{breathtestfit}, as returned by \code{\link{nls_fit}} or 
 \code{\link{nlme_fit}}}
 
 \item{...}{other parameters passed to methods}
 }
 \description{
-Extracts the estimates such as t50, tlag, from fitted 13C beta 
-exponential models. The result is the same as \code{fit$coef}, but without
+Function \code{coef} extracts the estimates such as t50, 
+tlag, from fitted 13C beta  exponential models. The result is the same 
+as \code{fit$coef}, but without
 column \code{stat}, which always is \code{"estimate"} for \code{\link{nls_fit}}
-and \code{\link{nlme_fit}}.
+and \code{\link{nlme_fit}}. 
+
+The \code{summary} method only extracts \code{t50} by the Maes/Ghoos method
 }
 \examples{
 # Generate simulated data
@@ -27,6 +30,7 @@ fit = nlme_fit(data)
 coef(fit)
 # Access coefficients directly
 fit$coef
+# Only t50 by Maes/Ghoos
 # Can also be used with stan fit (slow!)
 \dontrun{
 if (require("breathteststan")) {

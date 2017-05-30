@@ -29,5 +29,20 @@ test_that("nlme_fit can be used to compute coefficients",{
   fit = nlme_fit(data)
   cf = coef_by_group(fit)
   expect_is(cf, "tbl_df")
+  expect_identical(ncol(cf), 7L)
+  expect_equal(names(cf), c("parameter", "method", "group", "estimate", "conf.low", 
+                            "conf.high", "diff_group"))
 })
 
+test_that("Fit of single curve returns valid data", {
+  data = usz_13c %>%
+    dplyr::filter( patient_id == "pat_001") %>% 
+    cleanup_data()
+  fit = nls_fit(data)
+  cf = coef_by_group(fit)
+  expect_identical(ncol(cf), 7L)
+  expect_identical(nrow(cf), 9L)
+  expect_equal(cf$conf.low, rep(NA, 9L))
+  expect_equal(cf$conf.high, rep(NA, 9L))
+  
+})

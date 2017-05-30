@@ -18,7 +18,7 @@
 #'   Coward W A 2006 <doi:10.1088/0967-3334/27/3/006>}
 #'   \item{group}{Grouping parameter of the fit, e.g. \code{patient, normal, liquid, solid}}
 #'   \item{estimate}{Parameter estimate}
-#'   \item{conf.low, conf.hight}{Lower and upper 95% confidence interval of parameter 
+#'   \item{conf.low, conf.high}{Lower and upper 95% confidence interval of parameter 
 #'   estimate.}
 #'   \item{diff_group}{Letters a, b, c indicate that parameter would be in mutually 
 #'    significantly different groups. Letter combinations like \code{ab} or \code{abc} 
@@ -35,6 +35,10 @@
 #'   cleanup_data()
 #' fit = nls_fit(data)
 #' coef_by_group(fit)
+#' \dontrun{
+#' fit = nlme_fit(data)
+#' coef_by_group(fit)
+#' }
 #' @export
 coef_by_group = function(fit, ...) {
   UseMethod("coef_by_group", fit)
@@ -45,6 +49,9 @@ coef_by_group.breathtestfit = function(fit, ...) {
   if (!inherits(fit, "breathtestfit")) {
     stop("Function coef_by_group: parameter 'fit' must inherit from class breathtestfit")
   }
+  # Special case when there is only one group
+  if (length(unique(coef(fit)$group)) == 1)
+    return (coef_by_group.breathtestfit_1(fit, ...))
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = NULL
   coef(fit) %>%
@@ -66,3 +73,15 @@ coef_by_group.breathtestfit = function(fit, ...) {
     }) %>%
     ungroup()
 }
+
+# local function for the case of 1 group
+coef_by_group.breathtestfit_1 = function(fit, ...) {
+  coef(fit) %>% 
+    group_by_("parameter", "method") %>%
+    do({
+      data_frame(group = .$group, estimate = .$value, conf.low = NA, conf.high = NA,
+                 diff_group = "a")
+    }) %>%
+    ungroup()
+}  
+  
