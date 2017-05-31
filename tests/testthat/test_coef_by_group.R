@@ -20,6 +20,14 @@ test_that("Result with default parameters is tbl_df with required columns",{
      c("liquid_normal", "patient", "solid_normal"))
 })
 
+test_that("Options digits is served",{
+  options(digits = 4)
+  cf = coef_by_group(fit)
+  expect_is(cf, "tbl_df")
+  expect_identical(max(nchar(paste(cf[1,4:6]))),5L)
+})
+
+
 test_that("Fit must be of class breathtestfit",{
   expect_error(coef_by_group(NULL))
 })

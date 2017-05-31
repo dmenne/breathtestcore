@@ -32,16 +32,20 @@
 coef.breathtestfit = function(object, ...){
   stat = NULL # CRAN
   if (is.null(object$coef)) return(NULL)    
-  object$coef %>% 
+  r = object$coef %>% 
     filter(stat == "estimate") %>% 
     select(-stat)   
+  comment(r) = comment(object$data)
+  r
 }
 
 #' @export
 summary.breathtestfit = function(object, ...){
   stat = parameter = method = NULL # CRAN
   if (is.null(object$coef)) return(NULL)    
-  object$coef %>% 
+  r = object$coef %>% 
     filter(stat == "estimate" , parameter == "t50" , method == "maes_ghoos" ) %>% 
     select(-stat, -parameter, -method)   
+  comment(r) = comment(object$data)
+  r
 }

@@ -62,7 +62,7 @@ coef_diff_by_group.breathtestfit =
   }
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic = 
-    std.error = NULL
+    std.error = conf.low = conf.high = p.value = NULL
   cf = cf %>%
     mutate( # lme requires factors
       group = as.factor(.$group)
@@ -77,13 +77,21 @@ coef_diff_by_group.breathtestfit =
   if (!is.null(reference_group)){
     cf$group = relevel(cf$group, reference_group)
   }
+  sig = as.integer(options("digits"))
   cf %>% 
     group_by(parameter, method) %>%
     do({
       fit_lme = nlme::lme(value~group, random = ~1|patient_id, data = .)
       glh = multcomp::glht(fit_lme, linfct =  multcomp::mcp(group = mcp_group))
       broom::tidy(confint(glh))[,-2] %>%
-        left_join(broom::tidy(summary(glh)), by = "lhs", copy = TRUE)
+        left_join(broom::tidy(summary(glh)), by = "lhs", copy = TRUE) %>% 
+      mutate(
+        estimate.x = signif(estimate.x, sig),
+        conf.low = signif(conf.low, sig),
+        conf.high = signif(conf.high, sig),
+        p.value = signif(p.value, sig)
+      )
+      
     }) %>%
     ungroup() %>%
     dplyr::select(-rhs, -estimate.y, -std.error, -statistic,

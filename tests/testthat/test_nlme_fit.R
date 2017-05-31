@@ -22,6 +22,7 @@ test_that("One-group nlme fit returns valid result", {
   expect_equal(comment(fit$data), "comment")
   expect_identical(names(fit), c("coef", "data"))
   cf = coef(fit)
+  expect_equal(comment(cf), "comment")
   expect_equal(nrow(cf), 96)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_is(AIC(fit), "numeric" )
@@ -30,6 +31,7 @@ test_that("One-group nlme fit returns valid result", {
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
   # Check summary
   s = summary(fit)
+  expect_equal(comment(s), "comment")
   expect_identical(nrow(s), 12L)
   expect_identical(names(s),  c("patient_id", "group", "value"))
 })

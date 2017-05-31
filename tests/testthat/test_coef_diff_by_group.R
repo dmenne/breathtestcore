@@ -50,6 +50,20 @@ test_that("nlme_fit can be used to compute coefficients",{
 })
 
 
+digs = function(x){
+  nchar(stringr::str_replace_all(paste(abs(x)), "[0\\.]",""))
+}
+
+test_that("Options digits is served",{
+  options(digits = 4)
+  cf = coef_diff_by_group(fit)
+  expect_is(cf, "tbl_df")
+  expect_lte(digs(cf[[1,"estimate"]]) ,4L)
+  expect_lte(digs(cf[[1,"conf.low"]]), 4L)
+  expect_lte(digs(cf[[1,"conf.high"]]),4L)
+})
+
+
 test_that("NULL returned if there is only one group", {
   data = usz_13c %>%
     dplyr::filter( patient_id %in%
