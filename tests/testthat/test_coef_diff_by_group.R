@@ -7,6 +7,7 @@ data = usz_13c %>%
    c("norm_001", "norm_002", "norm_003", "norm_004", "pat_001", "pat_002","pat_003")) %>%
    cleanup_data()
 fit = nls_fit(data)
+cm = comment(fit$data)
 
 test_that("Result with default parameters is tbl_df with required columns",{
   cf = coef_diff_by_group(fit)
@@ -16,6 +17,7 @@ test_that("Result with default parameters is tbl_df with required columns",{
   expect_lt(min(cf$p.value), 5e-8)
   expect_equal(unique(cf$groups),
      c("patient - liquid_normal", "solid_normal - liquid_normal", "solid_normal - patient"))
+  expect_equal(comment(cf), cm)
 })
 
 test_that("Result with Dunnett contrast only returns 2 groups",{
@@ -72,5 +74,4 @@ test_that("NULL returned if there is only one group", {
   fit = nls_fit(data)
   cf = coef_diff_by_group(fit)
   expect_null(cf)
-
 })

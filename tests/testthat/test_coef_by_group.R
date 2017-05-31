@@ -7,6 +7,7 @@ data = usz_13c %>%
   c("norm_001", "norm_002", "norm_003", "norm_004", "pat_001", "pat_002","pat_003")) %>%
   cleanup_data()
 fit = nls_fit(data)
+cm = comment(fit$data)
 
 test_that("Result with default parameters is tbl_df with required columns",{
   cf = coef_by_group(fit)
@@ -18,6 +19,8 @@ test_that("Result with default parameters is tbl_df with required columns",{
   expect_identical(unique(cf$diff_group), c("a", "ab", "b", "c"))
   expect_equal(unique(cf$group),
      c("liquid_normal", "patient", "solid_normal"))
+  expect_equal(comment(cf), cm)
+  
 })
 
 test_that("Options digits is served",{
@@ -46,11 +49,13 @@ test_that("Fit of single curve returns valid data", {
   data = usz_13c %>%
     dplyr::filter( patient_id == "pat_001") %>% 
     cleanup_data()
+  comment(data) = "comment"
   fit = nls_fit(data)
   cf = coef_by_group(fit)
   expect_identical(ncol(cf), 7L)
   expect_identical(nrow(cf), 9L)
   expect_equal(cf$conf.low, rep(NA, 9L))
   expect_equal(cf$conf.high, rep(NA, 9L))
+  expect_equal(comment(cf), "comment")
   
 })

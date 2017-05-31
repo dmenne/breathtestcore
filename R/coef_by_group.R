@@ -57,8 +57,9 @@ coef_by_group.breathtestfit = function(fit, ...) {
   # Keep CRAN quite
   . = confint = estimate = lhs = method = parameter = conf.high = conf.low = NULL
   sig = as.integer(options("digits"))
+  cm = comment(cf)
   
-  cf %>%
+  cf = cf %>%
     mutate( # lme requires factors
       group = as.factor(.$group)
     ) %>%
@@ -81,17 +82,22 @@ coef_by_group.breathtestfit = function(fit, ...) {
       )
     }) %>%
     ungroup()
+  comment(cf) = cm
+  cf
 }
 
 # local function for the case of 1 group
 coef_by_group.breathtestfit_1 = function(fit, ...) {
   . = NULL # CRAN
-  coef(fit) %>% 
+  cm = comment(fit$data)
+  cf = coef(fit) %>% 
     group_by_("parameter", "method") %>%
     do({
       data_frame(group = .$group, estimate = .$value, conf.low = NA, conf.high = NA,
                  diff_group = "a")
     }) %>%
     ungroup()
+  comment(cf) = cm
+  cf
 }  
   

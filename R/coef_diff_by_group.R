@@ -60,6 +60,7 @@ coef_diff_by_group.breathtestfit =
     stop("Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey', but is ",
          mcp_group)
   }
+  cm = comment(cf)
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic = 
     std.error = conf.low = conf.high = p.value = NULL
@@ -78,7 +79,7 @@ coef_diff_by_group.breathtestfit =
     cf$group = relevel(cf$group, reference_group)
   }
   sig = as.integer(options("digits"))
-  cf %>% 
+  cf = cf %>% 
     group_by(parameter, method) %>%
     do({
       fit_lme = nlme::lme(value~group, random = ~1|patient_id, data = .)
@@ -96,4 +97,6 @@ coef_diff_by_group.breathtestfit =
     ungroup() %>%
     dplyr::select(-rhs, -estimate.y, -std.error, -statistic,
       estimate = estimate.x, groups = lhs)
+  comment(cf) = cm
+  cf
 }
