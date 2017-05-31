@@ -92,7 +92,6 @@ coef_diff_by_group.breathtestfit =
         conf.high = signif(conf.high, sig),
         p.value = signif(p.value, sig)
       )
-      
     }) %>%
     ungroup() %>%
     dplyr::select(-rhs, -estimate.y, -std.error, -statistic,

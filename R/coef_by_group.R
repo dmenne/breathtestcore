@@ -90,13 +90,17 @@ coef_by_group.breathtestfit = function(fit, ...) {
 coef_by_group.breathtestfit_1 = function(fit, ...) {
   . = NULL # CRAN
   cm = comment(fit$data)
+  sig = as.integer(options("digits"))
   cf = coef(fit) %>% 
     group_by_("parameter", "method") %>%
     do({
       data_frame(group = .$group, estimate = .$value, conf.low = NA, conf.high = NA,
-                 diff_group = "a")
+                 diff_group = NA)
     }) %>%
-    ungroup()
+    mutate(
+      estimate = signif(estimate, sig)
+    ) %>% 
+  ungroup()
   comment(cf) = cm
   cf
 }  

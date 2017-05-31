@@ -23,11 +23,15 @@ test_that("Result with default parameters is tbl_df with required columns",{
   
 })
 
+digs = function(x){
+  nchar(stringr::str_replace_all(paste(abs(x)), "[0\\.]",""))
+}
+
 test_that("Options digits is served",{
   options(digits = 4)
   cf = coef_by_group(fit)
   expect_is(cf, "tbl_df")
-  expect_identical(max(nchar(paste(cf[1,4:6]))),5L)
+  expect_lte(digs(cf[[1,"estimate"]]) ,4L)
 })
 
 
@@ -50,6 +54,7 @@ test_that("Fit of single curve returns valid data", {
     dplyr::filter( patient_id == "pat_001") %>% 
     cleanup_data()
   comment(data) = "comment"
+  options(digits = 4)
   fit = nls_fit(data)
   cf = coef_by_group(fit)
   expect_identical(ncol(cf), 7L)
@@ -57,5 +62,6 @@ test_that("Fit of single curve returns valid data", {
   expect_equal(cf$conf.low, rep(NA, 9L))
   expect_equal(cf$conf.high, rep(NA, 9L))
   expect_equal(comment(cf), "comment")
+  expect_lte(digs(cf[[1,"estimate"]]) ,4L)
   
 })
