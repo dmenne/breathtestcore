@@ -18,10 +18,16 @@
 #'
 #' Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
 #' breath test for gastric emptying. Journal of Breath Research, 3 1-8
+#' @details 
+#' The function is defined as
+#' 
+#' \preformatted{exp_beta = function(minute,dose,m,k,beta) {
+#'      m*d*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute)
+#' }}
 #'
+#' At minute == 0, the function behaves like a polynomial with degree (beta-1).
+#' 
 #' @name exp_beta
-# exp_beta= expression(m*d*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute))
-# deriv(exp_beta,c("m","k","beta"))
 #'
 #' @param minute vector of time values in minutes
 #' @param dose in mg
@@ -30,7 +36,7 @@
 #' @param beta form factor
 #' @return Values and gradients of estimated PDR for use with \code{nls} and \code{nlme}
 #' @seealso In the example below, data and fit are plotted with standard R graphics.
-#' See also \code{\link{plot.breathtestfit}} for a high level function and ggplot2 graphics.
+#' The S3 method \code{\link{plot.breathtestfit}} provides \code{ggplot2} graphics.
 #' @examples
 #' start = list(m=20,k=1/100,beta=2)
 #'

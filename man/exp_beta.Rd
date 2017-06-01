@@ -40,6 +40,13 @@ For a review, see
 Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
 breath test for gastric emptying. Journal of Breath Research, 3 1-8
 }
+\details{
+#' The function is defined as
+
+\preformatted{exp_beta = function(minute,dose,m,k,beta) {
+     m*d*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute)
+}}
+}
 \examples{
 start = list(m=20,k=1/100,beta=2)
 
