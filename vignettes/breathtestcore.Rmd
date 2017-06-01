@@ -1,5 +1,5 @@
 ---
-title: "breathtest core 13C analysis"
+title: "Breathtest core functions for 13C gastric emptying analysis"
 author: "Dieter Menne, Menne Biomed Consulting Tuebingen, dieter.menne@menne-biomed.de"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
