@@ -53,7 +53,13 @@ coef_by_group.breathtestfit = function(fit, ...) {
   if (is.null(cf)) return(NULL)
   # Special case when there is only one group
   if (length(unique(cf$group)) == 1)
-    return (coef_by_group.breathtestfit_1(fit, ...))
+  {
+    if (length(unique(cf$patient_id))==1) { # Single case
+      return (coef_by_group.breathtestfit_1(fit, ...)) 
+    } else {
+      return (coef_by_group.breathtestfit_2(fit, ...)) 
+    }
+  }
   # Keep CRAN quite
   . = confint = estimate = lhs = method = parameter = conf.high = conf.low = NULL
   sig = as.integer(options("digits"))
@@ -86,7 +92,34 @@ coef_by_group.breathtestfit = function(fit, ...) {
   cf
 }
 
-# local function for the case of 1 group
+# local function for the case of 1 group/ multiple subjects
+
+coef_by_group.breathtestfit_2 = function(fit, ...) {
+  . = NULL # CRAN
+  cm = comment(fit$data)
+  cf = coef(fit)
+  if (is.null(cf)) return(NULL)
+  sig = as.integer(options("digits"))
+  cf = cf %>%
+    group_by_("parameter", "method") %>% 
+  do({
+    fit_lme = nlme::lme(value~1, random = ~1|patient_id, data = .)
+    ci = nlme::intervals(fit_lme, which = "fixed")$fixed
+    data_frame(
+        group = .$group,
+        estimate = signif(ci[1,"est."], sig),
+        conf.low = signif(ci[1,"lower"], sig),
+        conf.high = signif(ci[1, "upper"], sig),
+        diff_group = "a"
+      )
+  }) %>%
+  ungroup()
+  comment(cf) = cm
+  cf
+}
+
+
+# local function for the case of 1 group/ 1 subject
 coef_by_group.breathtestfit_1 = function(fit, ...) {
   . = NULL # CRAN
   cm = comment(fit$data)

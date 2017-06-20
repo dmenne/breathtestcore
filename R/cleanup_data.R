@@ -51,6 +51,11 @@
 #' # Four columns with data at t = 0.01
 #' cleanup_data(data1)
 #' 
+#' # Results from simulate_breathtest_data can be passed directly to cleanup_data
+#' cleanup_data(simulate_breathtest_data(3))
+#' # .. which implicitly does
+#' cleanup_data(simulate_breathtest_data(3)$data)
+#' 
 #' # Use simulated data
 #' data2 = list(
 #'   Z = simulate_breathtest_data(seed = 10)$data,
@@ -189,3 +194,8 @@ cleanup_data.breathtest_data = function(data){
   cleanup_data(d)    
 }
 
+#' @export 
+cleanup_data.simulated_breathtest_data = function(data){
+  # Data come from simulate_breathtest_data()
+  cleanup_data(data$data)
+}

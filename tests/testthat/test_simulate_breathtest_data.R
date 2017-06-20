@@ -20,6 +20,7 @@ test_that("Dubious parameter give warning", {
 
 test_that("Valid parameters without std return valid data with cov-matrix", {
   d = simulate_breathtest_data(seed = 4711)
+  expect_is(d, "simulated_breathtest_data")
   expect_is(d, "list")
   expect_equal(names(d), c("record", "data"))
   expect_equal(nrow(d$record), 10)
@@ -37,6 +38,7 @@ test_that("Valid parameters without std return valid data with cov-matrix", {
 test_that("Cov matrix not used when n_records<= 3 ", {
   d = simulate_breathtest_data(n_records = 1, seed = 4711)
   expect_equal(nrow(d$record), 1)
+  expect_is(d, "simulated_breathtest_data")
   expect_is(d, "list")
   expect_equal(names(d), c("record", "data"))
   cov = attr(d$record, "cov")

@@ -1,4 +1,5 @@
 context("Cleanup data")
+expected_columns = c("patient_id", "group", "minute","pdr")
 
 test_that("pdr is made numeric, remove gradient", {
   minute = seq(0,100, by = 10)
@@ -8,38 +9,52 @@ test_that("pdr is made numeric, remove gradient", {
   expect_false(is.vector(data$pdr))
   data1 = cleanup_data(data)
   expect_true(is.vector(data1$pdr))
-  expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
+  expect_equal(names(data1), expected_columns)
 })
 
 
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
+  # Here we pass $data; see next test for alternative
   data = simulate_breathtest_data(1, first_minute = 0)$data[,c("minute", "pdr")]  
   data1 = cleanup_data(data)
   # First row is changes
   expect_equal(data[-1,], data1[-1,3:4])  
   expect_equal(data1$minute[1], 0.01) # Slightly shifted
-  expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
+  expect_equal(names(data1), expected_columns)
 })
 
-test_that("Incorectly names columns are renamed", {
-  data = simulate_breathtest_data(1,)$data[,c("minute", "pdr")]  
-  names(data) = c("a","b")
+test_that("Can pass simulate_breathtest_data() to cleanup_data() without $data", {
+  data = simulate_breathtest_data() # no $data here
+  data1 = cleanup_data(data)
+  expect_equal(names(data1), expected_columns)
+})
+
+test_that("Can pass list of simulate_breathtest_data() to cleanup_data() without $data", {
+  data = list(a = simulate_breathtest_data(3), b = simulate_breathtest_data(4))
   data1 = cleanup_data(data)
   expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
+  expect_equal(unique(data1$group), c("a","b"))
+})
+
+test_that("Incorectly named columns are renamed", {
+  data = simulate_breathtest_data(1)$data[,c("minute", "pdr")]  
+  names(data) = c("a","b")
+  data1 = cleanup_data(data)
+  expect_equal(names(data1), expected_columns)
 })
 
 test_that("Columns without names are renamed", {
   data = simulate_breathtest_data(1,)$data[,c("minute", "pdr")]  
   names(data) = NULL
   data1 = cleanup_data(data)
-  expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
+  expect_equal(names(data1), expected_columns)
   expect_is(data1, "tbl_df")
 })
 
 test_that("Matrix is converted to data frame", {
   data = simulate_breathtest_data(1,)$data[,c("minute", "pdr")]  
   data1 = cleanup_data(as.matrix(data))
-  expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
+  expect_equal(names(data1), expected_columns)
   expect_is(data1, "tbl_df")
 })
 

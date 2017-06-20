@@ -20,7 +20,7 @@
 #' @param step_minute Inter-sample interval for breath test
 #' @param max_minute Maximal time in minutes.
 #'
-#' @return A list with 3 elements:
+#' @return A list of class simulated_breathtest_data with 2  elements:
 #' \describe{
 #'   \item{record}{Data frame with columns
 #'     \code{patient_id(chr), m, k, beta, t50} giving the effective parameters 
@@ -160,6 +160,8 @@ simulate_breathtest_data = function(
     
   }
   comment(data) = comment
-  list(record = rec, data = data)
+  ret = list(record = rec, data = data)
+  class(ret) = c("simulated_breathtest_data", "list")
+  ret
 }
 

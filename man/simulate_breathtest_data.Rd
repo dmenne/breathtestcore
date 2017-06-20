@@ -40,7 +40,7 @@ converge when data near 0 are passed.}
 \item{max_minute}{Maximal time in minutes.}
 }
 \value{
-A list with 3 elements:
+A list of class simulated_breathtest_data with 2  elements:
 \describe{
   \item{record}{Data frame with columns
     \code{patient_id(chr), m, k, beta, t50} giving the effective parameters 

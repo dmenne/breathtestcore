@@ -1,4 +1,4 @@
-context("Coeffients by group")
+context("Coefficients by group")
 
 library(dplyr)
 data("usz_13c")
@@ -39,7 +39,19 @@ test_that("Fit must be of class breathtestfit",{
   expect_error(coef_by_group(NULL))
 })
 
-test_that("nlme_fit can be used to compute coefficients",{
+test_that("nlme_fit can be used to compute coefficients for multiple records in one group",{
+  data = cleanup_data(simulate_breathtest_data(4))
+  fit = nlme_fit(data)
+  cf = coef_by_group(fit)
+  expect_is(cf, "tbl_df")
+  expect_identical(ncol(cf), 7L)
+  expect_equal(unique(cf$group), "A")
+  expect_equal(unique(cf$diff_group), "a")
+  expect_equal(names(cf), c("parameter", "method", "group", "estimate", "conf.low", 
+                            "conf.high", "diff_group"))
+})
+
+test_that("nlme_fit can be used to compute coefficients for multiple groups",{
   skip_on_cran()
   fit = nlme_fit(data)
   cf = coef_by_group(fit)
@@ -65,3 +77,4 @@ test_that("Fit of single curve returns valid data", {
   expect_lte(digs(cf[[1,"estimate"]]) ,4L)
   
 })
+
