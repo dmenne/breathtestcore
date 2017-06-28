@@ -12,6 +12,13 @@ test_that("pdr is made numeric, remove gradient", {
   expect_equal(names(data1), expected_columns)
 })
 
+test_that("Duplicates are removed", {
+  data = simulate_breathtest_data()$data
+  data = rbind(data,data)
+  data1 = cleanup_data(data)
+  expect_identical(2L*nrow(data1), nrow(data))
+})
+
 
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
   # Here we pass $data; see next test for alternative
@@ -148,15 +155,6 @@ test_that("Same data used twice in list raises error", {
   data = data[,c("patient_id", "group", "minute", "pdr")]
   expect_error(cleanup_data(list(data, data)), "twice")
 })  
-
-test_that("Same data used twice in data frame raises error", {
-  data = simulate_breathtest_data(n_records = 2)$data
-  data$group = "A"
-  data = data[,c("patient_id", "group", "minute", "pdr")]
-  data = rbind(data, data)
-  expect_error(cleanup_data(data), "twice")
-})  
-
 
 test_that("data from BreathId device is accepted as input", {
   filename = system.file("extdata", "350_20043_0_GER.txt", 

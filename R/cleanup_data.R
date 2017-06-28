@@ -91,6 +91,8 @@ cleanup_data.data.frame = function(data){
   # Keep CRAN quiet
   group = pdr = patient_id = minute = NULL 
   assert_that(nc >= 2)
+  # Remove duplicates, for example from uploading the same record twice
+  data = dplyr::distinct(data)
   # When there are only two column, assume they are minute and time
   # implying that it is only one record
   if (nc == 2) {

@@ -1,4 +1,4 @@
-context("Coeffient differences by group")
+context("Coefficient differences by group")
 
 library(dplyr)
 data("usz_13c")
