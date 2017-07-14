@@ -33,13 +33,15 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. And special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.
 
 ## How to install
-To install the functions, use
+To install the most recent versions of the package, use
 
     devtools::install_github("breathtestcore","dmenne")
     # In case you want to use the fancy Stan-based methodes
     devtools::install_github("breathteststan","dmenne")
     # And here the still rudimentary web GUI
     devtools::install_github("breathtestshiny","dmenne")
+
+The stable packages [breathtestcore](https://cran.r-project.org/web/packages/breathtestcore) and [breathteststan](https://cran.r-project.org/web/packages/breathteststan) can also be installed from CRAN.
 
 ## Usage example 
     

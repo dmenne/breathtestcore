@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from Breath Tests
-Version: 0.3.0.9000
-Date: 2017-05-07
+Version: 0.3.0.9001
+Date: 2017-05-14
 Authors@R: c(
     person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
     person("Menne Biomed Consulting Tuebingen", role = c("cph")),
@@ -26,3 +26,4 @@ URL: https://github.com/dmenne/breathtestcore
 License: GPL-3
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
+SystemRequirements: pandoc
