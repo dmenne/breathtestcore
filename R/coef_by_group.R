@@ -121,7 +121,7 @@ coef_by_group.breathtestfit_2 = function(fit, ...) {
 
 # local function for the case of 1 group/ 1 subject
 coef_by_group.breathtestfit_1 = function(fit, ...) {
-  . = NULL # CRAN
+  . = estimate = NULL # CRAN
   cm = comment(fit$data)
   sig = as.integer(options("digits"))
   cf = coef(fit) %>% 
