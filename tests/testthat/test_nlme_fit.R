@@ -55,3 +55,16 @@ test_that("Two-group nlme fit returns valid result", {
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
 })
 
+
+test_that("Three-group nlme fit returns valid result", {
+  data = usz_13c %>%
+  dplyr::filter( patient_id %in%
+   c("norm_001", "norm_002", "norm_003", "pat_001", "pat_003", "pat_016")) %>%
+  breathtestcore::cleanup_data()
+  fit_nlme = breathtestcore::nlme_fit(data)
+  expect_identical(names(fit), c("coef", "data", "fit"))
+  
+  cf = coef(fit_nlme)
+  expect_equal(nrow(cf), 72)
+  expect_equal(unique(cf$group), c("liquid_normal", "solid_normal", "patient"))
+})  

@@ -44,7 +44,7 @@ breath test for gastric emptying. Journal of Breath Research, 3 1-8
 The function is defined as
 
 \preformatted{exp_beta = function(minute,dose,m,k,beta) {
-     m*d*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute)
+     m*dose*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute)
 }}
 
 At minute == 0, the function behaves like a polynomial with degree (beta-1).
