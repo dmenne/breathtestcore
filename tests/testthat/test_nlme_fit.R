@@ -1,6 +1,6 @@
 context("Population fit with nlme")
 
-test_that("Data that cannot be fitted with nls_list also fail with nlme", {
+test_that("Some data that cannot be fitted with nls_list also fail with nlme", {
   # with this seed, cf[10] does not fit with nls_list
   data = cleanup_data(simulate_breathtest_data(seed = 100)$data)
   fit = nlme_fit(data)
@@ -20,7 +20,7 @@ test_that("One-group nlme fit returns valid result", {
   expect_is(fit, "breathtestfit")
   expect_is(fit, "breathtestnlmefit")
   expect_equal(comment(fit$data), "comment")
-  expect_identical(names(fit), c("coef", "data"))
+  expect_identical(names(fit), c("coef", "data", "fit"))
   cf = coef(fit)
   expect_equal(comment(cf), "comment")
   expect_equal(nrow(cf), 96)
@@ -43,7 +43,7 @@ test_that("Two-group nlme fit returns valid result", {
           c("norm_001", "norm_002", "norm_003", "norm_004", "norm_005", "norm_006")) %>%
     cleanup_data()
   fit = nlme_fit(data)
-  expect_identical(names(fit), c("coef", "data"))
+  expect_identical(names(fit), c("coef", "data", "fit"))
   cf = coef(fit)
   expect_equal(nrow(cf), 96)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
