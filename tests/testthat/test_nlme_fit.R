@@ -62,7 +62,7 @@ test_that("Three-group nlme fit returns valid result", {
    c("norm_001", "norm_002", "norm_003", "pat_001", "pat_003", "pat_016")) %>%
   breathtestcore::cleanup_data()
   fit_nlme = breathtestcore::nlme_fit(data)
-  expect_identical(names(fit), c("coef", "data", "fit"))
+  expect_identical(names(fit_nlme), c("coef", "data", "fit"))
   
   cf = coef(fit_nlme)
   expect_equal(nrow(cf), 72)
