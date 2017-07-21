@@ -6,11 +6,13 @@
 \usage{
 sigma_fit(fit)
 }
+\arguments{
+\item{fit}{Result of class \code{breathtestfit}}
+}
 \value{
-A numeric value giving the average residual error. For nls fit, 
-the mean of the deviances is returned.
+A numeric value giving the standard deviation of the residuals.
 }
 \description{
-Methods for nls, nlme are available; additional functions
-for Stan-based fits are defined in package `breathteststan`.
+Functions for \code{nls} and \code{nlme} are available; 
+additional functions for Stan-based fits are defined in package \code{breathteststan}.
 }
