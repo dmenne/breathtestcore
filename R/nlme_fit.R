@@ -64,6 +64,8 @@ nlme_fit = function(data, dose = 100,
                    start = list(m = 30, k = 1 / 100, beta = 2),
                    sample_minutes = 15) {
 
+  # Check if data have been validated by cleanup_data
+  assert_that(are_equal(names(data), c("patient_id", "group", "minute", "pdr")))
   # Avoid notes on CRAN
   group =  value = patient_id = pat_group = . = NULL
   
@@ -158,7 +160,7 @@ nlme_fit = function(data, dose = 100,
     tibble::as_tibble(cf)
   attr(cf, "AIC") = AIC(bc_nlme)
   data = data %>% select(-pat_group) # only used locally
-  ret = list(coef = cf, data = data, fit = bc_nlme)
+  ret = list(coef = cf, data = data, nlme_fit = bc_nlme)
   class(ret) = c("breathtestnlmefit", "breathtestfit")
   ret
 }

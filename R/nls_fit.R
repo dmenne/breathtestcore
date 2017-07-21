@@ -88,7 +88,6 @@ nls_fit = function(data, dose = 100,
     "maes_ghoos_scint", "bluck_coward","maes_ghoos"
   )
   parameters = c("m", "k", "beta", "deviance", "t50", "t50","t50","tlag","tlag")
-  # TODO: replace the for-loop by purring (for elegance, speed is secondars)
   pars = list()
   for (i in 1:nrow(cf))  {
     cf1 = cf[i, , drop = FALSE]
@@ -117,7 +116,7 @@ nls_fit = function(data, dose = 100,
     filter(value != 0) %>% 
     tibble::as_tibble(cf)
   
-  ret = list(coef = cf, data = data)
+  ret = list(coef = cf, data = data, nls_fit = bid.nls)
   class(ret) = c("breathtestnlsfit", "breathtestfit" )
   ret
 }

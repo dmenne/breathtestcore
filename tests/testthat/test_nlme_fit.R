@@ -20,12 +20,14 @@ test_that("One-group nlme fit returns valid result", {
   expect_is(fit, "breathtestfit")
   expect_is(fit, "breathtestnlmefit")
   expect_equal(comment(fit$data), "comment")
-  expect_identical(names(fit), c("coef", "data", "fit"))
+  expect_identical(names(fit), c("coef", "data", "nlme_fit"))
   cf = coef(fit)
   expect_equal(comment(cf), "comment")
   expect_equal(nrow(cf), 96)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_is(AIC(fit), "numeric" )
+  expect_is(sigma_fit(fit), "numeric" )
+  expect_gt(sigma_fit(fit), 0.5)
   # Check if subsampling done
   expect_equal(nrow(fit$data), 197)  
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
@@ -43,11 +45,12 @@ test_that("Two-group nlme fit returns valid result", {
           c("norm_001", "norm_002", "norm_003", "norm_004", "norm_005", "norm_006")) %>%
     cleanup_data()
   fit = nlme_fit(data)
-  expect_identical(names(fit), c("coef", "data", "fit"))
+  expect_identical(names(fit), c("coef", "data", "nlme_fit"))
   cf = coef(fit)
   expect_equal(nrow(cf), 96)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_is(AIC(fit), "numeric" )
+  expect_gt(sigma_fit(fit), 0)
   expect_equal(unique(cf$group), c("liquid_normal", "solid_normal"))
   
   # Check if subsampling done
@@ -57,14 +60,16 @@ test_that("Two-group nlme fit returns valid result", {
 
 
 test_that("Three-group nlme fit returns valid result", {
+  data("usz_13c")
   data = usz_13c %>%
-  dplyr::filter( patient_id %in%
-   c("norm_001", "norm_002", "norm_003", "pat_001", "pat_003", "pat_016")) %>%
-  breathtestcore::cleanup_data()
+    dplyr::filter( patient_id %in%
+     c("norm_001", "norm_002", "norm_003", "pat_001", "pat_003", "pat_016")) %>%
+    breathtestcore::cleanup_data()
   fit_nlme = breathtestcore::nlme_fit(data)
-  expect_identical(names(fit_nlme), c("coef", "data", "fit"))
+  expect_identical(names(fit_nlme), c("coef", "data", "nlme_fit"))
   
   cf = coef(fit_nlme)
   expect_equal(nrow(cf), 72)
+  expect_gt(sigma_fit(fit_nlme), 0)
   expect_equal(unique(cf$group), c("liquid_normal", "solid_normal", "patient"))
 })  
