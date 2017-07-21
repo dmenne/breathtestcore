@@ -1,6 +1,6 @@
 context("Coefficients by group")
 
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 data("usz_13c")
 data = usz_13c %>%
   dplyr::filter( patient_id %in%

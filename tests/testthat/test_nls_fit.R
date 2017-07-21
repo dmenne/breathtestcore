@@ -15,7 +15,7 @@ test_that("Nice data return nice result", {
   expect_is(fit, "breathtestnlsfit")
   expect_identical(names(fit), c("coef", "data", "nls_fit"))
   expect_equal(comment(fit$data), "comment")
-  expect_gt(sigma_fit(fit), 0.5) # about 0.87
+  expect_gt(sigma(fit), 0.5) # about 0.87
   cf = coef(fit)
   expect_is(cf, "data.frame")
   expect_equal(names(cf), c("patient_id", "group", "parameter", "method", "value"))
