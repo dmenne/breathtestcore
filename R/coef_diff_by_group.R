@@ -1,13 +1,13 @@
 #' @title Tabulates breath test parameter differences of groups
-#' @description Given a fit to 13C breath test curves, computes absolute values and
-#' their conficence intervals of parameters from the fit,
-#' for examples of the half emptying time \code{t50}.
+#' @description Given a fit to 13C breath test curves, computes between-group confidence
+#' intervals and p-values, for examples of the half emptying time \code{t50},
+#' with correction for multiple testing.
 #'
-#' @param fit Object of class \code{breathtestfit}, for example from 
-#' \code{\link{nlme_fit}}, \code{\link{nls_fit}} or \code{\link[breathteststan]{stan_fit}} 
-#' @param mcp_group "Tukey" (default) for all pairwise comparisons, "Dunnett" for 
+#' @param fit Object of class \code{breathtestfit}, for example from
+#' \code{\link{nlme_fit}}, \code{\link{nls_fit}}
+#' @param mcp_group "Tukey" (default) for all pairwise comparisons, "Dunnett" for
 #' comparisons relative to the reference group.
-#' @param reference_group Used as the first group and as reference group for 
+#' @param reference_group Used as the first group and as reference group for
 #' \code{mcp_group == "Dunnett"}
 #' @param ... Not used
 #'
@@ -15,18 +15,18 @@
 #' \describe{
 #'   \item{parameter}{Parameter of fit, e.g. \code{beta, k, m, t50}}
 #'   \item{method}{Method used to compute parameter. \code{exp_beta} refers to primary
-#'   fit parameters \code{beta, k, m}. \code{maes_ghoos} uses the method from 
+#'   fit parameters \code{beta, k, m}. \code{maes_ghoos} uses the method from
 #'   Maes B D, Ghoos Y F,
 #'   Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 Dig. Dis. Sci. 39 S104-6.
-#'   \code{bluck_coward} is the self-correcting method from  Bluck L J C and 
+#'   \code{bluck_coward} is the self-correcting method from  Bluck L J C and
 #'   Coward W A 2006 <doi:10.1088/0967-3334/27/3/006>}
 #'   \item{groups}{Which pairwise difference, e.g \code{solid - liquid}}
 #'   \item{estimate}{Estimate of the difference}
 #'   \item{conf.low, conf.high}{Lower and upper 95% confidence interval of difference.
-#'   A comparison is significantly different from zero when both estimates have the same 
+#'   A comparison is significantly different from zero when both estimates have the same
 #'   sign.}
 #'   \item{p.value}{p-value of the difference against 0, corrected for multiple testing}
-#' }  
+#' }
 #' @examples
 #' library(dplyr)
 #' data("usz_13c")
@@ -37,9 +37,11 @@
 #' fit = nls_fit(data)
 #' coef_diff_by_group(fit)
 #' \dontrun{
-#' fit = nlme_fit(data) 
-#' coef_by_group(fit)
+#' fit = nlme_fit(data)
+#' coef_diff_by_group(fit)
 #' }
+#' # TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
+#' # confidence intervals instead of credible intervals
 #' @importFrom stats confint relevel
 #' @import multcomp
 #' @export
@@ -48,13 +50,13 @@ coef_diff_by_group = function(fit, mcp_group = "Tukey", reference_group = NULL, 
 }
 
 #' @export
-coef_diff_by_group.breathtestfit = 
+coef_diff_by_group.breathtestfit =
   function(fit, mcp_group = "Tukey", reference_group = NULL, ...) {
   if (!inherits(fit, "breathtestfit")) {
     stop("Function coef_diff_by_group: parameter 'fit' must inherit from class breathtestfit")
   }
   cf = coef(fit)
-  if (is.null(cf)) 
+  if (is.null(cf))
     return(NULL)
   if (! mcp_group %in% c("Dunnett", "Tukey")){
     stop("Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey', but is ",
@@ -62,7 +64,7 @@ coef_diff_by_group.breathtestfit =
   }
   cm = comment(cf)
   # Keep CRAN quite
-  . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic = 
+  . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic =
     std.error = conf.low = conf.high = p.value = NULL
   cf = cf %>%
     mutate( # lme requires factors
@@ -79,13 +81,13 @@ coef_diff_by_group.breathtestfit =
     cf$group = relevel(cf$group, reference_group)
   }
   sig = as.integer(options("digits"))
-  cf = cf %>% 
+  cf = cf %>%
     group_by(parameter, method) %>%
     do({
       fit_lme = nlme::lme(value~group, random = ~1|patient_id, data = .)
       glh = multcomp::glht(fit_lme, linfct =  multcomp::mcp(group = mcp_group))
       broom::tidy(confint(glh))[,-2] %>%
-        left_join(broom::tidy(summary(glh)), by = "lhs", copy = TRUE) %>% 
+        left_join(broom::tidy(summary(glh)), by = "lhs", copy = TRUE) %>%
       mutate(
         estimate.x = signif(estimate.x, sig),
         conf.low = signif(conf.low, sig),

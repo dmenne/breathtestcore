@@ -128,7 +128,7 @@ nlme_fit = function(data, dose = 100,
 
   methods = c(
     "exp_beta","exp_beta","exp_beta","bluck_coward","maes_ghoos",
-    "maes_ghoos_scint", "bluck_coward","maes_ghoos"
+    "maes_ghoos_scintigraphy", "bluck_coward","maes_ghoos"
   )
   parameters = c("m", "k", "beta", "t50", "t50", "t50", "tlag", "tlag")
   # TODO: replace the for-loop by purring (for elegance, speed is secondars)

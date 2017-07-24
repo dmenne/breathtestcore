@@ -8,7 +8,7 @@
 #' in package \code{breathteststan},
 #' @param inc Increment for fitted curve plot in minutes
 #' @param method_t50 Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
-#' "\code{maes_ghoos_scint}"
+#' "\code{maes_ghoos_scintigraphy}"
 #' @param ... other parameters passed to methods. Not used
 #' @examples
 #' data = list(

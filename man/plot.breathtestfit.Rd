@@ -14,7 +14,7 @@ in package \code{breathteststan},}
 \item{inc}{Increment for fitted curve plot in minutes}
 
 \item{method_t50}{Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
-"\code{maes_ghoos_scint}"}
+"\code{maes_ghoos_scintigraphy}"}
 
 \item{...}{other parameters passed to methods. Not used}
 }

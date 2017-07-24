@@ -5,3 +5,4 @@
 ^docs$
 _pkgdown.yml
 templates
+check_rhub.cmd
