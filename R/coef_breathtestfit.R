@@ -11,7 +11,7 @@
 #' @param ... other parameters passed to methods
 #' @examples
 #' # Generate simulated data
-#' data = cleanup_data(simulate_breathtest_data()$data)
+#' data = cleanup_data(simulate_breathtest_data())
 #' # Fit with the population method
 #' fit = nlme_fit(data)
 #' # All coefficients in the long form
@@ -22,9 +22,9 @@
 #' # Can also be used with stan fit (slow!)
 #' \dontrun{
 #' if (require("breathteststan")) {
-#'   fit = breathteststan::stan_fit(data)
+#'   fit = stan_fit(data, iter = 300, chain = 1)
 #'   coef(fit)
-#'   # We get quantiles here, not only estimates
+#'   # We get quantiles here in key/value format
 #'   unique(fit$coef$stat)
 #' }
 #' }
