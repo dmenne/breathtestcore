@@ -50,7 +50,7 @@ data = usz_13c \%>\%
   cleanup_data()
 fit = nls_fit(data)
 coef_diff_by_group(fit)
-\dontrun{
+\donttest{
 fit = nlme_fit(data)
 coef_diff_by_group(fit)
 }

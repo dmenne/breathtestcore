@@ -109,7 +109,7 @@
 #'
 #' # compute nls fit for patient a only: fails
 #' # the following line will produce an error message
-#' \dontrun{
+#' \donttest{
 #' pdr_nls = try(nls(pdr~exp_beta(minute, 100, m, k, beta), data=pdr1, start=start,
 #'                   subset = patient=="a"))
 #' stopifnot(class(pdr_nls) == "try-error")
