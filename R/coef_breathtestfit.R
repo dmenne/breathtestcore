@@ -20,7 +20,7 @@
 #' fit$coef
 #' # Only t50 by Maes/Ghoos
 #' # Can also be used with stan fit (slow!)
-#' \donttest{
+#' \dontrun{
 #' if (require("breathteststan")) {
 #'   fit = breathteststan::stan_fit(data)
 #'   coef(fit)
