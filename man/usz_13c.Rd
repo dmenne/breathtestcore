@@ -32,7 +32,7 @@ monitoring system
 }
 \examples{
 data(usz_13c)
-\donttest{
+\dontrun{
 str(usz_13c)
 # Plot all records; this needs some time
 pdf("usz_13c.pdf", height= 30)
