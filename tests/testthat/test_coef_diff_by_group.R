@@ -12,6 +12,7 @@ cm = comment(fit$data)
 test_that("Result with default parameters is tbl_df with required columns",{
   cf = coef_diff_by_group(fit)
   expect_is(cf, "tbl_df")
+  expect_is(cf, "coef_diff_by_group")
   expect_identical(ncol(cf), 7L)
   expect_identical(nrow(cf), 27L)
   expect_lt(min(cf$p.value), 5e-8)
@@ -23,6 +24,7 @@ test_that("Result with default parameters is tbl_df with required columns",{
 test_that("Result with Dunnett contrast only returns 2 groups",{
   cf = coef_diff_by_group(fit, mcp_group = "Dunnett")
   expect_is(cf, "tbl_df")
+  expect_is(cf, "coef_diff_by_group")
   expect_identical(ncol(cf), 7L)
   expect_identical(nrow(cf), 18L)
   expect_lt(min(cf$p.value), 5.e-8)
@@ -49,6 +51,7 @@ test_that("nlme_fit can be used to compute coefficients",{
   fit = nlme_fit(data)
   cf = coef_diff_by_group(fit)
   expect_is(cf, "tbl_df")
+  expect_is(cf, "coef_diff_by_group")
 })
 
 

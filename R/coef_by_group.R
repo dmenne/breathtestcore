@@ -7,7 +7,7 @@
 #' \code{\link{nlme_fit}}, \code{\link{nls_fit}} or \code{\link[breathteststan]{stan_fit}} 
 #' @param ... Not used
 #'
-#' @return A \code{tibble} with columns
+#' @return A \code{tibble} of class \code{coef_by_group} with columns
 #' \describe{
 #'   \item{parameter}{Parameter of fit, e.g. \code{beta, k, m, t50}}
 #'   \item{method}{Method used to compute parameter. \code{exp_beta} refers to primary
@@ -89,6 +89,7 @@ coef_by_group.breathtestfit = function(fit, ...) {
     }) %>%
     ungroup()
   comment(cf) = cm
+  class(cf) = c("coef_by_group", class(cf))
   cf
 }
 
@@ -115,6 +116,7 @@ coef_by_group.breathtestfit_2 = function(fit, ...) {
   }) %>%
   ungroup()
   comment(cf) = cm
+  class(cf) = c("coef_by_group", class(cf))
   cf
 }
 
@@ -135,6 +137,7 @@ coef_by_group.breathtestfit_1 = function(fit, ...) {
     ) %>% 
   ungroup()
   comment(cf) = cm
+  class(cf) = c("coef_by_group", class(cf))
   cf
 }  
   

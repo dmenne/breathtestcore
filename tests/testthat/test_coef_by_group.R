@@ -12,6 +12,7 @@ cm = comment(fit$data)
 test_that("Result with default parameters is tbl_df with required columns",{
   cf = coef_by_group(fit)
   expect_is(cf, "tbl_df")
+  expect_is(cf, "coef_by_group")
   expect_identical(ncol(cf), 7L)
   expect_equal(names(cf), c("parameter", "method", "group", "estimate", "conf.low", 
                  "conf.high", "diff_group"))

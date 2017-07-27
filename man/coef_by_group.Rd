@@ -13,7 +13,7 @@ coef_by_group(fit, ...)
 \item{...}{Not used}
 }
 \value{
-A \code{tibble} with columns
+A \code{tibble} of class \code{coef_by_group} with columns
 \describe{
   \item{parameter}{Parameter of fit, e.g. \code{beta, k, m, t50}}
   \item{method}{Method used to compute parameter. \code{exp_beta} refers to primary
