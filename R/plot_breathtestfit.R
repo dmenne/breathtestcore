@@ -22,7 +22,8 @@
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   # Make CRAN happy
   pdr = parameter = value = method = minute = fitted = group = NULL
-  # Only plot data if there are no coefficients
+  pat_group = patient_id = s = NULL
+  # Plot data only if there are no coefficients
   has_fit = !is.null(coef(x))
   if (has_fit) {
     dd = broom::augment(x, by = inc) 
@@ -31,12 +32,27 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
       filter(parameter == "t50",  method == method_t50) %>% 
       select(-parameter)
   }
+  # Compute point size dynamically
+  size = x$data %>%
+    mutate(
+      pat_group = paste(patient_id, group, sep = "/")
+    ) %>% 
+    group_by(pat_group) %>%
+    summarize(
+      s = max(min(mean(diff(minute))/8, 2), 0.5)
+    ) %>%
+    ungroup() %>% 
+    summarize(
+      s = mean(s)
+    ) %>% 
+    unlist()
+  
   # Avoid ugly ggplot shading
   theme_set(theme_bw() + theme(panel.spacing = grid::unit(0,"lines")))
   if (length(unique(x$data$group)) > 1) {
     # With grouping
     p = ggplot(x$data, aes(x = minute, y = pdr, color = group)) + 
-      geom_point(size = 1)
+      geom_point(size = size)
     if (has_fit)  {
       p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
         geom_vline(aes(xintercept = value, color = group),  t50) 
@@ -44,7 +60,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   } else {
     # without grouping
     p = ggplot(data = x$data, aes(x = minute, y = pdr)) +
-                 geom_point(size = 1)
+                 geom_point(size = size)
     if (has_fit)    {
       p = p + 
         geom_line(aes(x = minute, y = fitted), data = dd)  +
