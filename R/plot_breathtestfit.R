@@ -39,7 +39,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
     ) %>% 
     group_by(pat_group) %>%
     summarize(
-      s = max(min(mean(diff(minute))/8, 2), 0.3)
+      s = max(min(mean(diff(minute))/12, 2), 0.1)
     ) %>%
     ungroup() %>% 
     summarize(
