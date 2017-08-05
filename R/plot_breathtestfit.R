@@ -46,13 +46,15 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
       s = quantile(s, 0.1)[1]
     ) %>% 
     unlist()
+  # When too dense, make it transparentish
+  alpha = max(min(size, 1), 0.6)
   
   # Avoid ugly ggplot shading
   theme_set(theme_bw() + theme(panel.spacing = grid::unit(0,"lines")))
   if (length(unique(x$data$group)) > 1) {
     # With grouping
     p = ggplot(x$data, aes(x = minute, y = pdr, color = group)) + 
-      geom_point(size = size)
+      geom_point(size = size, alpha = alpha)
     if (has_fit)  {
       p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
         geom_vline(aes(xintercept = value, color = group),  t50) 
@@ -60,7 +62,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   } else {
     # without grouping
     p = ggplot(data = x$data, aes(x = minute, y = pdr)) +
-                 geom_point(size = size)
+                 geom_point(size = size, alpha = alpha)
     if (has_fit)    {
       p = p + 
         geom_line(aes(x = minute, y = fitted), data = dd)  +
