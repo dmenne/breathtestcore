@@ -32,6 +32,6 @@ read_any_file = function(filename){
 
 
 test_that("Valid files with datea errors throw exception" , {
-  expect_error(read_any_file("IrisCSV_MissingColumn.txt"), "unexpected 12 columns")
-  expect_error(read_any_file("IrisCSV_invalidValues.txt"), "Invalid PDR/DOB data")
+  expect_error(read_any_file("IrisCSV_MissingColumn.TXT"), "unexpected 12 columns")
+  expect_error(read_any_file("IrisCSV_invalidValues.TXT"), "Invalid PDR/DOB data")
 })

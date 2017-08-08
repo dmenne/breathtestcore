@@ -42,10 +42,10 @@ read_iris_csv = function(filename = NULL, text = NULL) {
   readr::stop_for_problems(text)
 
   if (ncol(d) != 13)  
-    stop(paste("IRIS CSV format", filename, 
+    stop(paste("File in IRIS CSV format", filename, 
         "has unexpected", ncol(d),"columns; expected 13 columns"))
   if (nrow(d) < 5) 
-    stop(paste("IRIS CSV format", filename, "has only", nrow(d), "rows"))
+    stop(paste("File in IRIS CSV format", filename, "has only", nrow(d), "rows"))
 
   record_date = strptime(d$Datum[1],"%d.%m.%Y")
   patient_id = extract_id(d$Identifikation[1])
