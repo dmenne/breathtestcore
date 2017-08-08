@@ -18,6 +18,7 @@
 #' # cleanup_data combines the list into a data frame
 #' x = nls_fit(cleanup_data(data))
 #' plot(x)
+#' @importFrom stats quantile
 #' @export 
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   # Make CRAN happy
