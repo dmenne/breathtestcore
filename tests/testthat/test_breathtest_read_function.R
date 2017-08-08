@@ -15,8 +15,8 @@ check_and_read = function(filename, read_function){
 
 test_that("Correct file format returned and files correctly read" , {
   check_and_read("350_20043_1_GER.txt", read_breathid)
-  check_and_read("IrisCSV.txt", read_iris_csv)
-  check_and_read("IrisMulti.txt", read_iris)
+  check_and_read("IrisCSV.TXT", read_iris_csv)
+  check_and_read("IrisMulti.TXT", read_iris)
 })
   
 test_that("Wrong formats throw or return null" , {
