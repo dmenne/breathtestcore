@@ -42,7 +42,8 @@ read_iris_csv = function(filename = NULL, text = NULL) {
   readr::stop_for_problems(text)
 
   if (ncol(d) != 13)  
-    stop(paste("IRIS CSV format", filename, "has unexpected columns. Should be 13"))
+    stop(paste("IRIS CSV format", filename, 
+        "has unexpected", ncol(d),"columns; expected 13 columns"))
   if (nrow(d) < 5) 
     stop(paste("IRIS CSV format", filename, "has only", nrow(d), "rows"))
 
