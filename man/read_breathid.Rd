@@ -15,7 +15,7 @@ read_breathid(filename = NULL, text = NULL)
 Structure of class \code{\link{breathtest_data}}
 }
 \description{
-Reads 13c data from a BreathID file, and returns a stucture for
+Reads 13c data from a BreathID file, and returns a stucture 
 of class \code{breathtest_data}.
 }
 \examples{

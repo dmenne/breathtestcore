@@ -21,9 +21,6 @@ in package \code{breathteststan},}
 \description{
 Plots 13C data and fits.
 }
-\details{
-A description of plotting
-}
 \examples{
 data = list(
   A = simulate_breathtest_data(n_records = 6, seed = 100)$data,

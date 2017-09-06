@@ -22,9 +22,11 @@ breathtest_read_function = function(filename = NULL, text = NULL) {
       stop(paste("File", filename, "does not exist"))
     }
     d = try(readLines(filename, n = 1), silent = TRUE)
+    ext = tolower(stringr::str_match(filename, "\\.(.*$)")[1,2])
     filename = "from text"
   } else {
     d = text[1] # Use first line
+    ext = ""
   }
   d = stringr::str_trim(d)
   if (inherits(d, "try-error") || nchar(d) == 0)
@@ -35,7 +37,9 @@ breathtest_read_function = function(filename = NULL, text = NULL) {
     return(read_iris)
   if (str_detect(d, '"Name","Vorname","Test","Identifikation"'))
     return(read_iris_csv)
-#  if (all(str_detect(d, c("record", "minute", "pdr|dob"))))
+  if (ext == "xml" && stringr::str_detect(d, "<Tests Device="))
+    return(read_breathid_xml)
+  #  if (all(str_detect(d, c("record", "minute", "pdr|dob"))))
 #    return(read_generic_csv)
   return(NULL)
 }

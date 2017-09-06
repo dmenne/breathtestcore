@@ -32,7 +32,7 @@
 #' # Check how far our computed pdr is from the stored pdr
 #' var(bid$data$pdr1-bid$data$pdr)
 #' @export
-dob_to_pdr = function(dob,weight = 75, height = 180, mw = 167,
+dob_to_pdr = function(dob, weight = 75, height = 180, mw = 167,
                     purity_percent = 99.1, mg_substrate = 100) {
   # default assumptions
   if (is.na(weight) ||

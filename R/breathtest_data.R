@@ -34,9 +34,11 @@
 #' @param t50  optional, only present if device computes this value
 #' @param gec  optional, only present if device computes this value
 #' @param tlag optional, only present if device computes this value
-#' @param data data frame with at least 5 rows and columns \code{minute} and one
-#' or both of \code{dob} or \code{pdr}. If pdr is missing, and height, weight 
-#' and substrate are given, computes pdr via function dob_to_pdr
+#' @param data data frame with at least 5 rows and columns \code{minute} or 
+#' \code{time} and one or both of \code{dob} or \code{pdr}. 
+#' If pdr is missing, and height, weight 
+#' and substrate are given, computes pdr via function \code{\link{dob_to_pdr}}. 
+#' When height and weight are missing,  defaults 180 cm and 75 kg are used instead.
 #' @examples 
 #' # Read a file with known format
 #' iris_csv_file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
@@ -66,8 +68,8 @@ breathtest_data = function(patient_id,
                            end_time = record_date,
                            test_no ,
                            dose = 100,
-                           height = NA,
-                           weight = NA,
+                           height = 180,
+                           weight = 75,
                            t50 = NA,
                            gec = NA,
                            tlag = NA,
@@ -77,8 +79,8 @@ breathtest_data = function(patient_id,
   if (nrow(data) < 5)
     stop("Function breathtest_data: data should have a least 5 rows")
   nd = names(data)
-  if (nd[1] != "time")
-    stop("Function breathtest_data: first data column must be <<time>>")
+  if (!(nd[1] %in% c("time", "minute")))
+    stop("Function breathtest_data: first data column must be <<time>> or <<minute>>. It is:<< ", nd[1], ">>")
   # rename data column to minute
   names(data)[1] = "minute"
   if (!sum(nd[-1] %in% c("pdr", "dob")) > 0)
@@ -100,8 +102,8 @@ breathtest_data = function(patient_id,
     stop("function breathtest_data: gender should be 'm' or 'f'")
   # force NA if weight or height is not 0
   if (weight <= 30 || height < 1) {
-    height = NA
-    weight = NA
+    height = 180
+    weight = 75
   }
   if (!"pdr" %in% nd)
     data$pdr = dob_to_pdr(data$dob, weight, height, mw = substrate)

@@ -14,6 +14,7 @@ check_and_read = function(filename, read_function){
 }
 
 test_that("Correct file format returned and files correctly read" , {
+  check_and_read("NewBreathID_multiple.xml", read_breathid_xml)
   check_and_read("350_20043_1_GER.txt", read_breathid)
   check_and_read("IrisCSV.TXT", read_iris_csv)
   check_and_read("IrisMulti.TXT", read_iris)
