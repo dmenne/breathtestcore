@@ -5,17 +5,21 @@
 #'
 #' @param filename name of xml-file to be read
 #' @param text alternatively, text can be given as string
-#' @return List of structure of class \code{\link{breathtest_data}}; an XML file
-#' can contain multiple data sets.
+#' @return List of class \code{breathtest_data_list} of structures of 
+#' class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
 #' @examples
 #' filename = system.file("extdata", "NewBreathID_01.xml", package = "breathtestcore")
 #' # Show first lines
 #' cat(readLines(filename, n = 10), sep="\n")
-#' #
 #' bid = read_breathid_xml(filename)
-#' str(bid)
-#' @importFrom xml2 read_xml xml_attrs xml_find_first xml_text xml_attr
-#' @importFrom readr read_file
+#' # List with length 1
+#' str(bid, 1)
+#' filename = system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")
+#' bids = read_breathid_xml(filename)
+#' str(bids, 1)
+#' 
+#' 
+#' @importFrom xml2 read_xml xml_attrs xml_find_first xml_text xml_attr xml_find_all
 #' @export
 read_breathid_xml = function(filename = NULL, text = NULL) {
 
@@ -34,17 +38,30 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
     stop(paste("File ", filename, "is not a valid XML BreathID file"))
   device =  xml_attrs(xml_find_first(xml, "/Tests"))
   
-  xml_0 = xml_find_first(xml, "Test")
   
+  xmls = xml_find_all(xml, "Test")
+  ret = lapply(xmls, read_breathid_xml_record, filename, device)
+  not_null = !unlist(lapply(ret, is.null))
+  ret = ret[not_null]
+  class(ret) = "breathtest_data_list"
+  ret
+}
+
+# Local function to read one record
+read_breathid_xml_record = function(xml_0, filename, device){ 
   # local function xml_num
   xml_num = function(xml_0, path){
     as.numeric(unlist(str_split(xml_text(xml_find_first(xml_0, path)),",")))
   }
   
-  data = data.frame(
+  data = na.omit(data.frame(
     minute = xml_num(xml_0,".//DOBListTimes"),
     dob = xml_num(xml_0, ".//DOBListValues")
-  )
+  ))
+
+  if (nrow(data) == 0 ) # No data
+    return(NULL)
+  attr(data, "na.action") = NULL # Remove na.omit
   # e.g. "19Jul2017 11:02"
   
   tryCatch({
@@ -54,15 +71,15 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
     Sys.setlocale("LC_TIME", "C")
     record_date = strptime(start_time_str, "%d%b%Y")
     Sys.setlocale("LC_TIME", lct)
-  
+    
     start_time =  str_extract(start_time_str, "\\d\\d:\\d\\d$")
     end_time =  str_extract(end_time_str, "\\d\\d:\\d\\d$")
     invisible(NULL)
   }, error = function(e){
-       stop("No valid date/time in XML file: ", filename)
-    }
+    stop("No valid date/time in XML file: ", filename)
+  }
   )
-
+  
   patient_id = xml_text(xml_find_first(xml_0, "ID"))
   test_no = as.integer(xml_attr(xml_find_first(xml_0, "/*/Test"), "Number"))
   breathtest_data(
@@ -78,7 +95,7 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
   )
 }
 
-if (FALSE){
+if (FALSE) {
   library(xml2)
   library(stringr)
   library(readr)
@@ -86,6 +103,7 @@ if (FALSE){
   #  filename = 'C:/Users/Dieter/Documents/RPackages/breathtestcore/inst/extdata/350_20043_0_GER.txt'
   text = NULL
   
-  read_breathid_xml(filename)
+  b = read_breathid_xml(filename)
+  str(b,1)
 
 }

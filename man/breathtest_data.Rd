@@ -8,7 +8,7 @@ breathtest_data(patient_id, name = NA, first_name = NA, initials = NA,
   dob = NA, birth_year = NA, gender = NA, study = NA,
   pat_study_id = NA, file_name, device = "generic", substrate, record_date,
   start_time = record_date, end_time = record_date, test_no, dose = 100,
-  height = NA, weight = NA, t50 = NA, gec = NA, tlag = NA,
+  height = 180, weight = 75, t50 = NA, gec = NA, tlag = NA,
   data = data)
 }
 \arguments{

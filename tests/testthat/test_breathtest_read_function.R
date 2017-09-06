@@ -3,12 +3,18 @@ d13file = function(filename) {
   system.file("extdata", filename, package = "breathtestcore")
 }
 
+filename = "NewBreathID_multiple.xml"
+
 check_and_read = function(filename, read_function){
   file = d13file(filename)
   expect_true(file.exists(file))
   f = breathtest_read_function(file)
   expect_equal(f, read_function)
   bt = f(file)
+  if (inherits(bt, "breathtest_data_list")) {
+    expect_true(all(sapply(bt, function(x) {class(x) == "breathtest_data"})))
+    bt = bt[[1]]  
+  }
   expect_is(bt, "breathtest_data")
   expect_gt(nrow(bt$data), 1)
 }
@@ -20,7 +26,7 @@ test_that("Correct file format returned and files correctly read" , {
   check_and_read("IrisMulti.TXT", read_iris)
 })
   
-test_that("Wrong formats throw or return null" , {
+test_that("Wrong formats throws exception or return null" , {
   expect_error(breathtest_read_function(d13file("a.TXT")),"exist")
   expect_null(breathtest_read_function(text = "This is not a breathtest file"))
 })

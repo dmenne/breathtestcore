@@ -12,8 +12,8 @@ read_breathid_xml(filename = NULL, text = NULL)
 \item{text}{alternatively, text can be given as string}
 }
 \value{
-List of structure of class \code{\link{breathtest_data}}; an XML file
-can contain multiple data sets.
+List of class \code{breathtest_data_list} of structures of 
+class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
 }
 \description{
 Reads 13c data from an XML BreathID file, and returns a stucture 
@@ -23,7 +23,12 @@ of class \code{breathtest_data}.
 filename = system.file("extdata", "NewBreathID_01.xml", package = "breathtestcore")
 # Show first lines
 cat(readLines(filename, n = 10), sep="\\n")
-#
 bid = read_breathid_xml(filename)
-str(bid)
+# List with length 1
+str(bid, 1)
+filename = system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")
+bids = read_breathid_xml(filename)
+str(bids, 1)
+
+
 }
