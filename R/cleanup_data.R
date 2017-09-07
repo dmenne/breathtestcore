@@ -18,7 +18,7 @@
 #'    are not named, group name \code{A} is used for all items.}
 #'  \item{A structure of class \code{\link{breathtest_data}}, as imported from
 #'    a file with \code{\link{read_any_breathtest}}}
-#'  \item{A list of class \code{\link{breathtest_data_list}} as generated
+#'  \item{A list of class \code{breathtest_data_list} as generated
 #'  from read function such as \code{\link{read_breathid_xml}}}
 #' }
 #'
