@@ -8,7 +8,7 @@
 #' @return Function to read the file or the text; NULL if no matching function 
 #' was found 
 #' @examples
-#'  file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+#'  file = btcore_file("IrisCSV.TXT")
 #'  # Get function to read this file. Returns \code{\link{read_iris_csv}}.
 #'  read_fun = breathtest_read_function(file)
 #'  str(read_fun(file))

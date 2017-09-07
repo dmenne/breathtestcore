@@ -19,7 +19,7 @@ Reads 13c data from a BreathID file, and returns a stucture
 of class \code{breathtest_data}.
 }
 \examples{
-filename = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
+filename = btcore_file("350_20043_0_GER.txt")
 # Show first lines
 cat(readLines(filename, n = 10), sep="\\n")
 #

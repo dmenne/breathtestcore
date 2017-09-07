@@ -1,7 +1,7 @@
 context("Read any breath test file")
 
 test_that("Reading a single file returs a list of class breathtest_data",{
-  file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+  file = btcore_file("IrisCSV.TXT")
   bt = read_any_breathtest(file)
   expect_is(bt, "breathtest_data_list")
   expect_equal(length(bt), 1)  
@@ -10,7 +10,7 @@ test_that("Reading a single file returs a list of class breathtest_data",{
 })
 
 test_that("Reading a composite file returns a list of class breathtest_data_list",{
-  file = system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")
+  file = btcore_file("NewBreathID_multiple.xml")
   bt = read_any_breathtest(file)
   expect_is(bt, "breathtest_data_list")
   expect_equal(length(bt), 3)  
@@ -22,10 +22,10 @@ test_that("Reading a composite file returns a list of class breathtest_data_list
 
 test_that("Reading multiple files returns a list with multiple items",{
   files = c(
-    system.file("extdata", "IrisCSV.TXT", package = "breathtestcore"),
-    system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore"),
-    system.file("extdata", "IrisMulti.TXT", package = "breathtestcore"),
-    system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")  
+    btcore_file("IrisCSV.TXT"),
+    btcore_file("350_20043_0_GER.txt"),
+    btcore_file("IrisMulti.TXT"),
+    btcore_file("NewBreathID_multiple.xml")  
   )
   bt = read_any_breathtest(files)
   expect_is(bt, "breathtest_data_list")

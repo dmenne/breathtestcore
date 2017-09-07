@@ -9,10 +9,10 @@
 #' \code{stan_fit} in separate package \code{breathteststan}.  
 #' @examples
 #' files = c(
-#'   system.file("extdata", "IrisCSV.TXT", package = "breathtestcore"),
-#'   system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore"),
-#'   system.file("extdata", "IrisMulti.TXT", package = "breathtestcore"),
-#'   system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")  
+#'   btcore_file("IrisCSV.TXT"),
+#'   btcore_file("350_20043_0_GER.txt"),
+#'   btcore_file("IrisMulti.TXT"),
+#'   btcore_file("NewBreathID_multiple.xml")  
 #'  )
 #'  bt = read_any_breathtest(files)
 #'  str(bt, 1)

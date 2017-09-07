@@ -22,7 +22,7 @@ To automatically read the file with the inferred file type,
 use \code{\link{read_any_breathtest}}.
 }
 \examples{
- file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+ file = btcore_file("IrisCSV.TXT")
  # Get function to read this file. Returns \\code{\\link{read_iris_csv}}.
  read_fun = breathtest_read_function(file)
  str(read_fun(file))

@@ -20,8 +20,7 @@
 #' @param  mg_substrate Substrate in mg
 #' @return PDR percent dose/h
 #' @examples
-#' filename = system.file("extdata", "350_20049_0_GERWithWeight.txt",
-#'     package = "breathtestcore")
+#' filename = btcore_file("350_20049_0_GERWithWeight.txt")
 #' bid = read_breathid(filename)
 #' bid$data$pdr1 = dob_to_pdr(bid$data$dob, weight=bid$weight, height=bid$height)
 #'

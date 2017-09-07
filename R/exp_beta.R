@@ -41,8 +41,7 @@
 #' start = list(m=20,k=1/100,beta=2)
 #'
 #' # fit to real data set and show different t50 results
-#' sample_file = system.file("extdata", "350_20043_0_GER.txt", 
-#'     package = "breathtestcore")
+#' sample_file = btcore_file("350_20043_0_GER.txt")
 #' # minute 0 must be removed to avoid singularity
 #' breath_id = read_breathid(sample_file)
 #' data = subset(breath_id$data, minute >0)

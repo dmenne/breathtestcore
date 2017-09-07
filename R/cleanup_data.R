@@ -69,9 +69,9 @@
 #' # "Z" "Y"
 #' 
 #' # Mix multiple input formats
-#' f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
-#' f2 = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
-#' f3 = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+#' f1 = btcore_file("350_20043_0_GER.txt")
+#' f2 = btcore_file("IrisMulti.TXT")
+#' f3 = btcore_file("IrisCSV.TXT")
 #' # With a named list, the name is used as a group parameter
 #' data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
 #' d = cleanup_data(data)

@@ -20,13 +20,13 @@ Reads 13c data from an XML BreathID file, and returns a stucture
 of class \code{breathtest_data}.
 }
 \examples{
-filename = system.file("extdata", "NewBreathID_01.xml", package = "breathtestcore")
+filename = btcore_file("NewBreathID_01.xml")
 # Show first lines
 cat(readLines(filename, n = 10), sep="\\n")
 bid = read_breathid_xml(filename)
 # List with length 1
 str(bid, 1)
-filename = system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")
+filename = btcore_file("NewBreathID_multiple.xml")
 bids = read_breathid_xml(filename)
 str(bids, 1)
 

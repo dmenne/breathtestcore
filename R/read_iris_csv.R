@@ -14,7 +14,7 @@
 #' patient name, patient first name, test, identifikation},
 #' and data frame \code{data} with \code{time} and \code{dob}
 #' @examples
-#' filename = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+#' filename = btcore_file("IrisCSV.TXT")
 #' cat(readLines(filename, n = 3), sep="\n")
 #' #
 #' iris_data = read_iris_csv(filename)

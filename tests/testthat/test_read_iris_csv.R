@@ -1,7 +1,4 @@
 context("13C read IRIS CSV test")
-d13file = function(filename) {
-  system.file("extdata", filename, package = "breathtestcore")
-}
 
 test_that("extract_id returns valid id" , {
   expect_equal(extract_id("123456"), "123456")
@@ -11,7 +8,7 @@ test_that("extract_id returns valid id" , {
 })
 
 test_that("read_iris_csv returns valid data set", {
-  filename = d13file("IrisCSV.TXT")
+  filename = btcore_file("IrisCSV.TXT")
   f = read_iris_csv(filename)
   expect_is(f, "breathtest_data")
   expect_equal(f$file_name, basename(filename))
@@ -25,7 +22,7 @@ test_that("read_iris_csv returns valid data set", {
 })
 
 test_that("read_iris_csv from text and from file give almost the same results", {
-  filename = d13file("IrisCSV.TXT")
+  filename = btcore_file("IrisCSV.TXT")
   f = read_iris_csv(filename)
   text = readLines(filename)
   f1 = read_iris_csv(text = readLines(filename))
@@ -37,29 +34,29 @@ test_that("read_iris_csv from text and from file give almost the same results", 
 
 
 test_that("read_iris of composite file throws",{
-  filename = d13file("IrisMulti.TXT")
+  filename = btcore_file("IrisMulti.TXT")
   expect_error( read_iris_csv(filename),"valid IRIS")
 })
 
 test_that("read_iris throws when column is missing",{
-  filename = d13file("IrisCSV_MissingColumn.TXT")
+  filename = btcore_file("IrisCSV_MissingColumn.TXT")
   expect_error( read_iris_csv(filename),"unexpected")
 })  
 
 
 test_that("read_iris_csv returns with funny identification cleans up", {
-  filename = d13file("IrisCSV_with_KEK.TXT")
+  filename = btcore_file("IrisCSV_with_KEK.TXT")
   f = read_iris_csv(filename)
   expect_equal(f$patient_id, "2013_1234")
   expect_equal(iconv(f$study), "GE-flüssig")
 })
 
 test_that("read_iris_csv raises error on short file", {
-  filename = d13file("IrisCSVShort.TXT")
+  filename = btcore_file("IrisCSVShort.TXT")
   expect_error(read_iris_csv(filename), "has only")
 })
 
 test_that("read_iris_csv raises error on invalid entries", {
-  filename = d13file("IrisCSV_invalidValues.TXT")
+  filename = btcore_file("IrisCSV_invalidValues.TXT")
   expect_error(read_iris_csv(filename), "Invalid")
 })

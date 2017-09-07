@@ -27,7 +27,7 @@ The composite files start as follows:
 "Testart"}
 }
 \examples{
-filename = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+filename = btcore_file("IrisMulti.TXT")
 cat(readLines(filename, n = 10), sep="\\n")
 #
 iris_data = read_iris(filename)

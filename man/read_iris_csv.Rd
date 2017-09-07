@@ -27,7 +27,7 @@ the dose and body weight and height. The following defaults are used: \code{subs
 dose = 100,  weight = 75, height = 180}.
 }
 \examples{
-filename = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+filename = btcore_file("IrisCSV.TXT")
 cat(readLines(filename, n = 3), sep="\\n")
 #
 iris_data = read_iris_csv(filename)

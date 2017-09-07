@@ -1,10 +1,7 @@
 context("recognize breathtest file format")
-d13file = function(filename) {
-  system.file("extdata", filename, package = "breathtestcore")
-}
 
 check_and_read = function(filename, read_function){
-  file = d13file(filename)
+  file = btcore_file(filename)
   expect_true(file.exists(file))
   f = breathtest_read_function(file)
   expect_equal(f, read_function)
@@ -25,12 +22,12 @@ test_that("Correct file format returned and files correctly read" , {
 })
   
 test_that("Wrong formats throws exception or return null" , {
-  expect_error(breathtest_read_function(d13file("a.TXT")),"exist")
+  expect_error(breathtest_read_function(btcore_file("a.TXT")),"exist")
   expect_null(breathtest_read_function(text = "This is not a breathtest file"))
 })
 
 read_any_file = function(filename){
-  file = d13file(filename)
+  file = btcore_file(filename)
   expect_true(file.exists(file))
   f = breathtest_read_function(file)(file)
 }

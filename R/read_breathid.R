@@ -7,7 +7,7 @@
 #' @param text alternatively, text can be given as string
 #' @return Structure of class \code{\link{breathtest_data}}
 #' @examples
-#' filename = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
+#' filename = btcore_file("350_20043_0_GER.txt")
 #' # Show first lines
 #' cat(readLines(filename, n = 10), sep="\n")
 #' #

@@ -79,7 +79,7 @@ returns the most likely function to read the file by reading a few lines in it.
 }
 \examples{
 # Read a file with known format
-iris_csv_file = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+iris_csv_file = btcore_file("IrisCSV.TXT")
 iris_csv_data = read_iris_csv(iris_csv_file)
 # Note that many filds are NA
 str(iris_csv_data)

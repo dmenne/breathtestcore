@@ -157,30 +157,27 @@ test_that("Same data used twice in list raises error", {
 })  
 
 test_that("data from BreathId device is accepted as input", {
-  filename = system.file("extdata", "350_20043_0_GER.txt", 
-                         package = "breathtestcore")
+  filename = btcore_file("350_20043_0_GER.txt") 
   data = read_breathid(filename)
   expect_silent(cleanup_data(data))
 })
 
 test_that("Composite data from Iris device is accepted as input", {
-  filename = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+  filename = btcore_file("IrisMulti.TXT")
   data = read_iris(filename)
   expect_silent(cleanup_data(data))
 })
 
 test_that("CSV data from Iris device is accepted as input", {
-  filename = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+  filename = btcore_file("IrisCSV.TXT")
   data = read_iris_csv(filename)
   expect_silent(cleanup_data(data))
 })
 
 
 test_that("list of breathtest_data from a common format is accepted as input", {
-  f1 = system.file("extdata", "350_20043_0_GER.txt", 
-                   package = "breathtestcore")
-  f2 = system.file("extdata", "350_20023_0_GERWithNan.txt", 
-                   package = "breathtestcore")
+  f1 = btcore_file("350_20043_0_GER.txt") 
+  f2 = btcore_file("350_20023_0_GERWithNan.txt") 
   data = list(read_breathid(f1), read_breathid(f2)) 
   d = cleanup_data(data)
   # expect dummy group when passing unnamed list
@@ -190,9 +187,9 @@ test_that("list of breathtest_data from a common format is accepted as input", {
 })
 
 test_that("list of breathtest_data of different formats is accepted as input", {
-  f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
-  f2 = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
-  f3 = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+  f1 = btcore_file("350_20043_0_GER.txt")
+  f2 = btcore_file("IrisMulti.TXT")
+  f3 = btcore_file("IrisCSV.TXT")
   ## TODO xml file !!
   data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
   d = cleanup_data(data)

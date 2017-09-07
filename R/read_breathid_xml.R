@@ -8,13 +8,13 @@
 #' @return List of class \code{breathtest_data_list} of structures of 
 #' class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
 #' @examples
-#' filename = system.file("extdata", "NewBreathID_01.xml", package = "breathtestcore")
+#' filename = btcore_file("NewBreathID_01.xml")
 #' # Show first lines
 #' cat(readLines(filename, n = 10), sep="\n")
 #' bid = read_breathid_xml(filename)
 #' # List with length 1
 #' str(bid, 1)
-#' filename = system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")
+#' filename = btcore_file("NewBreathID_multiple.xml")
 #' bids = read_breathid_xml(filename)
 #' str(bids, 1)
 #' 

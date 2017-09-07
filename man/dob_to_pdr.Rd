@@ -39,8 +39,7 @@ test and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123
 is used, without the factor 10. Which one is correct?
 }
 \examples{
-filename = system.file("extdata", "350_20049_0_GERWithWeight.txt",
-    package = "breathtestcore")
+filename = btcore_file("350_20049_0_GERWithWeight.txt")
 bid = read_breathid(filename)
 bid$data$pdr1 = dob_to_pdr(bid$data$dob, weight=bid$weight, height=bid$height)
 
