@@ -11,7 +11,8 @@
 #' files = c(
 #'   system.file("extdata", "IrisCSV.TXT", package = "breathtestcore"),
 #'   system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore"),
-#'   system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+#'   system.file("extdata", "IrisMulti.TXT", package = "breathtestcore"),
+#'   system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")  
 #'  )
 #'  bt = read_any_breathtest(files)
 #'  str(bt, 1)
@@ -23,10 +24,18 @@
 #'  # Plot population fit with decimated data
 #'  plot(nlme_fit(bt_df))
 # })
+#' @importFrom purrr modify_if flatten
 #' @export
 read_any_breathtest = function(files){
+  # https://stackoverflow.com/questions/46097093/partially-unnest-a-list
   files = as.list(files)
-  lapply(files, function(file) breathtest_read_function(file)(file))
+  ret = 
+    lapply(files, function(file) breathtest_read_function(file)(file)) %>% 
+    modify_if(function(x) is(x, "breathtest_data"), list ) %>% 
+    flatten() 
+  class(ret) = "breathtest_data_list"
+  ret
 }
+  
 
 

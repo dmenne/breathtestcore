@@ -18,6 +18,8 @@
 #'    are not named, group name \code{A} is used for all items.}
 #'  \item{A structure of class \code{\link{breathtest_data}}, as imported from
 #'    a file with \code{\link{read_any_breathtest}}}
+#'  \item{A list of class \code{\link{breathtest_data_list}} as generated
+#'  from read function such as \code{\link{read_breathid_xml}}}
 #' }
 #'
 #' @return A tibble with 4 columns. Column \code{patient_id} is created with a dummy
@@ -161,6 +163,11 @@ cleanup_data.matrix = function(data){
     stop("A matrix can only be used as data input when two columns <minute> and <pdr> are passed. Use a data frame otherwise")
   cleanup_data(as_data_frame(data))
 }
+
+#' @export 
+cleanup_data.breathtest_data_list = function(data){
+  cleanup_data.list(data)
+}  
 
 #' @export 
 cleanup_data.list = function(data){

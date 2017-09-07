@@ -3,8 +3,6 @@ d13file = function(filename) {
   system.file("extdata", filename, package = "breathtestcore")
 }
 
-filename = "NewBreathID_multiple.xml"
-
 check_and_read = function(filename, read_function){
   file = d13file(filename)
   expect_true(file.exists(file))

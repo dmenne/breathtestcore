@@ -1,13 +1,4 @@
 <Tests Device="1402">
-  <Test Number="1">
-    <ID>0000</ID>
-    <StartTime>19Jul2017 11:02</StartTime>
-    <EndTime>19Jul2017 11:48</EndTime>
-    <LastResultCode>0</LastResultCode>
-    <StoppedByUser>true</StoppedByUser>
-    <DOBListTimes>0.38,3.15,5.92,8.72,11.51,14.31,17.06,20.22</DOBListTimes>
-    <DOBListValues>-0.3,0.0,-1.0,0.7,0.3,0.3,0.2,0.2</DOBListValues>
-  </Test>
   <Test Number="2">
     <ID>TEST123</ID>
     <DOB>N/A</DOB>

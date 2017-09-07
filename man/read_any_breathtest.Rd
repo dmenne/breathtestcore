@@ -24,7 +24,8 @@ and reads it if it has a valid format.
 files = c(
   system.file("extdata", "IrisCSV.TXT", package = "breathtestcore"),
   system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore"),
-  system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
+  system.file("extdata", "IrisMulti.TXT", package = "breathtestcore"),
+  system.file("extdata", "NewBreathID_multiple.xml", package = "breathtestcore")  
  )
  bt = read_any_breathtest(files)
  str(bt, 1)

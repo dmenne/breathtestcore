@@ -193,6 +193,7 @@ test_that("list of breathtest_data of different formats is accepted as input", {
   f1 = system.file("extdata", "350_20043_0_GER.txt", package = "breathtestcore")
   f2 = system.file("extdata", "IrisMulti.TXT", package = "breathtestcore")
   f3 = system.file("extdata", "IrisCSV.TXT", package = "breathtestcore")
+  ## TODO xml file !!
   data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
   d = cleanup_data(data)
   # When no name is given, letters are given to group
