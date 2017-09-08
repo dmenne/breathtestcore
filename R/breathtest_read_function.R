@@ -22,7 +22,7 @@ breathtest_read_function = function(filename = NULL, text = NULL) {
       stop(paste("File", filename, "does not exist"))
     }
     d = try(readLines(filename, n = 1), silent = TRUE)
-    ext = tolower(stringr::str_match(filename, "\\.(.*$)")[1,2])
+    ext = tools::file_ext(filename)
     filename = "from text"
   } else {
     d = text[1] # Use first line

@@ -30,7 +30,11 @@ read_any_breathtest = function(files){
   # https://stackoverflow.com/questions/46097093/partially-unnest-a-list
   files = as.list(files)
   ret = 
-    lapply(files, function(file) breathtest_read_function(file)(file)) %>% 
+    lapply(files, function(file) { 
+      f = breathtest_read_function(file)
+      if (is.null(f)) return(NULL)
+      f(file)
+    })   %>% 
     modify_if(function(x) is(x, "breathtest_data"), list ) %>% 
     flatten() 
   class(ret) = "breathtest_data_list"
