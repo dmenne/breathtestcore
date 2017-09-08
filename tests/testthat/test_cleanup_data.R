@@ -174,6 +174,12 @@ test_that("CSV data from Iris device is accepted as input", {
   expect_silent(cleanup_data(data))
 })
 
+test_that("BreathID XML format is accepted as input", {
+  filename = btcore_file("NewBreathID_multiple.xml")
+  data = read_breathid_xml(filename)
+  expect_silent(cleanup_data(data))
+})
+
 
 test_that("list of breathtest_data from a common format is accepted as input", {
   f1 = btcore_file("350_20043_0_GER.txt") 
@@ -190,13 +196,24 @@ test_that("list of breathtest_data of different formats is accepted as input", {
   f1 = btcore_file("350_20043_0_GER.txt")
   f2 = btcore_file("IrisMulti.TXT")
   f3 = btcore_file("IrisCSV.TXT")
-  ## TODO xml file !!
   data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
   d = cleanup_data(data)
   # When no name is given, letters are given to group
   expect_equal(unique(d$group), c("A", "B", "C"))
   expect_equal(nrow(d), 115)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "1871960", "123456"))
+})
+
+test_that("list of breathtest_data with XML is accepted as input", {
+  f1 = btcore_file("350_20043_0_GER.txt")
+  f2 = btcore_file("NewBreathID_multiple.xml")
+  data = list(A = read_breathid(f1), B = read_breathid_xml(f2)) 
+  d = cleanup_data(data)
+  # When no name is given, letters are given to group
+  expect_equal(unique(d$group), c("A", "B"))
+  expect_equal(nrow(d), 152)
+  expect_equal(unique(d$patient_id), 
+               c("350_20043_0_GER", "07951400", "10727002",  "10650692" ))
 })
 
 
