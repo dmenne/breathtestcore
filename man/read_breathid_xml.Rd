@@ -17,7 +17,8 @@ class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
 }
 \description{
 Reads 13c data from an XML BreathID file, and returns a stucture 
-of class \code{breathtest_data}.
+of class \code{breathtest_data_list}, which is a list with elements of 
+class \code{breathtest_data}.
 }
 \examples{
 filename = btcore_file("NewBreathID_01.xml")
@@ -28,7 +29,16 @@ bid = read_breathid_xml(filename)
 str(bid, 1)
 filename = btcore_file("NewBreathID_multiple.xml")
 bids = read_breathid_xml(filename)
-str(bids, 1)
+str(bids, 1) # 3 elements - the others in the file have no data
+# Create hook function to deselect first record
+choose_record = function(records) {
+  r  = rep(TRUE, length(records))
+  r[1] = FALSE
+  r
+}
+options(breathtestcore.choose_record = choose_record)
+bids = read_breathid_xml(filename)
+str(bids, 1) # 2 elements, first deselected
 
 
 }

@@ -1,7 +1,8 @@
 #' @title Read new BreathID/Examens XML file
 #'
 #' @description Reads 13c data from an XML BreathID file, and returns a stucture 
-#' of class \code{breathtest_data}. 
+#' of class \code{breathtest_data_list}, which is a list with elements of 
+#' class \code{breathtest_data}. 
 #'
 #' @param filename name of xml-file to be read
 #' @param text alternatively, text can be given as string
@@ -16,13 +17,21 @@
 #' str(bid, 1)
 #' filename = btcore_file("NewBreathID_multiple.xml")
 #' bids = read_breathid_xml(filename)
-#' str(bids, 1)
+#' str(bids, 1) # 3 elements - the others in the file have no data
+#' # Create hook function to deselect first record
+#' choose_record = function(records) {
+#'   r  = rep(TRUE, length(records))
+#'   r[1] = FALSE
+#'   r
+#' }
+#' options(breathtestcore.choose_record = choose_record)
+#' bids = read_breathid_xml(filename)
+#' str(bids, 1) # 2 elements, first deselected
 #' 
 #' 
 #' @importFrom xml2 read_xml xml_attrs xml_find_first xml_text xml_attr xml_find_all
 #' @export
 read_breathid_xml = function(filename = NULL, text = NULL) {
-
   if (is.null(text)) {
     filename = as.character(filename)
     if (!file.exists(filename))
@@ -43,6 +52,14 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
   ret = lapply(xmls, read_breathid_xml_record, filename, device)
   not_null = !unlist(lapply(ret, is.null))
   ret = ret[not_null]
+  # Hook to select records
+  ch = options("breathtestcore.choose_record")$breathtestcore.choose_record
+  if (length(ret) > 1 & !is.null(ch)) {
+    pt = paste("Patient", purrr::map_chr(ret, "patient_id"), 
+          purrr::map_chr(ret, "record_date"),
+          purrr::map_chr(ret, "start_time"))
+    ret = ret[ch(pt)]
+  }
   class(ret) = "breathtest_data_list"
   ret
 }
@@ -100,7 +117,6 @@ if (FALSE) {
   library(stringr)
   library(readr)
   filename = 'C:/Users/Dieter/Documents/RPackages/breathtestcore/inst/extdata/NewBreathID_multiple.xml'
-  #  filename = 'C:/Users/Dieter/Documents/RPackages/breathtestcore/inst/extdata/350_20043_0_GER.txt'
   text = NULL
   
   b = read_breathid_xml(filename)

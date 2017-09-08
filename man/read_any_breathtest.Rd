@@ -22,9 +22,9 @@ and reads it if it has a valid format.
 }
 \examples{
 files = c(
-#   btcore_file("IrisCSV.TXT"),
-#   btcore_file("350_20043_0_GER.txt"),
-#   btcore_file("IrisMulti.TXT"),
+  btcore_file("IrisCSV.TXT"),
+  btcore_file("350_20043_0_GER.txt"),
+  btcore_file("IrisMulti.TXT"),
   btcore_file("NewBreathID_multiple.xml")  
  )
  bt = read_any_breathtest(files)
