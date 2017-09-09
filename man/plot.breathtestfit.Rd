@@ -23,8 +23,8 @@ Plots 13C data and fits.
 }
 \examples{
 data = list(
-  A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
-  B = simulate_breathtest_data(n_records = 4, seed = 187)$data 
+  A = simulate_breathtest_data(n_records = 6, seed = 100),
+  B = simulate_breathtest_data(n_records = 4, seed = 187) 
 )
 # cleanup_data combines the list into a data frame
 x = nls_fit(cleanup_data(data))

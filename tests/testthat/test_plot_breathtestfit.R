@@ -9,7 +9,7 @@ test_that("Plot layers match expectations",{
   p = plot(x)
   expect_is(p, "ggplot")
   expect_gt(max(layer_data(p)$y), 25)
-  expect_equal(nlayers(p), 3)   
+  expect_equal(nlayers(p), 4)   
   expect_equal(length(p), 9)   
   expect_equal(nlevels(layer_data(p)$PANEL), 10)
 })
@@ -28,7 +28,7 @@ test_that("Successful nlme fit plots data and fit", {
   fit = nlme_fit(data)
   p = plot(fit)
   expect_is(p, "ggplot")
-  expect_equal(nlayers(p), 3)   
+  expect_equal(nlayers(p), 4)   
 })
 
 test_that("Plot multiple groups",{
@@ -41,7 +41,7 @@ test_that("Plot multiple groups",{
   x = nls_fit(d)
   p = plot(x)
   expect_is(p, "ggplot")
-  expect_equal(nlayers(p), 3)   
+  expect_equal(nlayers(p), 4)   
   expect_equal(length(p), 9)   
   expect_equal(nlevels(layer_data(p)$PANEL), 6)
 })
