@@ -35,18 +35,19 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
       filter(parameter %in% c("t50", "tlag"),  method == method_t50) %>% 
       tidyr::spread(parameter, value) %>% 
       mutate(
-        annotate_g = paste0("group = ", group, ", t50 = ", round(t50), 
-                          " min\ntlag = ", round(tlag), " min"),
-        annotate = paste0("t50 = ", round(t50), 
-                            " min\ntlag = ", round(tlag), " min"),
+        annotate_g = paste0("group ", group, ", t50 ", round(t50), 
+                          " min, tlag ", round(tlag), " min"),
+        annotate = paste0("t50 ", round(t50), 
+                            " min, tlag ", round(tlag), " min"),
         xmin = 0,
         xmax = max(x$data$minute),
         y_index = as.integer(as.factor(group)), 
-        ymin = (y_index - 1)*sep,
-        ymax = y_index*sep
+        ymin = (y_index + 1)*sep,
+        ymax = (y_index + 2)*sep
       ) %>% 
       select(-method,  -y_index)
   }
+
   # Compute point size dynamically
   size = x$data %>%
     mutate(
@@ -75,9 +76,9 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
       p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
         geom_vline(aes(xintercept = t50, color = group),  data = ann) +
         geom_fit_text(aes(xmin = 0, xmax = 200, ymin = 0, ymax = 10,
-                          label = annotate), 
+                          label = annotate_g), 
                       data = ann, min.size = 8,
-                      inherit.aes = FALSE, reflow = TRUE,
+                      inherit.aes = FALSE, 
                       grow = TRUE) 
     }  
   } else {
@@ -91,7 +92,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
         geom_vline(aes(xintercept = t50, color = "red" ), data = ann) +
         geom_fit_text(aes(xmin = xmin, xmax = xmax, ymin = xmin, ymax = ymax,
                       label = annotate), 
-                      data = ann, min.size = 8, reflow = TRUE,
+                      data = ann, min.size = 8, 
                       inherit.aes = FALSE,
                       grow = TRUE) 
       }
@@ -114,17 +115,17 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
     ggtitle(label = NULL, subtitle = subtitle)
 }
 
-if (FALSE){
-library(breathtestcore)
-library(dplyr)
-library(ggfittext)
-data = list(
-  A = simulate_breathtest_data(n_records = 2, seed = 100)
-)
-# cleanup_data combines the list into a data frame
-inc = 5
-method_t50 = "maes_ghoos"
-x = nls_fit(cleanup_data(data))
-
-plot(x)
+if (FALSE) {
+  library(breathtestcore)
+  library(dplyr)
+  library(ggfittext)
+  data = list(
+    A = simulate_breathtest_data(n_records = 3, seed = 100)
+  )
+  # cleanup_data combines the list into a data frame
+  inc = 5
+  method_t50 = "maes_ghoos"
+  x = nls_fit(cleanup_data(data))
+  
+  plot(x)
 }
