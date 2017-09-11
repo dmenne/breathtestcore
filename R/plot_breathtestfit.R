@@ -28,7 +28,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   pat_group = patient_id = s = NULL
   # Plot data only if there are no coefficients
   has_fit = !is.null(coef(x))
-  sep = max(x$data$pdr)/15 # separation between annotations
+  sep = max(x$data$pdr)/10 # separation between annotations
   if (has_fit) {
     dd = broom::augment(x, by = inc) 
     # Mark t50
@@ -36,15 +36,15 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
       filter(parameter %in% c("t50", "tlag"),  method == method_t50) %>% 
       tidyr::spread(parameter, value) %>% 
       mutate(
-        annotate_g = paste0("group ", group, ", t50 ", round(t50), 
-                          " min, tlag ", round(tlag), " min"),
+        annotate_g = paste0(group, ": t50 ", round(t50), 
+                          ", tlag ", round(tlag) ),
         annotate = paste0("t50 ", round(t50), 
-                            " min, tlag ", round(tlag), " min"),
+                            ",  tlag ", round(tlag)),
         xmin = 0,
         xmax = max(x$data$minute),
         y_index = as.integer(as.factor(group)), 
-        ymin = (y_index + 1)*sep,
-        ymax = (y_index + 2)*sep
+        ymin = (y_index - 1)*sep,
+        ymax = (y_index)*sep
       ) %>% 
       select(-method,  -y_index)
   }
@@ -76,11 +76,14 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
     if (has_fit)  {
       p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
         geom_vline(aes(xintercept = t50, color = group),  data = ann) +
-        geom_fit_text(aes(xmin = 0, xmax = 200, ymin = 0, ymax = 10,
-                          label = annotate_g), 
-                      data = ann, min.size = 8,
-                      inherit.aes = FALSE, 
-                      grow = TRUE) 
+        ggfittext::geom_fit_text(
+          aes(xmin = xmin, xmax = xmax, 
+              ymin = ymin, ymax = ymax,
+              label = annotate_g), 
+          inherit.aes = FALSE, 
+          data = ann, min.size = 4,
+          grow = TRUE)  +
+        scale_x_continuous(expand = c(0.02, 0, 0., 0))
     }  
   } else {
     # without grouping
@@ -91,11 +94,14 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
         geom_line(aes(x = minute, y = fitted), data = dd)  +
         theme(legend.position = "none")  +
         geom_vline(aes(xintercept = t50, color = "red" ), data = ann) +
-        geom_fit_text(aes(xmin = xmin, xmax = xmax, ymin = xmin, ymax = ymax,
-                      label = annotate), 
-                      data = ann, min.size = 8, 
-                      inherit.aes = FALSE,
-                      grow = TRUE) 
+        ggfittext::geom_fit_text(
+          aes(xmin = xmin, xmax = xmax, 
+              ymin = ymin, ymax = ymax,
+              label = annotate), 
+              data = ann, min.size = 4, 
+              inherit.aes = FALSE,
+              grow = TRUE) +
+        scale_x_continuous(expand = c(0.02, 0, 0., 0))
       }
 
   } 
