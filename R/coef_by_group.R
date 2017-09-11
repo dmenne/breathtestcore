@@ -140,4 +140,3 @@ coef_by_group.breathtestfit_1 = function(fit, ...) {
   class(cf) = c("coef_by_group", class(cf))
   cf
 }  
-  

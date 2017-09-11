@@ -24,6 +24,7 @@
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
   # Make CRAN happy
   pdr = parameter = value = method = minute = fitted = group = NULL
+  t50 = tlag = y_index = annotate_g = xmin = xmax = ymin = ymax = NULL
   pat_group = patient_id = s = NULL
   # Plot data only if there are no coefficients
   has_fit = !is.null(coef(x))
@@ -115,17 +116,3 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
     ggtitle(label = NULL, subtitle = subtitle)
 }
 
-if (FALSE) {
-  library(breathtestcore)
-  library(dplyr)
-  library(ggfittext)
-  data = list(
-    A = simulate_breathtest_data(n_records = 3, seed = 100)
-  )
-  # cleanup_data combines the list into a data frame
-  inc = 5
-  method_t50 = "maes_ghoos"
-  x = nls_fit(cleanup_data(data))
-  
-  plot(x)
-}

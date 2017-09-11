@@ -112,14 +112,3 @@ read_breathid_xml_record = function(xml_0, filename, device){
   )
 }
 
-if (FALSE) {
-  library(xml2)
-  library(stringr)
-  library(readr)
-  filename = 'C:/Users/Dieter/Documents/RPackages/breathtestcore/inst/extdata/NewBreathID_multiple.xml'
-  text = NULL
-  
-  b = read_breathid_xml(filename)
-  str(b,1)
-
-}

@@ -19,6 +19,7 @@
 #' #
 #' iris_data = read_iris_csv(filename)
 #' str(iris_data)
+#' @importFrom purrr map
 #' @export 
 read_iris_csv = function(filename = NULL, text = NULL) {
   if (is.null(text)) {
@@ -61,8 +62,8 @@ read_iris_csv = function(filename = NULL, text = NULL) {
   names(data) = c("time","dob")
   # remove too small values
   data = data[data$dob >= -10,]
-  if (any(sapply(data, is.na))) 
-    stop("Invalid PDR/DOB data in ", filename)
+  if (any(unlist(map(data, is.na)))) 
+    stop("Invalid or missing PDR/DOB data in\n ", filename)
   breathtest_data(
     file_name = basename(filename),
     patient_id = patient_id,

@@ -81,7 +81,7 @@
 #' # File name is used a patient name if none is available
 #' unique(d$group)
 #' # "A" "B" "C"
-
+#' @importFrom purrr map_lgl
 #' @export 
 cleanup_data = function(data) {
   UseMethod("cleanup_data")
@@ -175,7 +175,7 @@ cleanup_data.list = function(data){
   has_names = !is.null(names(data))
   ret = data.frame()
   comment = list()
-  for (igroup in 1:length(data))  {
+  for (igroup in seq_along(data))  {
     dd = cleanup_data(data[[igroup]])
     comment[[igroup]] = comment(dd)
     if (has_names) {
@@ -188,7 +188,7 @@ cleanup_data.list = function(data){
     stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
   ret = tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
   comment = unique(comment)
-  comment[sapply(comment, is.null)] = NULL
+  comment[map_lgl(comment, is.null)] = NULL
   if (length(comment) > 0)
     comment(ret) = paste(comment, collapse= "\n")
   ret

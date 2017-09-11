@@ -101,4 +101,4 @@ coef_diff_by_group.breathtestfit =
   comment(cf) = cm
   class(cf) = c("coef_diff_by_group", class(cf))
   cf
-}
+  }

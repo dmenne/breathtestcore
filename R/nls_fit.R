@@ -89,7 +89,7 @@ nls_fit = function(data, dose = 100,
   )
   parameters = c("m", "k", "beta", "deviance", "t50", "t50","t50","tlag","tlag")
   pars = list()
-  for (i in 1:nrow(cf))  {
+  for (i in seq_len(nrow(cf)))  {
     cf1 = cf[i, , drop = FALSE]
     pars[[i]] = data_frame(
       patient_id = cf1$patient_id,

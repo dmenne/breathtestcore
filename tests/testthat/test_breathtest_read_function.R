@@ -7,7 +7,7 @@ check_and_read = function(filename, read_function){
   expect_equal(f, read_function)
   bt = f(file)
   if (inherits(bt, "breathtest_data_list")) {
-    expect_true(all(sapply(bt, function(x) {class(x) == "breathtest_data"})))
+    expect_true(all(map_lgl(bt, function(x) {class(x) == "breathtest_data"})))
     bt = bt[[1]]  
   }
   expect_is(bt, "breathtest_data")
@@ -29,11 +29,11 @@ test_that("Wrong formats throws exception or return null" , {
 read_any_file = function(filename){
   file = btcore_file(filename)
   expect_true(file.exists(file))
-  f = breathtest_read_function(file)(file)
+  breathtest_read_function(file)(file)
 }
 
 
 test_that("Valid files with datea errors throw exception" , {
   expect_error(read_any_file("IrisCSV_MissingColumn.TXT"), "unexpected 12 columns")
-  expect_error(read_any_file("IrisCSV_invalidValues.TXT"), "Invalid PDR/DOB data")
+  expect_error(read_any_file("IrisCSV_invalidValues.TXT"), "Invalid or missing PDR/DOB data")
 })
