@@ -37,9 +37,9 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
       tidyr::spread(parameter, value) %>% 
       mutate(
         annotate_g = paste0(group, ": t50 ", round(t50), 
-                          ", tlag ", round(tlag) ),
+                          " min, tlag ", round(tlag), " min" ),
         annotate = paste0("t50 ", round(t50), 
-                            ",  tlag ", round(tlag)),
+                            " min,  tlag ", round(tlag), " min"),
         xmin = 0,
         xmax = max(x$data$minute),
         y_index = as.integer(as.factor(group)), 
