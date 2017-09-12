@@ -8,6 +8,7 @@
 #' @param inc Increment for fitted curve plot in minutes
 #' @param method_t50 Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
 #' "\code{maes_ghoos_scintigraphy}"
+#' @param line_size optional line width; can improve look for printouts
 #' @param ... other parameters passed to methods. Not used
 #' @examples
 #' data = list(
@@ -21,7 +22,7 @@
 #' @importFrom tidyr spread
 #' @importFrom ggfittext geom_fit_text
 #' @export 
-plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
+plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size = 1, ...){
   # Make CRAN happy
   pdr = parameter = value = method = minute = fitted = group = NULL
   t50 = tlag = y_index = annotate_g = xmin = xmax = ymin = ymax = NULL
@@ -74,7 +75,8 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
     p = ggplot(x$data, aes(x = minute, y = pdr, color = group)) + 
       geom_point(size = size, alpha = alpha)
     if (has_fit)  {
-      p = p + geom_line(aes(x = minute, y = fitted, color = group), data = dd) + 
+      p = p + geom_line(aes(x = minute, y = fitted, color = group), 
+                        size = line_size, data = dd, show.legend = FALSE) + 
         geom_vline(aes(xintercept = t50, color = group),  data = ann) +
         ggfittext::geom_fit_text(
           aes(xmin = xmin, xmax = xmax, 
@@ -91,7 +93,8 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", ...){
                  geom_point(size = size, alpha = alpha)
     if (has_fit)    {
       p = p + 
-        geom_line(aes(x = minute, y = fitted), data = dd)  +
+        geom_line(aes(x = minute, y = fitted), size = line_size, data = dd, 
+                  show.legend = FALSE)  +
         theme(legend.position = "none")  +
         geom_vline(aes(xintercept = t50, color = "red" ), data = ann) +
         ggfittext::geom_fit_text(
