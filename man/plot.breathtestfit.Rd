@@ -4,7 +4,8 @@
 \alias{plot.breathtestfit}
 \title{S3 plot method for breathtestfit}
 \usage{
-\method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos", ...)
+\method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos",
+  line_size = 1, ...)
 }
 \arguments{
 \item{x}{object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}}, 
@@ -15,6 +16,8 @@ in package \code{breathteststan},}
 
 \item{method_t50}{Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
 "\code{maes_ghoos_scintigraphy}"}
+
+\item{line_size}{optional line width; can improve look for printouts}
 
 \item{...}{other parameters passed to methods. Not used}
 }

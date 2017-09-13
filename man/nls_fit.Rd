@@ -2,7 +2,7 @@
 % Please edit documentation in R/nls_fit.R
 \name{nls_fit}
 \alias{nls_fit}
-\title{Single curve fit with nls to 13C breath test data}
+\title{Individual curve fit with nls to 13C breath test data}
 \usage{
 nls_fit(data, dose = 100, start = list(m = 50, k = 1/100, beta = 2))
 }

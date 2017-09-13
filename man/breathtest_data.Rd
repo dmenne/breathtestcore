@@ -85,6 +85,6 @@ iris_csv_data = read_iris_csv(iris_csv_file)
 str(iris_csv_data)
 # Convert to a format that can be fed to one of the fit functions
 iris_df = cleanup_data(iris_csv_data)
-# Single curve fit
+# Individual curve fit
 coef(nls_fit(iris_df)) 
 }

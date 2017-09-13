@@ -1,6 +1,6 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from Breath Tests
-Version: 0.3.0.9100
+Version: 0.4.0
 Authors@R: c(
     person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
     person("Menne Biomed Consulting Tuebingen", role = c("cph")),

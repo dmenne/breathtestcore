@@ -1,4 +1,4 @@
-#' @title Single curve fit with nls to 13C breath test data
+#' @title Individual curve fit with nls to 13C breath test data
 #' @description Fits individual exponential beta curves to 13C breath test time series
 #'
 #' @param data Data frame or tibble as created by \code{\link{cleanup_data}}, 

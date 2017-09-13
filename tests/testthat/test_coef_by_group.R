@@ -62,7 +62,7 @@ test_that("nlme_fit can be used to compute coefficients for multiple groups",{
                             "conf.high", "diff_group"))
 })
 
-test_that("Fit of single curve returns valid data", {
+test_that("Fit of a single curve returns valid data", {
   data = usz_13c %>%
     dplyr::filter( patient_id == "pat_001") %>% 
     cleanup_data()

@@ -109,7 +109,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
 
   } 
   if (is(x, "breathtestnlsfit"))
-    fit = "Single curve fit (nls)." else
+    fit = "Individual curve fit (nls)." else
   if (is(x, "breathtestnlmefit"))
     fit = "Population fit (nlme)." else
   if (is(x, "breathteststanfit"))
