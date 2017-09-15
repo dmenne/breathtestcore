@@ -25,11 +25,18 @@ test_that("Reading multiple files returns a list with multiple items",{
     btcore_file("IrisCSV.TXT"),
     btcore_file("350_20043_0_GER.txt"),
     btcore_file("IrisMulti.TXT"),
-    btcore_file("NewBreathID_multiple.xml")  
+    btcore_file("NewBreathID_multiple.xml"),
+    btcore_file("ExcelSamples.xlsx")  
   )
   bt = read_any_breathtest(files)
   expect_is(bt, "breathtest_data_list")
-  expect_equal(length(bt), 6)  
+  expect_equal(length(bt), 7)  
+  expect_is(bt[[1]], "breathtest_data")
+  expect_is(bt[[7]], "tbl_df")
   expect_equal(bt[[1]]$patient_id, "123456")
+  bt_c = cleanup_data(bt)
+  expect_equal(ncol(bt_c), 4)
+  expect_equal(nrow(bt_c), 223)
 })
+
 

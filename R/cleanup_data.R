@@ -95,7 +95,7 @@ cleanup_data.data.frame = function(data){
   assert_that(nc >= 2)
   # Remove duplicates, for example from uploading the same record twice
   data = dplyr::distinct(data)
-  # When there are only two column, assume they are minute and time
+  # When there are only two columns, assume they are minute and time
   # implying that it is only one record
   if (nc == 2) {
     names(data) = c("minute", "pdr")
@@ -140,7 +140,9 @@ cleanup_data.data.frame = function(data){
   }
   # We do not use factors for easier combination of records
   data$patient_id = as.character(data$patient_id)  
-  
+  # REmove spaces
+  data$patient_id = str_replace_all(str_trim(data$patient_id), " ", "_")
+
   # Add a dummy  group if there is none
   has_group = "group" %in% names(data)
   if (!has_group) {
@@ -148,6 +150,8 @@ cleanup_data.data.frame = function(data){
     if (!all(with(data, table(patient_id, minute)) %in% 0:1))
       stop("Multiple values for the same patient at the same minute require a <<group>> column")
     data$group = "A"
+  } else {
+    data$group = str_replace_all(str_trim(data$group), " ", "_")
   }
   # Put things in a nice order
   data = data %>% 
@@ -172,16 +176,27 @@ cleanup_data.breathtest_data_list = function(data){
 #' @export 
 cleanup_data.list = function(data){
   if (is.null(data)) return(NULL)
-  has_names = !is.null(names(data))
   ret = data.frame()
   comment = list()
   for (igroup in seq_along(data))  {
-    dd = cleanup_data(data[[igroup]])
-    comment[[igroup]] = comment(dd)
-    if (has_names) {
+    d1 = data[[igroup]]
+    is_breathtest_data = inherits(d1, "breathtest_data")
+    needs_group = 
+      !is_breathtest_data &&
+      !("group" %in% names(d1)) && 
+      ("patient_id" %in% names(d1))
+    
+    if (needs_group) {
+      group = names(data)[igroup]
+      if (is.null(group))
+        group = LETTERS[igroup]
+      d1$group = group
+      d1 = d1[c("patient_id", "group", "minute", "pdr")]
+    }
+    dd = cleanup_data(d1)
+    if (is_breathtest_data)
       dd$group = names(data)[igroup]
-    } else
-      dd$group = "A" # default dummy name
+    comment[[igroup]] = comment(dd)
     ret = rbind(ret, dd )
   }
  if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)
@@ -190,7 +205,7 @@ cleanup_data.list = function(data){
   comment = unique(comment)
   comment[map_lgl(comment, is.null)] = NULL
   if (length(comment) > 0)
-    comment(ret) = paste(comment, collapse= "\n")
+    comment(ret) = paste(comment, collapse = "\n")
   ret
 }
   
@@ -208,3 +223,4 @@ cleanup_data.simulated_breathtest_data = function(data){
   # Data come from simulate_breathtest_data()
   cleanup_data(data$data)
 }
+

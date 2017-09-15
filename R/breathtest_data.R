@@ -1,18 +1,21 @@
 #' @title Data structure with PDR data and descriptors for breath test records
-#' @description Generates structure of class \code{breathtest_data} with required fields
-#' and optional fields. Optional fields by default are NA. This structure is used
-#' internally as an intermediate when reading in external file formats. All
-#' \code{read_xxx} functions return this structure, and any converter to 
-#' a new format should do the same to be used with \code{\link{cleanup_data}}. 
-#' To support a new format with, also update \code{\link{breathtest_read_function}} which
-#' returns the most likely function to read the file by reading a few lines in it.
+#' @description Generates structure of class \code{breathtest_data} with 
+#' required fields and optional fields. Optional fields by default are NA. 
+#' This structure is used internally as an intermediate when reading in 
+#' external file formats. All \code{read_xxx} functions return this structure, 
+#' or a list of this structure (e.g. \code{\link{read_breathid_xml}}), and any
+#'  converter to  a new format should do  the same to be used with 
+#'  \code{\link{cleanup_data}}. 
+#' To support a new format with, also update 
+#' \code{\link{breathtest_read_function}} which returns the most likely function 
+#' to read the file by reading a few lines in it.
 #' @param patient_id required, string or number for unique identification
 #' @param name optional
 #' @param first_name optional
 #' @param initials optional, 2 characters, 1 number
-#' @param dob optional date of birth (not to be confused with "delta over baseline)
+#' @param dob optional date of birth (not to be confused with "delta over baseline")
 #' @param birth_year optional
-#' @param gender optional m or f
+#' @param gender optional \code{m} or \code{f}
 #' @param study optional name of study; can be used in population fit
 #' @param pat_study_id optional; patient number within study_ does not need to be globally unique
 #' @param file_name required; file where data were read from, or other unique string_

@@ -20,7 +20,7 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         package 'dmenne/breathtestshiny'.
 Depends: R (>= 3.4.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, 
-         methods,  
+         methods, readxl, 
          assertthat, broom, tidyr,   ggplot2, ggfittext, 
          signal, utils, multcomp, xml2
 Suggests: testthat, covr, knitr, survival

@@ -7,9 +7,11 @@
 breathtest_read_function(filename = NULL, text = NULL)
 }
 \arguments{
-\item{filename}{breath test data file from Iris/Wagner (extended or CSV), BreathID}
+\item{filename}{breath test data file from Iris/Wagner (extended or CSV), 
+BreathID}
 
-\item{text}{as alternative to filename, pass the text of the file directly}
+\item{text}{as alternative to filename, pass the text of the file directly.
+This parameter is not used for Excel files.}
 }
 \value{
 Function to read the file or the text; NULL if no matching function 
@@ -19,7 +21,8 @@ was found
 Reads the first line of a file, and returns
 the best matching function to read the breath test data in it.
 To automatically read the file with the inferred file type,
-use \code{\link{read_any_breathtest}}.
+use \code{\link{read_any_breathtest}}. For Excel files, only the
+first sheet is read.
 }
 \examples{
  file = btcore_file("IrisCSV.TXT")
@@ -28,4 +31,5 @@ use \code{\link{read_any_breathtest}}.
  str(read_fun(file))
  # or, simple (returns a list!)
  str(read_any_breathtest(file), 1 )
+ 
 }
