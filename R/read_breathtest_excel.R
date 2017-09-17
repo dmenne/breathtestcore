@@ -27,10 +27,10 @@
 #'   print(ex)
 #' }  
 #' # To get consistently formatted data from a sheet
-#' bt_data = read_breathtest_excel(sheets[6])
+#' bt_data = read_breathtest_excel(filename, sheets[6])
 #' # 3 columns
 #' str(bt_data)
-#' bt_cleaned = cleanup_data(bt)
+#' bt_cleaned = cleanup_data(bt_data)
 #' # 4 columns standard format
 #' str(bt_cleaned)
 #' @importFrom readxl read_excel

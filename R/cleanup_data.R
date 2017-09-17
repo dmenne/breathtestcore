@@ -153,7 +153,7 @@ cleanup_data.data.frame = function(data){
   } else {
     data$group = str_replace_all(str_trim(data$group), " ", "_")
   }
-  # Put things in a nice order
+  # Put columns in standard order
   data = data %>% 
     select(patient_id, group, minute, pdr)
   if (!is.null(comment))
@@ -180,22 +180,26 @@ cleanup_data.list = function(data){
   comment = list()
   for (igroup in seq_along(data))  {
     d1 = data[[igroup]]
+    if (is(d1,"simulated_breathtest_data"))
+      d1 = d1$data
+      
     is_breathtest_data = inherits(d1, "breathtest_data")
+    ### This is UGLY code! Should use S3 methods
     needs_group = 
-      !is_breathtest_data &&
       !("group" %in% names(d1)) && 
       ("patient_id" %in% names(d1))
     
-    if (needs_group) {
-      group = names(data)[igroup]
-      if (is.null(group))
-        group = LETTERS[igroup]
+    group = names(data)[igroup]
+    if (is.null(group))    group = LETTERS[igroup]
+    
+    if (needs_group && !is_breathtest_data) {
       d1$group = group
       d1 = d1[c("patient_id", "group", "minute", "pdr")]
     }
     dd = cleanup_data(d1)
-    if (is_breathtest_data)
-      dd$group = names(data)[igroup]
+    if (is_breathtest_data) {
+      dd$group = group
+    }
     comment[[igroup]] = comment(dd)
     ret = rbind(ret, dd )
   }

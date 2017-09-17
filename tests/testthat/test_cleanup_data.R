@@ -38,12 +38,11 @@ test_that("Can pass simulate_breathtest_data() to cleanup_data() without $data",
 })
 
 test_that("Can pass list of simulate_breathtest_data() to cleanup_data() without $data", {
-  skip("hall")
   data = list(anton = simulate_breathtest_data(3), 
               bertha = simulate_breathtest_data(4))
   data1 = cleanup_data(data)
   expect_equal(names(data1), c("patient_id", "group", "minute","pdr"))
-  expect_equal(unique(data1$group), c("A","B"))
+  expect_equal(unique(data1$group), c("anton","bertha"))
 })
 
 test_that("Spaces in patient_id and group are removed", {
@@ -204,7 +203,7 @@ test_that("list of breathtest_data from a common format is accepted as input", {
   data = list(read_breathid(f1), read_breathid(f2)) 
   d = cleanup_data(data)
   # expect dummy group when passing unnamed list
-  expect_equal(unique(d$group), "A")
+  expect_equal(unique(d$group), c("A", "B")) # Default names
   expect_equal(nrow(d), 136)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "350_20023_0_GERWithNan"))
 })
@@ -230,14 +229,13 @@ test_that("Single XML is accepted as input", {
 })
   
 test_that("list of breathtest_data with XML is accepted as input", {
-  skip("list of breathtest_data")
   f1 = btcore_file("350_20043_0_GER.txt")
   f2 = btcore_file("NewBreathID_multiple.xml")
-#  data = list(A = read_breathid(f1), B = read_breathid_xml(f2)) 
-  data = read_breathid(f1)
+  data = list(anton = read_breathid(f1), bertha = read_breathid_xml(f2)) 
   d = cleanup_data(data)
   # When no name is given, letters are given to group
-  expect_equal(unique(d$group), c("A", "B"))
+  ## TODO, not so good behaviour, think of getting bertha_A instead
+  expect_equal(unique(d$group), c("anton", "A", "B", "C"))
   expect_equal(nrow(d), 152)
   expect_equal(unique(d$patient_id), 
                c("350_20043_0_GER", "07951400", "10727002",  "10650692" ))
