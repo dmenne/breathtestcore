@@ -81,7 +81,9 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
         ggfittext::geom_fit_text(
           aes(xmin = xmin, xmax = xmax, 
               ymin = ymin, ymax = ymax,
-              label = annotate_g), 
+              label = annotate_g,
+              color = group), 
+          show.legend = FALSE,
           inherit.aes = FALSE, 
           data = ann, min.size = 4,
           grow = TRUE)  +
