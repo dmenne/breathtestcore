@@ -19,8 +19,8 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 ## What it does
 
-* Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV
-* Fits Beta-Exponential nonlinear curve fits using `nls`, which gives successful estimates for 90% of PDR curves
+* Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID, and Excel.
+* Fits Beta-Exponential nonlinear curve fits using `nls`, which gives successful estimates for 90% of PDR curves.
 * Computes population fits with `nlme` when data from multiple recordings are available, resulting in much more reliable estimates for studies.
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package [dmenne/breathteststan](https://github.com/dmenne/breathteststan))
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
