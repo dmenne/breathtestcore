@@ -169,7 +169,7 @@ test_that("Same data used twice in list raises error", {
   data = simulate_breathtest_data(n_records = 2)$data
   data$group = "A"
   data = data[,c("patient_id", "group", "minute", "pdr")]
-  expect_error(cleanup_data(list(data, data)), "twice")
+  expect_warning(cleanup_data(list(data, data)), "twice")
 })  
 
 test_that("data from BreathId device is accepted as input", {

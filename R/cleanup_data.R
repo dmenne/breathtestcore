@@ -120,7 +120,7 @@ cleanup_data.data.frame = function(data){
     if (!all(names(data) == c("patient_id", "group", "minute", "pdr"))) 
       stop("Four columns must be named patient_id, group, minute, pdr")
     if (max(table(data$minute, data$patient_id, data$group)) > 1)
-        stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
+        warning("Multiple data for one patient, minute and group. Included the same patient's data twice?")
     data$group = as.character(data$group)  
   }
   # Remove negative values, shift values at 0 slightly.
@@ -170,7 +170,7 @@ cleanup_data.matrix = function(data){
 
 #' @export 
 cleanup_data.breathtest_data_list = function(data){
-  cleanup_data.list(data)
+  ret = cleanup_data.list(data)
 }  
 
 #' @export 
@@ -204,7 +204,7 @@ cleanup_data.list = function(data){
     ret = rbind(ret, dd )
   }
  if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)
-    stop("Multiple data for one patient, minute and group. Included the same patient's data twice?")
+    warning("Multiple data for one patient, minute and group. Included the same patient's data twice?")
   ret = tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
   comment = unique(comment)
   comment[map_lgl(comment, is.null)] = NULL
