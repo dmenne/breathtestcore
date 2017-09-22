@@ -21,6 +21,12 @@
 #'  \item{A list of class \code{breathtest_data_list} as generated
 #'  from read function such as \code{\link{read_breathid_xml}}}
 #' }
+#' @param ... optional. 
+#' \describe{
+#'   \item{use_file_name_as_patient_id}{Always use filename instead of 
+#'   patient name. Use this when patient id are not unique.}
+#' }
+#' 
 #'
 #' @return A tibble with 4 columns. Column \code{patient_id} is created with a dummy
 #' entry of \code{pat_a} if no patient_id was present in the input data set. 
@@ -83,12 +89,12 @@
 #' # "A" "B" "C"
 #' @importFrom purrr map_lgl
 #' @export 
-cleanup_data = function(data) {
+cleanup_data = function(data, ...) {
   UseMethod("cleanup_data")
 } 
 
 #' @export 
-cleanup_data.data.frame = function(data){
+cleanup_data.data.frame = function(data, ... ){
   nc = ncol(data)
   # Keep CRAN quiet
   group = pdr = patient_id = minute = NULL 
@@ -162,19 +168,19 @@ cleanup_data.data.frame = function(data){
 }
 
 #' @export 
-cleanup_data.matrix = function(data){
+cleanup_data.matrix = function(data, ... ){
   if (ncol(data) > 2)
     stop("A matrix can only be used as data input when two columns <minute> and <pdr> are passed. Use a data frame otherwise")
-  cleanup_data(as_data_frame(data))
+  cleanup_data(as_data_frame(data), ...)
 }
 
 #' @export 
-cleanup_data.breathtest_data_list = function(data){
-  ret = cleanup_data.list(data)
+cleanup_data.breathtest_data_list = function(data, ... ){
+  ret = cleanup_data.list(data, ...)
 }  
 
 #' @export 
-cleanup_data.list = function(data){
+cleanup_data.list = function(data, ... ){
   if (is.null(data)) return(NULL)
   ret = data.frame()
   comment = list()
@@ -196,7 +202,7 @@ cleanup_data.list = function(data){
       d1$group = group
       d1 = d1[c("patient_id", "group", "minute", "pdr")]
     }
-    dd = cleanup_data(d1)
+    dd = cleanup_data(d1, ...)
     if (is_breathtest_data) {
       dd$group = group
     }
@@ -214,17 +220,24 @@ cleanup_data.list = function(data){
 }
   
 #' @export 
-cleanup_data.breathtest_data = function(data){
+cleanup_data.breathtest_data = function(data, ... ){
   id = data$patient_id
-  if (is.null(id) || id == "0" | id == "" )
+  if (is.null(id) || 
+      id == "0" || 
+      id == "" || 
+      dot_lgl("use_file_name_as_patient_id", ...))
     id = str_sub(data["file_name"], 1, -5) 
   d = cbind(patient_id = id, data$data[,c("minute", "pdr")])
-  cleanup_data(d)    
+  cleanup_data(d, ...)    
 }
 
 #' @export 
-cleanup_data.simulated_breathtest_data = function(data){
+cleanup_data.simulated_breathtest_data = function(data, ... ){
   # Data come from simulate_breathtest_data()
-  cleanup_data(data$data)
+  cleanup_data(data$data, ...)
 }
 
+# internal function
+dot_lgl = function(label, ...){
+  !(is.null(list(...)[[label]]))  # && list(...)[[label]]
+}

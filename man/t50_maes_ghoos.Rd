@@ -12,24 +12,25 @@ note that \code{k} is measured in 1/min (e.g. 0.01/min),
 usually it is quoted as 1/h (e.g. 0.6/h).}
 }
 \value{
-Time where area under curve is 50% of AUC to infinity.
-In the Maes/Ghoos model, this is used as a surrogate for the 
-gastric emptying half time \code{t50} in minutes.
+Time in minutes when area under curve is 50\% of the AUC to infinity.
+In the Maes/Ghoos model, this is used as a surrogate for gastric emptying 
+half time \code{t50}.
 }
 \description{
-Half-emptying time t50 as determined from an uncorrected fit to 
-the beta exponential function.
+Half-emptying time t50 as determined from the fit of a
+beta exponential function. In the Maes/Ghoos model, it is defined as the time
+when the area under curve (AUC) is 50\% of the AUC from 0 to infinity.
 
 Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
 Dig. Dis. Sci. 39 S104-6.
 }
 \examples{
-# Integral from 0 to infinity is 1 (at dose )
+# Integral from 0 to infinity is 100 at dose 100 mg
 integrate(exp_beta, 0, Inf, beta = 1.5, k = 0.01, m = 1, dose = 100)
 t50_mg = t50_maes_ghoos(c(beta = 1.5, k = 0.01, dose = 100))
 t50_mg
-# Integral to t50_maes_ghoos is 0.5
-integrate(exp_beta, 0, t50_mg, beta = 1.5, k = 0.01, m = 1, dose = 1)
+# Integral to half-emptying time \\code{t50_maes_ghoos} is 50 
+integrate(exp_beta, 0, t50_mg, beta = 1.5, k = 0.01, m = 1, dose = 100)
 }
 \seealso{
 \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.

@@ -4,7 +4,7 @@
 \alias{cleanup_data}
 \title{Transforms 13C breath data into a clean format for fitting}
 \usage{
-cleanup_data(data)
+cleanup_data(data, ...)
 }
 \arguments{
 \item{data}{\itemize{
@@ -21,6 +21,12 @@ cleanup_data(data)
    a file with \code{\link{read_any_breathtest}}}
  \item{A list of class \code{breathtest_data_list} as generated
  from read function such as \code{\link{read_breathid_xml}}}
+}}
+
+\item{...}{optional. 
+\describe{
+  \item{use_file_name_as_patient_id}{Always use filename instead of 
+  patient name. Use this when patient id are not unique.}
 }}
 }
 \value{

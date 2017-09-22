@@ -220,6 +220,13 @@ test_that("list of breathtest_data of different formats is accepted as input", {
   expect_equal(unique(d$group), c("anton", "bertha", "caesar"))
   expect_equal(nrow(d), 115)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "1871960", "123456"))
+
+  # Force use of filename for patient_id
+  d = cleanup_data(data, use_file_name_as_patient_id = TRUE)
+  # When no name is given, letters are given to group
+  expect_equal(unique(d$group), c("anton", "bertha", "caesar"))
+  expect_equal(nrow(d), 115)
+  expect_equal(unique(d$patient_id), c("350_20043_0_GER", "IrisMulti", "IrisCSV"))
 })
 
 test_that("Single XML is accepted as input", {
