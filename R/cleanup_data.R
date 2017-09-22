@@ -176,7 +176,7 @@ cleanup_data.matrix = function(data, ... ){
 
 #' @export 
 cleanup_data.breathtest_data_list = function(data, ... ){
-  ret = cleanup_data.list(data, ...)
+  cleanup_data.list(data, ...)
 }  
 
 #' @export 
@@ -204,6 +204,8 @@ cleanup_data.list = function(data, ... ){
     }
     dd = cleanup_data(d1, ...)
     if (is_breathtest_data) {
+      if (dot_lgl("use_file_name_as_patient_id", ...))
+        dd$patient_id = str_sub(d1["file_name"], 1, -5)
       dd$group = group
     }
     comment[[igroup]] = comment(dd)
