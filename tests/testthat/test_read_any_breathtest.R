@@ -40,7 +40,7 @@ test_that("Reading multiple files returns a list with multiple items",{
   expect_equal(nrow(bt_c), 223)
   expect_equal(bt_c$patient_id[1], "123456" )
 
-  bt_c = cleanup_data(bt, use_file_name_as_patient_id = TRUE)
+  bt_c = cleanup_data(bt, use_filename_as_patient_id = TRUE)
   pat_names = unique(bt_c$patient_id)
   expect_equal(pat_names[1], "IrisCSV" )
   expect_equal(pat_names[3], "IrisMulti" )

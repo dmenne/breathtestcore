@@ -23,7 +23,7 @@
 #' }
 #' @param ... optional. 
 #' \describe{
-#'   \item{use_file_name_as_patient_id}{Always use filename instead of 
+#'   \item{use_filename_as_patient_id}{Always use filename instead of 
 #'   patient name. Use this when patient id are not unique.}
 #' }
 #' 
@@ -204,7 +204,7 @@ cleanup_data.list = function(data, ... ){
     }
     dd = cleanup_data(d1, ...)
     if (is_breathtest_data) {
-      if (dot_lgl("use_file_name_as_patient_id", ...))
+      if (dot_lgl("use_filename_as_patient_id", ...))
         dd$patient_id = str_sub(d1["file_name"], 1, -5)
       dd$group = group
     }
@@ -227,7 +227,7 @@ cleanup_data.breathtest_data = function(data, ... ){
   if (is.null(id) || 
       id == "0" || 
       id == "" || 
-      dot_lgl("use_file_name_as_patient_id", ...))
+      dot_lgl("use_filename_as_patient_id", ...))
     id = str_sub(data["file_name"], 1, -5) 
   d = cbind(patient_id = id, data$data[,c("minute", "pdr")])
   cleanup_data(d, ...)    
