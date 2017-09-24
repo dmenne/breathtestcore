@@ -29,14 +29,22 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
   pat_group = patient_id = s = NULL
   # Plot data only if there are no coefficients
   has_fit = !is.null(coef(x))
-  sep = max(x$data$pdr)/10 # separation between annotations
+  if (has_fit) {
+    has_repeats =  max(with(
+      coef(x)  %>% 
+      dplyr::filter(parameter == "t50", method == "maes_ghoos") , 
+      table(patient_id)))  
+  } else has_repeats = FALSE
+  has_groups = length(unique(x$data$group))
+
+  sep = ifelse(has_repeats, max(x$data$pdr)/12, 0) # separation between annotations
   if (has_fit) {
     dd = broom::augment(x, by = inc) 
     # Mark t50
     ann = coef(x) %>%
-      filter(parameter %in% c("t50", "tlag"),  method == method_t50) %>% 
+      dplyr::filter(parameter %in% c("t50", "tlag"),  method == method_t50) %>% 
       tidyr::spread(parameter, value) %>% 
-      mutate(
+      dplyr::mutate(
         annotate_g = paste0(group, ": t50 ", round(t50), 
                           " min, tlag ", round(tlag), " min" ),
         annotate = paste0("t50 ", round(t50), 
@@ -47,7 +55,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
         ymin = (y_index - 1)*sep,
         ymax = (y_index)*sep
       ) %>% 
-      select(-method,  -y_index)
+      dplyr::select(-method,  -y_index)
   }
 
   # Compute point size dynamically
@@ -69,7 +77,6 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
   
   # Avoid ugly ggplot shading
   theme_set(theme_bw() + theme(panel.spacing = grid::unit(0,"lines")))
-  has_groups = length(unique(x$data$group)) > 1
   if (has_groups) {
     # With grouping
     p = ggplot(x$data, aes(x = minute, y = pdr, color = group)) + 

@@ -25,7 +25,7 @@ cleanup_data(data, ...)
 
 \item{...}{optional. 
 \describe{
-  \item{use_file_name_as_patient_id}{Always use filename instead of 
+  \item{use_filename_as_patient_id}{Always use filename instead of 
   patient name. Use this when patient id are not unique.}
 }}
 }
