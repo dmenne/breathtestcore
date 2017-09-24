@@ -31,7 +31,7 @@ test_that("Successful nlme fit plots data and fit", {
   expect_equal(nlayers(p), 4)   
 })
 
-test_that("Plot multiple groups",{
+test_that("Plot multiple groups with repeats",{
   # With seed = 100, rec_10 fails nls-fit
   data = list(
     A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
@@ -45,6 +45,24 @@ test_that("Plot multiple groups",{
   expect_equal(length(p), 9)   
   expect_equal(nlevels(layer_data(p)$PANEL), 6)
 })
+
+test_that("Plot multiple groups without repeats",{
+  # With seed = 100, rec_10 fails nls-fit
+  data = list(
+    A = simulate_breathtest_data(n_records = 6, seed = 100)$data,
+    B = simulate_breathtest_data(n_records = 4, seed = 187)$data 
+  )
+  # Make it a randomized design without repeats
+  data$B$patient_id = paste0("p",data$B$patient_id)
+  d = cleanup_data(data)
+  x = nls_fit(d)
+  p = plot(x)
+  expect_is(p, "ggplot")
+  expect_equal(nlayers(p), 4)   
+  expect_equal(length(p), 9)   
+  expect_equal(nlevels(layer_data(p)$PANEL), 10)
+})
+
 
 test_that("Plot multiple groups data only (no fit)",{
   data = list(

@@ -20,6 +20,7 @@
 #' plot(x)
 #' @importFrom stats quantile
 #' @importFrom tidyr spread
+#' @import plyr
 #' @importFrom ggfittext geom_fit_text
 #' @export 
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size = 1, ...){
@@ -30,14 +31,14 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
   # Plot data only if there are no coefficients
   has_fit = !is.null(coef(x))
   if (has_fit) {
-    has_repeats =  max(with(
+    has_repeats = ( max(with(
       coef(x)  %>% 
       dplyr::filter(parameter == "t50", method == "maes_ghoos") , 
-      table(patient_id)))  
+      table(patient_id)))  ) > 1
   } else has_repeats = FALSE
-  has_groups = length(unique(x$data$group))
+  has_groups = length(unique(x$data$group)) > 1
 
-  sep = ifelse(has_repeats, max(x$data$pdr)/12, 0) # separation between annotations
+  sep = max(x$data$pdr)/12 # separation between annotations
   if (has_fit) {
     dd = broom::augment(x, by = inc) 
     # Mark t50
@@ -51,9 +52,9 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
                             " min,  tlag ", round(tlag), " min"),
         xmin = 0,
         xmax = max(x$data$minute),
-        y_index = as.integer(as.factor(group)), 
+        y_index = ifelse(has_repeats, as.integer(as.factor(group)),1), 
         ymin = (y_index - 1)*sep,
-        ymax = (y_index)*sep
+        ymax = y_index*sep
       ) %>% 
       dplyr::select(-method,  -y_index)
   }
@@ -94,7 +95,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
           inherit.aes = FALSE, 
           data = ann, min.size = 4,
           grow = TRUE)  +
-        scale_x_continuous(expand = c(0.02, 0, 0., 0))
+        scale_x_continuous(expand = c(0.02, 0.02, 0.02, 0.02))
     }  
   } else {
     # without grouping
@@ -113,7 +114,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
               data = ann, min.size = 4, 
               inherit.aes = FALSE,
               grow = TRUE) +
-        scale_x_continuous(expand = c(0.02, 0, 0., 0))
+        scale_x_continuous(expand = c(0.02, 0.02, 0.02, 0.02))
       }
 
   } 
