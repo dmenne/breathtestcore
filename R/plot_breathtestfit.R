@@ -20,7 +20,7 @@
 #' plot(x)
 #' @importFrom stats quantile
 #' @importFrom tidyr spread
-#' @import plyr
+#' @import dplyr
 #' @importFrom ggfittext geom_fit_text
 #' @export 
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size = 1, ...){
