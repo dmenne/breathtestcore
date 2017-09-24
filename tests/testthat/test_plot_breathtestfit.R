@@ -65,7 +65,7 @@ test_that("Plot multiple groups without repeats",{
   expect_is(p, "ggplot")
   expect_equal(nlayers(p), 4)   
   expect_equal(length(p), 9)   
-  expect_equal(nlevels(layer_data(p)$PANEL), 10)
+  expect_equal(nlevels(layer_data(p)$PANEL), 15)
 })
 
 
