@@ -31,14 +31,14 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
   # Plot data only if there are no coefficients
   has_fit = !is.null(coef(x))
   if (has_fit) {
-    has_repeats = ( max(with(
+    has_repeats = (max(with(
       coef(x)  %>% 
       dplyr::filter(parameter == "t50", method == "maes_ghoos") , 
       table(patient_id)))  ) > 1
   } else has_repeats = FALSE
   has_groups = length(unique(x$data$group)) > 1
 
-  sep = max(x$data$pdr)/12 # separation between annotations
+  sep = max(x$data$pdr)/10 # separation between annotations
   if (has_fit) {
     dd = broom::augment(x, by = inc) 
     # Mark t50
@@ -51,14 +51,14 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
         annotate = paste0("t50 ", round(t50), 
                             " min,  tlag ", round(tlag), " min"),
         xmin = 0,
-        xmax = max(x$data$minute),
-        y_index = ifelse(has_repeats, as.integer(as.factor(group)),1), 
+        xmax = max(c(x$data$minute, t50)),
+        fac = as.integer(as.factor(group)),
+        y_index = if_else(rep(has_repeats, n()), fac, 1L), 
         ymin = (y_index - 1)*sep,
-        ymax = y_index*sep
-      ) %>% 
-      dplyr::select(-method,  -y_index)
+        ymax = (y_index )*sep
+      ) %>%   
+      dplyr::select(-method,  -y_index, -fac)
   }
-
   # Compute point size dynamically
   size = x$data %>%
     mutate(
