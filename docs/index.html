@@ -29,10 +29,31 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="/index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="articles/index.html">Articles</a>
+  <a href="articles/breathtestcore.html">Get Started</a>
+</li>
+<li>
+  <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/methods_and_concepts.html">Methods and concepts</a>
+    </li>
+    <li>
+      <a href="articles/using_breathtestcore.html">Using breathtestcore functions</a>
+    </li>
+  </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -72,8 +93,8 @@ Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.d
 <h2 class="hasAnchor">
 <a href="#what-it-does" class="anchor"></a>What it does</h2>
 <ul>
-<li>Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID and generic CSV</li>
-<li>Fits Beta-Exponential nonlinear curve fits using <code>nls</code>, which gives successful estimates for 90% of PDR curves</li>
+<li>Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID, and Excel.</li>
+<li>Fits Beta-Exponential nonlinear curve fits using <code>nls</code>, which gives successful estimates for 90% of PDR curves.</li>
 <li>Computes population fits with <code>nlme</code> when data from multiple recordings are available, resulting in much more reliable estimates for studies.</li>
 <li>Computes prior-constrained Bayesian non-linear fit for single records (refactored to package <a href="https://github.com/dmenne/breathteststan">dmenne/breathteststan</a>)</li>
 <li>Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)</li>
@@ -92,12 +113,13 @@ Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.d
 <div id="how-to-install" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-install" class="anchor"></a>How to install</h2>
-<p>To install the functions, use</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">"breathtestcore"</span>,<span class="st">"dmenne"</span>)
+<p>To install the most recent versions of the package, use</p>
+<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathtestcore"</span>,<span class="st">"dmenne"</span>)
 <span class="co"># In case you want to use the fancy Stan-based methodes</span>
-devtools::<span class="kw">install_github</span>(<span class="st">"breathteststan"</span>,<span class="st">"dmenne"</span>)
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathteststan"</span>,<span class="st">"dmenne"</span>)
 <span class="co"># And here the still rudimentary web GUI</span>
-devtools::<span class="kw">install_github</span>(<span class="st">"breathtestshiny"</span>,<span class="st">"dmenne"</span>)</code></pre></div>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathtestshiny"</span>,<span class="st">"dmenne"</span>)</code></pre></div>
+<p>The stable packages <a href="https://cran.r-project.org/web/packages/breathtestcore">breathtestcore</a> and <a href="https://cran.r-project.org/web/packages/breathteststan">breathteststan</a> can also be installed from CRAN.</p>
 </div>
 <div id="usage-example" class="section level2">
 <h2 class="hasAnchor">
@@ -105,7 +127,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"breathtestshi
 <p>This example is from the documentation of function <a href="https://dmenne.github.io/breathtestcore/reference/nlme_fit.html">nlme_fit</a>.</p>
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw">library</span>(breathtestcore)    
 d =<span class="st"> </span><span class="kw"><a href="reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span>(<span class="dt">n_records =</span> <span class="dv">3</span>, <span class="dt">noise =</span> <span class="fl">0.2</span>, <span class="dt">seed =</span> <span class="dv">4711</span>)
-data =<span class="st"> </span><span class="kw"><a href="reference/cleanup_data.html">cleanup_data</a></span>(d$data)
+data =<span class="st"> </span><span class="kw"><a href="reference/cleanup_data.html">cleanup_data</a></span>(d<span class="op">$</span>data)
 fit =<span class="st"> </span><span class="kw"><a href="reference/nlme_fit.html">nlme_fit</a></span>(data)
 <span class="kw">plot</span>(fit) <span class="co"># calls plot.breathtestfit</span></code></pre></div>
 <p>For additional examples, see the folder <code>tests/testthat</code> of the source package.</p>
@@ -132,6 +154,8 @@ fit =<span class="st"> </span><span class="kw"><a href="reference/nlme_fit.html"
 <li>Download from CRAN at <br><a href="https://cran.r-project.org/package=breathtestcore">https://​cran.r-project.org/​package=breathtestcore</a>
 </li>
 <li>Browse source code at <br><a href="https://github.com/dmenne/breathtestcore">https://​github.com/​dmenne/​breathtestcore</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/dmenne/breathtestcore/issues">https://​github.com/​dmenne/​breathtestcore/​issues</a>
 </li>
 </ul>
 <h2>License</h2>

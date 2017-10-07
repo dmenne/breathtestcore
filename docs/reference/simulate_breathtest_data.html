@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,10 +52,31 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/breathtestcore.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
+    </li>
+    <li>
+      <a href="../articles/using_breathtestcore.html">Using breathtestcore functions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -153,7 +175,7 @@ converge when data near 0 are passed.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list with 3 elements:</p><dl class='dl-horizontal'>
+    <p>A list of class simulated_breathtest_data with 2  elements:</p><dl class='dl-horizontal'>
   <dt>record</dt><dd><p>Data frame with columns
     <code>patient_id(chr), m, k, beta, t50</code> giving the effective parameters 
     for the individual patient record.</p></dd>
@@ -173,17 +195,18 @@ converge when data near 0 are passed.</p></td>
 #&gt;   ..- attr(*, "cov")= num [1:3, 1:3] 1.88e+02 -2.60e-02 -2.04 -2.60e-02 7.74e-06 4.77e-04 -2.04 4.77e-04 1.82e-01
 #&gt;   .. ..- attr(*, "dimnames")=List of 2
 #&gt;  $ data  :Classes <U+0091>tbl_df<U+0092>, <U+0091>tbl<U+0092> and 'data.frame':	31 obs. of  3 variables:
-#&gt;   ..- attr(*, "comment")= chr "4 records,  m = 40, k =  0.010, beta =  2.0, cov-matrix, \n Student-t 2 df noise amplitude = 2, 30% missing"</div><div class='input'><span class='co'>#</span>
+#&gt;   ..- attr(*, "comment")= chr "4 records,  m = 40, k =  0.010, beta =  2.0, cov-matrix, \n Student-t 2 df noise amplitude = 2, 30% missing"
+#&gt;  - attr(*, "class")= chr [1:2] "simulated_breathtest_data" "list"</div><div class='input'><span class='co'>#</span>
 <span class='no'>pdr</span>$<span class='no'>record</span> <span class='co'># The "correct" parameters</span></div><div class='output co'>#&gt;   patient_id  m      k beta t50_maes_ghoos
 #&gt; 1     rec_01 30 0.0086  2.0            142
 #&gt; 2     rec_02 27 0.0140  2.4            100
 #&gt; 3     rec_03 46 0.0098  1.4             97
 #&gt; 4     rec_04 56 0.0076  2.2            169</div><div class='input'><span class='co'>#</span>
 <span class='co'># Explicit plotting</span>
-<span class='fu'>ggplot</span>(<span class='no'>pdr</span>$<span class='no'>data</span>, <span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>)) + <span class='fu'>geom_point</span>() +
-  <span class='fu'>facet_wrap</span>(~<span class='no'>patient_id</span>) + <span class='fu'>ggtitle</span>(<span class='fu'>comment</span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><img src='simulate_breathtest_data-6.png' alt='' width='540' height='400' /><div class='input'><span class='co'>#</span>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>)) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>patient_id</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>ggtitle</a></span>(<span class='fu'>comment</span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><div class='img'><img src='simulate_breathtest_data-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Or use cleanup_data and null_fit for S3 plotting</span>
-<span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>)))</div><img src='simulate_breathtest_data-8.png' alt='' width='540' height='400' /></pre>
+<span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>)))</div><div class='img'><img src='simulate_breathtest_data-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

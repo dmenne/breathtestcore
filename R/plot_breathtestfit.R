@@ -25,7 +25,7 @@
 #' @export 
 plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size = 1, ...){
   # Make CRAN happy
-  pdr = parameter = value = method = minute = fitted = group = NULL
+  pdr = parameter = value = method = minute = fitted = group = fac = NULL
   t50 = tlag = y_index = annotate_g = xmin = xmax = ymin = ymax = NULL
   pat_group = patient_id = s = NULL
   # Plot data only if there are no coefficients

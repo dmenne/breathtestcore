@@ -12,11 +12,14 @@ reference:
       - breathtest_data
       - breathtest_read_function
       - extract_id
+      - btcore_file
   - title: "Data"
     desc: "Simulated and patient data"
     contents:
       - simulate_breathtest_data
       - usz_13c
+      - usz_13c_a
+      - usz_13c_d
   - title: "Cleanup and manipulate"
     desc: "Functions to cleanup and manipulate breath test data"
     contents:
@@ -31,7 +34,10 @@ reference:
     desc: "Functions to extract parameters from a fitted model"
     contents:
       - AIC.breathtestnlmefit
+      - sigma.breathtestnlmefit
       - augment.breathtestfit
+      - coef_by_group
+      - coef_diff_by_group
       - coef.breathtestfit
       - tidy.breathtestfit
       - cum_exp_beta
@@ -45,3 +51,10 @@ reference:
     desc: "Functions to plot data and fits"
     contents:
       - plot.breathtestfit
+
+articles:
+  - title: "How to use"
+    contents:
+     - breathtestcore
+     - using_breathtestcore
+     - methods_and_concepts

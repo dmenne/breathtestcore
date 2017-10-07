@@ -1,0 +1,13 @@
+---
+title: "Methods and concepts"
+author: "Dieter Menne, Menne Biomed Consulting Tuebingen, dieter.menne@menne-biomed.de"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Methods and concepts} 
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Methods and concepts
+
+[A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).

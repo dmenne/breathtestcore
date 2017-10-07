@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,10 +52,31 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/breathtestcore.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
+    </li>
+    <li>
+      <a href="../articles/using_breathtestcore.html">Using breathtestcore functions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -78,7 +100,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.3.0</small>
+        <small>version&nbsp;0.4.0</small>
       </h1>
     </div>
 
@@ -112,6 +134,18 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="read_breathid_xml.html">read_breathid_xml</a></code> </p>
+          </td>
+          <td><p>Read new BreathID/Examens XML file</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="read_breathtest_excel.html">read_breathtest_excel</a></code> </p>
+          </td>
+          <td><p>Reads breathtest data in Excel format</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="read_iris.html">read_iris</a></code> </p>
           </td>
           <td><p>Read 13C data from IRIS/Wagner Analysen</p></td>
@@ -139,6 +173,12 @@
             <p><code><a href="extract_id.html">extract_id</a></code> </p>
           </td>
           <td><p>Extracts an ID from string IRIS CSV file</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="btcore_file.html">btcore_file</a></code> </p>
+          </td>
+          <td><p>Path to example breath test data file</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -159,6 +199,18 @@
             <p><code><a href="usz_13c.html">data</a></code> </p>
           </td>
           <td><p>Zurich sample set of 13C breath test data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="usz_13c_a.html">data</a></code> </p>
+          </td>
+          <td><p>Exotic 13C breath test data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="usz_13c_d.html">data</a></code> </p>
+          </td>
+          <td><p>13C breath test data with MRI emptying for comparison</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -204,7 +256,7 @@
           <td>
             <p><code><a href="nls_fit.html">nls_fit</a></code> </p>
           </td>
-          <td><p>Single curve fit with nls to 13C breath test data</p></td>
+          <td><p>Individual curve fit with nls to 13C breath test data</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -228,15 +280,33 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="sigma.breathtestnlmefit.html">sigma</a></code> </p>
+          </td>
+          <td><p>S3 method to exctract the fit's residual standard deviation</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="augment.breathtestfit.html">augment</a></code> </p>
           </td>
           <td><p>Augmented prediction for breathtest fit</p></td>
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="coef_by_group.html">coef_by_group</a></code> </p>
+          </td>
+          <td><p>Tabulates per-group breath test parameters</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="coef_diff_by_group.html">coef_diff_by_group</a></code> </p>
+          </td>
+          <td><p>Tabulates breath test parameter differences of groups</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="coef.breathtestfit.html">coef</a></code> </p>
           </td>
-          <td><p>S3 coef for breathtestfit</p></td>
+          <td><p>S3 coef and summary for breathtestfit</p></td>
         </tr><tr>
           <!--  -->
           <td>

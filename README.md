@@ -30,7 +30,7 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 ## Sponsors and supporters
 
-The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. And special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.
+The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. Special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.
 
 ## How to install
 To install the most recent versions of the package, use
@@ -41,7 +41,7 @@ To install the most recent versions of the package, use
     # And here the still rudimentary web GUI
     devtools::install_github("breathtestshiny","dmenne")
 
-The stable packages [breathtestcore](https://cran.r-project.org/web/packages/breathtestcore) and [breathteststan](https://cran.r-project.org/web/packages/breathteststan) can also be installed from CRAN.
+Stable version of the packages [breathtestcore](https://cran.r-project.org/web/packages/breathtestcore) and [breathteststan](https://cran.r-project.org/web/packages/breathteststan) can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.
 
 ## Usage example 
     
@@ -53,12 +53,10 @@ This example is from the documentation of function [nlme_fit](https://dmenne.git
     fit = nlme_fit(data)
     plot(fit) # calls plot.breathtestfit
 
-For additional examples, see the folder `tests/testthat` of the source package.
+For additional examples, see the documentation and the tests in folder `tests/testthat` of the source package.
     
-## Previous and planned work
-The core fitting functions and the Stan variants are quite stable and can be used to analyze your breath test data with R. For the Stan variants, additional models that give credible intervals for differences between groups are planned. The [Shiny](https://shiny.rstudio.com) web app with reporting is work in progress; [online demo](https://apps.menne-biomed.de/breathtestshiny), [source code](https://github.com/dmenne/breathtestshiny). 
-
-
+## Planned
+The core fitting functions and the Stan variants are reasonably stable and can be used to analyze your breath test data with R. The [Shiny](https://shiny.rstudio.com) web app with reporting is work in progress; [online demo](https://apps.menne-biomed.de/breathtestshiny), [source code](https://github.com/dmenne/breathtestshiny). 
 
 __Reference__: 
 

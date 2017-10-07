@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,10 +52,31 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/breathtestcore.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
+    </li>
+    <li>
+      <a href="../articles/using_breathtestcore.html">Using breathtestcore functions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -80,8 +102,9 @@
     </div>
 
     
-    <p>Half-emptying time t50 as determined from an uncorrected fit to 
-the beta exponential function.</p>
+    <p>Half-emptying time t50 as determined from the fit of a
+beta exponential function. In the Maes/Ghoos model, it is defined as the time
+when the area under curve (AUC) is 50% of the AUC from 0 to infinity.</p>
 <p>Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
 Dig. Dis. Sci. 39 S104-6.</p>
     
@@ -101,13 +124,20 @@ usually it is quoted as 1/h (e.g. 0.6/h).</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Time where value is 1/2 of maximum, i.e. <code>t50</code> in minutes</p>
+    <p>Time in minutes when area under curve is 50% of the AUC to infinity.
+In the Maes/Ghoos model, this is used as a surrogate for gastric emptying 
+half time <code>t50</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><code><a href='exp_beta.html'>exp_beta</a></code>, and <code><a href='t50_bluck_coward.html'>t50_bluck_coward</a></code> for an example.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Integral from 0 to infinity is 100 at dose 100 mg</span>
+<span class='fu'>integrate</span>(<span class='no'>exp_beta</span>, <span class='fl'>0</span>, <span class='fl'>Inf</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>1.5</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>dose</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; 100 with absolute error &lt; 0.0014</div><div class='input'><span class='no'>t50_mg</span> <span class='kw'>=</span> <span class='fu'>t50_maes_ghoos</span>(<span class='fu'>c</span>(<span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>1.5</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>dose</span> <span class='kw'>=</span> <span class='fl'>100</span>))
+<span class='no'>t50_mg</span></div><div class='output co'>#&gt; [1] 99</div><div class='input'><span class='co'># Integral to half-emptying time \code{t50_maes_ghoos} is 50 </span>
+<span class='fu'>integrate</span>(<span class='no'>exp_beta</span>, <span class='fl'>0</span>, <span class='no'>t50_mg</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>1.5</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>0.01</span>, <span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>dose</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; 50 with absolute error &lt; 0.0042</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -117,7 +147,9 @@ usually it is quoted as 1/h (e.g. 0.6/h).</p></td>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

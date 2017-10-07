@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,10 +52,31 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/breathtestcore.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
+    </li>
+    <li>
+      <a href="../articles/using_breathtestcore.html">Using breathtestcore functions</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -128,7 +150,7 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
           <span class='kw'>tlag</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2.88</span>, <span class='fl'>2.88</span>, <span class='fl'>3.34</span>, <span class='fl'>3.26</span>),
           <span class='kw'>tlagin</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1.632</span>, <span class='fl'>1.724</span>, <span class='fl'>1.92</span>, <span class='fl'>2.101</span>)
 )
-<span class='no'>cf3</span> <span class='kw'>=</span> <span class='kw'>dplyr</span><span class='kw'>::</span><span class='fu'>mutate</span>(<span class='no'>cf3</span>,
+<span class='no'>cf3</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>cf3</span>,
           <span class='kw'>t50_maes_ghoos</span> <span class='kw'>=</span> <span class='fu'><a href='t50_maes_ghoos.html'>t50_maes_ghoos</a></span>(<span class='no'>cf3</span>),
           <span class='kw'>t50_bluck_coward</span> <span class='kw'>=</span> <span class='fu'>t50_bluck_coward</span>(<span class='no'>cf3</span>),
           <span class='kw'>tlag_maes_ghoos</span> <span class='kw'>=</span> <span class='fu'><a href='tlag_maes_ghoos.html'>tlag_maes_ghoos</a></span>(<span class='no'>cf3</span>),
@@ -167,7 +189,7 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
           <span class='kw'>tlag</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2.56</span>, <span class='fl'>3.17</span>, <span class='fl'>3.39</span>, <span class='fl'>2.58</span>, <span class='fl'>3.40</span>, <span class='fl'>3.62</span>),
           <span class='kw'>tlagin</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1.30</span>, <span class='fl'>1.53</span>, <span class='fl'>1.33</span>, <span class='fl'>1.35</span>, <span class='fl'>1.65</span>, <span class='fl'>1.57</span>)
 )
-<span class='no'>cf4</span> <span class='kw'>=</span> <span class='kw'>dplyr</span><span class='kw'>::</span><span class='fu'>mutate</span>(<span class='no'>cf4</span>,
+<span class='no'>cf4</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>cf4</span>,
           <span class='kw'>t50_maes_ghoos</span> <span class='kw'>=</span> <span class='fu'><a href='t50_maes_ghoos.html'>t50_maes_ghoos</a></span>(<span class='no'>cf4</span>),
           <span class='kw'>t50_bluck_coward</span> <span class='kw'>=</span> <span class='fu'>t50_bluck_coward</span>(<span class='no'>cf4</span>),
           <span class='kw'>tlag_maes_ghoos</span> <span class='kw'>=</span> <span class='fu'><a href='tlag_maes_ghoos.html'>tlag_maes_ghoos</a></span>(<span class='no'>cf4</span>),

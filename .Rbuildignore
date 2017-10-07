@@ -6,3 +6,4 @@
 _pkgdown.yml
 templates
 check_rhub.cmd
+^_pkgdown\.yml$

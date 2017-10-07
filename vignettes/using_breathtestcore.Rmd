@@ -1,0 +1,12 @@
+---
+title: "Using breathtestcore functions"
+author: "Dieter Menne, Menne Biomed Consulting Tuebingen, dieter.menne@menne-biomed.de"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using breathtestcore functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# <sup>13</sup>Using breathtestcore functions
+
