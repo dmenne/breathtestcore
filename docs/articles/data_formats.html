@@ -79,7 +79,7 @@
   <div class="col-md-9">
     <div class="page-header toc-ignore">
       <h1>Data formats</h1>
-                        <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.d">dieter.menne@menne.biomed.d</a>
+                        <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de">dieter.menne@menne.biomed.de</a>
 </h4>
             
             <h4 class="date">2017-10-09</h4>
@@ -88,11 +88,84 @@
     
     
 <div class="contents">
-<p>Data can be exported for use with this package from in a generic formats from Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. When you know the format, you can read in using the special functions, e.g. <a href="../help/read_breathid">read_breathid</a></p>
+<div id="concepts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#concepts" class="anchor"></a>Concepts</h2>
+<p><sup>13</sup>C data can be imported in generic formats stored in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory <code>C:/R/library/breathtestcore/extdata</code>; function <a href="../html/btcore_file.html">btcore_file</a> retrieves the names and long path of the available data sets.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(breathtestcore)
+<span class="kw">head</span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>())</code></pre></div>
+<pre><code>[1] "350_20023_0_GERWithNan.txt"       "350_20043_0_GER.txt"             
+[3] "350_20043_0_GERBadHeader.txt"     "350_20043_0_GERDuplicateTime.txt"
+[5] "350_20043_0_GERNoData.txt"        "350_20043_0_GERNoT50.txt"        </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"Standard.TXT"</span>)</code></pre></div>
+<pre><code>[1] "C:/R/library/breathtestcore/extdata/Standard.TXT"</code></pre>
+<p>When you know the format, you can read in the data using the special functions, e.g. <a href="../html/read_breathid.html">read_breathid</a>. When you do not know the format, or want to read several different file formats at once, use function <a href="../html/read_any_breathtest.html">read_any_breathtest</a> which tries to guess the format.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files =<span class="st"> </span><span class="kw">c</span>(
+  <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"IrisCSV.TXT"</span>), <span class="co"># Wagner/IRIS format</span>
+  <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"350_20043_0_GER.txt"</span>) <span class="co"># BreathID</span>
+ )
+ bt =<span class="st"> </span><span class="kw"><a href="../reference/read_any_breathtest.html">read_any_breathtest</a></span>(files)
+ <span class="co"># Returns a list of elements of class breathtest_data</span>
+ <span class="kw">str</span>(bt, <span class="dv">1</span>)</code></pre></div>
+<pre><code>List of 2
+ $ :List of 23
+  ..- attr(*, "class")= chr "breathtest_data"
+ $ :List of 23
+  ..- attr(*, "class")= chr "breathtest_data"
+ - attr(*, "class")= chr "breathtest_data_list"</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> bt_df =<span class="st"> </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>(bt)
+ <span class="kw">str</span>(bt_df)</code></pre></div>
+<pre><code>Classes 'tbl_df', 'tbl' and 'data.frame':   101 obs. of  4 variables:
+ $ patient_id: chr  "123456" "123456" "123456" "123456" ...
+ $ group     : chr  "A" "A" "A" "A" ...
+ $ minute    : num  0.01 10 20 45 60 75 90 105 120 140 ...
+ $ pdr       : num  0 1.11 2.86 4.87 5.19 ...</code></pre>
+<p>Passing through cleanup_data returns a data frame/tibble and adds a grouping variable. To plot data without fitting, use null_fit().</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> nf =<span class="st"> </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>(bt_df)
+ <span class="kw">str</span>(nf)</code></pre></div>
+<pre><code>List of 1
+ $ data:Classes 'tbl_df', 'tbl' and 'data.frame':   101 obs. of  4 variables:
+  ..$ patient_id: chr [1:101] "123456" "123456" "123456" "123456" ...
+  ..$ group     : chr [1:101] "A" "A" "A" "A" ...
+  ..$ minute    : num [1:101] 0.01 10 20 45 60 75 90 105 120 140 ...
+  ..$ pdr       : num [1:101] 0 1.11 2.86 4.87 5.19 ...
+ - attr(*, "class")= chr [1:2] "breathtestnullfit" "breathtestfit"</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">plot</span>(nf) <span class="co"># dispatches to plot.breathtestfit</span></code></pre></div>
+<p><img src="data_formats_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
+<p>To add new formats, override <a href="../html/breathtest_read_function">breathtest_read_function</a>.</p>
+<blockquote>
+<p>Always pass read-in data set through function <a href="../html/cleanup_data.html">cleanup_data</a> to obtain a data frame that can be fed to one of the fitting functions <a href="../html/nls_fit.html">nls_fit</a>, <a href="../html/nlme_fit.html">nlme_fit</a>, <a href="../html/null_fit.html">null_fit</a> or <a href="../../breathteststan/html/stan_fit.html">stan_fit from package breathteststan</a>.</p>
+</blockquote>
+</div>
+<div id="built-in-data-sets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#built-in-data-sets" class="anchor"></a>Built-in data sets</h2>
+<p>Three data sets are included in R format and can be loaded as shown below. All data were provided by the University Hospital of Zürich; details are given in the documentation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">"usz_13c"</span>)
+<span class="kw">cat</span>(<span class="st">"usz_13c has data from"</span>, <span class="kw">length</span>(<span class="kw">unique</span>(usz_13c<span class="op">$</span>patient_id)), <span class="st">"patients with"</span> , 
+    <span class="kw">length</span>(<span class="kw">unique</span>(usz_13c<span class="op">$</span>group)), <span class="st">"different meals"</span>)</code></pre></div>
+<pre><code>## usz_13c has data from 222 patients with 3 different meals</code></pre>
+<ul>
+<li>
+<a href="../html/usz_13c">usz_13c</a> As large data set to establish reference ranges for healthy volunteers and patients</li>
+<li>
+<a href="../html/usz_13c_a">usz_13c_a</a> Exotic data, a challenge for fitting algorthms</li>
+<li>
+<a href="../html/usz_13c_d">usz_13c_d</a> Has gastric emptying half time from MRI as attribute, and can used to compare recorded data with gold standards.</li>
+</ul>
+</div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#concepts">Concepts</a></li>
+      <li><a href="#built-in-data-sets">Built-in data sets</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

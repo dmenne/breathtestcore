@@ -44,7 +44,7 @@ To plot data without fitting, use null_fit().
  plot(nf) # dispatches to plot.breathtestfit
 ```
 
-To add new formats, override  [breathtest_read_function](../html/breathtest_read_function).
+To add new formats, override  [breathtest_read_function](../html/breathtest_read_function.html).
 
 > Always pass read-in data set through function [cleanup_data](../html/cleanup_data.html) to obtain a data frame that can be fed to one of the fitting functions [nls_fit](../html/nls_fit.html), [nlme_fit](../html/nlme_fit.html), [null_fit](../html/null_fit.html) or [stan_fit from package breathteststan](../../breathteststan/html/stan_fit.html).
 
