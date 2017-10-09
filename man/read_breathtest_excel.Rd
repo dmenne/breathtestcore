@@ -11,7 +11,7 @@ read_breathtest_excel(filename, sheet = 1)
 
 \item{sheet}{Name or number of Excel file to be read. When used with 
 \code{\link{read_any_breathtest}}, the first sheet is always read. You must 
-call  \code{read_breathtest_excel} explicitly to read other files, as shown
+call  \code{read_breathtest_excel} explicitly to read other worksheets, as shown
 in the example below.}
 }
 \value{

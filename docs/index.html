@@ -48,6 +48,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/data_formats.html">Data formats</a>
+    </li>
+    <li>
       <a href="articles/methods_and_concepts.html">Methods and concepts</a>
     </li>
     <li>
@@ -108,7 +111,7 @@ Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.d
 <div id="sponsors-and-supporters" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sponsors-and-supporters" class="anchor"></a>Sponsors and supporters</h2>
-<p>The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. And special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.</p>
+<p>The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. Special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.</p>
 </div>
 <div id="how-to-install" class="section level2">
 <h2 class="hasAnchor">
@@ -119,7 +122,7 @@ Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.d
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathteststan"</span>,<span class="st">"dmenne"</span>)
 <span class="co"># And here the still rudimentary web GUI</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathtestshiny"</span>,<span class="st">"dmenne"</span>)</code></pre></div>
-<p>The stable packages <a href="https://cran.r-project.org/web/packages/breathtestcore">breathtestcore</a> and <a href="https://cran.r-project.org/web/packages/breathteststan">breathteststan</a> can also be installed from CRAN.</p>
+<p>Stable version of the packages <a href="https://cran.r-project.org/web/packages/breathtestcore">breathtestcore</a> and <a href="https://cran.r-project.org/web/packages/breathteststan">breathteststan</a> can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.</p>
 </div>
 <div id="usage-example" class="section level2">
 <h2 class="hasAnchor">
@@ -130,12 +133,12 @@ d =<span class="st"> </span><span class="kw"><a href="reference/simulate_breatht
 data =<span class="st"> </span><span class="kw"><a href="reference/cleanup_data.html">cleanup_data</a></span>(d<span class="op">$</span>data)
 fit =<span class="st"> </span><span class="kw"><a href="reference/nlme_fit.html">nlme_fit</a></span>(data)
 <span class="kw">plot</span>(fit) <span class="co"># calls plot.breathtestfit</span></code></pre></div>
-<p>For additional examples, see the folder <code>tests/testthat</code> of the source package.</p>
+<p>For additional examples, see the documentation and the tests in folder <code>tests/testthat</code> of the source package.</p>
 </div>
-<div id="previous-and-planned-work" class="section level2">
+<div id="planned" class="section level2">
 <h2 class="hasAnchor">
-<a href="#previous-and-planned-work" class="anchor"></a>Previous and planned work</h2>
-<p>The core fitting functions and the Stan variants are quite stable and can be used to analyze your breath test data with R. For the Stan variants, additional models that give credible intervals for differences between groups are planned. The <a href="https://shiny.rstudio.com">Shiny</a> web app with reporting is work in progress; <a href="https://apps.menne-biomed.de/breathtestshiny">online demo</a>, <a href="https://github.com/dmenne/breathtestshiny">source code</a>.</p>
+<a href="#planned" class="anchor"></a>Planned</h2>
+<p>The core fitting functions and the Stan variants are reasonably stable and can be used to analyze your breath test data with R. The <a href="https://shiny.rstudio.com">Shiny</a> web app with reporting is work in progress; <a href="https://apps.menne-biomed.de/breathtestshiny">online demo</a>, <a href="https://github.com/dmenne/breathtestshiny">source code</a>.</p>
 <p><strong>Reference</strong>:</p>
 <ul>
 <li><p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.</p></li>

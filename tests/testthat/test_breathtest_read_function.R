@@ -14,6 +14,12 @@ check_and_read = function(filename, read_function){
   expect_gt(nrow(bt$data), 1)
 }
 
+test_that("btcore_file without arguments returns all files in sample directory",{
+  file = btcore_file()  
+  expect_is(file, "character")
+  expect_gt(length(file), 21L)
+})
+
 test_that("Correct file format returned and files correctly read" , {
   check_and_read("NewBreathID_multiple.xml", read_breathid_xml)
   check_and_read("350_20043_1_GER.txt", read_breathid)

@@ -1,0 +1,66 @@
+---
+title: "Data formats"
+author: "Dieter Menne,  dieter.menne@menne.biomed.de"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data formats}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Concepts
+
+<sup>13</sup>C data can be imported in generic formats stored in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory ``r R.home()`/library/breathtestcore/extdata`; function [btcore_file](../html/btcore_file.html) retrieves the names and long path of the available data sets. 
+
+```{r, comment = NA}
+library(breathtestcore)
+head(btcore_file())
+btcore_file("Standard.TXT")
+```
+
+
+When you know the format, you can read in the data using the special functions, e.g. [read_breathid](../html/read_breathid.html). When you do not know the format, or want to read several different file formats at once, use function [read_any_breathtest](../html/read_any_breathtest.html) which tries to guess the format. 
+
+```{r, comment = NA}
+files = c(
+  btcore_file("IrisCSV.TXT"), # Wagner/IRIS format
+  btcore_file("350_20043_0_GER.txt") # BreathID
+ )
+ bt = read_any_breathtest(files)
+ # Returns a list of elements of class breathtest_data
+ str(bt, 1)
+ bt_df = cleanup_data(bt)
+ str(bt_df)
+```
+Passing through cleanup_data returns a data frame/tibble and adds a grouping variable.
+To plot data without fitting, use null_fit().
+
+
+```{r, comment = NA, fig.height = 2, fig.width =4}
+ nf = null_fit(bt_df)
+ str(nf)
+ 
+ plot(nf) # dispatches to plot.breathtestfit
+```
+
+To add new formats, override  [breathtest_read_function](../html/breathtest_read_function).
+
+> Always pass read-in data set through function [cleanup_data](../html/cleanup_data.html) to obtain a data frame that can be fed to one of the fitting functions [nls_fit](../html/nls_fit.html), [nlme_fit](../html/nlme_fit.html), [null_fit](../html/null_fit.html) or [stan_fit from package breathteststan](../../breathteststan/html/stan_fit.html).
+
+## Built-in data sets
+
+Three data sets are included in R format and can be loaded as shown below. All data were provided by the University Hospital of Zürich; details are given in the documentation.
+
+```{r}
+data("usz_13c")
+cat("usz_13c has data from", length(unique(usz_13c$patient_id)), "patients with" , 
+    length(unique(usz_13c$group)), "different meals")
+```
+
+
+* [usz_13c](../html/usz_13c) As large data set to establish reference ranges for healthy volunteers and patients
+* [usz_13c_a](../html/usz_13c_a) Exotic data, a challenge for fitting algorthms
+* [usz_13c_d](../html/usz_13c_d) Has gastric emptying half time from MRI as attribute, and can used to compare recorded data with gold standards. 
+
+

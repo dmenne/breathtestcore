@@ -9,7 +9,7 @@
 #' @param filename Name of Excel-file to be read
 #' @param sheet Name or number of Excel file to be read. When used with 
 #' \code{\link{read_any_breathtest}}, the first sheet is always read. You must 
-#' call  \code{read_breathtest_excel} explicitly to read other files, as shown
+#' call  \code{read_breathtest_excel} explicitly to read other worksheets, as shown
 #' in the example below.
 #'
 #' @return Different from the other readXXX function, this returns a list
