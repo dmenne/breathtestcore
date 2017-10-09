@@ -120,7 +120,8 @@
  $ group     : chr  "A" "A" "A" "A" ...
  $ minute    : num  0.01 10 20 45 60 75 90 105 120 140 ...
  $ pdr       : num  0 1.11 2.86 4.87 5.19 ...</code></pre>
-<p>Passing through cleanup_data returns a data frame/tibble and adds a grouping variable. To plot data without fitting, use null_fit().</p>
+<p>Passing through cleanup_data returns a data frame/tibble and adds a grouping variable. To plot data without fitting, use <a href="../html/null_fit.html">null_fit()</a>.</p>
+<p><a href="?breathtestcore::null_fit">null_fit</a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> nf =<span class="st"> </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>(bt_df)
  <span class="kw">str</span>(nf)</code></pre></div>
 <pre><code>List of 1
@@ -132,7 +133,7 @@
  - attr(*, "class")= chr [1:2] "breathtestnullfit" "breathtestfit"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">plot</span>(nf) <span class="co"># dispatches to plot.breathtestfit</span></code></pre></div>
 <p><img src="data_formats_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
-<p>To add new formats, override <a href="../html/breathtest_read_function">breathtest_read_function</a>.</p>
+<p>To add new formats, override <a href="../html/breathtest_read_function.html">breathtest_read_function</a>.</p>
 <blockquote>
 <p>Always pass read-in data set through function <a href="../html/cleanup_data.html">cleanup_data</a> to obtain a data frame that can be fed to one of the fitting functions <a href="../html/nls_fit.html">nls_fit</a>, <a href="../html/nlme_fit.html">nlme_fit</a>, <a href="../html/null_fit.html">null_fit</a> or <a href="../../breathteststan/html/stan_fit.html">stan_fit from package breathteststan</a>.</p>
 </blockquote>

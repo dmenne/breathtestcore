@@ -34,7 +34,9 @@ files = c(
  str(bt_df)
 ```
 Passing through cleanup_data returns a data frame/tibble and adds a grouping variable.
-To plot data without fitting, use null_fit().
+To plot data without fitting, use [null_fit()](../docs/reference/null_fit.html).
+
+
 
 
 ```{r, comment = NA, fig.height = 2, fig.width =4}
