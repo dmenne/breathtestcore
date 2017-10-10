@@ -1,4 +1,4 @@
-#' @title S3 method to exctract the fit's residual standard deviation
+#' @title S3 method to extract the fit's residual standard deviation
 #' @description Functions for \code{nls} and \code{nlme} are available; 
 #' additional functions for Stan-based fits are defined in package \code{breathteststan}. 
 #' @param object Result of class \code{breathtestfit}

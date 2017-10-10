@@ -1,6 +1,6 @@
 #' @title Read BreathID file
 #'
-#' @description Reads 13c data from a BreathID file, and returns a stucture 
+#' @description Reads 13c data from a BreathID file, and returns a structure 
 #' of class \code{breathtest_data}. 
 #'
 #' @param filename name of txt-file to be read

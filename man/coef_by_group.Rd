@@ -34,7 +34,7 @@ A \code{tibble} of class \code{coef_by_group} with columns
 }
 \description{
 Given a fit to 13C breath test curves, computes absolute values and
-their conficence intervals of parameters, e.g. of the half emptying time \code{t50}.
+their confidence intervals of parameters, e.g. of the half emptying time \code{t50}.
 Generic S3 method for class breathtestfit.
 }
 \examples{

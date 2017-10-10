@@ -11,7 +11,7 @@
 #' \code{mcp_group == "Dunnett"}
 #' @param ... Not used
 #'
-#' @return A \code{tibble} of classs \code{coef_diff_by_group} with columns
+#' @return A \code{tibble} of class \code{coef_diff_by_group} with columns
 #' \describe{
 #'   \item{parameter}{Parameter of fit, e.g. \code{beta, k, m, t50}}
 #'   \item{method}{Method used to compute parameter. \code{exp_beta} refers to primary

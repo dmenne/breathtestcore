@@ -2,7 +2,7 @@
 % Please edit documentation in R/breathtest_parameters.R
 \name{t50_maes_ghoos_scintigraphy}
 \alias{t50_maes_ghoos_scintigraphy}
-\title{Half-emptying time t50 from Maes/Ghoos fit with scintigrapic correction}
+\title{Half-emptying time t50 from Maes/Ghoos fit with scintigraphic correction}
 \usage{
 t50_maes_ghoos_scintigraphy(cf)
 }

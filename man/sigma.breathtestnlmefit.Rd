@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigma.R
 \name{sigma.breathtestnlmefit}
 \alias{sigma.breathtestnlmefit}
-\title{S3 method to exctract the fit's residual standard deviation}
+\title{S3 method to extract the fit's residual standard deviation}
 \usage{
 \method{sigma}{breathtestnlmefit}(object, ...)
 }

@@ -1,6 +1,6 @@
 #' @title Read new BreathID/Examens XML file
 #'
-#' @description Reads 13c data from an XML BreathID file, and returns a stucture 
+#' @description Reads 13c data from an XML BreathID file, and returns a structure 
 #' of class \code{breathtest_data_list}, which is a list with elements of 
 #' class \code{breathtest_data}. 
 #'

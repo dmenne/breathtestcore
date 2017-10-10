@@ -87,7 +87,7 @@ read_iris_csv = function(filename = NULL, text = NULL) {
 #'
 #' @description First tries to extract only digits, separating these by underscore 
 #' when there are multiple blocks. If this give a non-valid  id, returns the 
-#' whole string without spaces and perios, hoping it makes sense.
+#' whole string without spaces and periods, hoping it makes sense.
 #' For internal use, but should be overridden for exotic IDs
 #' @param id One item from column Identifikation, e.g. "KEK-ZH-Nr.2013-1234"
 #' @examples 

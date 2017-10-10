@@ -16,7 +16,7 @@ List of class \code{breathtest_data_list} of structures of
 class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
 }
 \description{
-Reads 13c data from an XML BreathID file, and returns a stucture 
+Reads 13c data from an XML BreathID file, and returns a structure 
 of class \code{breathtest_data_list}, which is a list with elements of 
 class \code{breathtest_data}.
 }
