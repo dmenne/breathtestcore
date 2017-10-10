@@ -11,7 +11,7 @@ vignette: >
 
 # Concepts
 
-<sup>13</sup>C data can be imported in generic formats stored in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory ``r R.home()`/library/breathtestcore/extdata`; function `btcore_file()` retrieves the names and long path of the available data sets. 
+<sup>13</sup>C data can be imported in generic formats in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory ``r R.home()`/library/breathtestcore/extdata`; function `btcore_file()` retrieves the names and long path of the available data sets. 
 
 ```{r, echo = FALSE, include = FALSE}
 library(knitr)
@@ -291,9 +291,10 @@ read_breathid_xml(btcore_file("NewBreathID_multiple.xml")) %>%
   plot()
 ```
 
-Grouping is most useful in a cross-over design to force within-subject comparison by functions `coef_by_group()` `coef_diff_by_group()`; the default grouping above might not be what you required. Replace the group parameter manually to remove the groups, but do not delete the column with `group = NULL`, because the fitting functions required a possible dummy group name.
+Grouping is most useful in a cross-over design to force within-subject comparisons by functions `coef_by_group()` and `coef_diff_by_group()`; in the above case, the default grouping above might not be what you required. Replace the group parameter manually to remove the groups, but do not delete the column with `group = NULL`, because the fitting functions requires a dummy group name.
 
-```{r, fig.cap = "BreathID XML format with manual grouping"}
+```{r, fig.cap = "BreathID XML format with manual grouping."}
+# Could also use read_any_breathtest()
 read_breathid_xml(btcore_file("NewBreathID_multiple.xml")) %>% 
   cleanup_data() %>% 
   mutate(

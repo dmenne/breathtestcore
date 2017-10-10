@@ -47,6 +47,8 @@ read_breathtest_excel = function(filename, sheet = 1) {
     d$dob = dob_to_pdr(d$dob) # uses standard assumptions of 75 kg/180cm
     names(d)[n_col] = "pdr"
   }
+  if (names(d)[1] == "patient_id")
+    d$patient_id = as.character(d$patient_id)
   expect_names = list(
     "4" = c("patient_id", "group", "minute", "pdr"),
     "3" = c("patient_id", "minute", "pdr"),
