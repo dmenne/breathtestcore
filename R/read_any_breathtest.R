@@ -1,4 +1,4 @@
-#' @title Read any external files with breathtest data
+#' @title Read breathtest files of any format
 #' @description Uses \code{\link{breathtest_read_function}} to determine the file type
 #' and reads it if it has a valid format. 
 #' @param files A single filename, a list or a character vector of filenames.
@@ -9,10 +9,10 @@
 #' \code{stan_fit} in separate package \code{breathteststan}.  
 #' @examples
 #' files = c(
-#'   btcore_file("IrisCSV.TXT"),
-#'   btcore_file("350_20043_0_GER.txt"),
-#'   btcore_file("IrisMulti.TXT"),
-#'   btcore_file("NewBreathID_multiple.xml")  
+#'   group_a = btcore_file("IrisCSV.TXT"),
+#'   group_a = btcore_file("350_20043_0_GER.txt"),
+#'   group_b = btcore_file("IrisMulti.TXT"),
+#'   group_b = btcore_file("NewBreathID_01.xml")  
 #'  )
 #'  bt = read_any_breathtest(files)
 #'  str(bt, 1)

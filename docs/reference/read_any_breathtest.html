@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read any external files with breathtest data — read_any_breathtest â€¢ breathtestcore</title>
+<title>Read breathtest files of any format — read_any_breathtest â€¢ breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -71,7 +71,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats</a>
+      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -101,7 +101,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read any external files with breathtest data</h1>
+    <h1>Read breathtest files of any format</h1>
     </div>
 
     
@@ -131,30 +131,26 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>files</span> <span class='kw'>=</span> <span class='fu'>c</span>(
-  <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"IrisCSV.TXT"</span>),
-  <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"350_20043_0_GER.txt"</span>),
-  <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"IrisMulti.TXT"</span>),
-  <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"NewBreathID_multiple.xml"</span>)
+  <span class='kw'>group_a</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"IrisCSV.TXT"</span>),
+  <span class='kw'>group_a</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"350_20043_0_GER.txt"</span>),
+  <span class='kw'>group_b</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"IrisMulti.TXT"</span>),
+  <span class='kw'>group_b</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"NewBreathID_01.xml"</span>)
  )
  <span class='no'>bt</span> <span class='kw'>=</span> <span class='fu'>read_any_breathtest</span>(<span class='no'>files</span>)
- <span class='fu'>str</span>(<span class='no'>bt</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 6
-#&gt;  $ :List of 23
+ <span class='fu'>str</span>(<span class='no'>bt</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 4
+#&gt;  $ group_a:List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
-#&gt;  $ :List of 23
+#&gt;  $ group_a:List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
-#&gt;  $ :List of 23
+#&gt;  $ group_b:List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
-#&gt;  $ :List of 23
-#&gt;   ..- attr(*, "class")= chr "breathtest_data"
-#&gt;  $ :List of 23
-#&gt;   ..- attr(*, "class")= chr "breathtest_data"
-#&gt;  $ :List of 23
+#&gt;  $ group_b:List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'> <span class='co'># Passing through cleanup_data gives a data frame/tibble</span>
  <span class='no'>bt_df</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>bt</span>)
- <span class='fu'>str</span>(<span class='no'>bt_df</span>)</div><div class='output co'>#&gt; Classes <U+0091>tbl_df<U+0092>, <U+0091>tbl<U+0092> and 'data.frame':	180 obs. of  4 variables:
+ <span class='fu'>str</span>(<span class='no'>bt_df</span>)</div><div class='output co'>#&gt; Classes <U+0091>tbl_df<U+0092>, <U+0091>tbl<U+0092> and 'data.frame':	136 obs. of  4 variables:
 #&gt;  $ patient_id: chr  "123456" "123456" "123456" "123456" ...
-#&gt;  $ group     : chr  "A" "A" "A" "A" ...
+#&gt;  $ group     : chr  "group_a" "group_a" "group_a" "group_a" ...
 #&gt;  $ minute    : num  0.01 10 20 45 60 75 90 105 120 140 ...
 #&gt;  $ pdr       : num  0 1.11 2.86 4.87 5.19 ...</div><div class='input'> <span class='co'># If you want data only, use null_fit()</span>
  <span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='no'>bt_df</span>))</div><div class='img'><img src='read_any_breathtest-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'> <span class='co'># Plot population fit with decimated data</span>

@@ -71,7 +71,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats</a>
+      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -108,7 +108,7 @@
     <p>Path to example breath test data file</p>
     
 
-    <pre class="usage"><span class='fu'>btcore_file</span>(<span class='no'>filename</span>)</pre>
+    <pre class="usage"><span class='fu'>btcore_file</span>(<span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>full.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -116,7 +116,12 @@
     <tr>
       <th>filename</th>
       <td><p>example file in <code>extdata</code> directory without path. 
-Case sensitive on Unix.</p></td>
+Case sensitive on Unix. When filename is missing, returns the names of the 
+available sample files.</p></td>
+    </tr>
+    <tr>
+      <th>full.names</th>
+      <td><p>When <code>filename</code> is NULL, return full path names</p></td>
     </tr>
     </table>
     
@@ -126,7 +131,9 @@ Case sensitive on Unix.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'>btcore_file</span>(<span class='st'>"IrisMulti.TXT"</span>)
+    <pre class="examples"><div class='input'>  <span class='fu'>head</span>(<span class='fu'>btcore_file</span>())</div><div class='output co'>#&gt; [1] "350_20023_0_GERWithNan.txt"       "350_20043_0_GER.txt"             
+#&gt; [3] "350_20043_0_GERBadHeader.txt"     "350_20043_0_GERDuplicateTime.txt"
+#&gt; [5] "350_20043_0_GERNoData.txt"        "350_20043_0_GERNoT50.txt"        </div><div class='input'>  <span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'>btcore_file</span>(<span class='st'>"IrisMulti.TXT"</span>)
   <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='read_iris.html'>read_iris</a></span>(<span class='no'>filename</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

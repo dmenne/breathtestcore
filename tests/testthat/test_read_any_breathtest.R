@@ -9,6 +9,17 @@ test_that("Reading a single file returs a list of class breathtest_data",{
   expect_equal(bt[[1]]$patient_id, "123456")
 })
 
+test_that("Repeated groups are joined into one", {
+  files1 = c(
+    group_a = btcore_file("IrisCSV.TXT"),
+    group_a = btcore_file("Standard.TXT"),
+    group_b = btcore_file("350_20043_0_GER.txt")
+  )
+  bt = read_any_breathtest(files1)
+  bt1 = cleanup_data(bt)
+  expect_equal(unique(bt1$group), c("group_a", "group_b"))
+})
+
 test_that("Reading a composite file returns a list of class breathtest_data_list",{
   file = btcore_file("NewBreathID_multiple.xml")
   bt = read_any_breathtest(file)
@@ -17,8 +28,6 @@ test_that("Reading a composite file returns a list of class breathtest_data_list
   expect_is(bt[[1]], "breathtest_data")
   expect_equal(bt[[1]]$patient_id, "07951400")
 })
-
-
 
 test_that("Reading multiple files returns a list with multiple items",{
   files = c(

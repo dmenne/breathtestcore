@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data formats • breathtestcore</title>
+<title>Data formats in package breathtestcore • breathtestcore</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -48,7 +48,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/data_formats.html">Data formats</a>
+      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -78,11 +78,11 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Data formats</h1>
+      <h1>Data formats in package breathtestcore</h1>
                         <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 class="date">2017-10-09</h4>
+            <h4 class="date">2017-10-10</h4>
           </div>
 
     
@@ -91,7 +91,7 @@
 <div id="concepts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#concepts" class="anchor"></a>Concepts</h2>
-<p><sup>13</sup>C data can be imported in generic formats stored in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory <code>C:/R/library/breathtestcore/extdata</code>; function <a href="../html/btcore_file.html">btcore_file</a> retrieves the names and long path of the available data sets.</p>
+<p><sup>13</sup>C data can be imported in generic formats stored in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory <code>C:/R/library/breathtestcore/extdata</code>; function <code><a href="../reference/btcore_file.html">btcore_file()</a></code> retrieves the names and long path of the available data sets.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(breathtestcore)
 <span class="kw">head</span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>())</code></pre></div>
 <pre><code>[1] "350_20023_0_GERWithNan.txt"       "350_20043_0_GER.txt"             
@@ -99,7 +99,8 @@
 [5] "350_20043_0_GERNoData.txt"        "350_20043_0_GERNoT50.txt"        </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"Standard.TXT"</span>)</code></pre></div>
 <pre><code>[1] "C:/R/library/breathtestcore/extdata/Standard.TXT"</code></pre>
-<p>When you know the format, you can read in the data using the special functions, e.g. <a href="../html/read_breathid.html">read_breathid</a>. When you do not know the format, or want to read several different file formats at once, use function <a href="../html/read_any_breathtest.html">read_any_breathtest</a> which tries to guess the format.</p>
+<p>When you know the format, you can read in the data using the special functions, e.g. <code><a href="../reference/read_breathid.html">read_breathid()</a></code>.</p>
+<p>When you do not know the format, or when you want to read several different file formats at once, use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code> which tries to guess the format.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files =<span class="st"> </span><span class="kw">c</span>(
   <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"IrisCSV.TXT"</span>), <span class="co"># Wagner/IRIS format</span>
   <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"350_20043_0_GER.txt"</span>) <span class="co"># BreathID</span>
@@ -120,8 +121,8 @@
  $ group     : chr  "A" "A" "A" "A" ...
  $ minute    : num  0.01 10 20 45 60 75 90 105 120 140 ...
  $ pdr       : num  0 1.11 2.86 4.87 5.19 ...</code></pre>
-<p>Passing through cleanup_data returns a data frame/tibble and adds a grouping variable. To plot data without fitting, use <a href="../html/null_fit.html">null_fit()</a>.</p>
-<p><a href="?breathtestcore::null_fit">null_fit</a></p>
+<p>Passing through <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> returns a data frame/tibble and adds a grouping variable.</p>
+<p>To plot data without fitting, use <code><a href="../reference/null_fit.html">null_fit()</a></code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> nf =<span class="st"> </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>(bt_df)
  <span class="kw">str</span>(nf)</code></pre></div>
 <pre><code>List of 1
@@ -132,11 +133,53 @@
   ..$ pdr       : num [1:101] 0 1.11 2.86 4.87 5.19 ...
  - attr(*, "class")= chr [1:2] "breathtestnullfit" "breathtestfit"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">plot</span>(nf) <span class="co"># dispatches to plot.breathtestfit</span></code></pre></div>
-<p><img src="data_formats_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
-<p>To add new formats, override <a href="../html/breathtest_read_function.html">breathtest_read_function</a>.</p>
+<p><img src="data_formats_files/figure-html/unnamed-chunk-4-1.png" width="384"></p>
+<p>To add new formats, override <code><a href="../reference/breathtest_read_function.html">breathtest_read_function()</a></code> and add a new function that returns a structure given by <code><a href="../reference/breathtest_data.html">breathtest_data()</a></code>.</p>
 <blockquote>
-<p>Always pass read-in data set through function <a href="../html/cleanup_data.html">cleanup_data</a> to obtain a data frame that can be fed to one of the fitting functions <a href="../html/nls_fit.html">nls_fit</a>, <a href="../html/nlme_fit.html">nlme_fit</a>, <a href="../html/null_fit.html">null_fit</a> or <a href="../../breathteststan/html/stan_fit.html">stan_fit from package breathteststan</a>.</p>
+<p>Always pass data through function <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> to obtain a data frame that can be fed to one of the fitting functions <code><a href="../reference/nls_fit.html">nls_fit()</a></code>, <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code>, <code><a href="../reference/null_fit.html">null_fit()</a></code> or <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code>.</p>
 </blockquote>
+</div>
+<div id="automatic-grouping" class="section level2">
+<h2 class="hasAnchor">
+<a href="#automatic-grouping" class="anchor"></a>Automatic grouping</h2>
+<p>You can add a grouping variable, e.g. for multiple meal types, to compute between group differences of means. Cross-over, randomized or mixed designs (some patients cross-over) are supported.</p>
+<p>You must explicitlty state the grouping variable for each single file as shown below. Without names, it is possible to vectorize, e.g. <code><a href="../reference/read_any_breathtest.html">read_any_breathtest(c(file1, file2))</a></code>, but the ‘c()’ operator used on vectors disambiguates the names by appending numbers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files1 =<span class="st"> </span><span class="kw">c</span>(
+  <span class="dt">group_a =</span> <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"IrisCSV.TXT"</span>), <span class="co"># Use only single file with grouping</span>
+  <span class="dt">group_a =</span> <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"Standard.TXT"</span>),
+  <span class="dt">group_b =</span> <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"350_20043_0_GER.txt"</span>)
+ )
+
+<span class="co"># Alternative syntax using magrittr operator</span>
+<span class="kw">suppressPackageStartupMessages</span>(<span class="kw">library</span>(dplyr))
+<span class="kw"><a href="../reference/read_any_breathtest.html">read_any_breathtest</a></span>(files1) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
+<p><img src="data_formats_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
+</div>
+<div id="simulated-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#simulated-data" class="anchor"></a>Simulated data</h2>
+<p>Function <code>simulate_breathtest_data</code> generates sample data to test different algorithms. Curves with outliers can be generated by setting <code>student_t_df</code> to values from 2 (very strong outliers) to 10 (almost gaussian).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">212</span>)
+data =<span class="st"> </span><span class="kw">list</span>(<span class="dt">meal_a =</span> <span class="kw"><a href="../reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span>(<span class="dt">n_records =</span> <span class="dv">3</span>, <span class="dt">noise =</span> <span class="dv">2</span>,
+                          <span class="dt">student_t_df =</span> <span class="dv">3</span>, <span class="dt">missing =</span> <span class="fl">0.3</span>), 
+            <span class="dt">meal_b =</span> <span class="kw"><a href="../reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span>(<span class="dt">n_records =</span> <span class="dv">4</span>))
+data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/nlme_fit.html">nlme_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
+<div class="figure">
+<img src="data_formats_files/figure-html/unnamed-chunk-6-1.png" alt="Example of a cross-over design with missing data, outliers and missing record in the red curve." width="576"><p class="caption">
+Example of a cross-over design with missing data, outliers and missing record in the red curve.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data<span class="op">$</span>meal_a<span class="op">$</span>record</code></pre></div>
+<pre><code>  patient_id  m           k     beta t50_maes_ghoos
+1     rec_01 38 0.013102211 2.414748       105.9517
+2     rec_02 47 0.009183714 1.688157       118.5177
+3     rec_03 16 0.010386227 2.248506       127.7612</code></pre>
 </div>
 <div id="built-in-data-sets" class="section level2">
 <h2 class="hasAnchor">
@@ -145,14 +188,14 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">"usz_13c"</span>)
 <span class="kw">cat</span>(<span class="st">"usz_13c has data from"</span>, <span class="kw">length</span>(<span class="kw">unique</span>(usz_13c<span class="op">$</span>patient_id)), <span class="st">"patients with"</span> , 
     <span class="kw">length</span>(<span class="kw">unique</span>(usz_13c<span class="op">$</span>group)), <span class="st">"different meals"</span>)</code></pre></div>
-<pre><code>## usz_13c has data from 222 patients with 3 different meals</code></pre>
+<pre><code>usz_13c has data from 222 patients with 3 different meals</code></pre>
 <ul>
 <li>
-<a href="../html/usz_13c">usz_13c</a> As large data set to establish reference ranges for healthy volunteers and patients</li>
+<code><a href="http://www.rdocumentation.org/packages/breathtestcore/topics/usz_13c">breathtestcore::usz_13c</a></code> A large data set used to establish reference ranges for healthy volunteers and patients</li>
 <li>
-<a href="../html/usz_13c_a">usz_13c_a</a> Exotic data, a challenge for fitting algorthms</li>
+<code><a href="http://www.rdocumentation.org/packages/breathtestcore/topics/usz_13c_a">breathtestcore::usz_13c_a</a></code> Exotic data, a challenge for fitting algorthms</li>
 <li>
-<a href="../html/usz_13c_d">usz_13c_d</a> Has gastric emptying half time from MRI as attribute, and can used to compare recorded data with gold standards.</li>
+<code><a href="http://www.rdocumentation.org/packages/breathtestcore/topics/usz_13c_d">breathtestcore::usz_13c_d</a></code> Has gastric emptying half time from MRI as attribute, and can used to compare recorded data with gold standards; see the example in the documentation.</li>
 </ul>
 </div>
 </div>
@@ -164,6 +207,8 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#concepts">Concepts</a></li>
+      <li><a href="#automatic-grouping">Automatic grouping</a></li>
+      <li><a href="#simulated-data">Simulated data</a></li>
       <li><a href="#built-in-data-sets">Built-in data sets</a></li>
       </ul>
 </div>
