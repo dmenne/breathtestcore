@@ -57,7 +57,7 @@
 #' @importFrom methods is
 #' @importFrom tibble rownames_to_column as_tibble
 #' @importFrom nlme nlme nlmeControl fixef nlsList
-NULL
+"usz_13c"
 
 
 #' @title 13C breath test data with MRI emptying for comparison
@@ -77,7 +77,6 @@ NULL
 #'
 #' @docType data
 #' @keywords datasets
-#' @name usz_13c_d
 #' @usage data(usz_13c_d)
 #' @examples 
 #' \donttest{
@@ -106,7 +105,7 @@ NULL
 #'   xlim(45,205) +
 #'   ylim(45,205) 
 #' }
-NULL
+"usz_13c_d"
 
 
 #' @title Exotic 13C breath test data 
@@ -133,5 +132,5 @@ NULL
 #'   nlme_fit()
 #' plot(d)
 #' }
-NULL
+"usz_13c_a"
 

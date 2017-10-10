@@ -4,6 +4,7 @@
 \name{usz_13c_d}
 \alias{usz_13c_d}
 \title{13C breath test data with MRI emptying for comparison}
+\format{An object of class \code{data.frame} with 1176 rows and 4 columns.}
 \usage{
 data(usz_13c_d)
 }

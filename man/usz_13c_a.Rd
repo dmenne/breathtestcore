@@ -4,6 +4,7 @@
 \name{usz_13c_a}
 \alias{usz_13c_a}
 \title{Exotic 13C breath test data}
+\format{An object of class \code{data.frame} with 986 rows and 4 columns.}
 \usage{
 data(usz_13c_a)
 }
