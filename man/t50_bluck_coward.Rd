@@ -23,7 +23,8 @@ See also equation G(n,t) in
 
 Bluck LJC, Jackson S, Vlasakakis G, Mander A (2011)
 Bayesian hierarchical methods to interpret  the 13C-octanoic acid breath
-test for gastric emptying. Digestion 83_96-107, page 98.
+test for gastric emptying. Digestion 83_96-107, page 98;  
+\url{http://iopscience.iop.org/article/10.1088/0967-3334/27/3/006/meta}.
 }
 \examples{
 # From table 3 and 4 in Bluck et al.; values for \\code{k} and \\code{beta} 

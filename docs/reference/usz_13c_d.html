@@ -133,7 +133,9 @@ emptying times from MRI and 13C in diagrams.</p>
   <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>() <span class='kw'>%&gt;%</span> <span class='co'># recommended to test for validity</span>
   <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>()
 <span class='fu'>plot</span>(<span class='no'>d</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline'>geom_vline</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mri_t50</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='no'>t50</span>), <span class='kw'>linetype</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='usz_13c_d-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='no'>dd</span> <span class='kw'>=</span> <span class='no'>mri_t50</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline'>geom_vline</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mri_t50</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='no'>t50</span>), <span class='kw'>linetype</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='img'><img src='usz_13c_d-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='co'># Maes-Ghoos t50</span>
+<span class='no'>dd</span> <span class='kw'>=</span> <span class='no'>mri_t50</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>inner_join</a></span>(
     <span class='fu'>coef</span>(<span class='no'>d</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>parameter</span><span class='kw'>==</span><span class='st'>"t50"</span>, <span class='no'>method</span> <span class='kw'>==</span> <span class='st'>"maes_ghoos"</span>),
     <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"patient_id"</span>, <span class='st'>"group"</span>)) <span class='kw'>%&gt;%</span>
@@ -146,7 +148,23 @@ emptying times from MRI and 13C in diagrams.</p>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>group</span>) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline'>geom_abline</a></span>(<span class='kw'>slope</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>intercept</span> <span class='kw'>=</span> <span class='fl'>0</span>) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/lims'>xlim</a></span>(<span class='fl'>45</span>,<span class='fl'>205</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/lims'>ylim</a></span>(<span class='fl'>45</span>,<span class='fl'>205</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 1 rows containing missing values (geom_point).</span></div><div class='img'><img src='usz_13c_d-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/lims'>ylim</a></span>(<span class='fl'>45</span>,<span class='fl'>205</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 1 rows containing missing values (geom_point).</span></div><div class='img'><img src='usz_13c_d-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='co'># Bluck-Coward t50</span>
+<span class='no'>dd</span> <span class='kw'>=</span> <span class='no'>mri_t50</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>inner_join</a></span>(
+    <span class='fu'>coef</span>(<span class='no'>d</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>parameter</span><span class='kw'>==</span><span class='st'>"t50"</span>, <span class='no'>method</span> <span class='kw'>==</span> <span class='st'>"bluck_coward"</span>),
+    <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"patient_id"</span>, <span class='st'>"group"</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(
+    <span class='kw'>t50_bluck_coward</span> <span class='kw'>=</span> <span class='no'>value</span>
+ )
+
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>dd</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>t50</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>t50_bluck_coward</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>group</span>)) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>group</span>) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline'>geom_abline</a></span>(<span class='kw'>slope</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>intercept</span> <span class='kw'>=</span> <span class='fl'>0</span>) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/lims'>xlim</a></span>(<span class='fl'>0</span>,<span class='fl'>205</span>) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/lims'>ylim</a></span>(<span class='fl'>0</span>,<span class='fl'>205</span>)</div><div class='img'><img src='usz_13c_d-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -35,11 +35,13 @@ The software is being developed in cooperation with the Department of Gastroente
 ## How to install
 To install the most recent versions of the package, use
 
-    devtools::install_github("breathtestcore","dmenne")
+    devtools::install_github("dmenne/breathtestcore", build_vignettes = TRUE)
     # In case you want to use the fancy Stan-based methodes
-    devtools::install_github("breathteststan","dmenne")
+    devtools::install_github("dmenne/breathteststan", build_vignettes = TRUE)
     # And here the still rudimentary web GUI
-    devtools::install_github("breathtestshiny","dmenne")
+    devtools::install_github("dmenne/breathtestshiny", build_vignettes = TRUE)
+
+Do not forget to use `build_vignettes = TRUE`.
 
 Stable version of the packages [breathtestcore](https://cran.r-project.org/web/packages/breathtestcore) and [breathteststan](https://cran.r-project.org/web/packages/breathteststan) can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.
 

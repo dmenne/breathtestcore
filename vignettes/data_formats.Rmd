@@ -16,6 +16,7 @@ vignette: >
 ```{r, echo = FALSE, include = FALSE}
 library(knitr)
 opts_chunk$set(comment = NA, fig.width = 4, fig.height = 3)
+options(digits = 3)
 ```
 
 ```{r}
@@ -25,9 +26,8 @@ btcore_file("Standard.TXT")
 ```
 
 
-When you know the format, you can read the data using the special functions, e.g. `read_breathid()`. 
-
-When you do not know the format, or when you want to read several different file formats at once, use function `read_any_breathtest()` which tries to guess the format. 
+* When you know the format, you can read the data using the special functions, e.g. `read_breathid()` or `read_breathid_xml()`. 
+* When you do not know the format, or when you want to read several different file formats at once, use function `read_any_breathtest()` which tries to guess the format. 
 
 ```{r}
 files = c(

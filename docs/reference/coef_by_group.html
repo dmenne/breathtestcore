@@ -106,7 +106,7 @@
 
     
     <p>Given a fit to 13C breath test curves, computes absolute values and
-their conficence intervals of parameters, e.g. of the half emptying time <code>t50</code>.
+their confidence intervals of parameters, e.g. of the half emptying time <code>t50</code>.
 Generic S3 method for class breathtestfit.</p>
     
 
@@ -160,7 +160,7 @@ Generic S3 method for class breathtestfit.</p>
     <span class='fu'>c</span>(<span class='st'>"norm_001"</span>, <span class='st'>"norm_002"</span>, <span class='st'>"norm_003"</span>, <span class='st'>"norm_004"</span>, <span class='st'>"pat_001"</span>, <span class='st'>"pat_002"</span>,<span class='st'>"pat_003"</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>()
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nls_fit.html'>nls_fit</a></span>(<span class='no'>data</span>)
-<span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; |======================================================|100% ~0 s remaining     </div><div class='output co'>#&gt; # A tibble: 27 x 7
+<span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; |================================================      | 89% ~0 s remaining     |======================================================|100% ~0 s remaining     </div><div class='output co'>#&gt; # A tibble: 27 x 7
 #&gt;    parameter   method         group  estimate  conf.low conf.high diff_group
 #&gt;        &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;chr&gt;
 #&gt;  1      beta exp_beta liquid_normal  2.088000  1.345000   2.83100          a

@@ -82,7 +82,7 @@
                         <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 class="date">2017-10-10</h4>
+            <h4 class="date">2017-10-11</h4>
           </div>
 
     
@@ -91,7 +91,7 @@
 <div id="concepts" class="section level1">
 <h1 class="hasAnchor">
 <a href="#concepts" class="anchor"></a>Concepts</h1>
-<p><sup>13</sup>C data can be imported in generic formats stored in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory <code>C:/R/library/breathtestcore/extdata</code>; function <code><a href="../reference/btcore_file.html">btcore_file()</a></code> retrieves the names and long path of the available data sets.</p>
+<p><sup>13</sup>C data can be imported in generic formats in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory <code>C:/R/library/breathtestcore/extdata</code>; function <code><a href="../reference/btcore_file.html">btcore_file()</a></code> retrieves the names and long path of the available data sets.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(breathtestcore)
 <span class="kw">head</span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>())</code></pre></div>
 <pre><code>[1] "350_20023_0_GERWithNan.txt"       "350_20043_0_GER.txt"             
@@ -99,8 +99,10 @@
 [5] "350_20043_0_GERNoData.txt"        "350_20043_0_GERNoT50.txt"        </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"Standard.TXT"</span>)</code></pre></div>
 <pre><code>[1] "C:/R/library/breathtestcore/extdata/Standard.TXT"</code></pre>
-<p>When you know the format, you can read the data using the special functions, e.g. <code><a href="../reference/read_breathid.html">read_breathid()</a></code>.</p>
-<p>When you do not know the format, or when you want to read several different file formats at once, use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code> which tries to guess the format.</p>
+<ul>
+<li>When you know the format, you can read the data using the special functions, e.g. <code><a href="../reference/read_breathid.html">read_breathid()</a></code> or <code><a href="../reference/read_breathid_xml.html">read_breathid_xml()</a></code>.</li>
+<li>When you do not know the format, or when you want to read several different file formats at once, use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code> which tries to guess the format.</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files =<span class="st"> </span><span class="kw">c</span>(
   <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"IrisCSV.TXT"</span>), <span class="co"># Wagner/IRIS format</span>
   <span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"350_20043_0_GER.txt"</span>) <span class="co"># BreathID</span>
@@ -175,10 +177,10 @@ Example of a cross-over design with missing data, outliers and missing record in
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data<span class="op">$</span>meal_a<span class="op">$</span>record</code></pre></div>
-<pre><code>  patient_id  m           k     beta t50_maes_ghoos
-1     rec_01 38 0.013102211 2.414748       105.9517
-2     rec_02 47 0.009183714 1.688157       118.5177
-3     rec_03 16 0.010386227 2.248506       127.7612</code></pre>
+<pre><code>  patient_id  m       k beta t50_maes_ghoos
+1     rec_01 38 0.01310 2.41            106
+2     rec_02 47 0.00918 1.69            119
+3     rec_03 16 0.01039 2.25            128</code></pre>
 </div>
 <div id="built-in-data-sets" class="section level2">
 <h2 class="hasAnchor">
@@ -248,11 +250,11 @@ Example of a cross-over design with missing data, outliers and missing record in
 <pre><code>[[1]]
 # A tibble: 43 x 3
   patient_id minute   pdr
-       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1      8e+06   0.42  0.55
-2      8e+06  11.92  1.64
-3      8e+06  23.40  3.89
-4      8e+06  34.89  6.13
+       &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1    7951500   0.42  0.55
+2    7951500  11.92  1.64
+3    7951500  23.40  3.89
+4    7951500  34.89  6.13
 # ... with 39 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">cbt =</span> <span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>(bt))</code></pre></div>
 <pre><code># A tibble: 43 x 4
@@ -392,8 +394,9 @@ BreathID composite file
 BreathID XML format
 </p>
 </div>
-<p>Grouping is most useful in a cross-over design to force within-subject comparison by functions <code><a href="../reference/coef_by_group.html">coef_by_group()</a></code> <code><a href="../reference/coef_diff_by_group.html">coef_diff_by_group()</a></code>; the default grouping above might not be what you required. Replace the group parameter manually to remove the groups, but do not delete the column with <code>group = NULL</code>, because the fitting functions required a possible dummy group name.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"NewBreathID_multiple.xml"</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<p>Grouping is most useful in a cross-over design to force within-subject comparisons by functions <code><a href="../reference/coef_by_group.html">coef_by_group()</a></code> and <code><a href="../reference/coef_diff_by_group.html">coef_diff_by_group()</a></code>; in the above case, the default grouping above might not be what you required. Replace the group parameter manually to remove the groups, but do not delete the column with <code>group = NULL</code>, because the fitting functions requires a dummy group name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Could also use read_any_breathtest()</span>
+<span class="kw"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"NewBreathID_multiple.xml"</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(
     <span class="dt">group =</span> <span class="st">"New"</span>
@@ -401,8 +404,8 @@ BreathID XML format
 <span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-22-1.png" alt="BreathID XML format with manual grouping" width="384"><p class="caption">
-BreathID XML format with manual grouping
+<img src="data_formats_files/figure-html/unnamed-chunk-22-1.png" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
+BreathID XML format with manual grouping.
 </p>
 </div>
 </div>

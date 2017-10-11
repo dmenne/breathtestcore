@@ -117,11 +117,12 @@ Menne Biomed Consulting Tübingen, Germany<br><a href="http://www.menne-biomed.d
 <h2 class="hasAnchor">
 <a href="#how-to-install" class="anchor"></a>How to install</h2>
 <p>To install the most recent versions of the package, use</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathtestcore"</span>,<span class="st">"dmenne"</span>)
+<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"dmenne/breathtestcore"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)
 <span class="co"># In case you want to use the fancy Stan-based methodes</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathteststan"</span>,<span class="st">"dmenne"</span>)
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"dmenne/breathteststan"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)
 <span class="co"># And here the still rudimentary web GUI</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"breathtestshiny"</span>,<span class="st">"dmenne"</span>)</code></pre></div>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"dmenne/breathtestshiny"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>Do not forget to use <code>build_vignettes = TRUE</code>.</p>
 <p>Stable version of the packages <a href="https://cran.r-project.org/web/packages/breathtestcore">breathtestcore</a> and <a href="https://cran.r-project.org/web/packages/breathteststan">breathteststan</a> can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.</p>
 </div>
 <div id="usage-example" class="section level2">

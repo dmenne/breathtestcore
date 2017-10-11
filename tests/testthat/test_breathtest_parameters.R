@@ -12,6 +12,7 @@ test_that("Bluck-Coward data for testing of parameter functions" , {
     tlag = c(2.88, 2.88, 3.34, 3.26),
     tlagin = c(1.632, 1.724, 1.92, 2.101)
   )
+  
   t50_maes_ghoos = t50_maes_ghoos(cf)
   expect_lt(max(abs(t50_maes_ghoos - cf$t12)/cf$t12), 0.014) 
   
