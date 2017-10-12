@@ -19,14 +19,14 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 ## What it does
 
-* Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID, and Excel.
+* Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID and Excel.
 * Fits Beta-Exponential nonlinear curve fits using `nls`, which gives successful estimates for 90% of PDR curves.
 * Computes population fits with `nlme` when data from multiple recordings are available, resulting in much more reliable estimates for studies.
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package [dmenne/breathteststan](https://github.com/dmenne/breathteststan))
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
-* Includes an extensive data set of <sup>13</sup>C records from the University Hospital of Zürich  
+* Includes three data sets of <sup>13</sup>C records from the University Hospital of Zürich  
 * [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
-* See the example in the documentation of `t50BluckCoward` for a comparison with published data. Most cases agree with those published here, but there are some exceptions?
+* See the example in the documentation of `t50BluckCoward` for a comparison with published data. 
 
 ## Sponsors and supporters
 
@@ -37,13 +37,17 @@ To install the most recent versions of the package, use
 
     devtools::install_github("dmenne/breathtestcore", build_vignettes = TRUE)
     # In case you want to use the fancy Stan-based methodes
-    devtools::install_github("dmenne/breathteststan", build_vignettes = TRUE)
-    # And here the still rudimentary web GUI
+    devtools::install_github("dmenne/breathteststan")
+    # And here the web app; this is not yet on CRAN and must be installed from github
     devtools::install_github("dmenne/breathtestshiny", build_vignettes = TRUE)
 
 Do not forget to use `build_vignettes = TRUE`.
 
 Stable version of the packages [breathtestcore](https://cran.r-project.org/web/packages/breathtestcore) and [breathteststan](https://cran.r-project.org/web/packages/breathteststan) can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.
+
+The [Docker image](https://hub.docker.com/r/dmenne/gastro-docker/) contains RStudio, package `gastempt` to analyze MRI/scintigraphic gastric emptying data, and the `breathtestshiny` app.
+
+You can run the [web app online]{https://apps.menne-biomed.de/breathtestshiny/}. No data are stored, but you can download all results and a series of tests for studies.
 
 ## Usage example 
     
@@ -56,7 +60,7 @@ This example is from the documentation of function [nlme_fit](https://dmenne.git
     plot(fit) # calls plot.breathtestfit
 
 For additional examples, see the documentation and the tests in folder `tests/testthat` of the source package.
-    
+
 ## Planned
 The core fitting functions and the Stan variants are reasonably stable and can be used to analyze your breath test data with R. The [Shiny](https://shiny.rstudio.com) web app with reporting is work in progress; [online demo](https://apps.menne-biomed.de/breathtestshiny), [source code](https://github.com/dmenne/breathtestshiny). 
 

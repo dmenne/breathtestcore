@@ -4,7 +4,6 @@
 \name{usz_13c_d}
 \alias{usz_13c_d}
 \title{13C breath test data with MRI emptying for comparison}
-\format{An object of class \code{data.frame} with 1176 rows and 4 columns.}
 \usage{
 data(usz_13c_d)
 }
@@ -65,6 +64,5 @@ ggplot(dd, aes(x=t50, y = t50_bluck_coward, color = group)) +
   xlim(0,205) +
   ylim(0,205) 
 }
-
 }
 \keyword{datasets}
