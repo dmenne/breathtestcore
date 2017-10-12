@@ -56,7 +56,6 @@ articles:
   - title: "How to use"
     contents:
      - breathtestcore
-     - using_breathtestcore
      - methods_and_concepts
      - data_formats
 

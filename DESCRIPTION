@@ -24,7 +24,7 @@ Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble,
          methods, readxl, 
          assertthat, broom, tidyr,   ggplot2, ggfittext, 
          signal, utils, multcomp, xml2
-Suggests: testthat, covr, knitr, survival
+Suggests: testthat, covr, knitr, survival, gridExtra
 URL: https://github.com/dmenne/breathtestcore
 BugReports: https://github.com/dmenne/breathtestcore/issues
 License: GPL-3

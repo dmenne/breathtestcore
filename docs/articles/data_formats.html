@@ -51,10 +51,7 @@
       <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
     </li>
     <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-    <li>
-      <a href="../articles/using_breathtestcore.html">Using breathtestcore functions</a>
+      <a href="../articles/methods_and_concepts.html">breathtestcore: Methods and concepts</a>
     </li>
   </ul>
 </li>
@@ -82,7 +79,7 @@
                         <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 class="date">2017-10-11</h4>
+            <h4 class="date">2017-10-12</h4>
           </div>
 
     
@@ -135,7 +132,7 @@
   ..$ pdr       : num [1:101] 0 1.11 2.86 4.87 5.19 ...
  - attr(*, "class")= chr [1:2] "breathtestnullfit" "breathtestfit"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">plot</span>(nf) <span class="co"># dispatches to plot.breathtestfit</span></code></pre></div>
-<p><img src="data_formats_files/figure-html/unnamed-chunk-4-1.png" width="384"></p>
+<p><img src="data_formats_files/figure-html/nf-1.png" width="384"></p>
 <p>To add new formats, override <code><a href="../reference/breathtest_read_function.html">breathtest_read_function()</a></code> and add a new function that returns a structure given by <code><a href="../reference/breathtest_data.html">breathtest_data()</a></code>.</p>
 <blockquote>
 <p>Always pass data through function <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> to obtain a data frame that can be fed to one of the fitting functions <code><a href="../reference/nls_fit.html">nls_fit()</a></code>, <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code>, <code><a href="../reference/null_fit.html">null_fit()</a></code> or <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code>.</p>
@@ -157,7 +154,7 @@
 <span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
-<p><img src="data_formats_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
+<p><img src="data_formats_files/figure-html/three-1.png" width="768"></p>
 </div>
 <div id="simulated-data" class="section level2">
 <h2 class="hasAnchor">
@@ -172,7 +169,7 @@ data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/nlme_fit.html">nlme_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-6-1.png" alt="Example of a cross-over design with missing data, outliers and missing record in the red curve." width="576"><p class="caption">
+<img src="data_formats_files/figure-html/simulated-1.png" alt="Example of a cross-over design with missing data, outliers and missing record in the red curve." width="576"><p class="caption">
 Example of a cross-over design with missing data, outliers and missing record in the red curve.
 </p>
 </div>
@@ -240,7 +237,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 # ... with 18 more rows</code></pre>
 <p>Compute the fit and plot</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cbt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</code></pre></div>
-<p><img src="data_formats_files/figure-html/unnamed-chunk-13-1.png" width="384"></p>
+<p><img src="data_formats_files/figure-html/nlsfit-1.png" width="384"></p>
 </div>
 <div id="three-column-format" class="section level3">
 <h3 class="hasAnchor">
@@ -273,22 +270,80 @@ Example of a cross-over design with missing data, outliers and missing record in
 <p>The four-column format with column names <code>patient_id, group, minute, pdr</code> is the standard format. In cross-over designs, you can have different groups for one patient.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bt =<span class="st"> </span><span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"4col_2group"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>()
-<span class="kw">sample_frac</span>(bt, <span class="fl">0.08</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(patient_id, group)</code></pre></div>
-<pre><code># A tibble: 10 x 4
-   patient_id         group minute   pdr
-        &lt;chr&gt;         &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
- 1   norm_001 liquid_normal     40   9.1
- 2   norm_002 liquid_normal     75  14.3
- 3   norm_002 liquid_normal    120  11.4
- 4   norm_002  solid_normal     90   7.3
- 5   norm_002  solid_normal    120   6.3
- 6   norm_002  solid_normal     10   1.8
- 7   norm_003 liquid_normal     10   6.0
- 8   norm_005 liquid_normal     50  19.7
- 9   norm_005 liquid_normal    180   8.9
-10   norm_005  solid_normal    140   9.4</code></pre>
+<span class="kw">kable</span>(<span class="kw">sample_frac</span>(bt, <span class="fl">0.08</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(patient_id, group), <span class="dt">caption =</span> <span class="st">"A sample from a four-column format. See worksheet 4col_2group."</span>)</code></pre></div>
+<table class="table">
+<caption>A sample from a four-column format. See worksheet 4col_2group.</caption>
+<thead><tr class="header">
+<th align="left">patient_id</th>
+<th align="left">group</th>
+<th align="right">minute</th>
+<th align="right">pdr</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">norm_001</td>
+<td align="left">liquid_normal</td>
+<td align="right">40</td>
+<td align="right">9.1</td>
+</tr>
+<tr class="even">
+<td align="left">norm_002</td>
+<td align="left">liquid_normal</td>
+<td align="right">75</td>
+<td align="right">14.3</td>
+</tr>
+<tr class="odd">
+<td align="left">norm_002</td>
+<td align="left">liquid_normal</td>
+<td align="right">120</td>
+<td align="right">11.4</td>
+</tr>
+<tr class="even">
+<td align="left">norm_002</td>
+<td align="left">solid_normal</td>
+<td align="right">90</td>
+<td align="right">7.3</td>
+</tr>
+<tr class="odd">
+<td align="left">norm_002</td>
+<td align="left">solid_normal</td>
+<td align="right">120</td>
+<td align="right">6.3</td>
+</tr>
+<tr class="even">
+<td align="left">norm_002</td>
+<td align="left">solid_normal</td>
+<td align="right">10</td>
+<td align="right">1.8</td>
+</tr>
+<tr class="odd">
+<td align="left">norm_003</td>
+<td align="left">liquid_normal</td>
+<td align="right">10</td>
+<td align="right">6.0</td>
+</tr>
+<tr class="even">
+<td align="left">norm_005</td>
+<td align="left">liquid_normal</td>
+<td align="right">50</td>
+<td align="right">19.7</td>
+</tr>
+<tr class="odd">
+<td align="left">norm_005</td>
+<td align="left">liquid_normal</td>
+<td align="right">180</td>
+<td align="right">8.9</td>
+</tr>
+<tr class="even">
+<td align="left">norm_005</td>
+<td align="left">solid_normal</td>
+<td align="right">140</td>
+<td align="right">9.4</td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/nlme_fit.html">nlme_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</code></pre></div>
-<p><img src="data_formats_files/figure-html/unnamed-chunk-17-1.png" width="672"></p>
+<p><img src="data_formats_files/figure-html/nlme_fit-1.png" width="672"></p>
 </div>
 <div id="dob-instead-of-pdf" class="section level3">
 <h3 class="hasAnchor">
@@ -318,7 +373,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 <span class="st">  </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-18-1.png" alt="IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown." width="384"><p class="caption">
+<img src="data_formats_files/figure-html/iriswagner-1.png" alt="IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown." width="384"><p class="caption">
 IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown.
 </p>
 </div>
@@ -337,7 +392,7 @@ IRIS/Wagner composite file. These data cannot be fitted successfully with the si
 <span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-19-1.png" alt="IRIS/Wagner CSV file" width="384"><p class="caption">
+<img src="data_formats_files/figure-html/iris_csv-1.png" alt="IRIS/Wagner CSV file" width="384"><p class="caption">
 IRIS/Wagner CSV file
 </p>
 </div>
@@ -361,7 +416,7 @@ Patient ID   - Franz
 <span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-20-1.png" alt="BreathID composite file" width="384"><p class="caption">
+<img src="data_formats_files/figure-html/breathidc-1.png" alt="BreathID composite file" width="384"><p class="caption">
 BreathID composite file
 </p>
 </div>
@@ -390,7 +445,7 @@ BreathID composite file
 <span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-21-1.png" alt="BreathID XML format" width="384"><p class="caption">
+<img src="data_formats_files/figure-html/breathid_xml-1.png" alt="BreathID XML format" width="384"><p class="caption">
 BreathID XML format
 </p>
 </div>
@@ -404,7 +459,7 @@ BreathID XML format
 <span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot</span>()</code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/unnamed-chunk-22-1.png" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
+<img src="data_formats_files/figure-html/breathid_man-1.png" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
 BreathID XML format with manual grouping.
 </p>
 </div>

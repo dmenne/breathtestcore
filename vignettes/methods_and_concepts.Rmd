@@ -1,30 +1,35 @@
 ---
-title: "Methods and concepts"
+title: "breathtestcore: Methods and concepts"
 author: "Dieter Menne, Menne Biomed Consulting Tuebingen, dieter.menne@menne-biomed.de"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    fig_caption: yes
 vignette: >
   %\VignetteIndexEntry{Methods and concepts} 
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: breathtestcore.bib
+link-citations: true
 ---
 
 
 ```{r, echo = FALSE, include = FALSE}
 suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(gridExtra))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
 library(breathtestcore)
+knitr::opts_knit$set(unnamed.chunk.label = "btcore_")
 opts_chunk$set(comment = NA, fig.width = 4, fig.height = 3)
 options(digits = 3)
 ```
 
 
-# A heretical view on <sup>13</sup>C breath test 
+# A heretical view on <sup>13</sup>C breath test for gastric emptying
 
-For normative documentation of <sup>13</sup>C breath test data analysis to quantify  gastric emptying, see the literature given in the documentation of `exp_beta()`, `t50_maes_ghoos()` and `t50_bluck_coward`. Below, I present a slightly different viewpoint on the pharmakokinetics of breath test time series.
+For normative documentation of <sup>13</sup>C breath test data analysis to quantify  gastric emptying, see the literature given in the documentation of `exp_beta()`, `t50_maes_ghoos()` and `t50_bluck_coward`. Here, I present a subjective viewpoint on the pharmakokinetics of breath test time series.
 
-But first have a look at the Maes/Ghoos method (@Ghoos1993) as it is currently used. Alternatives are discussed  in the [next section](#secondlook).
+But first have a look at the Maes/Ghoos method (@Ghoos1993, @Maes1998b) as it is currently used. Alternatives are discussed  in the [next section](#secondlook).
 
 ## Current concepts
 
@@ -45,7 +50,7 @@ The figure below shows examples of emptying curves. The so-called lag time of th
 In practice, when <sup>13</sup>C curves are fitted, `beta` is typically in the range of 1.5 and 2.5; values of `beta` near 1 often lead to instabilities and are protected by priors in the [Bayesian fits](`breathteststan::stan_fit()`) implemented in the separate package `breathteststan`.
 
 
-```{r, fig.width = 6, echo = FALSE, fig.cap = "Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time."}
+```{r, expb, fig.width = 6, echo = FALSE, fig.cap = "Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time."}
 k = c(0.025, 0.015)
 beta=c(1.5, 4, 8)
 g = expand.grid(minute = 0:300, k = k, beta = beta) %>% 
@@ -70,10 +75,10 @@ ggplot(g, aes(minute, pdr, color = as.character(beta))) +
                data = gpar, size = 1, arrow = arrow_1) 
 ```
 
-The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized, and certainly is affected by gastric emptying, but also by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.
+The half-emptying as defined by @Maes1998b is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics terms, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized. This time determined both by gastric emptying, but also by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.
 
 
-```{r, echo = FALSE, fig.cap = "The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity."}
+```{r, t50, echo = FALSE, fig.cap = "The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity."}
 t50 = (gpar %>% filter(beta == 1.5 & k == 0.015 ))$t50
 
 g %>% filter(beta == 1.5 & k == 0.015 ) %>% 
@@ -85,60 +90,186 @@ g %>% filter(beta == 1.5 & k == 0.015 ) %>%
   
 ```
 
+The original definition (@Ghoos1993) used the following function to fit the data:
+
+$$pdr = a*t^b*e^{-ct}$$
+This function gives perfectly valid fits of breath test time series, but the area under curve extrapolated to infinity is infinite, so it could not be used to compute a half-emptying time from the AUC.
+
+```{r, gamma, fig.cap = "Gamma function from @Ghoos1993 definition as points, and beta exponential as line. Both function look very similar, but the area under the gamma function is infinite and thus cannot be used to compute t50.", echo = FALSE}
+gam = function(minute, a, b, c){
+  a * minute^b * exp(-c*minute)
+}
+data_frame(minute = seq(0, 300, by = 10)) %>% 
+  mutate(
+    pdr = gam(minute, 1, 1.5, 0.03)
+  ) %>% 
+  cleanup_data() %>% 
+  nls_fit() %>% 
+  plot(point_size = 2)
+
+
+```
+
+
+## Dieter's soapbox 
+
+The term _extrapolated to infinity_ as the denominator in the definition of `t50` is highly critical. Even if we accept that the exponential beta function is a reasonable model for breath test time series, extrapolating individual curves from data only slightly longer than `t50` results in highly ambiguous area estimates, often fails to converge, and even more often gives wildly romantic estimates of `t50`. I therefore recommend using one of the population method, as implemented in `nlme_fit()` and `stan_fit()` for studies; these methods provide "borrowing strength" to keep the flock of lambs safely together and protect outliers from the big bad wolf.
+
+* If you write or review a paper that uses single curve fits to report study results, rewrite or reject it. Using the function provided in this package is [free as in beer and in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre), and when you use the [online version](https://apps.menne-biomed.de/gastempt/), you do not even have to install R. The [vignette](https://dmenne.github.io/breathtestcore/articles/data_formats.html) gives details on how to prepare your data with Excel.
+* For clinical practice, you have single measurements for which you want an immediate result. You can use the Bayesian method to get stabile estimates; or, if you want to be fancy, prepare a data set of some of your previous cases, add the new patient's data as a mix-in, and use the Mixed-model or the Bayesian fit.
+
+```{r, fig.caption="The fitting methods available in package `breathtestshiny` and in the online version."}
+knitr::include_graphics("methods.png")
+```
+
 
 ## A second look {#secondlook}
 
-The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within subject measurements, but it is not more than a surrogate gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set `usz_13c_d` in this package, MRI emptying data are available and can be compared with [breath test data](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples). The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.
+The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set `usz_13c_d` in this package, MRI emptying data are available and can be compared with [breath test data](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples). The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.
 
 Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the [results](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples) are are even more inconsistent with those from MRI than those from the Maes/Ghoos method. I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives "better" results than the default Maes/Ghoos   
 
-> In the following, I argue that there is nothing to gain from playing with "better" methods to fit the current breath test time series. Additional per-subject information must be aquired to separate acetate pharmacokinetics from gastric empyting, which is physical transport.
+> In the following, I argue that there is nothing to gain from playing with "better" methods to fit the breath test time series. Additional per-subject information must be aquired to separate acetate pharmacokinetics from gastric empyting, which is physical transport.
 
 ### Acetate pharmacology
 
-Assume we do not mix the labelled acetate with the meal, but hide it in a enteric tablet as it is used for PPI. The pill will quickly disolve in the duodenum or small intestine, mimicing a one-time dose. Following standard pharmacokinetics, this will lead to a first-order compartmental model of the following form:
+Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI. Nothing will happen when the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. Following standard pharmacokinetics, this will lead to a first-order compartmental model; if one forgets decorative normalization constants, the response is the difference between two exponential functions:
 
-```{r}
+$${foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}$$
+
+
+The normalization constant includes clearance and dose and only scales the curve. You can find the above formula with the correct normalization constants in all standard texts on pharmacokinetics (@Gabrielsson2006) or in (@R:PinheiroBates2000) as function `stats::SSfol()`. 
+
+
+```{r, foc, fig.width = 7, fig.asp = 0.4, echo = FALSE}
 foc = function(minute, t_lag, dose, clearance, k1, k2)  {
-  if (minute < t_lag) return(0)
-  ret = rep(0.0, length = length(minute))
-  minute = minute - t_lag
   norm = dose * k1 * k2/(clearance * (k2-k1)) 
-  norm * (exp(-k1 * (minute - t_lag)) - (exp(-k2 * (minute - t_lag))))
-  
-}
-```
-
-You can find the above formula in all standard texts on pharmacokinetics (@Gabrielsson2006) or in (@R:PinheiroBates2000) as function `stats::SSfol()`. The normalization constant in the function is not very interesting since it does not depend on time, therefore are `dose` and `clearance` will be set to fixed values to simplify the presentation. 
-
-Forget the decorative stuff: the response the difference between two exponential functions:
-
-$${foc} =  e^{-k1 * {minute}} - e^{-k2 * {minute}}$$
-
-In the above formula, I have added a term `t_lag` which shifts the curve to the right and sets all values before `t_lag` to zero. 
-
-
-```{r, eval = FALSE, echo = FALSE}
-expand.grid(minute = seq(1, 500, by = 5), t_lag_n = c(10, 20, 50, 100)) %>% 
+  m_lag = pmax(minute - t_lag, 0)
+  f =  norm * ((exp(-k1 * m_lag)) - (exp(-k2 * m_lag)))
+}  
+ff = expand.grid(minute = 0:300, t_lag_n = c(0, 30, 90)) %>% 
   mutate(
-    pdr = foc(minute, t_lag_n, 25, 1, 0.01, 0.002),
+    pdr = foc(minute, t_lag_n, 25, 1, 0.2, 0.05),
     t_lag = as.character(t_lag_n)
-  ) %>% 
-  ggplot(aes(x = minute, y = pdr, group = t_lag, col = t_lag)) +
+  ) 
+p1 = ff %>% 
+   ggplot(aes(x = minute, y = pdr, group = t_lag, col = t_lag)) +
    geom_line()
+
+p2 = ff %>% 
+  group_by(minute) %>% 
+  summarize(pdr = sum(pdr)) %>% 
+  ggplot(aes(x = minute, y = pdr )) + geom_line()
+gridExtra::grid.arrange(p1, p2, ncol = 2, nrow = 1)
+
+```
+
+The left panel in the above plot show three examples of <sup>13</sup>C fed by an enteric tables, remaining in the stomach for 0, 30 and 90 minutes and then quickly released in the smaller intestine. Note that we have a real lag caused by physical transport here: before the tablet is in the smaller bowel, there is no response at all, which is different from the initial start following a power function one gets with the beta-exponential function.
+
+The right panel in the above plot shows the summary PDR curve when the three tablets are fed together and by chance are release after 0, 30 and 90 minutes. This mimics the case of a stomach releasing the meal in three chunks of the same size and composition, well known from [pharmacokinetics](https://en.wikipedia.org/wiki/Pharmacokinetics#/media/File:Linear_PK_Example.png) for multiple doses of a drug.
+
+The real flow out of the stomach is pulse-like, more like that of a continuous infusion; when the stomach empties with a power-exponential function as in the left panel (see `gastempt::powexp()`), the flow is a wide peak as shown in the right panel below. The response technically is the convolution of the flow with the pulse response shown as red curve(t_lag = 0) in the above plot.
+
+```{r, echo = FALSE}
+tempt = 100
+beta = 1.8
+cap = paste0("Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with  function `gastempt::powexp_slope()` with inverted sign. 400 ml initial value, tempt = ", tempt, ", beta = ", beta )
 ```
 
 
+```{r, powexp, fig.height = 3, fig.width = 8, echo = FALSE, fig.cap = cap}
 
-https://en.wikipedia.org/wiki/Pharmacokinetics#/media/File:Linear_PK_Example.png
+# Stolen and simplfied from package gastempt
+powexp = function(t, v0, tempt, beta){
+  v0 * exp(-(t / tempt) ^ beta)
+} 
+
+powexp_slope = function(t, v0, tempt, beta){
+  .expr1 <- t/tempt
+  .expr4 <- v0 * exp(-.expr1^beta)
+  -(.expr4 * (.expr1^(beta - 1) * (beta * (1/tempt))))
+}
+ 
+t50_powexp = function(tempt, beta){
+  interval = c(0, 1000)
+  uniroot(function(t)
+        powexp(t, 1, tempt, beta ) - 0.5,
+        interval = interval)$root
+}
+
+flow = expand.grid(minute = 0:300) %>% 
+  mutate(
+    flow = - powexp_slope(minute, 400, tempt, beta),
+    vol = powexp(minute, 400, tempt, beta)
+  ) 
+
+p1 = flow %>% 
+  ggplot(aes(minute, vol)) + geom_line() +
+  ylab("vol in stomach (ml" )
+
+p2 = flow %>% 
+  ggplot(aes(minute, flow)) + geom_line() +
+  ylab("Flow out of stomach in ml/m" )
+
+# Convolution
+ff_0 = (ff %>%  filter(t_lag == 0))$pdr
+cv =  data.frame(minute = 0:300, pdr = 
+   convolve(flow$flow, rev(ff_0), type = "open")[1:301]) 
+
+p3 = cv %>% 
+  ggplot(aes(minute, pdr)) + geom_line() +
+  ylab("Expected PDF (not normalized)")
+
+gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)
+
+t50_pdr = (cv %>% 
+  cleanup_data() %>% 
+  nls_fit() %>% 
+  coef() %>% 
+  filter(method == "maes_ghoos", parameter == "t50"))$value
+
+t50_pp = round(t50_powexp(tempt = tempt, beta = beta))
+  
+
+```
+
+The correct half-emptying time `t50` in this example was `r t50_pp` minutes, as determined from the left panel; `t50` determined by fitting with the Maes/Ghoos version in the right panel was `r round(t50_pdr)` minutes. 
+
+The bias from fitting the PDR curve naively is is cause by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in it's own?
+
+## How to correct for the pharmacological bias?
+
+> I propose a revised procedure to separate pharmacology from transport. Patient receive 30 mg acetate in an enteric table together with water. DOB data are recorded for 60 minutes, and after that the normal procedure of meal with 100 mg acetate/octanoate. The resulting PDR will look as follows:
+
+```{r, sim2stage, fig.cap = "Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly release in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics."}
+  data.frame(pdr = c(ff_0[0:59]*50, rep(0, 20), cv$pdr)) %>% 
+  mutate(
+    minute = 0:(n()-1)
+  ) %>% 
+  filter(minute %% 10 == 0) %>% 
+  mutate(
+    pdr = pdr + rnorm(n(), 0, 1)
+  ) %>% 
+  ggplot(aes(x = minute, y = pdr)) +
+           geom_point() + geom_line(col = "gray") +
+  scale_x_continuous(breaks = seq(0, 360, by = 60))
+```
+
+The first narrow peak up to 1 hour is the pharmacological response; by fitting it, the kinetic time constants that broaden the wide peak can be determined, and can be used to remove the bias of the transport component visible in the main peak by mathematical deconvolution.
+
+Can anyone supply a data set for a pilot?
+
+# Why do we need population fits?
+
+Currently outsourced to [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org). 
+
+A less technical discussion will be added here.
 
 ## Why no Wagner-Nelson?
 
 A popular alternative when curve fitting does not work is the Wagner-Nelson method which uses non-parametric approaches for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.
 
-## Fitting
 
 
 ## Citations
 
-From blog of Dieter Menne: [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).

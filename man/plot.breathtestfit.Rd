@@ -5,7 +5,7 @@
 \title{S3 plot method for breathtestfit}
 \usage{
 \method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos",
-  line_size = 1, ...)
+  line_size = 1, point_size = NULL, ...)
 }
 \arguments{
 \item{x}{object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}}, 
@@ -18,6 +18,8 @@ in package \code{breathteststan},}
 "\code{maes_ghoos_scintigraphy}"}
 
 \item{line_size}{optional line width; can improve look for printouts}
+
+\item{point_size}{optional point size; determined dynamically when NULL}
 
 \item{...}{other parameters passed to methods. Not used}
 }

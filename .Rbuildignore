@@ -9,3 +9,4 @@ check_rhub.cmd
 ^_pkgdown\.yml$
 spell.txt
 ^sav$
+^bak$
