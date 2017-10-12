@@ -6,7 +6,7 @@ test_that("Plot layers match expectations",{
   # With seed = 100, rec_10 fails nls-fit
   data = cleanup_data(simulate_breathtest_data(seed = 100)$data)
   x = nls_fit(data)
-  p = plot(x)
+  p = plot(x, point_size = 1) # Also tests case of given point size
   expect_is(p, "ggplot")
   expect_gt(max(layer_data(p)$y), 25)
   expect_equal(nlayers(p), 4)   

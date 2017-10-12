@@ -9,6 +9,7 @@
 #' @param method_t50 Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
 #' "\code{maes_ghoos_scintigraphy}"
 #' @param line_size optional line width; can improve look for printouts
+#' @param point_size optional point size; determined dynamically when NULL
 #' @param ... other parameters passed to methods. Not used
 #' @examples
 #' data = list(
@@ -23,7 +24,8 @@
 #' @import dplyr
 #' @importFrom ggfittext geom_fit_text
 #' @export 
-plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size = 1, ...){
+plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", 
+                              line_size = 1, point_size = NULL, ...){
   # Make CRAN happy
   pdr = parameter = value = method = minute = fitted = group = fac = NULL
   t50 = tlag = y_index = annotate_g = xmin = xmax = ymin = ymax = NULL
@@ -60,19 +62,24 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos", line_size =
       dplyr::select(-method,  -y_index, -fac)
   }
   # Compute point size dynamically
-  size = x$data %>%
-    mutate(
-      pat_group = paste(patient_id, group, sep = "/")
-    ) %>% 
-    group_by(pat_group) %>%
-    summarize(
-      s = max(min(mean(diff(minute))/12, 2), 0.1)
-    ) %>%
-    ungroup() %>% 
-    summarize(
-      s = quantile(s, 0.1)[1]
-    ) %>% 
-    unlist()
+  if (! is.null(point_size)) {
+    size = point_size 
+  }
+  else {
+    size = x$data %>%
+      mutate(
+        pat_group = paste(patient_id, group, sep = "/")
+      ) %>% 
+      group_by(pat_group) %>%
+      summarize(
+        s = max(min(mean(diff(minute))/12, 2), 0.1)
+      ) %>%
+      ungroup() %>% 
+      summarize(
+        s = quantile(s, 0.1)[1]
+      ) %>% 
+      unlist()
+  } 
   # When too dense, make it transparentish
   alpha = max(min(size, 1), 0.6)
   
