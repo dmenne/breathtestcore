@@ -12,3 +12,4 @@ spell.txt
 ^bak$
 pkgdown
 ^pkgdown$
+cran-comments.md
