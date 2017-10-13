@@ -10,3 +10,5 @@ check_rhub.cmd
 spell.txt
 ^sav$
 ^bak$
+pkgdown
+^pkgdown$

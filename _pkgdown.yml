@@ -55,7 +55,10 @@ reference:
 articles:
   - title: "How to use"
     contents:
-     - breathtestcore
      - methods_and_concepts
      - data_formats
+     
+     
+url: "https://dmenne.github.io/breathtestcore/"
+
 

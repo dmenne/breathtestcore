@@ -1,5 +1,5 @@
 ---
-title: "breathtestcore: Methods and concepts"
+title: "Methods and concepts"
 author: "Dieter Menne, Menne Biomed Consulting Tuebingen, dieter.menne@menne-biomed.de"
 output: 
   rmarkdown::html_vignette:
@@ -27,9 +27,9 @@ options(digits = 3)
 
 # A heretical view on <sup>13</sup>C breath test for gastric emptying
 
-For normative documentation of <sup>13</sup>C breath test data analysis to quantify  gastric emptying, see the literature given in the documentation of `exp_beta()`, `t50_maes_ghoos()` and `t50_bluck_coward`. Here, I present a subjective viewpoint on the pharmakokinetics of breath test time series.
+<sup>13</sup>C breath test data are evaluated in clinical practice and in research as an indirect measure of gastric emptying. The normative literature on the underlying concepts is given in the documentation of `exp_beta()`, `t50_maes_ghoos()` and `t50_bluck_coward()`.  
 
-But first have a look at the Maes/Ghoos method (@Ghoos1993, @Maes1998b) as it is currently used. Alternatives are discussed  in the [next section](#secondlook).
+Here, I present a subjective viewpoint on the pharmakokinetics of breath test time series. After a look at the Maes/Ghoos method (@Ghoos1993, @Maes1998b) as it is currently used,  alternatives are discussed  in the [next section](#secondlook).
 
 ## Current concepts
 

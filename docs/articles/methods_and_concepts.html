@@ -5,11 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>breathtestcore: Methods and concepts • breathtestcore</title>
+<title>Methods and concepts • breathtestcore</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -35,9 +36,6 @@
   </a>
 </li>
 <li>
-  <a href="../articles/breathtestcore.html">Get Started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -51,7 +49,7 @@
       <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
     </li>
     <li>
-      <a href="../articles/methods_and_concepts.html">breathtestcore: Methods and concepts</a>
+      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
     </li>
   </ul>
 </li>
@@ -75,7 +73,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>breathtestcore: Methods and concepts</h1>
+      <h1>Methods and concepts</h1>
                         <h4 class="author">Dieter Menne, Menne Biomed Consulting Tuebingen, <a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a>
 </h4>
             
@@ -87,8 +85,8 @@
 <div id="a-heretical-view-on-13c-breath-test-for-gastric-emptying" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-heretical-view-on-13c-breath-test-for-gastric-emptying" class="anchor"></a>A heretical view on <sup>13</sup>C breath test for gastric emptying</h1>
-<p>For normative documentation of <sup>13</sup>C breath test data analysis to quantify gastric emptying, see the literature given in the documentation of <code><a href="../reference/exp_beta.html">exp_beta()</a></code>, <code><a href="../reference/t50_maes_ghoos.html">t50_maes_ghoos()</a></code> and <code>t50_bluck_coward</code>. Here, I present a subjective viewpoint on the pharmakokinetics of breath test time series.</p>
-<p>But first have a look at the Maes/Ghoos method (<span class="citation">Ghoos et al. (<a href="#ref-Ghoos1993">1993</a>)</span>, <span class="citation">Maes et al. (<a href="#ref-Maes1998b">1998</a>)</span>) as it is currently used. Alternatives are discussed in the <a href="#secondlook">next section</a>.</p>
+<p><sup>13</sup>C breath test data are evaluated in clinical practice and in research as an indirect measure of gastric emptying. The normative literature on the underlying concepts is given in the documentation of <code><a href="../reference/exp_beta.html">exp_beta()</a></code>, <code><a href="../reference/t50_maes_ghoos.html">t50_maes_ghoos()</a></code> and <code><a href="../reference/t50_bluck_coward.html">t50_bluck_coward()</a></code>.</p>
+<p>Here, I present a subjective viewpoint on the pharmakokinetics of breath test time series. After a look at the Maes/Ghoos method (<span class="citation">Ghoos et al. (<a href="#ref-Ghoos1993">1993</a>)</span>, <span class="citation">Maes et al. (<a href="#ref-Maes1998b">1998</a>)</span>) as it is currently used, alternatives are discussed in the <a href="#secondlook">next section</a>.</p>
 <div id="current-concepts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#current-concepts" class="anchor"></a>Current concepts</h2>

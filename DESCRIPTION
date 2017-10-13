@@ -14,11 +14,10 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         Creates artificial sample data for testing. 
         Fits Maes/Ghoos, Bluck-Coward self-correcting formula using 'nls', 'nlme'.
         See Bluck L J C and Coward W A 2006 <doi:10.1088/0967-3334/27/3/006>.
-        This package contains a refactored subset of github package 
-        'dmenne/d13cbreath' without database and display functions. Methods to 
+        Methods to 
         fit breath test curves with Bayesian Stan methods are refactored to 
-        github package 'dmenne/breathteststan'. For a Shiny GUI, see 
-        package 'dmenne/breathtestshiny'.
+        package 'breathteststan'. For a Shiny GUI, see 
+        package 'dmenne/breathtestshiny', currently on github only.
 Depends: R (>= 3.4.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, 
          methods, readxl, 
