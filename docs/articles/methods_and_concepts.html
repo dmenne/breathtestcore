@@ -46,7 +46,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
+      <a href="../articles/data_formats.html">Data formats</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -97,7 +97,7 @@
      m<span class="op">*</span>dose<span class="op">*</span>k<span class="op">*</span>beta<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>k<span class="op">*</span>minute))<span class="op">^</span>(beta<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>k<span class="op">*</span>minute)
 }</code></pre></div>
 <p>The figure below shows examples of emptying curves. The so-called lag time of the Maes/Ghoos method is at the time of the maximum. Calling this “lag” is a highly confusing definition; technically, lag is the time until a first noticable rise occurs in the curve, best illustrated by the blue curves with <code>beta = 8</code>, which has an estimated lag of about 15 minutes. If one looks more closely, even this definition is misleading, because the curves with higher beta are not zero, but start to rise from the origin like a polynomial curve with a power of <code>beta - 1</code>. A real lag would be best illustrated by a curve shifted to the right by <code>t_lag</code> and pdr values of 0 for <code>t &lt; t_lag</code>, indicating a real physical transport of the meal from the stomach to the small intestine.</p>
-<p>In practice, when <sup>13</sup>C curves are fitted, <code>beta</code> is typically in the range of 1.5 and 2.5; values of <code>beta</code> near 1 often lead to instabilities and are protected by priors in the <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code> implemented in the separate package <code>breathteststan</code>.</p>
+<p>In practice, when <sup>13</sup>C curves are fitted, <code>beta</code> is typically in the range of 1.5 and 2.5; values of <code>beta</code> near 1 often lead to instabilities and are protected by priors in the Bayesian <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code> implemented in package <code>breathteststan</code>.</p>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/expb-1.png" alt="Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time." width="576"><p class="caption">
 Examples of exponential beta functions used to fit breath test curves. <em>Bottom-up arrow</em>: Maes/Ghoos lag time. <em>Top-down arrow</em>: Maes/Ghoos half emptying time.
@@ -136,16 +136,15 @@ The fitting methods available in package <code>breathtestshiny</code> and in the
 <h2 class="hasAnchor">
 <a href="#secondlook" class="anchor"></a>A second look</h2>
 <p>The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set <code>usz_13c_d</code> in this package, MRI emptying data are available and can be compared with <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">breath test data</a>. The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.</p>
-<p>Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">results</a> are are even more inconsistent with those from MRI than those from the Maes/Ghoos method. I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives “better” results than the default Maes/Ghoos</p>
+<p>Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">results</a> are are even less consistent with those from MRI than those from the Maes/Ghoos method. There are many publication that tried an ad-hoc scintigraphic correction (<span class="citation">Keller et al. (<a href="#ref-Keller2009">2009</a>)</span>, <code><a href="../reference/t50_maes_ghoos_scintigraphy.html">t50_maes_ghoos_scintigraphy()</a></code>) or one based on pharmacolokinetics (<span class="citation">Bluck and Coward (<a href="#ref-Bluck2006">2006</a>)</span>, <code><a href="../reference/t50_bluck_coward.html">t50_bluck_coward()</a></code>). I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives “better” results than the default Maes/Ghoos method.</p>
 <blockquote>
-<p>In the following, I argue that there is nothing to gain from playing with “better” methods to fit the breath test time series. Additional per-subject information must be aquired to separate acetate pharmacokinetics from gastric empyting, which is physical transport.</p>
+<p>In the following, I argue that there is nothing to gain from playing with “better” methods to fit the breath test time series. Independent per-subject information must be available to separate acetate pharmacokinetics, based on concentration gradient diffusion, from gastric empyting, which is physical transport.</p>
 </blockquote>
 <div id="acetate-pharmacology" class="section level3">
 <h3 class="hasAnchor">
 <a href="#acetate-pharmacology" class="anchor"></a>Acetate pharmacology</h3>
-<p>Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI. Nothing will happen when the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. As described by standard pharmacokinetics, this will lead to a PDR response following a first-order compartmental model. Forgetting about decorative normalization constants, the response is the difference between two exponential functions:</p>
-<p><span class="math display">\[{foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}\]</span></p>
-<p>The normalization constant includes clearance and dose and only scales the curve. The correct normalization constants can be found in standard texts on pharmacokinetics (<span class="citation">Gabrielsson and Weiner (<a href="#ref-Gabrielsson2006">2006</a>)</span>) or in as a base R function <code><a href="http://www.rdocumentation.org/packages/stats/topics/SSfol">stats::SSfol()</a></code> in <span class="citation">Pinheiro and Bates (<a href="#ref-R:PinheiroBates2000">2000</a>)</span>.</p>
+<p>Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI tables. No <sup>13</sup>C will be recorded as long as the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. As described by standard pharmacokinetics, this results in a PDR response following a first-order compartmental model. Forgetting about decorative normalization constants, the response is the difference between two exponential functions:</p>
+<p><span class="math display">\[{foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}\]</span> The normalization constant includes clearance and dose and only scales the curve. The correct normalization constants can be found in standard texts on pharmacokinetics (<span class="citation">Gabrielsson and Weiner (<a href="#ref-Gabrielsson2006">2006</a>)</span>) or in as a base R function <code><a href="http://www.rdocumentation.org/packages/stats/topics/SSfol">stats::SSfol()</a></code> in <span class="citation">Pinheiro and Bates (<a href="#ref-R:PinheiroBates2000">2000</a>)</span>.</p>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/foc-1.png" alt="Left: pharmcological PDR response of separated loads released in the smaller bowel after 0, 30 and 90 minutes. Right: sum response when all three loads are released successively." width="672"><p class="caption">
 Left: pharmcological PDR response of separated loads released in the smaller bowel after 0, 30 and 90 minutes. Right: sum response when all three loads are released successively.
@@ -153,14 +152,14 @@ Left: pharmcological PDR response of separated loads released in the smaller bow
 </div>
 <p>The left panel in the above plot shows three examples of <sup>13</sup>C fed by an enteric tables, remaining in the stomach for 0, 30 and 90 minutes and then quickly being released in the smaller intestine. Note that we have a real lag caused by physical transport here: before the tablet is in the smaller bowel, there is no response at all. This is different from the polynomial-like pseudo-lag with the beta-exponential function.</p>
 <p>The right panel in the above plot shows the summary PDR curve when the three tablets are fed together and by chance are released after 0, 30 and 90 minutes. This mimics the case of a stomach releasing the meal in three chunks of the same size and composition, well known from <a href="https://en.wikipedia.org/wiki/Pharmacokinetics#/media/File:Linear_PK_Example.png">pharmacokinetics</a> for multiple doses of a drug.</p>
-<p>The real flow out of the stomach is not pulse-like, but more like that of a continuous infusion. When we assume the stomach empties with a power-exponential function as in the left panel (see <code><a href="http://www.rdocumentation.org/packages/gastempt/topics/gastemptfunc">gastempt::powexp()</a></code>), the flow is a wide peak as shown in the right panel below. The response technically is the convolution of the flow with the pulse response shown as red curve(t_lag = 0) in the above plot.</p>
+<p>The real flow out of the stomach is not pulse-like, but more like that of a continuous infusion with changing flow. When we assume that the stomach empties with a power-exponential function as in the left panel (see <code><a href="http://www.rdocumentation.org/packages/gastempt/topics/gastemptfunc">gastempt::powexp()</a></code>), the flow is a wide peak as shown in the right panel below. The PDR response technically is the convolution of the flow with the pulse response shown as red curve (t_lag = 0) in the above plot.</p>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/powexp-1.png" alt="Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with  function `gastempt::powexp_slope()` with inverted sign. 400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50 are marked by arrows." width="768"><p class="caption">
 Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with function <code><a href="http://www.rdocumentation.org/packages/gastempt/topics/gastemptfunc">gastempt::powexp_slope()</a></code> with inverted sign. 400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50 are marked by arrows.
 </p>
 </div>
 <p>The correct half-emptying time <code>t50</code> in this example was 82 minutes, as determined from the left panel; <code>t50</code> determined by fitting with the Maes/Ghoos version in the right panel was 109 minutes.</p>
-<p>The bias from fitting the PDR curve naively is is cause by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in it’s own?</p>
+<p>The bias from fitting the PDR curve naively is is caused by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in its own?</p>
 </div>
 </div>
 <div id="how-to-correct-for-the-pharmacological-bias" class="section level2">
@@ -197,23 +196,34 @@ Simulated response of a two-stage breath test procedure. The peak within the fir
 <div id="why-no-wagner-nelson" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-no-wagner-nelson" class="anchor"></a>Why no Wagner-Nelson?</h2>
-<p>A popular alternative when curve fitting does not work is the Wagner-Nelson method which uses non-parametric approaches for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.</p>
+<p>A popular alternative when curve fitting does not work was the Wagner-Nelson (<span class="citation">Sanaka et al. (<a href="#ref-Sanaka2004">2004</a>)</span>) method which uses a non-parametric approach for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.</p>
+<p>With some of the functions in this package or with <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code> in the sister package, all curves can be fitted; I have not seen a single example that fails when used with the Bayesian method when multiple records are analyzed with a mix-in. There is no excuse to use the Wagner-Nelson method.</p>
+<p>If you must, you can use function <a href="https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R">ComputeAndSaveWNFit</a> in my legacy package <code>D13CBreath</code>. The function is a bit awkward to use because it was written for an application with a tightly integrated database, but feel free to steal the code and run.</p>
 </div>
 <div id="citations" class="section level2 unnumbered">
 <h2 class="hasAnchor">
 <a href="#citations" class="anchor"></a>Citations</h2>
 <div id="refs" class="references">
+<div id="ref-Bluck2006">
+<p>Bluck, Leslie J C., and W Andy Coward. 2006. “Measurement of Gastric Emptying by the 13c-Octanoate Breath Test–rationalization with Scintigraphy.” <em>Physiol Meas</em> 27 (3). MRC Human Nutrition Research, Elsie Widdowson Laboratory, Cambridge, UK. les.bluck@mrc-hnr.cam.ac.uk: 279–89. doi:<a href="https://doi.org/10.1088/0967-3334/27/3/006">10.1088/0967-3334/27/3/006</a>.</p>
+</div>
 <div id="ref-Gabrielsson2006">
 <p>Gabrielsson, Johan, and Dan Weiner. 2006. <em>Pharmacokinetic &amp; Pharmacodynamic Data Analysis : Concepts and Applications</em>. 4. ed., rev. and expanded. PK/Pd Data Analysis: Concepts and Applications. Stockholm: Swedish Pharmaceutical Press.</p>
 </div>
 <div id="ref-Ghoos1993">
 <p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.</p>
 </div>
+<div id="ref-Keller2009">
+<p>Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009. “Influence of Clinical Parameters on the Results of 13c-Octanoic Acid Breath Tests: Examination of Different Mathematical Models in a Large Patient Cohort.” <em>Neurogastroenterology and Motility : The Official Journal of the European Gastrointestinal Motility Society</em> 21 (10): 1039–1e83. doi:<a href="https://doi.org/10.1111/j.1365-2982.2009.01340.x">10.1111/j.1365-2982.2009.01340.x</a>.</p>
+</div>
 <div id="ref-Maes1998b">
 <p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4): 856–59.</p>
 </div>
 <div id="ref-R:PinheiroBates2000">
 <p>Pinheiro, Jose C., and Douglas M. Bates. 2000. <em>Mixed-Effects Models in S and S-Plus</em>. Springer.</p>
+</div>
+<div id="ref-Sanaka2004">
+<p>Sanaka, Masaki, Takatsugu Yamamoto, Tarou Ishii, and Yasushi Kuyama. 2004. “The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from Co2 Data Obtained by a 13c-Labeled Substrate Breath Test.” <em>Digestion</em> 69 (2): 71–78. doi:<a href="https://doi.org/10.1159/000077391">10.1159/000077391</a>.</p>
 </div>
 </div>
 </div>

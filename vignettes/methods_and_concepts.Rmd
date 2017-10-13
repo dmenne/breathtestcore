@@ -131,17 +131,15 @@ knitr::include_graphics("methods.png")
 
 The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set `usz_13c_d` in this package, MRI emptying data are available and can be compared with [breath test data](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples). The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.
 
-Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the [results](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples) are are even more inconsistent with those from MRI than those from the Maes/Ghoos method. I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives "better" results than the default Maes/Ghoos   
+Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the [results](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples) are are even less consistent with those from MRI than those from the Maes/Ghoos method. There are many publication that tried an ad-hoc scintigraphic correction (@Keller2009, `t50_maes_ghoos_scintigraphy()`) or one based on pharmacolokinetics (@Bluck2006, `t50_bluck_coward()`). I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives "better" results than the default Maes/Ghoos method.
 
-> In the following, I argue that there is nothing to gain from playing with "better" methods to fit the breath test time series. Additional per-subject information must be aquired to separate acetate pharmacokinetics from gastric empyting, which is physical transport.
+> In the following, I argue that there is nothing to gain from playing with "better" methods to fit the breath test time series. Independent per-subject information must be available to separate acetate pharmacokinetics, based on concentration gradient diffusion, from gastric empyting, which is physical transport.
 
 ### Acetate pharmacology
 
-Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI. Nothing will happen when the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. As described by standard pharmacokinetics, this will lead to a PDR response following a first-order compartmental model. Forgetting about decorative normalization constants, the response is the difference between two exponential functions:
+Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI tables. No <sup>13</sup>C will be recorded as long as  the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. As described by standard pharmacokinetics, this results in a PDR response following a first-order compartmental model. Forgetting about decorative normalization constants, the response is the difference between two exponential functions:
 
 $${foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}$$
-
-
 The normalization constant includes clearance and dose and only scales the curve. The correct normalization constants can be found in standard texts on pharmacokinetics (@Gabrielsson2006) or in as a base R function `stats::SSfol()` in @R:PinheiroBates2000. 
 
 
@@ -172,7 +170,7 @@ The left panel in the above plot shows three examples of <sup>13</sup>C fed by a
 
 The right panel in the above plot shows the summary PDR curve when the three tablets are fed together and by chance are released after 0, 30 and 90 minutes. This mimics the case of a stomach releasing the meal in three chunks of the same size and composition, well known from [pharmacokinetics](https://en.wikipedia.org/wiki/Pharmacokinetics#/media/File:Linear_PK_Example.png) for multiple doses of a drug.
 
-The real flow out of the stomach is not pulse-like, but more like that of a continuous infusion. When we assume the stomach empties with a power-exponential function as in the left panel (see `gastempt::powexp()`), the flow is a wide peak as shown in the right panel below. The response technically is the convolution of the flow with the pulse response shown as red curve(t_lag = 0) in the above plot.
+The real flow out of the stomach is not pulse-like, but more like that of a continuous infusion with changing flow. When we assume that the stomach empties with a power-exponential function as in the left panel (see `gastempt::powexp()`), the flow is a wide peak as shown in the right panel below. The PDR response technically is the convolution of the flow with the pulse response shown as red curve (t_lag = 0) in the above plot.
 
 ```{r, echo = FALSE}
 tempt = 100
@@ -247,7 +245,7 @@ gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)
 
 The correct half-emptying time `t50` in this example was `r t50_pp` minutes, as determined from the left panel; `t50` determined by fitting with the Maes/Ghoos version in the right panel was `r round(t50_pdr)` minutes. 
 
-The bias from fitting the PDR curve naively is is cause by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in it's own?
+The bias from fitting the PDR curve naively is is caused by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in its own?
 
 ## How to correct for the pharmacological bias?
 
@@ -279,9 +277,11 @@ A less technical discussion will be added here.
 
 ## Why no Wagner-Nelson?
 
-A popular alternative when curve fitting does not work is the Wagner-Nelson method which uses non-parametric approaches for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.
+A popular alternative when curve fitting does not work was the Wagner-Nelson (@Sanaka2004) method which uses a non-parametric approach for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.
 
+With some of the functions in this package or with `breathteststan::stan_fit()` in the sister package, all curves can be fitted; I have not seen a single example that fails when used with the Bayesian method when multiple records are analyzed with a mix-in. There is no excuse to use the Wagner-Nelson method.
 
+If you must, you can use function [ComputeAndSaveWNFit](https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R) in my legacy package `D13CBreath`. The function is a bit awkward to use because it was written for an application with a tightly integrated database, but feel free to steal the code and run.
 
 ## Citations
 

@@ -68,7 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
+      <a href="../articles/data_formats.html">Data formats</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -165,18 +165,24 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
     <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>)
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>d</span>$<span class='no'>data</span>)
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>nlme_fit</span>(<span class='no'>data</span>)
-<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><div class='img'><img src='nlme_fit-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><div class='img'><img src='nlme_fit-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
 <span class='co'># The coefficients are in long key-value format</span>
 <span class='no'>cf</span></div><div class='output co'>#&gt; # A tibble: 24 x 5
-#&gt;   patient_id group parameter       method    value
-#&gt;        &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1     rec_01     A         m     exp_beta 58.10561
-#&gt; 2     rec_01     A         k     exp_beta  0.00906
-#&gt; 3     rec_01     A      beta     exp_beta  2.37277
-#&gt; 4     rec_01     A       t50 bluck_coward 53.99500
-#&gt; # ... with 20 more rows</div><div class='input'><span class='co'># AIC can be extracted</span>
+#&gt;    patient_id group parameter                  method    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;    &lt;dbl&gt;
+#&gt;  1     rec_01     A         m                exp_beta 5.81e+01
+#&gt;  2     rec_01     A         k                exp_beta 9.06e-03
+#&gt;  3     rec_01     A      beta                exp_beta 2.37e+00
+#&gt;  4     rec_01     A       t50            bluck_coward 5.40e+01
+#&gt;  5     rec_01     A       t50              maes_ghoos 1.52e+02
+#&gt;  6     rec_01     A       t50 maes_ghoos_scintigraphy 7.63e+01
+#&gt;  7     rec_01     A      tlag            bluck_coward 1.89e+01
+#&gt;  8     rec_01     A      tlag              maes_ghoos 9.54e+01
+#&gt;  9     rec_02     A         m                exp_beta 5.81e+01
+#&gt; 10     rec_02     A         k                exp_beta 7.39e-03
+#&gt; # ... with 14 more rows</div><div class='input'><span class='co'># AIC can be extracted</span>
 <span class='fu'>AIC</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; [1] 130</div><div class='input'><span class='co'># Reformat the coefficients to wide format and compare </span>
 <span class='co'># with the expected coefficients from the simulation </span>
 <span class='co'># in d$record.</span>

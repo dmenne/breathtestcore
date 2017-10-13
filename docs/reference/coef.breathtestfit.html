@@ -68,7 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
+      <a href="../articles/data_formats.html">Data formats</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -132,21 +132,33 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
 <span class='co'># All coefficients in the long form</span>
 <span class='fu'>coef</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 80 x 5
-#&gt;   patient_id group parameter       method    value
-#&gt;        &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1     rec_01     A         m     exp_beta 18.03583
-#&gt; 2     rec_01     A         k     exp_beta  0.01491
-#&gt; 3     rec_01     A      beta     exp_beta  2.05618
-#&gt; 4     rec_01     A       t50 bluck_coward 24.75500
-#&gt; # ... with 76 more rows</div><div class='input'><span class='co'># Access coefficients directly</span>
+#&gt;    patient_id group parameter                  method    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;    &lt;dbl&gt;
+#&gt;  1     rec_01     A         m                exp_beta 18.03583
+#&gt;  2     rec_01     A         k                exp_beta  0.01491
+#&gt;  3     rec_01     A      beta                exp_beta  2.05618
+#&gt;  4     rec_01     A       t50            bluck_coward 24.75500
+#&gt;  5     rec_01     A       t50              maes_ghoos 83.88977
+#&gt;  6     rec_01     A       t50 maes_ghoos_scintigraphy 15.89265
+#&gt;  7     rec_01     A      tlag            bluck_coward  1.85752
+#&gt;  8     rec_01     A      tlag              maes_ghoos 48.33180
+#&gt;  9     rec_02     A         m                exp_beta 29.78346
+#&gt; 10     rec_02     A         k                exp_beta  0.01120
+#&gt; # ... with 70 more rows</div><div class='input'><span class='co'># Access coefficients directly</span>
 <span class='no'>fit</span>$<span class='no'>coef</span></div><div class='output co'>#&gt; # A tibble: 80 x 6
-#&gt;   patient_id group parameter       method     stat    value
-#&gt;        &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt;
-#&gt; 1     rec_01     A         m     exp_beta estimate 18.03583
-#&gt; 2     rec_01     A         k     exp_beta estimate  0.01491
-#&gt; 3     rec_01     A      beta     exp_beta estimate  2.05618
-#&gt; 4     rec_01     A       t50 bluck_coward estimate 24.75500
-#&gt; # ... with 76 more rows</div><div class='input'># Only t50 by Maes/Ghoos
+#&gt;    patient_id group parameter                  method     stat    value
+#&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt;
+#&gt;  1     rec_01     A         m                exp_beta estimate 18.03583
+#&gt;  2     rec_01     A         k                exp_beta estimate  0.01491
+#&gt;  3     rec_01     A      beta                exp_beta estimate  2.05618
+#&gt;  4     rec_01     A       t50            bluck_coward estimate 24.75500
+#&gt;  5     rec_01     A       t50              maes_ghoos estimate 83.88977
+#&gt;  6     rec_01     A       t50 maes_ghoos_scintigraphy estimate 15.89265
+#&gt;  7     rec_01     A      tlag            bluck_coward estimate  1.85752
+#&gt;  8     rec_01     A      tlag              maes_ghoos estimate 48.33180
+#&gt;  9     rec_02     A         m                exp_beta estimate 29.78346
+#&gt; 10     rec_02     A         k                exp_beta estimate  0.01120
+#&gt; # ... with 70 more rows</div><div class='input'># Only t50 by Maes/Ghoos
 # Can also be used with stan fit (slow!)
 </div><span class='co'># NOT RUN {</span>
 <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"breathteststan"</span>)) {

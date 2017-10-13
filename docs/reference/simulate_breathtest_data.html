@@ -68,7 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
+      <a href="../articles/data_formats.html">Data formats</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -201,9 +201,9 @@ converge when data near 0 are passed.</p></td>
 #&gt; 4     rec_04 56 0.0076  2.2            169</div><div class='input'><span class='co'>#</span>
 <span class='co'># Explicit plotting</span>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>)) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>patient_id</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>ggtitle</a></span>(<span class='fu'>comment</span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><div class='img'><img src='simulate_breathtest_data-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'>#</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>patient_id</span>) + <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>ggtitle</a></span>(<span class='fu'>comment</span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><div class='img'><img src='simulate_breathtest_data-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Or use cleanup_data and null_fit for S3 plotting</span>
-<span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>)))</div><div class='img'><img src='simulate_breathtest_data-6.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>)))</div><div class='img'><img src='simulate_breathtest_data-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -68,7 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
+      <a href="../articles/data_formats.html">Data formats</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -158,7 +158,7 @@ is used, without the factor 10. Which one is correct?</p>
 <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span> <span class='kw'>=</span> <span class='fu'>dob_to_pdr</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>dob</span>, <span class='kw'>weight</span><span class='kw'>=</span><span class='no'>bid</span>$<span class='no'>weight</span>, <span class='kw'>height</span><span class='kw'>=</span><span class='no'>bid</span>$<span class='no'>height</span>)
 
 <span class='fu'>plot</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"points: from breath_id; line: computed"</span>,
-<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='input'><span class='fu'>points</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"p"</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)</div><div class='img'><img src='dob_to_pdr-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'>#</span>
+<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='input'><span class='fu'>points</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"p"</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)</div><div class='img'><img src='dob_to_pdr-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Check how far our computed pdr is from the stored pdr</span>
 <span class='fu'>var</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span>-<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>)</div><div class='output co'>#&gt; [1] 0.000952</div></pre>
   </div>

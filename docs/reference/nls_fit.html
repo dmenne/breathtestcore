@@ -68,7 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/data_formats.html">Data formats in package breathtestcore</a>
+      <a href="../articles/data_formats.html">Data formats</a>
     </li>
     <li>
       <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
@@ -152,7 +152,7 @@ for all records is supported.</p></td>
     <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>)
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>d</span>$<span class='no'>data</span>)
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>nls_fit</span>(<span class='no'>data</span>)
-<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><div class='img'><img src='nls_fit-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><div class='img'><img src='nls_fit-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>cf</span> <span class='kw'>%&gt;%</span>

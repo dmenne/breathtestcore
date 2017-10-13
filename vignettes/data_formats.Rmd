@@ -1,5 +1,5 @@
 ---
-title: "Data formats in package breathtestcore"
+title: "Data formats"
 author: "Dieter Menne,  dieter.menne@menne.biomed.de"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -25,7 +25,6 @@ library(breathtestcore)
 head(btcore_file())
 btcore_file("Standard.TXT")
 ```
-
 
 * When you know the format, you can read the data using the special functions, e.g. `read_breathid()` or `read_breathid_xml()`. 
 * When you do not know the format, or when you want to read several different file formats at once, use function `read_any_breathtest()` which tries to guess the format. 
