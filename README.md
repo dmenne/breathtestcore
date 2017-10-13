@@ -43,7 +43,7 @@ To install the most recent versions of the package, use
 
 Do not forget to use `build_vignettes = TRUE`.
 
-Stable version of the packages [breathtestcore](https://cran.r-project.org/web/packages/breathtestcore) and [breathteststan](https://cran.r-project.org/web/packages/breathteststan) can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.
+Stable version of the packages [breathtestcore](https://CRAN.R-project.org/package=breathtestcore) and [breathteststan](https://CRAN.R-project.org/package=breathteststan) can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.
 
 The [Docker image](https://hub.docker.com/r/dmenne/gastro-docker/) contains RStudio, package `gastempt` to analyze MRI/scintigraphic gastric emptying data, and the `breathtestshiny` app.
 
