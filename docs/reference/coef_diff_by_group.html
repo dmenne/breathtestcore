@@ -159,33 +159,21 @@ comparisons relative to the reference group.</p></td>
   <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>()
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nls_fit.html'>nls_fit</a></span>(<span class='no'>data</span>)
 <span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 27 x 7
-#&gt;    parameter   method                       groups  estimate   conf.low
-#&gt;        &lt;chr&gt;    &lt;chr&gt;                        &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-#&gt;  1      beta exp_beta      patient - liquid_normal  0.569000  -0.551600
-#&gt;  2      beta exp_beta solid_normal - liquid_normal  0.116200  -0.203200
-#&gt;  3      beta exp_beta       solid_normal - patient -0.452800  -1.573000
-#&gt;  4  deviance exp_beta      patient - liquid_normal  8.325000  -1.170000
-#&gt;  5  deviance exp_beta solid_normal - liquid_normal -1.473000  -4.543000
-#&gt;  6  deviance exp_beta       solid_normal - patient -9.798000 -19.290000
-#&gt;  7         k exp_beta      patient - liquid_normal -0.002894  -0.006516
-#&gt;  8         k exp_beta solid_normal - liquid_normal -0.001102  -0.003869
-#&gt;  9         k exp_beta       solid_normal - patient  0.001792  -0.001830
-#&gt; 10         m exp_beta      patient - liquid_normal -2.463000 -14.160000
-#&gt; # ... with 17 more rows, and 2 more variables: conf.high &lt;dbl&gt;, p.value &lt;dbl&gt;</div><div class='input'><span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
+#&gt;   parameter   method                       groups estimate conf.low conf.high
+#&gt;       &lt;chr&gt;    &lt;chr&gt;                        &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1      beta exp_beta      patient - liquid_normal   0.5690  -0.5516    1.6900
+#&gt; 2      beta exp_beta solid_normal - liquid_normal   0.1162  -0.2032    0.4357
+#&gt; 3      beta exp_beta       solid_normal - patient  -0.4528  -1.5730    0.6678
+#&gt; 4  deviance exp_beta      patient - liquid_normal   8.3250  -1.1700   17.8200
+#&gt; # ... with 23 more rows, and 1 more variables: p.value &lt;dbl&gt;</div><div class='input'><span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
 <span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 24 x 7
-#&gt;    parameter       method                       groups  estimate   conf.low
-#&gt;        &lt;chr&gt;        &lt;chr&gt;                        &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-#&gt;  1      beta     exp_beta      patient - liquid_normal  0.403600  -0.207100
-#&gt;  2      beta     exp_beta solid_normal - liquid_normal  0.142900  -0.131000
-#&gt;  3      beta     exp_beta       solid_normal - patient -0.260600  -0.871300
-#&gt;  4         k     exp_beta      patient - liquid_normal -0.003343  -0.006133
-#&gt;  5         k     exp_beta solid_normal - liquid_normal -0.001124  -0.003005
-#&gt;  6         k     exp_beta       solid_normal - patient  0.002220  -0.000570
-#&gt;  7         m     exp_beta      patient - liquid_normal -2.572000 -11.860000
-#&gt;  8         m     exp_beta solid_normal - liquid_normal -9.074000 -11.950000
-#&gt;  9         m     exp_beta       solid_normal - patient -6.501000 -15.790000
-#&gt; 10       t50 bluck_coward      patient - liquid_normal 31.940000   9.044000
-#&gt; # ... with 14 more rows, and 2 more variables: conf.high &lt;dbl&gt;, p.value &lt;dbl&gt;</div><div class='input'># TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
+#&gt;   parameter   method                       groups  estimate  conf.low
+#&gt;       &lt;chr&gt;    &lt;chr&gt;                        &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+#&gt; 1      beta exp_beta      patient - liquid_normal  0.403600 -0.207100
+#&gt; 2      beta exp_beta solid_normal - liquid_normal  0.142900 -0.131000
+#&gt; 3      beta exp_beta       solid_normal - patient -0.260600 -0.871300
+#&gt; 4         k exp_beta      patient - liquid_normal -0.003343 -0.006133
+#&gt; # ... with 20 more rows, and 2 more variables: conf.high &lt;dbl&gt;, p.value &lt;dbl&gt;</div><div class='input'># TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
 # confidence intervals instead of credible intervals
 </div></pre>
   </div>

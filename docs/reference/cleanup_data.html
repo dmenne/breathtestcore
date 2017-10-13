@@ -178,33 +178,21 @@ disambiguated.</p>
 #&gt; 4      pat_a     A  30.00 11.520</div><div class='input'>
 <span class='co'># Results from simulate_breathtest_data can be passed directly to cleanup_data</span>
 <span class='fu'>cleanup_data</span>(<span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='fl'>3</span>))</div><div class='output co'>#&gt; # A tibble: 33 x 4
-#&gt;    patient_id group minute   pdr
-#&gt;         &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1     rec_01     A      5    17
-#&gt;  2     rec_01     A     20    31
-#&gt;  3     rec_01     A     35    37
-#&gt;  4     rec_01     A     50    37
-#&gt;  5     rec_01     A     65    30
-#&gt;  6     rec_01     A     80    26
-#&gt;  7     rec_01     A     95    23
-#&gt;  8     rec_01     A    110    21
-#&gt;  9     rec_01     A    125    17
-#&gt; 10     rec_01     A    140    14
-#&gt; # ... with 23 more rows</div><div class='input'><span class='co'># .. which implicitly does</span>
+#&gt;   patient_id group minute   pdr
+#&gt;        &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1     rec_01     A      5    17
+#&gt; 2     rec_01     A     20    31
+#&gt; 3     rec_01     A     35    37
+#&gt; 4     rec_01     A     50    37
+#&gt; # ... with 29 more rows</div><div class='input'><span class='co'># .. which implicitly does</span>
 <span class='fu'>cleanup_data</span>(<span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='fl'>3</span>)$<span class='no'>data</span>)</div><div class='output co'>#&gt; # A tibble: 33 x 4
-#&gt;    patient_id group minute   pdr
-#&gt;         &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1     rec_01     A      5     4
-#&gt;  2     rec_01     A     20    11
-#&gt;  3     rec_01     A     35    15
-#&gt;  4     rec_01     A     50    17
-#&gt;  5     rec_01     A     65    15
-#&gt;  6     rec_01     A     80    16
-#&gt;  7     rec_01     A     95    13
-#&gt;  8     rec_01     A    110    10
-#&gt;  9     rec_01     A    125     8
-#&gt; 10     rec_01     A    140     8
-#&gt; # ... with 23 more rows</div><div class='input'>
+#&gt;   patient_id group minute   pdr
+#&gt;        &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1     rec_01     A      5     4
+#&gt; 2     rec_01     A     20    11
+#&gt; 3     rec_01     A     35    15
+#&gt; 4     rec_01     A     50    17
+#&gt; # ... with 29 more rows</div><div class='input'>
 <span class='co'># Use simulated data</span>
 <span class='no'>data2</span> <span class='kw'>=</span> <span class='fu'>list</span>(
   <span class='kw'>Z</span> <span class='kw'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>10</span>)$<span class='no'>data</span>,

@@ -262,17 +262,17 @@ When height and weight are missing,  defaults 180 cm and 75 kg are used instead.
 <span class='no'>iris_df</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>iris_csv_data</span>)
 <span class='co'># Individual curve fit</span>
 <span class='fu'>coef</span>(<span class='fu'><a href='nls_fit.html'>nls_fit</a></span>(<span class='no'>iris_df</span>))</div><div class='output co'>#&gt; # A tibble: 9 x 5
-#&gt;   patient_id group parameter                  method         value
-#&gt;        &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;         &lt;dbl&gt;
-#&gt; 1     123456     A         m                exp_beta  31.881922462
-#&gt; 2     123456     A         k                exp_beta   0.004512888
-#&gt; 3     123456     A      beta                exp_beta   1.933193959
-#&gt; 4     123456     A  deviance                exp_beta   0.696275581
-#&gt; 5     123456     A       t50            bluck_coward  70.706000000
-#&gt; 6     123456     A       t50              maes_ghoos 265.818836196
-#&gt; 7     123456     A       t50 maes_ghoos_scintigraphy 178.329318032
-#&gt; 8     123456     A      tlag            bluck_coward  -7.528137730
-#&gt; 9     123456     A      tlag              maes_ghoos 146.064669227</div></pre>
+#&gt;   patient_id group parameter                  method    value
+#&gt;        &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                   &lt;chr&gt;    &lt;dbl&gt;
+#&gt; 1     123456     A         m                exp_beta  31.8819
+#&gt; 2     123456     A         k                exp_beta   0.0045
+#&gt; 3     123456     A      beta                exp_beta   1.9332
+#&gt; 4     123456     A  deviance                exp_beta   0.6963
+#&gt; 5     123456     A       t50            bluck_coward  70.7060
+#&gt; 6     123456     A       t50              maes_ghoos 265.8188
+#&gt; 7     123456     A       t50 maes_ghoos_scintigraphy 178.3293
+#&gt; 8     123456     A      tlag            bluck_coward  -7.5281
+#&gt; 9     123456     A      tlag              maes_ghoos 146.0647</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

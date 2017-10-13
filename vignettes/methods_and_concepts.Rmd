@@ -22,6 +22,7 @@ library(breathtestcore)
 knitr::opts_knit$set(unnamed.chunk.label = "btcore_")
 opts_chunk$set(comment = NA, fig.width = 4, fig.height = 3)
 options(digits = 3)
+set.seed(4711)
 ```
 
 
@@ -118,7 +119,7 @@ The term _extrapolated to infinity_ as the denominator in the definition of `t50
 * If you write or review a paper that uses single curve fits to report study results, rewrite or reject it. Using the function provided in this package is [free as in beer and in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre), and when you use the [online version](https://apps.menne-biomed.de/gastempt/), you do not even have to install R. The [vignette](https://dmenne.github.io/breathtestcore/articles/data_formats.html) gives details on how to prepare your data with Excel.
 * For clinical practice, you have single measurements for which you want an immediate result. You can use the Bayesian method to get stabile estimates; or, if you want to be fancy, prepare a data set of some of your previous cases, add the new patient's data as a mix-in, and use the Mixed-model or the Bayesian fit.
 
-```{r, fig.caption="The fitting methods available in package `breathtestshiny` and in the online version."}
+```{r, fig.height = 2.5, fig.cap="The fitting methods available in package `breathtestshiny` and in the [online version](https://apps.menne-biomed.de/breathtestshiny/).", echo = FALSE}
 knitr::include_graphics("methods.png")
 ```
 
@@ -133,12 +134,12 @@ Many attempts have been made to extract more information from the emptying curve
 
 ### Acetate pharmacology
 
-Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI. Nothing will happen when the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. Following standard pharmacokinetics, this will lead to a first-order compartmental model; if one forgets decorative normalization constants, the response is the difference between two exponential functions:
+Assume we do not mix the labelled acetate with the meal, but hide it in an enteric tablet as it is used for PPI. Nothing will happen when the tablet is in the stomach, but it will quickly release <sup>13</sup>C labelled acetate in the duodenum or small intestine, mimicing a one-time dose. As described by standard pharmacokinetics, this will lead to a PDR response following a first-order compartmental model. Forgetting about decorative normalization constants, the response is the difference between two exponential functions:
 
 $${foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}$$
 
 
-The normalization constant includes clearance and dose and only scales the curve. You can find the above formula with the correct normalization constants in all standard texts on pharmacokinetics (@Gabrielsson2006) or in (@R:PinheiroBates2000) as function `stats::SSfol()`. 
+The normalization constant includes clearance and dose and only scales the curve. The correct normalization constants can be found in standard texts on pharmacokinetics (@Gabrielsson2006) or in as a base R function `stats::SSfol()` in @R:PinheiroBates2000. 
 
 
 ```{r, foc, fig.width = 7, fig.asp = 0.4, echo = FALSE}
@@ -164,7 +165,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 2, nrow = 1)
 
 ```
 
-The left panel in the above plot show three examples of <sup>13</sup>C fed by an enteric tables, remaining in the stomach for 0, 30 and 90 minutes and then quickly released in the smaller intestine. Note that we have a real lag caused by physical transport here: before the tablet is in the smaller bowel, there is no response at all, which is different from the initial start following a power function one gets with the beta-exponential function.
+The left panel in the above plot shows three examples of <sup>13</sup>C fed by an enteric tables, remaining in the stomach for 0, 30 and 90 minutes and then quickly being released in the smaller intestine. Note that we have a real lag caused by physical transport here: before the tablet is in the smaller bowel, there is no response at all. This is different from the polynomial-like pseudo-lag with the beta-exponential function.
 
 The right panel in the above plot shows the summary PDR curve when the three tablets are fed together and by chance are release after 0, 30 and 90 minutes. This mimics the case of a stomach releasing the meal in three chunks of the same size and composition, well known from [pharmacokinetics](https://en.wikipedia.org/wiki/Pharmacokinetics#/media/File:Linear_PK_Example.png) for multiple doses of a drug.
 
@@ -173,7 +174,7 @@ The real flow out of the stomach is pulse-like, more like that of a continuous i
 ```{r, echo = FALSE}
 tempt = 100
 beta = 1.8
-cap = paste0("Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with  function `gastempt::powexp_slope()` with inverted sign. 400 ml initial value, tempt = ", tempt, ", beta = ", beta )
+cap = paste0("Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with  function `gastempt::powexp_slope()` with inverted sign. 400 ml initial value, tempt = ", tempt, ", beta = ", beta, " Half empyting times t50 are marked by arrows." )
 ```
 
 
@@ -203,9 +204,16 @@ flow = expand.grid(minute = 0:300) %>%
     vol = powexp(minute, 400, tempt, beta)
   ) 
 
+
+t50_pp = round(t50_powexp(tempt = tempt, beta = beta))
+  
+
 p1 = flow %>% 
   ggplot(aes(minute, vol)) + geom_line() +
-  ylab("vol in stomach (ml" )
+  ylab("vol in stomach (ml" ) + 
+  geom_segment(
+    aes(x = t50_pp+50, y = 250, xend = t50_pp, yend = 200),
+    size = 1, arrow = arrow_1 )
 
 p2 = flow %>% 
   ggplot(aes(minute, flow)) + geom_line() +
@@ -216,20 +224,21 @@ ff_0 = (ff %>%  filter(t_lag == 0))$pdr
 cv =  data.frame(minute = 0:300, pdr = 
    convolve(flow$flow, rev(ff_0), type = "open")[1:301]) 
 
-p3 = cv %>% 
-  ggplot(aes(minute, pdr)) + geom_line() +
-  ylab("Expected PDF (not normalized)")
-
-gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)
-
 t50_pdr = (cv %>% 
   cleanup_data() %>% 
   nls_fit() %>% 
   coef() %>% 
   filter(method == "maes_ghoos", parameter == "t50"))$value
 
-t50_pp = round(t50_powexp(tempt = tempt, beta = beta))
-  
+p3 = cv %>% 
+  ggplot(aes(minute, pdr)) + geom_line() +
+  ylab("Expected PDF (not normalized)") +
+  geom_segment(
+    aes(x = t50_pdr, y = 45, xend = t50_pdr+50, yend = 40),
+    size = 1, arrow = arrow_1 )
+
+gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)
+
 
 ```
 
