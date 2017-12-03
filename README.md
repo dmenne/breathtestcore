@@ -1,6 +1,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 [![CRAN](https://cranlogs.r-pkg.org/badges/grand-total/breathtestcore)](https://CRAN.R-project.org/package=breathtestcore)
+![CRAN](http://www.r-pkg.org/badges/version-ago/breathtestcore)
 
 breathtestcore: <sup>13</sup>C breath test to analyze gastric emptying
 ===========================================
