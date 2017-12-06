@@ -77,7 +77,7 @@
                         <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 class="date">2017-10-13</h4>
+            <h4 class="date">2017-12-06</h4>
           </div>
 
     
@@ -133,7 +133,7 @@
 <p><img src="data_formats_files/figure-html/nf-1.png" width="384"></p>
 <p>To add new formats, override <code><a href="../reference/breathtest_read_function.html">breathtest_read_function()</a></code> and add a new function that returns a structure given by <code><a href="../reference/breathtest_data.html">breathtest_data()</a></code>.</p>
 <blockquote>
-<p>Always pass data through function <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> to obtain a data frame that can be fed to one of the fitting functions <code><a href="../reference/nls_fit.html">nls_fit()</a></code>, <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code>, <code><a href="../reference/null_fit.html">null_fit()</a></code> or <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code>.</p>
+<p>Always pass data through function <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> to obtain a data frame that can be fed to one of the fitting functions <code><a href="../reference/nls_fit.html">nls_fit()</a></code>, <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code>, <code><a href="../reference/null_fit.html">null_fit()</a></code> or <code>breathteststan::stan_fit()</code>.</p>
 </blockquote>
 <div id="automatic-grouping" class="section level2">
 <h2 class="hasAnchor">
@@ -184,7 +184,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">"usz_13c"</span>)
 <span class="kw">cat</span>(<span class="st">"usz_13c has data from"</span>, <span class="kw">length</span>(<span class="kw">unique</span>(usz_13c<span class="op">$</span>patient_id)), <span class="st">"patients with"</span> , 
     <span class="kw">length</span>(<span class="kw">unique</span>(usz_13c<span class="op">$</span>group)), <span class="st">"different meals"</span>)</code></pre></div>
-<pre><code>usz_13c has data from 222 patients with 3 different meals</code></pre>
+<pre><code>usz_13c has data from 163 patients with 4 different meals</code></pre>
 <ul>
 <li>
 <code><a href="http://www.rdocumentation.org/packages/breathtestcore/topics/usz_13c">breathtestcore::usz_13c</a></code> A large data set used to establish reference ranges for healthy volunteers and patients</li>
@@ -198,14 +198,14 @@ Example of a cross-over design with missing data, outliers and missing record in
 <div id="generic-formats" class="section level1">
 <h1 class="hasAnchor">
 <a href="#generic-formats" class="anchor"></a>Generic formats</h1>
-<p>The easiest way to supply generic formats is from Excel files. The data formats described in the following are shown as examples in the workbood <code>C:/R/library/breathtestcore/extdata/ExcelSamples.xlsx</code>. Any other tab-separated data set can directly be inserted into the editor of the <a href="https://github.com/dmenne/breathtestshiny">breathtestshiny</a> web app using copy/paste.</p>
+<p>The easiest way to supply generic formats is from Excel files. The data formats described in the following are shown as examples in the workbook <code>C:/R/library/breathtestcore/extdata/ExcelSamples.xlsx</code>. Any other tab-separated data set can directly be inserted into the editor of the <a href="https://github.com/dmenne/breathtestshiny">breathtestshiny</a> web app using copy/paste.</p>
 <div id="how-to-use-the-excel-data-formats" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use-the-excel-data-formats" class="anchor"></a>How to use the Excel data formats</h2>
 <ul>
-<li>Use function <code><a href="../reference/read_breathtest_excel.html">read_breathtest_excel()</a></code>; this is the only way to a selected worksheet in the workboot by passing parameter <code>sheet</code>. All other methods only read the first worksheet.</li>
-<li>Use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code>. This always reads the first worksheet, but you can combine results from several reads.</li>
-<li>With the <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can drag any of the file formats mentioned here to the green field, or select ‘Browse file’, or paste the Excel data or any tab-separated data into the edit field."</li>
+<li>Use function <code><a href="../reference/read_breathtest_excel.html">read_breathtest_excel()</a></code>; this is the only way to select a worksheet different from the first in the workboot by passing parameter <code>sheet</code>. All other methods only read the first worksheet.</li>
+<li>Use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code>. This always reads the first worksheet, but you can combine results from several files, even when they have different formats</li>
+<li>With the <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can drag any of the file formats mentioned here into the green field, or select ‘Browse file’, or paste the Excel data or any tab-separated data into the edit field."</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/include_graphics">include_graphics</a></span>(<span class="st">"breathtestshiny.png"</span>)</code></pre></div>
 <p><img src="breathtestshiny.png" width="358"></p>

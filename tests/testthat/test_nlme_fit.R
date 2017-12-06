@@ -23,18 +23,18 @@ test_that("One-group nlme fit returns valid result", {
   expect_identical(names(fit), c("coef", "data", "nlme_fit"))
   cf = coef(fit)
   expect_equal(comment(cf), "comment")
-  expect_equal(nrow(cf), 96)
+  expect_equal(nrow(cf), 104)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_is(AIC(fit), "numeric" )
   expect_is(sigma(fit), "numeric" )
   expect_gt(sigma(fit), 0.5)
   # Check if subsampling done
-  expect_equal(nrow(fit$data), 197)  
+  expect_equal(nrow(fit$data), 225)  
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
   # Check summary
   s = summary(fit)
   expect_equal(comment(s), "comment")
-  expect_identical(nrow(s), 12L)
+  expect_identical(nrow(s), 13L)
   expect_identical(names(s),  c("patient_id", "group", "value"))
 })
 
@@ -47,14 +47,14 @@ test_that("Two-group nlme fit returns valid result", {
   fit = nlme_fit(data)
   expect_identical(names(fit), c("coef", "data", "nlme_fit"))
   cf = coef(fit)
-  expect_equal(nrow(cf), 96)
+  expect_equal(nrow(cf), 72)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_is(AIC(fit), "numeric" )
   expect_gt(sigma(fit), 0)
   expect_equal(unique(cf$group), c("liquid_normal", "solid_normal"))
   
   # Check if subsampling done
-  expect_equal(nrow(fit$data), 168) # denser sampling early  
+  expect_equal(nrow(fit$data), 123) # denser sampling early  
   expect_identical(names(fit$data), c("patient_id", "group", "minute", "pdr"))
 })
 
@@ -69,7 +69,7 @@ test_that("Three-group nlme fit returns valid result", {
   expect_identical(names(fit_nlme), c("coef", "data", "nlme_fit"))
   
   cf = coef(fit_nlme)
-  expect_equal(nrow(cf), 72)
+  expect_equal(nrow(cf), 64)
   expect_gt(sigma(fit_nlme), 0)
-  expect_equal(unique(cf$group), c("liquid_normal", "solid_normal", "patient"))
+  expect_equal(unique(cf$group), c("liquid_normal", "solid_normal", "solid_patient"))
 })  

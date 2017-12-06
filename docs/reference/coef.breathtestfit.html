@@ -162,7 +162,7 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
 # Can also be used with stan fit (slow!)
 </div><span class='co'># NOT RUN {</span>
 <span class='kw'>if</span> (<span class='fu'>require</span>(<span class='st'>"breathteststan"</span>)) {
-  <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit'>stan_fit</a></span>(<span class='no'>data</span>, <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>chain</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+  <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>stan_fit</span>(<span class='no'>data</span>, <span class='kw'>iter</span> <span class='kw'>=</span> <span class='fl'>300</span>, <span class='kw'>chain</span> <span class='kw'>=</span> <span class='fl'>1</span>)
   <span class='fu'>coef</span>(<span class='no'>fit</span>)
   <span class='co'># We get quantiles here in key/value format</span>
   <span class='fu'>unique</span>(<span class='no'>fit</span>$<span class='no'>coef</span>$<span class='no'>stat</span>)

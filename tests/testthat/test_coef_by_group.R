@@ -4,7 +4,7 @@ suppressPackageStartupMessages(library(dplyr))
 data("usz_13c")
 data = usz_13c %>%
   dplyr::filter( patient_id %in%
-  c("norm_001", "norm_002", "norm_003", "norm_004", "pat_001", "pat_002","pat_003")) %>%
+  c("norm_001", "norm_002", "norm_004", "norm_007", "pat_004", "pat_012", "pat_023")) %>%
   cleanup_data()
 fit = nls_fit(data)
 cm = comment(fit$data)
@@ -16,10 +16,10 @@ test_that("Result with default parameters is tbl_df with required columns",{
   expect_identical(ncol(cf), 7L)
   expect_equal(names(cf), c("parameter", "method", "group", "estimate", "conf.low", 
                  "conf.high", "diff_group"))
-  expect_identical(nrow(cf), 27L)
-  expect_identical(unique(cf$diff_group), c("a", "ab", "b", "c"))
+  expect_identical(nrow(cf), 36L)
+  expect_identical(unique(cf$diff_group), c("a", "c", "b", "bc", "ab"))
   expect_equal(unique(cf$group),
-     c("liquid_normal", "patient", "solid_normal"))
+     c("liquid_normal", "liquid_patient", "solid_normal", "solid_patient"))
   expect_equal(comment(cf), cm)
   
 })

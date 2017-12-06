@@ -112,7 +112,7 @@ Generic S3 method for class breathtestfit.</p>
     <tr>
       <th>fit</th>
       <td><p>Object of class <code>breathtestfit</code>, for example from 
-<code><a href='nlme_fit.html'>nlme_fit</a></code>, <code><a href='nls_fit.html'>nls_fit</a></code> or <code><a href='http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit'>stan_fit</a></code></p></td>
+<code><a href='nlme_fit.html'>nlme_fit</a></code>, <code><a href='nls_fit.html'>nls_fit</a></code> or <code>stan_fit</code></p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -143,46 +143,40 @@ Generic S3 method for class breathtestfit.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:breathtestcore’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    current_vars</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>data</span>(<span class='st'>"usz_13c"</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>data</span>(<span class='st'>"usz_13c"</span>)
 <span class='no'>data</span> <span class='kw'>=</span> <span class='no'>usz_13c</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>( <span class='no'>patient_id</span> <span class='kw'>%in%</span>
     <span class='fu'>c</span>(<span class='st'>"norm_001"</span>, <span class='st'>"norm_002"</span>, <span class='st'>"norm_003"</span>, <span class='st'>"norm_004"</span>, <span class='st'>"pat_001"</span>, <span class='st'>"pat_002"</span>,<span class='st'>"pat_003"</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>()
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nls_fit.html'>nls_fit</a></span>(<span class='no'>data</span>)
-<span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; |======================================================|100% ~0 s remaining     </div><div class='output co'>#&gt; # A tibble: 27 x 7
-#&gt;    parameter   method         group  estimate  conf.low conf.high diff_group
-#&gt;        &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;chr&gt;
-#&gt;  1      beta exp_beta liquid_normal  2.088000  1.345000   2.83100          a
-#&gt;  2      beta exp_beta       patient  2.657000  1.799000   3.51500          a
-#&gt;  3      beta exp_beta  solid_normal  2.204000  1.461000   2.94700          a
-#&gt;  4  deviance exp_beta liquid_normal  4.878000 -1.424000  11.18000         ab
-#&gt;  5  deviance exp_beta       patient 13.200000  5.926000  20.48000          b
-#&gt;  6  deviance exp_beta  solid_normal  3.406000 -2.897000   9.70800          a
-#&gt;  7         k exp_beta liquid_normal  0.011020  0.008603   0.01344          a
-#&gt;  8         k exp_beta       patient  0.008128  0.005335   0.01092          a
-#&gt;  9         k exp_beta  solid_normal  0.009920  0.007501   0.01234          a
-#&gt; 10         m exp_beta liquid_normal 26.840000 19.080000  34.60000          b
+<span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 27 x 7
+#&gt;    parameter   method         group  estimate   conf.low conf.high diff_group
+#&gt;        &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;      &lt;chr&gt;
+#&gt;  1      beta exp_beta liquid_normal  2.090000   1.728000 2.451e+00          a
+#&gt;  2      beta exp_beta  solid_normal  2.230000   1.917000 2.543e+00          a
+#&gt;  3      beta exp_beta solid_patient  2.114000   1.753000 2.475e+00          a
+#&gt;  4  deviance exp_beta liquid_normal 16.840000 -20.080000 5.376e+01         ab
+#&gt;  5  deviance exp_beta  solid_normal  2.724000 -33.380000 3.882e+01          a
+#&gt;  6  deviance exp_beta solid_patient 68.880000  27.200000 1.106e+02          b
+#&gt;  7         k exp_beta liquid_normal  0.013080   0.010550 1.561e-02          b
+#&gt;  8         k exp_beta  solid_normal  0.009629   0.007373 1.188e-02          a
+#&gt;  9         k exp_beta solid_patient  0.007043   0.004439 9.647e-03          a
+#&gt; 10         m exp_beta liquid_normal 36.540000  22.630000 5.045e+01          b
 #&gt; # ... with 17 more rows</div><div class='input'><span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
 <span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 24 x 7
 #&gt;    parameter       method         group  estimate  conf.low conf.high
 #&gt;        &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-#&gt;  1      beta     exp_beta liquid_normal  2.095000  1.688000   2.50100
-#&gt;  2      beta     exp_beta       patient  2.498000  2.029000   2.96800
-#&gt;  3      beta     exp_beta  solid_normal  2.238000  1.831000   2.64400
-#&gt;  4         k     exp_beta liquid_normal  0.011190  0.009325   0.01306
-#&gt;  5         k     exp_beta       patient  0.007847  0.005694   0.01000
-#&gt;  6         k     exp_beta  solid_normal  0.010070  0.008202   0.01193
-#&gt;  7         m     exp_beta liquid_normal 26.540000 20.380000  32.70000
-#&gt;  8         m     exp_beta       patient 23.960000 16.850000  31.08000
-#&gt;  9         m     exp_beta  solid_normal 17.460000 11.300000  23.62000
-#&gt; 10       t50 bluck_coward liquid_normal 34.730000 19.610000  49.85000
+#&gt;  1      beta     exp_beta liquid_normal  2.087000  1.889000  2.285000
+#&gt;  2      beta     exp_beta  solid_normal  2.174000  2.003000  2.346000
+#&gt;  3      beta     exp_beta solid_patient  2.204000  2.006000  2.402000
+#&gt;  4         k     exp_beta liquid_normal  0.013100  0.011210  0.015000
+#&gt;  5         k     exp_beta  solid_normal  0.009374  0.007640  0.011110
+#&gt;  6         k     exp_beta solid_patient  0.007594  0.005592  0.009596
+#&gt;  7         m     exp_beta liquid_normal 36.340000 23.060000 49.630000
+#&gt;  8         m     exp_beta  solid_normal 20.800000  7.708000 33.890000
+#&gt;  9         m     exp_beta solid_patient 31.860000 16.740000 46.980000
+#&gt; 10       t50 bluck_coward liquid_normal 29.690000 19.910000 39.470000
 #&gt; # ... with 14 more rows, and 1 more variables: diff_group &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
