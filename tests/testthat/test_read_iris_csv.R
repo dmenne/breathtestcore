@@ -48,7 +48,7 @@ test_that("read_iris_csv returns with funny identification cleans up", {
   filename = btcore_file("IrisCSV_with_KEK.TXT")
   f = read_iris_csv(filename)
   expect_equal(f$patient_id, "2013_1234")
-  expect_equal(iconv(f$study), "GE-flüssig")
+  expect_equal(f$study, "GE-flüssig")
 })
 
 test_that("read_iris_csv raises error on short file", {
