@@ -48,10 +48,10 @@ Stable version of the packages [breathtestcore](https://CRAN.R-project.org/packa
 
 The [Docker image](https://hub.docker.com/r/dmenne/gastro-docker/) contains RStudio, package `gastempt` to analyze MRI/scintigraphic gastric emptying data, and the `breathtestshiny` app.
 
-You can run the [web app online]{https://apps.menne-biomed.de/breathtestshiny/}. No data are stored, but you can download all results and a series of tests for studies.
+You can run the [web app online](https://apps.menne-biomed.de/breathtestshiny/). No data are stored, but you can download all results and a series of tests for studies.
 
 ## Usage example 
-    
+
 This example is from the documentation of function [nlme_fit](https://dmenne.github.io/breathtestcore/reference/nlme_fit.html).
 
     library(breathtestcore)    
