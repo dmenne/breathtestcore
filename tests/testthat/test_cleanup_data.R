@@ -20,7 +20,6 @@ test_that("Duplicates are removed", {
 })
 
 
-
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
   # Here we pass $data; see next test for alternative
   data = simulate_breathtest_data(1, first_minute = 0)$data[,c("minute", "pdr")]  

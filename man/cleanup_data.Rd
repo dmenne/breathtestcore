@@ -94,7 +94,7 @@ d = cleanup_data(data)
 str(d)
 unique(d$patient_id)
 # "350_20043_0_GER" "1871960"         "123456"
-# File name is used a patient name if none is available
+# File name is used as patient name if none is available
 unique(d$group)
 # "A" "B" "C"
 }

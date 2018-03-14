@@ -84,7 +84,7 @@
 #' str(d)
 #' unique(d$patient_id)
 #' # "350_20043_0_GER" "1871960"         "123456"
-#' # File name is used a patient name if none is available
+#' # File name is used as patient name if none is available
 #' unique(d$group)
 #' # "A" "B" "C"
 #' @importFrom purrr map_lgl
@@ -99,6 +99,8 @@ cleanup_data.data.frame = function(data, ... ){
   # Keep CRAN quiet
   group = pdr = patient_id = minute = NULL 
   assert_that(nc >= 2)
+  # https://github.com/dmenne/breathtestcore/issues/1
+  data = tibble::set_tidy_names(data)
   # Remove duplicates, for example from uploading the same record twice
   data = dplyr::distinct(data)
   # When there are only two columns, assume they are minute and time
