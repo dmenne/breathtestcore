@@ -129,7 +129,7 @@ knitr::include_graphics("methods.png")
 
 ## A second look {#secondlook}
 
-The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set `usz_13c_d` in this package, MRI emptying data are available and can be compared with [breath test data](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples). The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.
+The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within-subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set `usz_13c_d` in this package, MRI emptying data are available and can be compared with [breath test data](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples). The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.
 
 Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the [results](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples) are are even less consistent with those from MRI than those from the Maes/Ghoos method. There are many publication that tried an ad-hoc scintigraphic correction (@Keller2009, `t50_maes_ghoos_scintigraphy()`) or one based on pharmacolokinetics (@Bluck2006, `t50_bluck_coward()`). I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives "better" results than the default Maes/Ghoos method.
 
@@ -251,7 +251,7 @@ The bias from fitting the PDR curve naively is is caused by the convolution of m
 
 > I propose a revised procedure to separate pharmacology from transport. Patient first receive 30 mg acetate in an enteric table together with water. DOB data are recorded for 60 minutes, and after that the normal procedure of meal with 100 mg acetate/octanoate. The resulting PDR will look as follows:
 
-```{r, sim2stage, fig.cap = "Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly release in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics."}
+```{r, sim2stage, fig.cap = "Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics."}
   data.frame(pdr = c(ff_0[0:59]*50, rep(0, 20), cv$pdr)) %>% 
   mutate(
     minute = 0:(n()-1)
@@ -277,11 +277,11 @@ A less technical discussion will be added here.
 
 ## Why no Wagner-Nelson?
 
-A popular alternative when curve fitting does not work was the Wagner-Nelson (@Sanaka2004) method which uses a non-parametric approach for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.
+A popular alternative when curve fitting does not work was the Wagner-Nelson (@Sanaka2004) method which uses a non-parametric approach for the initial slope. However, it uses the assumption that the terminal slope is the same for all subjects (k=0.01/min, 0.65/h) which strongly affects the estimate of the half-emptying time, so there is little justification to use the Wagner-Nelson method.
 
-With some of the functions in this package or with `breathteststan::stan_fit()` in the sister package, all curves can be fitted; I have not seen a single example that fails when used with the Bayesian method when multiple records are analyzed with a mix-in. There is no excuse to use the Wagner-Nelson method.
+With some of the functions in this package or with `breathteststan::stan_fit()` in the sister package, all curves can be fitted. I have not seen a single example that fails with the Bayesian method when multiple records are analyzed with a mix-in, so there is no excuse to use the Wagner-Nelson method any longer.
 
-If you must, you can use function [ComputeAndSaveWNFit](https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R) in my legacy package `D13CBreath`. The function is a bit awkward to use because it has been written for an application with a tightly integrated database, but feel free to steal the code and run.
+If you must, you can use function [ComputeAndSaveWNFit](https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R) in my legacy package `D13CBreath`. The function is somewhat awkward to use because it has been written for an application with a tightly integrated database, but feel free to steal the code and run.
 
 ## Citations
 
