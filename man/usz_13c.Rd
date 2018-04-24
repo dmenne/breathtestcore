@@ -16,7 +16,7 @@ Most breath samples from normals were collected with bags and analyzed by
 \href{http://kibion.com/content/uploads/2013/07/113-01_IRIS_Consumables_DE.pdf}{IRIS/Wagner}
 infrared spectroscopy. Patient samples were recorded with the continuous
 monitoring system
-\href{http://www.exalenz.com/mainmenu/breathid-hp/urea-breath-test}{BreathID}.
+\href{http://www.exalenz.com}{BreathID}.
 
 \describe{
   \item{patient_id}{Patient identifier, starting with \code{norm} for normals
