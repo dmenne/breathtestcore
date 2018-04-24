@@ -44,7 +44,7 @@ test_that("read_iris throws when column is missing",{
 })  
 
 
-test_that("read_iris_csv returns with funny identification cleans up", {
+test_that("read_iris_csv returned with funny identification cleans up", {
   filename = btcore_file("IrisCSV_with_KEK.TXT")
   f = read_iris_csv(filename)
   expect_equal(f$patient_id, "2013_1234")

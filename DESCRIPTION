@@ -1,6 +1,6 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from Breath Tests
-Version: 0.4.0.9000
+Version: 0.4.1
 Authors@R: c(
     person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
     person("Menne Biomed Consulting Tuebingen", role = c("cph")),
@@ -26,7 +26,7 @@ Suggests: testthat, covr, knitr, survival, gridExtra
 URL: https://github.com/dmenne/breathtestcore
 BugReports: https://github.com/dmenne/breathtestcore/issues
 License: GPL-3
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
 LazyData: true
 VignetteBuilder: knitr
 SystemRequirements: pandoc
