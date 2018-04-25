@@ -76,7 +76,7 @@ ggplot(g, aes(minute, pdr, color = as.character(beta))) +
                data = gpar, size = 1, arrow = arrow_1) 
 ```
 
-The half-emptying as defined by @Maes1998b is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics terms, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized. This time is determined both by gastric emptying and by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.
+The half-emptying as defined by @Maes1998b is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics terms, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized. This time is determined both by gastric emptying _and_ by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.
 
 
 ```{r, t50, echo = FALSE, fig.cap = "The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity."}
@@ -245,7 +245,7 @@ gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)
 
 The correct half-emptying time `t50` in this example was `r t50_pp` minutes, as determined from the left panel; `t50` determined by fitting with the Maes/Ghoos version in the right panel was `r round(t50_pdr)` minutes. 
 
-The bias from fitting the PDR curve naively is is caused by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in its own?
+The bias from fitting the PDR curve naively is caused by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in its own?
 
 ## How to correct for the pharmacological bias?
 
