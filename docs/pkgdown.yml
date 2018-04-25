@@ -1,7 +1,10 @@
-urls:
-  reference: https://dmenne.github.io/breathtestcore//reference
-  article: https://dmenne.github.io/breathtestcore//articles
+pandoc: 2.1.3
+pkgdown: 1.0.0
+pkgdown_sha: d43ca38c74827d1d6babc3a80d48cd3a8e8fad8c
 articles:
   data_formats: data_formats.html
   methods_and_concepts: methods_and_concepts.html
+urls:
+  reference: https://dmenne.github.io/breathtestcore//reference
+  article: https://dmenne.github.io/breathtestcore//articles
 

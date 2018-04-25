@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Exponential beta function for 13C breath data � exp_beta • breathtestcore</title>
+<title>Exponential beta function for 13C breath data — exp_beta • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,36 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Exponential beta function for 13C breath data — exp_beta" />
+
+<meta property="og:description" content="Function to fit PDR time series data to exponential-beta function
+as given in:
+Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
+13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
+Gastroenterology 114(4): 856-50
+Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
+A comprehensive review.  J. Smooth Muscle Research 46(6): 267-280
+Bluck L J C and Coward W A 2006 Measurement of gastric
+emptying by the C-13-octanoate breath test --- rationalization
+with scintigraphy Physiol. Meas. 27 279?89
+For a review, see
+Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
+breath test for gastric emptying. Journal of Breath Research, 3 1-8" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +70,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +112,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,12 +120,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Exponential beta function for 13C breath data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/exp_beta.R'><code>R/exp_beta.R</code></a></small>
+    <div class="hidden name"><code>exp_beta.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Function to fit PDR time series data to exponential-beta function
 as given in:</p>
@@ -113,10 +144,11 @@ with scintigraphy Physiol. Meas. 27 279?89</p>
 <p>Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
 breath test for gastric emptying. Journal of Breath Research, 3 1-8</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>exp_beta</span>(<span class='no'>minute</span>, <span class='no'>dose</span>, <span class='no'>m</span>, <span class='no'>k</span>, <span class='no'>beta</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -147,15 +179,16 @@ breath test for gastric emptying. Journal of Breath Research, 3 1-8</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function is defined as</p><pre>exp_beta = function(minute,dose,m,k,beta) {
+    <p>The function is defined as</p>
+<pre>exp_beta = function(minute,dose,m,k,beta) {
      m*dose*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute)
 }</pre>
     <p>At minute == 0, the function behaves like a polynomial with degree (beta-1).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>In the example below, data and fit are plotted with standard R graphics.
-The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> provides <code>ggplot2</code> graphics.</p>
+    <div class='dont-index'><p>In the example below, data and fit are plotted with standard R graphics.
+The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> provides <code>ggplot2</code> graphics.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -172,7 +205,7 @@ The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></co
   <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"t50 with different methods"</span>)</div><div class='input'><span class='fu'>lines</span>(<span class='no'>data</span>$<span class='no'>minute</span>,<span class='no'>data</span>$<span class='no'>pdr_fit_bluck</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"blue"</span>)</div><div class='input'><span class='no'>t50</span> <span class='kw'>=</span> <span class='fu'><a href='t50_bluck_coward.html'>t50_bluck_coward</a></span>(<span class='fu'>coef</span>(<span class='no'>sample_nls</span>))
 <span class='no'>t50_maes_ghoos</span> <span class='kw'>=</span> <span class='fu'><a href='t50_maes_ghoos.html'>t50_maes_ghoos</a></span>(<span class='fu'>coef</span>(<span class='no'>sample_nls</span>))
 <span class='no'>t50scint</span> <span class='kw'>=</span> <span class='fu'><a href='t50_maes_ghoos_scintigraphy.html'>t50_maes_ghoos_scintigraphy</a></span>(<span class='fu'>coef</span>(<span class='no'>sample_nls</span>))
-<span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50_maes_ghoos</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"darkgreen"</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>breath_id</span>$<span class='no'>t50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50scint</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>t50</span>, <span class='fl'>0</span>, <span class='st'>"Self-corrected Bluck/Coward"</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>, <span class='kw'>adj</span> <span class='kw'>=</span> -<span class='fl'>0.01</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>breath_id</span>$<span class='no'>t50</span>, <span class='fl'>0.5</span>,<span class='st'>"From BreathID device"</span>,<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>adj</span><span class='kw'>=</span>-<span class='fl'>0.01</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>t50scint</span>, <span class='fl'>1</span>,<span class='st'>" Maes/Ghoos scintigraphic"</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>, <span class='kw'>adj</span> <span class='kw'>=</span> -<span class='fl'>0.01</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>t50_maes_ghoos</span>,<span class='fl'>1.5</span>, <span class='st'>"Classic Maes/Ghoos"</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"darkgreen"</span>, <span class='kw'>adj</span> <span class='kw'>=</span> -<span class='fl'>0.01</span>)</div><div class='img'><img src='exp_beta-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50_maes_ghoos</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"darkgreen"</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>breath_id</span>$<span class='no'>t50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50scint</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>, <span class='kw'>lty</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>t50</span>, <span class='fl'>0</span>, <span class='st'>"Self-corrected Bluck/Coward"</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>, <span class='kw'>adj</span> <span class='kw'>=</span> -<span class='fl'>0.01</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>breath_id</span>$<span class='no'>t50</span>, <span class='fl'>0.5</span>,<span class='st'>"From BreathID device"</span>,<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>adj</span><span class='kw'>=</span>-<span class='fl'>0.01</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>t50scint</span>, <span class='fl'>1</span>,<span class='st'>" Maes/Ghoos scintigraphic"</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>, <span class='kw'>adj</span> <span class='kw'>=</span> -<span class='fl'>0.01</span>)</div><div class='input'><span class='fu'>text</span>(<span class='no'>t50_maes_ghoos</span>,<span class='fl'>1.5</span>, <span class='st'>"Classic Maes/Ghoos"</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"darkgreen"</span>, <span class='kw'>adj</span> <span class='kw'>=</span> -<span class='fl'>0.01</span>)</div><div class='img'><img src='exp_beta-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># simulated data set</span>
 <span class='no'>dose</span> <span class='kw'>=</span> <span class='fl'>100</span>
 <span class='fu'>set.seed</span>(<span class='fl'>4711</span>)
@@ -196,7 +229,7 @@ The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></co
      <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"time (min)"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"cumulative PDR"</span>)</div><div class='input'><span class='co'># show t50</span>
 <span class='no'>t50</span> <span class='kw'>=</span> <span class='fu'><a href='t50_bluck_coward.html'>t50_bluck_coward</a></span>(<span class='fu'>coef</span>(<span class='no'>pdr_nls</span>))
 <span class='no'>tlag</span> <span class='kw'>=</span> <span class='fu'><a href='tlag_bluck_coward.html'>tlag_bluck_coward</a></span>(<span class='fu'>coef</span>(<span class='no'>pdr_nls</span>))
-<span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>tlag</span>,<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"green"</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>h</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>)</div><div class='img'><img src='exp_beta-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>t50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>v</span> <span class='kw'>=</span> <span class='no'>tlag</span>,<span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"green"</span>)</div><div class='input'><span class='fu'>abline</span>(<span class='kw'>h</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"gray"</span>)</div><div class='img'><img src='exp_beta-2.png' alt='' width='700' height='433' /></div><div class='input'>
 
 <span class='co'># create simulated data from several patients</span>
 <span class='no'>pdr1</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>patient</span> <span class='kw'>=</span> <span class='fu'>as.factor</span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>10</span>]))
@@ -241,7 +274,7 @@ The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></co
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>ggtitle</a></span>(<span class='st'>"Short patient record 'a' gives a good fit with many missing data using nlme.\n
           Borrowing strength from nlme in action!"</span>)+
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~<span class='no'>patient</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>theme</a></span>(<span class='kw'>legend.position</span><span class='kw'>=</span><span class='st'>"none"</span>)</div><div class='img'><img src='exp_beta-3.png' alt='' width='700' height='432.632880098887' /></div></pre>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>theme</a></span>(<span class='kw'>legend.position</span><span class='kw'>=</span><span class='st'>"none"</span>)</div><div class='img'><img src='exp_beta-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -272,5 +305,8 @@ The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></co
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

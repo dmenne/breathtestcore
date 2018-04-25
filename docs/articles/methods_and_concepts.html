@@ -8,15 +8,18 @@
 <title>Methods and concepts • breathtestcore</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Methods and concepts">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -25,12 +28,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -71,17 +78,20 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Methods and concepts</h1>
                         <h4 class="author">Dieter Menne, Menne Biomed Consulting Tuebingen, <a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a>
 </h4>
             
-          </div>
+      
+      <small class="dont-index">Source: <a href="https://github.com/dmenne/breathtestcore/blob/master/vignettes/methods_and_concepts.Rmd"><code>vignettes/methods_and_concepts.Rmd</code></a></small>
+      <div class="hidden name"><code>methods_and_concepts.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <div id="a-heretical-view-on-13c-breath-test-for-gastric-emptying" class="section level1">
 <h1 class="hasAnchor">
 <a href="#a-heretical-view-on-13c-breath-test-for-gastric-emptying" class="anchor"></a>A heretical view on <sup>13</sup>C breath test for gastric emptying</h1>
@@ -93,11 +103,11 @@
 <p>Within the standard framework implemented in this package, data are fitted to an exponential beta function</p>
 <p><span class="math display">\[{PDR} = m*{dose}*k*\beta(1-e^{-k*minute})^{(\beta - 1)}*e^{-k*minute}\]</span></p>
 <p>Written in R code</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_beta =<span class="st"> </span><span class="cf">function</span>(minute,dose,m,k,beta) {
-     m<span class="op">*</span>dose<span class="op">*</span>k<span class="op">*</span>beta<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>k<span class="op">*</span>minute))<span class="op">^</span>(beta<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>k<span class="op">*</span>minute)
-}</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">exp_beta =<span class="st"> </span><span class="cf">function</span>(minute,dose,m,k,beta) {</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">     m<span class="op">*</span>dose<span class="op">*</span>k<span class="op">*</span>beta<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">exp</span>(<span class="op">-</span>k<span class="op">*</span>minute))<span class="op">^</span>(beta<span class="dv">-1</span>)<span class="op">*</span><span class="kw">exp</span>(<span class="op">-</span>k<span class="op">*</span>minute)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">}</a></code></pre></div>
 <p>The figure below shows examples of emptying curves. The so-called lag time of the Maes/Ghoos method is at the time of the maximum. Calling this “lag” is a highly confusing definition; technically, lag is the time until a first noticable rise occurs in the curve, best illustrated by the blue curves with <code>beta = 8</code>, which has an estimated lag of about 15 minutes. If one looks more closely, even this definition is misleading, because the curves with higher beta are not zero, but behave like a polynomial curve with a power of <code>beta - 1</code> at the origin. A real lag would be best illustrated by a curve shifted to the right by <code>t_lag</code> and pdr values of 0 for <code>t &lt; t_lag</code>, indicating a real physical transport of the meal from the stomach to the small intestine.</p>
-<p>In practice, when <sup>13</sup>C curves are fitted, <code>beta</code> is typically in the range of 1.5 and 2.5; values of <code>beta</code> near 1 often lead to instabilities and are protected by priors in the Bayesian <code>breathteststan::stan_fit()</code> implemented in package <code>breathteststan</code>.</p>
+<p>In practice, when <sup>13</sup>C curves are fitted, <code>beta</code> is typically in the range of 1.5 and 2.5; values of <code>beta</code> near 1 often lead to instabilities and are protected by priors in the Bayesian <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code> implemented in package <code>breathteststan</code>.</p>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/expb-1.png" alt="Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time." width="576"><p class="caption">
 Examples of exponential beta functions used to fit breath test curves. <em>Bottom-up arrow</em>: Maes/Ghoos lag time. <em>Top-down arrow</em>: Maes/Ghoos half emptying time.
@@ -135,7 +145,7 @@ The fitting methods available in package <code>breathtestshiny</code> and in the
 <div id="secondlook" class="section level2">
 <h2 class="hasAnchor">
 <a href="#secondlook" class="anchor"></a>A second look</h2>
-<p>The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set <code>usz_13c_d</code> in this package, MRI emptying data are available and can be compared with <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">breath test data</a>. The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.</p>
+<p>The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within-subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set <code>usz_13c_d</code> in this package, MRI emptying data are available and can be compared with <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">breath test data</a>. The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.</p>
 <p>Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">results</a> are are even less consistent with those from MRI than those from the Maes/Ghoos method. There are many publication that tried an ad-hoc scintigraphic correction (<span class="citation">Keller et al. (<a href="#ref-Keller2009">2009</a>)</span>, <code><a href="../reference/t50_maes_ghoos_scintigraphy.html">t50_maes_ghoos_scintigraphy()</a></code>) or one based on pharmacolokinetics (<span class="citation">Bluck and Coward (<a href="#ref-Bluck2006">2006</a>)</span>, <code><a href="../reference/t50_bluck_coward.html">t50_bluck_coward()</a></code>). I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives “better” results than the default Maes/Ghoos method.</p>
 <blockquote>
 <p>In the following, I argue that there is nothing to gain from playing with “better” methods to fit the breath test time series. Independent per-subject information must be available to separate acetate pharmacokinetics, based on concentration gradient diffusion, from gastric empyting, which is physical transport.</p>
@@ -168,20 +178,20 @@ Meal volume (left) and flow when gastric emptying function is a power exponentia
 <blockquote>
 <p>I propose a revised procedure to separate pharmacology from transport. Patient first receive 30 mg acetate in an enteric table together with water. DOB data are recorded for 60 minutes, and after that the normal procedure of meal with 100 mg acetate/octanoate. The resulting PDR will look as follows:</p>
 </blockquote>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">data.frame</span>(<span class="dt">pdr =</span> <span class="kw">c</span>(ff_<span class="dv">0</span>[<span class="dv">0</span><span class="op">:</span><span class="dv">59</span>]<span class="op">*</span><span class="dv">50</span>, <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>), cv<span class="op">$</span>pdr)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">minute =</span> <span class="dv">0</span><span class="op">:</span>(<span class="kw">n</span>()<span class="op">-</span><span class="dv">1</span>)
-  ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(minute <span class="op">%%</span><span class="st"> </span><span class="dv">10</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(
-    <span class="dt">pdr =</span> pdr <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">n</span>(), <span class="dv">0</span>, <span class="dv">1</span>)
-  ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> minute, <span class="dt">y =</span> pdr)) <span class="op">+</span>
-<span class="st">           </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">col =</span> <span class="st">"gray"</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">360</span>, <span class="dt">by =</span> <span class="dv">60</span>))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">  <span class="kw">data.frame</span>(<span class="dt">pdr =</span> <span class="kw">c</span>(ff_<span class="dv">0</span>[<span class="dv">0</span><span class="op">:</span><span class="dv">59</span>]<span class="op">*</span><span class="dv">50</span>, <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>), cv<span class="op">$</span>pdr)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="dt">minute =</span> <span class="dv">0</span><span class="op">:</span>(<span class="kw">n</span>()<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(minute <span class="op">%%</span><span class="st"> </span><span class="dv">10</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="dt">pdr =</span> pdr <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">n</span>(), <span class="dv">0</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> minute, <span class="dt">y =</span> pdr)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">           </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">col =</span> <span class="st">"gray"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">360</span>, <span class="dt">by =</span> <span class="dv">60</span>))</a></code></pre></div>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/sim2stage-1.png" alt="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly release in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." width="384"><p class="caption">
-Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly release in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics.
+<img src="methods_and_concepts_files/figure-html/sim2stage-1.png" alt="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." width="384"><p class="caption">
+Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics.
 </p>
 </div>
 <p>The first narrow peak up to 1 hour is the pharmacological response; by fitting it, the kinetic time constants that broaden the wide peak can be determined, and can be used to remove the bias of the transport component visible in the main peak by mathematical deconvolution.</p>
@@ -191,40 +201,38 @@ Simulated response of a two-stage breath test procedure. The peak within the fir
 <div id="why-do-we-need-population-fits" class="section level1">
 <h1 class="hasAnchor">
 <a href="#why-do-we-need-population-fits" class="anchor"></a>Why do we need population fits?</h1>
-<p>Currently outsourced to <a href="http://menne-biomed.de/blog/breath-test-stan">A comparison of results with nls, nlme</a> and Bayesian <a href="http://www.mc-stan.org">Stan</a>.</p>
-<p>A less technical discussion will be added here.</p>
+<p>Currently outsourced to <a href="https://menne-biomed.de/blog/breath-test-stan">A comparison of results with nls, nlme</a> and Bayesian <a href="http://www.mc-stan.org">Stan</a>.</p>
 <div id="why-no-wagner-nelson" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-no-wagner-nelson" class="anchor"></a>Why no Wagner-Nelson?</h2>
-<p>A popular alternative when curve fitting does not work was the Wagner-Nelson (<span class="citation">Sanaka et al. (<a href="#ref-Sanaka2004">2004</a>)</span>) method which uses a non-parametric approach for the initial slope. However, it makes a assumption about the terminal slope being the same for all subject (k=0.01/min, 0.65/h). Since this assumption strongly affects the estimate of the half-emptying time, there is little justification to use the Wagner-Nelson method.</p>
-<p>With some of the functions in this package or with <code>breathteststan::stan_fit()</code> in the sister package, all curves can be fitted; I have not seen a single example that fails when used with the Bayesian method when multiple records are analyzed with a mix-in. There is no excuse to use the Wagner-Nelson method.</p>
-<p>If you must, you can use function <a href="https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R">ComputeAndSaveWNFit</a> in my legacy package <code>D13CBreath</code>. The function is a bit awkward to use because it has been written for an application with a tightly integrated database, but feel free to steal the code and run.</p>
+<p>A popular alternative when curve fitting does not work was the Wagner-Nelson (<span class="citation">Sanaka et al. (<a href="#ref-Sanaka2004">2004</a>)</span>) method which uses a non-parametric approach for the initial slope. However, it uses the assumption that the terminal slope is the same for all subjects (k=0.01/min, 0.65/h) which strongly affects the estimate of the half-emptying time, so there is little justification to use the Wagner-Nelson method.</p>
+<p>With some of the functions in this package or with <code><a href="http://www.rdocumentation.org/packages/breathteststan/topics/stan_fit">breathteststan::stan_fit()</a></code> in the sister package, all curves can be fitted. I have not seen a single example that fails with the Bayesian method when multiple records are analyzed with a mix-in, so there is no excuse to use the Wagner-Nelson method any longer.</p>
+<p>If you must, you can use function <a href="https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R">ComputeAndSaveWNFit</a> in my legacy package <code>D13CBreath</code>. The function is somewhat awkward to use because it has been written for an application with a tightly integrated database, but feel free to steal the code and run.</p>
 </div>
 <div id="citations" class="section level2 unnumbered">
 <h2 class="hasAnchor">
 <a href="#citations" class="anchor"></a>Citations</h2>
 <div id="refs" class="references">
 <div id="ref-Bluck2006">
-<p>Bluck, Leslie J C., and W Andy Coward. 2006. “Measurement of Gastric Emptying by the 13c-Octanoate Breath Test–rationalization with Scintigraphy.” <em>Physiol Meas</em> 27 (3). MRC Human Nutrition Research, Elsie Widdowson Laboratory, Cambridge, UK. les.bluck@mrc-hnr.cam.ac.uk: 279–89. doi:<a href="https://doi.org/10.1088/0967-3334/27/3/006">10.1088/0967-3334/27/3/006</a>.</p>
+<p>Bluck, Leslie J C., and W Andy Coward. 2006. “Measurement of Gastric Emptying by the 13C-Octanoate Breath Test–Rationalization with Scintigraphy.” <em>Physiol Meas</em> 27 (3). MRC Human Nutrition Research, Elsie Widdowson Laboratory, Cambridge, UK. les.bluck@mrc-hnr.cam.ac.uk:279–89. <a href="https://doi.org/10.1088/0967-3334/27/3/006" class="uri">https://doi.org/10.1088/0967-3334/27/3/006</a>.</p>
 </div>
 <div id="ref-Gabrielsson2006">
 <p>Gabrielsson, Johan, and Dan Weiner. 2006. <em>Pharmacokinetic &amp; Pharmacodynamic Data Analysis : Concepts and Applications</em>. 4. ed., rev. and expanded. PK/Pd Data Analysis: Concepts and Applications. Stockholm: Swedish Pharmaceutical Press.</p>
 </div>
 <div id="ref-Ghoos1993">
-<p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.</p>
+<p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.:1640–7.</p>
 </div>
 <div id="ref-Keller2009">
-<p>Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009. “Influence of Clinical Parameters on the Results of 13c-Octanoic Acid Breath Tests: Examination of Different Mathematical Models in a Large Patient Cohort.” <em>Neurogastroenterology and Motility : The Official Journal of the European Gastrointestinal Motility Society</em> 21 (10): 1039–1e83. doi:<a href="https://doi.org/10.1111/j.1365-2982.2009.01340.x">10.1111/j.1365-2982.2009.01340.x</a>.</p>
+<p>Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009. “Influence of Clinical Parameters on the Results of 13C-Octanoic Acid Breath Tests: Examination of Different Mathematical Models in a Large Patient Cohort.” <em>Neurogastroenterology and Motility : The Official Journal of the European Gastrointestinal Motility Society</em> 21 (10):1039–1e83. <a href="https://doi.org/10.1111/j.1365-2982.2009.01340.x" class="uri">https://doi.org/10.1111/j.1365-2982.2009.01340.x</a>.</p>
 </div>
 <div id="ref-Maes1998b">
-<p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4): 856–59.</p>
+<p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4):856–59.</p>
 </div>
 <div id="ref-R:PinheiroBates2000">
 <p>Pinheiro, Jose C., and Douglas M. Bates. 2000. <em>Mixed-Effects Models in S and S-Plus</em>. Springer.</p>
 </div>
 <div id="ref-Sanaka2004">
-<p>Sanaka, Masaki, Takatsugu Yamamoto, Tarou Ishii, and Yasushi Kuyama. 2004. “The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from Co2 Data Obtained by a 13c-Labeled Substrate Breath Test.” <em>Digestion</em> 69 (2): 71–78. doi:<a href="https://doi.org/10.1159/000077391">10.1159/000077391</a>.</p>
-</div>
+<p>Sanaka, Masaki, Takatsugu Yamamoto, Tarou Ishii, and Yasushi Kuyama. 2004. “The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from Co2 Data Obtained by a 13C-Labeled Substrate Breath Test.” <em>Digestion</em> 69 (2):71–78. <a href="https://doi.org/10.1159/000077391" class="uri">https://doi.org/10.1159/000077391</a>.</p>
 </div>
 </div>
 </div>
@@ -267,6 +275,8 @@ Simulated response of a two-stage breath test procedure. The peak within the fir
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

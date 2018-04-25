@@ -16,7 +16,7 @@ Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
         Methods to 
         fit breath test curves with Bayesian Stan methods are refactored to 
         package 'breathteststan'. For a Shiny GUI, see 
-        package 'dmenne/breathtestshiny', currently on github only.
+        package 'dmenne/breathtestshiny' on github.
 Depends: R (>= 3.4.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, 
          methods, readxl, 

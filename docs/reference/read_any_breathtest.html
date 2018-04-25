@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read breathtest files of any format � read_any_breathtest • breathtestcore</title>
+<title>Read breathtest files of any format — read_any_breathtest • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Read breathtest files of any format — read_any_breathtest" />
+
+<meta property="og:description" content="Uses breathtest_read_function to determine the file type
+and reads it if it has a valid format." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +59,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +101,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,20 +109,24 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read breathtest files of any format</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_any_breathtest.R'><code>R/read_any_breathtest.R</code></a></small>
+    <div class="hidden name"><code>read_any_breathtest.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Uses <code><a href='breathtest_read_function.html'>breathtest_read_function</a></code> to determine the file type
 and reads it if it has a valid format.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>read_any_breathtest</span>(<span class='no'>files</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -142,13 +163,13 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'> <span class='co'># Passing through cleanup_data gives a data frame/tibble</span>
  <span class='no'>bt_df</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>bt</span>)
- <span class='fu'>str</span>(<span class='no'>bt_df</span>)</div><div class='output co'>#&gt; Classes <U+0091>tbl_df<U+0092>, <U+0091>tbl<U+0092> and 'data.frame':	136 obs. of  4 variables:
+ <span class='fu'>str</span>(<span class='no'>bt_df</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	136 obs. of  4 variables:
 #&gt;  $ patient_id: chr  "123456" "123456" "123456" "123456" ...
 #&gt;  $ group     : chr  "group_a" "group_a" "group_a" "group_a" ...
 #&gt;  $ minute    : num  0.01 10 20 45 60 75 90 105 120 140 ...
 #&gt;  $ pdr       : num  0 1.11 2.86 4.87 5.19 ...</div><div class='input'> <span class='co'># If you want data only, use null_fit()</span>
- <span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='no'>bt_df</span>))</div><div class='img'><img src='read_any_breathtest-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'> <span class='co'># Plot population fit with decimated data</span>
- <span class='fu'>plot</span>(<span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>bt_df</span>))</div><div class='img'><img src='read_any_breathtest-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
+ <span class='fu'>plot</span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='no'>bt_df</span>))</div><div class='img'><img src='read_any_breathtest-1.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># Plot population fit with decimated data</span>
+ <span class='fu'>plot</span>(<span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>bt_df</span>))</div><div class='img'><img src='read_any_breathtest-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -175,5 +196,8 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

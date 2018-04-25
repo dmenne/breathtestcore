@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tabulates breath test parameter differences of groups � coef_diff_by_group • breathtestcore</title>
+<title>Tabulates breath test parameter differences of groups — coef_diff_by_group • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Tabulates breath test parameter differences of groups — coef_diff_by_group" />
+
+<meta property="og:description" content="Given a fit to 13C breath test curves, computes between-group confidence
+intervals and p-values, for examples of the half emptying time t50,
+with correction for multiple testing." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +60,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +102,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,21 +110,25 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Tabulates breath test parameter differences of groups</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/coef_diff_by_group.R'><code>R/coef_diff_by_group.R</code></a></small>
+    <div class="hidden name"><code>coef_diff_by_group.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Given a fit to 13C breath test curves, computes between-group confidence
 intervals and p-values, for examples of the half emptying time <code>t50</code>,
 with correction for multiple testing.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>, <span class='kw'>mcp_group</span> <span class='kw'>=</span> <span class='st'>"Tukey"</span>, <span class='kw'>reference_group</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -159,33 +181,33 @@ comparisons relative to the reference group.</p></td>
   <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>()
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nls_fit.html'>nls_fit</a></span>(<span class='no'>data</span>)
 <span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 27 x 7
-#&gt;    parameter   method                        groups   estimate   conf.low
-#&gt;        &lt;chr&gt;    &lt;chr&gt;                         &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-#&gt;  1      beta exp_beta  solid_normal - liquid_normal   0.140200  -0.328800
-#&gt;  2      beta exp_beta solid_patient - liquid_normal   0.024470  -0.476900
-#&gt;  3      beta exp_beta  solid_patient - solid_normal  -0.115700  -0.584700
-#&gt;  4  deviance exp_beta  solid_normal - liquid_normal -14.110000 -29.610000
-#&gt;  5  deviance exp_beta solid_patient - liquid_normal  52.050000  -2.950000
-#&gt;  6  deviance exp_beta  solid_patient - solid_normal  66.160000  11.700000
-#&gt;  7         k exp_beta  solid_normal - liquid_normal  -0.003453  -0.006006
-#&gt;  8         k exp_beta solid_patient - liquid_normal  -0.006039  -0.009603
-#&gt;  9         k exp_beta  solid_patient - solid_normal  -0.002586  -0.005966
-#&gt; 10         m exp_beta  solid_normal - liquid_normal -15.710000 -19.070000
-#&gt; # ... with 17 more rows, and 2 more variables: conf.high &lt;dbl&gt;, p.value &lt;dbl&gt;</div><div class='input'><span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
+#&gt;    parameter method   groups               estimate conf.low  conf.high p.value
+#&gt;    &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1 beta      exp_beta solid_normal - liq~   0.140   -3.29e-1    6.09e-1 7.63e-1
+#&gt;  2 beta      exp_beta solid_patient - li~   0.0245  -4.77e-1    5.26e-1 9.93e-1
+#&gt;  3 beta      exp_beta solid_patient - so~  -0.116   -5.85e-1    3.53e-1 8.32e-1
+#&gt;  4 deviance  exp_beta solid_normal - liq~ -14.1     -2.96e+1    1.38e+0 8.21e-2
+#&gt;  5 deviance  exp_beta solid_patient - li~  52.0     -2.95e+0    1.07e+2 6.75e-2
+#&gt;  6 deviance  exp_beta solid_patient - so~  66.2      1.17e+1    1.21e+2 1.26e-2
+#&gt;  7 k         exp_beta solid_normal - liq~  -0.00345 -6.01e-3   -9.00e-4 4.26e-3
+#&gt;  8 k         exp_beta solid_patient - li~  -0.00604 -9.60e-3   -2.47e-3 2.61e-4
+#&gt;  9 k         exp_beta solid_patient - so~  -0.00259 -5.97e-3    7.94e-4 1.71e-1
+#&gt; 10 m         exp_beta solid_normal - liq~ -15.7     -1.91e+1   -1.23e+1 0.     
+#&gt; # ... with 17 more rows</div><div class='input'><span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
 <span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 24 x 7
-#&gt;    parameter       method                        groups   estimate   conf.low
-#&gt;        &lt;chr&gt;        &lt;chr&gt;                         &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-#&gt;  1      beta     exp_beta  solid_normal - liquid_normal   0.087380  -0.169600
-#&gt;  2      beta     exp_beta solid_patient - liquid_normal   0.117000  -0.157800
-#&gt;  3      beta     exp_beta  solid_patient - solid_normal   0.029570  -0.227400
-#&gt;  4         k     exp_beta  solid_normal - liquid_normal  -0.003730  -0.005351
-#&gt;  5         k     exp_beta solid_patient - liquid_normal  -0.005510  -0.008219
-#&gt;  6         k     exp_beta  solid_patient - solid_normal  -0.001781  -0.004382
-#&gt;  7         m     exp_beta  solid_normal - liquid_normal -15.540000 -20.010000
-#&gt;  8         m     exp_beta solid_patient - liquid_normal  -4.483000 -24.300000
-#&gt;  9         m     exp_beta  solid_patient - solid_normal  11.060000  -8.629000
-#&gt; 10       t50 bluck_coward  solid_normal - liquid_normal  14.900000   3.895000
-#&gt; # ... with 14 more rows, and 2 more variables: conf.high &lt;dbl&gt;, p.value &lt;dbl&gt;</div><div class='input'># TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
+#&gt;    parameter method       groups           estimate conf.low conf.high  p.value
+#&gt;    &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1 beta      exp_beta     solid_normal -~   0.0874  -1.70e-1   3.44e-1 7.05e- 1
+#&gt;  2 beta      exp_beta     solid_patient ~   0.117   -1.58e-1   3.92e-1 5.78e- 1
+#&gt;  3 beta      exp_beta     solid_patient ~   0.0296  -2.27e-1   2.86e-1 9.61e- 1
+#&gt;  4 k         exp_beta     solid_normal -~  -0.00373 -5.35e-3  -2.11e-3 1.86e- 7
+#&gt;  5 k         exp_beta     solid_patient ~  -0.00551 -8.22e-3  -2.80e-3 4.66e- 6
+#&gt;  6 k         exp_beta     solid_patient ~  -0.00178 -4.38e-3   8.21e-4 2.42e- 1
+#&gt;  7 m         exp_beta     solid_normal -~ -15.5     -2.00e+1  -1.11e+1 7.55e-15
+#&gt;  8 m         exp_beta     solid_patient ~  -4.48    -2.43e+1   1.53e+1 8.54e- 1
+#&gt;  9 m         exp_beta     solid_patient ~  11.1     -8.63e+0   3.08e+1 3.82e- 1
+#&gt; 10 t50       bluck_coward solid_normal -~  14.9      3.90e+0   2.59e+1 4.22e- 3
+#&gt; # ... with 14 more rows</div><div class='input'># TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
 # confidence intervals instead of credible intervals
 </div></pre>
   </div>
@@ -214,5 +236,8 @@ comparisons relative to the reference group.</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

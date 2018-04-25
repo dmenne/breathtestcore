@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Exotic 13C breath test data � usz_13c_a • breathtestcore</title>
+<title>Exotic 13C breath test data — usz_13c_a • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,29 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Exotic 13C breath test data — usz_13c_a" />
+
+<meta property="og:description" content="13C time series PDR data from three different groups in a randomized
+(= not-crossover) design. This are unpublished data from
+Gastroenterology and Hepatology,
+University Hospital Zurich.
+Data are formatted as described in usz_13c. These time series present
+a challenge for algorithms." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +63,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +105,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,12 +113,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Exotic 13C breath test data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/breathtestcore.R'><code>R/breathtestcore.R</code></a></small>
+    <div class="hidden name"><code>usz_13c_a.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>13C time series PDR data from three different groups in a randomized
 (= not-crossover) design. This are unpublished data from
@@ -106,6 +130,7 @@ University Hospital Zurich</a>.</p>
 <p>Data are formatted as described in <code><a href='usz_13c.html'>usz_13c</a></code>. These time series present
 a challenge for algorithms.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>data</span>(<span class='no'>usz_13c_a</span>)</pre>
         
@@ -117,7 +142,7 @@ a challenge for algorithms.</p>
 <span class='no'>d</span> <span class='kw'>=</span> <span class='no'>usz_13c_a</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>() <span class='kw'>%&gt;%</span> <span class='co'># recommended to test for validity</span>
   <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>()
-<span class='fu'>plot</span>(<span class='no'>d</span>)</div><div class='img'><img src='usz_13c_a-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>plot</span>(<span class='no'>d</span>)</div><div class='img'><img src='usz_13c_a-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -141,5 +166,8 @@ a challenge for algorithms.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

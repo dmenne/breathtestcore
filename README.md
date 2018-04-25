@@ -1,14 +1,14 @@
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 [![CRAN](https://cranlogs.r-pkg.org/badges/grand-total/breathtestcore)](https://CRAN.R-project.org/package=breathtestcore)
-![CRAN](http://www.r-pkg.org/badges/version-ago/breathtestcore)
+![CRAN](https://www.r-pkg.org/badges/version-ago/breathtestcore)
 
 breathtestcore: <sup>13</sup>C breath test to analyze gastric emptying
 ===========================================
 
 Dieter Menne   
 Menne Biomed Consulting Tübingen, Germany    
-http://www.menne-biomed.de   
+https://www.menne-biomed.de   
 
 dieter.menne@menne-biomed.de 
 
@@ -26,7 +26,7 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 * Computes prior-constrained Bayesian non-linear fit for single records (refactored to package [dmenne/breathteststan](https://github.com/dmenne/breathteststan))
 * Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)
 * Includes three data sets of <sup>13</sup>C records from the University Hospital of Zürich  
-* [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
+* [A comparison of results with nls, nlme](https://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org).
 * See the example in the documentation of `t50BluckCoward` for a comparison with published data. 
 
 ## Sponsors and supporters
@@ -71,6 +71,6 @@ __Reference__:
 
 * Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “<sup>13</sup>C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” *Gastroenterology* 114 (4): 856–59.
 
-* Bluck LJC (2009) Recent advances in the interpretation of the <sup>13</sup>C octanoate breath test for gastric emptying. J. Breath Res. 3, http://iopscience.iop.org/1752-7163/3/3/034002/
+* Bluck LJC (2009) Recent advances in the interpretation of the <sup>13</sup>C octanoate breath test for gastric emptying. J. Breath Res. 3, https://iopscience.iop.org/1752-7163/3/3/034002/
 
 * Bluck, LJC, Jackson S, Vlasakakis G, Mander A (2011) Bayesian hierarchical methods to interpret  the <sup>13</sup>C-octanoic acid breath  test for gastric emptying. Digestion 83_96-107.

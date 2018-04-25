@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Individual curve fit with nls to 13C breath test data � nls_fit • breathtestcore</title>
+<title>Individual curve fit with nls to 13C breath test data — nls_fit • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,24 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Individual curve fit with nls to 13C breath test data — nls_fit" />
+
+<meta property="og:description" content="Fits individual exponential beta curves to 13C breath test time series" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +58,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +100,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,19 +108,23 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Individual curve fit with nls to 13C breath test data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/nls_fit.R'><code>R/nls_fit.R</code></a></small>
+    <div class="hidden name"><code>nls_fit.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Fits individual exponential beta curves to 13C breath test time series</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>nls_fit</span>(<span class='no'>data</span>, <span class='kw'>dose</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>m</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>100</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>2</span>))</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -144,15 +164,15 @@ for all records is supported.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Base methods <code>coef, plot, print</code>; methods from package
- <code>broom: tidy, augment</code>.</p>
+    <div class='dont-index'><p>Base methods <code>coef, plot, print</code>; methods from package
+ <code>broom: tidy, augment</code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>)
 <span class='no'>data</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>d</span>$<span class='no'>data</span>)
 <span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'>nls_fit</span>(<span class='no'>data</span>)
-<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><div class='img'><img src='nls_fit-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>plot</span>(<span class='no'>fit</span>) <span class='co'># calls plot.breathtestfit</span></div><div class='img'><img src='nls_fit-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>options</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 <span class='no'>cf</span> <span class='kw'>=</span> <span class='fu'>coef</span>(<span class='no'>fit</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>cf</span> <span class='kw'>%&gt;%</span>
@@ -163,11 +183,11 @@ for all records is supported.</p></td>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>patient_id</span>, <span class='kw'>m_in</span> <span class='kw'>=</span> <span class='no'>m.y</span>, <span class='kw'>m_out</span> <span class='kw'>=</span> <span class='no'>m.x</span>,
          <span class='kw'>beta_in</span> <span class='kw'>=</span> <span class='no'>beta.y</span>, <span class='kw'>beta_out</span> <span class='kw'>=</span> <span class='no'>beta.x</span>,
          <span class='kw'>k_in</span> <span class='kw'>=</span> <span class='no'>k.y</span>, <span class='kw'>k_out</span> <span class='kw'>=</span> <span class='no'>k.x</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 7
-#&gt;   patient_id  m_in m_out beta_in beta_out   k_in  k_out
-#&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1     rec_01    58    58     2.3      2.3 0.0090 0.0090
-#&gt; 2     rec_02    54    54     1.6      1.6 0.0085 0.0085
-#&gt; 3     rec_03    52    52     2.0      2.0 0.0062 0.0063</div></pre>
+#&gt;   patient_id  m_in m_out beta_in beta_out    k_in   k_out
+#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1 rec_01       58.  58.0    2.33     2.34 0.00898 0.00895
+#&gt; 2 rec_02       54.  53.6    1.61     1.61 0.00847 0.00852
+#&gt; 3 rec_03       52.  51.6    1.98     1.99 0.00623 0.00626</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -196,5 +216,8 @@ for all records is supported.</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

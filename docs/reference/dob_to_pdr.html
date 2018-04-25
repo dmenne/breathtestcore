@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert breath test DOB data to PDR data � dob_to_pdr • breathtestcore</title>
+<title>Convert breath test DOB data to PDR data — dob_to_pdr • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,29 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Convert breath test DOB data to PDR data — dob_to_pdr" />
+
+<meta property="og:description" content="Convert DOB (delta-over-baseline) to PDR for 13C breath test. 
+This is equation (4) in
+Sanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysing
+the atypical double-peaked excretion curve in the [13c]-octanoate gastric
+emptying breath test in humans. Clinical and experimental pharmacology and
+physiology 32, 590-594." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +63,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +105,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,12 +113,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert breath test DOB data to PDR data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/dob_to_pdr.R'><code>R/dob_to_pdr.R</code></a></small>
+    <div class="hidden name"><code>dob_to_pdr.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Convert DOB (delta-over-baseline) to PDR for 13C breath test. 
 This is equation (4) in
@@ -106,11 +130,12 @@ the atypical double-peaked excretion curve in the [13c]-octanoate gastric
 emptying breath test in humans. Clinical and experimental pharmacology and
 physiology 32, 590-594.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>dob_to_pdr</span>(<span class='no'>dob</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='fl'>75</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>180</span>, <span class='kw'>mw</span> <span class='kw'>=</span> <span class='fl'>167</span>,
   <span class='kw'>purity_percent</span> <span class='kw'>=</span> <span class='fl'>99.1</span>, <span class='kw'>mg_substrate</span> <span class='kw'>=</span> <span class='fl'>100</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -158,7 +183,7 @@ is used, without the factor 10. Which one is correct?</p>
 <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span> <span class='kw'>=</span> <span class='fu'>dob_to_pdr</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>dob</span>, <span class='kw'>weight</span><span class='kw'>=</span><span class='no'>bid</span>$<span class='no'>weight</span>, <span class='kw'>height</span><span class='kw'>=</span><span class='no'>bid</span>$<span class='no'>height</span>)
 
 <span class='fu'>plot</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"points: from breath_id; line: computed"</span>,
-<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='input'><span class='fu'>points</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"p"</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)</div><div class='img'><img src='dob_to_pdr-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='co'>#</span>
+<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='input'><span class='fu'>points</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"p"</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)</div><div class='img'><img src='dob_to_pdr-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Check how far our computed pdr is from the stored pdr</span>
 <span class='fu'>var</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span>-<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>)</div><div class='output co'>#&gt; [1] 0.000952</div></pre>
   </div>
@@ -189,5 +214,8 @@ is used, without the factor 10. Which one is correct?</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

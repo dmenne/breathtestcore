@@ -18,13 +18,21 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +55,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +97,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,284 +105,279 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.4.0.9000</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-reading-and-writing-data" class="hasAnchor"><a href="#section-reading-and-writing-data" class="anchor"></a>Reading and Writing Data</h2>
-            <p class="section-desc"><p>Functions for reading and writing breath test data</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_any_breathtest.html">read_any_breathtest</a></code> </p>
-          </td>
-          <td><p>Read breathtest files of any format</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_breathid.html">read_breathid</a></code> </p>
-          </td>
-          <td><p>Read BreathID file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_breathid_xml.html">read_breathid_xml</a></code> </p>
-          </td>
-          <td><p>Read new BreathID/Examens XML file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_breathtest_excel.html">read_breathtest_excel</a></code> </p>
-          </td>
-          <td><p>Reads breathtest data in Excel format</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_iris.html">read_iris</a></code> </p>
-          </td>
-          <td><p>Read 13C data from IRIS/Wagner Analysen</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_iris_csv.html">read_iris_csv</a></code> </p>
-          </td>
-          <td><p>Read 13C data from IRIS/Wagner Analysen in CSV Format</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="breathtest_data.html">breathtest_data</a></code> </p>
-          </td>
-          <td><p>Data structure with PDR data and descriptors for breath test records</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="breathtest_read_function.html">breathtest_read_function</a></code> </p>
-          </td>
-          <td><p>Snoop method to read breath test file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="extract_id.html">extract_id</a></code> </p>
-          </td>
-          <td><p>Extracts an ID from string IRIS CSV file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="btcore_file.html">btcore_file</a></code> </p>
-          </td>
-          <td><p>Path to example breath test data file</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-            <p class="section-desc"><p>Simulated and patient data</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></code> </p>
-          </td>
-          <td><p>Simulate 13C breath time series data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="usz_13c.html">data</a></code> </p>
-          </td>
-          <td><p>Zurich sample set of 13C breath test data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="usz_13c_a.html">data</a></code> </p>
-          </td>
-          <td><p>Exotic 13C breath test data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="usz_13c_d.html">data</a></code> </p>
-          </td>
-          <td><p>13C breath test data with MRI emptying for comparison</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-cleanup-and-manipulate" class="hasAnchor"><a href="#section-cleanup-and-manipulate" class="anchor"></a>Cleanup and manipulate</h2>
-            <p class="section-desc"><p>Functions to cleanup and manipulate breath test data</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="dob_to_pdr.html">dob_to_pdr</a></code> </p>
-          </td>
-          <td><p>Convert breath test DOB data to PDR data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cleanup_data.html">cleanup_data</a></code> </p>
-          </td>
-          <td><p>Transforms 13C breath data into a clean format for fitting</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="subsample_data.html">subsample_data</a></code> </p>
-          </td>
-          <td><p>Decimate densely sampled 13C time series</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-fitting-time-series" class="hasAnchor"><a href="#section-fitting-time-series" class="anchor"></a>Fitting time series</h2>
-            <p class="section-desc"><p>Functions to fit time series</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nlme_fit.html">nlme_fit</a></code> </p>
-          </td>
-          <td><p>Mixed-model nlme fit to 13C Breath Data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nls_fit.html">nls_fit</a></code> </p>
-          </td>
-          <td><p>Individual curve fit with nls to 13C breath test data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="null_fit.html">null_fit</a></code> </p>
-          </td>
-          <td><p>Convert data to class breathtestfit</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-extracting-parameters" class="hasAnchor"><a href="#section-extracting-parameters" class="anchor"></a>Extracting parameters</h2>
-            <p class="section-desc"><p>Functions to extract parameters from a fitted model</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="AIC.breathtestnlmefit.html">AIC</a></code> </p>
-          </td>
-          <td><p>S3 AIC method for breathtestnlmefit</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="sigma.breathtestnlmefit.html">sigma</a></code> </p>
-          </td>
-          <td><p>S3 method to extract the fit's residual standard deviation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="augment.breathtestfit.html">augment</a></code> </p>
-          </td>
-          <td><p>Augmented prediction for breathtest fit</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="coef_by_group.html">coef_by_group</a></code> </p>
-          </td>
-          <td><p>Tabulates per-group breath test parameters</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="coef_diff_by_group.html">coef_diff_by_group</a></code> </p>
-          </td>
-          <td><p>Tabulates breath test parameter differences of groups</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="coef.breathtestfit.html">coef</a></code> </p>
-          </td>
-          <td><p>S3 coef and summary for breathtestfit</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tidy.breathtestfit.html">tidy</a></code> </p>
-          </td>
-          <td><p>Broom-style tidying methods for breathtestfit</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cum_exp_beta.html">cum_exp_beta</a></code> </p>
-          </td>
-          <td><p>Cumulative exponential beta function</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="exp_beta.html">exp_beta</a></code> </p>
-          </td>
-          <td><p>Exponential beta function for 13C breath data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="t50_bluck_coward.html">t50_bluck_coward</a></code> </p>
-          </td>
-          <td><p>Bluck-Coward self-corrected half-emptying time</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="t50_maes_ghoos.html">t50_maes_ghoos</a></code> </p>
-          </td>
-          <td><p>Half-emptying time by Maes/Ghoos method</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="t50_maes_ghoos_scintigraphy.html">t50_maes_ghoos_scintigraphy</a></code> </p>
-          </td>
-          <td><p>Half-emptying time t50 from Maes/Ghoos fit with scintigraphic correction</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tlag_bluck_coward.html">tlag_bluck_coward</a></code> </p>
-          </td>
-          <td><p>Lag phase for Bluck-Coward self-correcting fit</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tlag_maes_ghoos.html">tlag_maes_ghoos</a></code> </p>
-          </td>
-          <td><p>So-called lag time from Maes/Ghoos fit</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-plotting" class="hasAnchor"><a href="#section-plotting" class="anchor"></a>Plotting</h2>
-            <p class="section-desc"><p>Functions to plot data and fits</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plot.breathtestfit.html">plot</a></code> </p>
-          </td>
-          <td><p>S3 plot method for breathtestfit</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-reading-and-writing-data" class="hasAnchor"><a href="#section-reading-and-writing-data" class="anchor"></a>Reading and Writing Data</h2>
+          <p class="section-desc"><p>Functions for reading and writing breath test data</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_any_breathtest.html">read_any_breathtest()</a></code> </p>
+        </td>
+        <td><p>Read breathtest files of any format</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_breathid.html">read_breathid()</a></code> </p>
+        </td>
+        <td><p>Read BreathID file</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_breathid_xml.html">read_breathid_xml()</a></code> </p>
+        </td>
+        <td><p>Read new BreathID/Examens XML file</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_breathtest_excel.html">read_breathtest_excel()</a></code> </p>
+        </td>
+        <td><p>Reads breathtest data in Excel format</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_iris.html">read_iris()</a></code> </p>
+        </td>
+        <td><p>Read 13C data from IRIS/Wagner Analysen</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_iris_csv.html">read_iris_csv()</a></code> </p>
+        </td>
+        <td><p>Read 13C data from IRIS/Wagner Analysen in CSV Format</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="breathtest_data.html">breathtest_data()</a></code> </p>
+        </td>
+        <td><p>Data structure with PDR data and descriptors for breath test records</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="breathtest_read_function.html">breathtest_read_function()</a></code> </p>
+        </td>
+        <td><p>Snoop method to read breath test file</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="extract_id.html">extract_id()</a></code> </p>
+        </td>
+        <td><p>Extracts an ID from string IRIS CSV file</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="btcore_file.html">btcore_file()</a></code> </p>
+        </td>
+        <td><p>Path to example breath test data file</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Simulated and patient data</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="simulate_breathtest_data.html">simulate_breathtest_data()</a></code> </p>
+        </td>
+        <td><p>Simulate 13C breath time series data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="usz_13c.html">usz_13c</a></code> </p>
+        </td>
+        <td><p>Zurich sample set of 13C breath test data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="usz_13c_a.html">usz_13c_a</a></code> </p>
+        </td>
+        <td><p>Exotic 13C breath test data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="usz_13c_d.html">usz_13c_d</a></code> </p>
+        </td>
+        <td><p>13C breath test data with MRI emptying for comparison</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-cleanup-and-manipulate" class="hasAnchor"><a href="#section-cleanup-and-manipulate" class="anchor"></a>Cleanup and manipulate</h2>
+          <p class="section-desc"><p>Functions to cleanup and manipulate breath test data</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="dob_to_pdr.html">dob_to_pdr()</a></code> </p>
+        </td>
+        <td><p>Convert breath test DOB data to PDR data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="cleanup_data.html">cleanup_data()</a></code> </p>
+        </td>
+        <td><p>Transforms 13C breath data into a clean format for fitting</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="subsample_data.html">subsample_data()</a></code> </p>
+        </td>
+        <td><p>Decimate densely sampled 13C time series</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-fitting-time-series" class="hasAnchor"><a href="#section-fitting-time-series" class="anchor"></a>Fitting time series</h2>
+          <p class="section-desc"><p>Functions to fit time series</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="nlme_fit.html">nlme_fit()</a></code> </p>
+        </td>
+        <td><p>Mixed-model nlme fit to 13C Breath Data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="nls_fit.html">nls_fit()</a></code> </p>
+        </td>
+        <td><p>Individual curve fit with nls to 13C breath test data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="null_fit.html">null_fit()</a></code> </p>
+        </td>
+        <td><p>Convert data to class breathtestfit</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-extracting-parameters" class="hasAnchor"><a href="#section-extracting-parameters" class="anchor"></a>Extracting parameters</h2>
+          <p class="section-desc"><p>Functions to extract parameters from a fitted model</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="AIC.breathtestnlmefit.html">AIC(<i>&lt;breathtestnlmefit&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>S3 AIC method for breathtestnlmefit</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="sigma.breathtestnlmefit.html">sigma(<i>&lt;breathtestnlmefit&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>S3 method to extract the fit's residual standard deviation</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="augment.breathtestfit.html">augment(<i>&lt;breathtestfit&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Augmented prediction for breathtest fit</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="coef_by_group.html">coef_by_group()</a></code> </p>
+        </td>
+        <td><p>Tabulates per-group breath test parameters</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="coef_diff_by_group.html">coef_diff_by_group()</a></code> </p>
+        </td>
+        <td><p>Tabulates breath test parameter differences of groups</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="coef.breathtestfit.html">coef(<i>&lt;breathtestfit&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>S3 coef and summary for breathtestfit</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="tidy.breathtestfit.html">tidy(<i>&lt;breathtestfit&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Broom-style tidying methods for breathtestfit</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="cum_exp_beta.html">cum_exp_beta()</a></code> </p>
+        </td>
+        <td><p>Cumulative exponential beta function</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="exp_beta.html">exp_beta()</a></code> </p>
+        </td>
+        <td><p>Exponential beta function for 13C breath data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="t50_bluck_coward.html">t50_bluck_coward()</a></code> </p>
+        </td>
+        <td><p>Bluck-Coward self-corrected half-emptying time</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="t50_maes_ghoos.html">t50_maes_ghoos()</a></code> </p>
+        </td>
+        <td><p>Half-emptying time by Maes/Ghoos method</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="t50_maes_ghoos_scintigraphy.html">t50_maes_ghoos_scintigraphy()</a></code> </p>
+        </td>
+        <td><p>Half-emptying time t50 from Maes/Ghoos fit with scintigraphic correction</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="tlag_bluck_coward.html">tlag_bluck_coward()</a></code> </p>
+        </td>
+        <td><p>Lag phase for Bluck-Coward self-correcting fit</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="tlag_maes_ghoos.html">tlag_maes_ghoos()</a></code> </p>
+        </td>
+        <td><p>So-called lag time from Maes/Ghoos fit</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plotting" class="hasAnchor"><a href="#section-plotting" class="anchor"></a>Plotting</h2>
+          <p class="section-desc"><p>Functions to plot data and fits</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="plot.breathtestfit.html">plot(<i>&lt;breathtestfit&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>S3 plot method for breathtestfit</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -397,5 +405,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

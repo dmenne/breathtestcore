@@ -271,9 +271,7 @@ Can anyone supply a data set for a pilot?
 
 # Why do we need population fits?
 
-Currently outsourced to [A comparison of results with nls, nlme](http://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org). 
-
-A less technical discussion will be added here.
+Currently outsourced to [A comparison of results with nls, nlme](https://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org). 
 
 ## Why no Wagner-Nelson?
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>So-called lag time from Maes/Ghoos fit � tlag_maes_ghoos • breathtestcore</title>
+<title>So-called lag time from Maes/Ghoos fit — tlag_maes_ghoos • breathtestcore</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,28 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
   <link href="../extra.css" rel="stylesheet">
   
+<meta property="og:title" content="So-called lag time from Maes/Ghoos fit — tlag_maes_ghoos" />
+
+<meta property="og:description" content="Computes tlag from uncorrected fit to the beta 
+exponential function. The name tlag is a misnomer; it simply 
+is the maximum of the PDR curve, so in papers by Bluck et al. it is renamed to t_max.
+Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
+Dig. Dis. Sci. 39 S104-6." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,12 +62,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">breathtestcore</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">breathtestcore</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -85,6 +104,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -92,12 +112,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>So-called lag time from Maes/Ghoos fit</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/breathtest_parameters.R'><code>R/breathtest_parameters.R</code></a></small>
+    <div class="hidden name"><code>tlag_maes_ghoos.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Computes <code>tlag</code> from uncorrected fit to the beta 
 exponential function. The name <code>tlag</code> is a misnomer; it simply 
@@ -105,10 +128,11 @@ is the maximum of the PDR curve, so in papers by Bluck et al. it is renamed to t
 <p>Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
 Dig. Dis. Sci. 39 S104-6.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>tlag_maes_ghoos</span>(<span class='no'>cf</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -124,7 +148,7 @@ Dig. Dis. Sci. 39 S104-6.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='exp_beta.html'>exp_beta</a></code>, and <code><a href='t50_bluck_coward.html'>t50_bluck_coward</a></code> for an example.</p>
+    <div class='dont-index'><p><code><a href='exp_beta.html'>exp_beta</a></code>, and <code><a href='t50_bluck_coward.html'>t50_bluck_coward</a></code> for an example.</p></div>
     
 
   </div>
@@ -153,5 +177,8 @@ Dig. Dis. Sci. 39 S104-6.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
