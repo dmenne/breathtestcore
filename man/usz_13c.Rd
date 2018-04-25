@@ -34,7 +34,7 @@ data(usz_13c)
 \dontrun{
 str(usz_13c)
 # Plot all records; this needs some time
-pdf("usz_13c.pdf", height= 30)
+pdf(file.path(tempdir(), "usz_13c.pdf"), height= 30)
 # null_fit makes data plotable without fitting a model
 plot(null_fit(usz_13c))
 dev.off()

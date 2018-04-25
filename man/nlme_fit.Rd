@@ -48,7 +48,7 @@ a mixed-model population approach. See
 single curve, mixed-model population and Bayesian methods.
 }
 \examples{
-d = simulate_breathtest_data(n_records = 3, noise = 0.7, seed = 4711)
+d = simulate_breathtest_data(n_records = 3, noise = 0.7, seed = 4712)
 data = cleanup_data(d$data)
 fit = nlme_fit(data)
 plot(fit) # calls plot.breathtestfit
