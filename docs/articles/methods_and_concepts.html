@@ -8,8 +8,8 @@
 <title>Methods and concepts • breathtestcore</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Methods and concepts">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
 Examples of exponential beta functions used to fit breath test curves. <em>Bottom-up arrow</em>: Maes/Ghoos lag time. <em>Top-down arrow</em>: Maes/Ghoos half emptying time.
 </p>
 </div>
-<p>The half-emptying as defined by <span class="citation">Maes et al. (<a href="#ref-Maes1998b">1998</a>)</span> is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics terms, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized. This time is determined both by gastric emptying and by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.</p>
+<p>The half-emptying as defined by <span class="citation">Maes et al. (<a href="#ref-Maes1998b">1998</a>)</span> is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics terms, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized. This time is determined both by gastric emptying <em>and</em> by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.</p>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/t50-1.png" alt="The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity." width="384"><p class="caption">
 The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity.
@@ -169,7 +169,7 @@ Meal volume (left) and flow when gastric emptying function is a power exponentia
 </p>
 </div>
 <p>The correct half-emptying time <code>t50</code> in this example was 82 minutes, as determined from the left panel; <code>t50</code> determined by fitting with the Maes/Ghoos version in the right panel was 109 minutes.</p>
-<p>The bias from fitting the PDR curve naively is is caused by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in its own?</p>
+<p>The bias from fitting the PDR curve naively is caused by the convolution of mechanical transport in gastric emptying, and pharmacological drug kinetics. The latter is a nuisance parameter and should be eliminated - or is it a parameter of interest in its own?</p>
 </div>
 </div>
 <div id="how-to-correct-for-the-pharmacological-bias" class="section level2">
@@ -214,25 +214,25 @@ Simulated response of a two-stage breath test procedure. The peak within the fir
 <a href="#citations" class="anchor"></a>Citations</h2>
 <div id="refs" class="references">
 <div id="ref-Bluck2006">
-<p>Bluck, Leslie J C., and W Andy Coward. 2006. “Measurement of Gastric Emptying by the 13C-Octanoate Breath Test–Rationalization with Scintigraphy.” <em>Physiol Meas</em> 27 (3). MRC Human Nutrition Research, Elsie Widdowson Laboratory, Cambridge, UK. les.bluck@mrc-hnr.cam.ac.uk:279–89. <a href="https://doi.org/10.1088/0967-3334/27/3/006" class="uri">https://doi.org/10.1088/0967-3334/27/3/006</a>.</p>
+<p>Bluck, Leslie J C., and W Andy Coward. 2006. “Measurement of Gastric Emptying by the 13C-Octanoate Breath Test–Rationalization with Scintigraphy.” <em>Physiol Meas</em> 27 (3). MRC Human Nutrition Research, Elsie Widdowson Laboratory, Cambridge, UK. les.bluck@mrc-hnr.cam.ac.uk: 279–89. <a href="https://doi.org/10.1088/0967-3334/27/3/006" class="uri">https://doi.org/10.1088/0967-3334/27/3/006</a>.</p>
 </div>
 <div id="ref-Gabrielsson2006">
 <p>Gabrielsson, Johan, and Dan Weiner. 2006. <em>Pharmacokinetic &amp; Pharmacodynamic Data Analysis : Concepts and Applications</em>. 4. ed., rev. and expanded. PK/Pd Data Analysis: Concepts and Applications. Stockholm: Swedish Pharmaceutical Press.</p>
 </div>
 <div id="ref-Ghoos1993">
-<p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.:1640–7.</p>
+<p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.</p>
 </div>
 <div id="ref-Keller2009">
-<p>Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009. “Influence of Clinical Parameters on the Results of 13C-Octanoic Acid Breath Tests: Examination of Different Mathematical Models in a Large Patient Cohort.” <em>Neurogastroenterology and Motility : The Official Journal of the European Gastrointestinal Motility Society</em> 21 (10):1039–1e83. <a href="https://doi.org/10.1111/j.1365-2982.2009.01340.x" class="uri">https://doi.org/10.1111/j.1365-2982.2009.01340.x</a>.</p>
+<p>Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009. “Influence of Clinical Parameters on the Results of 13C-Octanoic Acid Breath Tests: Examination of Different Mathematical Models in a Large Patient Cohort.” <em>Neurogastroenterology and Motility : The Official Journal of the European Gastrointestinal Motility Society</em> 21 (10): 1039–1e83. <a href="https://doi.org/10.1111/j.1365-2982.2009.01340.x" class="uri">https://doi.org/10.1111/j.1365-2982.2009.01340.x</a>.</p>
 </div>
 <div id="ref-Maes1998b">
-<p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4):856–59.</p>
+<p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4): 856–59.</p>
 </div>
 <div id="ref-R:PinheiroBates2000">
 <p>Pinheiro, Jose C., and Douglas M. Bates. 2000. <em>Mixed-Effects Models in S and S-Plus</em>. Springer.</p>
 </div>
 <div id="ref-Sanaka2004">
-<p>Sanaka, Masaki, Takatsugu Yamamoto, Tarou Ishii, and Yasushi Kuyama. 2004. “The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from Co2 Data Obtained by a 13C-Labeled Substrate Breath Test.” <em>Digestion</em> 69 (2):71–78. <a href="https://doi.org/10.1159/000077391" class="uri">https://doi.org/10.1159/000077391</a>.</p>
+<p>Sanaka, Masaki, Takatsugu Yamamoto, Tarou Ishii, and Yasushi Kuyama. 2004. “The Wagner-Nelson Method Can Generate an Accurate Gastric Emptying Flow Curve from Co2 Data Obtained by a 13C-Labeled Substrate Breath Test.” <em>Digestion</em> 69 (2): 71–78. <a href="https://doi.org/10.1159/000077391" class="uri">https://doi.org/10.1159/000077391</a>.</p>
 </div>
 </div>
 </div>

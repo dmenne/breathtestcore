@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -35,6 +37,7 @@
 <meta property="og:description" content="Uses breathtest_read_function to determine the file type
 and reads it if it has a valid format." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -163,7 +166,7 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'> <span class='co'># Passing through cleanup_data gives a data frame/tibble</span>
  <span class='no'>bt_df</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>bt</span>)
- <span class='fu'>str</span>(<span class='no'>bt_df</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	136 obs. of  4 variables:
+ <span class='fu'>str</span>(<span class='no'>bt_df</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	136 obs. of  4 variables:
 #&gt;  $ patient_id: chr  "123456" "123456" "123456" "123456" ...
 #&gt;  $ group     : chr  "group_a" "group_a" "group_a" "group_a" ...
 #&gt;  $ minute    : num  0.01 10 20 45 60 75 90 105 120 140 ...

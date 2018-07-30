@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -36,6 +38,7 @@
 intervals and p-values, for examples of the half emptying time t50,
 with correction for multiple testing." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -183,30 +186,30 @@ comparisons relative to the reference group.</p></td>
 <span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 27 x 7
 #&gt;    parameter method   groups               estimate conf.low  conf.high p.value
 #&gt;    &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1 beta      exp_beta solid_normal - liq~   0.140   -3.29e-1    6.09e-1 7.63e-1
-#&gt;  2 beta      exp_beta solid_patient - li~   0.0245  -4.77e-1    5.26e-1 9.93e-1
-#&gt;  3 beta      exp_beta solid_patient - so~  -0.116   -5.85e-1    3.53e-1 8.32e-1
-#&gt;  4 deviance  exp_beta solid_normal - liq~ -14.1     -2.96e+1    1.38e+0 8.21e-2
-#&gt;  5 deviance  exp_beta solid_patient - li~  52.0     -2.95e+0    1.07e+2 6.75e-2
-#&gt;  6 deviance  exp_beta solid_patient - so~  66.2      1.17e+1    1.21e+2 1.26e-2
-#&gt;  7 k         exp_beta solid_normal - liq~  -0.00345 -6.01e-3   -9.00e-4 4.26e-3
-#&gt;  8 k         exp_beta solid_patient - li~  -0.00604 -9.60e-3   -2.47e-3 2.61e-4
-#&gt;  9 k         exp_beta solid_patient - so~  -0.00259 -5.97e-3    7.94e-4 1.71e-1
-#&gt; 10 m         exp_beta solid_normal - liq~ -15.7     -1.91e+1   -1.23e+1 0.     
+#&gt;  1 beta      exp_beta solid_normal - liqu~  1.40e-1 -3.29e-1    6.09e-1 7.63e-1
+#&gt;  2 beta      exp_beta solid_patient - liq~  2.45e-2 -4.77e-1    5.26e-1 9.93e-1
+#&gt;  3 beta      exp_beta solid_patient - sol~ -1.16e-1 -5.85e-1    3.53e-1 8.32e-1
+#&gt;  4 deviance  exp_beta solid_normal - liqu~ -1.41e+1 -2.96e+1    1.38e+0 8.21e-2
+#&gt;  5 deviance  exp_beta solid_patient - liq~  5.20e+1 -2.95e+0    1.07e+2 6.75e-2
+#&gt;  6 deviance  exp_beta solid_patient - sol~  6.62e+1  1.17e+1    1.21e+2 1.26e-2
+#&gt;  7 k         exp_beta solid_normal - liqu~ -3.45e-3 -6.01e-3   -9.00e-4 4.26e-3
+#&gt;  8 k         exp_beta solid_patient - liq~ -6.04e-3 -9.60e-3   -2.47e-3 2.61e-4
+#&gt;  9 k         exp_beta solid_patient - sol~ -2.59e-3 -5.97e-3    7.94e-4 1.71e-1
+#&gt; 10 m         exp_beta solid_normal - liqu~ -1.57e+1 -1.91e+1   -1.23e+1 0.     
 #&gt; # ... with 17 more rows</div><div class='input'><span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
 <span class='fu'>coef_diff_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; # A tibble: 24 x 7
-#&gt;    parameter method       groups           estimate conf.low conf.high  p.value
-#&gt;    &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1 beta      exp_beta     solid_normal -~   0.0874  -1.70e-1   3.44e-1 7.05e- 1
-#&gt;  2 beta      exp_beta     solid_patient ~   0.117   -1.58e-1   3.92e-1 5.78e- 1
-#&gt;  3 beta      exp_beta     solid_patient ~   0.0296  -2.27e-1   2.86e-1 9.61e- 1
-#&gt;  4 k         exp_beta     solid_normal -~  -0.00373 -5.35e-3  -2.11e-3 1.86e- 7
-#&gt;  5 k         exp_beta     solid_patient ~  -0.00551 -8.22e-3  -2.80e-3 4.66e- 6
-#&gt;  6 k         exp_beta     solid_patient ~  -0.00178 -4.38e-3   8.21e-4 2.42e- 1
-#&gt;  7 m         exp_beta     solid_normal -~ -15.5     -2.00e+1  -1.11e+1 7.55e-15
-#&gt;  8 m         exp_beta     solid_patient ~  -4.48    -2.43e+1   1.53e+1 8.54e- 1
-#&gt;  9 m         exp_beta     solid_patient ~  11.1     -8.63e+0   3.08e+1 3.82e- 1
-#&gt; 10 t50       bluck_coward solid_normal -~  14.9      3.90e+0   2.59e+1 4.22e- 3
+#&gt;    parameter method    groups              estimate conf.low conf.high  p.value
+#&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1 beta      exp_beta  solid_normal - li~   0.0874  -1.70e-1   3.44e-1 7.05e- 1
+#&gt;  2 beta      exp_beta  solid_patient - l~   0.117   -1.58e-1   3.92e-1 5.78e- 1
+#&gt;  3 beta      exp_beta  solid_patient - s~   0.0296  -2.27e-1   2.86e-1 9.61e- 1
+#&gt;  4 k         exp_beta  solid_normal - li~  -0.00373 -5.35e-3  -2.11e-3 1.86e- 7
+#&gt;  5 k         exp_beta  solid_patient - l~  -0.00551 -8.22e-3  -2.80e-3 4.66e- 6
+#&gt;  6 k         exp_beta  solid_patient - s~  -0.00178 -4.38e-3   8.21e-4 2.42e- 1
+#&gt;  7 m         exp_beta  solid_normal - li~ -15.5     -2.00e+1  -1.11e+1 7.55e-15
+#&gt;  8 m         exp_beta  solid_patient - l~  -4.48    -2.43e+1   1.53e+1 8.54e- 1
+#&gt;  9 m         exp_beta  solid_patient - s~  11.1     -8.63e+0   3.08e+1 3.82e- 1
+#&gt; 10 t50       bluck_co~ solid_normal - li~  14.9      3.90e+0   2.59e+1 4.22e- 3
 #&gt; # ... with 14 more rows</div><div class='input'># TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
 # confidence intervals instead of credible intervals
 </div></pre>

@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -38,6 +40,7 @@ group, minute, pdr or dob). Conversion from dob to pdf is done for
 assuming 180 cm height and 75 kg weight.
 See the example below with several sheets for supported formats" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -169,73 +172,73 @@ other formats.</p>
 #&gt; # A tibble: 4 x 4
 #&gt;   patient_id group minute   pdr
 #&gt;        &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1   7951444. A      0.420 0.547
-#&gt; 2   7951444. A     11.9   1.64 
-#&gt; 3   7951444. A     23.4   3.89 
-#&gt; 4   7951444. A     34.9   6.13 
+#&gt; 1    7951444 A       0.42 0.547
+#&gt; 2    7951444 A      11.9  1.64 
+#&gt; 3    7951444 A      23.4  3.89 
+#&gt; 4    7951444 A      34.9  6.13 
 #&gt; 
 #&gt; Sheet  4col_2group 
 #&gt; # A tibble: 4 x 4
 #&gt;   patient_id group         minute   pdr
 #&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 norm_001   liquid_normal    10.  2.60
-#&gt; 2 norm_001   liquid_normal    20.  8.10
-#&gt; 3 norm_001   liquid_normal    30. 10.7 
-#&gt; 4 norm_001   liquid_normal    40.  9.10
+#&gt; 1 norm_001   liquid_normal     10   2.6
+#&gt; 2 norm_001   liquid_normal     20   8.1
+#&gt; 3 norm_001   liquid_normal     30  10.7
+#&gt; 4 norm_001   liquid_normal     40   9.1
 #&gt; 
 #&gt; Sheet  4col_2group_spaces 
 #&gt; # A tibble: 4 x 4
 #&gt;   patient_id group         minute   pdr
 #&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 norm 001   liquid normal    10.  2.60
-#&gt; 2 norm 001   liquid normal    20.  8.10
-#&gt; 3 norm 001   liquid normal    30. 10.7 
-#&gt; 4 norm 001   liquid normal    40.  9.10
+#&gt; 1 norm 001   liquid normal     10   2.6
+#&gt; 2 norm 001   liquid normal     20   8.1
+#&gt; 3 norm 001   liquid normal     30  10.7
+#&gt; 4 norm 001   liquid normal     40   9.1
 #&gt; 
 #&gt; Sheet  4col_2group_dob 
 #&gt; # A tibble: 4 x 4
 #&gt;   patient_id group         minute   dob
 #&gt;   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 norm_001   liquid_normal    10. 0.260
-#&gt; 2 norm_001   liquid_normal    20. 0.810
-#&gt; 3 norm_001   liquid_normal    30. 1.07 
-#&gt; 4 norm_001   liquid_normal    40. 0.910
+#&gt; 1 norm_001   liquid_normal     10 0.26 
+#&gt; 2 norm_001   liquid_normal     20 0.81 
+#&gt; 3 norm_001   liquid_normal     30 1.07 
+#&gt; 4 norm_001   liquid_normal     40 0.910
 #&gt; 
 #&gt; Sheet  3col 
 #&gt; # A tibble: 4 x 3
 #&gt;   patient_id minute   pdr
 #&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1   7951500.  0.420 0.547
-#&gt; 2   7951500. 11.9   1.64 
-#&gt; 3   7951500. 23.4   3.89 
-#&gt; 4   7951500. 34.9   6.13 
+#&gt; 1    7951500   0.42 0.547
+#&gt; 2    7951500  11.9  1.64 
+#&gt; 3    7951500  23.4  3.89 
+#&gt; 4    7951500  34.9  6.13 
 #&gt; 
 #&gt; Sheet  2col 
 #&gt; # A tibble: 4 x 2
 #&gt;   minute   pdr
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1  0.420 0.547
-#&gt; 2 11.9   1.64 
-#&gt; 3 23.4   3.89 
-#&gt; 4 34.9   6.13 
+#&gt; 1   0.42 0.547
+#&gt; 2  11.9  1.64 
+#&gt; 3  23.4  3.89 
+#&gt; 4  34.9  6.13 
 #&gt; 
 #&gt; Sheet  bad_header 
 #&gt; # A tibble: 4 x 4
 #&gt;   `7951444` A     `0.42` `0.54737400595475105`
 #&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;                 &lt;dbl&gt;
-#&gt; 1  7951444. A       11.9                  1.64
-#&gt; 2  7951444. A       23.4                  3.89
-#&gt; 3  7951444. A       34.9                  6.13
-#&gt; 4  7951444. A       46.4                  8.16
+#&gt; 1   7951444 A       11.9                  1.64
+#&gt; 2   7951444 A       23.4                  3.89
+#&gt; 3   7951444 A       34.9                  6.13
+#&gt; 4   7951444 A       46.4                  8.16
 #&gt; 
 #&gt; Sheet  bad_order 
 #&gt; # A tibble: 4 x 4
 #&gt;   group minute   pdr patient_id
 #&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
-#&gt; 1 A      0.420 0.547   7951444.
-#&gt; 2 A     11.9   1.64    7951444.
-#&gt; 3 A     23.4   3.89    7951444.
-#&gt; 4 A     34.9   6.13    7951444.
+#&gt; 1 A       0.42 0.547    7951444
+#&gt; 2 A      11.9  1.64     7951444
+#&gt; 3 A      23.4  3.89     7951444
+#&gt; 4 A      34.9  6.13     7951444
 #&gt; 
 #&gt; Sheet  bad_columns 
 #&gt; # A tibble: 4 x 1
@@ -248,11 +251,11 @@ other formats.</p>
 <span class='no'>bt_data</span> <span class='kw'>=</span> <span class='fu'>read_breathtest_excel</span>(<span class='no'>filename</span>, <span class='no'>sheets</span>[<span class='fl'>6</span>])
 <span class='co'># 3 columns</span>
 <span class='fu'>str</span>(<span class='no'>bt_data</span>)</div><div class='output co'>#&gt; List of 1
-#&gt;  $ :Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	22 obs. of  2 variables:
+#&gt;  $ :Classes 'tbl_df', 'tbl' and 'data.frame':	22 obs. of  2 variables:
 #&gt;   ..$ minute: num [1:22] 0.42 11.92 23.4 34.89 46.39 ...
 #&gt;   ..$ pdr   : num [1:22] 0.547 1.642 3.886 6.131 8.156 ...</div><div class='input'><span class='no'>bt_cleaned</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>bt_data</span>)
 <span class='co'># 4 columns standard format</span>
-<span class='fu'>str</span>(<span class='no'>bt_cleaned</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	22 obs. of  4 variables:
+<span class='fu'>str</span>(<span class='no'>bt_cleaned</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	22 obs. of  4 variables:
 #&gt;  $ patient_id: chr  "pat_a" "pat_a" "pat_a" "pat_a" ...
 #&gt;  $ group     : chr  "A" "A" "A" "A" ...
 #&gt;  $ minute    : num  0.42 11.92 23.4 34.89 46.39 ...

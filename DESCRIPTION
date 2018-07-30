@@ -30,3 +30,4 @@ RoxygenNote: 6.0.1
 LazyData: true
 VignetteBuilder: knitr
 SystemRequirements: pandoc
+Encoding: UTF-8

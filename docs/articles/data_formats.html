@@ -8,8 +8,8 @@
 <title>Data formats • breathtestcore</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Data formats">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -84,7 +84,7 @@
                         <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 class="date">2018-04-25</h4>
+            <h4 class="date">2018-07-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dmenne/breathtestcore/blob/master/vignettes/data_formats.Rmd"><code>vignettes/data_formats.Rmd</code></a></small>
       <div class="hidden name"><code>data_formats.Rmd</code></div>
@@ -213,62 +213,60 @@ Example of a cross-over design with missing data, outliers and missing record in
 <h2 class="hasAnchor">
 <a href="#how-to-use-the-excel-data-formats" class="anchor"></a>How to use the Excel data formats</h2>
 <ul>
-<li>Use function <code><a href="../reference/read_breathtest_excel.html">read_breathtest_excel()</a></code>; this is the only way to select a worksheet different from the first in the workboot by passing parameter <code>sheet</code>. All other methods only read the first worksheet.</li>
+<li>Use function <code><a href="../reference/read_breathtest_excel.html">read_breathtest_excel()</a></code>; this is the only way to select a worksheet different other than first in the workbook by passing parameter <code>sheet</code>. All other methods only read the first worksheet.</li>
 <li>Use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code>. This always reads the first worksheet, but you can combine results from several files, even when they have different formats</li>
-<li>With the <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can drag any of the file formats mentioned here into the green field, or select ‘Browse file’, or paste the Excel data or any tab-separated data into the edit field."</li>
+<li>With the <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can drag file in all formats mentioned here into the green field; or select ‘Browse file’; or paste the Excel data or any other tab-separated data into the edit field.</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">knitr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/include_graphics">include_graphics</a></span>(<span class="st">"breathtestshiny.png"</span>)</a></code></pre></div>
-<p><img src="breathtestshiny.png" width="358"></p>
 <div id="two-column-format" class="section level3">
 <h3 class="hasAnchor">
 <a href="#two-column-format" class="anchor"></a>Two-column format</h3>
 <p>When you have only data from one record, you can supply data in a two-column format as given in sheet <code>2col</code> of workboot <code>ExcelSamples.xlsx</code>. The column headers must be <code>minute, pdr</code>. With <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can upload the file, or simply paste it into the editor. This is the easiest method to get a fit for a single patient.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">(<span class="dt">bt =</span> <span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"2col"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">(<span class="dt">bt =</span> <span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"2col"</span>))</a></code></pre></div>
 <pre><code>[[1]]
 # A tibble: 22 x 2
   minute   pdr
    &lt;dbl&gt; &lt;dbl&gt;
-1  0.420 0.547
-2 11.9   1.64 
-3 23.4   3.89 
-4 34.9   6.13 
+1   0.42 0.547
+2  11.9  1.64 
+3  23.4  3.89 
+4  34.9  6.13 
 # ... with 18 more rows</code></pre>
 <p>A list is returned, and its only element is a tibble with two columns. To create a standardized format for fitting and plotting, pass it through <code>cleanup_data</code> which adds dummy columns <code>patient_id</code> (all <code>pat_a</code>), and <code>group</code> (all <code>A</code>)</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">(<span class="dt">cbt =</span> <span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>(bt))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">(<span class="dt">cbt =</span> <span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>(bt))</a></code></pre></div>
 <pre><code># A tibble: 22 x 4
   patient_id group minute   pdr
   &lt;chr&gt;      &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 pat_a      A      0.420 0.547
-2 pat_a      A     11.9   1.64 
-3 pat_a      A     23.4   3.89 
-4 pat_a      A     34.9   6.13 
+1 pat_a      A       0.42 0.547
+2 pat_a      A      11.9  1.64 
+3 pat_a      A      23.4  3.89 
+4 pat_a      A      34.9  6.13 
 # ... with 18 more rows</code></pre>
 <p>Compute the fit and plot</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">cbt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">cbt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</a></code></pre></div>
 <p><img src="data_formats_files/figure-html/nlsfit-1.png" width="384"></p>
 </div>
 <div id="three-column-format" class="section level3">
 <h3 class="hasAnchor">
 <a href="#three-column-format" class="anchor"></a>Three-column format</h3>
 <p>When you have more than one patient, you must add a column <code>patient_id</code> which may be numeric or a string.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">(<span class="dt">bt =</span> <span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"3col"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">(<span class="dt">bt =</span> <span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"3col"</span>))</a></code></pre></div>
 <pre><code>[[1]]
 # A tibble: 43 x 3
   patient_id minute   pdr
   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 7951500     0.420 0.547
-2 7951500    11.9   1.64 
-3 7951500    23.4   3.89 
-4 7951500    34.9   6.13 
+1 7951500      0.42 0.547
+2 7951500     11.9  1.64 
+3 7951500     23.4  3.89 
+4 7951500     34.9  6.13 
 # ... with 39 more rows</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">(<span class="dt">cbt =</span> <span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>(bt))</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">(<span class="dt">cbt =</span> <span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>(bt))</a></code></pre></div>
 <pre><code># A tibble: 43 x 4
   patient_id group minute   pdr
   &lt;chr&gt;      &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 7951500    A      0.420 0.547
-2 7951500    A     11.9   1.64 
-3 7951500    A     23.4   3.89 
-4 7951500    A     34.9   6.13 
+1 7951500    A       0.42 0.547
+2 7951500    A      11.9  1.64 
+3 7951500    A      23.4  3.89 
+4 7951500    A      34.9  6.13 
 # ... with 39 more rows</code></pre>
 <p>A dummy group ‘A’ is added by <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code>, so that data are in a standardized format now.</p>
 </div>
@@ -276,9 +274,9 @@ Example of a cross-over design with missing data, outliers and missing record in
 <h3 class="hasAnchor">
 <a href="#four-column-format" class="anchor"></a>Four-column format</h3>
 <p>The four-column format with column names <code>patient_id, group, minute, pdr</code> is the standard format. In cross-over designs, you can have different groups for one patient.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">bt =<span class="st"> </span><span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"4col_2group"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>()</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">kable</span>(<span class="kw">sample_frac</span>(bt, <span class="fl">0.08</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(patient_id, group), <span class="dt">caption =</span> <span class="st">"A sample from a four-column format. See worksheet 4col_2group."</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">bt =<span class="st"> </span><span class="kw"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"ExcelSamples.xlsx"</span>), <span class="st">"4col_2group"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>()</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">kable</span>(<span class="kw">sample_frac</span>(bt, <span class="fl">0.08</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(patient_id, group), <span class="dt">caption =</span> <span class="st">"A sample from a four-column format. See worksheet 4col_2group."</span>)</a></code></pre></div>
 <table class="table">
 <caption>A sample from a four-column format. See worksheet 4col_2group.</caption>
 <thead><tr class="header">
@@ -350,7 +348,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">bt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/nlme_fit.html">nlme_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">bt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/nlme_fit.html">nlme_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</a></code></pre></div>
 <p><img src="data_formats_files/figure-html/nlme_fit-1.png" width="672"></p>
 </div>
 <div id="dob-instead-of-pdf" class="section level3">
@@ -376,10 +374,10 @@ Example of a cross-over design with missing data, outliers and missing record in
 "Abkürzung","GE FEST"
 "Substrat","Natriumoktanoat"</code></pre>
 <p>Use <code><a href="../reference/read_iris.html">read_iris()</a></code> or <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code> :</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw"><a href="../reference/read_iris.html">read_iris</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"IrisMulti.TXT"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="../reference/read_iris.html">read_iris</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"IrisMulti.TXT"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/null_fit.html">null_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/iriswagner-1.png" alt="IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown." width="384"><p class="caption">
 IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown.
@@ -395,10 +393,10 @@ IRIS/Wagner composite file. These data cannot be fitted successfully with the si
 "Einstein","Albert","GE FEST","330240","10","2.02","-24.3","5.617962E-02","2.391013",..
 "Einstein","Albert","GE </code></pre>
 <p>Use <code><a href="../reference/read_iris_csv.html">read_iris_csv()</a></code> or <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code> :</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw"><a href="../reference/read_iris_csv.html">read_iris_csv</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"Standard.TXT"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw"><a href="../reference/read_iris_csv.html">read_iris_csv</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"Standard.TXT"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/iris_csv-1.png" alt="IRIS/Wagner CSV file" width="384"><p class="caption">
 IRIS/Wagner CSV file
@@ -419,10 +417,10 @@ Patient # - 0
 Patient ID   - Franz                    
 </code></pre>
 <p>Use <code><a href="../reference/read_breathid.html">read_breathid()</a></code> or <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code>:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw"><a href="../reference/read_breathid.html">read_breathid</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"350_20043_0_GER.txt"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw"><a href="../reference/read_breathid.html">read_breathid</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"350_20043_0_GER.txt"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/breathidc-1.png" alt="BreathID composite file" width="384"><p class="caption">
 BreathID composite file
@@ -448,24 +446,24 @@ BreathID composite file
     &lt;EndTime&gt;19Jul2017 12:29&lt;/EndTime&gt;
     &lt;LastResultCode&gt;0&lt;/LastResultCode&gt;</code></pre>
 <p>Use <code><a href="../reference/read_breathid_xml.html">read_breathid_xml()</a></code> or <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code>:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"NewBreathID_multiple.xml"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"NewBreathID_multiple.xml"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/breathid_xml-1.png" alt="BreathID XML format" width="384"><p class="caption">
 BreathID XML format
 </p>
 </div>
 <p>Grouping is most useful in a cross-over design to force within-subject comparisons by functions <code><a href="../reference/coef_by_group.html">coef_by_group()</a></code> and <code><a href="../reference/coef_diff_by_group.html">coef_diff_by_group()</a></code>; in the above case, the default grouping above might not be what you required. Replace the group parameter manually to remove the groups, but do not delete the column with <code>group = NULL</code>, because the fitting functions requires a dummy group name.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># Could also use read_any_breathtest()</span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="kw"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"NewBreathID_multiple.xml"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">    <span class="dt">group =</span> <span class="st">"New"</span></a>
-<a class="sourceLine" id="cb38-6" data-line-number="6">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb38-8" data-line-number="8"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co"># Could also use read_any_breathtest()</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="kw"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span>(<span class="kw"><a href="../reference/btcore_file.html">btcore_file</a></span>(<span class="st">"NewBreathID_multiple.xml"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/cleanup_data.html">cleanup_data</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">    <span class="dt">group =</span> <span class="st">"New"</span></a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/nls_fit.html">nls_fit</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="st">  </span><span class="kw">plot</span>()</a></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/breathid_man-1.png" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
 BreathID XML format with manual grouping.
