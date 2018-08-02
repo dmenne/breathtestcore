@@ -20,13 +20,12 @@
 #' #
 #' iris_data = read_iris(filename)
 #' str(iris_data)
-#' @importFrom stringi stri_enc_toutf8
 #' @export read_iris
 read_iris = function(filename = NULL, text = NULL) {
   if (is.null(text)) {
     if (!file.exists(filename))
       stop(paste0("file ", filename, " does not exist."))
-    text = stri_enc_toutf8(readLines(filename))
+    text = readLines(filename, encoding = "latin1")
   } else {
     filename = 'from text'
   }
