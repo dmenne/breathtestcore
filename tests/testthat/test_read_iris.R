@@ -53,8 +53,6 @@ test_that("read_iris correctly ready names with umlaut",{
   expect_equal(f$initials, "RÖ")
 })
 
-
-
 test_that("read_iris of CSV file throws",{
   filename = btcore_file("IrisCSV.TXT")
   expect_error( read_iris(filename),"valid IRIS")

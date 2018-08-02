@@ -21,7 +21,7 @@ Depends: R (>= 3.4.0)
 Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble, 
          methods, readxl, 
          assertthat, broom, tidyr,   ggplot2, ggfittext, 
-         signal, utils, multcomp, xml2
+         signal, utils, multcomp, xml2, stringi
 Suggests: testthat, covr, knitr, survival, gridExtra
 URL: https://github.com/dmenne/breathtestcore
 BugReports: https://github.com/dmenne/breathtestcore/issues
