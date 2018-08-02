@@ -55,7 +55,9 @@ read_breathid = function(filename = NULL, text = NULL) {
   db = db[db != ""]
   if (length(db) < 2)
     stop(paste0("file ", filename, " does not contain PDR data"))
-  data = utils::read.table(db, header = TRUE)
+  tc = textConnection(db)
+  data = utils::read.table(tc, header = TRUE)
+  close(tc)
   data = remove_na_columns(data)
   names(data) = tolower(names(data))
   breathtest_data(
