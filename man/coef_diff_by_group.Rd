@@ -4,7 +4,8 @@
 \alias{coef_diff_by_group}
 \title{Tabulates breath test parameter differences of groups}
 \usage{
-coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL, ...)
+coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL,
+  ...)
 }
 \arguments{
 \item{fit}{Object of class \code{breathtestfit}, for example from

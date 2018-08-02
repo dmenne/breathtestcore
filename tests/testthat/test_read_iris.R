@@ -44,6 +44,16 @@ test_that("read_iris returns valid data set when weight/height is zero",{
   expect_equal(ncol(f$data),3)
 })
 
+test_that("read_iris correctly ready names with umlaut",{
+  filename = btcore_file("Iris_Umlaut.TXT")
+  f = read_iris(filename)
+  expect_is(f,"breathtest_data")
+  expect_equal(f$name, "Rüdigör")
+  expect_equal(f$first_name, "Özgur")
+  expect_equal(f$initials, "RÖ")
+})
+
+
 
 test_that("read_iris of CSV file throws",{
   filename = btcore_file("IrisCSV.TXT")
