@@ -210,7 +210,7 @@ cleanup_data.list = function(data, ... ){
         dd$patient_id = str_sub(d1["file_name"], 1, -5)
       dd$group = group
     }
-    comment[[igroup]] = comment(dd)
+    comment[[igroup]] = comment(d1)
     ret = rbind(ret, dd )
   }
  if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)

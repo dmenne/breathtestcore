@@ -28,7 +28,7 @@ A \code{tibble} of class \code{coef_diff_by_group} with columns
   Maes B D, Ghoos Y F,
   Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 Dig. Dis. Sci. 39 S104-6.
   \code{bluck_coward} is the self-correcting method from  Bluck L J C and
-  Coward W A 2006 <doi:10.1088/0967-3334/27/3/006>}
+  Coward W A 2006}
   \item{groups}{Which pairwise difference, e.g \code{solid - liquid}}
   \item{estimate}{Estimate of the difference}
   \item{conf.low, conf.high}{Lower and upper 95% confidence interval of difference.
