@@ -1,0 +1,11 @@
+<Tests Device="1402">
+  <Test Number="252">
+    <ID>60196968</ID>
+    <StartTime>19Oct2018 08:14</StartTime>
+    <EndTime>19Oct2018 12:37</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.39,11.84,23.31,34.77,46.24,57.70,69.17,80.62,92.08,103.55,115.05,126.53,138.02,149.51,160.96,172.43,183.89,195.36,206.80,218.26,229.73,241.20</DOBListTimes>
+    <DOBListValues>-0.2,0.7,0.6,0.4,1.5,1.6,3.4,2.4,3.3,4.2,5.2,7.2,7.7,8.9,10.1,10.1,8.1,7.9,7.4,9.0,10.3,8.3</DOBListValues>
+  </Test>
+</Tests>

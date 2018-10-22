@@ -63,8 +63,12 @@ nls_fit = function(data, dose = 100,
     start = start)), silent = TRUE)
   # strip off group and patient_id, add deviance
   cf = coef(bid.nls)
-  if (!is.data.frame(cf)){
-    stop("No valid fit possible with this data set")
+  if (!is.data.frame(cf)) {
+    comment(data) = paste(comment(data),  "-- no valid fit with this data set")
+    #    cat(comment(data),"\n", file = stderr())
+    ret = list(data = data)
+    class(ret) = "breathtestfit"
+    return(ret)
   }
   if (dose != 100)
     cf$m = cf$m * dose/100

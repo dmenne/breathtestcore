@@ -39,3 +39,12 @@ test_that("read_breathid_xml hook not called when there is only one record", {
   expect_identical(bids, bids1)
   options(breathtestcore.choose_record = NULL)
 })
+
+test_that("fitting difficult xml returns data",{
+  filename = btcore_file("invalidnls.xml")
+  data = cleanup_data(read_breathid_xml(filename))
+  fit = nls_fit(data)
+  expect_is(fit, "breathtestfit")
+  expect_match(comment(fit$data), "no valid fit")
+  
+})

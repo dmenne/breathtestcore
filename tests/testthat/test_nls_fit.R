@@ -52,5 +52,7 @@ test_that("Nonsense record", {
   d = simulate_breathtest_data(n_records = 2)
   d$data$pdr = 0
   data = cleanup_data(d$data)
-  expect_error(nls_fit(data), "No valid fit")
+  fit = nls_fit(data)
+  expect_is(fit, "breathtestfit")
+  expect_match(comment(fit$data), "no valid fit")
 })
