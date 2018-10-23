@@ -8,3 +8,4 @@ spell.txt
 ^pkgdown$
 ^templates$
 README.md
+.gitlab-ci.yml
