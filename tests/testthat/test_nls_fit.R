@@ -54,5 +54,6 @@ test_that("Nonsense record", {
   data = cleanup_data(d$data)
   fit = nls_fit(data)
   expect_is(fit, "breathtestfit")
+  expect_is(fit, "breathtestnullfit")
   expect_match(comment(fit$data), "no valid fit")
 })

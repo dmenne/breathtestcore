@@ -67,7 +67,7 @@ nls_fit = function(data, dose = 100,
     comment(data) = paste(comment(data),  "-- no valid fit with this data set")
     #    cat(comment(data),"\n", file = stderr())
     ret = list(data = data)
-    class(ret) = "breathtestfit"
+    class(ret) = c("breathtestnullfit", "breathtestfit")
     return(ret)
   }
   if (dose != 100)
