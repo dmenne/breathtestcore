@@ -53,7 +53,7 @@ test_that("nlme_fit can be used to compute coefficients for multiple records in 
 })
 
 test_that("nlme_fit can be used to compute coefficients for multiple groups",{
-  skip_on_cran()
+  skip_on_cran() # Does no converge on some CRAN settings
   fit = nlme_fit(data)
   cf = coef_by_group(fit)
   expect_is(cf, "tbl_df")

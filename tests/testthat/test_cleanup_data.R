@@ -123,6 +123,8 @@ test_that("Columns must be numeric", {
 })  
 
 test_that("A list of data frames is concatenated, comments are concatenated", {
+  if (packageVersion("tibble") <= "1.4.2") 
+    skip("Inconsistent behaviour on earlier tibble < = 1.4.2")
   data0 = simulate_breathtest_data(n_records = 2)$data
   data0$group = "A"
   data0 = data0[,c("patient_id", "group", "minute", "pdr")]
@@ -133,7 +135,7 @@ test_that("A list of data frames is concatenated, comments are concatenated", {
   # Without comments
   data = list(data0 = data0, data1 = data1)
   d = cleanup_data(data)
-  expect_null(comment(d))
+  expect_equal(comment(d), comment(data0))
   expect_is(d, "tbl")
   expect_equal(nrow(d), 44)
   expect_equal(ncol(d), 4)
@@ -142,7 +144,7 @@ test_that("A list of data frames is concatenated, comments are concatenated", {
   comment(data0) = "A"
   data = list(data0 = data0, data1 = data1)
   d = cleanup_data(data)
-  expect_identical(comment(d), "A")
+  expect_match(comment(d), "A\n2 records")
 
   # Add two different comments
   comment(data0) = "A"
