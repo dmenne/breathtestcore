@@ -25,7 +25,7 @@
 #' the same file name is already there, and rename the file to avoid collisions_
 #' @param device breath_id or iris; default "generic"
 #' @param substrate should contain string "ace" or "oct" or "okt", case insensitive_ will
-#' be replaced by "acetate" or "octanoate"
+#' be replaced by "acetate" or "octanoate". If empty, "ocatanoate" is assumed.
 #' @param record_date required record date_
 #' @param start_time optional
 #' @param end_time optional
@@ -89,18 +89,17 @@ breathtest_data = function(patient_id,
   if (!sum(nd[-1] %in% c("pdr", "dob")) > 0)
     stop("function breathtest_data: data should have either dob or pdr or both")
   ##### add more substrates here
-  substrates = c("octanoate", "acetate")
-  substrate_pattern = c("o[ck]t", "acet")
-  substrate = substrates[str_detect(tolower(substrate), substrate_pattern)][1]
+  ## Assume ocatanoate by default
+  substrate = str_trim(substrate)
+  if (substrate == "") {
+    substrate = "octanoate"
+  } else {
+    substrates = c("octanoate", "acetate")
+    substrate_pattern = c("o[ck]t", "acet")
+    substrate = substrates[str_detect(tolower(substrate), substrate_pattern)][1]
+  }
   if (length(substrate) == 0)
-    stop(
-      "function breathtest_data: substrate is '",
-      substrate,
-      "'; it should contain substrings '" ,
-      paste(str_sub(substrates, 1, 4), collapse =
-              "' or '"),
-      "'"
-    )
+    substrate = "octanoate"
   if (!is.na(gender) & !match(gender, c("m", "f")))
     stop("function breathtest_data: gender should be 'm' or 'f'")
   # force NA if weight or height is not 0
