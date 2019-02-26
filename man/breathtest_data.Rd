@@ -39,7 +39,7 @@ the same file name is already there, and rename the file to avoid collisions_}
 \item{device}{breath_id or iris; default "generic"}
 
 \item{substrate}{should contain string "ace" or "oct" or "okt", case insensitive_ will
-be replaced by "acetate" or "octanoate"}
+be replaced by "acetate" or "octanoate". If empty, "ocatanoate" is assumed.}
 
 \item{record_date}{required record date_}
 
