@@ -1,31 +1,69 @@
 Package: breathtestcore
-Title: Core Functions to Read and Fit 13c Time Series from Breath Tests
-Version: 0.4.6
-Authors@R: c(
-    person("Dieter", "Menne", , "dieter.menne@menne-biomed.de", role = c("aut", "cre")),
-    person("Menne Biomed Consulting Tuebingen", role = c("cph")),
-    person("Benjamin","Misselwitz", , role = c("fnd")),
-    person("Mark", "Fox", , role = c("fnd")),
-    person("Andreas", "Steingoetter", , role = c("dtc")),
-    person("University Hospital of Zurich, Dep. Gastroenterology", role = c("fnd", "dtc"))
-    )
-Description: Reads several formats of 13C data (IRIS/Wagner, BreathID) and CSV.
-        Creates artificial sample data for testing. 
-        Fits Maes/Ghoos, Bluck-Coward self-correcting formula using 'nls', 'nlme'.
-        Methods to fit breath test curves with Bayesian Stan methods are refactored to 
-        package 'breathteststan'. For a Shiny GUI, see package 
-        'dmenne/breathtestshiny' on github.
-Depends: R (>= 3.4.0)
-Imports: nlme, MASS, stringr, dplyr, purrr, readr, tibble (>= 1.4.0), 
-         methods, readxl, 
-         assertthat, broom, tidyr,   ggplot2, ggfittext, 
-         signal, utils, multcomp, xml2
-Suggests: testthat, covr, knitr, survival, gridExtra
+Title: Core Functions to Read and Fit 13c Time Series from
+    Breath Tests
+Version: 0.4.6.9000
+Authors@R: 
+    c(person(given = "Dieter",
+             family = "Menne",
+             role = c("aut", "cre"),
+             email = "dieter.menne@menne-biomed.de"),
+      person(given = "Menne Biomed Consulting Tuebingen",
+             role = "cph"),
+      person(given = "Benjamin",
+             family = "Misselwitz",
+             role = "fnd"),
+      person(given = "Mark",
+             family = "Fox",
+             role = "fnd"),
+      person(given = "Andreas",
+             family = "Steingoetter",
+             role = "dtc"),
+      person(given = "University Hospital of Zurich, Dep. Gastroenterology",
+             role = c("fnd", "dtc")))
+Description: Reads several formats of 13C data (IRIS/Wagner,
+    BreathID) and CSV.  Creates artificial sample data for testing.  Fits
+    Maes/Ghoos, Bluck-Coward self-correcting formula using 'nls', 'nlme'.
+    Methods to fit breath test curves with Bayesian Stan methods are
+    refactored to package 'breathteststan'. For a Shiny GUI, see package
+    'dmenne/breathtestshiny' on github.
+License: GPL-3
 URL: https://github.com/dmenne/breathtestcore
 BugReports: https://github.com/dmenne/breathtestcore/issues
-License: GPL-3
-RoxygenNote: 6.1.1
-LazyData: true
-VignetteBuilder: knitr
-SystemRequirements: pandoc
+Depends: 
+    R (>= 3.4.0)
+Imports: 
+    assertthat,
+    broom,
+    dplyr,
+    ggfittext,
+    ggplot2,
+    graphics,
+    grid,
+    MASS,
+    methods,
+    multcomp,
+    nlme,
+    purrr,
+    readr,
+    readxl,
+    signal,
+    stats,
+    stringr,
+    tibble (>= 1.4.0),
+    tidyr,
+    tools,
+    utils,
+    xml2
+Suggests: 
+    base,
+    gastempt,
+    gridExtra,
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+SystemRequirements: pandoc

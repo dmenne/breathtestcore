@@ -13,3 +13,5 @@ _gh-pages
 spell.txt
 *.bak
 cran-comments.md
+doc
+Meta

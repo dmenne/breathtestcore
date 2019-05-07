@@ -9,3 +9,5 @@ spell.txt
 ^templates$
 README.md
 .gitlab-ci.yml
+^doc$
+^Meta$
