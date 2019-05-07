@@ -56,7 +56,6 @@ Imports:
     xml2
 Suggests: 
     base,
-    gastempt,
     gridExtra,
     knitr,
     rmarkdown,
