@@ -13,7 +13,7 @@ data(usz_13c)
 from the division of \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
 University Hospital Zurich}.
 Most breath samples from normals were collected with bags and analyzed by
-\href{http://kibion.com/content/uploads/2013/07/113-01_IRIS_Consumables_DE.pdf}{IRIS/Wagner}
+\href{http://kibion.com}{IRIS/Wagner}
 infrared spectroscopy. Patient samples were recorded with the continuous
 monitoring system \href{http://www.exalenz.com}{BreathID}.
 
