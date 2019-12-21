@@ -130,7 +130,7 @@ knitr::include_graphics("breathtestshiny.png")
 
 ### Two-column format
 
-When you have only data from one record, you can supply data in a two-column format as given in sheet `2col` of workboot `ExcelSamples.xlsx`. The column headers must be `minute, pdr`. With [breathtestshiny GUI](https://apps.menne-biomed.de/breathtestshiny/), you can upload the file, or simply paste it into the editor. This is the easiest method to get a fit for a single patient.
+When you have data from one record only, you can use a two-column format as given in sheet `2col` of workboot `ExcelSamples.xlsx`. The column headers must be `minute, pdr`. With [breathtestshiny GUI](https://apps.menne-biomed.de/breathtestshiny/), you can upload the file, or simply paste it into the editor. This is the easiest method to get a fit for a single patient.
 
 ```{r, echo = FALSE, include = FALSE}
 options(tibble.print_min= 4)
