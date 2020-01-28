@@ -38,7 +38,8 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos",
       dplyr::filter(parameter == "t50", method == "maes_ghoos") , 
       table(patient_id)))  ) > 1
   } else has_repeats = FALSE
-  has_groups = length(unique(x$data$group)) > 1
+  n_groups = length(unique(x$data$group))
+  has_groups =  n_groups > 1
 
   sep = max(x$data$pdr)/10 # separation between annotations
   if (has_fit) {
@@ -136,9 +137,11 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos",
         paste(fit, "Half-emptying t50 by method", method_t50),
         paste("No fit ", comment(x$data)))
   
-  p + facet_wrap(~patient_id) +
-    scale_colour_brewer(type = "seq", palette = "Set1") + 
+  p = p + facet_wrap(~patient_id) +
     ylab("pdr") +
     ggtitle(label = NULL, subtitle = subtitle)
+  if (ngroups <= 5)
+    p = p + scale_colour_brewer(type = "seq", palette = "Set1")  
+  p
 }
 
