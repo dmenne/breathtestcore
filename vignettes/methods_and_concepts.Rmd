@@ -131,7 +131,9 @@ knitr::include_graphics("methods.png")
 
 The half-emptying time determined with the <sup>13</sup>C breath test method correlates to some extend with gastric emptying in within-subject measurements, but it is not more than a surrogate for gastric emptying times measured by MRI (with secretion) or scintigraphy (meal-only). For data set `usz_13c_d` in this package, MRI emptying data are available and can be compared with [breath test data](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples). The type of meal strongly biases the estimates because of the the dependency on lipophilic/lipophobic layering; comparing different meal types is not reliable even within-subject, and less so between-subject.
 
-Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the [results](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples) are are even less consistent with those from MRI than those from the Maes/Ghoos method. There are many publication that tried an ad-hoc scintigraphic correction (@Keller2009, `t50_maes_ghoos_scintigraphy()`) or one based on pharmacolokinetics (@Bluck2006, `t50_bluck_coward()`). I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives "better" results than the default Maes/Ghoos method.
+Many attempts have been made to extract more information from the emptying curve, and to correct for the overall too high values; the Bluck-Coward method implemented in this package is one of them, but the [results](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples) are are even less consistent with those from MRI than those from the Maes/Ghoos method. @Sanaka2004 mention deconvolution and use an approximate correction for the pharmcological weighting function for the Wagner-Nelson method.
+
+There are many publication that tried an ad-hoc scintigraphic correction (@Keller2009, `t50_maes_ghoos_scintigraphy()`) or one based on pharmacolokinetics (@Bluck2006, `t50_bluck_coward()`). I do not know of any publication which has used rigorous statistical tests such as statistical cross-validation and validation with different meal types to show that some method gives "better" results than the default Maes/Ghoos method.
 
 > In the following, I argue that there is nothing to gain from playing with "better" methods to fit the breath test time series. Independent per-subject information must be available to separate acetate pharmacokinetics, based on concentration gradient diffusion, from gastric empyting, which is physical transport.
 
@@ -273,9 +275,9 @@ Can anyone supply a data set for a pilot?
 
 Currently outsourced to [A comparison of results with nls, nlme](https://menne-biomed.de/blog/breath-test-stan) and Bayesian [Stan](http://www.mc-stan.org). 
 
-## Why no Wagner-Nelson?
+## Why no Wagner-Nelson (Sanaka)?
 
-A popular alternative when curve fitting does not work was the Wagner-Nelson (@Sanaka2004) method which uses a non-parametric approach for the initial slope. However, it uses the assumption that the terminal slope is the same for all subjects (k=0.01/min, 0.65/h) which strongly affects the estimate of the half-emptying time, so there is little justification to use the Wagner-Nelson method.
+A popular alternative when curve fitting does not work was the Wagner-Nelson (@Sanaka2004) method which uses a non-parametric approach for the initial slope. However, it uses the assumption that the terminal slope is the same for all subjects (k=0.01/min, 0.65/h) which strongly affects the estimate of the half-emptying time, so there is little justification to use the Wagner-Nelson method. 
 
 With some of the functions in this package or with `breathteststan::stan_fit()` in the sister package, all curves can be fitted. I have not seen a single example that fails with the Bayesian method when multiple records are analyzed with a mix-in, so there is no excuse to use the Wagner-Nelson method any longer.
 

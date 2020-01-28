@@ -26,7 +26,7 @@ Bayesian hierarchical methods to interpret  the 13C-octanoic acid breath
 test for gastric emptying. Digestion 83_96-107, page 98.
 }
 \examples{
-# From table 3 and 4 in Bluck et al.; values for \\code{k} and \\code{beta} 
+# From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta} 
 # (nls, bayesian) are entered and checked against the tabulated values of 
 # t_{1/2(in)}.
 # Most errors are small, but there are some outliers; errors in paper table?

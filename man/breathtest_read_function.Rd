@@ -26,7 +26,7 @@ first sheet is read.
 }
 \examples{
  file = btcore_file("IrisCSV.TXT")
- # Get function to read this file. Returns \\code{\\link{read_iris_csv}}.
+ # Get function to read this file. Returns \code{\link{read_iris_csv}}.
  read_fun = breathtest_read_function(file)
  str(read_fun(file))
  # or, simple (returns a list!)

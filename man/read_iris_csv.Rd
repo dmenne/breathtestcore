@@ -28,7 +28,7 @@ dose = 100,  weight = 75, height = 180}.
 }
 \examples{
 filename = btcore_file("IrisCSV.TXT")
-cat(readLines(filename, n = 3), sep="\\n")
+cat(readLines(filename, n = 3), sep="\n")
 #
 iris_data = read_iris_csv(filename)
 str(iris_data)

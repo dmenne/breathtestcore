@@ -23,7 +23,7 @@ class \code{breathtest_data}.
 \examples{
 filename = btcore_file("NewBreathID_01.xml")
 # Show first lines
-cat(readLines(filename, n = 10), sep="\\n")
+cat(readLines(filename, n = 10), sep="\n")
 bid = read_breathid_xml(filename)
 # List with length 1
 str(bid, 1)

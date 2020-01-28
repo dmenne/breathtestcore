@@ -4,12 +4,31 @@
 \alias{breathtest_data}
 \title{Data structure with PDR data and descriptors for breath test records}
 \usage{
-breathtest_data(patient_id, name = NA, first_name = NA,
-  initials = NA, dob = NA, birth_year = NA, gender = NA,
-  study = NA, pat_study_id = NA, file_name, device = "generic",
-  substrate, record_date, start_time = record_date,
-  end_time = record_date, test_no, dose = 100, height = 180,
-  weight = 75, t50 = NA, gec = NA, tlag = NA, data = data)
+breathtest_data(
+  patient_id,
+  name = NA,
+  first_name = NA,
+  initials = NA,
+  dob = NA,
+  birth_year = NA,
+  gender = NA,
+  study = NA,
+  pat_study_id = NA,
+  file_name,
+  device = "generic",
+  substrate,
+  record_date,
+  start_time = record_date,
+  end_time = record_date,
+  test_no,
+  dose = 100,
+  height = 180,
+  weight = 75,
+  t50 = NA,
+  gec = NA,
+  tlag = NA,
+  data = data
+)
 }
 \arguments{
 \item{patient_id}{required, string or number for unique identification}

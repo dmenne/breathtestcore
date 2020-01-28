@@ -4,8 +4,7 @@
 \alias{coef_diff_by_group}
 \title{Tabulates breath test parameter differences of groups}
 \usage{
-coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL,
-  ...)
+coef_diff_by_group(fit, mcp_group = "Tukey", reference_group = NULL, ...)
 }
 \arguments{
 \item{fit}{Object of class \code{breathtestfit}, for example from
@@ -55,6 +54,6 @@ coef_diff_by_group(fit)
 fit = nlme_fit(data)
 coef_diff_by_group(fit)
 }
-# TODO: Add example for Stan fit typecast to class \\code{breathtestfit} to compute
+# TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
 # confidence intervals instead of credible intervals
 }

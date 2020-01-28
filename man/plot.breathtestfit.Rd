@@ -4,8 +4,14 @@
 \alias{plot.breathtestfit}
 \title{S3 plot method for breathtestfit}
 \usage{
-\method{plot}{breathtestfit}(x, inc = 5, method_t50 = "maes_ghoos",
-  line_size = 1, point_size = NULL, ...)
+\method{plot}{breathtestfit}(
+  x,
+  inc = 5,
+  method_t50 = "maes_ghoos",
+  line_size = 1,
+  point_size = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}}, 

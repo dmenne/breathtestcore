@@ -4,8 +4,12 @@
 \alias{nlme_fit}
 \title{Mixed-model nlme fit to 13C Breath Data}
 \usage{
-nlme_fit(data, dose = 100, start = list(m = 30, k = 1/100, beta = 2),
-  sample_minutes = 15)
+nlme_fit(
+  data,
+  dose = 100,
+  start = list(m = 30, k = 1/100, beta = 2),
+  sample_minutes = 15
+)
 }
 \arguments{
 \item{data}{Data frame or tibble as created by \code{\link{cleanup_data}},

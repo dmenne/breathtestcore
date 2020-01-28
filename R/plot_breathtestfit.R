@@ -140,7 +140,7 @@ plot.breathtestfit = function(x, inc = 5, method_t50 = "maes_ghoos",
   p = p + facet_wrap(~patient_id) +
     ylab("pdr") +
     ggtitle(label = NULL, subtitle = subtitle)
-  if (ngroups <= 5)
+  if (n_groups <= 5)
     p = p + scale_colour_brewer(type = "seq", palette = "Set1")  
   p
 }

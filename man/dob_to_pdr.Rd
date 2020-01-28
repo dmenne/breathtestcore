@@ -4,8 +4,14 @@
 \alias{dob_to_pdr}
 \title{Convert breath test DOB data to PDR data}
 \usage{
-dob_to_pdr(dob, weight = 75, height = 180, mw = 167,
-  purity_percent = 99.1, mg_substrate = 100)
+dob_to_pdr(
+  dob,
+  weight = 75,
+  height = 180,
+  mw = 167,
+  purity_percent = 99.1,
+  mg_substrate = 100
+)
 }
 \arguments{
 \item{dob}{Delta-over-baseline vector in 0/00}

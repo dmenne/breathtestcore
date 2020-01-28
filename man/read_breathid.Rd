@@ -21,7 +21,7 @@ of class \code{breathtest_data}.
 \examples{
 filename = btcore_file("350_20043_0_GER.txt")
 # Show first lines
-cat(readLines(filename, n = 10), sep="\\n")
+cat(readLines(filename, n = 10), sep="\n")
 #
 bid = read_breathid(filename)
 str(bid)

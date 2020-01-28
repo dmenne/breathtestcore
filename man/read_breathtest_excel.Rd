@@ -32,7 +32,7 @@ filename = btcore_file("ExcelSamples.xlsx")
 sheets = readxl::excel_sheets(filename)
 # First 4 lines of each sheet
 for (sheet in sheets) {
-  cat("\\nSheet ", sheet,"\\n")
+  cat("\nSheet ", sheet,"\n")
   ex = readxl::read_excel(filename, sheet = sheet, n_max = 4)
   print(ex)
 }  

@@ -4,8 +4,7 @@
 \alias{augment.breathtestfit}
 \title{Augmented prediction for breathtest fit}
 \usage{
-\method{augment}{breathtestfit}(x, by = NULL, minute = NULL,
-  dose = 100, ...)
+\method{augment}{breathtestfit}(x, by = NULL, minute = NULL, dose = 100, ...)
 }
 \arguments{
 \item{x}{Object of class \code{breathttestfit}}
