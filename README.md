@@ -20,7 +20,7 @@ dieter.menne@menne-biomed.de
 * To test some of the functions with sample data or your own data, try the [online demo](https://apps.menne-biomed.de/breathtestshiny).
 * Issues can be reported [here](https://github.com/dmenne/breathtestcore/issues).
 
-This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13cbreath) which is partially obsolete.
+This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13cbreath) which is no longer maintained.
 
 ## What it does
 
@@ -35,7 +35,7 @@ This is a reboot of R package [dmenne/d13cbreath](https://github.com/dmenne/d13c
 
 ## Sponsors and supporters
 
-The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. Special thanks to Andreas Steingötter for constantly reminding me that better statistics does necessarily make a method physiologically relevant.
+The software is being developed in cooperation with the Department of Gastroenterology of the University Hospital of Zürich and Claraspital Basel. Thanks to Benjamin Misselwitz, Mark Fox and Werner Schwizer. 
 
 ## How to install
 
@@ -44,14 +44,14 @@ To install the most recent versions of the package, use
     devtools::install_github("dmenne/breathtestcore", build_vignettes = TRUE)
     # In case you want to use the fancy Stan-based methodes
     devtools::install_github("dmenne/breathteststan")
-    # And here the web app; this is not yet on CRAN and must be installed from github
+    # And here the web app; this is not on CRAN and must be installed from github
     devtools::install_github("dmenne/breathtestshiny", build_vignettes = TRUE)
 
 Do not forget to use `build_vignettes = TRUE`.
 
-Stable version of the packages [breathtestcore](https://CRAN.R-project.org/package=breathtestcore) and [breathteststan](https://CRAN.R-project.org/package=breathteststan) can also be installed from CRAN. Since packages are under strong development, we recommend to use the github versions.
+Stable version of the packages [breathtestcore](https://CRAN.R-project.org/package=breathtestcore) and [breathteststan](https://CRAN.R-project.org/package=breathteststan) can also be installed from CRAN. 
 
-The [Docker image](https://hub.docker.com/r/dmenne/gastro-docker/) contains RStudio, package `gastempt` to analyze MRI/scintigraphic gastric emptying data, and the `breathtestshiny` app.
+For an easy installation, use the Docker image [dmenne/breathtestshiny](<https://hub.docker.com/r/dmenne/breathtestshiny>)
 
 You can run the [web app online](https://apps.menne-biomed.de/breathtestshiny/). No data are stored, but you can download all results and a series of tests for studies.
 
