@@ -30,9 +30,9 @@ test_that("Nasty data return results with na", {
   expect_equal(nrow(cf), 81) # Last dropped
 })  
 
-rel_diff = function(d, cf, parameter){
-  d1 = d$record[[parameter]]
-  d2 = as.numeric(cf[cf["parameter"] == parameter,"value"])  
+rel_diff = function(d, cf, param){
+  d1 = d$record[[param]]
+  d2 = cf %>% filter(parameter == param) %>% pull(value)
   abs(d2 - d1)/abs(d1)
 }
 
@@ -43,7 +43,7 @@ test_that("Single record give valid result after passing through cleanup_data", 
   expect_is(cf, "data.frame")
   expect_equal(names(cf), c("patient_id", "group", "parameter", "method", "value"))
   expect_equal(nrow(cf), 9)
-  expect_lt(rel_diff(d, cf, "m"), 0.02)
+  expect_lt(rel_diff(d, cf, "m"), 0.01)
   expect_lt(rel_diff(d, cf, "beta"), 0.014)
   expect_lt(rel_diff(d, cf, "k"), 0.01)
 })
