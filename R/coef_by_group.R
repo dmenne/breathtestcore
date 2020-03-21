@@ -62,6 +62,7 @@ coef_by_group.breathtestfit = function(fit, ...) {
   }
   # Keep CRAN quite
   . = confint = estimate = lhs = method = parameter = conf.high = conf.low = NULL
+  parameter = method = NULL
   sig = as.integer(options("digits"))
   cm = comment(cf)
   
@@ -69,7 +70,7 @@ coef_by_group.breathtestfit = function(fit, ...) {
     mutate( # lme requires factors
       group = as.factor(.$group)
     ) %>%
-    group_by_("parameter", "method") %>%
+    group_by(parameter, method) %>%
     do({
       fit_lme = nlme::lme(value~group, random = ~1|patient_id, data = .)
       # Marginal
@@ -96,13 +97,13 @@ coef_by_group.breathtestfit = function(fit, ...) {
 # local function for the case of 1 group/ multiple subjects
 
 coef_by_group.breathtestfit_2 = function(fit, ...) {
-  . = NULL # CRAN
+  . = parameter = method = NULL # CRAN
   cm = comment(fit$data)
   cf = coef(fit)
   if (is.null(cf)) return(NULL)
   sig = as.integer(options("digits"))
   cf = cf %>%
-    group_by_("parameter", "method") %>% 
+    group_by(parameter, method) %>% 
   do({
     fit_lme = nlme::lme(value~1, random = ~1|patient_id, data = .)
     ci = nlme::intervals(fit_lme, which = "fixed")$fixed
@@ -123,11 +124,11 @@ coef_by_group.breathtestfit_2 = function(fit, ...) {
 
 # local function for the case of 1 group/ 1 subject
 coef_by_group.breathtestfit_1 = function(fit, ...) {
-  . = estimate = NULL # CRAN
+  . = estimate = parameter = method = NULL # CRAN
   cm = comment(fit$data)
   sig = as.integer(options("digits"))
   cf = coef(fit) %>% 
-    group_by_("parameter", "method") %>%
+    group_by(parameter, method) %>%
     do({
       tibble(group = .$group, estimate = .$value, conf.low = NA, conf.high = NA,
                  diff_group = NA)
