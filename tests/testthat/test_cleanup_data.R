@@ -22,10 +22,10 @@ test_that("Duplicates are removed", {
 
 test_that("Two correctly named columns are are dummy filled and value at t=0 is corrected", {
   # Here we pass $data; see next test for alternative
-  data = simulate_breathtest_data(1, first_minute = 0)$data[,c("minute", "pdr")]  
+  data = simulate_breathtest_data(1, first_minute = 0)$data[,c("minute", "pdr")]
   data1 = cleanup_data(data)
   # First row is changes
-  expect_equal(data[-1,], data1[-1,3:4])  
+  expect_equivalent(data[-1,], data1[-1,3:4])  
   expect_equal(data1$minute[1], 0.01) # Slightly shifted
   expect_equal(names(data1), expected_columns)
 })
@@ -65,9 +65,9 @@ test_that("Incorectly named columns are renamed", {
   expect_equal(names(data1), expected_columns)
 })
 
-test_that("Columns without names are renamed", {
+test_that("Columns with illegal names", {
   data = simulate_breathtest_data(1)$data[,c("minute", "pdr")]  
-  names(data) = NULL
+  names(data) = c("blub", "blab")
   data1 = cleanup_data(data)
   expect_equal(names(data1), expected_columns)
   expect_is(data1, "tbl_df")
@@ -222,7 +222,7 @@ test_that("list of breathtest_data of different formats is accepted as input", {
   expect_equal(nrow(d), 115)
   expect_equal(unique(d$patient_id), c("350_20043_0_GER", "1871960", "123456"))
 
-  # Force use of filename for patient_id
+  # Force use of file name for patient_id
   d = cleanup_data(data, use_filename_as_patient_id = TRUE)
   # When no name is given, letters are given to group
   expect_equal(unique(d$group), c("anton", "bertha", "caesar"))
@@ -234,6 +234,8 @@ test_that("Single XML is accepted as input", {
   f1 = btcore_file("NewBreathID_multiple.xml")
   data = read_breathid_xml(f1)
   d = cleanup_data(data)
+  expect_equal(nrow(d),65)
+  expect_equal(names(d), expected_columns)
 })
   
 test_that("list of breathtest_data with XML is accepted as input", {

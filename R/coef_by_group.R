@@ -106,7 +106,7 @@ coef_by_group.breathtestfit_2 = function(fit, ...) {
   do({
     fit_lme = nlme::lme(value~1, random = ~1|patient_id, data = .)
     ci = nlme::intervals(fit_lme, which = "fixed")$fixed
-    data_frame(
+    tibble(
         group = .$group,
         estimate = signif(ci[1,"est."], sig),
         conf.low = signif(ci[1,"lower"], sig),
@@ -129,7 +129,7 @@ coef_by_group.breathtestfit_1 = function(fit, ...) {
   cf = coef(fit) %>% 
     group_by_("parameter", "method") %>%
     do({
-      data_frame(group = .$group, estimate = .$value, conf.low = NA, conf.high = NA,
+      tibble(group = .$group, estimate = .$value, conf.low = NA, conf.high = NA,
                  diff_group = NA)
     }) %>%
     mutate(

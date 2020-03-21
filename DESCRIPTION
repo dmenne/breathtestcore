@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from
     Breath Tests
-Version: 0.5.0
+Version: 0.6.0
 Authors@R: 
     c(person(given = "Dieter",
              family = "Menne",
@@ -49,7 +49,7 @@ Imports:
     signal,
     stats,
     stringr,
-    tibble (>= 1.4.0),
+    tibble (>= 2.0.0),
     tidyr,
     tools,
     utils,
@@ -64,5 +64,5 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 SystemRequirements: pandoc

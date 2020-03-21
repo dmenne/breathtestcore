@@ -95,7 +95,7 @@ nls_fit = function(data, dose = 100,
   pars = list()
   for (i in seq_len(nrow(cf)))  {
     cf1 = cf[i, , drop = FALSE]
-    pars[[i]] = data_frame(
+    pars[[i]] = tibble(
       patient_id = cf1$patient_id,
       group = cf1$group,
       parameter = parameters,

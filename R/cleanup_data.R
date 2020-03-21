@@ -173,7 +173,7 @@ cleanup_data.data.frame = function(data, ... ){
 cleanup_data.matrix = function(data, ... ){
   if (ncol(data) > 2)
     stop("A matrix can only be used as data input when two columns <minute> and <pdr> are passed. Use a data frame otherwise")
-  cleanup_data(as_data_frame(data), ...)
+  cleanup_data(as_tibble(data), ...)
 }
 
 #' @export 

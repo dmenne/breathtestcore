@@ -96,7 +96,7 @@ augment.breathtestfit = function(x, by = NULL, minute = NULL, dose = 100, ...) {
     tidy(x) %>%  
       rowwise %>% 
       do( 
-        data_frame(
+        tibble(
           patient_id = .$patient_id,
           group = .$group,
           minute = minute,

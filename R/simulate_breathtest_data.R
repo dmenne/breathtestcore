@@ -95,7 +95,7 @@ simulate_breathtest_data = function(
 
   minute  = seq(first_minute, max_minute, by = step_minute)
   # Record
-  rec = data_frame(patient_id = sprintf("rec_%02d", 1:n_records))
+  rec = tibble(patient_id = sprintf("rec_%02d", 1:n_records))
   if (!use_cov) {
     rec = cbind(rec, 
       m = round(rnorm(n_records, m_mean, m_std)),
@@ -126,7 +126,7 @@ simulate_breathtest_data = function(
   data = rec %>%
     rowwise() %>%
     do(
-      data_frame(
+      tibble(
         patient_id = .$patient_id,
         minute = minute,
         pdr = exp_beta(minute = minute,  dose = dose , m = .$m, k = .$k, beta = .$beta)

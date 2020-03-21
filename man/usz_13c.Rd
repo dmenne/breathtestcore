@@ -4,7 +4,9 @@
 \name{usz_13c}
 \alias{usz_13c}
 \title{Zurich sample set of 13C breath test data}
-\format{A data frame with 15574 rows and 4 variables}
+\format{
+A data frame with 15574 rows and 4 variables
+}
 \usage{
 data(usz_13c)
 }
