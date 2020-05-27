@@ -61,8 +61,8 @@ coef_by_group.breathtestfit = function(fit, ...) {
     }
   }
   # Keep CRAN quite
-  . = confint = estimate = lhs = method = parameter = conf.high = conf.low = NULL
-  parameter = method = NULL
+  . = confint = estimate = lhs = method = parameter = 
+    contrast =  conf.high = conf.low = parameter = method = NULL
   sig = as.integer(options("digits"))
   cm = comment(cf)
   
@@ -79,9 +79,9 @@ coef_by_group.breathtestfit = function(fit, ...) {
       K[,1] = 1
       cld_0 = broom::tidy(
         multcomp::cld(multcomp::glht(fit_lme, linfct =  multcomp::mcp(group = "Tukey"))))
-      broom::tidy(confint(multcomp::glht(fit_lme, linfct =  K)))[,-2] %>%
-        left_join(cld_0, by = "lhs") %>%
-        rename(group = lhs, diff_group = letters) %>% 
+      broom::tidy(confint(multcomp::glht(fit_lme, linfct =  K))) %>%
+        left_join(cld_0, by = c("contrast" = "group")) %>%
+        rename(group = contrast, diff_group = letters) %>% 
       mutate(
         estimate = signif(estimate, sig),
         conf.low = signif(conf.low, sig),

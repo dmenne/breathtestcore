@@ -65,7 +65,8 @@ coef_diff_by_group.breathtestfit =
   cm = comment(cf)
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic =
-    std.error = conf.low = conf.high = p.value = NULL
+    std.error = conf.low = conf.high = p.value = 
+    adj.p.value = contrast = estimate= term = NULL
   cf = cf %>%
     mutate( # lme requires factors
       group = as.factor(.$group)
@@ -86,18 +87,20 @@ coef_diff_by_group.breathtestfit =
     do({
       fit_lme = nlme::lme(value~group, random = ~1|patient_id, data = .)
       glh = multcomp::glht(fit_lme, linfct =  multcomp::mcp(group = mcp_group))
-      broom::tidy(confint(glh))[,-2] %>%
-        left_join(broom::tidy(summary(glh)), by = "lhs", copy = TRUE) %>%
-      mutate(
-        estimate.x = signif(estimate.x, sig),
-        conf.low = signif(conf.low, sig),
-        conf.high = signif(conf.high, sig),
-        p.value = signif(p.value, sig)
-      )
+      broom::tidy(confint(glh)) %>%
+        left_join(broom::tidy(summary(glh)) %>%
+                    select(term, contrast, estimate, p.value=adj.p.value), 
+                  by = c("term", "contrast"), copy = TRUE) 
     }) %>%
+    mutate(
+      estimate.x = signif(estimate.x, sig),
+      conf.low = signif(conf.low, sig),
+      conf.high = signif(conf.high, sig),
+      p.value = signif(p.value, sig),
+    ) %>% 
     ungroup() %>%
-    dplyr::select(-rhs, -estimate.y, -std.error, -statistic,
-      estimate = estimate.x, groups = lhs)
+    dplyr::select(-estimate.y, -std.error, -statistic,-term, 
+                  groups = contrast, estimate = estimate.x)
   comment(cf) = cm
   class(cf) = c("coef_diff_by_group", class(cf))
   cf

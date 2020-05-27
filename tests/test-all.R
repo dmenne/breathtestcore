@@ -1,4 +1,4 @@
 library(testthat)
 
-#test_check("breathtestcore", filter = "plot_breathtestfit")
-test_check("breathtestcore")
+test_check("breathtestcore", filter = "coef_diff_by_group")
+#test_check("breathtestcore")
