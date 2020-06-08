@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from
     Breath Tests
-Version: 0.7.0
+Version: 0.7.1
 Authors@R: 
     c(person(given = "Dieter",
              family = "Menne",
@@ -59,7 +59,8 @@ Suggests:
     gridExtra,
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    breathteststan
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
