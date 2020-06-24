@@ -36,6 +36,7 @@ Imports:
     dplyr,
     ggfittext,
     ggplot2,
+    broom,
     graphics,
     grid,
     MASS,
@@ -61,7 +62,8 @@ Suggests:
     testthat,
     breathteststan
 Remotes:
-    tidymodels/broom(>= 0.7.0)
+    tidymodels/broom,
+    dmenne/breathteststan
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
