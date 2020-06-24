@@ -33,7 +33,6 @@ Depends:
     R (>= 3.5.0)
 Imports: 
     assertthat,
-    broom(>= 0.7.0),
     dplyr,
     ggfittext,
     ggplot2,
@@ -61,6 +60,8 @@ Suggests:
     rmarkdown,
     testthat,
     breathteststan
+Remotes:
+    tidymodels/broom(>= 0.7.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
