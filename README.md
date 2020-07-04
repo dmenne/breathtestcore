@@ -6,10 +6,14 @@ Menne Biomed Consulting Tübingen, Germany
 http://www.menne-biomed.de
 dieter.menne@menne-biomed.de
 
+<!-- badges: start -->
+[![R build status](https://github.com/dmenne/breathtestcore/workflows/R-CMD-check/badge.svg)](https://github.com/dmenne/breathtestcore/actions)
 [![Travis-CI Build Status](https://travis-ci.org/dmenne/breathtestcore.svg?branch=master)](https://travis-ci.org/dmenne/breathtestcore)
 [![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
 ![CRAN](https://cranlogs.r-pkg.org/badges/grand-total/breathtestcore)
 ![CRAN](https://www.r-pkg.org/badges/version-ago/breathtestcore)
+[![Coveralls test coverage](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg)](https://coveralls.io/r/dmenne/breathtestcore?branch=master)
+<!-- badges: end -->
 
 Menne Biomed Consulting Tübingen, Germany
 https://www.menne-biomed.de

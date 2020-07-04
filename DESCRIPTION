@@ -60,7 +60,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat,
-    breathteststan
+    breathteststan,
+    covr
 Remotes:
     tidymodels/broom,
     dmenne/breathteststan
