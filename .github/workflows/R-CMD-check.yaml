@@ -8,6 +8,8 @@ on:
 
 name: R-CMD-check
 
+run: 
+  sudo apt-get install libcurl4-openssl-dev
 jobs:
   R-CMD-check:
     runs-on: ubuntu-18.04
