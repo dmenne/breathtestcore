@@ -11,3 +11,4 @@ README.md
 .gitlab-ci.yml
 ^doc$
 ^Meta$
+^\.github$
