@@ -36,7 +36,7 @@ Imports:
     dplyr,
     ggfittext,
     ggplot2,
-    broom,
+    broom (>=0.7.0),
     graphics,
     grid,
     MASS,
@@ -62,12 +62,9 @@ Suggests:
     testthat,
     breathteststan,
     covr
-Remotes:
-    tidymodels/broom,
-    dmenne/breathteststan
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 SystemRequirements: pandoc
