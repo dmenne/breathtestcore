@@ -1,5 +1,3 @@
-context("Plot functions for breathtestfit and breathtestdata class")
-
 nlayers <- function(x) length(ggplot_build(x)$data)
 
 test_that("Plot layers match expectations",{

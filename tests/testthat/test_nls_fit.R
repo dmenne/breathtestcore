@@ -1,5 +1,3 @@
-context("Individual curve fitting with nls")
-
 test_that("Nice data return nice result", {
   d = simulate_breathtest_data(seed = 4711)   # default 10 records
   # This job is normally done by cleanup_data

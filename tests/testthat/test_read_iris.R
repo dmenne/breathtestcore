@@ -1,5 +1,3 @@
-context("13C read IRIS composite files test")
-
 test_that("read_iris returns valid data set",{
   filename = btcore_file("IrisMulti.TXT")
   f = read_iris(filename)

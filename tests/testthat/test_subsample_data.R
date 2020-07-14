@@ -1,5 +1,3 @@
-context("Subsampling of data")
-
 test_that("Subsample uses denser steps early and wider steps later",{
   d = simulate_breathtest_data(n_records = 1, first_minute = 1, step_minute = 1)$data
   comment(d) = "comment"

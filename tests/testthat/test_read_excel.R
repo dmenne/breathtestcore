@@ -1,5 +1,3 @@
-context("Reading excel files")
-
 filename = btcore_file("ExcelSamples.xlsx")
 expected_names = c("patient_id", "group", "minute", "pdr")
 

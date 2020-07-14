@@ -1,4 +1,3 @@
-context("recognize breathtest file format")
 library(purrr)
 
 check_and_read = function(filename, read_function){

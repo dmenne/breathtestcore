@@ -1,6 +1,3 @@
-context("Exponential beta function")
-
-
 test_that( "exp_beta returns values and gradient", {
   start = list(m = 20, k = 1/100, beta = 2)
   pdr =  exp_beta(seq(1, 100, by = 10), 100, start$m, start$k, start$beta)

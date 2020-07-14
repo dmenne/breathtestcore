@@ -1,5 +1,3 @@
-context("recognize breathtest file format")
-
 test_that("Bluck-Coward data for testing of parameter functions" , {
   
   cf = data.frame(

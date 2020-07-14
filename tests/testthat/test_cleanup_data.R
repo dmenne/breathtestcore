@@ -1,4 +1,3 @@
-context("Cleanup data")
 expected_columns = c("patient_id", "group", "minute","pdr")
 
 test_that("pdr is made numeric, remove gradient", {

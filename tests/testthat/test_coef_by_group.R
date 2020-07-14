@@ -1,5 +1,3 @@
-context("Coefficients by group")
-
 suppressPackageStartupMessages(library(dplyr))
 data("usz_13c")
 data = usz_13c %>%

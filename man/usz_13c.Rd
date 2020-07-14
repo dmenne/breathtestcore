@@ -25,8 +25,8 @@ monitoring system \href{http://www.exalenz.com}{BreathID}.
   there are two records for each subject, so only the combination of patient_id 
   and group is a unique identifier of the time series record.}
   \item{group}{\code{liquid_normal} for normals and liquid meal,
-  \code{solid_normal} normals and solid meal, and \code{patient} for patients;
-  patients are an unselected cross-section from the University Hospital of Zurich.}
+  \code{solid_normal} normals and solid meal, and \code{patient} for patients
+  from the University Hospital of Zurich.}
   \item{minute}{Time in minutes}
   \item{pdr}{PDR as computed by breathtest device or from dob via function dob_to_pdr}
 }

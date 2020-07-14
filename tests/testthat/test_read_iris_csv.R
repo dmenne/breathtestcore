@@ -1,5 +1,3 @@
-context("13C read IRIS CSV test")
-
 test_that("extract_id returns valid id" , {
   expect_equal(extract_id("123456"), "123456")
   expect_equal(extract_id("123-456"), "123_456")

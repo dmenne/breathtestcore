@@ -1,5 +1,3 @@
-context("13c read BreathID test")
-
 test_that("read_breathid returns valid data set", {
   filename = btcore_file("350_20043_0_GER.txt")
   f = read_breathid(filename)

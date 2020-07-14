@@ -1,5 +1,3 @@
-context("Read any breath test file")
-
 test_that("Reading a single file returs a list of class breathtest_data",{
   file = btcore_file("IrisCSV.TXT")
   bt = read_any_breathtest(file)

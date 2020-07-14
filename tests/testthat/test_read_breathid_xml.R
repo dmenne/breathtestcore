@@ -1,4 +1,3 @@
-context("Read breathid xml format")
 # Additional tests in test_cleanup_data
 
 # Create hook function to deselect first record
