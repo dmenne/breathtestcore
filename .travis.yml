@@ -10,6 +10,14 @@ r:
   - release
 cache: packages
 
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
+      - libgdal-dev
+      - libproj-dev
+      - libv8-dev
+
 r-github-packages:
   - jimhester/covr
 
