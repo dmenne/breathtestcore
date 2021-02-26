@@ -121,7 +121,8 @@ nls_fit = function(data, dose = 100,
   # Gives warning  with testthat 3.0
   # The `validate` argument of `as_tibble()` is deprecated as of tibble 2.0.0.
   # Please use the `.name_repair` argument instead.
-  cf = cf %>% tibble::as_tibble(cf, .name_repair = "minimal"))
+  cf = cf %>% 
+    tibble::as_tibble(cf, .name_repair = "minimal")
   
   ret = list(coef = cf, data = data, nls_fit = bid.nls)
   class(ret) = c("breathtestnlsfit", "breathtestfit" )
