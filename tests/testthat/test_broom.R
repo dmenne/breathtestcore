@@ -1,4 +1,5 @@
 test_that("broom/tidy returns a simplified data set with only maes_ghoos t50", {
+  options(warn = 0)
   data = cleanup_data(simulate_breathtest_data(seed = 10)$data)
   fit = nls_fit(data)
   td = tidy(fit)

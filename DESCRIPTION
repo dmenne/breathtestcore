@@ -49,7 +49,7 @@ Imports:
     signal,
     stats,
     stringr,
-    tibble (>= 2.0.0),
+    tibble (>= 3.0.0),
     tidyr,
     tools,
     utils,
@@ -59,7 +59,7 @@ Suggests:
     gridExtra,
     knitr,
     rmarkdown,
-    testthat,
+    testthat(>= 2.99),
     breathteststan,
     covr
 VignetteBuilder: 
@@ -68,3 +68,4 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 SystemRequirements: pandoc
+Config/testthat/edition: 2
