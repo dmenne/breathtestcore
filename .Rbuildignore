@@ -13,3 +13,4 @@ README.md
 ^Meta$
 ^\.github$
 .Renviron
+^codecov\.yml$

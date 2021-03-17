@@ -10,7 +10,7 @@ dieter.menne@menne-biomed.de
 [![R build status](https://github.com/dmenne/breathtestcore/workflows/R-CMD-check/badge.svg)](https://github.com/dmenne/breathtestcore/actions)
 ![CRAN](https://cranlogs.r-pkg.org/badges/grand-total/breathtestcore)
 ![CRAN](https://www.r-pkg.org/badges/version-ago/breathtestcore)
-[![Coverage Status](https://coveralls.io/repos/github/dmenne/breathtestcore/badge.svg?branch=master)](https://coveralls.io/github/dmenne/breathtestcore?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/dmenne/breathtestcore/branch/master/graph/badge.svg)](https://codecov.io/gh/dmenne/breathtestcore?branch=master)
 <!-- badges: end -->
 
 Menne Biomed Consulting Tübingen, Germany
