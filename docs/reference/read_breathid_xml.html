@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -41,7 +45,6 @@
 <meta property="og:description" content="Reads 13c data from an XML BreathID file, and returns a structure 
 of class breathtest_data_list, which is a list with elements of 
 class breathtest_data." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -59,7 +62,7 @@ class breathtest_data." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -73,7 +76,7 @@ class breathtest_data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">breathtestcore</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0.9001</span>
       </span>
     </div>
 
@@ -81,33 +84,21 @@ class breathtest_data." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/data_formats.html">Data formats</a>
-    </li>
-    <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dmenne/breathtestcore">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/dmenne/breathtestcore/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,7 +126,7 @@ of class <code>breathtest_data_list</code>, which is a list with elements of
 class <code>breathtest_data</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_breathid_xml</span>(<span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>read_breathid_xml</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,9 +147,10 @@ class <code>breathtest_data</code>.</p>
 class <code><a href='breathtest_data.html'>breathtest_data</a></code>; an XML file can contain multiple data sets.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"NewBreathID_01.xml"</span>)
+    <pre class="examples">read_breathid_xml,Read new BreathID/Examens XML file,Read new BreathID/Examens XML file — read_breathid_xml,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_breathid_xml.R'><code>R/read_breathid_xml.R</code></a>,read_breathid_xml.Rd,character(0),read_breathid_xml,character(0),list(title = "Description", contents = "<p>Reads 13c data from an XML BreathID file, and returns a structure \nof class <code>breathtest_data_list</code>, which is a list with elements of \nclass <code>breathtest_data</code>.</p>"),list(description = "Reads 13c data from an XML BreathID file, and returns a structure \nof class breathtest_data_list, which is a list with elements of \nclass breathtest_data."),<span class='fu'>read_breathid_xml</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>name of xml-file to be read</p>"), list(name = "text", description = "<p>alternatively, text can be given as string</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"NewBreathID_01.xml"</span><span class='op'>)</span>
 <span class='co'># Show first lines</span>
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='no'>filename</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"\n"</span>)</div><div class='output co'>#&gt; &lt;Tests Device="1402"&gt;
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>filename</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, sep<span class='op'>=</span><span class='st'>"\n"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;Tests Device="1402"&gt;
 #&gt;   &lt;Test Number="12"&gt;
 #&gt;     &lt;ID&gt;10727002&lt;/ID&gt;
 #&gt;     &lt;StartTime&gt;24Jul2017 07:42&lt;/StartTime&gt;
@@ -167,14 +159,16 @@ class <code><a href='breathtest_data.html'>breathtest_data</a></code>; an XML fi
 #&gt;     &lt;StoppedByUser&gt;false&lt;/StoppedByUser&gt;
 #&gt;     &lt;DOBListTimes&gt;1.33,12.79,24.25,35.81,57.90,69.38,80.87,92.33,103.78,115.22,126.68,138.14,149.59,161.09,172.59,184.07,195.55,208.15,219.64,231.10,242.57&lt;/DOBListTimes&gt;
 #&gt;     &lt;DOBListValues&gt;0.7,1.8,3.7,4.9,7.5,8.6,10.2,11.5,10.4,9.7,10.8,10.7,11.7,11.7,11.4,10.6,8.5,8.4,6.9,7.6,7.1&lt;/DOBListValues&gt;
-#&gt;   &lt;/Test&gt;</div><div class='input'><span class='no'>bid</span> <span class='kw'>=</span> <span class='fu'>read_breathid_xml</span>(<span class='no'>filename</span>)
+#&gt;   &lt;/Test&gt;</div><div class='input'><span class='va'>bid</span> <span class='op'>=</span> <span class='fu'>read_breathid_xml</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
 <span class='co'># List with length 1</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>bid</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 1
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>bid</span>, <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; List of 1
 #&gt;  $ :List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
-#&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"NewBreathID_multiple.xml"</span>)
-<span class='no'>bids</span> <span class='kw'>=</span> <span class='fu'>read_breathid_xml</span>(<span class='no'>filename</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>bids</span>, <span class='fl'>1</span>) <span class='co'># 3 elements - the others in the file have no data</span></div><div class='output co'>#&gt; List of 3
+#&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"NewBreathID_multiple.xml"</span><span class='op'>)</span>
+<span class='va'>bids</span> <span class='op'>=</span> <span class='fu'>read_breathid_xml</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>bids</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='co'># 3 elements - the others in the file have no data</span>
+</div><div class='output co'>#&gt; List of 3
 #&gt;  $ :List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  $ :List of 23
@@ -182,30 +176,27 @@ class <code><a href='breathtest_data.html'>breathtest_data</a></code>; an XML fi
 #&gt;  $ :List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'><span class='co'># Create hook function to deselect first record</span>
-<span class='no'>choose_record</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>records</span>) {
-  <span class='no'>r</span>  <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>TRUE</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>records</span>))
-  <span class='no'>r</span>[<span class='fl'>1</span>] <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  <span class='no'>r</span>
-}
-<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>breathtestcore.choose_record</span> <span class='kw'>=</span> <span class='no'>choose_record</span>)
-<span class='no'>bids</span> <span class='kw'>=</span> <span class='fu'>read_breathid_xml</span>(<span class='no'>filename</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>bids</span>, <span class='fl'>1</span>) <span class='co'># 2 elements, first deselected</span></div><div class='output co'>#&gt; List of 2
+<span class='va'>choose_record</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>records</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>r</span>  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>records</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>r</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>=</span> <span class='cn'>FALSE</span>
+  <span class='va'>r</span>
+<span class='op'>}</span>
+<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>breathtestcore.choose_record <span class='op'>=</span> <span class='va'>choose_record</span><span class='op'>)</span>
+<span class='va'>bids</span> <span class='op'>=</span> <span class='fu'>read_breathid_xml</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>bids</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='co'># 2 elements, first deselected</span>
+</div><div class='output co'>#&gt; List of 2
 #&gt;  $ :List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  $ :List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'>
 
-</div></pre>
+</div>,list(list(title = "Value", contents = "<p>List of class <code>breathtest_data_list</code> of structures of \nclass <code><a href='breathtest_data.html'>breathtest_data</a></code>; an XML file can contain multiple data sets.</p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -216,7 +207,7 @@ class <code><a href='breathtest_data.html'>breathtest_data</a></code>; an XML fi
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

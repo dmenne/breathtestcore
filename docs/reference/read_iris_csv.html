@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@ The CSV files start as follows:
 This format does not have information about the substrate (acetate, octanoate),
 the dose and body weight and height. The following defaults are used: substrate = acetate, 
 dose = 100,  weight = 75, height = 180." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -62,7 +65,7 @@ dose = 100,  weight = 75, height = 180." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,7 +79,7 @@ dose = 100,  weight = 75, height = 180." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">breathtestcore</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0.9001</span>
       </span>
     </div>
 
@@ -84,33 +87,21 @@ dose = 100,  weight = 75, height = 180." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/data_formats.html">Data formats</a>
-    </li>
-    <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dmenne/breathtestcore">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/dmenne/breathtestcore/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -141,7 +132,7 @@ the dose and body weight and height. The following defaults are used: <code>subs
 dose = 100,  weight = 75, height = 180</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_iris_csv</span>(<span class='kw'>filename</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>read_iris_csv</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,12 +154,14 @@ patient name, patient first name, test, identifikation</code>,
 and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"IrisCSV.TXT"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='no'>filename</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"\n"</span>)</div><div class='output co'>#&gt; "Name","Vorname","Test","Identifikation","Testzeit[min]","DOB [o/oo]","Delta [o/oo]","Std. Abw.[o/oo]","CO2 [%]","Std. Abw.[%]","Atom ppm Excess 13C [ppm]","Datum","Zeit"
+    <pre class="examples">read_iris_csv,Read 13C data from IRIS/Wagner Analysen in CSV Format,Read 13C data from IRIS/Wagner Analysen in CSV Format — read_iris_csv,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_iris_csv.R'><code>R/read_iris_csv.R</code></a>,read_iris_csv.Rd,character(0),read_iris_csv,character(0),list(title = "Description", contents = "<p>Reads 13C data from IRIS/Wagner Analysen in CSV Format\nThe CSV files start as follows:</p><pre>\n\"Name\",\"Vorname\",\"Test\",\"Identifikation\"\n</pre><p>This format does not have information about the substrate (acetate, octanoate),\nthe dose and body weight and height. The following defaults are used: <code>substrate = acetate, \ndose = 100,  weight = 75, height = 180</code>.</p>"),list(description = "Reads 13C data from IRIS/Wagner Analysen in CSV Format\nThe CSV files start as follows:\n\"Name\",\"Vorname\",\"Test\",\"Identifikation\"\nThis format does not have information about the substrate (acetate, octanoate),\nthe dose and body weight and height. The following defaults are used: substrate = acetate, \ndose = 100,  weight = 75, height = 180."),<span class='fu'>read_iris_csv</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>Name of IRIS/Wagner file in CSV format</p>"), list(name = "text", description = "<p>alternatively, text can be given as string</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisCSV.TXT"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>filename</span>, n <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>, sep<span class='op'>=</span><span class='st'>"\n"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; "Name","Vorname","Test","Identifikation","Testzeit[min]","DOB [o/oo]","Delta [o/oo]","Std. Abw.[o/oo]","CO2 [%]","Std. Abw.[%]","Atom ppm Excess 13C [ppm]","Datum","Zeit"
 #&gt; "Einstein","Albert","GE FEST","123456","0","0","-26.32","4.501891E-02","3.236342","4.746388E-03","0","13.09.2013","13:21"
 #&gt; "Einstein","Albert","GE FEST","123456","10","2.02","-24.3","5.617962E-02","2.391013","2.576674E-03","22.27","13.09.2013","13:23"</div><div class='input'><span class='co'>#</span>
-<span class='no'>iris_data</span> <span class='kw'>=</span> <span class='fu'>read_iris_csv</span>(<span class='no'>filename</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>iris_data</span>)</div><div class='output co'>#&gt; List of 23
+<span class='va'>iris_data</span> <span class='op'>=</span> <span class='fu'>read_iris_csv</span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>iris_data</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; List of 23
 #&gt;  $ patient_id  : chr "123456"
 #&gt;  $ name        : chr "Einstein"
 #&gt;  $ first_name  : chr "Albert"
@@ -195,16 +188,12 @@ and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
 #&gt;   ..$ minute: num [1:14] 0 10 20 45 60 75 90 105 120 140 ...
 #&gt;   ..$ dob   : num [1:14] 0 2.02 5.22 8.9 9.48 ...
 #&gt;   ..$ pdr   : num [1:14] 0 1.11 2.86 4.87 5.19 ...
-#&gt;  - attr(*, "class")= chr "breathtest_data"</div></pre>
+#&gt;  - attr(*, "class")= chr "breathtest_data"</div>,list(list(title = "Value", contents = "<p>List of class <code>breath_test_data</code> with <code>file name, \npatient name, patient first name, test, identifikation</code>,\nand data frame <code>data</code> with <code>time</code> and <code>dob</code></p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -215,7 +204,7 @@ and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

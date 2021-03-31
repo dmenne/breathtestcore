@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,7 +46,6 @@
 standard deviations m_std, k_std, beta_std is given, an empirical covariance
 matrix from USZ breath test data is used. If any of the standard deviations is given,
 default values for the others will be used." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -60,7 +63,7 @@ default values for the others will be used." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,7 +77,7 @@ default values for the others will be used." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">breathtestcore</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0.9001</span>
       </span>
     </div>
 
@@ -82,33 +85,21 @@ default values for the others will be used." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/data_formats.html">Data formats</a>
-    </li>
-    <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dmenne/breathtestcore">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/dmenne/breathtestcore/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,24 +128,24 @@ matrix from USZ breath test data is used. If any of the standard deviations is g
 default values for the others will be used.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simulate_breathtest_data</span>(
-  <span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>m_mean</span> <span class='kw'>=</span> <span class='fl'>40</span>,
-  <span class='kw'>m_std</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>k_mean</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>k_std</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>beta_mean</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>beta_std</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>cov</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>student_t_df</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dose</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>first_minute</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-  <span class='kw'>step_minute</span> <span class='kw'>=</span> <span class='fl'>15</span>,
-  <span class='kw'>max_minute</span> <span class='kw'>=</span> <span class='fl'>155</span>
-)</pre>
+    <pre class="usage"><span class='fu'>simulate_breathtest_data</span><span class='op'>(</span>
+  n_records <span class='op'>=</span> <span class='fl'>10</span>,
+  m_mean <span class='op'>=</span> <span class='fl'>40</span>,
+  m_std <span class='op'>=</span> <span class='cn'>NULL</span>,
+  k_mean <span class='op'>=</span> <span class='fl'>0.01</span>,
+  k_std <span class='op'>=</span> <span class='cn'>NULL</span>,
+  beta_mean <span class='op'>=</span> <span class='fl'>2</span>,
+  beta_std <span class='op'>=</span> <span class='cn'>NULL</span>,
+  noise <span class='op'>=</span> <span class='fl'>1</span>,
+  cov <span class='op'>=</span> <span class='cn'>NULL</span>,
+  student_t_df <span class='op'>=</span> <span class='cn'>NULL</span>,
+  missing <span class='op'>=</span> <span class='fl'>0</span>,
+  seed <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dose <span class='op'>=</span> <span class='fl'>100</span>,
+  first_minute <span class='op'>=</span> <span class='fl'>5</span>,
+  step_minute <span class='op'>=</span> <span class='fl'>15</span>,
+  max_minute <span class='op'>=</span> <span class='fl'>155</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,7 +208,7 @@ converge when data near 0 are passed.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of class simulated_breathtest_data with 2  elements:</p><dl class='dl-horizontal'>
+    <p>A list of class simulated_breathtest_data with 2  elements:</p><dl>
   <dt>record</dt><dd><p>Data frame with columns
     <code>patient_id(chr), m, k, beta, t50</code> giving the effective parameters 
     for the individual patient record.</p></dd>
@@ -228,36 +219,57 @@ converge when data near 0 are passed.</p></td>
 </dl><p>A comment is attached to the return value that can be used as a title for plotting.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='no'>pdr</span> <span class='kw'>=</span> <span class='fu'>simulate_breathtest_data</span>(<span class='kw'>n_records</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>4711</span>, <span class='kw'>missing</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
-       <span class='kw'>student_t_df</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>noise</span> <span class='kw'>=</span> <span class='fl'>1.5</span>) <span class='co'># Strong outliers</span>
+    <pre class="examples">simulate_breathtest_data,Simulate 13C breath time series data,Simulate 13C breath time series data — simulate_breathtest_data,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/simulate_breathtest_data.R'><code>R/simulate_breathtest_data.R</code></a>,simulate_breathtest_data.Rd,character(0),simulate_breathtest_data,character(0),list(title = "Description", contents = "<p>Generates simulated breath test data, optionally with errors. If none of the three\nstandard deviations <code>m_std, k_std, beta_std</code> is given, an empirical covariance\nmatrix from USZ breath test data is used. If any of the standard deviations is given,\ndefault values for the others will be used.</p>"),list(description = "Generates simulated breath test data, optionally with errors. If none of the three\nstandard deviations m_std, k_std, beta_std is given, an empirical covariance\nmatrix from USZ breath test data is used. If any of the standard deviations is given,\ndefault values for the others will be used."),<span class='fu'>simulate_breathtest_data</span><span class='op'>(</span>
+  n_records <span class='op'>=</span> <span class='fl'>10</span>,
+  m_mean <span class='op'>=</span> <span class='fl'>40</span>,
+  m_std <span class='op'>=</span> <span class='cn'>NULL</span>,
+  k_mean <span class='op'>=</span> <span class='fl'>0.01</span>,
+  k_std <span class='op'>=</span> <span class='cn'>NULL</span>,
+  beta_mean <span class='op'>=</span> <span class='fl'>2</span>,
+  beta_std <span class='op'>=</span> <span class='cn'>NULL</span>,
+  noise <span class='op'>=</span> <span class='fl'>1</span>,
+  cov <span class='op'>=</span> <span class='cn'>NULL</span>,
+  student_t_df <span class='op'>=</span> <span class='cn'>NULL</span>,
+  missing <span class='op'>=</span> <span class='fl'>0</span>,
+  seed <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dose <span class='op'>=</span> <span class='fl'>100</span>,
+  first_minute <span class='op'>=</span> <span class='fl'>5</span>,
+  step_minute <span class='op'>=</span> <span class='fl'>15</span>,
+  max_minute <span class='op'>=</span> <span class='fl'>155</span>
+<span class='op'>)</span>,list(list(name = "n_records", description = "<p>Number of records</p>"), list(name = "m_mean, m_std", description = "<p>Mean and between-record standard deviation of parameter m giving metabolized fraction.</p>"), list(name = "k_mean, k_std", description = "<p>Mean and between-record standard deviation of parameter k, in units of 1/minutes.</p>"), list(name = "beta_mean, beta_std", description = "<p>Mean and between-record standard deviations of lag parameter beta</p>"), list(name = "noise", description = "<p>Standard deviation of normal noise when <code>student_t_df = NULL</code>; scaling of noise when student_t_df &gt;= 2.</p>"), 
+    list(name = "cov", description = "<p>Covariance matrix, default NULL, i.e. not used. If given, overrides \nstandard deviation settings.</p>"), list(name = "student_t_df", description = "<p>When NULL (default), Gaussian noise is added; when &gt;= 2, Student_t distributed noise is added, which generates more realistic outliers. Values from 2 to 5 are useful, when higher values are used the result comes close to that of Gaussian noise. Values below 2 are truncated to 2.</p>"), list(name = "missing", 
+        description = "<p>When 0 (default), all curves have the same number of data points. When &gt; 0, this is the fraction of points that were removed randomly to simulate missing</p>"), list(name = "seed", description = "<p>Optional seed; not set if seed = NULL (default)</p>"), list(name = "dose", description = "<p>Octanoate/acetate dose, almost always 100 mg, which is also the default</p>"), list(name = "first_minute", description = "<p>First sampling time. Do not use 0 here, some algorithms do not \nconverge when data near 0 are passed.</p>"), 
+    list(name = "step_minute", description = "<p>Inter-sample interval for breath test</p>"), list(name = "max_minute", description = "<p>Maximal time in minutes.</p>")),TRUE,<div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='va'>pdr</span> <span class='op'>=</span> <span class='fu'>simulate_breathtest_data</span><span class='op'>(</span>n_records <span class='op'>=</span> <span class='fl'>4</span>, seed <span class='op'>=</span> <span class='fl'>4711</span>, missing <span class='op'>=</span> <span class='fl'>0.3</span>,
+       student_t_df <span class='op'>=</span> <span class='fl'>2</span>, noise <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='co'># Strong outliers</span>
 <span class='co'>#</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>pdr</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; List of 2
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>pdr</span>, <span class='fl'>1</span><span class='op'>)</span>  
+</div><div class='output co'>#&gt; List of 2
 #&gt;  $ record:'data.frame':	4 obs. of  5 variables:
 #&gt;   ..- attr(*, "cov")= num [1:3, 1:3] 1.88e+02 -2.60e-02 -2.04 -2.60e-02 7.74e-06 4.77e-04 -2.04 4.77e-04 1.82e-01
 #&gt;   .. ..- attr(*, "dimnames")=List of 2
-#&gt;  $ data  :Classes 'tbl_df', 'tbl' and 'data.frame':	31 obs. of  3 variables:
+#&gt;  $ data  : tibble[,3] [31 x 3] (S3: tbl_df/tbl/data.frame)
 #&gt;   ..- attr(*, "comment")= chr "4 records,  m = 40, k =  0.010, beta =  2.0, cov-matrix, \n Student-t 2 df noise amplitude = 2, 30% missing"
 #&gt;  - attr(*, "class")= chr [1:2] "simulated_breathtest_data" "list"</div><div class='input'><span class='co'>#</span>
-<span class='no'>pdr</span>$<span class='no'>record</span> <span class='co'># The "correct" parameters</span></div><div class='output co'>#&gt;   patient_id  m      k beta t50_maes_ghoos
+<span class='va'>pdr</span><span class='op'>$</span><span class='va'>record</span> <span class='co'># The "correct" parameters</span>
+</div><div class='output co'>#&gt;   patient_id  m      k beta t50_maes_ghoos
 #&gt; 1     rec_01 30 0.0086  2.0            142
 #&gt; 2     rec_02 27 0.0140  2.4            100
 #&gt; 3     rec_03 46 0.0098  1.4             97
 #&gt; 4     rec_04 56 0.0076  2.2            169</div><div class='input'><span class='co'>#</span>
 <span class='co'># Explicit plotting</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>minute</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>pdr</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>patient_id</span>) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/comment.html'>comment</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>))</div><div class='img'><img src='simulate_breathtest_data-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>pdr</span><span class='op'>$</span><span class='va'>data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>minute</span>, y <span class='op'>=</span> <span class='va'>pdr</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>patient_id</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/comment.html'>comment</a></span><span class='op'>(</span><span class='va'>pdr</span><span class='op'>$</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='simulate_breathtest_data-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Or use cleanup_data and null_fit for S3 plotting</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fu'><a href='null_fit.html'>null_fit</a></span>(<span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>pdr</span>$<span class='no'>data</span>)))</div><div class='img'><img src='simulate_breathtest_data-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='null_fit.html'>null_fit</a></span><span class='op'>(</span><span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span><span class='op'>(</span><span class='va'>pdr</span><span class='op'>$</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='simulate_breathtest_data-2.png' alt='' width='700' height='433' /></div>,list(list(title = "Value", contents = "<p>A list of class simulated_breathtest_data with 2  elements:</p><dl>\n  <dt>record</dt><dd><p>Data frame with columns\n    <code>patient_id(chr), m, k, beta, t50</code> giving the effective parameters \n    for the individual patient record.</p></dd>\n  <dt>data</dt><dd><p>Data frame with columns\n    <code>patient_id(chr), minute(dbl), pdr(dbl)</code> giving the\n     time series and grouping parameters.</p></dd>\n \n</dl><p>A comment is attached to the return value that can be used as a title for plotting.</p>", 
+    slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -268,7 +280,7 @@ converge when data near 0 are passed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

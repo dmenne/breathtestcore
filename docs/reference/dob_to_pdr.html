@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@ Sanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysin
 the atypical double-peaked excretion curve in the [13c]-octanoate gastric
 emptying breath test in humans. Clinical and experimental pharmacology and
 physiology 32, 590-594." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -62,7 +65,7 @@ physiology 32, 590-594." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,7 +79,7 @@ physiology 32, 590-594." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">breathtestcore</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0.9001</span>
       </span>
     </div>
 
@@ -84,33 +87,21 @@ physiology 32, 590-594." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/data_formats.html">Data formats</a>
-    </li>
-    <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dmenne/breathtestcore">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/dmenne/breathtestcore/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -141,14 +132,14 @@ emptying breath test in humans. Clinical and experimental pharmacology and
 physiology 32, 590-594.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dob_to_pdr</span>(
-  <span class='no'>dob</span>,
-  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='fl'>75</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>180</span>,
-  <span class='kw'>mw</span> <span class='kw'>=</span> <span class='fl'>167</span>,
-  <span class='kw'>purity_percent</span> <span class='kw'>=</span> <span class='fl'>99.1</span>,
-  <span class='kw'>mg_substrate</span> <span class='kw'>=</span> <span class='fl'>100</span>
-)</pre>
+    <pre class="usage"><span class='fu'>dob_to_pdr</span><span class='op'>(</span>
+  <span class='va'>dob</span>,
+  weight <span class='op'>=</span> <span class='fl'>75</span>,
+  height <span class='op'>=</span> <span class='fl'>180</span>,
+  mw <span class='op'>=</span> <span class='fl'>167</span>,
+  purity_percent <span class='op'>=</span> <span class='fl'>99.1</span>,
+  mg_substrate <span class='op'>=</span> <span class='fl'>100</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,24 +182,30 @@ test and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123
 is used, without the factor 10. Which one is correct?</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"350_20049_0_GERWithWeight.txt"</span>)
-<span class='no'>bid</span> <span class='kw'>=</span> <span class='fu'><a href='read_breathid.html'>read_breathid</a></span>(<span class='no'>filename</span>)
-<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span> <span class='kw'>=</span> <span class='fu'>dob_to_pdr</span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>dob</span>, <span class='kw'>weight</span><span class='kw'>=</span><span class='no'>bid</span>$<span class='no'>weight</span>, <span class='kw'>height</span><span class='kw'>=</span><span class='no'>bid</span>$<span class='no'>height</span>)
+    <pre class="examples">dob_to_pdr,Convert breath test DOB data to PDR data,Convert breath test DOB data to PDR data — dob_to_pdr,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/dob_to_pdr.R'><code>R/dob_to_pdr.R</code></a>,dob_to_pdr.Rd,character(0),dob_to_pdr,character(0),list(title = "Description", contents = "<p>Convert DOB (delta-over-baseline) to PDR for 13C breath test. \nThis is equation (4) in\nSanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysing\nthe atypical double-peaked excretion curve in the [13c]-octanoate gastric\nemptying breath test in humans. Clinical and experimental pharmacology and\nphysiology 32, 590-594.</p>"),list(description = "Convert DOB (delta-over-baseline) to PDR for 13C breath test. \nThis is equation (4) in\nSanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysing\nthe atypical double-peaked excretion curve in the [13c]-octanoate gastric\nemptying breath test in humans. Clinical and experimental pharmacology and\nphysiology 32, 590-594."),<span class='fu'>dob_to_pdr</span><span class='op'>(</span>
+  <span class='va'>dob</span>,
+  weight <span class='op'>=</span> <span class='fl'>75</span>,
+  height <span class='op'>=</span> <span class='fl'>180</span>,
+  mw <span class='op'>=</span> <span class='fl'>167</span>,
+  purity_percent <span class='op'>=</span> <span class='fl'>99.1</span>,
+  mg_substrate <span class='op'>=</span> <span class='fl'>100</span>
+<span class='op'>)</span>,list(list(name = "dob", description = "<p>Delta-over-baseline vector in 0/00</p>"), list(name = "weight", description = "<p>Body weight in kg; assumed 75 kg if missing</p>"), list(name = "height", description = "<p>Body height in cm; assume 180 cm if missing</p>"), list(name = "mw", description = "<p>Molecular weight,  83.023388 g/mol for acetate, 167 g/mol for octanoate.\nCan also be given as string \"acetate\" or \"octanoate\".</p>"), list(name = "purity_percent", description = "<p>Purity in percent</p>"), 
+    list(name = "mg_substrate", description = "<p>Substrate in mg</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"350_20049_0_GERWithWeight.txt"</span><span class='op'>)</span>
+<span class='va'>bid</span> <span class='op'>=</span> <span class='fu'><a href='read_breathid.html'>read_breathid</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
+<span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr1</span> <span class='op'>=</span> <span class='fu'>dob_to_pdr</span><span class='op'>(</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>dob</span>, weight<span class='op'>=</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>weight</span>, height<span class='op'>=</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>height</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"points: from breath_id; line: computed"</span>,
-<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>)</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>minute</span>, <span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>,<span class='kw'>col</span><span class='kw'>=</span><span class='st'>"red"</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"p"</span>,<span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>)</div><div class='img'><img src='dob_to_pdr-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>minute</span>, <span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr1</span>, main<span class='op'>=</span><span class='st'>"points: from breath_id; line: computed"</span>,
+type<span class='op'>=</span><span class='st'>"l"</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span><span class='op'>(</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>minute</span>, <span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr</span>,col<span class='op'>=</span><span class='st'>"red"</span>,type<span class='op'>=</span><span class='st'>"p"</span>,pch<span class='op'>=</span><span class='fl'>16</span><span class='op'>)</span>
+</div><div class='img'><img src='dob_to_pdr-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Check how far our computed pdr is from the stored pdr</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span>(<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr1</span>-<span class='no'>bid</span>$<span class='no'>data</span>$<span class='no'>pdr</span>)</div><div class='output co'>#&gt; [1] 0.000952</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span><span class='op'>(</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr1</span><span class='op'>-</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.000952</div>,list(list(title = "Value", contents = "<p>PDR percent dose/h</p>", slug = "value"), list(title = "Note", contents = "<p>I have no idea where the factor 10 in equation (4) comes from, possibly\nfrom percent(PDR)/and DOB(0/00). In Kim and Camillieri, Stable isotope breath \ntest and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123 \nis used, without the factor 10. Which one is correct?</p>", slug = "note")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -219,7 +216,7 @@ is used, without the factor 10. Which one is correct?</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -41,7 +45,6 @@
 <meta property="og:description" content="Given a fit to 13C breath test curves, computes absolute values and
 their confidence intervals of parameters, e.g. of the half emptying time t50.
 Generic S3 method for class breathtestfit." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -59,7 +62,7 @@ Generic S3 method for class breathtestfit." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -73,7 +76,7 @@ Generic S3 method for class breathtestfit." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">breathtestcore</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0.9001</span>
       </span>
     </div>
 
@@ -81,33 +84,21 @@ Generic S3 method for class breathtestfit." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/data_formats.html">Data formats</a>
-    </li>
-    <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dmenne/breathtestcore">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/dmenne/breathtestcore/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -135,7 +126,7 @@ their confidence intervals of parameters, e.g. of the half emptying time <code>t
 Generic S3 method for class breathtestfit.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coef_by_group</span>(<span class='no'>fit</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>coef_by_group</span><span class='op'>(</span><span class='va'>fit</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,7 +144,7 @@ Generic S3 method for class breathtestfit.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tibble</code> of class <code>coef_by_group</code> with columns</p><dl class='dl-horizontal'>
+    <p>A <code>tibble</code> of class <code>coef_by_group</code> with columns</p><dl>
   <dt>parameter</dt><dd><p>Parameter of fit, e.g. <code>beta, k, m, t50</code></p></dd>
   <dt>method</dt><dd><p>Method used to compute parameter. <code>exp_beta</code> refers to primary
   fit parameters <code>beta, k, m</code>. <code>maes_ghoos</code> uses the method from 
@@ -174,56 +165,56 @@ Generic S3 method for class breathtestfit.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples">coef_by_group,Tabulates per-group breath test parameters,Tabulates per-group breath test parameters — coef_by_group,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/coef_by_group.R'><code>R/coef_by_group.R</code></a>,coef_by_group.Rd,character(0),coef_by_group,character(0),list(title = "Description", contents = "<p>Given a fit to 13C breath test curves, computes absolute values and\ntheir confidence intervals of parameters, e.g. of the half emptying time <code>t50</code>.\nGeneric S3 method for class breathtestfit.</p>"),list(description = "Given a fit to 13C breath test curves, computes absolute values and\ntheir confidence intervals of parameters, e.g. of the half emptying time t50.\nGeneric S3 method for class breathtestfit."),<span class='fu'>coef_by_group</span><span class='op'>(</span><span class='va'>fit</span>, <span class='va'>...</span><span class='op'>)</span>,list(list(name = "fit", description = "<p>Object of class <code>breathtestfit</code>, for example from \n<code><a href='nlme_fit.html'>nlme_fit</a></code>, <code><a href='nls_fit.html'>nls_fit</a></code> or <code><a href='https://rdrr.io/pkg/breathteststan/man/stan_fit.html'>stan_fit</a></code></p>"), list(name = "...", description = "<p>Not used</p>")),TRUE,<div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attache Paket: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"usz_13c"</span>)
-<span class='no'>data</span> <span class='kw'>=</span> <span class='no'>usz_13c</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>( <span class='no'>patient_id</span> <span class='kw'>%in%</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"norm_001"</span>, <span class='st'>"norm_002"</span>, <span class='st'>"norm_003"</span>, <span class='st'>"norm_004"</span>, <span class='st'>"pat_001"</span>, <span class='st'>"pat_002"</span>,<span class='st'>"pat_003"</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>()
-<span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nls_fit.html'>nls_fit</a></span>(<span class='no'>data</span>)
-<span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 27 x 7</span><span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"usz_13c"</span><span class='op'>)</span>
+<span class='va'>data</span> <span class='op'>=</span> <span class='va'>usz_13c</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span> <span class='va'>patient_id</span> <span class='op'>%in%</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"norm_001"</span>, <span class='st'>"norm_002"</span>, <span class='st'>"norm_003"</span>, <span class='st'>"norm_004"</span>, <span class='st'>"pat_001"</span>, <span class='st'>"pat_002"</span>,<span class='st'>"pat_003"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>fit</span> <span class='op'>=</span> <span class='fu'><a href='nls_fit.html'>nls_fit</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+<span class='fu'>coef_by_group</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 27 x 7</span><span>
 #&gt;    parameter method   group         estimate  conf.low conf.high diff_group
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'> 1</span><span> beta      exp_beta liquid_normal  2.09      1.73      2.45    a         
-#&gt; </span><span style='color: #555555;'> 2</span><span> beta      exp_beta solid_normal   2.23      1.92      2.54    a         
-#&gt; </span><span style='color: #555555;'> 3</span><span> beta      exp_beta solid_patient  2.11      1.75      2.48    a         
-#&gt; </span><span style='color: #555555;'> 4</span><span> deviance  exp_beta liquid_normal 16.8     -</span><span style='color: #BB0000;'>20.1</span><span>      53.7     ab        
-#&gt; </span><span style='color: #555555;'> 5</span><span> deviance  exp_beta solid_normal   2.72    -</span><span style='color: #BB0000;'>33.4</span><span>      38.8     a         
-#&gt; </span><span style='color: #555555;'> 6</span><span> deviance  exp_beta solid_patient 68.9      27.2     110.      b         
-#&gt; </span><span style='color: #555555;'> 7</span><span> k         exp_beta liquid_normal  0.013</span><span style='text-decoration: underline;'>1</span><span>    0.010</span><span style='text-decoration: underline;'>6</span><span>    0.015</span><span style='text-decoration: underline;'>6</span><span>  b         
-#&gt; </span><span style='color: #555555;'> 8</span><span> k         exp_beta solid_normal   0.009</span><span style='text-decoration: underline;'>63</span><span>   0.007</span><span style='text-decoration: underline;'>37</span><span>   0.011</span><span style='text-decoration: underline;'>9</span><span>  a         
-#&gt; </span><span style='color: #555555;'> 9</span><span> k         exp_beta solid_patient  0.007</span><span style='text-decoration: underline;'>04</span><span>   0.004</span><span style='text-decoration: underline;'>44</span><span>   0.009</span><span style='text-decoration: underline;'>65</span><span> a         
-#&gt; </span><span style='color: #555555;'>10</span><span> m         exp_beta liquid_normal 36.5      22.6      50.4     b         
-#&gt; </span><span style='color: #555555;'># ... with 17 more rows</span><span></div><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>fit</span> <span class='kw'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span>(<span class='no'>data</span>)
-<span class='fu'>coef_by_group</span>(<span class='no'>fit</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 24 x 7</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> beta      exp_beta liquid_normal  2.09      1.73      2.45    a         
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> beta      exp_beta solid_normal   2.23      1.92      2.54    a         
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> beta      exp_beta solid_patient  2.11      1.75      2.48    a         
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> deviance  exp_beta liquid_normal 16.8     -</span><span style='color: #BB0000;'>20.1</span><span>      53.7     ab        
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> deviance  exp_beta solid_normal   2.72    -</span><span style='color: #BB0000;'>33.4</span><span>      38.8     a         
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> deviance  exp_beta solid_patient 68.9      27.2     110.      b         
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> k         exp_beta liquid_normal  0.013</span><span style='text-decoration: underline;'>1</span><span>    0.010</span><span style='text-decoration: underline;'>6</span><span>    0.015</span><span style='text-decoration: underline;'>6</span><span>  b         
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> k         exp_beta solid_normal   0.009</span><span style='text-decoration: underline;'>63</span><span>   0.007</span><span style='text-decoration: underline;'>37</span><span>   0.011</span><span style='text-decoration: underline;'>9</span><span>  a         
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> k         exp_beta solid_patient  0.007</span><span style='text-decoration: underline;'>04</span><span>   0.004</span><span style='text-decoration: underline;'>44</span><span>   0.009</span><span style='text-decoration: underline;'>65</span><span> a         
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> m         exp_beta liquid_normal 36.5      22.6      50.4     b         
+#&gt; </span><span style='color: #949494;'># ... with 17 more rows</span><span></div><div class='input'><span class='co'># \donttest{</span>
+<span class='va'>fit</span> <span class='op'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+<span class='fu'>coef_by_group</span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 24 x 7</span><span>
 #&gt;    parameter method       group         estimate conf.low conf.high diff_group
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'> 1</span><span> beta      exp_beta     liquid_normal  2.09     1.89      2.28    a         
-#&gt; </span><span style='color: #555555;'> 2</span><span> beta      exp_beta     solid_normal   2.17     2.00      2.35    a         
-#&gt; </span><span style='color: #555555;'> 3</span><span> beta      exp_beta     solid_patient  2.20     2.01      2.40    a         
-#&gt; </span><span style='color: #555555;'> 4</span><span> k         exp_beta     liquid_normal  0.013</span><span style='text-decoration: underline;'>1</span><span>   0.011</span><span style='text-decoration: underline;'>2</span><span>    0.015   b         
-#&gt; </span><span style='color: #555555;'> 5</span><span> k         exp_beta     solid_normal   0.009</span><span style='text-decoration: underline;'>37</span><span>  0.007</span><span style='text-decoration: underline;'>64</span><span>   0.011</span><span style='text-decoration: underline;'>1</span><span>  a         
-#&gt; </span><span style='color: #555555;'> 6</span><span> k         exp_beta     solid_patient  0.007</span><span style='text-decoration: underline;'>59</span><span>  0.005</span><span style='text-decoration: underline;'>59</span><span>   0.009</span><span style='text-decoration: underline;'>60</span><span> a         
-#&gt; </span><span style='color: #555555;'> 7</span><span> m         exp_beta     liquid_normal 36.3     23.1      49.6     b         
-#&gt; </span><span style='color: #555555;'> 8</span><span> m         exp_beta     solid_normal  20.8      7.72     33.9     a         
-#&gt; </span><span style='color: #555555;'> 9</span><span> m         exp_beta     solid_patient 31.9     16.8      47.0     ab        
-#&gt; </span><span style='color: #555555;'>10</span><span> t50       bluck_coward liquid_normal 29.7     19.9      39.5     a         
-#&gt; </span><span style='color: #555555;'># ... with 14 more rows</span><span></div><div class='input'># }
-</div></span></pre>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> beta      exp_beta     liquid_normal  2.09     1.89      2.28    a         
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> beta      exp_beta     solid_normal   2.17     2.00      2.35    a         
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> beta      exp_beta     solid_patient  2.20     2.01      2.40    a         
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> k         exp_beta     liquid_normal  0.013</span><span style='text-decoration: underline;'>1</span><span>   0.011</span><span style='text-decoration: underline;'>2</span><span>    0.015   b         
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> k         exp_beta     solid_normal   0.009</span><span style='text-decoration: underline;'>37</span><span>  0.007</span><span style='text-decoration: underline;'>64</span><span>   0.011</span><span style='text-decoration: underline;'>1</span><span>  a         
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> k         exp_beta     solid_patient  0.007</span><span style='text-decoration: underline;'>59</span><span>  0.005</span><span style='text-decoration: underline;'>59</span><span>   0.009</span><span style='text-decoration: underline;'>60</span><span> a         
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> m         exp_beta     liquid_normal 36.3     23.1      49.6     b         
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> m         exp_beta     solid_normal  20.8      7.72     33.9     a         
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> m         exp_beta     solid_patient 31.9     16.8      47.0     ab        
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> t50       bluck_coward liquid_normal 29.7     19.9      39.5     a         
+#&gt; </span><span style='color: #949494;'># ... with 14 more rows</span><span></div><div class='input'><span class='co'># }</span>
+</div></span>,list(list(title = "Value", contents = "<p>A <code>tibble</code> of class <code>coef_by_group</code> with columns</p><dl>\n  <dt>parameter</dt><dd><p>Parameter of fit, e.g. <code>beta, k, m, t50</code></p></dd>\n  <dt>method</dt><dd><p>Method used to compute parameter. <code>exp_beta</code> refers to primary\n  fit parameters <code>beta, k, m</code>. <code>maes_ghoos</code> uses the method from \n  Maes B D, Ghoos Y F,\n  Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 Dig. Dis. Sci. 39 S104-6.\n  <code>bluck_coward</code> is the self-correcting method from  Bluck L J C and \n  Coward W A 2006</p></dd>\n  <dt>group</dt><dd><p>Grouping parameter of the fit, e.g. <code>patient, normal, liquid, solid</code></p></dd>\n  <dt>estimate</dt><dd><p>Parameter estimate</p></dd>\n  <dt>conf.low, conf.high</dt><dd><p>Lower and upper 95<!-- % confidence interval of parameter  -->\n  estimate.</p></dd>\n  <dt>diff_group</dt><dd><p>Letters a, b, c indicate that parameter would be in mutually \n   significantly different groups. Letter combinations like <code>ab</code> or <code>abc</code> \n   indicated that this parameter is not significantly different from the given \n   other groups in a Tukey-corrected pairwise test.</p></dd>\n\n</dl>\n", 
+    slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -234,7 +225,7 @@ Generic S3 method for class breathtestfit.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

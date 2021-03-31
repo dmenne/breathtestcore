@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -43,7 +47,6 @@
 group, minute, pdr or dob). Conversion from dob to pdf is done for 
 assuming 180 cm height and 75 kg weight.
 See the example below with several sheets for supported formats" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -61,7 +64,7 @@ See the example below with several sheets for supported formats" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,7 +78,7 @@ See the example below with several sheets for supported formats" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">breathtestcore</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0.9001</span>
       </span>
     </div>
 
@@ -83,33 +86,21 @@ See the example below with several sheets for supported formats" />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/data_formats.html">Data formats</a>
-    </li>
-    <li>
-      <a href="../articles/methods_and_concepts.html">Methods and concepts</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/index.html">Articles</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dmenne/breathtestcore">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/dmenne/breathtestcore/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -139,7 +130,7 @@ assuming 180 cm height and 75 kg weight.
 See the example below with several sheets for supported formats</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_breathtest_excel</span>(<span class='no'>filename</span>, <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>read_breathtest_excel</span><span class='op'>(</span><span class='va'>filename</span>, sheet <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,115 +156,114 @@ Pass result through <code><a href='cleanup_data.html'>cleanup_data</a></code> to
 other formats.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>filename</span> <span class='kw'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span>(<span class='st'>"ExcelSamples.xlsx"</span>)
-<span class='no'>sheets</span> <span class='kw'>=</span> <span class='kw pkg'>readxl</span><span class='kw ns'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/excel_sheets.html'>excel_sheets</a></span>(<span class='no'>filename</span>)
+    <pre class="examples">read_breathtest_excel,Reads breathtest data in Excel format,Reads breathtest data in Excel format — read_breathtest_excel,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_breathtest_excel.R'><code>R/read_breathtest_excel.R</code></a>,read_breathtest_excel.Rd,character(0),read_breathtest_excel,character(0),list(title = "Description", contents = "<p>Can read several formats of data sets in Excel, from\n2 (<code>minute, pdr or dob</code> for 1 record) to 4 columns (<code>patient_id, \ngroup, minute, pdr or dob</code>). Conversion from dob to pdf is done for \nassuming 180 cm height and 75 kg weight.\nSee the example below with several sheets for supported formats</p>"),list(description = "Can read several formats of data sets in Excel, from\n2 (minute, pdr or dob for 1 record) to 4 columns (patient_id, \ngroup, minute, pdr or dob). Conversion from dob to pdf is done for \nassuming 180 cm height and 75 kg weight.\nSee the example below with several sheets for supported formats"),<span class='fu'>read_breathtest_excel</span><span class='op'>(</span><span class='va'>filename</span>, sheet <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>Name of Excel-file to be read</p>"), list(name = "sheet", description = "<p>Name or number of Excel file to be read. When used with \n<code><a href='read_any_breathtest.html'>read_any_breathtest</a></code>, the first sheet is always read. You must \ncall  <code>read_breathtest_excel</code> explicitly to read other worksheets, as shown\nin the example below.</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"ExcelSamples.xlsx"</span><span class='op'>)</span>
+<span class='va'>sheets</span> <span class='op'>=</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/excel_sheets.html'>excel_sheets</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
 <span class='co'># First 4 lines of each sheet</span>
-<span class='kw'>for</span> (<span class='no'>sheet</span> <span class='kw'>in</span> <span class='no'>sheets</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='st'>"\nSheet "</span>, <span class='no'>sheet</span>,<span class='st'>"\n"</span>)
-  <span class='no'>ex</span> <span class='kw'>=</span> <span class='kw pkg'>readxl</span><span class='kw ns'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span>(<span class='no'>filename</span>, <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='no'>sheet</span>, <span class='kw'>n_max</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>ex</span>)
-}</div><div class='output co'>#&gt; 
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>sheet</span> <span class='kw'>in</span> <span class='va'>sheets</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"\nSheet "</span>, <span class='va'>sheet</span>,<span class='st'>"\n"</span><span class='op'>)</span>
+  <span class='va'>ex</span> <span class='op'>=</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>filename</span>, sheet <span class='op'>=</span> <span class='va'>sheet</span>, n_max <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>ex</span><span class='op'>)</span>
+<span class='op'>}</span>  
+</div><div class='output co'>#&gt; 
 #&gt; Sheet  4col_1group 
-#&gt; <span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; <span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   patient_id group minute   pdr
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A       0.42 0.547
-#&gt; </span><span style='color: #555555;'>2</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A      11.9  1.64 
-#&gt; </span><span style='color: #555555;'>3</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A      23.4  3.89 
-#&gt; </span><span style='color: #555555;'>4</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A      34.9  6.13 
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A       0.42 0.547
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A      11.9  1.64 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A      23.4  3.89 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>444 A      34.9  6.13 
 #&gt; 
 #&gt; Sheet  4col_2group 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   patient_id group         minute   pdr
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> norm_001   liquid_normal     10   2.6
-#&gt; </span><span style='color: #555555;'>2</span><span> norm_001   liquid_normal     20   8.1
-#&gt; </span><span style='color: #555555;'>3</span><span> norm_001   liquid_normal     30  10.7
-#&gt; </span><span style='color: #555555;'>4</span><span> norm_001   liquid_normal     40   9.1
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> norm_001   liquid_normal     10   2.6
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> norm_001   liquid_normal     20   8.1
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> norm_001   liquid_normal     30  10.7
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> norm_001   liquid_normal     40   9.1
 #&gt; 
 #&gt; Sheet  4col_2group_spaces 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   patient_id group         minute   pdr
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> norm 001   liquid normal     10   2.6
-#&gt; </span><span style='color: #555555;'>2</span><span> norm 001   liquid normal     20   8.1
-#&gt; </span><span style='color: #555555;'>3</span><span> norm 001   liquid normal     30  10.7
-#&gt; </span><span style='color: #555555;'>4</span><span> norm 001   liquid normal     40   9.1
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> norm 001   liquid normal     10   2.6
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> norm 001   liquid normal     20   8.1
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> norm 001   liquid normal     30  10.7
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> norm 001   liquid normal     40   9.1
 #&gt; 
 #&gt; Sheet  4col_2group_dob 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   patient_id group         minute   dob
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> norm_001   liquid_normal     10 0.26 
-#&gt; </span><span style='color: #555555;'>2</span><span> norm_001   liquid_normal     20 0.81 
-#&gt; </span><span style='color: #555555;'>3</span><span> norm_001   liquid_normal     30 1.07 
-#&gt; </span><span style='color: #555555;'>4</span><span> norm_001   liquid_normal     40 0.910
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> norm_001   liquid_normal     10 0.26 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> norm_001   liquid_normal     20 0.81 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> norm_001   liquid_normal     30 1.07 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> norm_001   liquid_normal     40 0.910
 #&gt; 
 #&gt; Sheet  3col 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
 #&gt;   patient_id minute   pdr
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500   0.42 0.547
-#&gt; </span><span style='color: #555555;'>2</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500  11.9  1.64 
-#&gt; </span><span style='color: #555555;'>3</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500  23.4  3.89 
-#&gt; </span><span style='color: #555555;'>4</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500  34.9  6.13 
+#&gt;        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500   0.42 0.547
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500  11.9  1.64 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500  23.4  3.89 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>    7</span><span style='text-decoration: underline;'>951</span><span>500  34.9  6.13 
 #&gt; 
 #&gt; Sheet  2col 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 2</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 2</span><span>
 #&gt;   minute   pdr
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>   0.42 0.547
-#&gt; </span><span style='color: #555555;'>2</span><span>  11.9  1.64 
-#&gt; </span><span style='color: #555555;'>3</span><span>  23.4  3.89 
-#&gt; </span><span style='color: #555555;'>4</span><span>  34.9  6.13 
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   0.42 0.547
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>  11.9  1.64 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>  23.4  3.89 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>  34.9  6.13 
 #&gt; 
 #&gt; Sheet  bad_header 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   `7951444` A     `0.42` `0.54737400595475105`
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>                 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       11.9                  1.64
-#&gt; </span><span style='color: #555555;'>2</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       23.4                  3.89
-#&gt; </span><span style='color: #555555;'>3</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       34.9                  6.13
-#&gt; </span><span style='color: #555555;'>4</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       46.4                  8.16
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       11.9                  1.64
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       23.4                  3.89
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       34.9                  6.13
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>   7</span><span style='text-decoration: underline;'>951</span><span>444 A       46.4                  8.16
 #&gt; 
 #&gt; Sheet  bad_order 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   group minute   pdr patient_id
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> A       0.42 0.547    7</span><span style='text-decoration: underline;'>951</span><span>444
-#&gt; </span><span style='color: #555555;'>2</span><span> A      11.9  1.64     7</span><span style='text-decoration: underline;'>951</span><span>444
-#&gt; </span><span style='color: #555555;'>3</span><span> A      23.4  3.89     7</span><span style='text-decoration: underline;'>951</span><span>444
-#&gt; </span><span style='color: #555555;'>4</span><span> A      34.9  6.13     7</span><span style='text-decoration: underline;'>951</span><span>444
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> A       0.42 0.547    7</span><span style='text-decoration: underline;'>951</span><span>444
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> A      11.9  1.64     7</span><span style='text-decoration: underline;'>951</span><span>444
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> A      23.4  3.89     7</span><span style='text-decoration: underline;'>951</span><span>444
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> A      34.9  6.13     7</span><span style='text-decoration: underline;'>951</span><span>444
 #&gt; 
 #&gt; Sheet  bad_columns 
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 1</span><span>
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 1</span><span>
 #&gt;   patient_id
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> a         
-#&gt; </span><span style='color: #555555;'>2</span><span> b         
-#&gt; </span><span style='color: #555555;'>3</span><span> c         
-#&gt; </span><span style='color: #555555;'>4</span><span> d         </div><div class='input'><span class='co'># To get consistently formatted data from a sheet</span>
-<span class='no'>bt_data</span> <span class='kw'>=</span> <span class='fu'>read_breathtest_excel</span>(<span class='no'>filename</span>, <span class='no'>sheets</span>[<span class='fl'>6</span>])
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> a         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> b         
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> c         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> d         </div><div class='input'><span class='co'># To get consistently formatted data from a sheet</span>
+<span class='va'>bt_data</span> <span class='op'>=</span> <span class='fu'>read_breathtest_excel</span><span class='op'>(</span><span class='va'>filename</span>, <span class='va'>sheets</span><span class='op'>[</span><span class='fl'>6</span><span class='op'>]</span><span class='op'>)</span>
 <span class='co'># 3 columns</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>bt_data</span>)</div><div class='output co'>#&gt; List of 1
-#&gt;  $ :Classes 'tbl_df', 'tbl' and 'data.frame':	22 obs. of  2 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>bt_data</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; List of 1
+#&gt;  $ : tibble[,2] [22 x 2] (S3: tbl_df/tbl/data.frame)
 #&gt;   ..$ minute: num [1:22] 0.42 11.92 23.4 34.89 46.39 ...
-#&gt;   ..$ pdr   : num [1:22] 0.547 1.642 3.886 6.131 8.156 ...</div><div class='input'><span class='no'>bt_cleaned</span> <span class='kw'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span>(<span class='no'>bt_data</span>)
+#&gt;   ..$ pdr   : num [1:22] 0.547 1.642 3.886 6.131 8.156 ...</div><div class='input'><span class='va'>bt_cleaned</span> <span class='op'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span><span class='op'>(</span><span class='va'>bt_data</span><span class='op'>)</span>
 <span class='co'># 4 columns standard format</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>bt_cleaned</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	22 obs. of  4 variables:
-#&gt;  $ patient_id: chr  "pat_a" "pat_a" "pat_a" "pat_a" ...
-#&gt;  $ group     : chr  "A" "A" "A" "A" ...
-#&gt;  $ minute    : num  0.42 11.92 23.4 34.89 46.39 ...
-#&gt;  $ pdr       : num  0.547 1.642 3.886 6.131 8.156 ...</div></span></pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>bt_cleaned</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; tibble[,4] [22 x 4] (S3: tbl_df/tbl/data.frame)
+#&gt;  $ patient_id: chr [1:22] "pat_a" "pat_a" "pat_a" "pat_a" ...
+#&gt;  $ group     : chr [1:22] "A" "A" "A" "A" ...
+#&gt;  $ minute    : num [1:22] 0.42 11.92 23.4 34.89 46.39 ...
+#&gt;  $ pdr       : num [1:22] 0.547 1.642 3.886 6.131 8.156 ...</div></span>,list(list(title = "Value", contents = "<p>Different from the other readXXX function, this returns a list\nwith a data frame, not a structure of <code><a href='breathtest_data.html'>breathtest_data</a></code>. \nPass result through <code><a href='cleanup_data.html'>cleanup_data</a></code> to make it compatible with \nother formats.</p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -284,7 +274,7 @@ other formats.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
