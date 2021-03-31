@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # breathtestcore: <sup>13</sup>C breath test to analyze gastric emptying
 
 Dieter Menne Menne Biomed Consulting Tübingen, Germany
