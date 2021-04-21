@@ -4,7 +4,7 @@ pkgdown_sha: 46764c0dba9c847957120d0bd687862346db9e98
 articles:
   data_formats: data_formats.html
   methods_and_concepts: methods_and_concepts.html
-last_built: 2021-04-21T17:20Z
+last_built: 2021-04-21T17:37Z
 urls:
   reference: https://dmenne.github.io/breathtestcore/reference
   article: https://dmenne.github.io/breathtestcore/articles
