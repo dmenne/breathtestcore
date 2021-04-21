@@ -50,6 +50,8 @@ single curve, mixed-model population and Bayesian methods." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -61,9 +63,18 @@ single curve, mixed-model population and Bayesian methods." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,12 +95,6 @@ single curve, mixed-model population and Bayesian methods." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -188,14 +193,7 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
  <code>broom: tidy, augment</code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">nlme_fit,Mixed-model nlme fit to 13C Breath Data,Mixed-model nlme fit to 13C Breath Data — nlme_fit,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/nlme_fit.R'><code>R/nlme_fit.R</code></a>,nlme_fit.Rd,character(0),nlme_fit,character(0),list(title = "Description", contents = "<p>Fits exponential beta curves to 13C breath test series data using\na mixed-model population approach. See\n<a href='https://menne-biomed.de/blog/breath-test-stan'>https://menne-biomed.de/blog/breath-test-stan</a> for a comparison between\nsingle curve, mixed-model population and Bayesian methods.</p>"),list(description = "Fits exponential beta curves to 13C breath test series data using\na mixed-model population approach. See\nhttps://menne-biomed.de/blog/breath-test-stan for a comparison between\nsingle curve, mixed-model population and Bayesian methods."),<span class='fu'>nlme_fit</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  dose <span class='op'>=</span> <span class='fl'>100</span>,
-  start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>m <span class='op'>=</span> <span class='fl'>30</span>, k <span class='op'>=</span> <span class='fl'>1</span><span class='op'>/</span><span class='fl'>100</span>, beta <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,
-  sample_minutes <span class='op'>=</span> <span class='fl'>15</span>
-<span class='op'>)</span>,list(list(name = "data", description = "<p>Data frame or tibble as created by <code><a href='cleanup_data.html'>cleanup_data</a></code>,\nwith mandatory columns <code>patient_id, group, minute</code> and <code>pdr</code>.\nIt is recommended to run all data through <code><a href='cleanup_data.html'>cleanup_data</a></code> to\ninsert dummy columns for <code>patient_id</code> and <code>group</code> if the\ndata are distinct, and report an error if not. At least 2 records are required\nfor a population fit, but 10 or more are recommended to obtain a stable result.</p>"), 
-    list(name = "dose", description = "<p>Dose of acetate or octanoate. Currently, only one common dose\nfor all records is supported. The dose only affects parameter <code>m</code> of the \nfit; all important t50-parameters are unaffected by the dose.</p>"), list(name = "start", description = "<p>Optional start values. In most case, the default values are good\nenough to achieve convergence, but slightly different values for <code>beta</code>\n(between 1 and 2.5) can save a non-convergent run.</p>"), 
-    list(name = "sample_minutes", description = "<p>When the mean sampling interval is &lt; <code>sampleMinutes</code>, \ndata are subsampled using a spline algorithm by function <code><a href='subsample_data.html'>subsample_data</a></code>.\nSee the graphical output of <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> for an example where\ntoo densely sampled data of one patients were subsampled for the fit.</p>")),TRUE,<div class='input'><span class='va'>d</span> <span class='op'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span><span class='op'>(</span>n_records <span class='op'>=</span> <span class='fl'>3</span>, noise <span class='op'>=</span> <span class='fl'>0.7</span>, seed <span class='op'>=</span> <span class='fl'>4712</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>d</span> <span class='op'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span><span class='op'>(</span>n_records <span class='op'>=</span> <span class='fl'>3</span>, noise <span class='op'>=</span> <span class='fl'>0.7</span>, seed <span class='op'>=</span> <span class='fl'>4712</span><span class='op'>)</span>
 <span class='va'>data</span> <span class='op'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>$</span><span class='va'>data</span><span class='op'>)</span>
 <span class='va'>fit</span> <span class='op'>=</span> <span class='fu'>nlme_fit</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span> <span class='co'># calls plot.breathtestfit</span>
@@ -235,8 +233,7 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> rec_01        44  44.8    1.46     1.52 0.008</span><span style='text-decoration: underline;'>17</span><span> 0.008</span><span style='text-decoration: underline;'>33</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> rec_02        39  40.0    2.73     2.77 0.012</span><span style='text-decoration: underline;'>4</span><span>  0.012</span><span style='text-decoration: underline;'>2</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> rec_03        42  35.2    2.20     2.55 0.007</span><span style='text-decoration: underline;'>22</span><span> 0.009</span><span style='text-decoration: underline;'>07</span><span></div></span>,list(list(title = "Value", contents = "<p>A list of class (\"breathtestnlmefit\" \"breathtestfit\") with elements</p><dl>\n  <dt>coef</dt><dd><p>Estimated parameters in a key-value format with \n   columns <code>patient_id, group, parameter, stat, method</code> and <code>value</code>.\n   Parameter <code>stat</code> currently always has value <code>\"estimate\"</code>. \n   Confidence intervals will be added later, so do not take for granted that \n   all parameters are estimates.  Has an attribute AIC which can be retrieved by\n   the S3-function <code>AIC</code>.</p></dd>\n   <dt>data</dt><dd><p>The data effectively fitted. If points are to closely sampled\n   in the input, e.g. with BreathId devices, data are subsampled before fitting.</p></dd>\n\n</dl>\n", 
-    slug = "value"), list(title = "See also", contents = "<div class='dont-index'><p>Base methods <code>coef, plot, print</code>; methods from package\n <code>broom: tidy, augment</code>.</p></div>", slug = "see-also")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> rec_03        42  35.2    2.20     2.55 0.007</span><span style='text-decoration: underline;'>22</span><span> 0.009</span><span style='text-decoration: underline;'>07</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -248,18 +245,21 @@ too densely sampled data of one patients were subsampled for the fit.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

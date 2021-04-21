@@ -48,6 +48,8 @@ and reads it if it has a valid format." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -59,9 +61,18 @@ and reads it if it has a valid format." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,12 +93,6 @@ and reads it if it has a valid format." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -144,7 +149,7 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
 <code>stan_fit</code> in separate package <code>breathteststan</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">read_any_breathtest,Read breathtest files of any format,Read breathtest files of any format — read_any_breathtest,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_any_breathtest.R'><code>R/read_any_breathtest.R</code></a>,read_any_breathtest.Rd,character(0),read_any_breathtest,character(0),list(title = "Description", contents = "<p>Uses <code><a href='breathtest_read_function.html'>breathtest_read_function</a></code> to determine the file type\nand reads it if it has a valid format.</p>"),list(description = "Uses breathtest_read_function to determine the file type\nand reads it if it has a valid format."),<span class='fu'>read_any_breathtest</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span>,list(list(name = "files", description = "<p>A single filename, a list or a character vector of filenames.</p>")),TRUE,<div class='input'><span class='va'>files</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+    <pre class="examples"><div class='input'><span class='va'>files</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
   group_a <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisCSV.TXT"</span><span class='op'>)</span>,
   group_a <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"350_20043_0_GER.txt"</span><span class='op'>)</span>,
   group_b <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisMulti.TXT"</span><span class='op'>)</span>,
@@ -172,8 +177,7 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='null_fit.html'>null_fit</a></span><span class='op'>(</span><span class='va'>bt_df</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='read_any_breathtest-1.png' alt='' width='700' height='433' /></div><div class='input'> <span class='co'># Plot population fit with decimated data</span>
  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span><span class='op'>(</span><span class='va'>bt_df</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='read_any_breathtest-2.png' alt='' width='700' height='433' /></div>,list(list(title = "Value", contents = "<p>A list of <code><a href='breathtest_data.html'>breathtest_data</a></code>, even if\nonly one file was passed. The list can be passed to <code><a href='cleanup_data.html'>cleanup_data</a></code>\nto extract one concatenated data frame for processing with <code><a href='nls_fit.html'>nls_fit</a></code>,  \n<code><a href='nlme_fit.html'>nlme_fit</a></code>, <code><a href='null_fit.html'>null_fit</a></code> (no processing) or\n<code>stan_fit</code> in separate package <code>breathteststan</code>.</p>", 
-    slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div><div class='img'><img src='read_any_breathtest-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -185,18 +189,21 @@ to extract one concatenated data frame for processing with <code><a href='nls_fi
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

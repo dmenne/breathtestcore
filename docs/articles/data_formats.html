@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,12 +41,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -53,7 +49,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/dmenne/breathtestcore/">
+  <a href="https://github.com/dmenne/breathtestcore/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -68,16 +64,16 @@
 
       
 
-      </header><script src="data_formats_files/header-attrs-2.7.4/header-attrs.js"></script><div class="row">
+      </header><script src="data_formats_files/header-attrs-2.7.12/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Data formats</h1>
-                        <h4 class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de" class="email">dieter.menne@menne.biomed.de</a>
+                        <h4 data-toc-skip class="author">Dieter Menne, <a href="mailto:dieter.menne@menne.biomed.de" class="email">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 class="date">2021-03-31</h4>
+            <h4 data-toc-skip class="date">2021-04-21</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/dmenne/breathtestcore/blob/master/vignettes/data_formats.Rmd"><code>vignettes/data_formats.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/dmenne/breathtestcore/blob/master/vignettes/data_formats.Rmd" class="external-link"><code>vignettes/data_formats.Rmd</code></a></small>
       <div class="hidden name"><code>data_formats.Rmd</code></div>
 
     </div>
@@ -89,26 +85,26 @@
 <a href="#concepts" class="anchor"></a>Concepts</h1>
 <p><sup>13</sup>C data can be imported in generic formats in Excel files, and in several vendor-specific formats, e.g. from BreathID and Wagner/IRIS. A collection of sample files with and without errors is available in the directory <code>C:/R/library/breathtestcore/extdata</code>; function <code><a href="../reference/btcore_file.html">btcore_file()</a></code> retrieves the names and long path of the available data sets.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dmenne/breathtestcore">breathtestcore</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dmenne/breathtestcore" class="external-link">breathtestcore</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>[1] "350_20023_0_GERWithNan.txt"       "350_20043_0_GER.txt"             
 [3] "350_20043_0_GERBadHeader.txt"     "350_20043_0_GERDuplicateTime.txt"
 [5] "350_20043_0_GERNoData.txt"        "350_20043_0_GERNoT50.txt"        </code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"Standard.TXT"</span><span class="op">)</span></code></pre></div>
-<pre><code>[1] "C:/Users/Dieter/AppData/Local/Temp/RtmpsfdVVd/temp_libpath37ec16ac217/breathtestcore/extdata/Standard.TXT"</code></pre>
+<pre><code>[1] "C:/Users/Dieter/AppData/Local/Temp/RtmpkhiyH2/temp_libpath2fac17c5815/breathtestcore/extdata/Standard.TXT"</code></pre>
 <ul>
 <li>When you know the format, you can read the data using the special functions, e.g. <code><a href="../reference/read_breathid.html">read_breathid()</a></code> or <code><a href="../reference/read_breathid_xml.html">read_breathid_xml()</a></code>.</li>
 <li>When you do not know the format, or when you want to read several different file formats at once, use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code> which tries to guess the format.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">files</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">files</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span>, <span class="co"># Wagner/IRIS format</span>
   <span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"350_20043_0_GER.txt"</span><span class="op">)</span> <span class="co"># BreathID</span>
  <span class="op">)</span>
  <span class="va">bt</span> <span class="op">=</span> <span class="fu"><a href="../reference/read_any_breathtest.html">read_any_breathtest</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span>
  <span class="co"># Returns a list of elements of class breathtest_data</span>
- <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">bt</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
+ <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bt</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 2
  $ :List of 23
   ..- attr(*, "class")= chr "breathtest_data"
@@ -117,7 +113,7 @@
  - attr(*, "class")= chr "breathtest_data_list"</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="va">bt_df</span> <span class="op">=</span> <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="va">bt</span><span class="op">)</span>
- <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">bt_df</span><span class="op">)</span></code></pre></div>
+ <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bt_df</span><span class="op">)</span></code></pre></div>
 <pre><code>tibble[,4] [101 x 4] (S3: tbl_df/tbl/data.frame)
  $ patient_id: chr [1:101] "123456" "123456" "123456" "123456" ...
  $ group     : chr [1:101] "A" "A" "A" "A" ...
@@ -127,7 +123,7 @@
 <p>To plot data without fitting, use <code><a href="../reference/null_fit.html">null_fit()</a></code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="va">nf</span> <span class="op">=</span> <span class="fu"><a href="../reference/null_fit.html">null_fit</a></span><span class="op">(</span><span class="va">bt_df</span><span class="op">)</span>
- <span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span></code></pre></div>
+ <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span></code></pre></div>
 <pre><code>List of 1
  $ data: tibble[,4] [101 x 4] (S3: tbl_df/tbl/data.frame)
   ..$ patient_id: chr [1:101] "123456" "123456" "123456" "123456" ...
@@ -136,11 +132,11 @@
   ..$ pdr       : num [1:101] 0 1.11 2.86 4.87 5.19 ...
  - attr(*, "class")= chr [1:2] "breathtestnullfit" "breathtestfit"</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span> <span class="co"># dispatches to plot.breathtestfit</span></code></pre></div>
+<code class="sourceCode R"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span> <span class="co"># dispatches to plot.breathtestfit</span></code></pre></div>
 <p><img src="data_formats_files/figure-html/nf-1.png" width="384"></p>
 <p>To add new formats, override <code><a href="../reference/breathtest_read_function.html">breathtest_read_function()</a></code> and add a new function that returns a structure given by <code><a href="../reference/breathtest_data.html">breathtest_data()</a></code>.</p>
 <blockquote>
-<p>Always pass data through function <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> to obtain a data frame that can be fed to one of the fitting functions <code><a href="../reference/nls_fit.html">nls_fit()</a></code>, <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code>, <code><a href="../reference/null_fit.html">null_fit()</a></code> or <code><a href="https://rdrr.io/pkg/breathteststan/man/stan_fit.html">breathteststan::stan_fit()</a></code>.</p>
+<p>Always pass data through function <code><a href="../reference/cleanup_data.html">cleanup_data()</a></code> to obtain a data frame that can be fed to one of the fitting functions <code><a href="../reference/nls_fit.html">nls_fit()</a></code>, <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code>, <code><a href="../reference/null_fit.html">null_fit()</a></code> or <code><a href="https://rdrr.io/pkg/breathteststan/man/stan_fit.html" class="external-link">breathteststan::stan_fit()</a></code>.</p>
 </blockquote>
 <div id="automatic-grouping" class="section level2">
 <h2 class="hasAnchor">
@@ -148,18 +144,18 @@
 <p>You can add a grouping variable, e.g. for multiple meal types, to compute between group differences of means. Cross-over, randomized or mixed designs (some patients cross-over) are supported.</p>
 <p>You must explicitlty state the grouping variable for each single file as shown below. Without names, it is possible to vectorize, e.g. <code><a href="../reference/read_any_breathtest.html">read_any_breathtest(c(file1, file2))</a></code>, but the ‘c()’ operator used on vectors disambiguates the names by appending numbers.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">files1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">files1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
   group_a <span class="op">=</span> <span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span>, <span class="co"># Use only single file with grouping</span>
   group_a <span class="op">=</span> <span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"Standard.TXT"</span><span class="op">)</span>,
   group_b <span class="op">=</span> <span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"350_20043_0_GER.txt"</span><span class="op">)</span>
  <span class="op">)</span>
 
 <span class="co"># Alternative syntax using magrittr operator</span>
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/read_any_breathtest.html">read_any_breathtest</a></span><span class="op">(</span><span class="va">files1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/null_fit.html">null_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="data_formats_files/figure-html/three-1.png" width="768"></p>
 </div>
 <div id="simulated-data" class="section level2">
@@ -167,14 +163,14 @@
 <a href="#simulated-data" class="anchor"></a>Simulated data</h2>
 <p>Function <code><a href="../reference/simulate_breathtest_data.html">simulate_breathtest_data()</a></code> generates sample data you can use to test different algorithms. Curves with outliers can be generated by setting <code>student_t_df</code> to values from 2 (very strong outliers) to 10 (almost gaussian).</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">212</span><span class="op">)</span>
-<span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>meal_a <span class="op">=</span> <span class="fu"><a href="../reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>n_records <span class="op">=</span> <span class="fl">3</span>, noise <span class="op">=</span> <span class="fl">2</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">212</span><span class="op">)</span>
+<span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>meal_a <span class="op">=</span> <span class="fu"><a href="../reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>n_records <span class="op">=</span> <span class="fl">3</span>, noise <span class="op">=</span> <span class="fl">2</span>,
                           student_t_df <span class="op">=</span> <span class="fl">3</span>, missing <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, 
             meal_b <span class="op">=</span> <span class="fu"><a href="../reference/simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>n_records <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/nlme_fit.html">nlme_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/simulated-1.png" alt="Example of a cross-over design with missing data, outliers and missing record in the red curve." width="576"><p class="caption">
 Example of a cross-over design with missing data, outliers and missing record in the red curve.
@@ -192,9 +188,9 @@ Example of a cross-over design with missing data, outliers and missing record in
 <a href="#built-in-data-sets" class="anchor"></a>Built-in data sets</h2>
 <p>Three data sets are included in R format and can be loaded as shown below. All data were provided by the University Hospital of Zürich; details are given in the documentation.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"usz_13c"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"usz_13c has data from"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">usz_13c</span><span class="op">$</span><span class="va">patient_id</span><span class="op">)</span><span class="op">)</span>, <span class="st">"patients with"</span> , 
-    <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">usz_13c</span><span class="op">$</span><span class="va">group</span><span class="op">)</span><span class="op">)</span>, <span class="st">"different meals"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"usz_13c"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"usz_13c has data from"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">usz_13c</span><span class="op">$</span><span class="va">patient_id</span><span class="op">)</span><span class="op">)</span>, <span class="st">"patients with"</span> , 
+    <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">usz_13c</span><span class="op">$</span><span class="va">group</span><span class="op">)</span><span class="op">)</span>, <span class="st">"different meals"</span><span class="op">)</span></code></pre></div>
 <pre><code>usz_13c has data from 163 patients with 4 different meals</code></pre>
 <ul>
 <li>
@@ -209,19 +205,19 @@ Example of a cross-over design with missing data, outliers and missing record in
 <div id="generic-formats" class="section level1">
 <h1 class="hasAnchor">
 <a href="#generic-formats" class="anchor"></a>Generic formats</h1>
-<p>The easiest way to supply generic formats is from Excel files. The data formats described in the following are shown as examples in the workbook <code>C:/R/library/breathtestcore/extdata/ExcelSamples.xlsx</code>. Any other tab-separated data set can directly be inserted into the editor of the <a href="https://github.com/dmenne/breathtestshiny">breathtestshiny</a> web app using copy/paste.</p>
+<p>The easiest way to supply generic formats is from Excel files. The data formats described in the following are shown as examples in the workbook <code>C:/R/library/breathtestcore/extdata/ExcelSamples.xlsx</code>. Any other tab-separated data set can directly be inserted into the editor of the <a href="https://github.com/dmenne/breathtestshiny" class="external-link">breathtestshiny</a> web app using copy/paste.</p>
 <div id="how-to-use-the-excel-data-formats" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-use-the-excel-data-formats" class="anchor"></a>How to use the Excel data formats</h2>
 <ul>
 <li>Use function <code><a href="../reference/read_breathtest_excel.html">read_breathtest_excel()</a></code>; this is the only way to select a worksheet different other than first in the workbook by passing parameter <code>sheet</code>. All other methods only read the first worksheet.</li>
 <li>Use function <code><a href="../reference/read_any_breathtest.html">read_any_breathtest()</a></code>. This always reads the first worksheet, but you can combine results from several files, even when they have different formats</li>
-<li>With the <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can drag file in all formats mentioned here into the green field; or select ‘Browse file’; or paste the Excel data or any other tab-separated data into the edit field.</li>
+<li>With the <a href="https://apps.menne-biomed.de/breathtestshiny/" class="external-link">breathtestshiny GUI</a>, you can drag file in all formats mentioned here into the green field; or select ‘Browse file’; or paste the Excel data or any other tab-separated data into the edit field.</li>
 </ul>
 <div id="two-column-format" class="section level3">
 <h3 class="hasAnchor">
 <a href="#two-column-format" class="anchor"></a>Two-column format</h3>
-<p>When you have only data from one record, you can supply data in a two-column format as given in sheet <code>2col</code> of workboot <code>ExcelSamples.xlsx</code>. The column headers must be <code>minute, pdr</code>. With <a href="https://apps.menne-biomed.de/breathtestshiny/">breathtestshiny GUI</a>, you can upload the file, or simply paste it into the editor. This is the easiest method to get a fit for a single patient.</p>
+<p>When you have only data from one record, you can supply data in a two-column format as given in sheet <code>2col</code> of workboot <code>ExcelSamples.xlsx</code>. The column headers must be <code>minute, pdr</code>. With <a href="https://apps.menne-biomed.de/breathtestshiny/" class="external-link">breathtestshiny GUI</a>, you can upload the file, or simply paste it into the editor. This is the easiest method to get a fit for a single patient.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">bt</span> <span class="op">=</span> <span class="fu"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"ExcelSamples.xlsx"</span><span class="op">)</span>, <span class="st">"2col"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>[[1]]
@@ -246,7 +242,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 # ... with 18 more rows</code></pre>
 <p>Compute the fit and plot</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cbt</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">cbt</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="data_formats_files/figure-html/nlsfit-1.png" width="384"></p>
 </div>
 <div id="three-column-format" class="section level3">
@@ -283,7 +279,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bt</span> <span class="op">=</span> <span class="fu"><a href="../reference/read_breathtest_excel.html">read_breathtest_excel</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"ExcelSamples.xlsx"</span><span class="op">)</span>, <span class="st">"4col_2group"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu">kable</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="va">bt</span>, <span class="fl">0.08</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">patient_id</span>, <span class="va">group</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"A sample from a four-column format. See worksheet 4col_2group."</span><span class="op">)</span></code></pre></div>
+<span class="fu">kable</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_frac</a></span><span class="op">(</span><span class="va">bt</span>, <span class="fl">0.08</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">patient_id</span>, <span class="va">group</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"A sample from a four-column format. See worksheet 4col_2group."</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>A sample from a four-column format. See worksheet 4col_2group.</caption>
 <thead><tr class="header">
@@ -356,7 +352,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 </tbody>
 </table>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bt</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/nlme_fit.html">nlme_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">bt</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/nlme_fit.html">nlme_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="data_formats_files/figure-html/nlme_fit-1.png" width="672"></p>
 </div>
 <div id="dob-instead-of-pdf" class="section level3">
@@ -386,7 +382,7 @@ Example of a cross-over design with missing data, outliers and missing record in
 <code class="sourceCode R"><span class="fu"><a href="../reference/read_iris.html">read_iris</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisMulti.TXT"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/null_fit.html">null_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/iriswagner-1.png" alt="IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown." width="384"><p class="caption">
 IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown.
@@ -406,7 +402,7 @@ IRIS/Wagner composite file. These data cannot be fitted successfully with the si
 <code class="sourceCode R"><span class="fu"><a href="../reference/read_iris_csv.html">read_iris_csv</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"Standard.TXT"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/iris_csv-1.png" alt="IRIS/Wagner CSV file" width="384"><p class="caption">
 IRIS/Wagner CSV file
@@ -431,7 +427,7 @@ Patient ID   - Franz
 <code class="sourceCode R"><span class="fu"><a href="../reference/read_breathid.html">read_breathid</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"350_20043_0_GER.txt"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/breathidc-1.png" alt="BreathID composite file" width="384"><p class="caption">
 BreathID composite file
@@ -461,7 +457,7 @@ BreathID composite file
 <code class="sourceCode R"><span class="fu"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"NewBreathID_multiple.xml"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/breathid_xml-1.png" alt="BreathID XML format" width="384"><p class="caption">
 BreathID XML format
@@ -472,11 +468,11 @@ BreathID XML format
 <code class="sourceCode R"><span class="co"># Could also use read_any_breathtest()</span>
 <span class="fu"><a href="../reference/read_breathid_xml.html">read_breathid_xml</a></span><span class="op">(</span><span class="fu"><a href="../reference/btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"NewBreathID_multiple.xml"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
     group <span class="op">=</span> <span class="st">"New"</span>
   <span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="data_formats_files/figure-html/breathid_man-1.png" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
 BreathID XML format with manual grouping.
@@ -497,18 +493,21 @@ BreathID XML format with manual grouping.
 
 
       <footer><div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org" class="external-link">pkgdown</a>.</p>
 </div>
+
 
       </footer>
 </div>
 
   
 
+
+  
 
   </body>
 </html>

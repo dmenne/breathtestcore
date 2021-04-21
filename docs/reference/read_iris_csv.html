@@ -52,6 +52,8 @@ dose = 100,  weight = 75, height = 180." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,18 @@ dose = 100,  weight = 75, height = 180." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,12 +97,6 @@ dose = 100,  weight = 75, height = 180." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -154,7 +159,7 @@ patient name, patient first name, test, identifikation</code>,
 and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">read_iris_csv,Read 13C data from IRIS/Wagner Analysen in CSV Format,Read 13C data from IRIS/Wagner Analysen in CSV Format — read_iris_csv,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_iris_csv.R'><code>R/read_iris_csv.R</code></a>,read_iris_csv.Rd,character(0),read_iris_csv,character(0),list(title = "Description", contents = "<p>Reads 13C data from IRIS/Wagner Analysen in CSV Format\nThe CSV files start as follows:</p><pre>\n\"Name\",\"Vorname\",\"Test\",\"Identifikation\"\n</pre><p>This format does not have information about the substrate (acetate, octanoate),\nthe dose and body weight and height. The following defaults are used: <code>substrate = acetate, \ndose = 100,  weight = 75, height = 180</code>.</p>"),list(description = "Reads 13C data from IRIS/Wagner Analysen in CSV Format\nThe CSV files start as follows:\n\"Name\",\"Vorname\",\"Test\",\"Identifikation\"\nThis format does not have information about the substrate (acetate, octanoate),\nthe dose and body weight and height. The following defaults are used: substrate = acetate, \ndose = 100,  weight = 75, height = 180."),<span class='fu'>read_iris_csv</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>Name of IRIS/Wagner file in CSV format</p>"), list(name = "text", description = "<p>alternatively, text can be given as string</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisCSV.TXT"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisCSV.TXT"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>filename</span>, n <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>, sep<span class='op'>=</span><span class='st'>"\n"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; "Name","Vorname","Test","Identifikation","Testzeit[min]","DOB [o/oo]","Delta [o/oo]","Std. Abw.[o/oo]","CO2 [%]","Std. Abw.[%]","Atom ppm Excess 13C [ppm]","Datum","Zeit"
 #&gt; "Einstein","Albert","GE FEST","123456","0","0","-26.32","4.501891E-02","3.236342","4.746388E-03","0","13.09.2013","13:21"
@@ -188,7 +193,7 @@ and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
 #&gt;   ..$ minute: num [1:14] 0 10 20 45 60 75 90 105 120 140 ...
 #&gt;   ..$ dob   : num [1:14] 0 2.02 5.22 8.9 9.48 ...
 #&gt;   ..$ pdr   : num [1:14] 0 1.11 2.86 4.87 5.19 ...
-#&gt;  - attr(*, "class")= chr "breathtest_data"</div>,list(list(title = "Value", contents = "<p>List of class <code>breath_test_data</code> with <code>file name, \npatient name, patient first name, test, identifikation</code>,\nand data frame <code>data</code> with <code>time</code> and <code>dob</code></p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+#&gt;  - attr(*, "class")= chr "breathtest_data"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -200,18 +205,21 @@ and data frame <code>data</code> with <code>time</code> and <code>dob</code></p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

@@ -52,6 +52,8 @@ test for gastric emptying. Digestion 83_96-107, page 98." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,18 @@ test for gastric emptying. Digestion 83_96-107, page 98." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,12 +97,6 @@ test for gastric emptying. Digestion 83_96-107, page 98." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -154,7 +159,7 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
     <div class='dont-index'><p><code><a href='exp_beta.html'>exp_beta</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">t50_bluck_coward,Bluck-Coward self-corrected half-emptying time,Bluck-Coward self-corrected half-emptying time — t50_bluck_coward,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/breathtest_parameters.R'><code>R/breathtest_parameters.R</code></a>,t50_bluck_coward.Rd,character(0),t50_bluck_coward,character(0),list(title = "Description", contents = "<p>Uses Newton's method to solve the self-corrected Bluck-Coward equation\nfor 1/2 to compute the half-emptying time t_50.</p>\n<p>See also equation G(n,t) in</p>\n<p>Bluck LJC, Jackson S, Vlasakakis G, Mander A (2011)\nBayesian hierarchical methods to interpret  the 13C-octanoic acid breath\ntest for gastric emptying. Digestion 83_96-107, page 98.</p>"),list(description = "Uses Newton's method to solve the self-corrected Bluck-Coward equation\nfor 1/2 to compute the half-emptying time t_50.\nSee also equation G(n,t) in\nBluck LJC, Jackson S, Vlasakakis G, Mander A (2011)\nBayesian hierarchical methods to interpret  the 13C-octanoic acid breath\ntest for gastric emptying. Digestion 83_96-107, page 98."),<span class='fu'>t50_bluck_coward</span><span class='op'>(</span><span class='va'>cf</span><span class='op'>)</span>,list(list(name = "cf", description = "<p>Named vector of coefficients; only <code>k</code> and <code>beta</code> are required.\nIn this package, <code>k</code> is measured in units of 1/min (e.g. 0.01/min),\nin publications it is often quoted as 1/h (e.g. 0.6/h).</p>")),TRUE,<div class='input'><span class='co'># From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta} </span>
+    <pre class="examples"><div class='input'><span class='co'># From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta} </span>
 <span class='co'># (nls, bayesian) are entered and checked against the tabulated values of </span>
 <span class='co'># t_{1/2(in)}.</span>
 <span class='co'># Most errors are small, but there are some outliers; errors in paper table?</span>
@@ -244,7 +249,7 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
 #&gt; 4                -0.50         -1.0                  1.9
 #&gt; 5                 4.19          2.6                 11.0
 #&gt; 6                15.93         11.4                 34.6</div><div class='input'>
-</div>,list(list(title = "Value", contents = "<p>Time where value is 1/2 of the maximum, i.e. t_50 or t_1/2 in minutes; \nin the publication by Bluck et al, the parameter is called t_1/2(in).</p>", slug = "value"), list(title = "See also", contents = "<div class='dont-index'><p><code><a href='exp_beta.html'>exp_beta</a></code></p></div>", slug = "see-also")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -256,18 +261,21 @@ in the publication by Bluck et al, the parameter is called t_1/2(in).</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

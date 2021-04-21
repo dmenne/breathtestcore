@@ -52,6 +52,8 @@ error messages than the xxx_fit functions." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,18 @@ error messages than the xxx_fit functions." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,12 +97,6 @@ error messages than the xxx_fit functions." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -185,8 +190,7 @@ disambiguated.</p>
 <p>Comments are persistent; multiple comments are concatenated with newline separators.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">cleanup_data,Transforms 13C breath data into a clean format for fitting,Transforms 13C breath data into a clean format for fitting — cleanup_data,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/cleanup_data.R'><code>R/cleanup_data.R</code></a>,cleanup_data.Rd,character(0),cleanup_data,character(0),list(title = "Description", contents = "<p>Accepts various data formats of ungrouped or grouped 13C breath \ntest time series, and transforms these into a data frame that can be used by\nall fitting functions, e.g. <code><a href='nls_fit.html'>nls_fit</a></code>.\nIf in doubt, pass data frame through <code>cleanup_data</code> before forwarding it \nto a fitting function. If the function cannot repair the format, it gives better\nerror messages than the <code>xxx_fit</code> functions.</p>"),list(description = "Accepts various data formats of ungrouped or grouped 13C breath \ntest time series, and transforms these into a data frame that can be used by\nall fitting functions, e.g. nls_fit.\nIf in doubt, pass data frame through cleanup_data before forwarding it \nto a fitting function. If the function cannot repair the format, it gives better\nerror messages than the xxx_fit functions."),<span class='fu'>cleanup_data</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span>,list(list(name = "data", description = "<ul>\n<li><p>A data frame, array or tibble with at least two numeric columns\n   with  optional names <code>minute</code> and <code>pdr</code> to fit \n   a single 13C record.</p></li>\n<li><p>A data frame or tibble with three columns named <code>patient_id</code>,\n   <code>minute</code> and <code>pdr</code>.</p></li>\n<li><p>A matrix that can be converted to one of the above.</p></li>\n<li><p>A list of data frames/tibbles that are concatenated. When the list has \n   named elements, the names are converted to group labels. When the list elements\n   are not named, group name <code>A</code> is used for all items.</p></li>\n<li><p>A structure of class <code><a href='breathtest_data.html'>breathtest_data</a></code>, as imported from\n   a file with <code><a href='read_any_breathtest.html'>read_any_breathtest</a></code></p></li>\n<li><p>A list of class <code>breathtest_data_list</code> as generated\n from read function such as <code><a href='read_breathid_xml.html'>read_breathid_xml</a></code></p></li>\n</ul>"), 
-    list(name = "...", description = "<p>optional.</p><dl>\n  <dt>use_filename_as_patient_id</dt><dd><p>Always use filename instead of \n  patient name. Use this when patient id are not unique.</p></dd>\n\n</dl>")),TRUE,<div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
 <span class='co'># Full manual</span>
 <span class='va'>minute</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>30</span>, by <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 <span class='va'>data1</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>minute</span>, 
@@ -268,8 +272,7 @@ disambiguated.</p>
 <span class='co'># File name is used as patient name if none is available</span>
 <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "A" "B" "C"</div><div class='input'><span class='co'># "A" "B" "C"</span>
-</div></span>,list(list(title = "Value", contents = "<p>A tibble with 4 columns. Column <code>patient_id</code> is created with a dummy\nentry of <code>pat_a</code> if no patient_id was present in the input data set. \nA column <code>group</code> is required in the input data if the patients are from different \ntreatment groups or within-subject repeats, e.g. in crossover design. \nA dummy group name \"A\" is added if no group column was available in the input data set.\nIf <code>group</code> is present, this is a hint to the analysis functions to do \npost-hoc breakdown or use it as a grouping variable in population-based methods.\nA patient can have records in multiple groups, for example in a cross-over \ndesigns.</p>\n<p>Columns <code>minute</code> and <code>pdr</code> are the same as given on input, but negative\nminute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes \nbecause most fit methods cannot handle the singularity at t=0.</p>\n<p>An error is raised if dummy columns <code>patient_id</code> and <code>group</code> cannot be \nadded in a unique way, i.e. when multiple values for a given minute cannot be \ndisambiguated.</p>\n<p>Comments are persistent; multiple comments are concatenated with newline separators.</p>", 
-    slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -281,18 +284,21 @@ disambiguated.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

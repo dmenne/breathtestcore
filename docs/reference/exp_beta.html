@@ -59,6 +59,8 @@ breath test for gastric emptying. Journal of Breath Research, 3 1-8" />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -70,9 +72,18 @@ breath test for gastric emptying. Journal of Breath Research, 3 1-8" />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -93,12 +104,6 @@ breath test for gastric emptying. Journal of Breath Research, 3 1-8" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -190,7 +195,7 @@ breath test for gastric emptying. Journal of Breath Research, 3 1-8</p>
 The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> provides <code>ggplot2</code> graphics.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">exp_beta,Exponential beta function for 13C breath data,Exponential beta function for 13C breath data — exp_beta,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/exp_beta.R'><code>R/exp_beta.R</code></a>,exp_beta.Rd,character(0),exp_beta,character(0),list(title = "Description", contents = "<p>Function to fit PDR time series data to exponential-beta function\nas given in:</p>\n<p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. \n13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. \nGastroenterology 114(4): 856-50</p>\n<p>Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:\nA comprehensive review.  J. Smooth Muscle Research 46(6): 267-280</p>\n<p>Bluck L J C and Coward W A 2006 Measurement of gastric\nemptying by the C-13-octanoate breath test --- rationalization\nwith scintigraphy Physiol. Meas. 27 279?89</p>\n<p>For a review, see</p>\n<p>Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate\nbreath test for gastric emptying. Journal of Breath Research, 3 1-8</p>"),list(description = "Function to fit PDR time series data to exponential-beta function\nas given in:\nMaes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. \n13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. \nGastroenterology 114(4): 856-50\nSanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:\nA comprehensive review.  J. Smooth Muscle Research 46(6): 267-280\nBluck L J C and Coward W A 2006 Measurement of gastric\nemptying by the C-13-octanoate breath test --- rationalization\nwith scintigraphy Physiol. Meas. 27 279?89\nFor a review, see\nBluck LJC (2009) Recent advances in the interpretation of the 13C octanoate\nbreath test for gastric emptying. Journal of Breath Research, 3 1-8"),<span class='fu'>exp_beta</span><span class='op'>(</span><span class='va'>minute</span>, <span class='va'>dose</span>, <span class='va'>m</span>, <span class='va'>k</span>, <span class='va'>beta</span><span class='op'>)</span>,list(list(name = "minute", description = "<p>vector of time values in minutes</p>"), list(name = "dose", description = "<p>in mg</p>"), list(name = "m", description = "<p>efficiency</p>"), list(name = "k", description = "<p>time constant</p>"), list(name = "beta", description = "<p>form factor</p>")),TRUE,<div class='input'><span class='va'>start</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>m<span class='op'>=</span><span class='fl'>20</span>,k<span class='op'>=</span><span class='fl'>1</span><span class='op'>/</span><span class='fl'>100</span>,beta<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>start</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>m<span class='op'>=</span><span class='fl'>20</span>,k<span class='op'>=</span><span class='fl'>1</span><span class='op'>/</span><span class='fl'>100</span>,beta<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># fit to real data set and show different t50 results</span>
 <span class='va'>sample_file</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"350_20043_0_GER.txt"</span><span class='op'>)</span>
@@ -294,8 +299,7 @@ The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></co
           Borrowing strength from nlme in action!"</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>patient</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position<span class='op'>=</span><span class='st'>"none"</span><span class='op'>)</span>
-</div><div class='img'><img src='exp_beta-3.png' alt='' width='700' height='433' /></div>,list(list(title = "Value", contents = "<p>Values and gradients of estimated PDR for use with <code>nls</code> and <code>nlme</code></p>", slug = "value"), list(title = "Details", contents = "<p>The function is defined as</p>\n<pre><span class='va'>exp_beta</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>minute</span>,<span class='va'>dose</span>,<span class='va'>m</span>,<span class='va'>k</span>,<span class='va'>beta</span><span class='op'>)</span> <span class='op'>{</span>\n     <span class='va'>m</span><span class='op'>*</span><span class='va'>dose</span><span class='op'>*</span><span class='va'>k</span><span class='op'>*</span><span class='va'>beta</span><span class='op'>*</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>k</span><span class='op'>*</span><span class='va'>minute</span><span class='op'>)</span><span class='op'>)</span><span class='op'>^</span><span class='op'>(</span><span class='va'>beta</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>k</span><span class='op'>*</span><span class='va'>minute</span><span class='op'>)</span>\n<span class='op'>}</span></pre>\n\n<p>At minute == 0, the function behaves like a polynomial with degree (beta-1).</p>", 
-    slug = "details"), list(title = "See also", contents = "<div class='dont-index'><p>In the example below, data and fit are plotted with standard R graphics.\nThe S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></code> provides <code>ggplot2</code> graphics.</p></div>", slug = "see-also")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div><div class='img'><img src='exp_beta-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -307,18 +311,21 @@ The S3 method <code><a href='plot.breathtestfit.html'>plot.breathtestfit</a></co
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

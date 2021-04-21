@@ -53,6 +53,8 @@ The composite files start as follows:
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -64,9 +66,18 @@ The composite files start as follows:
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -87,12 +98,6 @@ The composite files start as follows:
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -157,7 +162,7 @@ test, identifikation</code>, and data frame <code>data</code> with <code>time</c
 and <code>dob</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">read_iris,Read 13C data from IRIS/Wagner Analysen,Read 13C data from IRIS/Wagner Analysen — read_iris,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_iris.R'><code>R/read_iris.R</code></a>,read_iris.Rd,character(0),read_iris,character(0),list(title = "Description", contents = "<p>Reads composite files with 13C data from IRIS/Wagner Analysen.\nThe composite files start as follows:</p><pre>\n\"Testergebnis\"\n\"Nummer\",\"1330\"\n\"Datum\",\"10.10.2013\"\n\"Testart\"</pre>\n"),list(description = "Reads composite files with 13C data from IRIS/Wagner Analysen.\nThe composite files start as follows:\n\"Testergebnis\"\n\"Nummer\",\"1330\"\n\"Datum\",\"10.10.2013\"\n\"Testart\"\n"),<span class='fu'>read_iris</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>name of IRIS/Wagner file in composite format</p>"), list(name = "text", description = "<p>alternatively, text can be given as string</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisMulti.TXT"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisMulti.TXT"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>filename</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, sep<span class='op'>=</span><span class='st'>"\n"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; "Testergebnis"
 #&gt; "Nummer","22"
@@ -198,7 +203,7 @@ and <code>dob</code></p>
 #&gt;   ..$ minute: num [1:14] 0 10 20 45 60 75 90 105 120 140 ...
 #&gt;   ..$ dob   : num [1:14] 0 -2.46 1.13 1.39 2.91 2.35 3.24 4.27 3.22 3.64 ...
 #&gt;   ..$ pdr   : num [1:14] 0 -2.8 1.29 1.58 3.32 ...
-#&gt;  - attr(*, "class")= chr "breathtest_data"</div>,list(list(title = "Value", contents = "<p>List of class <code><a href='breathtest_data.html'>breathtest_data</a></code> with \n<code>file_name, patient_name, patient_first_name,\ntest, identifikation</code>, and data frame <code>data</code> with <code>time</code>\nand <code>dob</code></p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+#&gt;  - attr(*, "class")= chr "breathtest_data"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -210,18 +215,21 @@ and <code>dob</code></p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

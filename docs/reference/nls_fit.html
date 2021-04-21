@@ -47,6 +47,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -58,9 +60,18 @@
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -81,12 +92,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -168,8 +173,7 @@ for all records is supported.</p></td>
  <code>broom: tidy, augment</code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">nls_fit,Individual curve fit with nls to 13C breath test data,Individual curve fit with nls to 13C breath test data — nls_fit,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/nls_fit.R'><code>R/nls_fit.R</code></a>,nls_fit.Rd,character(0),nls_fit,character(0),list(title = "Description", contents = "<p>Fits individual exponential beta curves to 13C breath test time series</p>"),list(description = "Fits individual exponential beta curves to 13C breath test time series"),<span class='fu'>nls_fit</span><span class='op'>(</span><span class='va'>data</span>, dose <span class='op'>=</span> <span class='fl'>100</span>, start <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>m <span class='op'>=</span> <span class='fl'>50</span>, k <span class='op'>=</span> <span class='fl'>1</span><span class='op'>/</span><span class='fl'>100</span>, beta <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>,list(list(name = "data", description = "<p>Data frame or tibble as created by <code><a href='cleanup_data.html'>cleanup_data</a></code>, \nwith mandatory columns <code>patient_id, group, minute</code> and <code>pdr</code>. \nIt is recommended to run all data through <code><a href='cleanup_data.html'>cleanup_data</a></code> which\nwill insert dummy columns for <code>patient_id</code> and <code>minute</code> if the\ndata are distinct, and report an error if not.</p>"), list(name = "dose", description = "<p>Dose of acetate or octanoate. Currently, only one common dose\nfor all records is supported.</p>"), 
-    list(name = "start", description = "<p>Optional start values\n<code>patient_id</code> and <code>group</code>.</p>")),TRUE,<div class='input'><span class='va'>d</span> <span class='op'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span><span class='op'>(</span>n_records <span class='op'>=</span> <span class='fl'>3</span>, noise <span class='op'>=</span> <span class='fl'>0.2</span>, seed <span class='op'>=</span> <span class='fl'>4711</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>d</span> <span class='op'>=</span> <span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span><span class='op'>(</span>n_records <span class='op'>=</span> <span class='fl'>3</span>, noise <span class='op'>=</span> <span class='fl'>0.2</span>, seed <span class='op'>=</span> <span class='fl'>4711</span><span class='op'>)</span>
 <span class='va'>data</span> <span class='op'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>$</span><span class='va'>data</span><span class='op'>)</span>
 <span class='va'>fit</span> <span class='op'>=</span> <span class='fu'>nls_fit</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span> <span class='co'># calls plot.breathtestfit</span>
@@ -189,8 +193,7 @@ for all records is supported.</p></td>
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> rec_01        58  58.0    2.33     2.34 0.008</span><span style='text-decoration: underline;'>98</span><span> 0.008</span><span style='text-decoration: underline;'>95</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> rec_02        54  53.6    1.61     1.61 0.008</span><span style='text-decoration: underline;'>47</span><span> 0.008</span><span style='text-decoration: underline;'>52</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> rec_03        52  51.6    1.98     1.99 0.006</span><span style='text-decoration: underline;'>23</span><span> 0.006</span><span style='text-decoration: underline;'>26</span><span></div></span>,list(list(title = "Value", contents = "<p>A list of class (\"breathtestnlsfit\" \"breathtestfit\") with elements</p><dl>\n  <dt>coef</dt><dd><p>Estimated parameters in a key-value format with \n   columns <code>patient_id, group, parameter, stat, method</code> and <code>value</code>.\n   Parameter <code>stat</code> always has value <code>\"estimate\"</code>.\n   Confidence intervals might be added later, so do not take for granted \n   all parameters are estimates.</p></dd>\n   <dt>data</dt><dd><p>Input data; <code>nls_fit</code> does not decimate the data. If you have \n   large data sets where subsampling might be required to achieve faster convergence,\n   using <code>nls_fit</code> anyway is only relevant to show how NOT to do it. \n   Use <code>nlme_fit</code> or <code>stan_fit</code> instead.</p></dd>\n\n</dl>\n", 
-    slug = "value"), list(title = "See also", contents = "<div class='dont-index'><p>Base methods <code>coef, plot, print</code>; methods from package\n <code>broom: tidy, augment</code>.</p></div>", slug = "see-also")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> rec_03        52  51.6    1.98     1.99 0.006</span><span style='text-decoration: underline;'>23</span><span> 0.006</span><span style='text-decoration: underline;'>26</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -202,18 +205,21 @@ for all records is supported.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

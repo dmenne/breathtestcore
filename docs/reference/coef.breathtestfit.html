@@ -52,6 +52,8 @@ The summary method only extracts t50 by the Maes/Ghoos method" />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,18 @@ The summary method only extracts t50 by the Maes/Ghoos method" />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,12 +97,6 @@ The summary method only extracts t50 by the Maes/Ghoos method" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -151,8 +156,7 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">coef.breathtestfit,S3 coef and summary for breathtestfit,S3 coef and summary for breathtestfit — coef.breathtestfit,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/coef_breathtestfit.R'><code>R/coef_breathtestfit.R</code></a>,coef.breathtestfit.Rd,character(0),coef.breathtestfit,character(0),list(title = "Description", contents = "<p>Function <code>coef</code> extracts the estimates such as t50, \ntlag, from fitted 13C beta  exponential models. The result is the same \nas <code>fit$coef</code>, but without\ncolumn <code>stat</code>, which always is <code>\"estimate\"</code> for <code><a href='nls_fit.html'>nls_fit</a></code>\nand <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>\n<p>The <code>summary</code> method only extracts <code>t50</code> by the Maes/Ghoos method</p>"),list(description = "Function coef extracts the estimates such as t50, \ntlag, from fitted 13C beta  exponential models. The result is the same \nas fit$coef, but without\ncolumn stat, which always is \"estimate\" for nls_fit\nand nlme_fit.\nThe summary method only extracts t50 by the Maes/Ghoos method"),<span class='co'># S3 method for breathtestfit</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>,list(list(name = "object", description = "<p>of class <code>breathtestfit</code>, as returned by <code><a href='nls_fit.html'>nls_fit</a></code> or \n<code><a href='nlme_fit.html'>nlme_fit</a></code></p>"), list(name = "...", description = "<p>other parameters passed to methods</p>")),TRUE,<div class='input'><span class='co'># Generate simulated data</span>
+    <pre class="examples"><div class='input'><span class='co'># Generate simulated data</span>
 <span class='va'>data</span> <span class='op'>=</span> <span class='fu'><a href='cleanup_data.html'>cleanup_data</a></span><span class='op'>(</span><span class='fu'><a href='simulate_breathtest_data.html'>simulate_breathtest_data</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Fit with the population method</span>
 <span class='va'>fit</span> <span class='op'>=</span> <span class='fu'><a href='nlme_fit.html'>nlme_fit</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
@@ -196,7 +200,7 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
   <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>$</span><span class='va'>coef</span><span class='op'>$</span><span class='va'>stat</span><span class='op'>)</span>
 <span class='op'>}</span>
 <span class='op'>}</span>
-</div></span>,list(),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -208,18 +212,21 @@ and <code><a href='nlme_fit.html'>nlme_fit</a></code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -45,12 +47,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -77,25 +73,22 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-
-<hr>
-<p>editor_options: markdown: wrap: 72 —</p>
 <div id="breathtestcore-13c-breath-test-to-analyze-gastric-emptying" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#breathtestcore-13c-breath-test-to-analyze-gastric-emptying" class="anchor"></a>breathtestcore: <sup>13</sup>C breath test to analyze gastric emptying</h1></div>
-<p>Dieter Menne Menne Biomed Consulting Tübingen, Germany <a href="http://www.menne-biomed.de" class="uri">http://www.menne-biomed.de</a> <a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
+<p>Dieter Menne Menne Biomed Consulting Tübingen, Germany <a href="http://www.menne-biomed.de" class="external-link uri">http://www.menne-biomed.de</a> <a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>Menne Biomed Consulting Tübingen, Germany <a href="https://www.menne-biomed.de" class="uri">https://www.menne-biomed.de</a></p>
+<p>Menne Biomed Consulting Tübingen, Germany <a href="https://www.menne-biomed.de" class="external-link uri">https://www.menne-biomed.de</a></p>
 <p><a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
 <ul>
 <li>
 <a href="https://dmenne.github.io/breathtestcore/">Online reference, examples with images and vignettes</a>.</li>
-<li>To test some of the functions with sample data or your own data, try the <a href="https://apps.menne-biomed.de/breathtestshiny">online demo</a>.</li>
-<li>Issues can be reported <a href="https://github.com/dmenne/breathtestcore/issues">here</a>.</li>
+<li>To test some of the functions with sample data or your own data, try the <a href="https://apps.menne-biomed.de/breathtestshiny" class="external-link">online demo</a>.</li>
+<li>Issues can be reported <a href="https://github.com/dmenne/breathtestcore/issues" class="external-link">here</a>.</li>
 </ul>
-<p>This is a reboot of R package <a href="https://github.com/dmenne/d13cbreath">dmenne/d13cbreath</a> which is no longer maintained.</p>
+<p>This is a reboot of R package <a href="https://github.com/dmenne/d13cbreath" class="external-link">dmenne/d13cbreath</a> which is no longer maintained.</p>
 <div id="what-it-does" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-it-does" class="anchor"></a>What it does</h2>
@@ -103,11 +96,11 @@
 <li>Reads several file formats of <sup>13</sup>C data: IRIS/Wagner (composite and CSV), BreathID and Excel.</li>
 <li>Fits Beta-Exponential nonlinear curve fits using <code>nls</code>, which gives successful estimates for 90% of PDR curves.</li>
 <li>Computes population fits with <code>nlme</code> when data from multiple recordings are available, resulting in much more reliable estimates for studies.</li>
-<li>Computes prior-constrained Bayesian non-linear fit for single records (refactored to package <a href="https://github.com/dmenne/breathteststan">dmenne/breathteststan</a>)</li>
+<li>Computes prior-constrained Bayesian non-linear fit for single records (refactored to package <a href="https://github.com/dmenne/breathteststan" class="external-link">dmenne/breathteststan</a>)</li>
 <li>Computes Bayesian non-linear population fit with Stan for multiple records (refactored to package dmenne/breathteststan)</li>
 <li>Includes three data sets of <sup>13</sup>C records from the University Hospital of Zürich</li>
 <li>
-<a href="https://menne-biomed.de/blog/breath-test-stan">A comparison of results with nls, nlme</a> and Bayesian <a href="http://www.mc-stan.org">Stan</a>.</li>
+<a href="https://menne-biomed.de/blog/breath-test-stan" class="external-link">A comparison of results with nls, nlme</a> and Bayesian <a href="http://www.mc-stan.org" class="external-link">Stan</a>.</li>
 <li>See the example in the documentation of <code>t50BluckCoward</code> for a comparison with published data.</li>
 </ul>
 </div>
@@ -126,9 +119,9 @@
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># And here the web app; this is not on CRAN and must be installed from github</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"dmenne/breathtestshiny"</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Do not forget to use <code>build_vignettes = TRUE</code>.</p>
-<p>Stable version of the packages <a href="https://CRAN.R-project.org/package=breathtestcore">breathtestcore</a> and <a href="https://CRAN.R-project.org/package=breathteststan">breathteststan</a> can also be installed from CRAN.</p>
-<p>For an easy installation, use the Docker image <a href="https://hub.docker.com/r/dmenne/breathtestshiny">dmenne/breathtestshiny</a></p>
-<p>You can run the <a href="https://apps.menne-biomed.de/breathtestshiny/">web app online</a>. No data are stored, but you can download all results and a series of tests for studies.</p>
+<p>Stable version of the packages <a href="https://CRAN.R-project.org/package=breathtestcore" class="external-link">breathtestcore</a> and <a href="https://CRAN.R-project.org/package=breathteststan" class="external-link">breathteststan</a> can also be installed from CRAN.</p>
+<p>For an easy installation, use the Docker image <a href="https://hub.docker.com/r/dmenne/breathtestshiny" class="external-link">dmenne/breathtestshiny</a></p>
+<p>You can run the <a href="https://apps.menne-biomed.de/breathtestshiny/" class="external-link">web app online</a>. No data are stored, but you can download all results and a series of tests for studies.</p>
 </div>
 <div id="usage-example" class="section level2">
 <h2 class="hasAnchor">
@@ -144,22 +137,21 @@
 <div id="planned" class="section level2">
 <h2 class="hasAnchor">
 <a href="#planned" class="anchor"></a>Planned</h2>
-<p>The core fitting functions and the Stan variants are reasonably stable and can be used to analyze your breath test data with R. The <a href="https://shiny.rstudio.com">Shiny</a> web app with reporting is work in progress; <a href="https://apps.menne-biomed.de/breathtestshiny">online demo</a>, <a href="https://github.com/dmenne/breathtestshiny">source code</a>.</p>
+<p>The core fitting functions and the Stan variants are reasonably stable and can be used to analyze your breath test data with R. The <a href="https://shiny.rstudio.com" class="external-link">Shiny</a> web app with reporting is work in progress; <a href="https://apps.menne-biomed.de/breathtestshiny" class="external-link">online demo</a>, <a href="https://github.com/dmenne/breathtestshiny" class="external-link">source code</a>.</p>
 <p><strong>Reference</strong>:</p>
 <ul>
 <li><p>Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J. Rutgeerts, and G. Vantrappen. 1993. “Measurement of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid Breath Test.” <em>Gastroenterology</em> 104 (6). Department of Medicine, University Hospital Gasthuisberg, Belgium.: 1640–7.</p></li>
 <li><p>Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. “<sup>13</sup>C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.” <em>Gastroenterology</em> 114 (4): 856–59.</p></li>
-<li><p>Bluck LJC (2009) Recent advances in the interpretation of the <sup>13</sup>C octanoate breath test for gastric emptying. J. Breath Res. 3, <a href="https://iopscience.iop.org/1752-7163/3/3/034002/" class="uri">https://iopscience.iop.org/1752-7163/3/3/034002/</a></p></li>
+<li><p>Bluck LJC (2009) Recent advances in the interpretation of the <sup>13</sup>C octanoate breath test for gastric emptying. J. Breath Res. 3, <a href="https://iopscience.iop.org/1752-7163/3/3/034002/" class="external-link uri">https://iopscience.iop.org/1752-7163/3/3/034002/</a></p></li>
 <li><p>Bluck, LJC, Jackson S, Vlasakakis G, Mander A (2011) Bayesian hierarchical methods to interpret the <sup>13</sup>C-octanoic acid breath test for gastric emptying. Digestion 83_96-107.</p></li>
 </ul>
 </div>
 </div>
-
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=breathtestcore">https://​cloud.r-project.org/​package=breathtestcore</a>
 </li>
@@ -169,47 +161,54 @@
 </li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
+
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Dieter Menne <br><small class="roles"> Author, maintainer </small>  </li>
 <li>Benjamin Misselwitz <br><small class="roles"> Funder </small>  </li>
 <li>Mark Fox <br><small class="roles"> Funder </small>  </li>
 <li>University Hospital of Zurich, Dep. Gastroenterology <br><small class="roles"> Funder, data contributor </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html">More on authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/dmenne/breathtestcore/actions"><img src="https://github.com/dmenne/breathtestcore/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/dmenne/breathtestcore?branch=master"><img src="https://codecov.io/gh/dmenne/breathtestcore/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/dmenne/breathtestcore/actions" class="external-link"><img src="https://github.com/dmenne/breathtestcore/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/dmenne/breathtestcore?branch=master" class="external-link"><img src="https://codecov.io/gh/dmenne/breathtestcore/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
 </div>
 
   
 
+
+  
 
   </body>
 </html>

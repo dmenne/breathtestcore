@@ -51,6 +51,8 @@ See the example below with several sheets for supported formats" />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -62,9 +64,18 @@ See the example below with several sheets for supported formats" />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -85,12 +96,6 @@ See the example below with several sheets for supported formats" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -156,7 +161,7 @@ Pass result through <code><a href='cleanup_data.html'>cleanup_data</a></code> to
 other formats.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">read_breathtest_excel,Reads breathtest data in Excel format,Reads breathtest data in Excel format — read_breathtest_excel,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_breathtest_excel.R'><code>R/read_breathtest_excel.R</code></a>,read_breathtest_excel.Rd,character(0),read_breathtest_excel,character(0),list(title = "Description", contents = "<p>Can read several formats of data sets in Excel, from\n2 (<code>minute, pdr or dob</code> for 1 record) to 4 columns (<code>patient_id, \ngroup, minute, pdr or dob</code>). Conversion from dob to pdf is done for \nassuming 180 cm height and 75 kg weight.\nSee the example below with several sheets for supported formats</p>"),list(description = "Can read several formats of data sets in Excel, from\n2 (minute, pdr or dob for 1 record) to 4 columns (patient_id, \ngroup, minute, pdr or dob). Conversion from dob to pdf is done for \nassuming 180 cm height and 75 kg weight.\nSee the example below with several sheets for supported formats"),<span class='fu'>read_breathtest_excel</span><span class='op'>(</span><span class='va'>filename</span>, sheet <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>Name of Excel-file to be read</p>"), list(name = "sheet", description = "<p>Name or number of Excel file to be read. When used with \n<code><a href='read_any_breathtest.html'>read_any_breathtest</a></code>, the first sheet is always read. You must \ncall  <code>read_breathtest_excel</code> explicitly to read other worksheets, as shown\nin the example below.</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"ExcelSamples.xlsx"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"ExcelSamples.xlsx"</span><span class='op'>)</span>
 <span class='va'>sheets</span> <span class='op'>=</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/excel_sheets.html'>excel_sheets</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
 <span class='co'># First 4 lines of each sheet</span>
 <span class='kw'>for</span> <span class='op'>(</span><span class='va'>sheet</span> <span class='kw'>in</span> <span class='va'>sheets</span><span class='op'>)</span> <span class='op'>{</span>
@@ -196,10 +201,10 @@ other formats.</p>
 #&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;   patient_id group         minute   dob
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> norm_001   liquid_normal     10 0.26 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> norm_001   liquid_normal     20 0.81 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> norm_001   liquid_normal     30 1.07 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> norm_001   liquid_normal     40 0.910
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> norm_001   liquid_normal     10  0.26
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> norm_001   liquid_normal     20  0.81
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> norm_001   liquid_normal     30  1.07
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> norm_001   liquid_normal     40  0.91
 #&gt; 
 #&gt; Sheet  3col 
 #&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
@@ -258,7 +263,7 @@ other formats.</p>
 #&gt;  $ patient_id: chr [1:22] "pat_a" "pat_a" "pat_a" "pat_a" ...
 #&gt;  $ group     : chr [1:22] "A" "A" "A" "A" ...
 #&gt;  $ minute    : num [1:22] 0.42 11.92 23.4 34.89 46.39 ...
-#&gt;  $ pdr       : num [1:22] 0.547 1.642 3.886 6.131 8.156 ...</div></span>,list(list(title = "Value", contents = "<p>Different from the other readXXX function, this returns a list\nwith a data frame, not a structure of <code><a href='breathtest_data.html'>breathtest_data</a></code>. \nPass result through <code><a href='cleanup_data.html'>cleanup_data</a></code> to make it compatible with \nother formats.</p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+#&gt;  $ pdr       : num [1:22] 0.547 1.642 3.886 6.131 8.156 ...</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -270,18 +275,21 @@ other formats.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

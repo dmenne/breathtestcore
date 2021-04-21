@@ -1,11 +1,11 @@
 pandoc: 2.11.4
-pkgdown: 1.6.1
-pkgdown_sha: ~
+pkgdown: 1.6.1.9001
+pkgdown_sha: 46764c0dba9c847957120d0bd687862346db9e98
 articles:
   data_formats: data_formats.html
   methods_and_concepts: methods_and_concepts.html
-last_built: 2021-03-31T09:42Z
+last_built: 2021-04-21T17:20Z
 urls:
-  reference: https://dmenne.github.io/breathtestcore//reference
-  article: https://dmenne.github.io/breathtestcore//articles
+  reference: https://dmenne.github.io/breathtestcore/reference
+  article: https://dmenne.github.io/breathtestcore/articles
 

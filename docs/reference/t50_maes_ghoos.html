@@ -51,6 +51,8 @@ Dig. Dis. Sci. 39 S104-6." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -62,9 +64,18 @@ Dig. Dis. Sci. 39 S104-6." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -85,12 +96,6 @@ Dig. Dis. Sci. 39 S104-6." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -153,13 +158,13 @@ half time <code>t50</code>.</p>
     <div class='dont-index'><p><code><a href='exp_beta.html'>exp_beta</a></code>, and <code><a href='t50_bluck_coward.html'>t50_bluck_coward</a></code> for an example.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">t50_maes_ghoos,Half-emptying time by Maes/Ghoos method,Half-emptying time by Maes/Ghoos method — t50_maes_ghoos,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/breathtest_parameters.R'><code>R/breathtest_parameters.R</code></a>,t50_maes_ghoos.Rd,character(0),t50_maes_ghoos,character(0),list(title = "Description", contents = "<p>Half-emptying time t50 as determined from the fit of a\nbeta exponential function. In the Maes/Ghoos model, it is defined as the time\nwhen the area under curve (AUC) is 50% of the AUC from 0 to infinity.</p>\n<p>Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 \nDig. Dis. Sci. 39 S104-6.</p>"),list(description = "Half-emptying time t50 as determined from the fit of a\nbeta exponential function. In the Maes/Ghoos model, it is defined as the time\nwhen the area under curve (AUC) is 50% of the AUC from 0 to infinity.\nMaes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 \nDig. Dis. Sci. 39 S104-6."),<span class='fu'>t50_maes_ghoos</span><span class='op'>(</span><span class='va'>cf</span><span class='op'>)</span>,list(list(name = "cf", description = "<p>named vector of coefficients; only <code>k</code> and <code>beta</code> are required\nnote that <code>k</code> is measured in 1/min (e.g. 0.01/min),\nusually it is quoted as 1/h (e.g. 0.6/h).</p>")),TRUE,<div class='input'><span class='co'># Integral from 0 to infinity is 100 at dose 100 mg</span>
+    <pre class="examples"><div class='input'><span class='co'># Integral from 0 to infinity is 100 at dose 100 mg</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/integrate.html'>integrate</a></span><span class='op'>(</span><span class='va'>exp_beta</span>, <span class='fl'>0</span>, <span class='cn'>Inf</span>, beta <span class='op'>=</span> <span class='fl'>1.5</span>, k <span class='op'>=</span> <span class='fl'>0.01</span>, m <span class='op'>=</span> <span class='fl'>1</span>, dose <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 100 with absolute error &lt; 0.0014</div><div class='input'><span class='va'>t50_mg</span> <span class='op'>=</span> <span class='fu'>t50_maes_ghoos</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>beta <span class='op'>=</span> <span class='fl'>1.5</span>, k <span class='op'>=</span> <span class='fl'>0.01</span>, dose <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>t50_mg</span>
 </div><div class='output co'>#&gt; [1] 99</div><div class='input'><span class='co'># Integral to half-emptying time \code{t50_maes_ghoos} is 50 </span>
 <span class='fu'><a href='https://rdrr.io/r/stats/integrate.html'>integrate</a></span><span class='op'>(</span><span class='va'>exp_beta</span>, <span class='fl'>0</span>, <span class='va'>t50_mg</span>, beta <span class='op'>=</span> <span class='fl'>1.5</span>, k <span class='op'>=</span> <span class='fl'>0.01</span>, m <span class='op'>=</span> <span class='fl'>1</span>, dose <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 50 with absolute error &lt; 0.0042</div>,list(list(title = "Value", contents = "<p>Time in minutes when area under curve is 50% of the AUC to infinity.\nIn the Maes/Ghoos model, this is used as a surrogate for gastric emptying \nhalf time <code>t50</code>.</p>", slug = "value"), list(title = "See also", contents = "<div class='dont-index'><p><code><a href='exp_beta.html'>exp_beta</a></code>, and <code><a href='t50_bluck_coward.html'>t50_bluck_coward</a></code> for an example.</p></div>", slug = "see-also")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div><div class='output co'>#&gt; 50 with absolute error &lt; 0.0042</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -171,18 +176,21 @@ half time <code>t50</code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

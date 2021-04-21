@@ -52,6 +52,8 @@ physiology 32, 590-594." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -63,9 +65,18 @@ physiology 32, 590-594." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,12 +97,6 @@ physiology 32, 590-594." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -182,15 +187,7 @@ test and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123
 is used, without the factor 10. Which one is correct?</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">dob_to_pdr,Convert breath test DOB data to PDR data,Convert breath test DOB data to PDR data — dob_to_pdr,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/dob_to_pdr.R'><code>R/dob_to_pdr.R</code></a>,dob_to_pdr.Rd,character(0),dob_to_pdr,character(0),list(title = "Description", contents = "<p>Convert DOB (delta-over-baseline) to PDR for 13C breath test. \nThis is equation (4) in\nSanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysing\nthe atypical double-peaked excretion curve in the [13c]-octanoate gastric\nemptying breath test in humans. Clinical and experimental pharmacology and\nphysiology 32, 590-594.</p>"),list(description = "Convert DOB (delta-over-baseline) to PDR for 13C breath test. \nThis is equation (4) in\nSanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysing\nthe atypical double-peaked excretion curve in the [13c]-octanoate gastric\nemptying breath test in humans. Clinical and experimental pharmacology and\nphysiology 32, 590-594."),<span class='fu'>dob_to_pdr</span><span class='op'>(</span>
-  <span class='va'>dob</span>,
-  weight <span class='op'>=</span> <span class='fl'>75</span>,
-  height <span class='op'>=</span> <span class='fl'>180</span>,
-  mw <span class='op'>=</span> <span class='fl'>167</span>,
-  purity_percent <span class='op'>=</span> <span class='fl'>99.1</span>,
-  mg_substrate <span class='op'>=</span> <span class='fl'>100</span>
-<span class='op'>)</span>,list(list(name = "dob", description = "<p>Delta-over-baseline vector in 0/00</p>"), list(name = "weight", description = "<p>Body weight in kg; assumed 75 kg if missing</p>"), list(name = "height", description = "<p>Body height in cm; assume 180 cm if missing</p>"), list(name = "mw", description = "<p>Molecular weight,  83.023388 g/mol for acetate, 167 g/mol for octanoate.\nCan also be given as string \"acetate\" or \"octanoate\".</p>"), list(name = "purity_percent", description = "<p>Purity in percent</p>"), 
-    list(name = "mg_substrate", description = "<p>Substrate in mg</p>")),TRUE,<div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"350_20049_0_GERWithWeight.txt"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>filename</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"350_20049_0_GERWithWeight.txt"</span><span class='op'>)</span>
 <span class='va'>bid</span> <span class='op'>=</span> <span class='fu'><a href='read_breathid.html'>read_breathid</a></span><span class='op'>(</span><span class='va'>filename</span><span class='op'>)</span>
 <span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr1</span> <span class='op'>=</span> <span class='fu'>dob_to_pdr</span><span class='op'>(</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>dob</span>, weight<span class='op'>=</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>weight</span>, height<span class='op'>=</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>height</span><span class='op'>)</span>
 
@@ -200,7 +197,7 @@ type<span class='op'>=</span><span class='st'>"l"</span><span class='op'>)</span
 </div><div class='img'><img src='dob_to_pdr-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'>#</span>
 <span class='co'># Check how far our computed pdr is from the stored pdr</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span><span class='op'>(</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr1</span><span class='op'>-</span><span class='va'>bid</span><span class='op'>$</span><span class='va'>data</span><span class='op'>$</span><span class='va'>pdr</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0.000952</div>,list(list(title = "Value", contents = "<p>PDR percent dose/h</p>", slug = "value"), list(title = "Note", contents = "<p>I have no idea where the factor 10 in equation (4) comes from, possibly\nfrom percent(PDR)/and DOB(0/00). In Kim and Camillieri, Stable isotope breath \ntest and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123 \nis used, without the factor 10. Which one is correct?</p>", slug = "note")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div><div class='output co'>#&gt; [1] 0.000952</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -212,18 +209,21 @@ type<span class='op'>=</span><span class='st'>"l"</span><span class='op'>)</span
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

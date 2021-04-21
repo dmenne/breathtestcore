@@ -50,6 +50,8 @@ For internal use, but should be overridden for exotic IDs" />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -61,9 +63,18 @@ For internal use, but should be overridden for exotic IDs" />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,12 +95,6 @@ For internal use, but should be overridden for exotic IDs" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -141,7 +146,7 @@ For internal use, but should be overridden for exotic IDs</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">extract_id,Extracts an ID from string IRIS CSV file,Extracts an ID from string IRIS CSV file — extract_id,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/read_iris_csv.R'><code>R/read_iris_csv.R</code></a>,extract_id.Rd,character(0),extract_id,character(0),list(title = "Description", contents = "<p>First tries to extract only digits, separating these by underscore \nwhen there are multiple blocks. If this give a non-valid  id, returns the \nwhole string without spaces and periods, hoping it makes sense.\nFor internal use, but should be overridden for exotic IDs</p>"),list(description = "First tries to extract only digits, separating these by underscore \nwhen there are multiple blocks. If this give a non-valid  id, returns the \nwhole string without spaces and periods, hoping it makes sense.\nFor internal use, but should be overridden for exotic IDs"),<span class='fu'>extract_id</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>,list(list(name = "id", description = "<p>One item from column Identifikation, e.g. \"KEK-ZH-Nr.2013-1234\"</p>")),TRUE,<div class='input'><span class='va'>extract_id</span>
+    <pre class="examples"><div class='input'><span class='va'>extract_id</span>
 </div><div class='output co'>#&gt; function (id) 
 #&gt; {
 #&gt;     id1 = paste(str_match_all(id, "([\\d]+)")[[1]][, 2], collapse = "_")
@@ -149,8 +154,8 @@ For internal use, but should be overridden for exotic IDs</p>
 #&gt;         return(id1)
 #&gt;     tolower(str_replace_all(id, "[\\.\\-\\W]+", "_"))
 #&gt; }
-#&gt; &lt;bytecode: 0x0000000030ca12a0&gt;
-#&gt; &lt;environment: namespace:breathtestcore&gt;</div>,list(),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+#&gt; &lt;bytecode: 0x000000003018a018&gt;
+#&gt; &lt;environment: namespace:breathtestcore&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -162,18 +167,21 @@ For internal use, but should be overridden for exotic IDs</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>

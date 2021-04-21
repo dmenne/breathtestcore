@@ -51,6 +51,8 @@ first sheet is read." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -62,9 +64,18 @@ first sheet is read." />
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -85,12 +96,6 @@ first sheet is read." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -153,7 +158,7 @@ This parameter is not used for Excel files.</p></td>
 was found</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples">breathtest_read_function,Snoop method to read breath test file,Snoop method to read breath test file — breathtest_read_function,Source: <a href='https://github.com/dmenne/breathtestcore/blob/master/R/breathtest_read_function.R'><code>R/breathtest_read_function.R</code></a>,breathtest_read_function.Rd,character(0),breathtest_read_function,character(0),list(title = "Description", contents = "<p>Reads the first line of a file, and returns\nthe best matching function to read the breath test data in it.\nTo automatically read the file with the inferred file type,\nuse <code><a href='read_any_breathtest.html'>read_any_breathtest</a></code>. For Excel files, only the\nfirst sheet is read.</p>"),list(description = "Reads the first line of a file, and returns\nthe best matching function to read the breath test data in it.\nTo automatically read the file with the inferred file type,\nuse read_any_breathtest. For Excel files, only the\nfirst sheet is read."),<span class='fu'>breathtest_read_function</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='cn'>NULL</span>, text <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>,list(list(name = "filename", description = "<p>breath test data file from Iris/Wagner (extended or CSV), \nBreathID</p>"), list(name = "text", description = "<p>as alternative to filename, pass the text of the file directly.\nThis parameter is not used for Excel files.</p>")),TRUE,<div class='input'> <span class='va'>file</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisCSV.TXT"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'> <span class='va'>file</span> <span class='op'>=</span> <span class='fu'><a href='btcore_file.html'>btcore_file</a></span><span class='op'>(</span><span class='st'>"IrisCSV.TXT"</span><span class='op'>)</span>
  <span class='co'># Get function to read this file. Returns \code{\link{read_iris_csv}}.</span>
  <span class='va'>read_fun</span> <span class='op'>=</span> <span class='fu'>breathtest_read_function</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
  <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'>read_fun</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span><span class='op'>)</span>
@@ -190,7 +195,7 @@ was found</p>
 #&gt;  $ :List of 23
 #&gt;   ..- attr(*, "class")= chr "breathtest_data"
 #&gt;  - attr(*, "class")= chr "breathtest_data_list"</div><div class='input'> 
-</div>,list(list(title = "Value", contents = "<p>Function to read the file or the text; NULL if no matching function \nwas found</p>", slug = "value")),2021,list(name = "breathtestcore", version = "0.8.0.9001", authors = "Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology"),list(destination = "dev", mode = "release", version_label = "default", version_tooltip = "Released version", in_dev = FALSE),list(root = "../", title = "breathtestcore"),list(css = "C:/Users/Dieter/Documents/RPackages/breathtestcore/pkgdown/extra.css"),list(type = "default", left = "<li>\n  <a href=\"../index.html\">\n    <span class=\"fas fa-home fa-lg\"></span>\n     \n  </a>\n</li>\n<li>\n  <a href=\"../reference/index.html\">Reference</a>\n</li>\n<li>\n  <a href=\"../articles/index.html\">Articles</a>\n</li>", right = "<li>\n  <a href=\"https://github.com/dmenne/breathtestcore/\">\n    <span class=\"fab fa-github fa-lg\"></span>\n     \n  </a>\n</li>"),list(bootswatch = "cosmo", .present = TRUE),list(version = "1.6.1"),FALSE</pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -202,18 +207,21 @@ was found</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Dieter Menne, Benjamin Misselwitz, Mark Fox, University Hospital of Zurich, Dep. Gastroenterology.</p>
+  <p>Developed by Dieter Menne, Menne Biomed Consulting Tübingen</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org">pkgdown</a>.</p>
 </div>
+
 
       </footer>
    </div>
 
   
 
+
+  
 
   </body>
 </html>
