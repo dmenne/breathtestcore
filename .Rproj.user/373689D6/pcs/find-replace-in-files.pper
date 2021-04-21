@@ -1,0 +1,17 @@
+{
+    "dialog-state": {
+        "query": "{augment}",
+        "path": "",
+        "regex": false,
+        "caseSensitive": false,
+        "filePatterns": [
+            "*.r",
+            "*.R"
+        ],
+        "excludeFilePatterns": [],
+        "resultsCount": 2,
+        "errorCount": 0,
+        "replaceErrors": "",
+        "projectRelative": true
+    }
+}
