@@ -18,3 +18,5 @@ Meta
 docs/
 .Renviron
 docs
+/doc/
+/Meta/
