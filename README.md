@@ -48,7 +48,7 @@ longer maintained.
     University Hospital of Zürich
 -   [A comparison of results with nls,
     nlme](https://menne-biomed.de/blog/breath-test-stan) and Bayesian
-    [Stan](http://www.mc-stan.org).
+    [Stan](https://mc-stan.org).
 -   See the example in the documentation of `t50BluckCoward` for a
     comparison with published data.
 
