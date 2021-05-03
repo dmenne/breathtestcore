@@ -17,7 +17,7 @@ University Hospital Zurich}.
 Most breath samples from normals were collected with bags and analyzed by
 \href{http://kibion.com}{IRIS/Wagner}
 infrared spectroscopy. Patient samples were recorded with the continuous
-monitoring system \href{http://www.exalenz.com}{BreathID}.
+monitoring system \href{https://www.meridianbioscience.com/}{BreathID}.
 
 \describe{
   \item{patient_id}{Patient identifier, starting with \code{norm} for normals

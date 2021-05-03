@@ -20,3 +20,4 @@ docs/
 docs
 /doc/
 /Meta/
+*.log

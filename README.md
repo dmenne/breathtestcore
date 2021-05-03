@@ -11,7 +11,7 @@ status](https://github.com/dmenne/breathtestcore/workflows/R-CMD-check/badge.svg
 ![CRAN](https://cranlogs.r-pkg.org/badges/grand-total/breathtestcore)
 ![CRAN](https://www.r-pkg.org/badges/version-ago/breathtestcore)
 [![Codecov test
-coverage](https://codecov.io/gh/dmenne/breathtestcore/branch/master/graph/badge.svg)](https://codecov.io/gh/dmenne/breathtestcore?branch=master)
+coverage](https://codecov.io/gh/dmenne/breathtestcore/branch/main/graph/badge.svg)](https://codecov.io/gh/dmenne/breathtestcore?branch=master)
 
 <!-- badges: end -->
 
