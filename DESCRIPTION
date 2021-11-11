@@ -1,7 +1,6 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from
     Breath Tests
-Version: 0.8.3
 Authors@R: 
     c(person(given = "Dieter",
              family = "Menne",
