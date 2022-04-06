@@ -1,6 +1,7 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from
     Breath Tests
+Version: 0.8.3
 Authors@R: 
     c(person(given = "Dieter",
              family = "Menne",
@@ -64,6 +65,6 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.1.2.9000
 SystemRequirements: pandoc
 Config/testthat/edition: 2
