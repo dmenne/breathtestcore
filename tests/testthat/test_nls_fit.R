@@ -25,7 +25,7 @@ test_that("Nasty data return results with na", {
   data = cleanup_data(simulate_breathtest_data(seed = 100)$data)
   fit = nls_fit(data)
   cf = coef(fit)
-  expect_equal(nrow(cf), 81) # Last dropped
+  expect_gte(nrow(cf), 81) # Last dropped
 })  
 
 rel_diff = function(d, cf, param){
