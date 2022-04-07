@@ -45,7 +45,7 @@ read_iris = function(filename = NULL, text = NULL) {
   record_date = strptime(record_date, "%d.%m.%y")
   # try if there is a patient number. If not, try identification
   patient_id = try(find_pattern(text, "Patient"), silent = TRUE)
-  if (class(patient_id) == "try-error")
+  if (is(patient_id, "try-error"))
     patient_id = find_pattern(text, "Identifikation")
   
   test_no = as.integer(find_pattern(text, "Nummer"))

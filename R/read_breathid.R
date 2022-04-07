@@ -50,7 +50,7 @@ read_breathid = function(filename = NULL, text = NULL) {
   # Locate the data block
   db = try(str_trim(text[which(str_detect(text, "Time\\s*DOB")):length(text)]), silent =
               TRUE)
-  if (class(db) == "try-error")
+  if (is(db, "try-error"))
     stop(paste0("file ", filename, " does not contain PDR data"))
   db = db[db != ""]
   if (length(db) < 2)
