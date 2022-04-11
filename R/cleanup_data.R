@@ -173,7 +173,7 @@ cleanup_data.data.frame = function(data, ... ){
 cleanup_data.matrix = function(data, ... ){
   if (ncol(data) > 2)
     stop("A matrix can only be used as data input when two columns <minute> and <pdr> are passed. Use a data frame otherwise")
-  cleanup_data(as_tibble(data), ...)
+  cleanup_data(as_tibble(data, .name_repair = "minimal"), ...)
 }
 
 #' @export 
@@ -215,7 +215,8 @@ cleanup_data.list = function(data, ... ){
   }
  if (max(table(ret$minute, ret$patient_id, ret$group)) > 1)
     warning("Multiple data for one patient, minute and group. Included the same patient's data twice?")
-  ret = tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")])
+  ret = tibble::as_tibble(ret[,c("patient_id", "group", "minute", "pdr")],
+                          .name_repair = "minimal")
   comment = unique(comment)
   comment[map_lgl(comment, is.null)] = NULL
   if (length(comment) > 0)

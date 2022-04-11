@@ -18,8 +18,8 @@ test_that("Dubious parameter give warning", {
 
 test_that("Valid parameters without std return valid data with cov-matrix", {
   d = simulate_breathtest_data(seed = 4711)
-  expect_is(d, "simulated_breathtest_data")
-  expect_is(d, "list")
+  expect_s3_class(d, "simulated_breathtest_data")
+  expect_s3_class(d, "list")
   expect_equal(names(d), c("record", "data"))
   expect_equal(nrow(d$record), 10)
   expect_equal(names(d$record), c("patient_id","m","k","beta","t50_maes_ghoos"))
@@ -28,7 +28,8 @@ test_that("Valid parameters without std return valid data with cov-matrix", {
   expect_match(comment(d$data), "Gaussian")
   expect_match(comment(d$data), "cov-matrix")
   cov = attr(d$record, "cov")
-  expect_is(cov, "matrix")
+  expect_true(is.matrix(cov))
+  expect_type(cov, "double")
   expect_equal(rownames(cov), c("m","k", "beta"))
 })
 
@@ -36,8 +37,8 @@ test_that("Valid parameters without std return valid data with cov-matrix", {
 test_that("Cov matrix not used when n_records<= 3 ", {
   d = simulate_breathtest_data(n_records = 1, seed = 4711)
   expect_equal(nrow(d$record), 1)
-  expect_is(d, "simulated_breathtest_data")
-  expect_is(d, "list")
+  expect_s3_class(d, "simulated_breathtest_data")
+  expect_type(d, "list")
   expect_equal(names(d), c("record", "data"))
   cov = attr(d$record, "cov")
   expect_null(cov)

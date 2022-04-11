@@ -9,8 +9,8 @@ cm = comment(fit$data)
 
 test_that("Result with default parameters is tbl_df with required columns",{
   cf = coef_by_group(fit)
-  expect_is(cf, "tbl_df")
-  expect_is(cf, "coef_by_group")
+  expect_s3_class(cf, "tbl_df")
+  expect_s3_class(cf, "coef_by_group")
   expect_identical(ncol(cf), 7L)
   expect_equal(names(cf), c("parameter", "method", "group", "estimate", "conf.low", 
                  "conf.high", "diff_group"))
@@ -29,7 +29,7 @@ digs = function(x){
 test_that("Options digits is served",{
   options(digits = 4)
   cf = coef_by_group(fit)
-  expect_is(cf, "tbl_df")
+  expect_s3_class(cf, "tbl_df")
   expect_lte(digs(cf[[1,"estimate"]]) ,4L)
 })
 
@@ -42,7 +42,7 @@ test_that("nlme_fit can be used to compute coefficients for multiple records in 
   data = cleanup_data(simulate_breathtest_data(4))
   fit = nlme_fit(data)
   cf = coef_by_group(fit)
-  expect_is(cf, "tbl_df")
+  expect_s3_class(cf, "tbl_df")
   expect_identical(ncol(cf), 7L)
   expect_equal(unique(cf$group), "A")
   expect_equal(unique(cf$diff_group), "a")
@@ -54,7 +54,7 @@ test_that("nlme_fit can be used to compute coefficients for multiple groups",{
   skip_on_cran() # Does no converge on some CRAN settings
   fit = nlme_fit(data)
   cf = coef_by_group(fit)
-  expect_is(cf, "tbl_df")
+  expect_s3_class(cf, "tbl_df")
   expect_identical(ncol(cf), 7L)
   expect_equal(names(cf), c("parameter", "method", "group", "estimate", "conf.low", 
                             "conf.high", "diff_group"))

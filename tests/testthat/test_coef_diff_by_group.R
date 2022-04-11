@@ -9,8 +9,8 @@ cm = comment(fit$data)
 
 test_that("Result with default parameters is tbl_df with required columns",{
   cf = coef_diff_by_group(fit)
-  expect_is(cf, "tbl_df")
-  expect_is(cf, "coef_diff_by_group")
+  expect_s3_class(cf, "tbl_df")
+  expect_s3_class(cf, "coef_diff_by_group")
   expect_identical(ncol(cf), 7L)
   expect_identical(nrow(cf), 54L)
   expect_lt(min(cf$p.value), 5e-8)
@@ -20,8 +20,8 @@ test_that("Result with default parameters is tbl_df with required columns",{
 
 test_that("Result with Dunnett contrast only returns 3 groups",{
   cf = coef_diff_by_group(fit, mcp_group = "Dunnett")
-  expect_is(cf, "tbl_df")
-  expect_is(cf, "coef_diff_by_group")
+  expect_s3_class(cf, "tbl_df")
+  expect_s3_class(cf, "coef_diff_by_group")
   expect_identical(ncol(cf), 7L)
   expect_identical(nrow(cf), 27L)
   expect_lt(min(cf$p.value), 5.e-8)
@@ -51,8 +51,8 @@ test_that("nlme_fit can be used to compute coefficients",{
   skip_on_cran()
   fit = nlme_fit(data)
   cf = coef_diff_by_group(fit)
-  expect_is(cf, "tbl_df")
-  expect_is(cf, "coef_diff_by_group")
+  expect_s3_class(cf, "tbl_df")
+  expect_s3_class(cf, "coef_diff_by_group")
 })
 
 
@@ -63,7 +63,7 @@ digs = function(x){
 test_that("Options digits is served",{
   options(digits = 4)
   cf = coef_diff_by_group(fit)
-  expect_is(cf, "tbl_df")
+  expect_s3_class(cf, "tbl_df")
   expect_lte(digs(cf[[1,"estimate"]]) ,4L)
   expect_lte(digs(cf[[1,"conf.low"]]), 4L)
   expect_lte(digs(cf[[1,"conf.high"]]),4L)

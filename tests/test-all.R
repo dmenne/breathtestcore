@@ -1,4 +1,4 @@
 library(testthat)
 
-#test_check("breathtestcore", filter = "coef_diff_by_group")
+options(Ncpus = parallel::detectCores(logical = TRUE))
 test_check("breathtestcore")

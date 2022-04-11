@@ -1,4 +1,6 @@
 library(purrr)
+filename = "NewBreathID_multiple.xml"
+read_function = read_breathid_xml
 
 check_and_read = function(filename, read_function){
   file = btcore_file(filename)
@@ -9,14 +11,15 @@ check_and_read = function(filename, read_function){
   if (inherits(bt, "breathtest_data_list")) {
     expect_true(all(map_lgl(bt, function(x) {class(x) == "breathtest_data"})))
     bt = bt[[1]]  
+  } else if (inherits(bt, "breathtest_data")) {
+    expect_s3_class(bt, "breathtest_data")
+    expect_gt(nrow(bt$data), 1)
   }
-  expect_is(bt, "breathtest_data")
-  expect_gt(nrow(bt$data), 1)
 }
 
 test_that("btcore_file without arguments returns all files in sample directory",{
   file = btcore_file()  
-  expect_is(file, "character")
+  expect_type(file, "character")
   expect_gt(length(file), 21L)
 })
 

@@ -12,7 +12,7 @@ test_that("read_breathid_xml handles hook", {
   # Reset hook, just to be sure
   options(breathtestcore.choose_record = NULL)
   bids = read_breathid_xml(filename)
-  expect_is(bids, "breathtest_data_list")
+  expect_s3_class(bids, "breathtest_data_list")
   expect_equal(length(bids), 3)
   # Set hook
   options(breathtestcore.choose_record = choose_record)
@@ -43,7 +43,7 @@ test_that("fitting difficult xml returns data",{
   filename = btcore_file("invalidnls.xml")
   data = cleanup_data(read_breathid_xml(filename))
   fit = nls_fit(data)
-  expect_is(fit, "breathtestfit")
+  expect_s3_class(fit, "breathtestfit")
   expect_match(comment(fit$data), "no valid fit")
   
 })

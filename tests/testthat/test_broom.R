@@ -3,7 +3,7 @@ test_that("broom/tidy returns a simplified data set with only maes_ghoos t50", {
   data = cleanup_data(simulate_breathtest_data(seed = 10)$data)
   fit = nls_fit(data)
   td = tidy(fit)
-  expect_is(td, "tbl")
+  expect_s3_class(td, "tbl")
   expect_equal(names(td), c("patient_id", "group", "m", "k", "beta", "t50"))
   expect_equal(nrow(td), 10)
 })

@@ -24,7 +24,7 @@ test_that("Two correctly named columns are are dummy filled and value at t=0 is 
   data = simulate_breathtest_data(1, first_minute = 0)$data[,c("minute", "pdr")]
   data1 = cleanup_data(data)
   # First row is changes
-  expect_equivalent(data[-1,], data1[-1,3:4])  
+  expect_equal(data[-1,], data1[-1,3:4], ignore_attr = TRUE)  
   expect_equal(data1$minute[1], 0.01) # Slightly shifted
   expect_equal(names(data1), expected_columns)
 })
@@ -69,14 +69,14 @@ test_that("Columns with illegal names", {
   names(data) = c("blub", "blab")
   data1 = cleanup_data(data)
   expect_equal(names(data1), expected_columns)
-  expect_is(data1, "tbl_df")
+  expect_s3_class(data1, "tbl_df")
 })
 
 test_that("Matrix is converted to data frame", {
   data = simulate_breathtest_data(1)$data[,c("minute", "pdr")]  
   data1 = cleanup_data(as.matrix(data))
   expect_equal(names(data1), expected_columns)
-  expect_is(data1, "tbl_df")
+  expect_s3_class(data1, "tbl_df")
 })
 
 test_that("Matrix with more than 2 columns not accepted", {
@@ -92,11 +92,11 @@ test_that("Suspect missing patient column if multiple pdr with same minute", {
 test_that("Group can be missing when there are no colliding events", {
   data = simulate_breathtest_data(n_records = 2)$data[,c("patient_id", "minute", "pdr")]  
   data1 = cleanup_data(data)
-  expect_is(data1, "tbl_df")
+  expect_s3_class(data1, "tbl_df")
   # Jitter minutes a bit, so that table can report zeroes
   data$minute = data$minute + base::sample(seq(-0.2,0.2, by = 0.1), nrow(data), replace = TRUE)
   data1 = cleanup_data(data)
-  expect_is(data1, "tbl_df")
+  expect_s3_class(data1, "tbl_df")
 })
 
 test_that("When there are three columns, must be named correctly", {
@@ -135,7 +135,7 @@ test_that("A list of data frames is concatenated, comments are concatenated", {
   data = list(data0 = data0, data1 = data1)
   d = cleanup_data(data)
   expect_equal(comment(d), comment(data0))
-  expect_is(d, "tbl")
+  expect_s3_class(d, "tbl")
   expect_equal(nrow(d), 44)
   expect_equal(ncol(d), 4)
   
