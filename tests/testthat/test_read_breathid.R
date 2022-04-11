@@ -1,7 +1,7 @@
 test_that("read_breathid returns valid data set", {
   filename = btcore_file("350_20043_0_GER.txt")
   f = read_breathid(filename)
-  expect_is(f, "breathtest_data")
+  expect_s3_class(f, "breathtest_data")
   expect_equal(f$file_name, basename(filename))
   expect_equal(f$test_no, 20043)
   expect_equal(f$t50, 71.23)
@@ -35,7 +35,7 @@ test_that("read_breathid on bad data file throws", {
 test_that("read_breathid with NA returns valid data, without NA columns",{
   filename = btcore_file("350_20023_0_GERWithNan.txt")
   f = read_breathid(filename)
-  expect_is(f, "breathtest_data")
+  expect_s3_class(f, "breathtest_data")
   expect_true(!("cpdfit" %in% names(f$data)))
 })
 

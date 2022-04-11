@@ -1,9 +1,9 @@
 test_that("Reading a single file returs a list of class breathtest_data",{
   file = btcore_file("IrisCSV.TXT")
   bt = read_any_breathtest(file)
-  expect_is(bt, "breathtest_data_list")
+  expect_s3_class(bt, "breathtest_data_list")
   expect_equal(length(bt), 1)  
-  expect_is(bt[[1]], "breathtest_data")
+  expect_s3_class(bt[[1]], "breathtest_data")
   expect_equal(bt[[1]]$patient_id, "123456")
 })
 
@@ -21,9 +21,9 @@ test_that("Repeated groups are joined into one", {
 test_that("Reading a composite file returns a list of class breathtest_data_list",{
   file = btcore_file("NewBreathID_multiple.xml")
   bt = read_any_breathtest(file)
-  expect_is(bt, "breathtest_data_list")
+  expect_s3_class(bt, "breathtest_data_list")
   expect_equal(length(bt), 3)  
-  expect_is(bt[[1]], "breathtest_data")
+  expect_s3_class(bt[[1]], "breathtest_data")
   expect_equal(bt[[1]]$patient_id, "07951400")
 })
 
@@ -36,10 +36,10 @@ test_that("Reading multiple files returns a list with multiple items",{
     btcore_file("ExcelSamples.xlsx")  
   )
   bt = read_any_breathtest(files)
-  expect_is(bt, "breathtest_data_list")
+  expect_s3_class(bt, "breathtest_data_list")
   expect_equal(length(bt), 7)  
-  expect_is(bt[[1]], "breathtest_data")
-  expect_is(bt[[7]], "tbl_df")
+  expect_s3_class(bt[[1]], "breathtest_data")
+  expect_s3_class(bt[[7]], "tbl_df")
   expect_equal(bt[[1]]$patient_id, "123456")
 
   bt_c = cleanup_data(bt)

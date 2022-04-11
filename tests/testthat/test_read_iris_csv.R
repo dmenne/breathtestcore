@@ -8,7 +8,7 @@ test_that("extract_id returns valid id" , {
 test_that("read_iris_csv returns valid data set", {
   filename = btcore_file("IrisCSV.TXT")
   f = read_iris_csv(filename)
-  expect_is(f, "breathtest_data")
+  expect_s3_class(f, "breathtest_data")
   expect_equal(f$file_name, basename(filename))
   expect_equal(f$name, "Einstein")
   expect_equal(f$first_name, "Albert")

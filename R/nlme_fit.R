@@ -157,7 +157,7 @@ nlme_fit = function(data, dose = 100,
   }
   cf = purrr::map_df(pars, rbind )  %>%
     filter(value != 0) %>%
-    tibble::as_tibble(cf)
+    tibble::as_tibble(.name_repair = "minimal")
   attr(cf, "AIC") = AIC(bc_nlme)
   data = data %>% select(-pat_group) # only used locally
   ret = list(coef = cf, data = data, nlme_fit = bc_nlme)
