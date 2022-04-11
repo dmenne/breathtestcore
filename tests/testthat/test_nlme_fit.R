@@ -23,13 +23,8 @@ test_that("One-group nlme fit returns valid result", {
   expect_equal(comment(cf), "comment")
   expect_equal(nrow(cf), 104)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
-<<<<<<< HEAD
   expect_type(AIC(fit), "double" )
   expect_type(sigma(fit), "double" )
-=======
-  expect_type(AIC(fit), "numeric" )
-  expect_type(sigma(fit), "numeric" )
->>>>>>> a48b9f194c1205de7cc75fd095d7dcc4294e1530
   expect_gt(sigma(fit), 0.5)
   # Check if subsampling done
   expect_equal(nrow(fit$data), 225)  
@@ -52,11 +47,7 @@ test_that("Two-group nlme fit returns valid result", {
   cf = coef(fit)
   expect_equal(nrow(cf), 72)
   expect_identical(names(cf), c("patient_id", "group", "parameter", "method", "value"))
-<<<<<<< HEAD
   expect_type(AIC(fit), "double" )
-=======
-  expect_type(AIC(fit), "numeric" )
->>>>>>> a48b9f194c1205de7cc75fd095d7dcc4294e1530
   expect_gt(sigma(fit), 0)
   expect_equal(unique(cf$group), c("liquid_normal", "solid_normal"))
   
