@@ -97,12 +97,11 @@ This example is from the documentation of function
 For additional examples, see the documentation and the tests in folder
 `tests/testthat` of the source package.
 
-## Planned
+## Status
 
-The core fitting functions and the Stan variants are reasonably stable
-and can be used to analyze your breath test data with R. The
-[Shiny](https://shiny.rstudio.com) web app with reporting is work in
-progress; [online demo](https://apps.menne-biomed.de/breathtestshiny),
+The core fitting functions and the Stan variants are stable
+and have versions on CRAN. The [Shiny](https://shiny.rstudio.com) web app is only
+available on github; a CRAN release is not planned. [Online demo](https://apps.menne-biomed.de/breathtestshiny),
 [source code](https://github.com/dmenne/breathtestshiny).
 
 **Reference**:
