@@ -1,0 +1,21 @@
+{
+    "args": [
+        "-nostdinc",
+        "-IC:/rtools40/mingw64/include/c++/8.3.0",
+        "-IC:/rtools40/mingw64/include/c++/8.3.0/x86_64-w64-mingw32",
+        "-IC:/rtools40/mingw64/include/c++/8.3.0/backward",
+        "-IC:/rtools40/mingw64/lib/gcc/x86_64-w64-mingw32/8.3.0/include",
+        "-IC:/rtools40/mingw64/include",
+        "-IC:/rtools40/mingw64/lib/gcc/x86_64-w64-mingw32/8.3.0/include-fixed",
+        "-IC:/rtools40/mingw64/x86_64-w64-mingw32/include",
+        "-IC:/R/library/Rcpp/include",
+        "-std=gnu++11",
+        "-IC:/R/include",
+        "-DNDEBUG",
+        "-DUSE_STANC3"
+    ],
+    "pch": "Rcpp",
+    "is_cpp": true,
+    "hash": "161495718816171986951635609820",
+    "compiler": "15831801441610807778"
+}

@@ -1,7 +1,7 @@
 {
     "installOptions": {
         "installFromRepository": true,
-        "libraryPath": "C:/R/R-4.2.0beta/library",
+        "libraryPath": "/home/dieter/R/x86_64-pc-linux-gnu-library/4.2",
         "installDependencies": true
     }
 }

@@ -4,6 +4,7 @@
 ~%2FRPackages%2Fbreathtestcore%2FDESCRIPTION="1E61164C"
 ~%2FRPackages%2Fbreathtestcore%2FR%2Fbreathtestcore.R="8BAE9DAE"
 ~%2FRPackages%2Fbreathtestcore%2FR%2Fbreathtestfit_broom.R="D44FBFA5"
+~%2FRPackages%2Fbreathtestcore%2FR%2Fnlme_fit.R="28E0A052"
 ~%2FRPackages%2Fbreathtestcore%2FR%2Fnls_fit.R="0CA08462"
 ~%2FRPackages%2Fbreathtestcore%2FREADME.md="848A1F1C"
 ~%2FRPackages%2Fbreathtestcore%2F_pkgdown.yml="F60C1AC8"

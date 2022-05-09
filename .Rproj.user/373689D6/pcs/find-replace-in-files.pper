@@ -1,13 +1,11 @@
 {
     "dialog-state": {
-        "query": "{augment}",
+        "query": "<<<",
         "path": "",
         "regex": false,
         "caseSensitive": false,
-        "filePatterns": [
-            "*.r",
-            "*.R"
-        ],
+        "wholeWord": false,
+        "filePatterns": [],
         "excludeFilePatterns": [],
         "resultsCount": 2,
         "errorCount": 0,
