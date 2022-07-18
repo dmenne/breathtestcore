@@ -67,7 +67,7 @@ Dig. Dis. Sci. 39 S104-6.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">t50_maes_ghoos</span><span class="op">(</span><span class="va">cf</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">t50_maes_ghoos</span><span class="op">(</span><span class="va">cf</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -76,10 +76,13 @@ Dig. Dis. Sci. 39 S104-6.</p>
 <dd><p>named vector of coefficients; only <code>k</code> and <code>beta</code> are required
 note that <code>k</code> is measured in 1/min (e.g. 0.01/min),
 usually it is quoted as 1/h (e.g. 0.6/h).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Time in minutes when area under curve is 50% of the AUC to infinity.
+    
+
+<p>Time in minutes when area under curve is 50% of the AUC to infinity.
 In the Maes/Ghoos model, this is used as a surrogate for gastric emptying 
 half time <code>t50</code>.</p>
     </div>
@@ -90,14 +93,14 @@ half time <code>t50</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Integral from 0 to infinity is 100 at dose 100 mg</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html" class="external-link">integrate</a></span><span class="op">(</span><span class="va">exp_beta</span>, <span class="fl">0</span>, <span class="cn">Inf</span>, beta <span class="op">=</span> <span class="fl">1.5</span>, k <span class="op">=</span> <span class="fl">0.01</span>, m <span class="op">=</span> <span class="fl">1</span>, dose <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Integral from 0 to infinity is 100 at dose 100 mg</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html" class="external-link">integrate</a></span><span class="op">(</span><span class="va">exp_beta</span>, <span class="fl">0</span>, <span class="cn">Inf</span>, beta <span class="op">=</span> <span class="fl">1.5</span>, k <span class="op">=</span> <span class="fl">0.01</span>, m <span class="op">=</span> <span class="fl">1</span>, dose <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 with absolute error &lt; 0.0014</span>
-<span class="r-in"><span class="va">t50_mg</span> <span class="op">=</span> <span class="fu">t50_maes_ghoos</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>beta <span class="op">=</span> <span class="fl">1.5</span>, k <span class="op">=</span> <span class="fl">0.01</span>, dose <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">t50_mg</span></span>
+<span class="r-in"><span><span class="va">t50_mg</span> <span class="op">=</span> <span class="fu">t50_maes_ghoos</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>beta <span class="op">=</span> <span class="fl">1.5</span>, k <span class="op">=</span> <span class="fl">0.01</span>, dose <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">t50_mg</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 99</span>
-<span class="r-in"><span class="co"># Integral to half-emptying time \code{t50_maes_ghoos} is 50 </span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html" class="external-link">integrate</a></span><span class="op">(</span><span class="va">exp_beta</span>, <span class="fl">0</span>, <span class="va">t50_mg</span>, beta <span class="op">=</span> <span class="fl">1.5</span>, k <span class="op">=</span> <span class="fl">0.01</span>, m <span class="op">=</span> <span class="fl">1</span>, dose <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Integral to half-emptying time \code{t50_maes_ghoos} is 50 </span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/integrate.html" class="external-link">integrate</a></span><span class="op">(</span><span class="va">exp_beta</span>, <span class="fl">0</span>, <span class="va">t50_mg</span>, beta <span class="op">=</span> <span class="fl">1.5</span>, k <span class="op">=</span> <span class="fl">0.01</span>, m <span class="op">=</span> <span class="fl">1</span>, dose <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 50 with absolute error &lt; 0.0042</span>
 </code></pre></div>
     </div>
@@ -110,7 +113,7 @@ half time <code>t50</code>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

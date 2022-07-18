@@ -67,7 +67,7 @@ first sheet is read.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">breathtest_read_function</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, text <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">breathtest_read_function</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, text <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -75,22 +75,27 @@ first sheet is read.</p>
     <dl><dt>filename</dt>
 <dd><p>breath test data file from Iris/Wagner (extended or CSV), 
 BreathID</p></dd>
+
+
 <dt>text</dt>
 <dd><p>as alternative to filename, pass the text of the file directly.
 This parameter is not used for Excel files.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Function to read the file or the text; NULL if no matching function 
+    
+
+<p>Function to read the file or the text; NULL if no matching function 
 was found</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="va">file</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span></span>
-<span class="r-in"> <span class="co"># Get function to read this file. Returns \code{\link{read_iris_csv}}.</span></span>
-<span class="r-in"> <span class="va">read_fun</span> <span class="op">=</span> <span class="fu">breathtest_read_function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu">read_fun</span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="va">file</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="co"># Get function to read this file. Returns \code{\link{read_iris_csv}}.</span></span></span>
+<span class="r-in"><span> <span class="va">read_fun</span> <span class="op">=</span> <span class="fu">breathtest_read_function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu">read_fun</span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ patient_id  : chr "123456"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ name        : chr "Einstein"</span>
@@ -119,13 +124,13 @@ was found</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ dob   : num [1:14] 0 2.02 5.22 8.9 9.48 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ pdr   : num [1:14] 0 1.11 2.86 4.87 5.19 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "breathtest_data"</span>
-<span class="r-in"> <span class="co"># or, simple (returns a list!)</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="read_any_breathtest.html">read_any_breathtest</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>, <span class="fl">1</span> <span class="op">)</span></span>
+<span class="r-in"><span> <span class="co"># or, simple (returns a list!)</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="read_any_breathtest.html">read_any_breathtest</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>, <span class="fl">1</span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "breathtest_data"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "breathtest_data_list"</span>
-<span class="r-in"> </span>
+<span class="r-in"><span> </span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -137,7 +142,7 @@ was found</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

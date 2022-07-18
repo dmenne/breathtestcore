@@ -61,27 +61,32 @@ class <code>breathtest_data</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_breathid_xml</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, text <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_breathid_xml</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, text <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>filename</dt>
 <dd><p>name of xml-file to be read</p></dd>
+
+
 <dt>text</dt>
 <dd><p>alternatively, text can be given as string</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>List of class <code>breathtest_data_list</code> of structures of 
+    
+
+<p>List of class <code>breathtest_data_list</code> of structures of 
 class <code><a href="breathtest_data.html">breathtest_data</a></code>; an XML file can contain multiple data sets.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"NewBreathID_01.xml"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Show first lines</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">filename</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, sep<span class="op">=</span><span class="st">"\n"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"NewBreathID_01.xml"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Show first lines</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">filename</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, sep<span class="op">=</span><span class="st">"\n"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Tests Device="1402"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;Test Number="12"&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;ID&gt;10727002&lt;/ID&gt;</span>
@@ -92,16 +97,16 @@ class <code><a href="breathtest_data.html">breathtest_data</a></code>; an XML fi
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;DOBListTimes&gt;1.33,12.79,24.25,35.81,57.90,69.38,80.87,92.33,103.78,115.22,126.68,138.14,149.59,161.09,172.59,184.07,195.55,208.15,219.64,231.10,242.57&lt;/DOBListTimes&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     &lt;DOBListValues&gt;0.7,1.8,3.7,4.9,7.5,8.6,10.2,11.5,10.4,9.7,10.8,10.7,11.7,11.7,11.4,10.6,8.5,8.4,6.9,7.6,7.1&lt;/DOBListValues&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/Test&gt;</span>
-<span class="r-in"><span class="va">bid</span> <span class="op">=</span> <span class="fu">read_breathid_xml</span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># List with length 1</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bid</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">bid</span> <span class="op">=</span> <span class="fu">read_breathid_xml</span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># List with length 1</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bid</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "breathtest_data"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "breathtest_data_list"</span>
-<span class="r-in"><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"NewBreathID_multiple.xml"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">bids</span> <span class="op">=</span> <span class="fu">read_breathid_xml</span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bids</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># 3 elements - the others in the file have no data</span></span>
+<span class="r-in"><span><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"NewBreathID_multiple.xml"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">bids</span> <span class="op">=</span> <span class="fu">read_breathid_xml</span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bids</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># 3 elements - the others in the file have no data</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "breathtest_data"</span>
@@ -110,23 +115,23 @@ class <code><a href="breathtest_data.html">breathtest_data</a></code>; an XML fi
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "breathtest_data"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "breathtest_data_list"</span>
-<span class="r-in"><span class="co"># Create hook function to deselect first record</span></span>
-<span class="r-in"><span class="va">choose_record</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">records</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">r</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">records</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">r</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in">  <span class="va">r</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>breathtestcore.choose_record <span class="op">=</span> <span class="va">choose_record</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">bids</span> <span class="op">=</span> <span class="fu">read_breathid_xml</span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bids</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># 2 elements, first deselected</span></span>
+<span class="r-in"><span><span class="co"># Create hook function to deselect first record</span></span></span>
+<span class="r-in"><span><span class="va">choose_record</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">records</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">r</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">records</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">r</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>  <span class="va">r</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>breathtestcore.choose_record <span class="op">=</span> <span class="va">choose_record</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">bids</span> <span class="op">=</span> <span class="fu">read_breathid_xml</span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bids</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># 2 elements, first deselected</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "breathtest_data"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ :List of 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr "breathtest_data"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "breathtest_data_list"</span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -138,7 +143,7 @@ class <code><a href="breathtest_data.html">breathtest_data</a></code>; an XML fi
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

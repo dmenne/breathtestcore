@@ -69,7 +69,7 @@
 
 
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Methods and concepts</h1>
                         <h4 data-toc-skip class="author">Dieter Menne,
 Menne Biomed Consulting Tuebingen, <a href="mailto:dieter.menne@menne-biomed.de" class="email">dieter.menne@menne-biomed.de</a>
@@ -105,9 +105,9 @@ m*{dose}*k*\beta(1-e^{-k*minute})^{(\beta -
 1)}*e^{-k*minute}\]</span></p>
 <p>Written in R code</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">exp_beta</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">minute</span>,<span class="va">dose</span>,<span class="va">m</span>,<span class="va">k</span>,<span class="va">beta</span><span class="op">)</span> <span class="op">{</span>
-     <span class="va">m</span><span class="op">*</span><span class="va">dose</span><span class="op">*</span><span class="va">k</span><span class="op">*</span><span class="va">beta</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">k</span><span class="op">*</span><span class="va">minute</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="va">beta</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">k</span><span class="op">*</span><span class="va">minute</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">exp_beta</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">minute</span>,<span class="va">dose</span>,<span class="va">m</span>,<span class="va">k</span>,<span class="va">beta</span><span class="op">)</span> <span class="op">{</span></span>
+<span>     <span class="va">m</span><span class="op">*</span><span class="va">dose</span><span class="op">*</span><span class="va">k</span><span class="op">*</span><span class="va">beta</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">k</span><span class="op">*</span><span class="va">minute</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="va">beta</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">k</span><span class="op">*</span><span class="va">minute</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>The figure below shows examples of emptying curves. The so-called lag
 time of the Maes/Ghoos method is at the time of the maximum. Calling
 this “lag” is a highly confusing definition; technically, lag is the
@@ -123,7 +123,7 @@ meal from the stomach to the small intestine.</p>
 <p>In practice, when <sup>13</sup>C curves are fitted, <code>beta</code>
 is typically in the range of 1.5 and 2.5; values of <code>beta</code>
 near 1 often lead to instabilities and are protected by priors in the
-Bayesian <code>breathteststan::stan_fit()</code> implemented in package
+Bayesian <code><a href="https://rdrr.io/pkg/breathteststan/man/stan_fit.html" class="external-link">breathteststan::stan_fit()</a></code> implemented in package
 <code>breathteststan</code>.</p>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/expb-1.png" alt="Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time." width="576"><p class="caption">
@@ -175,7 +175,7 @@ cannot be used to compute t50.
 <h3 id="dieters-soapbox">Dieter’s soapbox<a class="anchor" aria-label="anchor" href="#dieters-soapbox"></a>
 </h3>
 <p>I therefore recommend using one of the population method, as
-implemented in <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code> and <code>stan_fit()</code> for
+implemented in <code><a href="../reference/nlme_fit.html">nlme_fit()</a></code> and <code><a href="https://rdrr.io/pkg/breathteststan/man/stan_fit.html" class="external-link">stan_fit()</a></code> for
 studies; these methods provide “borrowing strength” to keep the flock of
 lambs safely together and protect outliers from the big bad wolf.</p>
 <ul>
@@ -308,17 +308,17 @@ that the normal procedure of meal with 100 mg acetate/octanoate. The
 resulting PDR will look as follows:</p>
 </blockquote>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>pdr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ff_0</span><span class="op">[</span><span class="fl">0</span><span class="op">:</span><span class="fl">59</span><span class="op">]</span><span class="op">*</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span>, <span class="va">cv</span><span class="op">$</span><span class="va">pdr</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    minute <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">minute</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">10</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    pdr <span class="op">=</span> <span class="va">pdr</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">minute</span>, y <span class="op">=</span> <span class="va">pdr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">360</span>, by <span class="op">=</span> <span class="fl">60</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>pdr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ff_0</span><span class="op">[</span><span class="fl">0</span><span class="op">:</span><span class="fl">59</span><span class="op">]</span><span class="op">*</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span>, <span class="va">cv</span><span class="op">$</span><span class="va">pdr</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    minute <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">minute</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">10</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    pdr <span class="op">=</span> <span class="va">pdr</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">minute</span>, y <span class="op">=</span> <span class="va">pdr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">360</span>, by <span class="op">=</span> <span class="fl">60</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="methods_and_concepts_files/figure-html/sim2stage-1.png" alt="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." width="384"><p class="caption">
 Simulated response of a two-stage breath test procedure. The peak within
@@ -348,7 +348,7 @@ uses the assumption that the terminal slope is the same for all subjects
 half-emptying time, so there is little justification to use the
 Wagner-Nelson method.</p>
 <p>With some of the functions in this package or with
-<code>breathteststan::stan_fit()</code> in the sister package, all
+<code><a href="https://rdrr.io/pkg/breathteststan/man/stan_fit.html" class="external-link">breathteststan::stan_fit()</a></code> in the sister package, all
 curves can be fitted. I have not seen a single example that fails with
 the Bayesian method when multiple records are analyzed with a mix-in, so
 there is no excuse to use the Wagner-Nelson method any longer.</p>
@@ -418,7 +418,7 @@ Breath Test.”</span> <em>Digestion</em> 69: 71–78. <a href="https://doi.org/
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>
