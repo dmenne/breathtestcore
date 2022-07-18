@@ -4,7 +4,7 @@ test time series, and transforms these into a data frame that can be used by
 all fitting functions, e.g. nls_fit.
 If in doubt, pass data frame through cleanup_data before forwarding it 
 to a fitting function. If the function cannot repair the format, it gives better
-error messages than the xxx_fit functions."><title>Transforms 13C breath data into a clean format for fitting — cleanup_data • breathtestcore</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet"><meta property="og:title" content="Transforms 13C breath data into a clean format for fitting — cleanup_data"><meta property="og:description" content="Accepts various data formats of ungrouped or grouped 13C breath 
+error messages than the xxx_fit functions."><title>Transforms 13C breath data into a clean format for fitting — cleanup_data • breathtestcore</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet"><meta property="og:title" content="Transforms 13C breath data into a clean format for fitting — cleanup_data"><meta property="og:description" content="Accepts various data formats of ungrouped or grouped 13C breath 
 test time series, and transforms these into a data frame that can be used by
 all fitting functions, e.g. nls_fit.
 If in doubt, pass data frame through cleanup_data before forwarding it 
@@ -70,7 +70,7 @@ error messages than the <code>xxx_fit</code> functions.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -90,6 +90,8 @@ error messages than the <code>xxx_fit</code> functions.</p>
 <li><p>A list of class <code>breathtest_data_list</code> as generated
  from read function such as <code><a href="read_breathid_xml.html">read_breathid_xml</a></code></p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>optional.</p><dl><dt>use_filename_as_patient_id</dt>
 <dd><p>Always use filename instead of 
@@ -97,10 +99,13 @@ error messages than the <code>xxx_fit</code> functions.</p>
 
 
 </dl></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A tibble with 4 columns. Column <code>patient_id</code> is created with a dummy
+    
+
+<p>A tibble with 4 columns. Column <code>patient_id</code> is created with a dummy
 entry of <code>pat_a</code> if no patient_id was present in the input data set. 
 A column <code>group</code> is required in the input data if the patients are from different 
 treatment groups or within-subject repeats, e.g. in crossover design. 
@@ -108,110 +113,116 @@ A dummy group name "A" is added if no group column was available in the input da
 If <code>group</code> is present, this is a hint to the analysis functions to do 
 post-hoc breakdown or use it as a grouping variable in population-based methods.
 A patient can have records in multiple groups, for example in a cross-over 
-designs. 
-Columns <code>minute</code> and <code>pdr</code> are the same as given on input, but negative
+designs.</p>
+
+
+<p>Columns <code>minute</code> and <code>pdr</code> are the same as given on input, but negative
 minute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes 
-because most fit methods cannot handle the singularity at t=0.
-An error is raised if dummy columns <code>patient_id</code> and <code>group</code> cannot be 
+because most fit methods cannot handle the singularity at t=0.</p>
+
+
+<p>An error is raised if dummy columns <code>patient_id</code> and <code>group</code> cannot be 
 added in a unique way, i.e. when multiple values for a given minute cannot be 
-disambiguated.
-Comments are persistent; multiple comments are concatenated with newline separators.</p>
+disambiguated.</p>
+
+
+<p>Comments are persistent; multiple comments are concatenated with newline separators.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Full manual</span></span>
-<span class="r-in"><span class="va">minute</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">30</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">data1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">minute</span>, </span>
-<span class="r-in">   pdr <span class="op">=</span> <span class="fu"><a href="exp_beta.html">exp_beta</a></span><span class="op">(</span><span class="va">minute</span>, dose <span class="op">=</span> <span class="fl">100</span>, m <span class="op">=</span> <span class="fl">30</span>,  k <span class="op">=</span> <span class="fl">0.01</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Two columns with data at t = 0</span></span>
-<span class="r-in"><span class="va">data1</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Full manual</span></span></span>
+<span class="r-in"><span><span class="va">minute</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">30</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">minute</span>, </span></span>
+<span class="r-in"><span>   pdr <span class="op">=</span> <span class="fu"><a href="exp_beta.html">exp_beta</a></span><span class="op">(</span><span class="va">minute</span>, dose <span class="op">=</span> <span class="fl">100</span>, m <span class="op">=</span> <span class="fl">30</span>,  k <span class="op">=</span> <span class="fl">0.01</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Two columns with data at t = 0</span></span></span>
+<span class="r-in"><span><span class="va">data1</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   minute    pdr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      0  0.000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     10  5.166</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3     20  8.905</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4     30 11.520</span>
-<span class="r-in"><span class="co"># Four columns with data at t = 0.01</span></span>
-<span class="r-in"><span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Four columns with data at t = 0.01</span></span></span>
+<span class="r-in"><span><span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   patient_id group minute    pdr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      pat_a     A   0.01  0.000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      pat_a     A  10.00  5.166</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3      pat_a     A  20.00  8.905</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4      pat_a     A  30.00 11.520</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Results from simulate_breathtest_data can be passed directly to cleanup_data</span></span>
-<span class="r-in"><span class="fu">cleanup_data</span><span class="op">(</span><span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Results from simulate_breathtest_data can be passed directly to cleanup_data</span></span></span>
+<span class="r-in"><span><span class="fu">cleanup_data</span><span class="op">(</span><span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 33 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    patient_id group minute   pdr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> rec_01     A          5     7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> rec_01     A         20    15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> rec_01     A         35    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> rec_01     A         50    20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> rec_01     A          5    20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> rec_01     A         20    37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> rec_01     A         35    41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> rec_01     A         50    41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> rec_01     A         65    37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rec_01     A         80    34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rec_01     A         95    32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rec_01     A        110    27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rec_01     A        125    23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rec_01     A        140    22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 23 more rows</span></span>
+<span class="r-in"><span><span class="co"># .. which implicitly does</span></span></span>
+<span class="r-in"><span><span class="fu">cleanup_data</span><span class="op">(</span><span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 33 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    patient_id group minute   pdr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> rec_01     A          5     3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> rec_01     A         20    12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> rec_01     A         35    17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> rec_01     A         50    18</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> rec_01     A         65    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rec_01     A         80    19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rec_01     A         95    18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rec_01     A        110    16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rec_01     A        125    14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rec_01     A        140    14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rec_01     A         80    20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rec_01     A         95    19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rec_01     A        110    19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rec_01     A        125    17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rec_01     A        140    15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 23 more rows</span></span>
-<span class="r-in"><span class="co"># .. which implicitly does</span></span>
-<span class="r-in"><span class="fu">cleanup_data</span><span class="op">(</span><span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 33 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    patient_id group minute   pdr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> rec_01     A          5     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> rec_01     A         20    16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> rec_01     A         35    22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> rec_01     A         50    25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> rec_01     A         65    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rec_01     A         80    25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rec_01     A         95    24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rec_01     A        110    20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rec_01     A        125    19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rec_01     A        140    16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 23 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Use simulated data</span></span>
-<span class="r-in"><span class="va">data2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">  Z <span class="op">=</span> <span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">$</span><span class="va">data</span>,</span>
-<span class="r-in">  Y <span class="op">=</span> <span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">11</span><span class="op">)</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op">=</span> <span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Use simulated data</span></span></span>
+<span class="r-in"><span><span class="va">data2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  Z <span class="op">=</span> <span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">$</span><span class="va">data</span>,</span></span>
+<span class="r-in"><span>  Y <span class="op">=</span> <span class="fu"><a href="simulate_breathtest_data.html">simulate_breathtest_data</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">11</span><span class="op">)</span><span class="op">$</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">=</span> <span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> tibble [220 × 4] (S3: tbl_df/tbl/data.frame)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ patient_id: chr [1:220] "rec_01" "rec_01" "rec_01" "rec_01" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ group     : chr [1:220] "Z" "Z" "Z" "Z" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ minute    : num [1:220] 5 20 35 50 65 80 95 110 125 140 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ pdr       : num [1:220] 4 13 16 16 15 14 15 11 12 10 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "comment")= chr "10 records,  m = 40, k =  0.010, beta =  2.0, cov-matrix, \n Gaussian noise amplitude = 1, 0% missing"</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">patient_id</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">patient_id</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "rec_01" "rec_02" "rec_03" "rec_04" "rec_05" "rec_06" "rec_07" "rec_08"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "rec_09" "rec_10"</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Z" "Y"</span>
-<span class="r-in"><span class="co"># "Z" "Y"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Mix multiple input formats</span></span>
-<span class="r-in"><span class="va">f1</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"350_20043_0_GER.txt"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f2</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisMulti.TXT"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f3</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># With a named list, the name is used as a group parameter</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="read_breathid.html">read_breathid</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="read_iris.html">read_iris</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="read_iris_csv.html">read_iris_csv</a></span><span class="op">(</span><span class="va">f3</span><span class="op">)</span><span class="op">)</span> </span>
-<span class="r-in"><span class="va">d</span> <span class="op">=</span> <span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># "Z" "Y"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Mix multiple input formats</span></span></span>
+<span class="r-in"><span><span class="va">f1</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"350_20043_0_GER.txt"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f2</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisMulti.TXT"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f3</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># With a named list, the name is used as a group parameter</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="read_breathid.html">read_breathid</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="read_iris.html">read_iris</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="read_iris_csv.html">read_iris_csv</a></span><span class="op">(</span><span class="va">f3</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">=</span> <span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> tibble [115 × 4] (S3: tbl_df/tbl/data.frame)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ patient_id: chr [1:115] "350_20043_0_GER" "350_20043_0_GER" "350_20043_0_GER" "350_20043_0_GER" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ group     : chr [1:115] "A" "A" "A" "A" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ minute    : num [1:115] 0.01 0.5 1.6 6.4 8.9 11.3 13.7 16 18.5 23.3 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ pdr       : num [1:115] 0 -0.1 0.4 0.3 1.7 3.1 3.5 3.9 4.7 5.7 ...</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">patient_id</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">patient_id</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "350_20043_0_GER" "1871960"         "123456"         </span>
-<span class="r-in"><span class="co"># "350_20043_0_GER" "1871960"         "123456"</span></span>
-<span class="r-in"><span class="co"># File name is used as patient name if none is available</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># "350_20043_0_GER" "1871960"         "123456"</span></span></span>
+<span class="r-in"><span><span class="co"># File name is used as patient name if none is available</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "A" "B" "C"</span>
-<span class="r-in"><span class="co"># "A" "B" "C"</span></span>
+<span class="r-in"><span><span class="co"># "A" "B" "C"</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -223,7 +234,7 @@ Comments are persistent; multiple comments are concatenated with newline separat
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer></div>
