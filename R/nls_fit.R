@@ -59,8 +59,9 @@ nls_fit = function(data, dose = 100,
   # This has kept me busy for more than 11 years now, stumbling over
   # https://stat.ethz.ch/pipermail/r-help/2006-February/087295.html
   bid.nls = try(suppressWarnings(nlsList(
-    pdr ~ exp_beta(minute, 100, m, k, beta)|patient_id/group, data = data, 
-    start = start)), silent = TRUE)
+    pdr ~ breathtestcore::exp_beta(
+      minute, 100, m, k, beta)|patient_id/group, data = data, 
+    start = start)), silent = FALSE)
   # strip off group and patient_id, add deviance
   cf = coef(bid.nls)
   if (!is.data.frame(cf)) {

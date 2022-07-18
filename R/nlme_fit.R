@@ -77,7 +77,7 @@ nlme_fit = function(data, dose = 100,
   # This has kept me busy for more than 11 years now, stumbling over
   # https://stat.ethz.ch/pipermail/r-help/2006-February/087295.html
   bc.nls <- suppressWarnings(nlme::nlsList(
-    pdr ~ exp_beta( minute, 100, m, k, beta) | pat_group,
+    pdr ~ breathtestcore::exp_beta( minute, 100, m, k, beta) | pat_group,
     data = data, start = start
   ))
   
@@ -88,7 +88,7 @@ nlme_fit = function(data, dose = 100,
   while (!success && pnlsTol < 0.5) {
     bc_nlme = suppressWarnings(try(
       nlme::nlme(
-        pdr ~ exp_beta(minute, 100, m, k, beta),
+        pdr ~ breathtestcore::exp_beta(minute, 100, m, k, beta),
         data = data,
         control = nlme::nlmeControl(msMaxIter = 20,
                                     pnlsTol = pnlsTol, maxIter = 15),
@@ -96,7 +96,7 @@ nlme_fit = function(data, dose = 100,
         random = pdDiag(m + k +beta)~1,
         groups = ~pat_group,
         start = nlme::fixef(bc.nls)
-      ),silent = TRUE))
+      ), silent = TRUE))
     success = !inherits(bc_nlme, "try-error")
     if (!success) {
 #      capture.output(print(summary(bc_nlme)), file = stderr())             
@@ -108,7 +108,7 @@ nlme_fit = function(data, dose = 100,
   if (!success) {
     data = data %>% select(-pat_group) # only used locally
     comment(data) = paste(comment(data),  "--", "no successful fit with nlme")
-#    cat(comment(data),"\n", file = stderr())
+    #cat(comment(data),"\n", file = stderr())
     ret = list(data = data)
     class(ret) = "breathtestfit"
     return(ret)

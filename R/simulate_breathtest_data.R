@@ -129,7 +129,8 @@ simulate_breathtest_data = function(
       tibble(
         patient_id = .$patient_id,
         minute = minute,
-        pdr = exp_beta(minute = minute,  dose = dose , m = .$m, k = .$k, beta = .$beta)
+        pdr = breathtestcore::exp_beta(minute = minute,  
+                  dose = dose , m = .$m, k = .$k, beta = .$beta)
       ))  %>%
     ungroup() %>%
     mutate(

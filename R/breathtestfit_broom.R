@@ -87,7 +87,7 @@ augment.breathtestfit = function(x, by = NULL, minute = NULL, dose = 100, ...) {
       select(-t50) %>% 
       inner_join(x$data, by = c("patient_id", "group")) %>% 
       mutate(
-        fitted = as.numeric(exp_beta(minute, dose, m, k, beta ))
+        fitted = as.numeric(breathtestcore::exp_beta(minute, dose, m, k, beta ))
       ) %>% 
       select(-m, -k, -beta)
   } else {
@@ -100,7 +100,7 @@ augment.breathtestfit = function(x, by = NULL, minute = NULL, dose = 100, ...) {
           patient_id = .$patient_id,
           group = .$group,
           minute = minute,
-          fitted = as.numeric(exp_beta(minute, dose, .$m, .$k, .$beta )))
+          fitted = as.numeric(breathtestcore::exp_beta(minute, dose, .$m, .$k, .$beta )))
       )
   }
 }
