@@ -82,7 +82,9 @@
 </h1></div>
 <p>Dieter Menne Menne Biomed Consulting Tübingen, Germany <a href="http://www.menne-biomed.de" class="external-link uri">http://www.menne-biomed.de</a> <a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
 <!-- badges: start -->
-<!-- badges: end --><p>Menne Biomed Consulting Tübingen, Germany <a href="https://www.menne-biomed.de" class="external-link uri">https://www.menne-biomed.de</a></p>
+
+<!-- badges: end -->
+<p>Menne Biomed Consulting Tübingen, Germany <a href="https://www.menne-biomed.de" class="external-link uri">https://www.menne-biomed.de</a></p>
 <p><a href="mailto:dieter.menne@menne-biomed.de">dieter.menne@menne-biomed.de</a></p>
 <ul>
 <li>
@@ -115,11 +117,11 @@
 <h2 id="how-to-install">How to install<a class="anchor" aria-label="anchor" href="#how-to-install"></a>
 </h2>
 <p>To install the most recent versions of the package, use</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"dmenne/breathtestcore"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># In case you want to use the fancy Stan-based methodes</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"dmenne/breathteststan"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># And here the web app; this is not on CRAN and must be installed from github</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"dmenne/breathtestshiny"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"dmenne/breathtestcore"</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># In case you want to use the fancy Stan-based methodes</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"dmenne/breathteststan"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># And here the web app; this is not on CRAN and must be installed from github</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"dmenne/breathtestshiny"</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Do not forget to use <code>build_vignettes = TRUE</code>.</p>
 <p>Stable version of the packages <a href="https://CRAN.R-project.org/package=breathtestcore" class="external-link">breathtestcore</a> and <a href="https://CRAN.R-project.org/package=breathteststan" class="external-link">breathteststan</a> can also be installed from CRAN.</p>
 <p>For an easy installation, use the Docker image <a href="https://hub.docker.com/r/dmenne/breathtestshiny" class="external-link">dmenne/breathtestshiny</a></p>
@@ -129,11 +131,11 @@
 <h2 id="usage-example">Usage example<a class="anchor" aria-label="anchor" href="#usage-example"></a>
 </h2>
 <p>This example is from the documentation of function <a href="https://dmenne.github.io/breathtestcore/reference/nlme_fit.html">nlme_fit</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(breathtestcore)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>d =<span class="st"> </span><span class="kw">simulate_breathtest_data</span>(<span class="dt">n_records =</span> <span class="dv">3</span>, <span class="dt">noise =</span> <span class="fl">0.2</span>, <span class="dt">seed =</span> <span class="dv">4711</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>data =<span class="st"> </span><span class="kw">cleanup_data</span>(d<span class="op">$</span>data)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>fit =<span class="st"> </span><span class="kw">nlme_fit</span>(data)</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">plot</span>(fit) <span class="co"># calls plot.breathtestfit</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(breathtestcore)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">simulate_breathtest_data</span>(<span class="at">n_records =</span> <span class="dv">3</span>, <span class="at">noise =</span> <span class="fl">0.2</span>, <span class="at">seed =</span> <span class="dv">4711</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">cleanup_data</span>(d<span class="sc">$</span>data)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">nlme_fit</span>(data)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit) <span class="co"># calls plot.breathtestfit</span></span></code></pre></div>
 <p>For additional examples, see the documentation and the tests in folder <code>tests/testthat</code> of the source package.</p>
 </div>
 <div class="section level2">

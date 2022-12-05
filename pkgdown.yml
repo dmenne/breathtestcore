@@ -1,10 +1,10 @@
-pandoc: 2.7.3
+pandoc: 2.19.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   data_formats: data_formats.html
   methods_and_concepts: methods_and_concepts.html
-last_built: 2022-07-18T09:17Z
+last_built: 2022-12-05T09:35Z
 urls:
   reference: https://dmenne.github.io/breathtestcore/reference
   article: https://dmenne.github.io/breathtestcore/articles
