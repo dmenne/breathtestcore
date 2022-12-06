@@ -10,7 +10,7 @@ data(usz_13c_d)
 \description{
 13C time series PDR data from normals and three different meals 
 in a cross-over design from the division of 
-\href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
+\href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 University Hospital Zurich}. See
 \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/nmo.12025}{Kuyumcu et al.,
 Gastric secretion does not affect...}.

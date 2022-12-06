@@ -1,4 +1,4 @@
 library(testthat)
 
-options(Ncpus = parallel::detectCores(logical = TRUE))
+options(Ncpus = parallelly::availableCores(omit = 1))
 test_check("breathtestcore")

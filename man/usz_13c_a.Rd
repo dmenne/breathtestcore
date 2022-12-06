@@ -10,7 +10,7 @@ data(usz_13c_a)
 \description{
 13C time series PDR data from three different groups in a randomized
 (= not-crossover) design. This are unpublished data from
-\href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
+\href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 University Hospital Zurich}. 
 
 Data are formatted as described in \code{\link{usz_13c}}. These time series present

@@ -12,7 +12,7 @@ data(usz_13c)
 }
 \description{
 13C time series PDR data from normals and random patients
-from the division of \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
+from the division of \href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 University Hospital Zurich}.
 Most breath samples from normals were collected with bags and analyzed by
 \href{http://kibion.com}{IRIS/Wagner}

@@ -1,7 +1,7 @@
 #' @title Zurich sample set of 13C breath test data
 #'
 #' @description 13C time series PDR data from normals and random patients
-#' from the division of \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
+#' from the division of \href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 #' University Hospital Zurich}.
 #' Most breath samples from normals were collected with bags and analyzed by
 #' \href{http://kibion.com}{IRIS/Wagner}
@@ -63,7 +63,7 @@ NULL
 #'
 #' @description 13C time series PDR data from normals and three different meals 
 #' in a cross-over design from the division of 
-#' \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
+#' \href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 #' University Hospital Zurich}. See
 #' \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/nmo.12025}{Kuyumcu et al.,
 #' Gastric secretion does not affect...}.
@@ -128,7 +128,7 @@ NULL
 #'
 #' @description 13C time series PDR data from three different groups in a randomized
 #' (= not-crossover) design. This are unpublished data from
-#' \href{http://www.gastroenterologie.usz.ch/Seiten/default.aspx}{Gastroenterology and Hepatology,
+#' \href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 #' University Hospital Zurich}. 
 #' 
 #' Data are formatted as described in \code{\link{usz_13c}}. These time series present
