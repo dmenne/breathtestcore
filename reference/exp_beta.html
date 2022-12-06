@@ -237,8 +237,8 @@ The S3 method <code><a href="plot.breathtestfit.html">plot.breathtestfit</a></co
 <span class="r-out co"><span class="r-pr">#&gt;</span> e 17.453 0.009322 2.432</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> f 17.852 0.009003 2.351</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> g 20.306 0.007039 1.769</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> h  1.965 0.013929 5.710</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> i 16.586 0.005433 2.496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> h  1.964 0.013929 5.710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> i 16.587 0.005433 2.496</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> j 22.178 0.014617 1.564</span>
 <span class="r-in"><span><span class="va">pred_data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>minute <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">400</span>, <span class="fl">10</span><span class="op">)</span>, patient <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred_data</span><span class="op">$</span><span class="va">pdr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">pdr_nlme</span>, newdata <span class="op">=</span> <span class="va">pred_data</span><span class="op">)</span></span></span>
