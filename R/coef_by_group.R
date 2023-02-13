@@ -54,10 +54,10 @@ coef_by_group.breathtestfit = function(fit, ...) {
   # Special case when there is only one group
   if (length(unique(cf$group)) == 1)
   {
-    if (length(unique(cf$patient_id))==1) { # Single case
-      return (coef_by_group.breathtestfit_1(fit, ...)) 
+    if (length(unique(cf$patient_id)) == 1) { # Single case
+      return(coef_by_group.breathtestfit_1(fit, ...)) 
     } else {
-      return (coef_by_group.breathtestfit_2(fit, ...)) 
+      return(coef_by_group.breathtestfit_2(fit, ...)) 
     }
   }
   # Keep CRAN quite
