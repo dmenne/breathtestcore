@@ -16,3 +16,4 @@ README.md
 ^codecov\.yml$
 ^_pkgdown\.yml$
 \.log
+^CRAN-SUBMISSION$

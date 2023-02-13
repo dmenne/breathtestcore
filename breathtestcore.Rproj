@@ -16,3 +16,7 @@ BuildType: Package
 PackageInstallArgs: --no-multiarch --with-keep.source
 PackageCheckArgs: --no-manual --no-multiarch --run-donttest --as-cran
 PackageRoxygenize: rd,collate,namespace
+
+PythonType: system
+PythonVersion: 3.11.1
+PythonPath: C:/Users/Dieter/AppData/Local/Programs/Python/Python311/python.exe
