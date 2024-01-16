@@ -8,7 +8,7 @@ test_that("Plot layers match expectations",{
   expect_s3_class(p, "ggplot")
   expect_gt(max(layer_data(p)$y), 25)
   expect_equal(nlayers(p), 4)   
-  expect_equal(length(p), 9)   
+  expect_equal(length(p), length(ggplot()))   
   expect_equal(nlevels(layer_data(p)$PANEL), 10)
 })
 
@@ -40,7 +40,7 @@ test_that("Plot multiple groups with repeats",{
   p = plot(x)
   expect_s3_class(p, "ggplot")
   expect_equal(nlayers(p), 4)   
-  expect_equal(length(p), 9)   
+  expect_equal(length(p), length(ggplot()))   
   expect_equal(nlevels(layer_data(p)$PANEL), 6)
 })
 
@@ -62,7 +62,7 @@ test_that("Plot multiple groups without repeats",{
   p = plot(x)
   expect_s3_class(p, "ggplot")
   expect_equal(nlayers(p), 4)   
-  expect_equal(length(p), 9)   
+  expect_equal(length(p), length(ggplot()))   
   expect_equal(nlevels(layer_data(p)$PANEL), 15)
 })
 
@@ -78,7 +78,7 @@ test_that("Plot multiple groups data only (no fit)",{
   p = plot(x) # Plots raw data only
   expect_s3_class(p, "ggplot")
   expect_equal(nlayers(p), 1)   
-  expect_equal(length(p), 9)   
+  expect_equal(length(p), length(ggplot()))   
   expect_equal(nlevels(layer_data(p)$PANEL), 6)
 })
 
