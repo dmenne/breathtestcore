@@ -17,3 +17,4 @@ README.md
 ^_pkgdown\.yml$
 \.log
 ^CRAN-SUBMISSION$
+cran-comments.md

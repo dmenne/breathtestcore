@@ -95,7 +95,7 @@ coef_by_group.breathtestfit = function(fit, ...) {
 }
 
 # local function for the case of 1 group/ multiple subjects
-
+#' @export
 coef_by_group.breathtestfit_2 = function(fit, ...) {
   . = parameter = method = NULL # CRAN
   cm = comment(fit$data)
@@ -123,6 +123,7 @@ coef_by_group.breathtestfit_2 = function(fit, ...) {
 
 
 # local function for the case of 1 group/ 1 subject
+#' @export
 coef_by_group.breathtestfit_1 = function(fit, ...) {
   . = estimate = parameter = method = NULL # CRAN
   cm = comment(fit$data)
