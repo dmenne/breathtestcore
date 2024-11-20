@@ -122,7 +122,6 @@ The easiest way to supply generic formats is from Excel files. The data formats 
 
 * Use function `read_breathtest_excel()`; this is the only way to select a worksheet different other than first in the workbook by passing parameter `sheet`. All other methods only read the first worksheet.
 * Use function `read_any_breathtest()`. This always reads the first worksheet, but you can combine results from several files, even when they have different formats
-* With the [breathtestshiny GUI](https://apps.menne-biomed.de/breathtestshiny/), you can drag file in all formats mentioned here into the green field; or select 'Browse file'; or paste the Excel data or any other tab-separated data into the edit field.
 
 ```{r, fig.height = 3, include = FALSE}
 knitr::include_graphics("breathtestshiny.png")
@@ -130,8 +129,7 @@ knitr::include_graphics("breathtestshiny.png")
 
 ### Two-column format
 
-When you have only data from one record, you can supply data in a two-column format as given in sheet `2col` of workboot `ExcelSamples.xlsx`. The column headers must be `minute, pdr`. With [breathtestshiny GUI](https://apps.menne-biomed.de/breathtestshiny/), you can upload the file, or simply paste it into the editor. This is the easiest method to get a fit for a single patient.
-
+When you have only data from one record, you can supply data in a two-column format as given in sheet `2col` of workboot `ExcelSamples.xlsx`. The column headers must be `minute, 
 ```{r, echo = FALSE, include = FALSE}
 options(tibble.print_min= 4)
 options(digits = 2)

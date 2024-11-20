@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from
     Breath Tests
-Version: 0.8.7
+Version: 0.8.8
 Authors@R: 
     c(person(given = "Dieter",
              family = "Menne",
@@ -62,12 +62,11 @@ Suggests:
     rmarkdown,
     testthat(>= 2.99),
     breathteststan,
-    covr,
-    parallelly
+    covr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 SystemRequirements: pandoc
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.2

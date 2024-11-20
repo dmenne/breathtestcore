@@ -138,7 +138,7 @@ pred_data$pdr = predict(pdr_nlme, newdata = pred_data)
 suppressPackageStartupMessages(library(ggplot2))
 ggplot() +
   geom_point(data = pdr1, aes(x = minute, y = pdr, color = "red")) + 
-  geom_line(data = pred_data, aes(x = minute, y = pdr), color = "black", size=1) +
+  geom_line(data = pred_data, aes(x = minute, y = pdr), color = "black", linewidth = 1 ) +
   ggtitle("Short patient record 'a' gives a good fit with many missing data using nlme.\n
           Borrowing strength from nlme in action!")+
   facet_wrap(~patient) +

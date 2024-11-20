@@ -12,8 +12,8 @@ In this package, \code{k} is measured in units of 1/min (e.g. 0.01/min),
 in publications it is often quoted as 1/h (e.g. 0.6/h).}
 }
 \value{
-Time where value is 1/2 of the maximum, i.e. t_{50} or t_{1/2} in minutes; 
-in the publication by Bluck et al, the parameter is called t_{1/2(in)}.
+Time where value is 1/2 of the maximum, i.e. t_50 or t_1/2 in minutes; 
+in the publication by Bluck et al, the parameter is called t_1/2(in).
 }
 \description{
 Uses Newton's method to solve the self-corrected Bluck-Coward equation

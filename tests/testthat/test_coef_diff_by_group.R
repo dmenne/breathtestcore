@@ -1,4 +1,7 @@
 suppressPackageStartupMessages(library(dplyr))
+options(warn = 2)
+options(lifecycle_verbosity = "warning")
+ 
 data("usz_13c")
 data = usz_13c %>%
   dplyr::filter( patient_id %in%

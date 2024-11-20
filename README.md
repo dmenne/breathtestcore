@@ -21,8 +21,6 @@ Menne Biomed Consulting Tübingen, Germany <https://www.menne-biomed.de>
 
 -   [Online reference, examples with images and
     vignettes](https://dmenne.github.io/breathtestcore/).
--   To test some of the functions with sample data or your own data, try
-    the [online demo](https://apps.menne-biomed.de/breathtestshiny).
 -   Issues can be reported
     [here](https://github.com/dmenne/breathtestcore/issues).
 
@@ -78,11 +76,6 @@ also be installed from CRAN.
 For an easy installation, use the Docker image
 [dmenne/breathtestshiny](https://hub.docker.com/r/dmenne/breathtestshiny)
 
-You can run the [web app
-online](https://apps.menne-biomed.de/breathtestshiny/). No data are
-stored, but you can download all results and a series of tests for
-studies.
-
 ## Usage example
 
 This example is from the documentation of function
@@ -101,7 +94,7 @@ For additional examples, see the documentation and the tests in folder
 
 The core fitting functions and the Stan variants are stable
 and have versions on CRAN. The [Shiny](https://shiny.rstudio.com) web app is only
-available on github; a CRAN release is not planned. [Online demo](https://apps.menne-biomed.de/breathtestshiny),
+available on github; a CRAN release is not planned. 
 [source code](https://github.com/dmenne/breathtestshiny).
 
 **Reference**:

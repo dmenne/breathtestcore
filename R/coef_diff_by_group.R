@@ -65,14 +65,13 @@ coef_diff_by_group.breathtestfit =
   cm = comment(cf)
   # Keep CRAN quite
   . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic =
-    std.error = conf.low = conf.high = p.value = 
-    adj.p.value = contrast = estimate= term = NULL
+    std.error = conf.low = conf.high = p.value =  NULL
   cf = cf %>%
     mutate( # lme requires factors
       group = as.factor(.$group)
     )
   # No differences if there is only one group
-  if (nlevels(cf$group) <=1){
+  if (nlevels(cf$group) <= 1){
     return(NULL)
   }
   if (!is.null(reference_group) && !(reference_group %in% levels(cf$group))) {
@@ -82,6 +81,8 @@ coef_diff_by_group.breathtestfit =
     cf$group = relevel(cf$group, reference_group)
   }
   sig = as.integer(options("digits"))
+  t_vars = c("term", "contrast", "estimate", "p.value" = "adj.p.value")
+  not_vars = c("estimate.y", "std.error", "statistic","term")
   cf = cf %>%
     group_by(parameter, method) %>%
     do({
@@ -89,8 +90,7 @@ coef_diff_by_group.breathtestfit =
       glh = multcomp::glht(fit_lme, linfct =  multcomp::mcp(group = mcp_group))
       broom::tidy(confint(glh)) %>%
         left_join(broom::tidy(summary(glh)) %>%
-                    select(term, contrast, estimate, p.value=adj.p.value), 
-                  by = c("term", "contrast"), copy = TRUE) 
+          select(all_of(t_vars)), by = c("term", "contrast"), copy = TRUE) 
     }) %>%
     mutate(
       estimate.x = signif(estimate.x, sig),
@@ -99,8 +99,7 @@ coef_diff_by_group.breathtestfit =
       p.value = signif(p.value, sig),
     ) %>% 
     ungroup() %>%
-    dplyr::select(-estimate.y, -std.error, -statistic,-term, 
-                  groups = contrast, estimate = estimate.x)
+    dplyr::select(!any_of(not_vars), groups = "contrast", estimate = "estimate.x")
   comment(cf) = cm
   class(cf) = c("coef_diff_by_group", class(cf))
   cf

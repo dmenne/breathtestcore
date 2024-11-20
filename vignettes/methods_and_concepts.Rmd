@@ -71,9 +71,9 @@ ggplot(g, aes(minute, pdr, color = as.character(beta))) +
   facet_grid(~paste("k=",k)) + 
   labs(color='beta') + 
   geom_segment(aes(x = t50, y = y_t50 + 5, xend = t50, yend = y_t50 + .3), 
-               data = gpar, size = 1, arrow = arrow_1 ) +
+               data = gpar, linewidth = 1, arrow = arrow_1 ) +
   geom_segment(aes(x = tlag, y = y_tlag-10, xend = tlag, yend = y_tlag - .3), 
-               data = gpar, size = 1, arrow = arrow_1) 
+               data = gpar, linewidth = 1, arrow = arrow_1) 
 ```
 
 The half-emptying as defined by @Maes1998b is the time where the area under curve (AUC) is half the AUC extrapolated to infinity. In pharmakokinetics terms, it is the time where half of the bioavailable <sup>13</sup>C has been metabolized. This time is determined both by gastric emptying _and_ by the pharmacokinetics of <sup>13</sup>C bound in octanoate/acetate.
@@ -119,10 +119,10 @@ tibble(minute = seq(0, 300, by = 10)) %>%
 
 I therefore recommend using one of the population method, as implemented in `nlme_fit()` and `stan_fit()` for studies; these methods provide "borrowing strength" to keep the flock of lambs safely together and protect outliers from the big bad wolf.
 
-* If you write or review a paper that uses single curve fits to report study results, rewrite or reject it. Using the function provided in this package is [free as in beer and in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre), and when you use the [online version](https://apps.menne-biomed.de/gastempt/), you do not even have to install R. The [vignette](https://dmenne.github.io/breathtestcore/articles/data_formats.html) gives details on how to prepare your data with Excel.
+* If you write or review a paper that uses single curve fits to report study results, rewrite or reject it. Using the function provided in this package is [free as in beer and in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre). The [vignette](https://dmenne.github.io/breathtestcore/articles/data_formats.html) gives details on how to prepare your data with Excel.
 * For clinical practice, you have single measurements for which you want an immediate result. You can use the Bayesian method to get regularized estimates; or, if you want to be fancy, prepare a data set of some of your previous cases, add the new patient's data as a mix-in, and use the Mixed-model or the Bayesian fit.
 
-```{r, fig.height = 2.5, fig.cap="The fitting methods available in package `breathtestshiny` and in the [online version](https://apps.menne-biomed.de/breathtestshiny/).", echo = FALSE}
+```{r, fig.height = 2.5, fig.cap="The fitting methods available in package `breathtestshiny`", echo = FALSE}
 knitr::include_graphics("methods.png")
 ```
 
@@ -216,7 +216,7 @@ p1 = flow %>%
   ylab("vol in stomach (ml" ) + 
   geom_segment(
     aes(x = t50_pp+50, y = 250, xend = t50_pp, yend = 200),
-    size = 1, arrow = arrow_1 )
+    linewidth = 1, arrow = arrow_1 )
 
 p2 = flow %>% 
   ggplot(aes(minute, flow)) + geom_line() +
@@ -238,7 +238,7 @@ p3 = cv %>%
   ylab("Expected PDF (not normalized)") +
   geom_segment(
     aes(x = t50_pdr, y = 45, xend = t50_pdr+50, yend = 40),
-    size = 1, arrow = arrow_1 )
+    linewidth = 1, arrow = arrow_1 )
 
 gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)
 

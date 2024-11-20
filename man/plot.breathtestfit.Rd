@@ -8,7 +8,7 @@
   x,
   inc = 5,
   method_t50 = "maes_ghoos",
-  line_size = 1,
+  linewidth = 1,
   point_size = NULL,
   ...
 )
@@ -23,7 +23,7 @@ in package \code{breathteststan},}
 \item{method_t50}{Method for t50: "\code{maes_ghoos}", "\code{bluck_coward}" or 
 "\code{maes_ghoos_scintigraphy}"}
 
-\item{line_size}{optional line width; can improve look for printouts}
+\item{linewidth}{optional line width; can improve look for printouts}
 
 \item{point_size}{optional point size; determined dynamically when NULL}
 
