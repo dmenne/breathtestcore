@@ -15,7 +15,7 @@
 #' and data frame \code{data} with \code{time} and \code{dob}
 #' @examples
 #' filename = btcore_file("IrisCSV.TXT")
-#' cat(readLines(filename, n = 3), sep="\n")
+#' cat(readLines(filename, n = 3, encoding = "latin1"), sep="\n")
 #' #
 #' iris_data = read_iris_csv(filename)
 #' str(iris_data)
