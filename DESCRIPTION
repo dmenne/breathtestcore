@@ -59,6 +59,7 @@ Suggests:
     base,
     gridExtra,
     knitr,
+    qpdf,
     rmarkdown,
     testthat(>= 2.99),
     breathteststan,
