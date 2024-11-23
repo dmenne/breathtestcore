@@ -58,12 +58,13 @@ Imports:
 Suggests: 
     base,
     gridExtra,
-    knitr,
     qpdf,
+    knitr,
     rmarkdown,
     testthat(>= 2.99),
     breathteststan,
     covr
+Remotes: mennebiomed/breathtestan
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

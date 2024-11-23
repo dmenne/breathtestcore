@@ -1,5 +1,5 @@
 Version: 1.0
-ProjectId: 85481c63-48d5-4913-8f34-ebecedafc503
+ProjectId: 07cce706-f7c0-4bba-9206-523b027d0376
 
 RestoreWorkspace: No
 SaveWorkspace: No
@@ -14,7 +14,6 @@ RnwWeave: knitr
 LaTeX: pdfLaTeX
 
 BuildType: Package
-PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
 PackageCheckArgs: --no-multiarch --run-donttest --as-cran
 PackageRoxygenize: rd,collate,namespace
