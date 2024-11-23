@@ -64,7 +64,7 @@ Suggests:
     testthat(>= 2.99),
     breathteststan,
     covr
-Remotes: mennebiomed/breathtestan
+Remotes: dmenne/breathtestan
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
