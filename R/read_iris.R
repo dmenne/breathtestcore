@@ -16,7 +16,7 @@
 #' and \code{dob}
 #' @examples
 #' filename = btcore_file("IrisMulti.TXT")
-#' cat(readLines(filename, n = 10), sep="\n")
+#' cat(readLines(filename, n = 10, encoding = "latin1"), sep="\n")
 #' #
 #' iris_data = read_iris(filename)
 #' str(iris_data)

@@ -214,8 +214,8 @@ t50_pp = round(t50_powexp(tempt = tempt, beta = beta))
 p1 = flow %>% 
   ggplot(aes(minute, vol)) + geom_line() +
   ylab("vol in stomach (ml" ) + 
-  geom_segment(
-    aes(x = t50_pp+50, y = 250, xend = t50_pp, yend = 200),
+  annotate(geom = "segment", 
+    x = t50_pp+50, y = 250, xend = t50_pp, yend = 200,
     linewidth = 1, arrow = arrow_1 )
 
 p2 = flow %>% 
@@ -236,8 +236,8 @@ t50_pdr = (cv %>%
 p3 = cv %>% 
   ggplot(aes(minute, pdr)) + geom_line() +
   ylab("Expected PDF (not normalized)") +
-  geom_segment(
-    aes(x = t50_pdr, y = 45, xend = t50_pdr+50, yend = 40),
+  annotate(geom = "segment",
+    x = t50_pdr, y = 45, xend = t50_pdr+50, yend = 40,
     linewidth = 1, arrow = arrow_1 )
 
 gridExtra::grid.arrange(p1, p2, p3, ncol = 3, nrow = 1)

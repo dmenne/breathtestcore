@@ -65,6 +65,9 @@ Suggests:
     breathteststan,
     covr
 Remotes: dmenne/breathtestan
+URL: https://github.com/dmenne/breathtestcore,
+    https://dmenne.github.io/breathtestcore/
+BugReports: https://github.com/dmenne/breathcore/issues
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
