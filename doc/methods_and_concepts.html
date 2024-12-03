@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Dieter Menne, Menne Biomed Consulting Tuebingen, dieter.menne@menne-biomed.de" />
+
+
+<title>Methods and concepts</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Methods and concepts</h1>
+<h4 class="author">Dieter Menne, Menne Biomed Consulting Tuebingen, <a href="mailto:dieter.menne@menne-biomed.de" class="email">dieter.menne@menne-biomed.de</a></h4>
+
+
+
+<div id="a-heretical-view-on-13c-breath-test-for-gastric-emptying" class="section level1">
+<h1>A heretical view on <sup>13</sup>C breath test for gastric
+emptying</h1>
+<p><sup>13</sup>C breath test data are evaluated in clinical practice
+and in research as an indirect measure of gastric emptying. The
+normative literature on the underlying concepts is given in the
+documentation of <code>exp_beta()</code>, <code>t50_maes_ghoos()</code>
+and <code>t50_bluck_coward()</code>.</p>
+<p>Here, I present a subjective viewpoint on the pharmakokinetics of
+breath test time series. After a look at the Maes/Ghoos method (<span class="citation">Ghoos et al. (<a href="#ref-Ghoos1993">1993</a>)</span>, <span class="citation">Maes et
+al. (<a href="#ref-Maes1998b">1998</a>)</span>) as it is currently used,
+alternatives are discussed in the <a href="#secondlook">next
+section</a>.</p>
+<div id="current-concepts" class="section level2">
+<h2>Current concepts</h2>
+<p>Within the standard framework implemented in this package, data are
+fitted to an exponential beta function</p>
+<p><span class="math display">\[{PDR} =
+m*{dose}*k*\beta(1-e^{-k*minute})^{(\beta -
+1)}*e^{-k*minute}\]</span></p>
+<p>Written in R code</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>exp_beta <span class="ot">=</span> <span class="cf">function</span>(minute,dose,m,k,beta) {</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>     m<span class="sc">*</span>dose<span class="sc">*</span>k<span class="sc">*</span>beta<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>k<span class="sc">*</span>minute))<span class="sc">^</span>(beta<span class="dv">-1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>k<span class="sc">*</span>minute)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>The figure below shows examples of emptying curves. The so-called lag
+time of the Maes/Ghoos method is at the time of the maximum. Calling
+this “lag” is a highly confusing definition; technically, lag is the
+time until a first noticeable rise occurs in the curve, best illustrated
+by the blue curves with <code>beta = 8</code>, which has an estimated
+lag of about 15 minutes. If one looks more closely, even this definition
+is misleading, because the curves with higher beta are not zero, but
+behave like a polynomial curve with a power of <code>beta - 1</code> at
+the origin. A real lag would be best illustrated by a curve shifted to
+the right by <code>t_lag</code> and pdr values of 0 for
+<code>t &lt; t_lag</code>, indicating a real physical transport of the
+meal from the stomach to the small intestine.</p>
+<p>In practice, when <sup>13</sup>C curves are fitted, <code>beta</code>
+is typically in the range of 1.5 and 2.5; values of <code>beta</code>
+near 1 often lead to instabilities and are protected by priors in the
+Bayesian <code>breathteststan::stan_fit()</code> implemented in package
+<code>breathteststan</code>.</p>
+<div class="float">
+<img role="img" aria-label="Examples of exponential beta functions used to fit breath test curves. Bottom-up arrow: Maes/Ghoos lag time. Top-down arrow: Maes/Ghoos half emptying time." src="data:image/png;base64,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" alt="Examples of exponential beta functions used to fit breath test curves. Bottom-up arrow: Maes/Ghoos lag time. Top-down arrow: Maes/Ghoos half emptying time." />
+<div class="figcaption">Examples of exponential beta functions used to
+fit breath test curves. <em>Bottom-up arrow</em>: Maes/Ghoos lag time.
+<em>Top-down arrow</em>: Maes/Ghoos half emptying time.</div>
+</div>
+<p>The half-emptying as defined by <span class="citation">Maes et al.
+(<a href="#ref-Maes1998b">1998</a>)</span> is the time where the area
+under curve (AUC) is half the AUC extrapolated to infinity. In
+pharmakokinetics terms, it is the time where half of the bioavailable
+<sup>13</sup>C has been metabolized. This time is determined both by
+gastric emptying <em>and</em> by the pharmacokinetics of <sup>13</sup>C
+bound in octanoate/acetate.</p>
+<div class="float">
+<img role="img" aria-label="The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity." src="data:image/png;base64,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" alt="The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity." />
+<div class="figcaption">The half-emptying time in the definition of
+Maes/Ghoos is the time where the area under curve (AUC) is half of the
+AUC under the curve extrapolated to infinity.</div>
+</div>
+<p>The AUC <em>extrapolated to infinity</em>, which is the denominator
+in the definition of <code>t50</code>, is a vulnerable variable. Even if
+we accept that the exponential beta function is a reasonable model for
+breath test time series, extrapolating individual curves from data only
+slightly longer than <code>t50</code> results in ambiguous area
+estimates, often fails to converge, and even more often gives wildly
+romantic estimates of <code>t50</code>.</p>
+<p>To illustrate how brittle the <em>AUC to infinity</em> is, look back
+at a different function that had been used to fit <sup>13</sup>C time
+series. <span class="citation">Ghoos et al. (<a href="#ref-Ghoos1993">1993</a>)</span> used the following Gamma function
+to fit the data:</p>
+<p><span class="math display">\[pdr = a*t^b*e^{-ct}\]</span> As the
+figure below shows, this function gives perfectly valid fits of breath
+test time series. However, the area under curve extrapolated to infinity
+is infinite, so it cannot be used to compute a half-emptying time from
+the AUC.</p>
+<div class="float">
+<img role="img" aria-label="Gamma function from Ghoos et al. (1993) definition as points, and fitted beta exponential as line. Both function look very similar, but the area under the gamma function is infinite and thus cannot be used to compute t50." src="data:image/png;base64,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" alt="Gamma function from Ghoos et al. (1993) definition as points, and fitted beta exponential as line. Both function look very similar, but the area under the gamma function is infinite and thus cannot be used to compute t50." />
+<div class="figcaption">Gamma function from <span class="citation">Ghoos
+et al. (<a href="#ref-Ghoos1993">1993</a>)</span> definition as points,
+and fitted beta exponential as line. Both function look very similar,
+but the area under the gamma function is infinite and thus cannot be
+used to compute t50.</div>
+</div>
+</div>
+<div id="dieters-soapbox" class="section level2">
+<h2>Dieter’s soapbox</h2>
+<p>I therefore recommend using one of the population method, as
+implemented in <code>nlme_fit()</code> and <code>stan_fit()</code> for
+studies; these methods provide “borrowing strength” to keep the flock of
+lambs safely together and protect outliers from the big bad wolf.</p>
+<ul>
+<li>If you write or review a paper that uses single curve fits to report
+study results, rewrite or reject it. Using the function provided in this
+package is <a href="https://en.wikipedia.org/wiki/Gratis_versus_libre">free as in beer
+and in speech</a>. The <a href="https://dmenne.github.io/breathtestcore/articles/data_formats.html">vignette</a>
+gives details on how to prepare your data with Excel.</li>
+<li>For clinical practice, you have single measurements for which you
+want an immediate result. You can use the Bayesian method to get
+regularized estimates; or, if you want to be fancy, prepare a data set
+of some of your previous cases, add the new patient’s data as a mix-in,
+and use the Mixed-model or the Bayesian fit.</li>
+</ul>
+<div class="figure">
+<img role="img" aria-label="The fitting methods available in package `breathtestshiny`" src="data:image/png;base64,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" alt="The fitting methods available in package `breathtestshiny`" width="269" />
+<p class="caption">
+The fitting methods available in package <code>breathtestshiny</code>
+</p>
+</div>
+</div>
+<div id="secondlook" class="section level2">
+<h2>A second look</h2>
+<p>The half-emptying time determined with the <sup>13</sup>C breath test
+method correlates to some extend with gastric emptying in within-subject
+measurements, but it is not more than a surrogate for gastric emptying
+times measured by MRI (with secretion) or scintigraphy (meal-only). For
+data set <code>usz_13c_d</code> in this package, MRI emptying data are
+available and can be compared with <a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">breath
+test data</a>. The type of meal strongly biases the estimates because of
+the the dependency on lipophilic/lipophobic layering; comparing
+different meal types is not reliable even within-subject, and less so
+between-subject.</p>
+<p>Many attempts have been made to extract more information from the
+emptying curve, and to correct for the overall too high values; the
+Bluck-Coward method implemented in this package is one of them, but the
+<a href="https://dmenne.github.io/breathtestcore/reference/usz_13c_d.html#examples">results</a>
+are are even less consistent with those from MRI than those from the
+Maes/Ghoos method. <span class="citation">Sanaka et al. (<a href="#ref-Sanaka2004">2004</a>)</span> mention deconvolution and use an
+approximate correction for the pharmcological weighting function for the
+Wagner-Nelson method.</p>
+<p>There are many publication that tried an ad-hoc scintigraphic
+correction (<span class="citation">Keller et al. (<a href="#ref-Keller2009">2009</a>)</span>,
+<code>t50_maes_ghoos_scintigraphy()</code>) or one based on
+pharmacolokinetics (<span class="citation">Bluck and Coward (<a href="#ref-Bluck2006">2006</a>)</span>,
+<code>t50_bluck_coward()</code>). I do not know of any publication which
+has used rigorous statistical tests such as statistical cross-validation
+and validation with different meal types to show that some method gives
+“better” results than the default Maes/Ghoos method.</p>
+<blockquote>
+<p>In the following, I argue that there is nothing to gain from playing
+with “better” methods to fit the breath test time series. Independent
+per-subject information must be available to separate acetate
+pharmacokinetics, based on concentration gradient diffusion, from
+gastric empyting, which is physical transport.</p>
+</blockquote>
+<div id="acetate-pharmacology" class="section level3">
+<h3>Acetate pharmacology</h3>
+<p>Assume we do not mix the labelled acetate with the meal, but hide it
+in acid-resistant coating as it is used for PPI tablets. No
+<sup>13</sup>C will be recorded as long as the tablet is in the stomach,
+but it will quickly release <sup>13</sup>C labelled acetate in the
+duodenum or small intestine, mimicing a one-time dose. As described by
+standard pharmacokinetics, this results in a PDR response following a
+first-order compartmental model. Forgetting about decorative
+normalization constants, the response is the difference between two
+exponential functions:</p>
+<p><span class="math display">\[{foc} =  e^{-k_1 * {minute}} - e^{-k_2 *
+{minute}}\]</span> The normalization constant includes clearance and
+dose and only scales the curve. The correct normalization constants can
+be found in standard texts on pharmacokinetics (<span class="citation">Gabrielsson and Weiner (<a href="#ref-Gabrielsson2006">2006</a>)</span>) or in as a base R function
+<code>stats::SSfol()</code> in <span class="citation">Pinheiro and Bates
+(<a href="#ref-R:PinheiroBates2000">2000</a>)</span>.</p>
+<div class="float">
+<img role="img" aria-label="Left: pharmcological PDR response of separated loads released in the smaller bowel after 0, 30 and 90 minutes. Right: sum response when all three loads are released successively." src="data:image/png;base64,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" alt="Left: pharmcological PDR response of separated loads released in the smaller bowel after 0, 30 and 90 minutes. Right: sum response when all three loads are released successively." />
+<div class="figcaption">Left: pharmcological PDR response of separated
+loads released in the smaller bowel after 0, 30 and 90 minutes. Right:
+sum response when all three loads are released successively.</div>
+</div>
+<p>The left panel in the above plot shows three examples of
+<sup>13</sup>C fed by an enteric tables, remaining in the stomach for 0,
+30 and 90 minutes and then quickly being released in the smaller
+intestine. Note that we have a real lag caused by physical transport
+here: before the tablet is in the smaller bowel, there is no response at
+all. This is different from the polynomial-like pseudo-lag with the
+beta-exponential function.</p>
+<p>The right panel in the above plot shows the summary PDR curve when
+the three tablets are fed together and by chance are released after 0,
+30 and 90 minutes. This mimics the case of a stomach releasing the meal
+in three chunks of the same size and composition, well known from <a href="https://en.wikipedia.org/wiki/Pharmacokinetics#/media/File:Linear_PK_Example.png">pharmacokinetics</a>
+for multiple doses of a drug.</p>
+<p>The real flow out of the stomach is not pulse-like, but more like
+that of a continuous infusion with changing flow. When we assume that
+the stomach empties with a power-exponential function as in the left
+panel (see <code>gastempt::powexp()</code>), the flow is a wide peak as
+shown in the right panel below. The PDR response technically is the
+convolution of the flow with the pulse response shown as red curve
+(t_lag = 0) in the above plot.</p>
+<div class="float">
+<img role="img" aria-label="Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with function gastempt::powexp_slope() with inverted sign. 400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50 are marked by arrows." src="data:image/png;base64,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" alt="Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with function gastempt::powexp_slope() with inverted sign. 400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50 are marked by arrows." />
+<div class="figcaption">Meal volume (left) and flow when gastric
+emptying function is a power exponential function. Slope was computed
+with function <code>gastempt::powexp_slope()</code> with inverted sign.
+400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50
+are marked by arrows.</div>
+</div>
+<p>The correct half-emptying time <code>t50</code> in this example was
+82 minutes, as determined from the left panel; <code>t50</code>
+determined by fitting with the Maes/Ghoos version in the right panel was
+109 minutes.</p>
+<p>The bias from fitting the PDR curve naively is caused by the
+convolution of mechanical transport in gastric emptying, and
+pharmacological drug kinetics. The latter is a nuisance parameter and
+should be eliminated - or is it a parameter of interest in its own?</p>
+</div>
+</div>
+<div id="how-to-correct-for-the-pharmacological-bias" class="section level2">
+<h2>How to correct for the pharmacological bias?</h2>
+<blockquote>
+<p>I propose a revised procedure to separate pharmacology from
+transport. Patient first receive 30 mg acetate in an enteric table
+together with water. DOB data are recorded for 60 minutes, and after
+that the normal procedure of meal with 100 mg acetate/octanoate. The
+resulting PDR will look as follows:</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">pdr =</span> <span class="fu">c</span>(ff_0[<span class="dv">0</span><span class="sc">:</span><span class="dv">59</span>]<span class="sc">*</span><span class="dv">50</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>), cv<span class="sc">$</span>pdr)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="at">minute =</span> <span class="dv">0</span><span class="sc">:</span>(<span class="fu">n</span>()<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">filter</span>(minute <span class="sc">%%</span> <span class="dv">10</span> <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    <span class="at">pdr =</span> pdr <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">n</span>(), <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minute, <span class="at">y =</span> pdr)) <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>           <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">360</span>, <span class="at">by =</span> <span class="dv">60</span>))</span></code></pre></div>
+<div class="float">
+<img role="img" aria-label="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." src="data:image/png;base64,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" alt="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." />
+<div class="figcaption">Simulated response of a two-stage breath test
+procedure. The peak within the first hour is from acetate directly
+released in the small bowel, the second wider peak is the result of the
+convolution of transport emptying and pharmacokinetics.</div>
+</div>
+<p>The first narrow peak up to 1 hour is the pharmacological response;
+by fitting it, the kinetic time constants that broaden the wide peak can
+be determined, and can be used to remove the bias of the transport
+component visible in the main peak by mathematical deconvolution.</p>
+<p>Can anyone supply a data set for a pilot?</p>
+</div>
+</div>
+<div id="why-do-we-need-population-fits" class="section level1">
+<h1>Why do we need population fits?</h1>
+<div id="why-no-wagner-nelson-sanaka" class="section level2">
+<h2>Why no Wagner-Nelson (Sanaka)?</h2>
+<p>A popular alternative when curve fitting does not work was the
+Wagner-Nelson (<span class="citation">Sanaka et al. (<a href="#ref-Sanaka2004">2004</a>)</span>) method which uses a
+non-parametric approach for the initial slope. However, it uses the
+assumption that the terminal slope is the same for all subjects
+(k=0.01/min, 0.65/h) which strongly affects the estimate of the
+half-emptying time, so there is little justification to use the
+Wagner-Nelson method.</p>
+<p>With some of the functions in this package or with
+<code>breathteststan::stan_fit()</code> in the sister package, all
+curves can be fitted. I have not seen a single example that fails with
+the Bayesian method when multiple records are analyzed with a mix-in, so
+there is no excuse to use the Wagner-Nelson method any longer.</p>
+<p>If you must, you can use function <a href="https://github.com/dmenne/d13cbreath/blob/master/R/ComputeAndSaveWNFit.R">ComputeAndSaveWNFit</a>
+in my legacy package <code>D13CBreath</code>. The function is somewhat
+awkward to use because it has been written for an application with a
+tightly integrated database, but feel free to steal the code and
+run.</p>
+</div>
+<div id="citations" class="section level2 unnumbered">
+<h2 class="unnumbered">Citations</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Bluck2006" class="csl-entry">
+Bluck, Leslie J C., and W Andy Coward. 2006. <span>“Measurement of
+Gastric Emptying by the 13C-Octanoate Breath Test–Rationalization with
+Scintigraphy.”</span> <em>Physiol Meas</em> 27 (3): 279–89. <a href="https://doi.org/10.1088/0967-3334/27/3/006">https://doi.org/10.1088/0967-3334/27/3/006</a>.
+</div>
+<div id="ref-Gabrielsson2006" class="csl-entry">
+Gabrielsson, Johan, and Dan Weiner. 2006. <em>Pharmacokinetic &amp;
+Pharmacodynamic Data Analysis : Concepts and Applications</em>. 4. ed.,
+rev. and expanded. Stockholm: Swedish Pharmaceutical Press.
+</div>
+<div id="ref-Ghoos1993" class="csl-entry">
+Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J.
+Rutgeerts, and G. Vantrappen. 1993. <span>“Measurement of Gastric
+Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid
+Breath Test.”</span> <em>Gastroenterology</em> 104 (6): 1640–47. <a href="https://doi.org/10.1016/0016-5085(93)90640-x">https://doi.org/10.1016/0016-5085(93)90640-x</a>.
+</div>
+<div id="ref-Keller2009" class="csl-entry">
+Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009.
+<span>“Influence of Clinical Parameters on the Results of 13C-Octanoic
+Acid Breath Tests: Examination of Different Mathematical Models in a
+Large Patient Cohort.”</span> <em>Neurogastroenterology and Motility :
+The Official Journal of the European Gastrointestinal Motility
+Society</em> 21 (October): 1039–1e83. <a href="https://doi.org/10.1111/j.1365-2982.2009.01340.x">https://doi.org/10.1111/j.1365-2982.2009.01340.x</a>.
+</div>
+<div id="ref-Maes1998b" class="csl-entry">
+Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J.
+Rutgeerts. 1998. <span>“13C-Octanoic Acid Breath Test for Gastric
+Emptying Rate of Solids.”</span> <em>Gastroenterology</em> 114 (4):
+856–59. <a href="https://doi.org/10.1016/s0016-5085(98)70608-0">https://doi.org/10.1016/s0016-5085(98)70608-0</a>.
+</div>
+<div id="ref-R:PinheiroBates2000" class="csl-entry">
+Pinheiro, Jose C., and Douglas M. Bates. 2000. <em>Mixed-Effects Models
+in s and <span>S-Plus</span></em>. Springer.
+</div>
+<div id="ref-Sanaka2004" class="csl-entry">
+Sanaka, Masaki, Takatsugu Yamamoto, Tarou Ishii, and Yasushi Kuyama.
+2004. <span>“The Wagner-Nelson Method Can Generate an Accurate Gastric
+Emptying Flow Curve from CO2 Data Obtained by a 13C-Labeled Substrate
+Breath Test.”</span> <em>Digestion</em> 69: 71–78. <a href="https://doi.org/10.1159/000077391">https://doi.org/10.1159/000077391</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
