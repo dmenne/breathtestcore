@@ -19,8 +19,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-# macos fails because of missing qpdf
-# https://forum.posit.co/t/r-cmd-check-fails-on-macos-latest-release-r-lib-actions-setup-r-v2/195084/6?u=dmenne
           - {os: macos-latest,   r: 'release'}
           - {os: windows-latest, r: 'release'}
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
@@ -55,16 +53,6 @@ jobs:
         with:
           extra-packages: any::covr
           needs: coverage
-
-      - name: Test coverage
-        run: |
-          cov <- covr::package_coverage(
-            quiet = FALSE,
-            clean = FALSE,
-            install_path = file.path(normalizePath(Sys.getenv("RUNNER_TEMP"), winslash = "/"), "package")
-          )
-          covr::to_cobertura(cov)
-        shell: Rscript {0}
 
       - uses: codecov/codecov-action@v4
         with:
