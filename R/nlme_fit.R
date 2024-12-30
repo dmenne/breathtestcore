@@ -1,7 +1,7 @@
 #' @title Mixed-model nlme fit to 13C Breath Data
 #' @description Fits exponential beta curves to 13C breath test series data using
 #' a mixed-model population approach. See
-#' \url{https://menne-biomed.de/blog/breath-test-stan} for a comparison between
+#' \url{https://menne-biomed.de/blog/breath-test-stan/} for a comparison between
 #' single curve, mixed-model population and Bayesian methods.
 #'
 #' @param data Data frame or tibble as created by \code{\link{cleanup_data}},

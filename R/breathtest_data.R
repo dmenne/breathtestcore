@@ -79,8 +79,9 @@ breathtest_data = function(patient_id,
                            data = data) {
   if (!inherits(data, "data.frame"))
     stop("Function breathtest_data: data must be a data frame")
-  if (nrow(data) < 5)
-    stop("Function breathtest_data: data should have a least 5 rows")
+  if (nrow(data) < 5) {
+    stop("Function breathtest_data: data should have at least 5 rows")
+  }
   nd = names(data)
   if (!(nd[1] %in% c("time", "minute")))
     stop("Function breathtest_data: first data column must be <<time>> or <<minute>>. It is:<< ", nd[1], ">>")

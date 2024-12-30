@@ -1,7 +1,7 @@
 Package: breathtestcore
 Title: Core Functions to Read and Fit 13c Time Series from
     Breath Tests
-Version: 0.8.8
+Version: 0.8.9
 Authors@R: 
     c(person(given = "Dieter",
              family = "Menne",
@@ -61,10 +61,8 @@ Suggests:
     testthat(>= 2.99),
     breathteststan,
     covr
-Remotes: dmenne/breathtestan
 URL: https://github.com/dmenne/breathtestcore,
-    https://dmenne.github.io/breathtestcore/
-BugReports: https://github.com/dmenne/breathcore/issues
+BugReports: https://github.com/dmenne/breathtestcore/issues
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

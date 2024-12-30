@@ -1,0 +1,230 @@
+<Tests Device="1534">
+  <Test Number="667">
+    <ID>11095866</ID>
+    <StartTime>18Nov2024 11:00</StartTime>
+    <EndTime>18Nov2024 15:26</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.53,12.14,23.66,35.15,46.63,58.15,69.66,81.15,92.66,104.17,115.66,127.15,138.65,150.15,161.65,173.15,184.65,196.18,207.72,219.23,230.70,242.17</DOBListTimes>
+    <DOBListValues>1.1,4.5,6.5,8.6,9.9,11.4,11.8,12.5,13.5,13.0,13.4,13.1,13.7,12.9,12.7,11.8,11.3,10.9,9.8,8.8,8.1,7.1</DOBListValues>
+  </Test>
+  <Test Number="668">
+    <ID>10713251</ID>
+    <StartTime>19Nov2024 10:55</StartTime>
+    <EndTime>19Nov2024 11:10</EndTime>
+    <LastResultCode>0</LastResultCode>
+    <StoppedByUser>true</StoppedByUser>
+    <DOBListTimes>
+    </DOBListTimes>
+    <DOBListValues>
+    </DOBListValues>
+  </Test>
+  <Test Number="669">
+    <ID>10545337</ID>
+    <StartTime>21Nov2024 09:05</StartTime>
+    <EndTime>21Nov2024 09:24</EndTime>
+    <LastResultCode>0</LastResultCode>
+    <StoppedByUser>true</StoppedByUser>
+    <DOBListTimes>
+    </DOBListTimes>
+    <DOBListValues>
+    </DOBListValues>
+  </Test>
+  <Test Number="670">
+    <ID>10545337</ID>
+    <StartTime>21Nov2024 09:27</StartTime>
+    <EndTime>21Nov2024 13:48</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.43,11.86,23.31,34.75,46.21,57.69,69.17,80.63,92.12,103.61,115.06,126.50,137.97,149.44,160.89,172.33,183.78,195.24,206.68,218.14,229.58,241.02</DOBListTimes>
+    <DOBListValues>0.9,5.1,6.3,8.6,11.0,13.0,13.5,13.2,11.8,11.5,10.4,10.4,10.5,9.7,8.2,8.1,7.5,8.8,8.2,7.3,5.8,5.4</DOBListValues>
+  </Test>
+  <Test Number="671">
+    <ID>10084029</ID>
+    <StartTime>22Nov2024 10:45</StartTime>
+    <EndTime>22Nov2024 15:12</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.48,12.00,23.50,34.98,46.45,57.96,69.49,80.97,92.43,103.91,115.40,126.92,138.44,149.95,161.45,172.94,184.52,196.08,207.58,219.10,230.61,242.08</DOBListTimes>
+    <DOBListValues>-0.2,1.9,3.9,5.4,6.1,8.4,8.1,10.8,13.0,13.5,13.7,13.4,12.8,11.9,12.2,11.7,10.7,10.6,9.9,9.3,8.3,6.7</DOBListValues>
+  </Test>
+  <Test Number="672">
+    <ID>60205515</ID>
+    <StartTime>25Nov2024 10:58</StartTime>
+    <EndTime>25Nov2024 15:17</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.48,11.99,23.44,34.92,46.42,57.90,69.38,80.86,92.34,103.81,115.27,126.77,138.25,149.70,161.17,172.62,184.08,195.53,206.99,218.46,229.94,241.46</DOBListTimes>
+    <DOBListValues>-0.5,1.9,4.3,7.0,7.3,10.4,12.0,12.5,12.2,12.7,13.5,13.7,14.2,15.1,15.4,15.3,15.2,15.6,16.0,17.2,16.9,15.7</DOBListValues>
+  </Test>
+  <Test Number="673">
+    <ID>10339891</ID>
+    <StartTime>26Nov2024 10:55</StartTime>
+    <EndTime>26Nov2024 15:19</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.42,11.89,23.33,34.79,46.24,57.71,69.17,80.66,92.16,103.65,115.13,126.59,138.06,149.54,161.00,172.45,183.89,195.35,206.80,218.25,229.70,241.18</DOBListTimes>
+    <DOBListValues>-0.1,2.9,4.5,5.4,6.0,7.3,7.2,8.3,8.4,8.5,8.1,7.1,7.6,7.7,7.3,7.7,8.3,8.7,9.0,9.0,8.0,7.4</DOBListValues>
+  </Test>
+  <Test Number="674">
+    <ID>7586809</ID>
+    <StartTime>27Nov2024 10:53</StartTime>
+    <EndTime>27Nov2024 15:15</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.41,11.89,23.35,34.81,46.28,57.76,69.20,80.63,92.07,103.51,114.95,126.42,137.90,149.36,160.82,172.27,183.71,195.15,206.59,218.07,229.54,241.03</DOBListTimes>
+    <DOBListValues>-0.3,1.7,1.6,1.3,1.6,2.7,3.7,4.5,5.2,4.1,4.5,3.6,4.1,4.2,5.6,5.6,5.5,5.9,5.6,5.3,4.8,4.0</DOBListValues>
+  </Test>
+  <Test Number="675">
+    <ID>60222047</ID>
+    <StartTime>02Dec2024 11:03</StartTime>
+    <EndTime>02Dec2024 11:08</EndTime>
+    <LastResultCode>151</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>
+    </DOBListTimes>
+    <DOBListValues>
+    </DOBListValues>
+  </Test>
+  <Test Number="676">
+    <ID>60222047</ID>
+    <StartTime>02Dec2024 11:14</StartTime>
+    <EndTime>02Dec2024 15:40</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.42,11.89,23.37,34.86,46.36,57.83,69.32,80.80,92.29,103.77,115.24,126.72,138.20,149.64,161.11,172.59,184.04,195.54,207.03,218.50,229.95,241.44</DOBListTimes>
+    <DOBListValues>1.0,1.4,2.1,4.3,5.5,7.4,9.6,10.5,11.1,11.9,12.0,12.2,11.8,11.7,11.7,10.7,9.8,9.6,8.4,8.8,7.8,7.7</DOBListValues>
+  </Test>
+  <Test Number="677">
+    <ID>60193279</ID>
+    <StartTime>03Dec2024 10:41</StartTime>
+    <EndTime>03Dec2024 15:03</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.49,12.04,23.50,34.95,46.42,57.95,69.44,80.92,92.39,103.86,115.35,126.82,138.31,149.81,161.29,172.77,184.26,195.74,207.26,218.77,230.29,241.79</DOBListTimes>
+    <DOBListValues>0.3,2.2,5.1,6.5,7.9,9.5,11.5,12.6,14.9,15.0,16.3,16.1,15.9,15.7,15.2,14.7,14.6,14.2,13.6,12.5,12.6,11.6</DOBListValues>
+  </Test>
+  <Test Number="678">
+    <ID>11373961</ID>
+    <StartTime>04Dec2024 10:31</StartTime>
+    <EndTime>04Dec2024 15:04</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.60,12.49,24.24,35.80,49.46,61.04,72.55,84.08,95.63,107.17,118.78,130.41,142.03,153.74,165.39,176.95,188.57,200.29,212.00,223.71,246.94</DOBListTimes>
+    <DOBListValues>0.0,3.6,5.0,4.8,5.8,6.3,5.9,7.0,7.7,7.8,9.0,8.4,7.8,7.1,8.2,7.7,7.5,7.7,8.1,8.4,7.8</DOBListValues>
+  </Test>
+  <Test Number="679">
+    <ID>178977</ID>
+    <StartTime>05Dec2024 10:36</StartTime>
+    <EndTime>05Dec2024 10:42</EndTime>
+    <LastResultCode>151</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>
+    </DOBListTimes>
+    <DOBListValues>
+    </DOBListValues>
+  </Test>
+  <Test Number="686">
+    <ID>10138546</ID>
+    <StartTime>10Dec2024 11:56</StartTime>
+    <EndTime>10Dec2024 16:18</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.49,12.06,23.57,35.08,46.60,58.09,69.59,81.09,92.54,104.02,115.55,127.06,138.59,150.13,161.65,173.16,184.67,207.18,218.69,230.17,241.64</DOBListTimes>
+    <DOBListValues>-0.3,1.2,2.8,5.5,7.0,7.4,10.1,11.9,14.0,15.6,15.4,14.7,13.9,12.6,12.8,11.8,10.9,9.4,8.5,8.2,8.1</DOBListValues>
+  </Test>
+  <Test Number="687">
+    <ID>10778868</ID>
+    <StartTime>11Dec2024 10:36</StartTime>
+    <EndTime>11Dec2024 14:58</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.51,12.10,23.63,35.16,46.67,58.15,69.64,81.18,92.71,104.24,115.82,127.40,138.91,150.43,161.99,173.52,185.09,196.64,208.16,219.67,231.19,242.72</DOBListTimes>
+    <DOBListValues>0.0,1.6,4.5,7.3,8.0,9.4,10.0,10.6,10.4,9.4,9.5,8.8,8.6,8.8,9.2,9.1,9.0,8.5,7.3,7.0,5.5,5.2</DOBListValues>
+  </Test>
+  <Test Number="688">
+    <ID>6767532</ID>
+    <StartTime>12Dec2024 10:52</StartTime>
+    <EndTime>12Dec2024 15:26</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.43,11.99,23.54,35.05,46.57,58.08,69.61,81.17,92.70,104.23,115.77,127.30,139.69,151.20,162.81,174.42,185.96,197.50,209.04,220.56,232.12,243.67</DOBListTimes>
+    <DOBListValues>1.1,1.5,1.9,3.8,5.7,6.4,7.2,8.8,8.4,9.5,10.0,9.9,9.3,9.7,8.6,8.0,8.2,7.1,7.1,6.6,6.1,4.6</DOBListValues>
+  </Test>
+  <Test Number="689">
+    <ID>2246791</ID>
+    <StartTime>13Dec2024 10:43</StartTime>
+    <EndTime>13Dec2024 15:04</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.48,11.98,23.45,34.92,46.41,58.00,69.53,80.97,92.46,103.95,115.49,127.04,138.62,150.22,161.81,173.36,184.95,196.54,208.11,219.62,231.19,242.77</DOBListTimes>
+    <DOBListValues>-0.3,1.0,1.6,2.6,4.5,8.7,10.2,10.4,11.3,11.7,11.6,12.4,12.9,12.9,13.4,13.6,14.6,13.0,13.7,10.9,11.6,10.8</DOBListValues>
+  </Test>
+  <Test Number="690">
+    <ID>60178729</ID>
+    <StartTime>16Dec2024 11:14</StartTime>
+    <EndTime>16Dec2024 15:40</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.47,12.04,23.59,35.12,46.68,58.23,69.79,81.35,92.92,104.52,116.13,127.72,139.32,150.94,162.53,174.11,185.69,197.26,208.82,220.38,231.97,243.66</DOBListTimes>
+    <DOBListValues>0.0,4.2,7.4,12.2,14.3,15.7,14.6,13.5,12.9,12.1,12.1,12.4,12.8,12.6,12.3,11.7,10.8,10.1,9.3,8.8,8.3,8.1</DOBListValues>
+  </Test>
+  <Test Number="680">
+    <ID>178977</ID>
+    <StartTime>05Dec2024 10:46</StartTime>
+    <EndTime>05Dec2024 15:16</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.55,12.16,23.74,35.29,46.88,58.49,70.18,81.87,93.53,105.14,116.78,128.45,140.01,151.53,163.07,174.61,186.16,197.70,209.25,220.85,232.45,243.96</DOBListTimes>
+    <DOBListValues>-0.4,4.6,7.6,10.5,12.7,13.8,13.2,14.3,14.6,15.0,14.3,14.5,14.6,14.7,14.9,14.3,14.2,13.7,12.1,11.7,10.1,9.3</DOBListValues>
+  </Test>
+  <Test Number="681">
+    <ID>10171110</ID>
+    <StartTime>06Dec2024 11:00</StartTime>
+    <EndTime>06Dec2024 15:26</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>1.71,13.26,24.77,36.33,47.87,59.38,70.91,82.42,93.94,105.45,116.97,128.48,139.96,151.43,162.93,174.45,185.96,197.48,209.00,220.52,232.03,243.53</DOBListTimes>
+    <DOBListValues>0.0,1.4,2.5,3.5,4.6,5.9,7.6,9.0,9.5,9.6,9.2,9.5,8.6,8.8,9.3,10.3,11.3,11.8,11.1,11.0,9.1,8.6</DOBListValues>
+  </Test>
+  <Test Number="682">
+    <ID>11014632</ID>
+    <StartTime>09Dec2024 11:10</StartTime>
+    <EndTime>09Dec2024 11:14</EndTime>
+    <LastResultCode>151</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>
+    </DOBListTimes>
+    <DOBListValues>
+    </DOBListValues>
+  </Test>
+  <Test Number="683">
+    <ID>11014632</ID>
+    <StartTime>09Dec2024 11:17</StartTime>
+    <EndTime>09Dec2024 11:21</EndTime>
+    <LastResultCode>151</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>
+    </DOBListTimes>
+    <DOBListValues>
+    </DOBListValues>
+  </Test>
+  <Test Number="684">
+    <ID>11014632</ID>
+    <StartTime>09Dec2024 11:24</StartTime>
+    <EndTime>09Dec2024 15:49</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.47,11.97,23.53,35.07,46.53,58.01,69.53,81.08,92.63,104.16,115.69,127.17,138.65,150.15,161.62,173.09,184.58,196.09,207.60,219.08,230.56,242.05</DOBListTimes>
+    <DOBListValues>-0.3,0.5,1.6,3.7,5.5,8.4,11.1,12.8,15.0,17.3,17.5,19.4,19.5,19.5,18.2,18.1,17.2,16.9,15.7,15.8,14.8,14.5</DOBListValues>
+  </Test>
+  <Test Number="691">
+    <ID>10445532</ID>
+    <StartTime>17Dec2024 11:09</StartTime>
+    <EndTime>17Dec2024 15:28</EndTime>
+    <LastResultCode>1</LastResultCode>
+    <StoppedByUser>false</StoppedByUser>
+    <DOBListTimes>0.42,11.89,23.37,34.84,46.32,57.79,69.26,80.72,92.20,103.70,115.17,126.71,138.24,149.69,161.15,172.67,184.16,195.63,207.13,218.64,230.15,241.64</DOBListTimes>
+    <DOBListValues>-0.4,0.9,1.4,2.0,2.9,3.3,3.1,3.7,3.7,4.5,4.1,5.4,6.8,7.3,8.2,8.0,8.1,7.7,7.1,6.2,6.1,4.5</DOBListValues>
+  </Test>
+</Tests>

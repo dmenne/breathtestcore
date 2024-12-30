@@ -12,12 +12,13 @@ read_breathid_xml(filename = NULL, text = NULL)
 \item{text}{alternatively, text can be given as string}
 }
 \value{
-List of class \code{breathtest_data_list} of structures of 
+List of class \code{breathtest_data_list} of structures of
 class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
+Errors string for individual records are returned as attribute "errors".
 }
 \description{
-Reads 13c data from an XML BreathID file, and returns a structure 
-of class \code{breathtest_data_list}, which is a list with elements of 
+Reads 13c data from an XML BreathID file, and returns a structure
+of class \code{breathtest_data_list}, which is a list with elements of
 class \code{breathtest_data}.
 }
 \examples{

@@ -45,5 +45,13 @@ test_that("fitting difficult xml returns data",{
   fit = nls_fit(data)
   expect_s3_class(fit, "breathtestfit")
   expect_match(comment(fit$data), "no valid fit")
-  
 })
+
+test_that("Read December 2024 sample with errors has message in attribute",{
+  # This sample had a record with only 2 data points
+  filename = btcore_file("short_record.xml")
+  xml_data = read_breathid_xml(filename)
+  expect_match(attr(xml_data, "errors"), "Empty")
+  data = cleanup_data(xml_data)
+  expect_s3_class(data, "tbl")
+}  )

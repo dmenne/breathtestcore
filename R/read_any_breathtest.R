@@ -34,10 +34,13 @@ read_any_breathtest = function(files){
       f = breathtest_read_function(file)
       if (is.null(f)) return(NULL)
       f(file)
-    })   %>% 
+    })  
+  errs = tryCatch(purrr::map_chr(ret, attr, "errors"), error = function(e) NULL)
+  ret = ret |> 
     modify_if(function(x) is(x, "breathtest_data"), list ) %>% 
     flatten() 
   class(ret) = "breathtest_data_list"
+  attr(ret, "errors") = errs
   ret
 }
   

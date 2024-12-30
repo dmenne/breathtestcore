@@ -54,3 +54,11 @@ test_that("Reading multiple files returns a list with multiple items",{
 })
 
 
+test_that("Read sample with errors has message in attribute",{
+  # This sample had a record with only 2 data points
+  filename = btcore_file("short_record.xml")
+  xml_data = read_any_breathtest(filename)
+  expect_match(attr(xml_data, "errors"), "Empty")
+  data = cleanup_data(xml_data)
+  expect_s3_class(data, "tbl")
+}  )

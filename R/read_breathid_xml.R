@@ -1,13 +1,14 @@
 #' @title Read new BreathID/Examens XML file
 #'
-#' @description Reads 13c data from an XML BreathID file, and returns a structure 
-#' of class \code{breathtest_data_list}, which is a list with elements of 
-#' class \code{breathtest_data}. 
+#' @description Reads 13c data from an XML BreathID file, and returns a structure
+#' of class \code{breathtest_data_list}, which is a list with elements of
+#' class \code{breathtest_data}.
 #'
 #' @param filename name of xml-file to be read
 #' @param text alternatively, text can be given as string
-#' @return List of class \code{breathtest_data_list} of structures of 
+#' @return List of class \code{breathtest_data_list} of structures of
 #' class \code{\link{breathtest_data}}; an XML file can contain multiple data sets.
+#' Errors string for individual records are returned as attribute "errors".
 #' @examples
 #' filename = btcore_file("NewBreathID_01.xml")
 #' # Show first lines
@@ -27,8 +28,8 @@
 #' options(breathtestcore.choose_record = choose_record)
 #' bids = read_breathid_xml(filename)
 #' str(bids, 1) # 2 elements, first deselected
-#' 
-#' 
+#'
+#'
 #' @importFrom xml2 read_xml xml_attrs xml_find_first xml_text xml_attr xml_find_all
 #' @export
 read_breathid_xml = function(filename = NULL, text = NULL) {
@@ -39,9 +40,9 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
     text = read_file(filename)
   } else
   {
-    filename = 'from text'  
+    filename = 'from text'
   }
-
+  
   xml = try(xml2::read_xml(text), silent = TRUE)
   if (inherits(xml, "try-error"))
     stop(paste("File ", filename, "is not a valid XML BreathID file"))
@@ -50,34 +51,44 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
   
   xmls = xml_find_all(xml, "Test")
   ret = lapply(xmls, read_breathid_xml_record, filename, device)
-  not_null = !unlist(lapply(ret, is.null))
-  ret = ret[not_null]
+  is_err = unlist(lapply(ret, is.character))
+  errors = paste(ret[is_err], collapse = "\n")
+  ret = ret[!is_err]
   # Hook to select records
   ch = options("breathtestcore.choose_record")$breathtestcore.choose_record
   if (length(ret) > 1 & !is.null(ch)) {
-    pt = paste("Patient", purrr::map_chr(ret, "patient_id"), 
-          purrr::map_chr(ret, "record_date"),
-          purrr::map_chr(ret, "start_time"))
+    pt = paste(
+      "Patient",
+      purrr::map_chr(ret, "patient_id"),
+      purrr::map_chr(ret, "record_date"),
+      purrr::map_chr(ret, "start_time")
+    )
     ret = ret[ch(pt)]
   }
   class(ret) = "breathtest_data_list"
+  attr(ret, "errors") = errors
   ret
 }
 
 # Local function to read one record
-read_breathid_xml_record = function(xml_0, filename, device){ 
+read_breathid_xml_record = function(xml_0, filename, device) {
+  core_file_name = basename((filename))
   # local function xml_num
-  xml_num = function(xml_0, path){
-    as.numeric(unlist(str_split(xml_text(xml_find_first(xml_0, path)),",")))
+  xml_num = function(xml_0, path) {
+    as.numeric(unlist(str_split(xml_text(
+      xml_find_first(xml_0, path)
+    ), ",")))
   }
   
   data = na.omit(data.frame(
-    minute = xml_num(xml_0,".//DOBListTimes"),
+    minute = xml_num(xml_0, ".//DOBListTimes"),
     dob = xml_num(xml_0, ".//DOBListValues")
   ))
-
-  if (nrow(data) == 0 ) # No data
-    return(NULL)
+  
+  if (nrow(data) == 0){
+    # No data
+    return(paste("Empty data set in", core_file_name))
+  }
   attr(data, "na.action") = NULL # Remove na.omit
   # e.g. "19Jul2017 11:02"
   
@@ -92,23 +103,26 @@ read_breathid_xml_record = function(xml_0, filename, device){
     start_time =  str_extract(start_time_str, "\\d\\d:\\d\\d$")
     end_time =  str_extract(end_time_str, "\\d\\d:\\d\\d$")
     invisible(NULL)
-  }, error = function(e){
-    stop("No valid date/time in XML file: ", filename)
-  }
-  )
+  }, error = function(e) {
+    return(paste("No valid date/time in XML file: ", core_file_name))
+  })
   
   patient_id = xml_text(xml_find_first(xml_0, "ID"))
   test_no = as.integer(xml_attr(xml_find_first(xml_0, "/*/Test"), "Number"))
-  breathtest_data(
-    file_name = basename(filename),
-    patient_id = patient_id,
-    test_no = test_no,
-    record_date = record_date,
-    start_time = start_time,
-    end_time = end_time,
-    substrate = "acetate", #### Problem !!!
-    device = paste0("BreathID_", device),
-    data = data
-  )
+  tryCatch({
+    breathtest_data(
+      file_name = basename(filename),
+      patient_id = patient_id,
+      test_no = test_no,
+      record_date = record_date,
+      start_time = start_time,
+      end_time = end_time,
+      substrate = "acetate",
+      #### Problem !!!
+      device = paste0("BreathID_", device),
+      data = data
+    )
+  }, error = function(e) {
+    return(paste(e[["message"]], "in", core_file_name))
+  })
 }
-
