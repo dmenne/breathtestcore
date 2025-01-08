@@ -61,4 +61,4 @@ test_that("Read sample with errors has message in attribute",{
   expect_match(attr(xml_data, "errors"), "Empty")
   data = cleanup_data(xml_data)
   expect_s3_class(data, "tbl")
-}  )
+})
