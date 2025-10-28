@@ -231,7 +231,7 @@ cleanup_data.breathtest_data = function(data, ... ){
       id == "0" || 
       id == "" || 
       dot_lgl("use_filename_as_patient_id", ...))
-    id = str_sub(data["file_name"], 1, -5) 
+    id = unname(str_sub(data["file_name"], 1, -5))
   d = cbind(patient_id = id, data$data[,c("minute", "pdr")])
   cleanup_data(d, ...)    
 }
