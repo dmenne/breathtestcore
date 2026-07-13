@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Data formats • breathtestcore</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Data formats">
@@ -62,7 +62,7 @@
 <a href="mailto:dieter.menne@menne.biomed.de" class="email">dieter.menne@menne.biomed.de</a>
 </h4>
             
-            <h4 data-toc-skip class="date">2025-10-28</h4>
+            <h4 data-toc-skip class="date">2026-07-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dmenne/breathtestcore/blob/main/vignettes/data_formats.Rmd" class="external-link"><code>vignettes/data_formats.Rmd</code></a></small>
       <div class="d-none name"><code>data_formats.Rmd</code></div>
@@ -77,7 +77,7 @@
 files, and in several vendor-specific formats, e.g. from BreathID and
 Wagner/IRIS. A collection of sample files with and without errors is
 available in the directory
-<code>/opt/R/4.5.1/lib/R/library/breathtestcore/extdata</code>; function
+<code>/opt/R/4.6.1/lib/R/library/breathtestcore/extdata</code>; function
 <code><a href="../reference/btcore_file.html">btcore_file()</a></code> retrieves the names and long path of the
 available data sets.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -134,7 +134,7 @@ frame/tibble and adds a grouping variable.</p>
  - attr(*, "class")= chr [1:2] "breathtestnullfit" "breathtestfit"</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nf</span><span class="op">)</span> <span class="co"># dispatches to plot.breathtestfit</span></span></code></pre></div>
-<p><img src="data_formats_files/figure-html/nf-1.png" width="384"></p>
+<p><img src="data_formats_files/figure-html/nf-1.png" class="r-plt" alt="" width="384"></p>
 <p>To add new formats, override <code><a href="../reference/breathtest_read_function.html">breathtest_read_function()</a></code>
 and add a new function that returns a structure given by
 <code><a href="../reference/breathtest_data.html">breathtest_data()</a></code>.</p>
@@ -168,7 +168,7 @@ numbers.</p>
 <span>  <span class="fu"><a href="../reference/cleanup_data.html">cleanup_data</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/null_fit.html">null_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_formats_files/figure-html/three-1.png" width="768"></p>
+<p><img src="data_formats_files/figure-html/three-1.png" class="r-plt" alt="" width="768"></p>
 </div>
 <div class="section level3">
 <h3 id="simulated-data">Simulated data<a class="anchor" aria-label="anchor" href="#simulated-data"></a>
@@ -187,7 +187,7 @@ strong outliers) to 10 (almost gaussian).</p>
 <span>  <span class="fu"><a href="../reference/nlme_fit.html">nlme_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/simulated-1.png" alt="Example of a cross-over design with missing data, outliers and missing record in the red curve." width="576"><p class="caption">
+<img src="data_formats_files/figure-html/simulated-1.png" class="r-plt" alt="Example of a cross-over design with missing data, outliers and missing record in the red curve." width="576"><p class="caption">
 Example of a cross-over design with missing data, outliers and missing
 record in the red curve.
 </p>
@@ -230,7 +230,7 @@ gold standards; see the example in the documentation.</li>
 <p>The easiest way to supply generic formats is from Excel files. The
 data formats described in the following are shown as examples in the
 workbook
-<code>/opt/R/4.5.1/lib/R/library/breathtestcore/extdata/ExcelSamples.xlsx</code>.
+<code>/opt/R/4.6.1/lib/R/library/breathtestcore/extdata/ExcelSamples.xlsx</code>.
 Any other tab-separated data set can directly be inserted into the
 editor of the <a href="https://github.com/dmenne/breathtestshiny" class="external-link">breathtestshiny</a> web
 app using copy/paste.</p>
@@ -281,7 +281,7 @@ it through <code>cleanup_data</code> which adds dummy columns
 <p>Compute the fit and plot</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cbt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_formats_files/figure-html/nlsfit-1.png" width="384"></p>
+<p><img src="data_formats_files/figure-html/nlsfit-1.png" class="r-plt" alt="" width="384"></p>
 </div>
 <div class="section level4">
 <h4 id="three-column-format">Three-column format<a class="anchor" aria-label="anchor" href="#three-column-format"></a>
@@ -396,7 +396,7 @@ cross-over designs, you can have different groups for one patient.</p>
 </table>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/nlme_fit.html">nlme_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="data_formats_files/figure-html/nlme_fit-1.png" width="672"></p>
+<p><img src="data_formats_files/figure-html/nlme_fit-1.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level4">
 <h4 id="dob-instead-of-pdf">DOB instead of PDF<a class="anchor" aria-label="anchor" href="#dob-instead-of-pdf"></a>
@@ -435,7 +435,7 @@ has been used in clinical practice.</p>
 <span>  <span class="fu"><a href="../reference/null_fit.html">null_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/iriswagner-1.png" alt="IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown." width="384"><p class="caption">
+<img src="data_formats_files/figure-html/iriswagner-1.png" class="r-plt" alt="IRIS/Wagner composite file. These data cannot be fitted successfully with the single-curve fit method, therefore only data are shown." width="384"><p class="caption">
 IRIS/Wagner composite file. These data cannot be fitted successfully
 with the single-curve fit method, therefore only data are shown.
 </p>
@@ -457,7 +457,7 @@ with the single-curve fit method, therefore only data are shown.
 <span>  <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/iris_csv-1.png" alt="IRIS/Wagner CSV file" width="384"><p class="caption">
+<img src="data_formats_files/figure-html/iris_csv-1.png" class="r-plt" alt="IRIS/Wagner CSV file" width="384"><p class="caption">
 IRIS/Wagner CSV file
 </p>
 </div>
@@ -483,7 +483,7 @@ Patient ID   - Franz
 <span>  <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/breathidc-1.png" alt="BreathID composite file" width="384"><p class="caption">
+<img src="data_formats_files/figure-html/breathidc-1.png" class="r-plt" alt="BreathID composite file" width="384"><p class="caption">
 BreathID composite file
 </p>
 </div>
@@ -515,7 +515,7 @@ multiple record and starts like this:</p>
 <span>  <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/breathid_xml-1.png" alt="BreathID XML format" width="384"><p class="caption">
+<img src="data_formats_files/figure-html/breathid_xml-1.png" class="r-plt" alt="BreathID XML format" width="384"><p class="caption">
 BreathID XML format
 </p>
 </div>
@@ -536,7 +536,7 @@ dummy group name.</p>
 <span>  <span class="fu"><a href="../reference/nls_fit.html">nls_fit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="data_formats_files/figure-html/breathid_man-1.png" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
+<img src="data_formats_files/figure-html/breathid_man-1.png" class="r-plt" alt="BreathID XML format with manual grouping." width="384"><p class="caption">
 BreathID XML format with manual grouping.
 </p>
 </div>
@@ -553,7 +553,7 @@ BreathID XML format with manual grouping.
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

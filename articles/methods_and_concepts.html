@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Methods and concepts • breathtestcore</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Methods and concepts">
@@ -88,7 +88,7 @@ section</a>.</p>
 </h3>
 <p>Within the standard framework implemented in this package, data are
 fitted to an exponential beta function</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>P</mi><mi>D</mi><mi>R</mi></mrow><mo>=</mo><mi>m</mi><mo>*</mo><mrow><mi>d</mi><mi>o</mi><mi>s</mi><mi>e</mi></mrow><mo>*</mo><mi>k</mi><mo>*</mo><mi>β</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>k</mi><mo>*</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>β</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></msup><mo>*</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>k</mi><mo>*</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></msup></mrow><annotation encoding="application/x-tex">{PDR} = m*{dose}*k*\beta(1-e^{-k*minute})^{(\beta - 1)}*e^{-k*minute}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>P</mi><mi>D</mi><mi>R</mi></mrow><mo>=</mo><mi>m</mi><mo>*</mo><mrow><mi>d</mi><mi>o</mi><mi>s</mi><mi>e</mi></mrow><mo>*</mo><mi>k</mi><mo>*</mo><mi>β</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>k</mi><mo>*</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></msup><msup><mo stretchy="false" form="postfix">)</mo><mrow><mo stretchy="false" form="prefix">(</mo><mi>β</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>*</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>k</mi><mo>*</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></msup></mrow><annotation encoding="application/x-tex">{PDR} = m*{dose}*k*\beta(1-e^{-k*minute})^{(\beta - 1)}*e^{-k*minute}</annotation></semantics></math></p>
 <p>Written in R code</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exp_beta</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">minute</span>,<span class="va">dose</span>,<span class="va">m</span>,<span class="va">k</span>,<span class="va">beta</span><span class="op">)</span> <span class="op">{</span></span>
@@ -112,7 +112,7 @@ near 1 often lead to instabilities and are protected by priors in the
 Bayesian <code><a href="https://dmenne.github.io/breathteststan/reference/stan_fit.html" class="external-link">breathteststan::stan_fit()</a></code> implemented in package
 <code>breathteststan</code>.</p>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/expb-1.png" alt="Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time." width="576"><p class="caption">
+<img src="methods_and_concepts_files/figure-html/expb-1.png" class="r-plt" alt="Examples of exponential beta functions used to fit breath test curves. _Bottom-up arrow_: Maes/Ghoos lag time. _Top-down arrow_: Maes/Ghoos half emptying time." width="576"><p class="caption">
 Examples of exponential beta functions used to fit breath test curves.
 <em>Bottom-up arrow</em>: Maes/Ghoos lag time. <em>Top-down arrow</em>:
 Maes/Ghoos half emptying time.
@@ -126,7 +126,7 @@ pharmakokinetics terms, it is the time where half of the bioavailable
 gastric emptying <em>and</em> by the pharmacokinetics of <sup>13</sup>C
 bound in octanoate/acetate.</p>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/t50-1.png" alt="The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity." width="384"><p class="caption">
+<img src="methods_and_concepts_files/figure-html/t50-1.png" class="r-plt" alt="The half-emptying time in the definition of Maes/Ghoos is the time where the area under curve (AUC) is half of the AUC under the curve extrapolated to infinity." width="384"><p class="caption">
 The half-emptying time in the definition of Maes/Ghoos is the time where
 the area under curve (AUC) is half of the AUC under the curve
 extrapolated to infinity.
@@ -143,13 +143,13 @@ romantic estimates of <code>t50</code>.</p>
 at a different function that had been used to fit <sup>13</sup>C time
 series. <span class="citation">Ghoos et al. (<a href="#ref-Ghoos1993">1993</a>)</span> used the following Gamma function
 to fit the data:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>d</mi><mi>r</mi><mo>=</mo><mi>a</mi><mo>*</mo><msup><mi>t</mi><mi>b</mi></msup><mo>*</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>c</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">pdr = a*t^b*e^{-ct}</annotation></semantics></math>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>d</mi><mi>r</mi><mo>=</mo><mi>a</mi><mo>*</mo><msup><mi>t</mi><mi>b</mi></msup><mo>*</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>c</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">pdr = a*t^b*e^{-ct}</annotation></semantics></math>
 As the figure below shows, this function gives perfectly valid fits of
 breath test time series. However, the area under curve extrapolated to
 infinity is infinite, so it cannot be used to compute a half-emptying
 time from the AUC.</p>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/gamma-1.png" alt="Gamma function from @Ghoos1993 definition as points, and fitted beta exponential as line. Both function look very similar, but the area under the gamma function is infinite and thus cannot be used to compute t50." width="384"><p class="caption">
+<img src="methods_and_concepts_files/figure-html/gamma-1.png" class="r-plt" alt="Gamma function from @Ghoos1993 definition as points, and fitted beta exponential as line. Both function look very similar, but the area under the gamma function is infinite and thus cannot be used to compute t50." width="384"><p class="caption">
 Gamma function from <span class="citation">Ghoos et al. (<a href="#ref-Ghoos1993">1993</a>)</span> definition as points, and fitted
 beta exponential as line. Both function look very similar, but the area
 under the gamma function is infinite and thus cannot be used to compute
@@ -177,7 +177,7 @@ of some of your previous cases, add the new patient’s data as a mix-in,
 and use the Mixed-model or the Bayesian fit.</li>
 </ul>
 <div class="figure">
-<img src="methods.png" alt="The fitting methods available in package `breathtestshiny`" width="134"><p class="caption">
+<img src="methods.png" class="r-plt" alt="The fitting methods available in package `breathtestshiny`" width="134"><p class="caption">
 The fitting methods available in package <code>breathtestshiny</code>
 </p>
 </div>
@@ -230,7 +230,7 @@ standard pharmacokinetics, this results in a PDR response following a
 first-order compartmental model. Forgetting about decorative
 normalization constants, the response is the difference between two
 exponential functions:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>f</mi><mi>o</mi><mi>c</mi></mrow><mo>=</mo><msup><mi>e</mi><mrow><mo>−</mo><msub><mi>k</mi><mn>1</mn></msub><mo>*</mo><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></mrow></msup><mo>−</mo><msup><mi>e</mi><mrow><mo>−</mo><msub><mi>k</mi><mn>2</mn></msub><mo>*</mo><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></mrow></msup></mrow><annotation encoding="application/x-tex">{foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}</annotation></semantics></math>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>f</mi><mi>o</mi><mi>c</mi></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>k</mi><mn>1</mn></msub><mo>*</mo><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></mrow></msup><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>k</mi><mn>2</mn></msub><mo>*</mo><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mi>u</mi><mi>t</mi><mi>e</mi></mrow></mrow></msup></mrow><annotation encoding="application/x-tex">{foc} =  e^{-k_1 * {minute}} - e^{-k_2 * {minute}}</annotation></semantics></math>
 The normalization constant includes clearance and dose and only scales
 the curve. The correct normalization constants can be found in standard
 texts on pharmacokinetics (<span class="citation">Gabrielsson and Weiner
@@ -238,7 +238,7 @@ texts on pharmacokinetics (<span class="citation">Gabrielsson and Weiner
 function <code><a href="https://rdrr.io/r/stats/SSfol.html" class="external-link">stats::SSfol()</a></code> in <span class="citation">Pinheiro
 and Bates (<a href="#ref-R:PinheiroBates2000">2000</a>)</span>.</p>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/foc-1.png" alt="Left: pharmcological PDR response of separated loads released in the smaller bowel after 0, 30 and 90 minutes. Right: sum response when all three loads are released successively." width="672"><p class="caption">
+<img src="methods_and_concepts_files/figure-html/foc-1.png" class="r-plt" alt="Left: pharmcological PDR response of separated loads released in the smaller bowel after 0, 30 and 90 minutes. Right: sum response when all three loads are released successively." width="672"><p class="caption">
 Left: pharmcological PDR response of separated loads released in the
 smaller bowel after 0, 30 and 90 minutes. Right: sum response when all
 three loads are released successively.
@@ -264,7 +264,7 @@ shown in the right panel below. The PDR response technically is the
 convolution of the flow with the pulse response shown as red curve
 (t_lag = 0) in the above plot.</p>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/powexp-1.png" alt="Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with  function `gastempt::powexp_slope()` with inverted sign. 400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50 are marked by arrows." width="768"><p class="caption">
+<img src="methods_and_concepts_files/figure-html/powexp-1.png" class="r-plt" alt="Meal volume (left) and flow when gastric emptying function is a power exponential function. Slope was computed with  function `gastempt::powexp_slope()` with inverted sign. 400 ml initial value, tempt = 100, beta = 1.8 Half empyting times t50 are marked by arrows." width="768"><p class="caption">
 Meal volume (left) and flow when gastric emptying function is a power
 exponential function. Slope was computed with function
 <code>gastempt::powexp_slope()</code> with inverted sign. 400 ml initial
@@ -305,7 +305,7 @@ resulting PDR will look as follows:</p>
 <span>           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">360</span>, by <span class="op">=</span> <span class="fl">60</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="methods_and_concepts_files/figure-html/sim2stage-1.png" alt="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." width="384"><p class="caption">
+<img src="methods_and_concepts_files/figure-html/sim2stage-1.png" class="r-plt" alt="Simulated response of a two-stage breath test procedure. The peak within the first hour is from acetate directly released in the small bowel, the second wider peak is the result of the convolution of transport emptying and pharmacokinetics." width="384"><p class="caption">
 Simulated response of a two-stage breath test procedure. The peak within
 the first hour is from acetate directly released in the small bowel, the
 second wider peak is the result of the convolution of transport emptying
@@ -346,7 +346,7 @@ run.</p>
 <div class="section level3">
 <h3 class="unnumbered" id="citations">Citations<a class="anchor" aria-label="anchor" href="#citations"></a>
 </h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Bluck2006" class="csl-entry">
 Bluck, Leslie J C., and W Andy Coward. 2006. <span>“Measurement of
 Gastric Emptying by the 13C-Octanoate Breath Test–Rationalization with
@@ -355,13 +355,12 @@ Scintigraphy.”</span> <em>Physiol Meas</em> 27 (3): 279–89. <a href="https:/
 <div id="ref-Gabrielsson2006" class="csl-entry">
 Gabrielsson, Johan, and Dan Weiner. 2006. <em>Pharmacokinetic &amp;
 Pharmacodynamic Data Analysis : Concepts and Applications</em>. 4. ed.,
-rev. and expanded. Stockholm: Swedish Pharmaceutical Press.
+rev. and expanded. Swedish Pharmaceutical Press.
 </div>
 <div id="ref-Ghoos1993" class="csl-entry">
-Ghoos, Y. F., B. D. Maes, B. J. Geypens, G. Mys, M. I. Hiele, P. J.
-Rutgeerts, and G. Vantrappen. 1993. <span>“Measurement of Gastric
-Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic Acid
-Breath Test.”</span> <em>Gastroenterology</em> 104 (6): 1640–47. <a href="https://doi.org/10.1016/0016-5085(93)90640-x" class="external-link">https://doi.org/10.1016/0016-5085(93)90640-x</a>.
+Ghoos, Y. F., B. D. Maes, B. J. Geypens, et al. 1993. <span>“Measurement
+of Gastric Emptying Rate of Solids by Means of a Carbon-Labeled Octanoic
+Acid Breath Test.”</span> <em>Gastroenterology</em> 104 (6): 1640–47. <a href="https://doi.org/10.1016/0016-5085(93)90640-x" class="external-link">https://doi.org/10.1016/0016-5085(93)90640-x</a>.
 </div>
 <div id="ref-Keller2009" class="csl-entry">
 Keller, J, V Andresen, J Wolter, P Layer, and M Camilleri. 2009.
@@ -401,7 +400,7 @@ Breath Test.”</span> <em>Digestion</em> 69: 71–78. <a href="https://doi.org/
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
