@@ -7,8 +7,8 @@
 nls_fit(data, dose = 100, start = list(m = 50, k = 1/100, beta = 2))
 }
 \arguments{
-\item{data}{Data frame or tibble as created by \code{\link{cleanup_data}}, 
-with mandatory columns \code{patient_id, group, minute} and \code{pdr}. 
+\item{data}{Data frame or tibble as created by \code{\link{cleanup_data}},
+with mandatory columns \code{patient_id, group, minute} and \code{pdr}.
 It is recommended to run all data through \code{\link{cleanup_data}} which
 will insert dummy columns for \code{patient_id} and \code{minute} if the
 data are distinct, and report an error if not.}
@@ -22,14 +22,14 @@ for all records is supported.}
 \value{
 A list of class ("breathtestnlsfit" "breathtestfit") with elements
 \describe{
-  \item{coef}{Estimated parameters in a key-value format with 
+  \item{coef}{Estimated parameters in a key-value format with
    columns \code{patient_id, group, parameter, stat, method} and \code{value}.
    Parameter \code{stat} always has value \code{"estimate"}.
-   Confidence intervals might be added later, so do not take for granted 
+   Confidence intervals might be added later, so do not take for granted
    all parameters are estimates.}
-   \item{data}{Input data; \code{nls_fit} does not decimate the data. If you have 
+   \item{data}{Input data; \code{nls_fit} does not decimate the data. If you have
    large data sets where subsampling might be required to achieve faster convergence,
-   using \code{nls_fit} anyway is only relevant to show how NOT to do it. 
+   using \code{nls_fit} anyway is only relevant to show how NOT to do it.
    Use \code{nlme_fit} or \code{stan_fit} instead.}
 }
 }
@@ -44,12 +44,12 @@ plot(fit) # calls plot.breathtestfit
 options(digits = 2)
 cf = coef(fit)
 library(dplyr)
-cf \%>\% 
-  filter(grepl("m|k|beta", parameter )) \%>\% 
-  select(-method, -group) \%>\% 
-  tidyr::spread(parameter, value) \%>\% 
-  inner_join(d$record, by = "patient_id") \%>\% 
-  select(patient_id, m_in = m.y, m_out = m.x, 
+cf \%>\%
+  filter(grepl("m|k|beta", parameter )) \%>\%
+  select(-method, -group) \%>\%
+  tidyr::spread(parameter, value) \%>\%
+  inner_join(d$record, by = "patient_id") \%>\%
+  select(patient_id, m_in = m.y, m_out = m.x,
          beta_in = beta.y, beta_out = beta.x,
          k_in = k.y, k_out = k.x)
 }

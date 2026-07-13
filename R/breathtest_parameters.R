@@ -1,20 +1,20 @@
 #' @title Bluck-Coward self-corrected half-emptying time
 #' @description Uses Newton's method to solve the self-corrected Bluck-Coward equation
-#' for 1/2 to compute the half-emptying time t_50. 
-#' 
-#' See also equation G(n,t) in 
-#' 
+#' for 1/2 to compute the half-emptying time t_50.
+#'
+#' See also equation G(n,t) in
+#'
 #' Bluck LJC, Jackson S, Vlasakakis G, Mander A (2011)
 #' Bayesian hierarchical methods to interpret  the 13C-octanoic acid breath
 #' test for gastric emptying. Digestion 83_96-107, page 98.
 #' @param cf Named vector of coefficients; only \code{k} and \code{beta} are required.
 #' In this package, \code{k} is measured in units of 1/min (e.g. 0.01/min),
 #' in publications it is often quoted as 1/h (e.g. 0.6/h).
-#' @return Time where value is 1/2 of the maximum, i.e. t_50 or t_1/2 in minutes; 
+#' @return Time where value is 1/2 of the maximum, i.e. t_50 or t_1/2 in minutes;
 #' in the publication by Bluck et al, the parameter is called t_1/2(in).
 #' @examples
-#' # From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta} 
-#' # (nls, bayesian) are entered and checked against the tabulated values of 
+#' # From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta}
+#' # (nls, bayesian) are entered and checked against the tabulated values of
 #' # t_{1/2(in)}.
 #' # Most errors are small, but there are some outliers; errors in paper table?
 #' # Parameters and Bluck et al. results:
@@ -47,12 +47,12 @@
 #' # and the nls method (16%).  The other data are within the expected limits
 #' cf4 = data.frame(
 #'           method = rep(c("nls", "bayesian"),each=3),
-#'           group = rep(c("mj1",   "mj2",   "mj3")),  
-#'           k = c(0.585,  0.437,  0.380,  0.588,  0.418,  0.361),  
-#'           beta=c(4.35,  4.08,  4.44,  4.49, 4.30, 4.29), 
-#'           t12 = c(3.39, 4.25, 4.82, 3.40, 4.61, 5.09), 
-#'           t12in = c(1.77, 2.16, 2.19, 1.81, 2.34, 2.43), 
-#'           tlag = c(2.56, 3.17, 3.39, 2.58, 3.40, 3.62), 
+#'           group = rep(c("mj1",   "mj2",   "mj3")),
+#'           k = c(0.585,  0.437,  0.380,  0.588,  0.418,  0.361),
+#'           beta=c(4.35,  4.08,  4.44,  4.49, 4.30, 4.29),
+#'           t12 = c(3.39, 4.25, 4.82, 3.40, 4.61, 5.09),
+#'           t12in = c(1.77, 2.16, 2.19, 1.81, 2.34, 2.43),
+#'           tlag = c(2.56, 3.17, 3.39, 2.58, 3.40, 3.62),
 #'           tlagin = c(1.30, 1.53, 1.33, 1.35, 1.65, 1.57)
 #' )
 #' cf4 = dplyr::mutate(cf4,
@@ -72,18 +72,21 @@
 #' @seealso \code{\link{exp_beta}}
 #' @export
 t50_bluck_coward = function(cf) {
-  f = function(t,cf0)
-    cum_exp_beta(t,1,cf0) - 0.5
+  f = function(t, cf0) {
+    cum_exp_beta(t, 1, cf0) - 0.5
+  }
   g = function(cf0) {
-    ret = try(stats::uniroot(f, interval = c(1,1000),cf0)$root, silent = TRUE)
-    if (inherits(ret, "try-error"))
-      ret = NA 
+    ret = try(stats::uniroot(f, interval = c(1, 1000), cf0)$root, silent = TRUE)
+    if (inherits(ret, "try-error")) {
+      ret = NA
+    }
     ret
   }
-  if (inherits(cf, "numeric"))
-    as.numeric(round(g(cf),3))
-  else
-    as.numeric(round(apply(cf[,c("k","beta")],1,g),3))
+  if (inherits(cf, "numeric")) {
+    as.numeric(round(g(cf), 3))
+  } else {
+    as.numeric(round(apply(cf[, c("k", "beta")], 1, g), 3))
+  }
 }
 
 #' @title Lag phase for Bluck-Coward self-correcting fit
@@ -103,37 +106,37 @@ tlag_bluck_coward = function(cf) {
 #' @description Half-emptying time t50 as determined from the fit of a
 #' beta exponential function. In the Maes/Ghoos model, it is defined as the time
 #' when the area under curve (AUC) is 50\% of the AUC from 0 to infinity.
-#' 
-#' Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
+#'
+#' Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994
 #' Dig. Dis. Sci. 39 S104-6.
-#' 
+#'
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
 #' note that \code{k} is measured in 1/min (e.g. 0.01/min),
 #' usually it is quoted as 1/h (e.g. 0.6/h).
 #' @return Time in minutes when area under curve is 50\% of the AUC to infinity.
-#' In the Maes/Ghoos model, this is used as a surrogate for gastric emptying 
+#' In the Maes/Ghoos model, this is used as a surrogate for gastric emptying
 #' half time \code{t50}.
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
-#' @examples 
+#' @examples
 #' # Integral from 0 to infinity is 100 at dose 100 mg
 #' integrate(exp_beta, 0, Inf, beta = 1.5, k = 0.01, m = 1, dose = 100)
 #' t50_mg = t50_maes_ghoos(c(beta = 1.5, k = 0.01, dose = 100))
 #' t50_mg
-#' # Integral to half-emptying time \code{t50_maes_ghoos} is 50 
+#' # Integral to half-emptying time \code{t50_maes_ghoos} is 50
 #' integrate(exp_beta, 0, t50_mg, beta = 1.5, k = 0.01, m = 1, dose = 100)
 #' @export
 t50_maes_ghoos = function(cf) {
-  as.numeric(unlist(-log(1 - 2 ^ (-1 / cf["beta"])) / cf["k"]))
+  as.numeric(unlist(-log(1 - 2^(-1 / cf["beta"])) / cf["k"]))
 }
 
 #' @title So-called lag time from Maes/Ghoos fit
-#' @description Computes \code{tlag} from uncorrected fit to the beta 
-#' exponential function. The name \code{tlag} is a misnomer; it simply 
+#' @description Computes \code{tlag} from uncorrected fit to the beta
+#' exponential function. The name \code{tlag} is a misnomer; it simply
 #' is the maximum of the PDR curve, so in papers by Bluck et al. it is renamed to t_max.
-#' 
-#' Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
+#'
+#' Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994
 #' Dig. Dis. Sci. 39 S104-6.
-#' 
+#'
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
 #' \code{k} is measured in 1/min (e.g. 0.01/min).
 #' @return Lag time as defined from Maes/Ghoos fit
@@ -145,12 +148,12 @@ tlag_maes_ghoos = function(cf) {
 
 #' @title Half-emptying time t50 from Maes/Ghoos fit with scintigraphic correction
 #' @description Half-emptying time t50 in minutes from beta exponential function fit,
-#' with linear and rather arbitrary correction for 
+#' with linear and rather arbitrary correction for
 #' scintigraphic values. This is given for comparison with published data only;
 #' there is little justification to use it, even if it is closer to real gastric
 #' emptying times as determined by MRI or scintigraphy.
-#' Ghoos YF, Maes BD, Geypens BJ, Mys G, Hiele MI, Rutgeerts PJ, Vantrappen G. 
-#' Measurement of gastric emptying rate of solids by means of a carbon-labeled 
+#' Ghoos YF, Maes BD, Geypens BJ, Mys G, Hiele MI, Rutgeerts PJ, Vantrappen G.
+#' Measurement of gastric emptying rate of solids by means of a carbon-labeled
 #' octanoic acid breath test. Gastroenterology. 1993;104:1640-1647.
 #' @param cf named vector of coefficients; only \code{k} and \code{beta} are required
 #' @return Time where value is 1/2 of maximum, i.e. t50 in minutes.

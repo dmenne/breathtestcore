@@ -11,7 +11,7 @@ data(usz_13c_a)
 13C time series PDR data from three different groups in a randomized
 (= not-crossover) design. This are unpublished data from
 \href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
-University Hospital Zurich}. 
+University Hospital Zurich}.
 
 Data are formatted as described in \code{\link{usz_13c}}. These time series present
 a challenge for algorithms.
@@ -21,7 +21,7 @@ a challenge for algorithms.
 library(dplyr)
 library(ggplot2)
 data(usz_13c_a)
-d = usz_13c_a \%>\% 
+d = usz_13c_a \%>\%
   cleanup_data() \%>\% # recommended to test for validity
   nlme_fit()
 plot(d)

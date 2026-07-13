@@ -1,12 +1,12 @@
 #' @title S3 coef and summary for breathtestfit
-#' @description Function \code{coef} extracts the estimates such as t50, 
-#' tlag, from fitted 13C beta  exponential models. The result is the same 
+#' @description Function \code{coef} extracts the estimates such as t50,
+#' tlag, from fitted 13C beta  exponential models. The result is the same
 #' as \code{fit$coef}, but without
 #' column \code{stat}, which always is \code{"estimate"} for \code{\link{nls_fit}}
-#' and \code{\link{nlme_fit}}. 
-#' 
+#' and \code{\link{nlme_fit}}.
+#'
 #' The \code{summary} method only extracts \code{t50} by the Maes/Ghoos method
-#' @param object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}} or 
+#' @param object of class \code{breathtestfit}, as returned by \code{\link{nls_fit}} or
 #' \code{\link{nlme_fit}}
 #' @param ... other parameters passed to methods
 #' @examples
@@ -29,23 +29,27 @@
 #' }
 #' }
 #' @export
-coef.breathtestfit = function(object, ...){
+coef.breathtestfit = function(object, ...) {
   stat = NULL # CRAN
-  if (is.null(object$coef)) return(NULL)    
-  r = object$coef %>% 
-    filter(stat == "estimate") %>% 
-    select(-stat)   
+  if (is.null(object$coef)) {
+    return(NULL)
+  }
+  r = object$coef %>%
+    filter(stat == "estimate") %>%
+    select(-stat)
   comment(r) = comment(object$data)
   r
 }
 
 #' @export
-summary.breathtestfit = function(object, ...){
+summary.breathtestfit = function(object, ...) {
   stat = parameter = method = NULL # CRAN
-  if (is.null(object$coef)) return(NULL)    
-  r = object$coef %>% 
-    filter(stat == "estimate" , parameter == "t50" , method == "maes_ghoos" ) %>% 
-    select(-stat, -parameter, -method)   
+  if (is.null(object$coef)) {
+    return(NULL)
+  }
+  r = object$coef %>%
+    filter(stat == "estimate", parameter == "t50", method == "maes_ghoos") %>%
+    select(-stat, -parameter, -method)
   comment(r) = comment(object$data)
   r
 }

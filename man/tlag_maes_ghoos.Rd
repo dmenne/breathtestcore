@@ -14,11 +14,11 @@ tlag_maes_ghoos(cf)
 Lag time as defined from Maes/Ghoos fit
 }
 \description{
-Computes \code{tlag} from uncorrected fit to the beta 
-exponential function. The name \code{tlag} is a misnomer; it simply 
+Computes \code{tlag} from uncorrected fit to the beta
+exponential function. The name \code{tlag} is a misnomer; it simply
 is the maximum of the PDR curve, so in papers by Bluck et al. it is renamed to t_max.
 
-Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
+Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994
 Dig. Dis. Sci. 39 S104-6.
 }
 \seealso{

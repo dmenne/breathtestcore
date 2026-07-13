@@ -12,7 +12,7 @@ read_any_breathtest(files)
 \value{
 A list of \code{\link{breathtest_data}}, even if
 only one file was passed. The list can be passed to \code{\link{cleanup_data}}
-to extract one concatenated data frame for processing with \code{\link{nls_fit}},  
+to extract one concatenated data frame for processing with \code{\link{nls_fit}},
 \code{\link{nlme_fit}}, \code{\link{null_fit}} (no processing) or
 \code{stan_fit} in separate package \code{breathteststan}.
 }
@@ -25,7 +25,7 @@ files = c(
   group_a = btcore_file("IrisCSV.TXT"),
   group_a = btcore_file("350_20043_0_GER.txt"),
   group_b = btcore_file("IrisMulti.TXT"),
-  group_b = btcore_file("NewBreathID_01.xml")  
+  group_b = btcore_file("NewBreathID_01.xml")
  )
  bt = read_any_breathtest(files)
  str(bt, 1)

@@ -12,7 +12,7 @@ read_iris_csv(filename = NULL, text = NULL)
 \item{text}{alternatively, text can be given as string}
 }
 \value{
-List of class \code{breath_test_data} with \code{file name, 
+List of class \code{breath_test_data} with \code{file name,
 patient name, patient first name, test, identifikation},
 and data frame \code{data} with \code{time} and \code{dob}
 }
@@ -21,9 +21,9 @@ Reads 13C data from IRIS/Wagner Analysen in CSV Format
 The CSV files start as follows:
 \preformatted{
 "Name","Vorname","Test","Identifikation"
-} 
+}
 This format does not have information about the substrate (acetate, octanoate),
-the dose and body weight and height. The following defaults are used: \code{substrate = acetate, 
+the dose and body weight and height. The following defaults are used: \code{substrate = acetate,
 dose = 100,  weight = 75, height = 180}.
 }
 \examples{

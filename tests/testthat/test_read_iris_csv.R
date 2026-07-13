@@ -1,4 +1,4 @@
-test_that("extract_id returns valid id" , {
+test_that("extract_id returns valid id", {
   expect_equal(extract_id("123456"), "123456")
   expect_equal(extract_id("123-456"), "123_456")
   expect_equal(extract_id("KEK-ZH-Nr.2013-1234"), "2013_1234")
@@ -31,22 +31,22 @@ test_that("read_iris_csv from text and from file give almost the same results", 
 })
 
 
-test_that("read_iris of composite file throws",{
+test_that("read_iris of composite file throws", {
   filename = btcore_file("IrisMulti.TXT")
-  expect_error( read_iris_csv(filename),"valid IRIS")
+  expect_error(read_iris_csv(filename), "valid IRIS")
 })
 
-test_that("read_iris throws when column is missing",{
+test_that("read_iris throws when column is missing", {
   filename = btcore_file("IrisCSV_MissingColumn.TXT")
-  expect_error( read_iris_csv(filename),"unexpected")
-})  
+  expect_error(read_iris_csv(filename), "unexpected")
+})
 
 
 test_that("read_iris_csv cleans up special characters", {
   filename = btcore_file("IrisCSV_with_KEK.TXT")
   f = read_iris_csv(filename)
   expect_equal(f$patient_id, "2013_1234")
-  skip_on_cran()  
+  skip_on_cran()
   expect_equal(f$study, "GE-flüssig")
 })
 

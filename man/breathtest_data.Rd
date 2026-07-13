@@ -81,22 +81,22 @@ used; see \code{\link{dob_to_pdr}}}
 
 \item{tlag}{optional, only present if device computes this value}
 
-\item{data}{data frame with at least 5 rows and columns \code{minute} or 
-\code{time} and one or both of \code{dob} or \code{pdr}. 
-If pdr is missing, and height, weight 
-and substrate are given, computes pdr via function \code{\link{dob_to_pdr}}. 
+\item{data}{data frame with at least 5 rows and columns \code{minute} or
+\code{time} and one or both of \code{dob} or \code{pdr}.
+If pdr is missing, and height, weight
+and substrate are given, computes pdr via function \code{\link{dob_to_pdr}}.
 When height and weight are missing,  defaults 180 cm and 75 kg are used instead.}
 }
 \description{
-Generates structure of class \code{breathtest_data} with 
-required fields and optional fields. Optional fields by default are NA. 
-This structure is used internally as an intermediate when reading in 
-external file formats. All \code{read_xxx} functions return this structure, 
+Generates structure of class \code{breathtest_data} with
+required fields and optional fields. Optional fields by default are NA.
+This structure is used internally as an intermediate when reading in
+external file formats. All \code{read_xxx} functions return this structure,
 or a list of this structure (e.g. \code{\link{read_breathid_xml}}), and any
- converter to  a new format should do  the same to be used with 
- \code{\link{cleanup_data}}. 
-To support a new format with, also update 
-\code{\link{breathtest_read_function}} which returns the most likely function 
+ converter to  a new format should do  the same to be used with
+ \code{\link{cleanup_data}}.
+To support a new format with, also update
+\code{\link{breathtest_read_function}} which returns the most likely function
 to read the file by reading a few lines in it.
 }
 \examples{
@@ -108,5 +108,5 @@ str(iris_csv_data)
 # Convert to a format that can be fed to one of the fit functions
 iris_df = cleanup_data(iris_csv_data)
 # Individual curve fit
-coef(nls_fit(iris_df)) 
+coef(nls_fit(iris_df))
 }

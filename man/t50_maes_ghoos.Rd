@@ -13,7 +13,7 @@ usually it is quoted as 1/h (e.g. 0.6/h).}
 }
 \value{
 Time in minutes when area under curve is 50\% of the AUC to infinity.
-In the Maes/Ghoos model, this is used as a surrogate for gastric emptying 
+In the Maes/Ghoos model, this is used as a surrogate for gastric emptying
 half time \code{t50}.
 }
 \description{
@@ -21,7 +21,7 @@ Half-emptying time t50 as determined from the fit of a
 beta exponential function. In the Maes/Ghoos model, it is defined as the time
 when the area under curve (AUC) is 50\% of the AUC from 0 to infinity.
 
-Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994 
+Maes B D, Ghoos Y F, Rutgeerts P J, Hiele M I, Geypens B and Vantrappen G 1994
 Dig. Dis. Sci. 39 S104-6.
 }
 \examples{
@@ -29,7 +29,7 @@ Dig. Dis. Sci. 39 S104-6.
 integrate(exp_beta, 0, Inf, beta = 1.5, k = 0.01, m = 1, dose = 100)
 t50_mg = t50_maes_ghoos(c(beta = 1.5, k = 0.01, dose = 100))
 t50_mg
-# Integral to half-emptying time \code{t50_maes_ghoos} is 50 
+# Integral to half-emptying time \code{t50_maes_ghoos} is 50
 integrate(exp_beta, 0, t50_mg, beta = 1.5, k = 0.01, m = 1, dose = 100)
 }
 \seealso{

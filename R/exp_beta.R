@@ -1,12 +1,12 @@
 #' @title Exponential beta function for 13C breath data
 #'
 #' @description Function to fit PDR time series data to exponential-beta function
-#' as given in: 
+#' as given in:
 #'
-#' Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
-#' 13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
+#' Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998.
+#' 13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.
 #' Gastroenterology 114(4): 856-50
-#' 
+#'
 #' Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
 #' A comprehensive review.  J. Smooth Muscle Research 46(6): 267-280
 #'
@@ -18,15 +18,15 @@
 #'
 #' Bluck LJC (2009) Recent advances in the interpretation of the 13C octanoate
 #' breath test for gastric emptying. Journal of Breath Research, 3 1-8
-#' @details 
+#' @details
 #' The function is defined as
-#' 
+#'
 #' \preformatted{exp_beta = function(minute,dose,m,k,beta) {
 #'      m*dose*k*beta*(1-exp(-k*minute))^(beta-1)*exp(-k*minute)
 #' }}
 #'
 #' At minute == 0, the function behaves like a polynomial with degree (beta-1).
-#' 
+#'
 #' @name exp_beta
 #'
 #' @param minute vector of time values in minutes
@@ -96,7 +96,7 @@
 #' pdr1$m = start$m*(1 + rnorm(nrow(pdr1), 0, 0.1))
 #' pdr1$k = start$k*(1 + rnorm(nrow(pdr1), 0, 0.3))
 #' pdr1$beta = start$beta*(1 + rnorm(nrow(pdr1), 0, 0.1))
-#' pdr1  = merge(pdr1, expand.grid(minute = seq(2, 200, by = 10), 
+#' pdr1  = merge(pdr1, expand.grid(minute = seq(2, 200, by = 10),
 #'    patient = letters[1:10]))
 #' pdr1 = pdr1[order(pdr1$patient, pdr1$minute), ]
 #'
@@ -125,39 +125,43 @@
 #' pred_data$pdr = predict(pdr_nlme, newdata = pred_data)
 #' suppressPackageStartupMessages(library(ggplot2))
 #' ggplot() +
-#'   geom_point(data = pdr1, aes(x = minute, y = pdr, color = "red")) + 
+#'   geom_point(data = pdr1, aes(x = minute, y = pdr, color = "red")) +
 #'   geom_line(data = pred_data, aes(x = minute, y = pdr), color = "black", linewidth = 1 ) +
 #'   ggtitle("Short patient record 'a' gives a good fit with many missing data using nlme.\n
 #'           Borrowing strength from nlme in action!")+
 #'   facet_wrap(~patient) +
 #'   theme(legend.position="none")
 #' @export
-exp_beta = function(minute,dose,m,k,beta) {
+exp_beta = function(minute, dose, m, k, beta) {
   .expr1 <- m * dose
   .expr2 <- .expr1 * k
   .expr3 <- .expr2 * beta
   .expr6 <- exp(-k * minute)
   .expr7 <- 1 - .expr6
   .expr8 <- beta - 1
-  .expr9 <- .expr7 ^ .expr8
+  .expr9 <- .expr7^.expr8
   .expr10 <- .expr3 * .expr9
   .expr20 <- .expr6 * minute
   .value <- .expr10 * .expr6
-  .grad <- array(0, c(length(.value), 3L), 
-                list(NULL, c("m", "k", "beta")))
+  .grad <- array(0, c(length(.value), 3L), list(NULL, c("m", "k", "beta")))
   .grad[, "m"] <- dose * k * beta * .expr9 * .expr6
   .grad[, "k"] <-
-    (.expr1 * beta * .expr9 + .expr3 * 
-       (.expr7 ^ (.expr8 - 1) * (.expr8 * .expr20))) * .expr6 - .expr10 * .expr20
-  .grad[, "beta"] <- (.expr2 * .expr9 + 
-        .expr3 * (.expr9 * log(.expr7))) * .expr6
+    (.expr1 *
+      beta *
+      .expr9 +
+      .expr3 *
+        (.expr7^(.expr8 - 1) * (.expr8 * .expr20))) *
+    .expr6 -
+    .expr10 * .expr20
+  .grad[, "beta"] <- (.expr2 * .expr9 + .expr3 * (.expr9 * log(.expr7))) *
+    .expr6
   attr(.value, "gradient") <- .grad
   .value
 }
 
 #' @title Cumulative exponential beta function
 #' @description Equation (2), page 4 from Bluck, "Recent advances in the interpretation of
-#' the 13C octanoate breath test for gastric emptying" 
+#' the 13C octanoate breath test for gastric emptying"
 #'
 #' @name cum_exp_beta
 #' @param minute time in minutes
@@ -168,11 +172,12 @@ exp_beta = function(minute,dose,m,k,beta) {
 #' @return Vector of predicted cumulative pdr
 #' @seealso \code{\link{exp_beta}}
 #' @export
-cum_exp_beta  = function(minute, dose, cf) {
+cum_exp_beta = function(minute, dose, cf) {
   cf = unlist(cf)
-  if (!is.numeric(cf))
+  if (!is.numeric(cf)) {
     stop("cum_exp_beta requires a vector, does not work for data frames")
+  }
   ekt = 1 - exp(-cf["k"] * minute)
   beta = cf["beta"]
-  unlist(dose * (beta * (ekt) ^ (beta - 1) - (beta - 1) * ekt ^ beta))
+  unlist(dose * (beta * (ekt)^(beta - 1) - (beta - 1) * ekt^beta))
 }

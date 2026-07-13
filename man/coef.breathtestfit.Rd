@@ -7,17 +7,17 @@
 \method{coef}{breathtestfit}(object, ...)
 }
 \arguments{
-\item{object}{of class \code{breathtestfit}, as returned by \code{\link{nls_fit}} or 
+\item{object}{of class \code{breathtestfit}, as returned by \code{\link{nls_fit}} or
 \code{\link{nlme_fit}}}
 
 \item{...}{other parameters passed to methods}
 }
 \description{
-Function \code{coef} extracts the estimates such as t50, 
-tlag, from fitted 13C beta  exponential models. The result is the same 
+Function \code{coef} extracts the estimates such as t50,
+tlag, from fitted 13C beta  exponential models. The result is the same
 as \code{fit$coef}, but without
 column \code{stat}, which always is \code{"estimate"} for \code{\link{nls_fit}}
-and \code{\link{nlme_fit}}. 
+and \code{\link{nlme_fit}}.
 
 The \code{summary} method only extracts \code{t50} by the Maes/Ghoos method
 }

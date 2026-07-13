@@ -12,7 +12,7 @@ read_iris(filename = NULL, text = NULL)
 \item{text}{alternatively, text can be given as string}
 }
 \value{
-List of class \code{\link{breathtest_data}} with 
+List of class \code{\link{breathtest_data}} with
 \code{file_name, patient_name, patient_first_name,
 test, identifikation}, and data frame \code{data} with \code{time}
 and \code{dob}

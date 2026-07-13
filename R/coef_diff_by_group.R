@@ -45,62 +45,83 @@
 #' @importFrom stats confint relevel
 #' @import multcomp
 #' @export
-coef_diff_by_group = function(fit, mcp_group = "Tukey", reference_group = NULL, ...) {
+coef_diff_by_group = function(
+  fit,
+  mcp_group = "Tukey",
+  reference_group = NULL,
+  ...
+) {
   UseMethod("coef_diff_by_group", fit)
 }
 
 #' @export
 coef_diff_by_group.breathtestfit =
   function(fit, mcp_group = "Tukey", reference_group = NULL, ...) {
-  if (!inherits(fit, "breathtestfit")) {
-    stop("Function coef_diff_by_group: parameter 'fit' must inherit from class breathtestfit")
-  }
-  cf = coef(fit)
-  if (is.null(cf))
-    return(NULL)
-  if (! mcp_group %in% c("Dunnett", "Tukey")){
-    stop("Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey', but is ",
-         mcp_group)
-  }
-  cm = comment(cf)
-  # Keep CRAN quite
-  . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic =
-    std.error = conf.low = conf.high = p.value =  NULL
-  cf = cf %>%
-    mutate( # lme requires factors
-      group = as.factor(.$group)
-    )
-  # No differences if there is only one group
-  if (nlevels(cf$group) <= 1){
-    return(NULL)
-  }
-  if (!is.null(reference_group) && !(reference_group %in% levels(cf$group))) {
-    stop("Function coeff_diff_by_group: reference_group must be a level in coef(fit)$group")
-  }
-  if (!is.null(reference_group)){
-    cf$group = relevel(cf$group, reference_group)
-  }
-  sig = as.integer(options("digits"))
-  t_vars = c("term", "contrast", "estimate", "p.value" = "adj.p.value")
-  not_vars = c("estimate.y", "std.error", "statistic","term")
-  cf = cf %>%
-    group_by(parameter, method) %>%
-    do({
-      fit_lme = nlme::lme(value~group, random = ~1|patient_id, data = .)
-      glh = multcomp::glht(fit_lme, linfct =  multcomp::mcp(group = mcp_group))
-      broom::tidy(confint(glh)) %>%
-        left_join(broom::tidy(summary(glh)) %>%
-          select(all_of(t_vars)), by = c("term", "contrast"), copy = TRUE) 
-    }) %>%
-    mutate(
-      estimate.x = signif(estimate.x, sig),
-      conf.low = signif(conf.low, sig),
-      conf.high = signif(conf.high, sig),
-      p.value = signif(p.value, sig),
-    ) %>% 
-    ungroup() %>%
-    dplyr::select(!any_of(not_vars), groups = "contrast", estimate = "estimate.x")
-  comment(cf) = cm
-  class(cf) = c("coef_diff_by_group", class(cf))
-  cf
+    if (!inherits(fit, "breathtestfit")) {
+      stop(
+        "Function coef_diff_by_group: parameter 'fit' must inherit from class breathtestfit"
+      )
+    }
+    cf = coef(fit)
+    if (is.null(cf)) {
+      return(NULL)
+    }
+    if (!mcp_group %in% c("Dunnett", "Tukey")) {
+      stop(
+        "Function coeff_diff_by_group: mcp_group must be 'Dunnett' or 'Tukey', but is ",
+        mcp_group
+      )
+    }
+    cm = comment(cf)
+    # Keep CRAN quite
+    . = confint = estimate.x = estimate.y = lhs = method = parameter = rhs = statistic =
+      std.error = conf.low = conf.high = p.value = NULL
+    cf = cf %>%
+      mutate(
+        # lme requires factors
+        group = as.factor(.$group)
+      )
+    # No differences if there is only one group
+    if (nlevels(cf$group) <= 1) {
+      return(NULL)
+    }
+    if (!is.null(reference_group) && !(reference_group %in% levels(cf$group))) {
+      stop(
+        "Function coeff_diff_by_group: reference_group must be a level in coef(fit)$group"
+      )
+    }
+    if (!is.null(reference_group)) {
+      cf$group = relevel(cf$group, reference_group)
+    }
+    sig = as.integer(options("digits"))
+    t_vars = c("term", "contrast", "estimate", "p.value" = "adj.p.value")
+    not_vars = c("estimate.y", "std.error", "statistic", "term")
+    cf = cf %>%
+      group_by(parameter, method) %>%
+      do({
+        fit_lme = nlme::lme(value ~ group, random = ~ 1 | patient_id, data = .)
+        glh = multcomp::glht(fit_lme, linfct = multcomp::mcp(group = mcp_group))
+        broom::tidy(confint(glh)) %>%
+          left_join(
+            broom::tidy(summary(glh)) %>%
+              select(all_of(t_vars)),
+            by = c("term", "contrast"),
+            copy = TRUE
+          )
+      }) %>%
+      mutate(
+        estimate.x = signif(estimate.x, sig),
+        conf.low = signif(conf.low, sig),
+        conf.high = signif(conf.high, sig),
+        p.value = signif(p.value, sig),
+      ) %>%
+      ungroup() %>%
+      dplyr::select(
+        !any_of(not_vars),
+        groups = "contrast",
+        estimate = "estimate.x"
+      )
+    comment(cf) = cm
+    class(cf) = c("coef_diff_by_group", class(cf))
+    cf
   }

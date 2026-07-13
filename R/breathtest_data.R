@@ -1,13 +1,13 @@
 #' @title Data structure with PDR data and descriptors for breath test records
-#' @description Generates structure of class \code{breathtest_data} with 
-#' required fields and optional fields. Optional fields by default are NA. 
-#' This structure is used internally as an intermediate when reading in 
-#' external file formats. All \code{read_xxx} functions return this structure, 
+#' @description Generates structure of class \code{breathtest_data} with
+#' required fields and optional fields. Optional fields by default are NA.
+#' This structure is used internally as an intermediate when reading in
+#' external file formats. All \code{read_xxx} functions return this structure,
 #' or a list of this structure (e.g. \code{\link{read_breathid_xml}}), and any
-#'  converter to  a new format should do  the same to be used with 
-#'  \code{\link{cleanup_data}}. 
-#' To support a new format with, also update 
-#' \code{\link{breathtest_read_function}} which returns the most likely function 
+#'  converter to  a new format should do  the same to be used with
+#'  \code{\link{cleanup_data}}.
+#' To support a new format with, also update
+#' \code{\link{breathtest_read_function}} which returns the most likely function
 #' to read the file by reading a few lines in it.
 #' @param patient_id required, string or number for unique identification
 #' @param name optional
@@ -37,12 +37,12 @@
 #' @param t50  optional, only present if device computes this value
 #' @param gec  optional, only present if device computes this value
 #' @param tlag optional, only present if device computes this value
-#' @param data data frame with at least 5 rows and columns \code{minute} or 
-#' \code{time} and one or both of \code{dob} or \code{pdr}. 
-#' If pdr is missing, and height, weight 
-#' and substrate are given, computes pdr via function \code{\link{dob_to_pdr}}. 
+#' @param data data frame with at least 5 rows and columns \code{minute} or
+#' \code{time} and one or both of \code{dob} or \code{pdr}.
+#' If pdr is missing, and height, weight
+#' and substrate are given, computes pdr via function \code{\link{dob_to_pdr}}.
 #' When height and weight are missing,  defaults 180 cm and 75 kg are used instead.
-#' @examples 
+#' @examples
 #' # Read a file with known format
 #' iris_csv_file = btcore_file("IrisCSV.TXT")
 #' iris_csv_data = read_iris_csv(iris_csv_file)
@@ -51,44 +51,53 @@
 #' # Convert to a format that can be fed to one of the fit functions
 #' iris_df = cleanup_data(iris_csv_data)
 #' # Individual curve fit
-#' coef(nls_fit(iris_df)) 
+#' coef(nls_fit(iris_df))
 
 #' @export
-breathtest_data = function(patient_id,
-                           name = NA,
-                           first_name = NA,
-                           initials = NA,
-                           dob = NA,
-                           birth_year = NA,
-                           gender = NA,
-                           study = NA,
-                           pat_study_id = NA,
-                           file_name,
-                           device = "generic",
-                           substrate,
-                           record_date,
-                           start_time = record_date,
-                           end_time = record_date,
-                           test_no ,
-                           dose = 100,
-                           height = 180,
-                           weight = 75,
-                           t50 = NA,
-                           gec = NA,
-                           tlag = NA,
-                           data = data) {
-  if (!inherits(data, "data.frame"))
+breathtest_data = function(
+  patient_id,
+  name = NA,
+  first_name = NA,
+  initials = NA,
+  dob = NA,
+  birth_year = NA,
+  gender = NA,
+  study = NA,
+  pat_study_id = NA,
+  file_name,
+  device = "generic",
+  substrate,
+  record_date,
+  start_time = record_date,
+  end_time = record_date,
+  test_no,
+  dose = 100,
+  height = 180,
+  weight = 75,
+  t50 = NA,
+  gec = NA,
+  tlag = NA,
+  data = data
+) {
+  if (!inherits(data, "data.frame")) {
     stop("Function breathtest_data: data must be a data frame")
+  }
   if (nrow(data) < 5) {
     stop("Function breathtest_data: data should have at least 5 rows")
   }
   nd = names(data)
-  if (!(nd[1] %in% c("time", "minute")))
-    stop("Function breathtest_data: first data column must be <<time>> or <<minute>>. It is:<< ", nd[1], ">>")
+  if (!(nd[1] %in% c("time", "minute"))) {
+    stop(
+      "Function breathtest_data: first data column must be <<time>> or <<minute>>. It is:<< ",
+      nd[1],
+      ">>"
+    )
+  }
   # rename data column to minute
   names(data)[1] = "minute"
-  if (!sum(nd[-1] %in% c("pdr", "dob")) > 0)
+  if (!sum(nd[-1] %in% c("pdr", "dob")) > 0) {
     stop("function breathtest_data: data should have either dob or pdr or both")
+  }
   ##### add more substrates here
   ## Assume ocatanoate by default
   substrate = str_trim(substrate)
@@ -99,17 +108,20 @@ breathtest_data = function(patient_id,
     substrate_pattern = c("o[ck]t", "acet")
     substrate = substrates[str_detect(tolower(substrate), substrate_pattern)][1]
   }
-  if (length(substrate) == 0)
+  if (length(substrate) == 0) {
     substrate = "octanoate"
-  if (!is.na(gender) && !match(gender, c("m", "f")))
+  }
+  if (!is.na(gender) && !match(gender, c("m", "f"))) {
     stop("function breathtest_data: gender should be 'm' or 'f'")
+  }
   # force NA if weight or height is not 0
   if (weight <= 30 || height < 1) {
     height = 180
     weight = 75
   }
-  if (!"pdr" %in% nd)
+  if (!"pdr" %in% nd) {
     data$pdr = dob_to_pdr(data$dob, weight, height, mw = substrate)
+  }
   data$minute = as.double(data$minute)
   structure(
     list(

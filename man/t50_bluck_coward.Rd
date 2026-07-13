@@ -12,22 +12,22 @@ In this package, \code{k} is measured in units of 1/min (e.g. 0.01/min),
 in publications it is often quoted as 1/h (e.g. 0.6/h).}
 }
 \value{
-Time where value is 1/2 of the maximum, i.e. t_50 or t_1/2 in minutes; 
+Time where value is 1/2 of the maximum, i.e. t_50 or t_1/2 in minutes;
 in the publication by Bluck et al, the parameter is called t_1/2(in).
 }
 \description{
 Uses Newton's method to solve the self-corrected Bluck-Coward equation
-for 1/2 to compute the half-emptying time t_50. 
+for 1/2 to compute the half-emptying time t_50.
 
-See also equation G(n,t) in 
+See also equation G(n,t) in
 
 Bluck LJC, Jackson S, Vlasakakis G, Mander A (2011)
 Bayesian hierarchical methods to interpret  the 13C-octanoic acid breath
 test for gastric emptying. Digestion 83_96-107, page 98.
 }
 \examples{
-# From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta} 
-# (nls, bayesian) are entered and checked against the tabulated values of 
+# From table 3 and 4 in Bluck et al.; values for \code{k} and \code{beta}
+# (nls, bayesian) are entered and checked against the tabulated values of
 # t_{1/2(in)}.
 # Most errors are small, but there are some outliers; errors in paper table?
 # Parameters and Bluck et al. results:
@@ -60,12 +60,12 @@ cf3
 # and the nls method (16\%).  The other data are within the expected limits
 cf4 = data.frame(
           method = rep(c("nls", "bayesian"),each=3),
-          group = rep(c("mj1",   "mj2",   "mj3")),  
-          k = c(0.585,  0.437,  0.380,  0.588,  0.418,  0.361),  
-          beta=c(4.35,  4.08,  4.44,  4.49, 4.30, 4.29), 
-          t12 = c(3.39, 4.25, 4.82, 3.40, 4.61, 5.09), 
-          t12in = c(1.77, 2.16, 2.19, 1.81, 2.34, 2.43), 
-          tlag = c(2.56, 3.17, 3.39, 2.58, 3.40, 3.62), 
+          group = rep(c("mj1",   "mj2",   "mj3")),
+          k = c(0.585,  0.437,  0.380,  0.588,  0.418,  0.361),
+          beta=c(4.35,  4.08,  4.44,  4.49, 4.30, 4.29),
+          t12 = c(3.39, 4.25, 4.82, 3.40, 4.61, 5.09),
+          t12in = c(1.77, 2.16, 2.19, 1.81, 2.34, 2.43),
+          tlag = c(2.56, 3.17, 3.39, 2.58, 3.40, 3.62),
           tlagin = c(1.30, 1.53, 1.33, 1.35, 1.65, 1.57)
 )
 cf4 = dplyr::mutate(cf4,

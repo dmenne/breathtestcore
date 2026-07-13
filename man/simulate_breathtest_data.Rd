@@ -34,7 +34,7 @@ simulate_breathtest_data(
 
 \item{noise}{Standard deviation of normal noise when \code{student_t_df = NULL}; scaling of noise when student_t_df >= 2.}
 
-\item{cov}{Covariance matrix, default NULL, i.e. not used. If given, overrides 
+\item{cov}{Covariance matrix, default NULL, i.e. not used. If given, overrides
 standard deviation settings.}
 
 \item{student_t_df}{When NULL (default), Gaussian noise is added; when >= 2, Student_t distributed noise is added, which generates more realistic outliers. Values from 2 to 5 are useful, when higher values are used the result comes close to that of Gaussian noise. Values below 2 are truncated to 2.}
@@ -45,7 +45,7 @@ standard deviation settings.}
 
 \item{dose}{Octanoate/acetate dose, almost always 100 mg, which is also the default}
 
-\item{first_minute}{First sampling time. Do not use 0 here, some algorithms do not 
+\item{first_minute}{First sampling time. Do not use 0 here, some algorithms do not
 converge when data near 0 are passed.}
 
 \item{step_minute}{Inter-sample interval for breath test}
@@ -56,7 +56,7 @@ converge when data near 0 are passed.}
 A list of class simulated_breathtest_data with 2  elements:
 \describe{
   \item{record}{Data frame with columns
-    \code{patient_id(chr), m, k, beta, t50} giving the effective parameters 
+    \code{patient_id(chr), m, k, beta, t50} giving the effective parameters
     for the individual patient record.}
   \item{data}{Data frame with columns
     \code{patient_id(chr), minute(dbl), pdr(dbl)} giving the
@@ -75,7 +75,7 @@ library(ggplot2)
 pdr = simulate_breathtest_data(n_records = 4, seed = 4711, missing = 0.3,
        student_t_df = 2, noise = 1.5) # Strong outliers
 #
-str(pdr, 1)  
+str(pdr, 1)
 #
 pdr$record # The "correct" parameters
 #

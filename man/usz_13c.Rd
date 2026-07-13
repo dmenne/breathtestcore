@@ -22,7 +22,7 @@ monitoring system \href{https://www.meridianbioscience.com/}{BreathID}.
 \describe{
   \item{patient_id}{Patient identifier, starting with \code{norm} for normals
   (healthy volunteers) and  \code{pat} for patients. Note that for normals
-  there are two records for each subject, so only the combination of patient_id 
+  there are two records for each subject, so only the combination of patient_id
   and group is a unique identifier of the time series record.}
   \item{group}{\code{liquid_normal} for normals and liquid meal,
   \code{solid_normal} normals and solid meal, and \code{patient} for patients
@@ -43,7 +43,7 @@ dev.off()
 }
 # Plot a subset
 suppressPackageStartupMessages(library(dplyr))
-usz_part =  usz_13c  \%>\% 
+usz_part =  usz_13c  \%>\%
   filter(patient_id \%in\% c("norm_001","norm_002", "pat_001", "pat_002"))
 plot(null_fit(usz_part))
 }

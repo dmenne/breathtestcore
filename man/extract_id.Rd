@@ -10,8 +10,8 @@ extract_id(id)
 \item{id}{One item from column Identifikation, e.g. "KEK-ZH-Nr.2013-1234"}
 }
 \description{
-First tries to extract only digits, separating these by underscore 
-when there are multiple blocks. If this give a non-valid  id, returns the 
+First tries to extract only digits, separating these by underscore
+when there are multiple blocks. If this give a non-valid  id, returns the
 whole string without spaces and periods, hoping it makes sense.
 For internal use, but should be overridden for exotic IDs
 }

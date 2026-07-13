@@ -7,8 +7,8 @@
 btcore_file(filename = NULL, full.names = FALSE)
 }
 \arguments{
-\item{filename}{example file in \code{extdata} directory without path. 
-Case sensitive on Unix. When filename is missing, returns the names of the 
+\item{filename}{example file in \code{extdata} directory without path.
+Case sensitive on Unix. When filename is missing, returns the names of the
 available sample files.}
 
 \item{full.names}{When \code{filename} is NULL, return full path names}

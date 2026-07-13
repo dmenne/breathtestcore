@@ -12,13 +12,13 @@ test_that("read_breathid returns valid data set", {
   expect_true("cpdrfit" %in% names(f$data))
 })
 
-test_that("read_breathid from text and from file give almost the same results",{
+test_that("read_breathid from text and from file give almost the same results", {
   filename = btcore_file("350_20043_0_GER.txt")
   f = read_breathid(filename)
-  f1 = read_breathid(text = readLines(filename)) 
+  f1 = read_breathid(text = readLines(filename))
   expect_equal(f1$file_name, "from text")
   expect_equal(f$file_name, basename(filename))
-  f$file_name = "from text"  
+  f$file_name = "from text"
   expect_equal(f, f1)
 })
 
@@ -32,7 +32,7 @@ test_that("read_breathid on bad data file throws", {
   expect_error(read_breathid(filename), "no <<T 1/2>> found")
 })
 
-test_that("read_breathid with NA returns valid data, without NA columns",{
+test_that("read_breathid with NA returns valid data, without NA columns", {
   filename = btcore_file("350_20023_0_GERWithNan.txt")
   f = read_breathid(filename)
   expect_s3_class(f, "breathtest_data")
@@ -42,8 +42,10 @@ test_that("read_breathid with NA returns valid data, without NA columns",{
 test_that("dob_to_pdr is not too far from what breathid says", {
   filename = btcore_file("350_20049_0_GERWithWeight.txt")
   bid = read_breathid(filename)
-  bid$data$pdr1 = dob_to_pdr(bid$data$dob,
-                             weight = bid$weight,
-                             height = bid$height)
+  bid$data$pdr1 = dob_to_pdr(
+    bid$data$dob,
+    weight = bid$weight,
+    height = bid$height
+  )
   expect_true(sqrt(var(bid$data$pdr1 - bid$data$pdr)) < 0.032)
 })

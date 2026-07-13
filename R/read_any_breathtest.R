@@ -1,18 +1,18 @@
 #' @title Read breathtest files of any format
 #' @description Uses \code{\link{breathtest_read_function}} to determine the file type
-#' and reads it if it has a valid format. 
+#' and reads it if it has a valid format.
 #' @param files A single filename, a list or a character vector of filenames.
 #' @return A list of \code{\link{breathtest_data}}, even if
 #' only one file was passed. The list can be passed to \code{\link{cleanup_data}}
-#' to extract one concatenated data frame for processing with \code{\link{nls_fit}},  
+#' to extract one concatenated data frame for processing with \code{\link{nls_fit}},
 #' \code{\link{nlme_fit}}, \code{\link{null_fit}} (no processing) or
-#' \code{stan_fit} in separate package \code{breathteststan}.  
+#' \code{stan_fit} in separate package \code{breathteststan}.
 #' @examples
 #' files = c(
 #'   group_a = btcore_file("IrisCSV.TXT"),
 #'   group_a = btcore_file("350_20043_0_GER.txt"),
 #'   group_b = btcore_file("IrisMulti.TXT"),
-#'   group_b = btcore_file("NewBreathID_01.xml")  
+#'   group_b = btcore_file("NewBreathID_01.xml")
 #'  )
 #'  bt = read_any_breathtest(files)
 #'  str(bt, 1)
@@ -26,23 +26,22 @@
 # })
 #' @importFrom purrr modify_if flatten
 #' @export
-read_any_breathtest = function(files){
+read_any_breathtest = function(files) {
   # https://stackoverflow.com/questions/46097093/partially-unnest-a-list
   files = as.list(files)
-  ret = 
-    lapply(files, function(file) { 
+  ret =
+    lapply(files, function(file) {
       f = breathtest_read_function(file)
-      if (is.null(f)) return(NULL)
+      if (is.null(f)) {
+        return(NULL)
+      }
       f(file)
-    })  
+    })
   errs = tryCatch(purrr::map_chr(ret, attr, "errors"), error = function(e) NULL)
-  ret = ret |> 
-    modify_if(function(x) is(x, "breathtest_data"), list ) %>% 
-    flatten() 
+  ret = ret |>
+    modify_if(function(x) is(x, "breathtest_data"), list) %>%
+    flatten()
   class(ret) = "breathtest_data_list"
   attr(ret, "errors") = errs
   ret
 }
-  
-
-

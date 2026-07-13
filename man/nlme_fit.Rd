@@ -20,14 +20,14 @@ data are distinct, and report an error if not. At least 2 records are required
 for a population fit, but 10 or more are recommended to obtain a stable result.}
 
 \item{dose}{Dose of acetate or octanoate. Currently, only one common dose
-for all records is supported. The dose only affects parameter \code{m} of the 
+for all records is supported. The dose only affects parameter \code{m} of the
 fit; all important t50-parameters are unaffected by the dose.}
 
 \item{start}{Optional start values. In most case, the default values are good
 enough to achieve convergence, but slightly different values for \code{beta}
 (between 1 and 2.5) can save a non-convergent run.}
 
-\item{sample_minutes}{When the mean sampling interval is < \code{sampleMinutes}, 
+\item{sample_minutes}{When the mean sampling interval is < \code{sampleMinutes},
 data are subsampled using a spline algorithm by function \code{\link{subsample_data}}.
 See the graphical output of \code{\link{plot.breathtestfit}} for an example where
 too densely sampled data of one patients were subsampled for the fit.}
@@ -35,10 +35,10 @@ too densely sampled data of one patients were subsampled for the fit.}
 \value{
 A list of class ("breathtestnlmefit" "breathtestfit") with elements
 \describe{
-  \item{coef}{Estimated parameters in a key-value format with 
+  \item{coef}{Estimated parameters in a key-value format with
    columns \code{patient_id, group, parameter, stat, method} and \code{value}.
-   Parameter \code{stat} currently always has value \code{"estimate"}. 
-   Confidence intervals will be added later, so do not take for granted that 
+   Parameter \code{stat} currently always has value \code{"estimate"}.
+   Confidence intervals will be added later, so do not take for granted that
    all parameters are estimates.  Has an attribute AIC which can be retrieved by
    the S3-function \code{AIC}.}
    \item{data}{The data effectively fitted. If points are to closely sampled
@@ -63,8 +63,8 @@ cf = coef(fit)
 cf
 # AIC can be extracted
 AIC(fit)
-# Reformat the coefficients to wide format and compare 
-# with the expected coefficients from the simulation 
+# Reformat the coefficients to wide format and compare
+# with the expected coefficients from the simulation
 # in d$record.
 cf \%>\%
   filter(grepl("m|k|beta", parameter )) \%>\%

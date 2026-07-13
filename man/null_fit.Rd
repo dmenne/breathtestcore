@@ -7,17 +7,17 @@
 null_fit(data, ...)
 }
 \arguments{
-\item{data}{Data frame or tibble as created by \code{\link{cleanup_data}}, 
+\item{data}{Data frame or tibble as created by \code{\link{cleanup_data}},
 with mandatory columns \code{patient_id, group, minute} and \code{pdr}.}
 
 \item{...}{Not used}
 }
 \value{
-A list of classes \code{breathtestnullfit, breathtestfit} 
+A list of classes \code{breathtestnullfit, breathtestfit}
 with element \code{data} which contains the unmodified data.
 }
 \description{
 Does not change the data set, but returns a class suitable
-for plotting raw data with \code{\link{plot.breathtestfit}}. 
+for plotting raw data with \code{\link{plot.breathtestfit}}.
 See \code{\link{read_any_breathtest}} for an example.
 }

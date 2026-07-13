@@ -22,10 +22,10 @@ Values and gradients of estimated PDR for use with \code{nls} and \code{nlme}
 }
 \description{
 Function to fit PDR time series data to exponential-beta function
-as given in: 
+as given in:
 
-Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998. 
-13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids. 
+Maes, B. D., B. J. Geypens, Y. F. Ghoos, M. I. Hiele, and P. J. Rutgeerts. 1998.
+13C-Octanoic Acid Breath Test for Gastric Emptying Rate of Solids.
 Gastroenterology 114(4): 856-50
 
 Sanaka M, Nakada K (2010) Stable isotope breath test for assessing gastric emptying:
@@ -108,7 +108,7 @@ pdr1 = data.frame(patient = as.factor(letters[1:10]))
 pdr1$m = start$m*(1 + rnorm(nrow(pdr1), 0, 0.1))
 pdr1$k = start$k*(1 + rnorm(nrow(pdr1), 0, 0.3))
 pdr1$beta = start$beta*(1 + rnorm(nrow(pdr1), 0, 0.1))
-pdr1  = merge(pdr1, expand.grid(minute = seq(2, 200, by = 10), 
+pdr1  = merge(pdr1, expand.grid(minute = seq(2, 200, by = 10),
    patient = letters[1:10]))
 pdr1 = pdr1[order(pdr1$patient, pdr1$minute), ]
 
@@ -137,7 +137,7 @@ pred_data = expand.grid(minute = seq(0, 400, 10), patient = letters[1:10])
 pred_data$pdr = predict(pdr_nlme, newdata = pred_data)
 suppressPackageStartupMessages(library(ggplot2))
 ggplot() +
-  geom_point(data = pdr1, aes(x = minute, y = pdr, color = "red")) + 
+  geom_point(data = pdr1, aes(x = minute, y = pdr, color = "red")) +
   geom_line(data = pred_data, aes(x = minute, y = pdr), color = "black", linewidth = 1 ) +
   ggtitle("Short patient record 'a' gives a good fit with many missing data using nlme.\n
           Borrowing strength from nlme in action!")+

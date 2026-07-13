@@ -31,7 +31,7 @@ Can also be given as string "acetate" or "octanoate".}
 PDR percent dose/h
 }
 \description{
-Convert DOB (delta-over-baseline) to PDR for 13C breath test. 
+Convert DOB (delta-over-baseline) to PDR for 13C breath test.
 This is equation (4) in
 Sanaka, Yamamoto, Tsutsumi, Abe, Kuyama (2005) Wagner-Nelson method for analysing
 the atypical double-peaked excretion curve in the [13c]-octanoate gastric
@@ -40,8 +40,8 @@ physiology 32, 590-594.
 }
 \note{
 I have no idea where the factor 10 in equation (4) comes from, possibly
-from percent(PDR)/and DOB(0/00). In Kim and Camillieri, Stable isotope breath 
-test and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123 
+from percent(PDR)/and DOB(0/00). In Kim and Camillieri, Stable isotope breath
+test and gastric emptying, page 207, a factor of 0.1123 instead of 0.01123
 is used, without the factor 10. Which one is correct?
 }
 \examples{

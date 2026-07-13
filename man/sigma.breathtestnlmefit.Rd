@@ -15,6 +15,6 @@
 A numeric value giving the standard deviation of the residuals.
 }
 \description{
-Functions for \code{nls} and \code{nlme} are available; 
+Functions for \code{nls} and \code{nlme} are available;
 additional functions for Stan-based fits are defined in package \code{breathteststan}.
 }

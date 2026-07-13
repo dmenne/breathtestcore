@@ -7,14 +7,14 @@
 breathtest_read_function(filename = NULL, text = NULL)
 }
 \arguments{
-\item{filename}{breath test data file from Iris/Wagner (extended or CSV), 
+\item{filename}{breath test data file from Iris/Wagner (extended or CSV),
 BreathID}
 
 \item{text}{as alternative to filename, pass the text of the file directly.
 This parameter is not used for Excel files.}
 }
 \value{
-Function to read the file or the text; NULL if no matching function 
+Function to read the file or the text; NULL if no matching function
 was found
 }
 \description{
@@ -31,5 +31,5 @@ first sheet is read.
  str(read_fun(file))
  # or, simple (returns a list!)
  str(read_any_breathtest(file), 1 )
- 
+
 }

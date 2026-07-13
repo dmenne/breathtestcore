@@ -35,20 +35,20 @@
 read_breathid_xml = function(filename = NULL, text = NULL) {
   if (is.null(text)) {
     filename = as.character(filename)
-    if (!file.exists(filename))
+    if (!file.exists(filename)) {
       stop(paste("File ", filename, "does not exist_"))
+    }
     text = read_file(filename)
-  } else
-  {
+  } else {
     filename = 'from text'
   }
-  
+
   xml = try(xml2::read_xml(text), silent = TRUE)
-  if (inherits(xml, "try-error"))
+  if (inherits(xml, "try-error")) {
     stop(paste("File ", filename, "is not a valid XML BreathID file"))
-  device =  xml_attrs(xml_find_first(xml, "/Tests"))
-  
-  
+  }
+  device = xml_attrs(xml_find_first(xml, "/Tests"))
+
   xmls = xml_find_all(xml, "Test")
   ret = lapply(xmls, read_breathid_xml_record, filename, device)
   is_err = unlist(lapply(ret, is.character))
@@ -75,54 +75,63 @@ read_breathid_xml_record = function(xml_0, filename, device) {
   core_file_name = basename((filename))
   # local function xml_num
   xml_num = function(xml_0, path) {
-    as.numeric(unlist(str_split(xml_text(
-      xml_find_first(xml_0, path)
-    ), ",")))
+    as.numeric(unlist(str_split(
+      xml_text(
+        xml_find_first(xml_0, path)
+      ),
+      ","
+    )))
   }
-  
+
   data = na.omit(data.frame(
     minute = xml_num(xml_0, ".//DOBListTimes"),
     dob = xml_num(xml_0, ".//DOBListValues")
   ))
-  
-  if (nrow(data) == 0){
+
+  if (nrow(data) == 0) {
     # No data
     return(paste("Empty data set in", core_file_name))
   }
   attr(data, "na.action") = NULL # Remove na.omit
   # e.g. "19Jul2017 11:02"
-  
-  tryCatch({
-    start_time_str = xml_text(xml_find_first(xml_0, "StartTime"))
-    end_time_str = xml_text(xml_find_first(xml_0, "EndTime"))
-    lct <- Sys.getlocale("LC_TIME")
-    Sys.setlocale("LC_TIME", "C")
-    record_date = strptime(start_time_str, "%d%b%Y")
-    Sys.setlocale("LC_TIME", lct)
-    
-    start_time =  str_extract(start_time_str, "\\d\\d:\\d\\d$")
-    end_time =  str_extract(end_time_str, "\\d\\d:\\d\\d$")
-    invisible(NULL)
-  }, error = function(e) {
-    return(paste("No valid date/time in XML file: ", core_file_name))
-  })
-  
+
+  tryCatch(
+    {
+      start_time_str = xml_text(xml_find_first(xml_0, "StartTime"))
+      end_time_str = xml_text(xml_find_first(xml_0, "EndTime"))
+      lct <- Sys.getlocale("LC_TIME")
+      Sys.setlocale("LC_TIME", "C")
+      record_date = strptime(start_time_str, "%d%b%Y")
+      Sys.setlocale("LC_TIME", lct)
+
+      start_time = str_extract(start_time_str, "\\d\\d:\\d\\d$")
+      end_time = str_extract(end_time_str, "\\d\\d:\\d\\d$")
+      invisible(NULL)
+    },
+    error = function(e) {
+      return(paste("No valid date/time in XML file: ", core_file_name))
+    }
+  )
+
   patient_id = xml_text(xml_find_first(xml_0, "ID"))
   test_no = as.integer(xml_attr(xml_find_first(xml_0, "/*/Test"), "Number"))
-  tryCatch({
-    breathtest_data(
-      file_name = basename(filename),
-      patient_id = patient_id,
-      test_no = test_no,
-      record_date = record_date,
-      start_time = start_time,
-      end_time = end_time,
-      substrate = "acetate",
-      #### Problem !!!
-      device = paste0("BreathID_", device),
-      data = data
-    )
-  }, error = function(e) {
-    return(paste(e[["message"]], "in", core_file_name))
-  })
+  tryCatch(
+    {
+      breathtest_data(
+        file_name = basename(filename),
+        patient_id = patient_id,
+        test_no = test_no,
+        record_date = record_date,
+        start_time = start_time,
+        end_time = end_time,
+        substrate = "acetate",
+        #### Problem !!!
+        device = paste0("BreathID_", device),
+        data = data
+      )
+    },
+    error = function(e) {
+      return(paste(e[["message"]], "in", core_file_name))
+    }
+  )
 }

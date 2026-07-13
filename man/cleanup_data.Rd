@@ -9,12 +9,12 @@ cleanup_data(data, ...)
 \arguments{
 \item{data}{\itemize{
   \item{A data frame, array or tibble with at least two numeric columns
-   with  optional names \code{minute} and \code{pdr} to fit 
+   with  optional names \code{minute} and \code{pdr} to fit
    a single 13C record.  }
  \item{A data frame or tibble with three columns named \code{patient_id},
    \code{minute} and \code{pdr}. }
  \item{A matrix that can be converted to one of the above.}
- \item{A list of data frames/tibbles that are concatenated. When the list has 
+ \item{A list of data frames/tibbles that are concatenated. When the list has
    named elements, the names are converted to group labels. When the list elements
    are not named, group name \code{A} is used for all items.}
  \item{A structure of class \code{\link{breathtest_data}}, as imported from
@@ -23,38 +23,38 @@ cleanup_data(data, ...)
  from read function such as \code{\link{read_breathid_xml}}}
 }}
 
-\item{...}{optional. 
+\item{...}{optional.
 \describe{
-  \item{use_filename_as_patient_id}{Always use filename instead of 
+  \item{use_filename_as_patient_id}{Always use filename instead of
   patient name. Use this when patient id are not unique.}
 }}
 }
 \value{
 A tibble with 4 columns. Column \code{patient_id} is created with a dummy
-entry of \code{pat_a} if no patient_id was present in the input data set. 
-A column \code{group} is required in the input data if the patients are from different 
-treatment groups or within-subject repeats, e.g. in crossover design. 
+entry of \code{pat_a} if no patient_id was present in the input data set.
+A column \code{group} is required in the input data if the patients are from different
+treatment groups or within-subject repeats, e.g. in crossover design.
 A dummy group name "A" is added if no group column was available in the input data set.
-If \code{group} is present, this is a hint to the analysis functions to do 
+If \code{group} is present, this is a hint to the analysis functions to do
 post-hoc breakdown or use it as a grouping variable in population-based methods.
-A patient can have records in multiple groups, for example in a cross-over 
-designs. 
+A patient can have records in multiple groups, for example in a cross-over
+designs.
 
 Columns \code{minute} and \code{pdr} are the same as given on input, but negative
-minute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes 
+minute values are removed, and an entry at 0 minutes is shifted to 0.01 minutes
 because most fit methods cannot handle the singularity at t=0.
 
-An error is raised if dummy columns \code{patient_id} and \code{group} cannot be 
-added in a unique way, i.e. when multiple values for a given minute cannot be 
+An error is raised if dummy columns \code{patient_id} and \code{group} cannot be
+added in a unique way, i.e. when multiple values for a given minute cannot be
 disambiguated.
 
 Comments are persistent; multiple comments are concatenated with newline separators.
 }
 \description{
-Accepts various data formats of ungrouped or grouped 13C breath 
+Accepts various data formats of ungrouped or grouped 13C breath
 test time series, and transforms these into a data frame that can be used by
 all fitting functions, e.g. \code{\link{nls_fit}}.
-If in doubt, pass data frame through \code{cleanup_data} before forwarding it 
+If in doubt, pass data frame through \code{cleanup_data} before forwarding it
 to a fitting function. If the function cannot repair the format, it gives better
 error messages than the \code{xxx_fit} functions.
 }
@@ -62,7 +62,7 @@ error messages than the \code{xxx_fit} functions.
 options(digits = 4)
 # Full manual
 minute = seq(0,30, by = 10)
-data1 = data.frame(minute, 
+data1 = data.frame(minute,
    pdr = exp_beta(minute, dose = 100, m = 30,  k = 0.01, beta = 2))
 # Two columns with data at t = 0
 data1
@@ -89,7 +89,7 @@ f1 = btcore_file("350_20043_0_GER.txt")
 f2 = btcore_file("IrisMulti.TXT")
 f3 = btcore_file("IrisCSV.TXT")
 # With a named list, the name is used as a group parameter
-data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
+data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3))
 d = cleanup_data(data)
 str(d)
 unique(d$patient_id)

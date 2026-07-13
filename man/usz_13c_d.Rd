@@ -8,8 +8,8 @@
 data(usz_13c_d)
 }
 \description{
-13C time series PDR data from normals and three different meals 
-in a cross-over design from the division of 
+13C time series PDR data from normals and three different meals
+in a cross-over design from the division of
 \href{https://www.usz.ch/fachbereich/gastroenterologie-und-hepatologie/}{Gastroenterology and Hepatology,
 University Hospital Zurich}. See
 \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/nmo.12025}{Kuyumcu et al.,
@@ -26,43 +26,43 @@ library(dplyr)
 library(ggplot2)
 data(usz_13c_d)
 mri_t50 = attr(usz_13c_d, "mri_t50")
-d = usz_13c_d \%>\% 
+d = usz_13c_d \%>\%
   cleanup_data() \%>\% # recommended to test for validity
   nlme_fit()
 plot(d) +
   geom_vline(data = mri_t50, aes(xintercept = t50), linetype = 2)
 
 # Maes-Ghoos t50
-dd = mri_t50 \%>\% 
+dd = mri_t50 \%>\%
   inner_join(
     coef(d) \%>\% filter(parameter=="t50", method == "maes_ghoos"),
-    by = c("patient_id", "group")) \%>\% 
+    by = c("patient_id", "group")) \%>\%
   mutate(
     t50_maes_ghoos = value
  )
 
-ggplot(dd, aes(x=t50, y = t50_maes_ghoos, color = group)) +  
+ggplot(dd, aes(x=t50, y = t50_maes_ghoos, color = group)) +
   geom_point() +
   facet_wrap(~group) +
   geom_abline(slope = 1, intercept = 0) +
   xlim(45,205) +
-  ylim(45,205) 
+  ylim(45,205)
 
 # Bluck-Coward t50
-dd = mri_t50 \%>\% 
+dd = mri_t50 \%>\%
   inner_join(
     coef(d) \%>\% filter(parameter=="t50", method == "bluck_coward"),
-    by = c("patient_id", "group")) \%>\% 
+    by = c("patient_id", "group")) \%>\%
   mutate(
     t50_bluck_coward = value
  )
 
-ggplot(dd, aes(x=t50, y = t50_bluck_coward, color = group)) +  
+ggplot(dd, aes(x=t50, y = t50_bluck_coward, color = group)) +
   geom_point() +
   facet_wrap(~group) +
   geom_abline(slope = 1, intercept = 0) +
   xlim(0,205) +
-  ylim(0,205) 
+  ylim(0,205)
 }
 }
 \keyword{datasets}
