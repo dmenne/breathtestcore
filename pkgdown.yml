@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   data_formats: data_formats.html
   methods_and_concepts: methods_and_concepts.html
-last_built: 2026-07-13T07:18Z
+last_built: 2026-07-13T07:23Z
 urls:
   reference: https://dmenne.github.io/breathtestcore/reference
   article: https://dmenne.github.io/breathtestcore/articles
