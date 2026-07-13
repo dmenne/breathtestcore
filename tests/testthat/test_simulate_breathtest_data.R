@@ -11,7 +11,9 @@ test_that("Invalid parameters throw", {
 })  
 
 test_that("Dubious parameter give warning", {
-  expect_warning(simulate_breathtest_data(noise = 0))
+  expect_warning(
+    simulate_breathtest_data(noise = 0)
+    )
   expect_warning(simulate_breathtest_data(student_t_df = 1.5))
 })  
 

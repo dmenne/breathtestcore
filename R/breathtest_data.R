@@ -101,7 +101,7 @@ breathtest_data = function(patient_id,
   }
   if (length(substrate) == 0)
     substrate = "octanoate"
-  if (!is.na(gender) & !match(gender, c("m", "f")))
+  if (!is.na(gender) && !match(gender, c("m", "f")))
     stop("function breathtest_data: gender should be 'm' or 'f'")
   # force NA if weight or height is not 0
   if (weight <= 30 || height < 1) {

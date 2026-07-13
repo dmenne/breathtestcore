@@ -56,7 +56,7 @@ read_breathid_xml = function(filename = NULL, text = NULL) {
   ret = ret[!is_err]
   # Hook to select records
   ch = options("breathtestcore.choose_record")$breathtestcore.choose_record
-  if (length(ret) > 1 & !is.null(ch)) {
+  if (length(ret) > 1 && !is.null(ch)) {
     pt = paste(
       "Patient",
       purrr::map_chr(ret, "patient_id"),

@@ -54,7 +54,7 @@ read_breathtest_excel = function(filename, sheet = 1) {
     "3" = c("patient_id", "minute", "pdr"),
     "2" = c("minute", "pdr"))
   expect_name = expect_names[[as.character(n_col)]]
-  if ( all.equal(expect_name, names(d)) != TRUE)  
+  if ( !identical(expect_name, names(d)) )  
     stop("With ", n_col, " columns, column names should be ", 
          paste(expect_name, collapse = ", "),
          ", but is ", paste(names(d), collapse = ", "))

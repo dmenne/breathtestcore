@@ -63,11 +63,11 @@ simulate_breathtest_data = function(
   max_minute = 155) {
   
   # Covariance matrix does not work for n_records <= 3
-  use_cov = (n_records > 3) & (!is.null(cov) |  
-    ((is.null(m_std) & is.null(k_std) & is.null(beta_std))))
+  use_cov = (n_records > 3) && (!is.null(cov) ||  
+    ((is.null(m_std) && is.null(k_std) && is.null(beta_std))))
   # Use empirical covariance structure from USZ data set when not explicitly given
   cov = NULL
-  if (use_cov & is.null(cov)) cov = 
+  if (use_cov && is.null(cov)) cov = 
     structure(c(188, -0.026, -2.04, -0.026, 7.74e-06, 0.000477, -2.04, 0.000477, 0.182),
     .Dim = c(3L, 3L), .Dimnames = list(c("m", "k","beta"), c("m", "k", "beta")))
 
