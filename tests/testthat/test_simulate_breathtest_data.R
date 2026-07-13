@@ -8,14 +8,12 @@ test_that("Invalid parameters throw", {
   expect_error(simulate_breathtest_data(beta_std = 1))
 
   expect_error(simulate_breathtest_data(step_minute = 100))
-})  
+})
 
 test_that("Dubious parameter give warning", {
-  expect_warning(
-    simulate_breathtest_data(noise = 0)
-    )
+  expect_warning(simulate_breathtest_data(noise = 0))
   expect_warning(simulate_breathtest_data(student_t_df = 1.5))
-})  
+})
 
 
 test_that("Valid parameters without std return valid data with cov-matrix", {
@@ -24,15 +22,18 @@ test_that("Valid parameters without std return valid data with cov-matrix", {
   expect_s3_class(d, "list")
   expect_equal(names(d), c("record", "data"))
   expect_equal(nrow(d$record), 10)
-  expect_equal(names(d$record), c("patient_id","m","k","beta","t50_maes_ghoos"))
+  expect_equal(
+    names(d$record),
+    c("patient_id", "m", "k", "beta", "t50_maes_ghoos")
+  )
   expect_equal(nrow(d$data), 110)
-  expect_equal(names(d$data), c("patient_id","minute","pdr"))
+  expect_equal(names(d$data), c("patient_id", "minute", "pdr"))
   expect_match(comment(d$data), "Gaussian")
   expect_match(comment(d$data), "cov-matrix")
   cov = attr(d$record, "cov")
   expect_true(is.matrix(cov))
   expect_type(cov, "double")
-  expect_equal(rownames(cov), c("m","k", "beta"))
+  expect_equal(rownames(cov), c("m", "k", "beta"))
 })
 
 
@@ -48,7 +49,7 @@ test_that("Cov matrix not used when n_records<= 3 ", {
   expect_equal(nrow(d$record), 3)
   cov = attr(d$record, "cov")
   expect_null(cov)
-})  
+})
 
 test_that("Valid parameters with one std return valid data without", {
   d = simulate_breathtest_data(m_std = 0., seed = 4711)
@@ -64,13 +65,15 @@ test_that("Fewer data with missing values", {
 })
 
 test_that("Warning when requesting too many missing", {
-  expect_warning(simulate_breathtest_data(missing = 0.8, seed = 4711), "Fraction of")
+  expect_warning(
+    simulate_breathtest_data(missing = 0.8, seed = 4711),
+    "Fraction of"
+  )
 })
 
 test_that("Valid student_t", {
   d = suppressWarnings(
-    simulate_breathtest_data(student_t_df = 1.2, seed = 4711))
-  expect_match(comment(d$data),"Student-t 2")
+    simulate_breathtest_data(student_t_df = 1.2, seed = 4711)
+  )
+  expect_match(comment(d$data), "Student-t 2")
 })
-
-
