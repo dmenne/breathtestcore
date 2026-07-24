@@ -11,7 +11,7 @@
 #' @param filename Name of IRIS/Wagner file in CSV format
 #' @param text alternatively, text can be given as string
 #' @return List of class \code{breath_test_data} with \code{file name,
-#' patient name, patient first name, test, identifikation},
+#' patient name, patient first name, test, identification},
 #' and data frame \code{data} with \code{time} and \code{dob}
 #' @examples
 #' filename = btcore_file("IrisCSV.TXT")

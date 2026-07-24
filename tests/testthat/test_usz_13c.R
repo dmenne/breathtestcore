@@ -29,3 +29,10 @@ test_that("USZ 13c d data have the correct columns", {
   # Check that there are no duplicates
   expect_identical(nrow(usz_13c_d[duplicated(usz_13c_d[, -4]), ]), 0L)
 })
+
+
+test_that("Function usz_13c_sol_liq returns the correct columns", {
+  d = usz_13c_sol_liq()
+  expect_equal(names(d), c("patient_id", "group", "minute", "pdr"))
+  expect_identical(nrow(d[duplicated(d[, -4]), ]), 0L)
+})
