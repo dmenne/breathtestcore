@@ -28,7 +28,7 @@ Description: Reads several formats of 13C data (IRIS/Wagner,
     'dmenne/breathtestshiny' on github.
 License: GPL-3
 Depends: 
-    R (>= 4.1.0)
+    R (>= 4.5.0)
 Imports: 
     assertthat,
     dplyr,
