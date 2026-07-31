@@ -4,7 +4,6 @@
 #' @param object Result of class \code{breathtestfit}
 #' @param ... Not used
 #' @return A numeric value giving the standard deviation of the residuals.
-#' @importFrom stats residuals var sigma
 
 #' @export
 sigma.breathtestnlmefit = function(object, ...) {

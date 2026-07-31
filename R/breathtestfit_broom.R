@@ -29,7 +29,6 @@
 #' tidy(fit)
 #' # All coefficients in the long form
 #' coef(fit)
-#' @importFrom tidyr spread
 #' @export
 #'
 tidy.breathtestfit = function(x, ...) {

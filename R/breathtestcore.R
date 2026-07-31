@@ -41,21 +41,6 @@
 #' @format A data frame with 15574 rows and 4 variables
 #'
 #'
-#' @import assertthat
-#' @import ggplot2
-#' @import stringr
-#' @import dplyr
-#' @import readr
-#' @importFrom broom augment tidy
-#' @importFrom MASS mvrnorm
-#' @importFrom graphics plot plot.default
-#' @importFrom purrr map_df
-#' @importFrom stats rt rnorm na.omit rlnorm coef AIC deviance
-#' @importFrom utils capture.output
-#' @importFrom signal interp1
-#' @importFrom methods is
-#' @importFrom tibble rownames_to_column as_tibble
-#' @importFrom nlme nlme nlmeControl fixef nlsList
 NULL
 
 

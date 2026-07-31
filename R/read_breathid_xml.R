@@ -30,7 +30,6 @@
 #' str(bids, 1) # 2 elements, first deselected
 #'
 #'
-#' @importFrom xml2 read_xml xml_attrs xml_find_first xml_text xml_attr xml_find_all
 #' @export
 read_breathid_xml = function(filename = NULL, text = NULL) {
   if (is.null(text)) {

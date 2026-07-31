@@ -87,7 +87,6 @@
 #' # File name is used as patient name if none is available
 #' unique(d$group)
 #' # "A" "B" "C"
-#' @importFrom purrr map_lgl
 #' @export
 cleanup_data = function(data, ...) {
   UseMethod("cleanup_data")

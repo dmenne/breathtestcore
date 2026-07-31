@@ -15,18 +15,18 @@
 #'   fit = usz_13c_sol_liq() |>
 #'     nlme_fit()
 #'   coef(fit) |>
-#'     filter(parameter == "t50", method == "maes_ghoos")
+#'     dplyr::filter(parameter == "t50", method == "maes_ghoos")
 #'   fit |>
 #'     plot()
 
 usz_13c_sol_liq = function(sample_minutes = 15) {
-  data(usz_13c)
-  both = usz_13c |>
-    distinct(patient_id, group) |>
-    group_by(patient_id) |>
+  data = breathtestcore::usz_13c
+  both = data |>
+    distinct(.data$patient_id, .data$group) |>
+    group_by(.data$patient_id) |>
     filter(n() == 2)
-  sol_liq = usz_13c %>%
-    inner_join(both, by = join_by(patient_id, group)) |>
+  sol_liq = data %>%
+    inner_join(both, by = join_by("patient_id", "group")) |>
     subsample_data(sample_minutes) |>
     cleanup_data()
   attr(

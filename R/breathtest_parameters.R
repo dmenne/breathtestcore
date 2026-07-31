@@ -99,7 +99,7 @@ t50_bluck_coward = function(cf) {
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 tlag_bluck_coward = function(cf) {
-  as.numeric(unlist(log(cf["beta"] / 2) / cf["k"]))
+  as.numeric(unlist(log(cf[["beta"]] / 2) / cf[["k"]]))
 }
 
 #' @title Half-emptying time by Maes/Ghoos method
@@ -126,7 +126,7 @@ tlag_bluck_coward = function(cf) {
 #' integrate(exp_beta, 0, t50_mg, beta = 1.5, k = 0.01, m = 1, dose = 100)
 #' @export
 t50_maes_ghoos = function(cf) {
-  as.numeric(unlist(-log(1 - 2^(-1 / cf["beta"])) / cf["k"]))
+  as.numeric(unlist(-log(1 - 2^(-1 / cf[["beta"]])) / cf[["k"]]))
 }
 
 #' @title So-called lag time from Maes/Ghoos fit
@@ -143,7 +143,7 @@ t50_maes_ghoos = function(cf) {
 #' @seealso \code{\link{exp_beta}}, and \code{\link{t50_bluck_coward}} for an example.
 #' @export
 tlag_maes_ghoos = function(cf) {
-  as.numeric(unlist(log(cf["beta"]) / cf["k"]))
+  as.numeric(unlist(log(cf[["beta"]]) / cf[["k"]]))
 }
 
 #' @title Half-emptying time t50 from Maes/Ghoos fit with scintigraphic correction

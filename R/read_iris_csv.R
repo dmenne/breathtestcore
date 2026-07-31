@@ -19,7 +19,6 @@
 #' #
 #' iris_data = read_iris_csv(filename)
 #' str(iris_data)
-#' @importFrom purrr map
 #' @export
 read_iris_csv = function(filename = NULL, text = NULL) {
   if (is.null(text)) {

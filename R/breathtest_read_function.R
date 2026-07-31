@@ -18,7 +18,6 @@
 #'  # or, simple (returns a list!)
 #'  str(read_any_breathtest(file), 1 )
 #'
-#' @importFrom tools file_ext
 #' @export
 #'
 breathtest_read_function = function(filename = NULL, text = NULL) {

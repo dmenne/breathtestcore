@@ -2,7 +2,7 @@
 % Please edit documentation in R/usz_13_sol_liq.R
 \name{usz_13c_sol_liq}
 \alias{usz_13c_sol_liq}
-\title{Pairwise meals subset of usz_13c}
+\title{Subset of usz_13c with solid/liquid meals}
 \usage{
 usz_13c_sol_liq(sample_minutes = 15)
 }
@@ -18,4 +18,12 @@ solid_patient, liquid_patient`) and `pdr`
 }
 \description{
 Get subset of clinical data with records for solid and liquid meals of the same patient
+}
+\examples{
+  fit = usz_13c_sol_liq() |>
+    nlme_fit()
+  coef(fit) |>
+    dplyr::filter(parameter == "t50", method == "maes_ghoos")
+  fit |>
+    plot()
 }

@@ -42,8 +42,6 @@
 #' }
 #' # TODO: Add example for Stan fit typecast to class \code{breathtestfit} to compute
 #' # confidence intervals instead of credible intervals
-#' @importFrom stats confint relevel
-#' @import multcomp
 #' @export
 coef_diff_by_group = function(
   fit,

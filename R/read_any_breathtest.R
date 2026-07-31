@@ -24,7 +24,6 @@
 #'  # Plot population fit with decimated data
 #'  plot(nlme_fit(bt_df))
 # })
-#' @importFrom purrr modify_if flatten
 #' @export
 read_any_breathtest = function(files) {
   # https://stackoverflow.com/questions/46097093/partially-unnest-a-list

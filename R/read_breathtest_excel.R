@@ -33,7 +33,6 @@
 #' bt_cleaned = cleanup_data(bt_data)
 #' # 4 columns standard format
 #' str(bt_cleaned)
-#' @importFrom readxl read_excel
 #' @export
 read_breathtest_excel = function(filename, sheet = 1) {
   d = read_excel(filename, sheet = sheet, trim_ws = TRUE)

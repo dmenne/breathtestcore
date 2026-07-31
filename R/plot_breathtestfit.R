@@ -19,10 +19,6 @@
 #' # cleanup_data combines the list into a data frame
 #' x = nls_fit(cleanup_data(data))
 #' plot(x)
-#' @importFrom stats quantile
-#' @importFrom tidyr spread
-#' @import dplyr
-#' @importFrom ggfittext geom_fit_text
 #' @export
 plot.breathtestfit = function(
   x,

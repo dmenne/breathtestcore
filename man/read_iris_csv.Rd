@@ -13,7 +13,7 @@ read_iris_csv(filename = NULL, text = NULL)
 }
 \value{
 List of class \code{breath_test_data} with \code{file name,
-patient name, patient first name, test, identifikation},
+patient name, patient first name, test, identification},
 and data frame \code{data} with \code{time} and \code{dob}
 }
 \description{
