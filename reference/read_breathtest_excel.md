@@ -44,7 +44,7 @@ for (sheet in sheets) {
   cat("\nSheet ", sheet,"\n")
   ex = readxl::read_excel(filename, sheet = sheet, n_max = 4)
   print(ex)
-}  
+}
 #> 
 #> Sheet  4col_1group 
 #> # A tibble: 4 × 4

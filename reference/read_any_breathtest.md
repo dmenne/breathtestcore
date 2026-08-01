@@ -35,7 +35,7 @@ files = c(
   group_a = btcore_file("IrisCSV.TXT"),
   group_a = btcore_file("350_20043_0_GER.txt"),
   group_b = btcore_file("IrisMulti.TXT"),
-  group_b = btcore_file("NewBreathID_01.xml")  
+  group_b = btcore_file("NewBreathID_01.xml")
  )
  bt = read_any_breathtest(files)
  str(bt, 1)

@@ -191,7 +191,7 @@ str(iris_csv_data)
 # Convert to a format that can be fed to one of the fit functions
 iris_df = cleanup_data(iris_csv_data)
 # Individual curve fit
-coef(nls_fit(iris_df)) 
+coef(nls_fit(iris_df))
 #> # A tibble: 9 × 5
 #>   patient_id group parameter method                      value
 #>   <chr>      <chr> <chr>     <chr>                       <dbl>

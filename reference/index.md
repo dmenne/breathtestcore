@@ -10,6 +10,9 @@
   : Data structure with PDR data and descriptors for breath test records
 - [`breathtest_read_function()`](https://dmenne.github.io/breathtestcore/reference/breathtest_read_function.md)
   : Snoop method to read breath test file
+- [`breathtestcore-package`](https://dmenne.github.io/breathtestcore/reference/breathtestcore-package.md)
+  [`breathtestcore`](https://dmenne.github.io/breathtestcore/reference/breathtestcore-package.md)
+  : breathtestcore
 - [`btcore_file()`](https://dmenne.github.io/breathtestcore/reference/btcore_file.md)
   : Path to example breath test data file
 - [`cleanup_data()`](https://dmenne.github.io/breathtestcore/reference/cleanup_data.md)
@@ -73,3 +76,5 @@
   : Exotic 13C breath test data
 - [`usz_13c_d`](https://dmenne.github.io/breathtestcore/reference/usz_13c_d.md)
   : 13C breath test data with MRI emptying for comparison
+- [`usz_13c_sol_liq()`](https://dmenne.github.io/breathtestcore/reference/usz_13c_sol_liq.md)
+  : Subset of usz_13c with solid/liquid meals

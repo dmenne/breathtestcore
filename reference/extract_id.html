@@ -13,7 +13,7 @@ For internal use, but should be overridden for exotic IDs"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">breathtestcore</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.11</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,11 +70,12 @@ For internal use, but should be overridden for exotic IDs</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> function (id) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     id1 = paste(str_match_all(id, "([\\d]+)")[[1]][, 2], collapse = "_")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     if (nchar(id1) &gt;= 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     if (nchar(id1) &gt;= 5) {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         return(id1)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     tolower(str_replace_all(id, "[\\.\\-\\W]+", "_"))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x5587b2ae8558&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x5567c0660d48&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: namespace:breathtestcore&gt;</span>
 </code></pre></div>
     </div>

@@ -78,7 +78,7 @@ separators.
 options(digits = 4)
 # Full manual
 minute = seq(0,30, by = 10)
-data1 = data.frame(minute, 
+data1 = data.frame(minute,
    pdr = exp_beta(minute, dose = 100, m = 30,  k = 0.01, beta = 2))
 # Two columns with data at t = 0
 data1
@@ -152,7 +152,7 @@ f1 = btcore_file("350_20043_0_GER.txt")
 f2 = btcore_file("IrisMulti.TXT")
 f3 = btcore_file("IrisCSV.TXT")
 # With a named list, the name is used as a group parameter
-data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3)) 
+data = list(A = read_breathid(f1), B = read_iris(f2), C = read_iris_csv(f3))
 d = cleanup_data(data)
 str(d)
 #> tibble [115 × 4] (S3: tbl_df/tbl/data.frame)

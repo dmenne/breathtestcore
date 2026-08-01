@@ -13,7 +13,7 @@ single curve, mixed-model population and Bayesian methods."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">breathtestcore</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.11</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,8 +143,8 @@ too densely sampled data of one patients were subsampled for the fit.</p></dd>
 <span class="r-in"><span><span class="co"># AIC can be extracted</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/AIC.html" class="external-link">AIC</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 133</span>
-<span class="r-in"><span><span class="co"># Reformat the coefficients to wide format and compare </span></span></span>
-<span class="r-in"><span><span class="co"># with the expected coefficients from the simulation </span></span></span>
+<span class="r-in"><span><span class="co"># Reformat the coefficients to wide format and compare</span></span></span>
+<span class="r-in"><span><span class="co"># with the expected coefficients from the simulation</span></span></span>
 <span class="r-in"><span><span class="co"># in d$record.</span></span></span>
 <span class="r-in"><span><span class="va">cf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"m|k|beta"</span>, <span class="va">parameter</span> <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>

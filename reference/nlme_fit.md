@@ -105,8 +105,8 @@ cf
 # AIC can be extracted
 AIC(fit)
 #> [1] 133
-# Reformat the coefficients to wide format and compare 
-# with the expected coefficients from the simulation 
+# Reformat the coefficients to wide format and compare
+# with the expected coefficients from the simulation
 # in d$record.
 cf %>%
   filter(grepl("m|k|beta", parameter )) %>%

@@ -54,7 +54,7 @@ dev.off()
 } # }
 # Plot a subset
 suppressPackageStartupMessages(library(dplyr))
-usz_part =  usz_13c  %>% 
+usz_part =  usz_13c  %>%
   filter(patient_id %in% c("norm_001","norm_002", "pat_001", "pat_002"))
 plot(null_fit(usz_part))
 ```

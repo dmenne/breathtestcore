@@ -22,7 +22,7 @@ data(usz_13c_a)
 library(dplyr)
 library(ggplot2)
 data(usz_13c_a)
-d = usz_13c_a %>% 
+d = usz_13c_a %>%
   cleanup_data() %>% # recommended to test for validity
   nlme_fit()
 plot(d)

@@ -17,7 +17,7 @@ error messages than the xxx_fit functions."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">breathtestcore</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.11</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,7 @@ disambiguated.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Full manual</span></span></span>
 <span class="r-in"><span><span class="va">minute</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">30</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">data1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">minute</span>, </span></span>
+<span class="r-in"><span><span class="va">data1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">minute</span>,</span></span>
 <span class="r-in"><span>   pdr <span class="op">=</span> <span class="fu"><a href="exp_beta.html">exp_beta</a></span><span class="op">(</span><span class="va">minute</span>, dose <span class="op">=</span> <span class="fl">100</span>, m <span class="op">=</span> <span class="fl">30</span>,  k <span class="op">=</span> <span class="fl">0.01</span>, beta <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Two columns with data at t = 0</span></span></span>
 <span class="r-in"><span><span class="va">data1</span></span></span>
@@ -190,7 +190,7 @@ disambiguated.</p>
 <span class="r-in"><span><span class="va">f2</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisMulti.TXT"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">f3</span> <span class="op">=</span> <span class="fu"><a href="btcore_file.html">btcore_file</a></span><span class="op">(</span><span class="st">"IrisCSV.TXT"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># With a named list, the name is used as a group parameter</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="read_breathid.html">read_breathid</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="read_iris.html">read_iris</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="read_iris_csv.html">read_iris_csv</a></span><span class="op">(</span><span class="va">f3</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="read_breathid.html">read_breathid</a></span><span class="op">(</span><span class="va">f1</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="read_iris.html">read_iris</a></span><span class="op">(</span><span class="va">f2</span><span class="op">)</span>, C <span class="op">=</span> <span class="fu"><a href="read_iris_csv.html">read_iris_csv</a></span><span class="op">(</span><span class="va">f3</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">=</span> <span class="fu">cleanup_data</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> tibble [115 × 4] (S3: tbl_df/tbl/data.frame)</span>

@@ -24,10 +24,11 @@ extract_id
 #> function (id) 
 #> {
 #>     id1 = paste(str_match_all(id, "([\\d]+)")[[1]][, 2], collapse = "_")
-#>     if (nchar(id1) >= 5) 
+#>     if (nchar(id1) >= 5) {
 #>         return(id1)
+#>     }
 #>     tolower(str_replace_all(id, "[\\.\\-\\W]+", "_"))
 #> }
-#> <bytecode: 0x5587b2ae8558>
+#> <bytecode: 0x5567c0660d48>
 #> <environment: namespace:breathtestcore>
 ```

@@ -29,7 +29,7 @@ read_iris_csv(filename = NULL, text = NULL)
 ## Value
 
 List of class `breath_test_data` with
-`file name, patient name, patient first name, test, identifikation`, and
+`file name, patient name, patient first name, test, identification`, and
 data frame `data` with `time` and `dob`
 
 ## Examples

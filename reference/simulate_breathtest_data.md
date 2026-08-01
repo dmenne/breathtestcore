@@ -119,7 +119,7 @@ library(ggplot2)
 pdr = simulate_breathtest_data(n_records = 4, seed = 4711, missing = 0.3,
        student_t_df = 2, noise = 1.5) # Strong outliers
 #
-str(pdr, 1)  
+str(pdr, 1)
 #> List of 2
 #>  $ record:'data.frame':  4 obs. of  5 variables:
 #>   ..- attr(*, "cov")= num [1:3, 1:3] 1.88e+02 -2.60e-02 -2.04 -2.60e-02 7.74e-06 4.77e-04 -2.04 4.77e-04 1.82e-01
